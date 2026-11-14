@@ -29,6 +29,7 @@ for (const f of fs.readdirSync(path.join(DIST, 'data'))) w.eval(fs.readFileSync(
 w.eval(inline + '\nwindow.App = App; window.h = h;');
 const tick = () => new Promise(r => setTimeout(r, 40));
 const main = () => w.document.getElementById('main');
+const h2 = tag => { const el = w.document.createElement(tag); if (tag === 'video') { el.pause = () => {}; el.load = () => {}; } return el; };
 async function show(id, patch) {
   Object.assign(w.App.state[id], patch || {});
   w.location.hash = id;
@@ -60,6 +61,16 @@ async function show(id, patch) {
   JSON.stringify(F.synthesis, (k, v) => { if (v && v.accession && v.section && !Array.isArray(v)) { cites++;
     const sec = (F.records[v.accession] || {})[v.section]; const item = Array.isArray(sec) && v.index != null ? sec[v.index - 1] : sec;
     if (item == null) problems.push(`citation does not resolve: ${JSON.stringify(v)}`); } return v; });
+  // the drawer must really disappear on Close and on Escape (its display rule once overrode the hidden attribute)
+  const drawerEl = w.document.getElementById('drawer'), shown = () => w.getComputedStyle(drawerEl).display !== 'none';
+  if (shown()) problems.push('drawer: visible before anything opened it');
+  A.drawer('t', h2('video'), true);
+  if (!shown() || w.document.documentElement.dataset.drawer !== 'wide') problems.push('drawer: does not open docked');
+  w.document.getElementById('drawer-close').click();
+  if (shown() || drawerEl.querySelector('video') || w.document.documentElement.dataset.drawer) problems.push('drawer: Close leaves it on screen');
+  A.drawer('t', h2('p'));
+  w.document.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape' }));
+  if (shown()) problems.push('drawer: Escape leaves it on screen');
   console.log(`${plots.length} charts drawn, ${cites} citations checked, ${A.views.length} views`);
   if (problems.length) { console.log([...new Set(problems)].slice(0, 40).join('\n')); process.exit(1); }
   console.log('smoke ok');

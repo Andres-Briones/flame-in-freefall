@@ -543,6 +543,7 @@
     }
   };
 
+  App.viewerClose = () => { token++; cleanupPdf(); };
   App.parseTable = parseTable;
   App.fmtBytes = fmtBytes;
   App.fileInfo = fileInfo;

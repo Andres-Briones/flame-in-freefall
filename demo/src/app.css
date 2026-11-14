@@ -114,13 +114,22 @@ table.t tbody tr.click { cursor: pointer } table.t tbody tr.click:hover { backgr
 table.t tr:last-child td { border-bottom: 0 }
 .pager { display: flex; gap: 10px; align-items: center; justify-content: flex-end; font-size: 12px; color: var(--fg-2); padding-top: 6px }
 
-.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100vw); background: var(--surface); border-left: 1px solid var(--line); z-index: 20; display: flex; flex-direction: column; box-shadow: -12px 0 32px rgb(0 0 0 / .18); padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
+/* display: flex below would otherwise override the hidden attribute and the drawer could never close */
+.drawer[hidden] { display: none }
+.drawer { position: fixed; top: 0; right: 0; bottom: 0; width: var(--drawer-w, min(560px, 100vw)); background: var(--surface); border-left: 1px solid var(--line); z-index: 20; display: flex; flex-direction: column; box-shadow: -12px 0 32px rgb(0 0 0 / .18); padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px) }
 .drawer-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 16px; border-bottom: 1px solid var(--line) }
 .drawer-body { padding: 14px 16px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; min-width: 0 }
 .brief h4 { font-family: var(--font); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-3); margin-bottom: 4px }
 .tip { position: fixed; z-index: 30; pointer-events: none; background: var(--fg); color: var(--bg); padding: 6px 8px; border-radius: 6px; font-size: 12px; max-width: 280px }
 @media (prefers-reduced-motion: no-preference) { .drawer { animation: slide .16s ease-out } @keyframes slide { from { transform: translateX(24px); opacity: .6 } } }
-.drawer.wide { width: min(1100px, 100vw) }
+:root { --drawer-narrow: 560px; --drawer-wide: clamp(560px, 50vw, 1100px) }
+html[data-drawer] { --drawer-w: min(var(--drawer-narrow), 100vw) }
+html[data-drawer="wide"] { --drawer-w: min(var(--drawer-wide), 100vw) }
+/* On a wide screen the open drawer sits beside the page instead of over it, so the dashboard stays usable. */
+@media (min-width: 1000px) { html[data-drawer] body { padding-right: var(--drawer-w) } }
+.drawer-grip { position: absolute; left: -4px; top: 0; bottom: 0; width: 9px; cursor: col-resize; touch-action: none; z-index: 1 }
+.drawer-grip:hover, .drawer-grip.drag { background: linear-gradient(to right, transparent 3px, var(--accent, var(--line)) 3px 6px, transparent 6px) }
+@media (max-width: 999px) { .drawer-grip { display: none } }
 .viewer-canvas { max-width: 100%; height: auto; border: 1px solid var(--line); background: #fff }
 .viewer-media { max-width: 100%; max-height: 70vh; background: #000; border-radius: 6px }
 .badge-live { font-size: 11px; color: var(--good) }

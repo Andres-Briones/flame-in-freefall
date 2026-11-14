@@ -91,7 +91,8 @@ const App = {
 
   go(id, patch) {
     if (patch) Object.assign(App.state[id] = App.state[id] || {}, patch);
-    App.closeDrawer();
+    // Docked beside the page (wide screens) the drawer stays open across views; as an overlay it would hide the new view.
+    if (!window.matchMedia('(min-width: 1000px)').matches) App.closeDrawer();
     if (location.hash === '#' + id) App.render(); else location.hash = id;
   },
 
@@ -346,8 +347,24 @@ const App = {
     document.getElementById('drawer-title').textContent = title;
     document.getElementById('drawer-body').replaceChildren(node);
     document.getElementById('drawer').hidden = false;
+    App.dockDrawer(wide ? 'wide' : 'narrow');
   },
-  closeDrawer() { document.getElementById('drawer').hidden = true; },
+  // The page gives up the drawer's width (app.css); charts only re-fit on a window resize event.
+  dockDrawer(mode) {
+    const root = document.documentElement;
+    if ((root.dataset.drawer || null) === mode) return;
+    if (mode) root.dataset.drawer = mode; else delete root.dataset.drawer;
+    window.dispatchEvent(new Event('resize'));
+  },
+  closeDrawer() {
+    const body = document.getElementById('drawer-body');
+    // A video removed from the page keeps playing its sound unless it is paused first.
+    body.querySelectorAll('video, audio').forEach(m => { try { m.pause(); m.removeAttribute('src'); m.load(); } catch (e) { /* not started */ } });
+    if (App.viewerClose) App.viewerClose();
+    body.replaceChildren();
+    document.getElementById('drawer').hidden = true;
+    App.dockDrawer(null);
+  },
 
   math(latex, display) {
     const span = h('span', {});
