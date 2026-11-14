@@ -69,10 +69,10 @@
     needs: [],
     brief: {
       need: 'Find the passage behind a claim and open it in the original document.',
-      data: ['data/processed/evidence.parquet (server side, 21,575 passages from the PSI documents)', 'data/export/records.json (static fallback: reviewed findings only)'],
+      data: ['data/processed/evidence.parquet (server side, 22,879 passages from the PSI documents)', 'data/export/records.json (static fallback: reviewed findings only)'],
       call: 'find_evidence(query="partial gravity", accession="PSI-25", k=20, raw=True)',
       keep: ['Keyword search, not semantic search', 'Raw document passages are unreviewed text and may contain extraction errors', 'Reviewed findings carry their citation ids'],
-      backend: 'Required for the raw documents: find_evidence runs a keyword index over 21,575 passages on the server (demo/server.py).',
+      backend: 'Required for the raw documents: find_evidence runs a keyword index over 22,879 passages on the server (demo/server.py).',
     },
     render(root, state, update) {
       const live = !!App.backend;
@@ -101,7 +101,7 @@
 
       if (!live) root.append(h('div', { class: 'callout gap' },
         h('b', { text: 'Document search needs the dashboard server. ' }),
-        'The 21,575 passages from the NASA documents are too large for a static page. Here you can search the reviewed findings, limitations and open questions of the 24 records.'));
+        'The 22,879 passages from the NASA documents are too large for a static page. Here you can search the reviewed findings, limitations and open questions of the 24 records.'));
 
       const box = App.search({ id: 'se-q', label: live ? 'Search for' : 'Search the reviewed findings', value: state.q || '', placeholder: 'e.g. radiative extinction',
         onChange: v => { state.q = v; } });

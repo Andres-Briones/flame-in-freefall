@@ -2699,7 +2699,7 @@
  },
  "evidence": {
   "description": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
-  "rows": 21570,
+  "rows": 22879,
   "files": [
    "data/processed/evidence.parquet",
    "data/processed/evidence.csv"
@@ -2707,23 +2707,23 @@
   "columns": {
    "accession": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": null,
     "values": {
      "PSI-39": 4119,
-     "PSI-23": 4042,
-     "PSI-10": 2974,
-     "PSI-159": 2857,
+     "PSI-23": 4086,
+     "PSI-159": 3496,
+     "PSI-10": 3420,
      "PSI-25": 2543,
-     "PSI-101": 1903,
-     "PSI-102": 1343,
-     "PSI-107": 552,
+     "PSI-101": 1960,
+     "PSI-102": 1400,
+     "PSI-107": 561,
      "PSI-117": 475,
-     "PSI-26": 405,
-     "PSI-47": 145,
+     "PSI-26": 455,
+     "PSI-47": 147,
      "PSI-115": 59,
+     "PSI-98": 49,
      "PSI-100": 46,
-     "PSI-98": 44,
      "PSI-20": 14,
      "PSI-99": 10,
      "PSI-142": 10,
@@ -2738,15 +2738,15 @@
    },
    "category": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": null,
     "values": {
-     "Raw Data": 12196,
-     "Engineering Documents": 2401,
+     "Raw Data": 13286,
+     "Engineering Documents": 2606,
      "Reports": 2228,
      "Science Documents": 1492,
      "Analyzed Data": 1350,
-     "Presentations": 996,
+     "Presentations": 1010,
      "Reference Data": 728,
      "metadata": 157,
      "Experimental table": 22
@@ -2754,35 +2754,40 @@
    },
    "file_name": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": null
    },
    "local_path": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": null
    },
    "locator": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": "page (p3), slide, sheet, zip member or 'all'"
    },
    "chunk": {
     "dtype": "int64",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": "chunk number within the locator",
     "min": 0.0,
     "max": 149.0
    },
    "text": {
     "dtype": "str",
-    "non_null": 21570,
+    "non_null": 22879,
     "description": "extracted text, whitespace-normalised; contact details of people who are not listed authors, postal addresses and private network addresses are replaced by [... removed] markers"
    },
    "test_ref": {
     "dtype": "str",
     "non_null": 3970,
     "description": "ACME test id found in the file name"
+   },
+   "transcribed": {
+    "dtype": "bool",
+    "non_null": 22879,
+    "description": "True when the text is an AI model's reading of a scanned page (no text layer), not the document's own text"
    }
   }
  },
@@ -2869,7 +2874,8 @@
     "description": "ok / transcribed (scan read from data/transcriptions/ by an AI model) / no_text / unsupported / error / withheld (holds credentials, not extracted)",
     "values": {
      "ok": 5320,
-     "no_text": 185,
+     "transcribed": 107,
+     "no_text": 78,
      "unsupported": 14,
      "withheld": 1,
      "error": 1

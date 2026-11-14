@@ -38,7 +38,7 @@ App.view({
         'Free scenario sliders: relevance() takes any O2, pressure, flow and gravity, but the static export holds 5 presets.',
         'Sensor traces of any test: timeseries() reads the raw files (7.5 GB). Two examples and 1,051 per-recording summaries are exported.',
         'A live assistant: needs a server for the API key. The tool specs (data/processed/tools.json) and the question bank are ready.',
-        'Full-text search of the documents: find_evidence() searches 21,575 passages by keyword; the evidence table is too large for a static page.',
+        'Full-text search of the documents: find_evidence() searches 22,879 passages by keyword; the evidence table is too large for a static page.',
         'Images and video: the 7.8 TB of PSI imagery were not downloaded. The records say which files exist and what could be measured from them.',
       ].map(t => h('li', { text: t })))));
   },
