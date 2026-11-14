@@ -2,7 +2,8 @@ services:
   demo:
     build: .
     ports:
-      - "8000:8000"
+      # run.sh sets these; plain `docker compose up` keeps the old 8000 on all interfaces
+      - "${FIF_BIND:-0.0.0.0}:${FIF_PORT:-8000}:8000"
     environment:
       FIF_RAW_CACHE_MB: "300"
     restart: unless-stopped

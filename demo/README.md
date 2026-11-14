@@ -27,6 +27,10 @@ uv run python demo/build_demo.py && uv run python demo/server.py        # http:/
 docker compose up -d --build                                             # same, from the repo root
 ```
 
+On a server, use `./run.sh` from the repo root: it builds and starts the container on port 5187 (`FIF_PORT`),
+refuses if another process holds that port, and waits for `/api/health`. `./run.sh update` pulls and restarts;
+`stop`, `restart`, `logs`, `status` do what they say. Behind nginx or Caddy, run it with `FIF_BIND=127.0.0.1`.
+
 | Env | Default | |
 |---|---|---|
 | `HOST`, `PORT` | `0.0.0.0`, `8000` | (the `uvicorn demo.server:app` CLI takes `--host`/`--port` instead) |
