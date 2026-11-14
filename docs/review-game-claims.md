@@ -69,7 +69,7 @@ F = finding in `data/digest/PSI-n.json`; Guide =
 |---|---|---|---|---|---|
 | 11 | en:277 challenge 2 lesson | "NASA measured the exact oxygen limit ... not a guess" | UNSUPPORTED (overclaim) | Eq. 6.1 is an empirical fit for one rod geometry (KM1: "mapped on one rod geometry and one fabric"). | "NASA fitted a limit curve to its acrylic-rod tests; inside those tests the answer rests on data." |
 | 12 | S:139; en:256-259 `unknownNoRule` | NASA "published no rule" for non-PMMA materials | WRONG for droplets | PSI-69 F1: LOI 0.12 (methanol) and 0.15 (heptane) in O2/N2. `web/src/components/Scoreboard.jsx`:7-12 quotes that very limit. | "For methanol drops NASA found a limit near 12% oxygen, for heptane 15% (FLEX)." |
-| 13 | en:38-40 `home.nums[2]`; en:106 `scene.intro[2]`; en:487 | "2,177 fires NASA recorded in orbit"; "NASA lit 2,177 fires like me"; "real fires in the tables" | WRONG | 2,177 rows are 2,059 single tests, 100 day summaries, 10 condition sets and 8 planned. Of the 2,059, 116 are SAME smoke tests with no flame and 62 have `ignited = False`. The map's count note already says 2,059. | "2,059 single tests in orbit (flames, plus smoke and no-ignition tests)". |
+| 13 | en:38-40 `home.nums[2]`; en:106 `scene.intro[2]`; en:487 | "2,177 fires NASA recorded in orbit"; "NASA lit 2,177 fires like me"; "real fires in the tables" | WRONG | 2,177 rows are 2,059 single tests, 100 day summaries, 10 condition sets and 8 planned. Of the 2,059, 109 are SAME-R (PSI-101) smoke tests with no flame (corrected 2026-11-14: an earlier version of this review said "116 are SAME smoke tests", which was wrong; SAME, PSI-102, has 8 rows, all `planned`, outside the 2,059), so 1,950 are fire tests; 62 have `ignited = False`. The map's count note already says 2,059. | "2,059 single tests in orbit (flames, plus smoke and no-ignition tests)". |
 | 14 | en:486, 403, 62 | "24 NASA fire experiments"; an investigation is "one NASA experiment in orbit" | WRONG for 5 of 24 | PSI-60, 62, 115, 117 and 142 are ground or modelling studies; 19 have test tables; DAFT, SAME and SAME-R burned nothing. | "24 NASA investigations: 19 flown in orbit, 5 ground or computer studies." |
 | 15 | S:114; en:116, 193; `web/src/components/Sparky.jsx`:11-16 | "Raise the oxygen and watch me grow"; flame size is the oxygen margin; mood thresholds 15/24/32% | UNSUPPORTED game choice | For the spherical flame Sparky depicts, PSI-10 Final Report says "Flame size ... decreases with ambient oxygen concentration" (reviewer's inference that this applies to Sparky). | Drop the size cue or label it "drawing, not data". |
 | 16 | S:152; en:286-288 challenge 4 | "Survive" Mars means igniting at 30% O2 or less | UNSUPPORTED | It rests on rule 1; once that rule is removed the challenge is always won. | Redesign: "Find what NASA has tested closest to the Mars-ship air." |
@@ -171,3 +171,104 @@ strings.
 - [NTRS 20220005716 record](https://ntrs.nasa.gov/api/citations/20220005716)
 - [Preliminary Results from the Saffire VI Experiment](https://ntrs.nasa.gov/citations/20240002981) (search result
   only, not read)
+
+## Re-check on dev 1cdb110 (2026-11-14)
+
+The same app at `origin/dev` commit 1cdb110 (`web/src`), compared with 34d41b3 through
+`git diff 34d41b3 1cdb110 -- web/src`. The teammates said rows 4, 7, 9, 13, 18, 21, 24, 30 and 36 were fixed on Home
+and the map (c50ebf1), plus the Scoreboard, glossary, tour and two Dashboard findings (939d351) and Sparky's intro and
+tour (1cdb110). Each row below was checked in the current text, in en, es and de. Every changed string was changed in
+all three languages, and the numbers match (only the "2,059" / "2.059" formatting differs). Line numbers are `en` at
+1cdb110. Nothing in the app was changed.
+
+Numbers re-run on 2026-11-14 with `fif.api`, on the working tables and on the committed `tests.parquet`, which gave the
+same results (other agents were rebuilding the data at the time, so the working copy differed from the commit in other
+columns): 2,059 single tests (`filter_tests`, `n_matching`); 109 SAME-R smoke tests (PSI-101), so 1,950 fire tests;
+62 with `ignited = False`, none of them SAME-R; solid pressure on 125 rows, 98.3-102.6 kPa; solid O2 13.6-22.7%; FLEX
+`d0_mm` median 3.0 mm (n = 262); 24 investigations, 19 flown (`search_investigations`, `flight`); moon-habitat cell
+0 solid tests, nearest BASS 2 SIBAL at 22.7% / 100.8 kPa (`coverage(fuel_phase="solid")`).
+
+The simulator's rules (rows 1, 2, 3, 5, 6, 10, 16, and the sim strings of rows 8, 9, 26 and 32) are the subject of our
+PR #3 (`sim-applicability`). It is still open, and GitHub reports it as conflicting with dev. It was written before
+the lever bands, the console info texts and the smoke-only result, so it does not cover them.
+
+### Status of the original rows
+
+| row | status | current text at 1cdb110 (short quote) | what remains |
+|---|---|---|---|
+| 1 | still open | en:246-250 `sim.game.runaway` unchanged; S:145 `o2 > 30 ? 'runaway'` | Same rule and text. The new lever band repeats it ("fire out of control", S:188). PR #3 removes the rule, not the band. |
+| 2 | still open | en:241-245 `sim.game.outFlow` unchanged; S:146 | The rule still applies to droplets. The new lever band "the flame goes out" (S:189) repeats it. PR #3. |
+| 3 | still open | en:277 "A flame needs oxygen and moving air, so it dies ... when the fans stop." | Unchanged. PR #3 rewrites it. |
+| 4 | fixed | en:77-79 "Less wind always means less fire" ... "Stopping the air did put out small flames in normal air." | Nothing. It now agrees with PSI-99 F9 and Guide p31. Low: de adds an absolute ("ist genau dort", "is exactly where"), see row 19. |
+| 5 | still open | en:184 `say.outside`, en:155, en:167 unchanged; `web/src/data/psi.json` and `lib/data.js` unchanged | The PMMA flow range is still one Saffire-II row ("20 to 20 cm/s"). The new flow band shows it: green only at 20 cm/s. PR #3 changes the wording but leaves `psi.json` to the web team. |
+| 6 | still open | S:111-114 envelope logic unchanged; en:183 "NASA burned this material in air like this" | An unrecorded dimension is still "inside". A new contradiction: for Kapton, Teflon, lampwick, silicone and dibutyl phthalate, Ignite now says "Only smoke ... overheated without burning", while Sparky's line (S:137, `say.inside`) and the panel ("Close to what NASA tested") still say NASA burned it in air like this. PR #3 (verdict `incomplete`). |
+| 7 | partly fixed | en:126 tour "burned or overheated in orbit"; en:536 map "set on fire in space, or tried to"; the map drops SAME-R rows (M:49, M:224); the simulator gives SAME materials smoke only (S:144) | The new console text en:337 `sim.info.controls.body` repeats the old claim, in all three languages: "you only get the ones NASA really burned in orbit". Low: `map.svgLabel` (en:539) says "material NASA burned in space". |
+| 8 | partly fixed | en:134 tour: "In NASA's PSI records every solid with a recorded pressure burned near 1 atm (98 to 103 kPa); Saffire-V later burned cotton and acrylic at about 71 kPa, outside PSI." | The tour is fixed (98.3-102.6 kPa re-verified; the Saffire-V caveat still applies). Still unchanged: en:195 `quip.pLow` "never burned a solid below about 90 kPa", en:196 `quip.pSea` "between 90 and 110 kPa", and en:287 challenge 3 "between 12 and 24 % oxygen and 90 to 110 kPa". PR #3 changes all three. |
+| 9 | partly fixed | en:33 "0 solid materials burned at 30% oxygen or more, in NASA's public experiment archive"; en:522 Scoreboard "in NASA's PSI records"; en:585-589 map "Not in NASA's public records" | Home and Scoreboard are fixed. The map says "NASA's public records", which is wider than what we checked (PSI plus Saffire-V; Saffire-VI not read). Say "NASA's PSI records", as en:522 does. en:220 `mission.moon.say` "NASA never burned a solid in air like this" is unchanged (PR #3). The suggested "closest orbit test we know of is Saffire-V" was not added. |
+| 10 | still open | en:186-188, 233, 238, 313-315 unchanged | No rod, 1 atm or lit-flame scope. The new en:341 `sim.info.burn.body` also leaves the scope out (see new claims). PR #3. |
+| 11 | still open | en:282 "NASA measured the exact oxygen limit for acrylic rods, so in this air the result is not a guess." | Unchanged. PR #3 does not touch challenge 2. |
+| 12 | still open | en:258 `unknownNoRule` "published no rule"; en:315 `simple.noRule` | Unchanged. The new en:341 adds "the only rule NASA published". The Scoreboard still quotes the FLEX LOI (PSI-69 F1), so the app still contradicts itself. PR #3 drops `simple.noRule` but keeps `unknownNoRule`. |
+| 13 | fixed | en:38-39 "2,059 single tests in orbit ... flames, plus smoke and no-ignition tests"; en:106 Sparky "NASA ran 2,059 single tests in orbit"; en:521 Scoreboard; en:548 map "single fire tests (1,950)" | Nothing in the cited strings. 2,059, 109 smoke tests, 62 never lit and 1,950 fire tests are re-verified (the earlier 116 in row 13 was our error, corrected above). Low, not in the original row: the Dashboard tour (en:436, 438) still calls every bar entry "fires NASA lit", including PSI-101's smoke tests. |
+| 14 | fixed | en:520 "NASA investigations: 19 flown in orbit, 5 ground or computer studies"; en:437 "one NASA study, most of them flown in orbit" | Nothing (19 of 24 have `flight = True`). Low: en:62 "The 24 NASA investigations with every test" (5 have no table). |
+| 15 | still open | en:116 `poke` "Raise the oxygen and watch me grow"; en:193 "I'm getting bigger"; `Sparky.jsx`:11-16 unchanged | Unchanged. Not in PR #3. |
+| 16 | still open | en:291-293 challenge 4 unchanged | It still rests on rule 1. PR #3 redesigns it. |
+| 17 | still open (NOT CHECKABLE) | en:225 "NASA recommends 34 % oxygen at 56.5 kPa ... for exploration ships"; en:292 | Unchanged. The same values now also mark the Mars position on the levers. |
+| 18 | partly fixed | en:28 "30% oxygen or more is likely for a Moon base, at lower pressure"; en:459-461 "Moon base, likely"; en:760 glossary "about 70 or less" | Unchanged: en:220 "The plan here is 30 % oxygen at 70.3 kPa" and en:193 "A Moon base would run at 30 % oxygen". |
+| 19 | partly fixed | en:764 glossary "close to 10 cm/s"; en:78 myth "about 10 cm/s" | en:199 `quip.flowBreeze` still says "exactly where solids burn at the lowest oxygen". In de, `home.myths[1].p` adds "genau dort" ("exactly there"); en and es do not. |
+| 20 | partly fixed | en:138 tour and en:764 glossary: "without fans oxygen only seeps in slowly, so many flames weaken or go out" | en:243 `outFlow` "nothing brings me fresh oxygen" is unchanged. The new en:337 `sim.info.controls.body` brings the claim back: fans are "the only thing that brings fresh air to a flame". |
+| 21 | fixed | en:83 "some materials burn at lower oxygen in orbit than when the same samples burn downward on Earth" | Nothing (KM2). |
+| 22 | fixed | en:523 "lowest oxygen where a methanol drop still burned (nitrogen-diluted air)" | Nothing (PSI-69 F1). |
+| 23 | still open | `web/src/data/psi.json` unchanged | FLEX still "tested from 0" kPa. Our tests table minimum is 70.2 kPa. |
+| 24 | fixed | en:604 "In the tests where NASA wrote down how {{name}} ended, how many of every 10 went out on their own?"; M:276-278 at least 30% stated and fewer than half never lit; en:625 caveat | Re-run: SIBAL (5 of 45 stated) and Nomex (never lit) no longer play; PMMA 2 of 72 stated went out unaided (0 of 10). Low: for BASS and BASS-II the endings are our reading of crew notes, yet the text says "NASA wrote down" and "NASA's records". |
+| 25 | fixed | M:37, M:86-90; en:551-555 "Went out on its own" / "Put out on purpose" | 8eec74b is in dev. BASS/BASS-II extinctions count as unaided only with `outcome_action = none` (6 rows). |
+| 26 | still open | en:198 `quip.flow0` unchanged | PR #3 rewrites it. |
+| 27 | fixed | en:586, 589 "Nobody knows yet" removed; "That answer is still missing." | Nothing (scope: see row 9). |
+| 28 | still open | en:197 `quip.pHigh` "More pressure means more oxygen molecules reaching me" | Unchanged. Not in PR #3. |
+| 29 | text removed | en:134 and en:760 no longer give a reason for low pressure | Nothing. en:292 (challenge 4) still gives "to make spacewalks easier" (row 17). |
+| 30 | fixed | en:28 "more oxygen generally makes materials easier to burn" | Nothing in en:28. en:193 `quip.o2High` still says "that makes everything easier to burn". |
+| 31 | fixed | `summaries.json` PSI-25 F12 "In three tests ... which the authors called an excellent result for the ISS"; PSI-117 F8 "In computer models with xenon" | Nothing. es and de say the same. |
+| 32 | still open (NOT CHECKABLE) | en:194 `quip.o2Max` and en:248-249 still cite "Apollo 1, NASA" | PR #3 replaces `o2Max` and removes `runaway`. |
+| 33 | still open | en:215 "This is where NASA lit most of its fires", cite "NASA PSI solid tests (coverage)" | Unchanged. |
+| 34 | fixed | en:772 "about 3 mm wide ... its flame forms a ball around it" | Nothing (median 3.0 mm, n = 262). |
+| 35 | fixed | en:768 "either by itself ... or because the crew cut the air flow or added nitrogen" | Low: 7 BASS-II extinctions came from the crew raising the flow (`flow_raised`), which the text lists as "too much air" under "by itself". |
+| 36 | partly fixed | en:66 lede "a small flame in still air ... a round, mostly blue ball"; en:752 glossary | Unchanged: en:22 `home.title1` "In orbit, fire is a sphere." and en:105 `scene.intro[1]` "I turn into a ball. A blue one." |
+| 37 | still open | en:202 cite "BASS-II, key message 1" | Unchanged (low). |
+| 38 | no fix needed | en:73 unchanged | SUPPORTED (Guide p30). |
+| 39 | no fix needed | en:176 unchanged | SUPPORTED. |
+| 40 | no fix needed | en:548 count note now "single fire tests in orbit ({{n}})", n = 1,950; en:588 nearest Moon test unchanged | SUPPORTED: 2,059 − 109 SAME-R = 1,950; coverage gives BASS 2 SIBAL. |
+
+Count: fixed 12 (4, 13, 14, 21, 22, 24, 25, 27, 30, 31, 34, 35); text removed 1 (29); partly fixed 7 (7, 8, 9, 18,
+19, 20, 36); still open 17 (1, 2, 3, 5, 6, 10, 11, 12, 15, 16, 17, 23, 26, 28, 32, 33, 37); no fix needed 3 (38, 39,
+40); changed but now wrong in a new way 0. Rows 7 and 20 were fixed where the review pointed, but the same claim
+came back in a new text (en:337). Of the 17 still open, PR #3 would close 1, 2, 3, 6, 10, 16, 26 and 32 and part of 5.
+Rows 11, 12 (`unknownNoRule`), 15, 17, 23, 28, 33 and 37 are not in any change we know of.
+
+Against the teammates' statement: rows 4, 13, 21, 24 and 30 are fixed as claimed. Rows 7, 9, 18 and 36 are fixed on
+Home and the map but not in the simulator strings listed above. The Scoreboard, glossary, Dashboard tour and the two
+findings (rows 14, 22, 31, 34, 35, 29) are fixed. The glossary fixed rows 19 and 20 only in the glossary. Sparky's
+intro and tour are fixed (2,059, PSI scope for pressure, "burned or overheated", fans).
+
+### New claims since 34d41b3
+
+| id | where | claim | verdict | evidence | severity |
+|---|---|---|---|---|---|
+| N1 | en:337 `sim.info.controls.body` | "you only get the ones NASA really burned in orbit" | WRONG | Same as row 7: SAME overheated its materials "without burning" (PSI-102 digest one-line). The app's own tour (en:126) and smoke-only result (en:263) say so. | medium |
+| N2 | en:337 `sim.info.controls.body` | Fan air "in space is the only thing that brings fresh air to a flame" | SUPPORTED ONLY IN A NARROWER SCOPE | Same as row 20: diffusion alone kept the Mir candle and flame balls burning (Guide p30), and BRE flames too (PSI-20 F1). The app's tour and glossary now say this correctly. | medium |
+| N3 | en:341 `sim.info.burn.body` | "the only rule NASA published to know whether a flame stays alive ... For the others there is no published rule"; the rule "compares your oxygen with the minimum that flame needs at the wind you chose" | WRONG for droplets; the scope is missing (simulator rule text: PR #3 scope, but PR #3 predates this text) | Row 12 (PSI-69 F1: LOI 0.12 methanol, 0.15 heptane, quoted by the app's own Scoreboard); row 10 (Eq. 6.1: lit rods, about 1 atm). | medium |
+| N4 | en:345 `sim.info.tested.body` | The panel shows "whether your air falls inside what NASA tested, looking at oxygen, pressure and wind one by one" | covered by PR #3 (rows 5, 6) | An unrecorded dimension is skipped, and "what NASA tested" is the 5 investigations in `psi.json`. | (PR #3) |
+| N5 | S:179-202, en:348-352 `sim.zones` lever bands and legend | "fire out of control" above 30% O2; "the flame goes out" with fans off below 26.5% or under the PMMA limit; "NASA tested it" / "never tested" | covered by PR #3 (rows 1, 2, 5), but PR #3 predates the bands | The bands use the rules PR #3 removes. They are also drawn for smoke-only materials: Kapton above 30% shows "fire out of control" although its Ignite result is "Only smoke". "Never tested" means outside `psi.json`, not outside NASA's tests. | (PR #3); the bands need the same change when PR #3 is rebased |
+| N6 | S:18-21, 205-213 mission marks on the levers | Moon at 30% / 70.3 kPa, Mars at 34% / 56.5 kPa | as rows 18 and 17 | The challenge text says "30% or greater" at "10.2 psi or less". The Mars figure is NOT CHECKABLE (row 17). | low |
+| N7 | en:261-265 `sim.game.smokeOnly`; S:144; `PixelScene.jsx` `MATERIAL_SHAPE` | "In NASA's SAME experiment this material was overheated without burning, to measure its smoke and design better smoke detectors" (Teflon, Kapton, silicone, lampwick, dibutyl phthalate) | SUPPORTED; silicone narrower | PSI-102 digest: "Teflon, Kapton, silicone rubber, cellulose lamp wick and a reference liquid (dibutyl phthalate on a wick) were heated below ignition"; purpose: smoke detectors. 4 of the 5 bundled silicone rows are Saffire-II, which lit silicone sheets that did not spread a flame (PSI-99 one-line). Our tests table holds SAME's 8 rows as `planned`. | low |
+| N8 | Sparky line S:137 with a SAME material | "NASA burned this material in air like this" | WRONG (row 6 logic, new contradiction) | It contradicts N7 on the same screen. PR #3's `incomplete` verdict would replace it. | medium (PR #3) |
+| N9 | en:625 `map.game.caveat` | "NASA chose these tests close to the limit on purpose, so this is not the chance that the material goes out in a real spacecraft" | SUPPORTED | PSI-26 F5, F6: the crew stepped the flow down toward quenching; FLEX measured the LOI (PSI-69 F1), so its tests reached the limit. It narrows the claim instead of stretching it. | low |
+| N10 | en:551-555, M:37 | "Went out on its own" / "Put out on purpose"; the game answers "k of every 10 went out on their own" | SUPPORTED | Re-run with the map's rules (SAME-R rows dropped, 1,950 rows): PMMA 0, propane 8, methanol 8, butane 6, ethane 6, heptane 5, Japan wax 0, paraffin 5 of 10. CFI-G `flow_terminated` (time-outs and burner temperature cut-offs, `docs/methods.md`) counts as stopped. Low: BASS endings are crew-note readings (row 24). | low |
+| N11 | en:548 `map.countNote` | "Counts single fire tests in orbit (1,950)" | SUPPORTED | 2,059 − 109 SAME-R. All 2,059 have `gravity = micro`. | - |
+| N12 | en:536 `map.lead` | "Each ball is something NASA set on fire in space, or tried to" | SUPPORTED | Nomex and Ultem never lit, and silicone did not spread (PSI-99), so "tried to" fits. | - |
+| N13 | en:585-589, 613 | "Not in NASA's public records"; "NASA's public experiment archive has no solid material burned in the air planned for a Moon base" | SUPPORTED ONLY IN A NARROWER SCOPE | True for PSI (coverage: 0) and for Saffire-V (26% O2). "Public records" also covers Saffire-VI, which we have not read. | medium |
+| N14 | en:66 lede | "NASA burned thousands of fires in orbit" | SUPPORTED ONLY IN A NARROWER SCOPE | 1,950 fire tests, 62 of them never lit. "Nearly two thousand" is accurate. The wording predates 34d41b3, but the sentence was rewritten. | low |
+| N15 | en:525-531 `exp.err` stamps (Dashboard) | "NASA data errors ... fixed values keep the original next to them, doubts are left as NASA wrote them" | SUPPORTED | `discrepancies()`: `values_changed` carry `table_value` and `value_now`; doubts count `raw_data_conflicts` with action `flag` or `note`. The counts are live and will change as our patches change. | - |
+| N16 | en:522 Scoreboard `moon` | "solids burned at Moon-base oxygen (30 % or more) in NASA's PSI records" | SUPPORTED | The value is the moon-habitat cell count (0). That cell is narrower than "30% or more", but no PSI solid exceeds 22.7%, so the 0 holds either way. | - |
+| N17 | `PixelScene.jsx` `MATERIAL_SHAPE` (drawing) | PMMA is drawn as a rod | as row 10 | Most of the app's PMMA group are films. It is a drawing, not a claim in words. | low |
+
+Not re-reviewed: the assistant chat; `PixelScene.jsx` code comments; `sim.ui` labels, `map.view` and `map.intro`
+(UI words, no claims).
