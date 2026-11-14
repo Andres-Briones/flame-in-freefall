@@ -68,6 +68,38 @@ refuses if another process holds that port, and waits for `/api/health`. `./run.
 It uses host networking (`demo/compose.host.yml`): ports published through Docker were refused from outside on
 the production server while direct listeners passed. `FIF_NETWORK=bridge ./run.sh` uses published ports instead.
 
+### Automatic deploy from GitHub
+
+`.github/workflows/deploy.yml` deploys every push to `main`. The server never contacts GitHub: the job pushes
+the commit into the server's checkout over SSH, then runs `./run.sh start` there. It also has a "Run workflow"
+button (Actions tab), and it is skipped while the `DEPLOY_HOST` variable is unset. A dedicated key is locked to
+`deploy/ssh-hook.sh`, which allows only that push and that start. Anyone who can merge to `main` still runs code
+on the server, through `run.sh` and the Docker build.
+
+One-time setup, on your own machine (needs `ssh` and a logged-in `gh`):
+
+```
+ssh-keygen -t ed25519 -N '' -C fif-deploy -f fif-deploy
+gh secret set DEPLOY_KEY -R Andres-Briones/flame-in-freefall < fif-deploy
+ssh-keyscan -p <port> <host> | gh secret set DEPLOY_KNOWN_HOSTS -R Andres-Briones/flame-in-freefall
+```
+
+The repo variables `DEPLOY_HOST`, `DEPLOY_PORT` and `DEPLOY_USER` name the server (`gh variable list`).
+
+On the server (the checkout `./run.sh` runs from; set `FIF_REPO` in the hook's environment if it lives elsewhere
+than `~/projects/flame-in-freefall`):
+
+```
+mkdir -p ~/bin && cp deploy/ssh-hook.sh ~/bin/fif-deploy-hook && chmod 755 ~/bin/fif-deploy-hook
+git config receive.denyCurrentBranch updateInstead
+echo "command=\"$HOME/bin/fif-deploy-hook\",restrict $(cat fif-deploy.pub)" >> ~/.ssh/authorized_keys
+```
+
+Copy `fif-deploy.pub` to the server first, then delete both key files from your machine. The hook lives outside
+the repo so a push cannot change it. Settings such as `FIF_DOMAIN` go in `~/.config/fif-deploy.env`
+(`KEY=value` lines), since a forced command gets no login environment. The push fails, visibly in the Actions
+run, if the server's checkout has uncommitted changes or commits that are not on GitHub.
+
 | Env | Default | |
 |---|---|---|
 | `HOST`, `PORT` | `0.0.0.0`, `8000` | (the `uvicorn demo.server:app` CLI takes `--host`/`--port` instead) |
