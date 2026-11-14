@@ -115,3 +115,59 @@ def test_board_over_mcp_and_in_the_guide(client):
 def test_every_board_example_of_the_guide_runs(client):
     for name in ("board_post", "board_reply", "board_read"):
         assert client.post(f"/api/call/{name}", json=server.BOARD_EXAMPLES[name]).status_code == 200
+
+
+def test_a_thread_can_be_claimed_and_stays_among_the_open_ones(client):
+    call(client, "board_post", author="Marta", author_kind="human", kind="bug", title="broken link", body="x")
+    claimed = call(client, "board_reply", thread=1, author="Claude (Andres)", status="claimed")["thread"]
+    assert claimed["status"] == "claimed" and claimed["claimed_by"] == "Claude (Andres)"
+    assert claimed["messages"][-1]["body"] == "Working on it."
+    assert call(client, "board_read")["threads"][0]["claimed_by"] == "Claude (Andres)"
+    assert len(call(client, "board_read", status="claimed")["threads"]) == 1
+    done = call(client, "board_reply", thread=1, author="Claude (Andres)", body="Fixed.", status="done")["thread"]
+    assert done["status"] == "done" and "claimed_by" not in done
+    assert call(client, "board_read")["threads"] == []
+
+
+def test_a_board_made_before_the_claimed_status_still_opens(client):
+    import sqlite3
+    board.DB_PATH.parent.mkdir(parents=True)
+    with sqlite3.connect(board.DB_PATH) as conn:
+        conn.executescript(board.SCHEMA)
+        conn.execute("INSERT INTO threads (kind, title, status, author, author_kind, to_name, created, updated) "
+                     "VALUES ('info', 'old', 'open', 'A', 'ai', 'everyone', '2026-11-14T10:00:00Z', '2026-11-14T10:00:00Z')")
+        conn.execute("INSERT INTO messages (thread_id, author, author_kind, body, created) "
+                     "VALUES (1, 'A', 'ai', 'b', '2026-11-14T10:00:00Z')")
+    assert call(client, "board_reply", thread=1, author="B", status="claimed")["thread"]["claimed_by"] == "B"
+
+
+def test_read_after_a_message_gives_only_what_is_newer(client):
+    call(client, "board_post", author="A", title="one", body="first")
+    seen = call(client, "board_read")["last_message"]
+    assert call(client, "board_read", after_message=seen)["threads"] == []
+    call(client, "board_reply", thread=1, author="B", body="second")
+    call(client, "board_post", author="B", title="two", body="third")
+    newer = call(client, "board_read", after_message=seen)
+    assert newer["last_message"] == seen + 2
+    assert {t["title"]: [m["body"] for m in t["new_messages"]] for t in newer["threads"]} == {"one": ["second"], "two": ["third"]}
+    assert client.post("/api/call/board_read", json={"after_message": -1}).status_code == 400
+    assert client.get("/api/call/board_read", params={"after_message": str(seen)}).json()["data"]["matching"] == 2
+
+
+def test_the_watcher_reports_each_message_of_others_once(client, tmp_path):
+    from demo import board_watch
+
+    def read(**args):
+        return call(client, "board_read", **args)
+
+    state = tmp_path / "state" / "watch.json"
+    call(client, "board_post", author="Marta", title="old news", body="before the watch started")
+    assert board_watch.check(read, state, "Claude (Andres)") == []
+    call(client, "board_post", author="Claude (Sebastián)", kind="bug", to="Claude (Andres)", title="bad cell", body="line 1\nline 2")
+    call(client, "board_reply", thread=2, author="claude (andres)", status="claimed")
+    call(client, "board_reply", thread=1, author="Marta", body="more", status="done")
+    lines = board_watch.check(read, state, "Claude (Andres)")
+    assert len(lines) == 2 and "from Marta: more" in lines[0] and "done" in lines[0]
+    assert lines[1].startswith('thread 2 [bug, claimed, for Claude (Andres)] "bad cell" message 2 from Claude (Sebastián): line 1 line 2')
+    assert board_watch.check(read, state, "Claude (Andres)") == []
+    assert len(board_watch.check(read, tmp_path / "other.json", "Leo", from_start=True)) == 4

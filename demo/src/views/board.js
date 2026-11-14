@@ -51,7 +51,7 @@ App.view({
           if (await send('board_reply', { thread: t.thread, ...(body ? { body } : {}), ...(status ? { status } : {}) })) update({ reply: '' });
         };
         box.replaceChildren(App.panel(t.title,
-          h('div', { class: 'chips' }, kindChip(t.kind), App.chip(t.status, t.status === 'done' ? 'good' : ''), App.chip('for ' + t.to), App.chip('thread ' + t.thread)),
+          h('div', { class: 'chips' }, kindChip(t.kind), App.chip(t.status === 'claimed' ? 'claimed by ' + t.claimed_by : t.status, t.status === 'done' ? 'good' : ''), App.chip('for ' + t.to), App.chip('thread ' + t.thread)),
           t.messages.map(m => h('div', { class: 'board-msg' + (m.author_kind === 'ai' ? ' ai' : '') },
             h('span', { class: 'muted small', text: `${who(m)} · ${ago(m.created)}`, title: m.created }),
             h('p', { text: m.body }))),
@@ -60,7 +60,7 @@ App.view({
           error,
           h('div', { class: 'row' },
             h('button', { class: 'btn primary', type: 'button', onclick: () => reply() }, 'Reply'),
-            t.status === 'open'
+            t.status !== 'done'
               ? h('button', { class: 'btn', type: 'button', onclick: () => reply('done') }, 'Mark done')
               : h('button', { class: 'btn', type: 'button', onclick: () => reply('open') }, 'Reopen'))));
       }).catch(e => { if (box.isConnected) box.replaceChildren(h('div', { class: 'notes' }, h('p', { text: e.message }))); });
@@ -77,7 +77,7 @@ App.view({
         if (!list.isConnected) return;
         const rows = r.data.threads;
         list.replaceChildren(...(rows.length ? rows.map(t => h('button', { class: 'board-row' + (t.status === 'done' ? ' done' : ''), type: 'button', onclick: () => update({ thread: t.thread }) },
-          h('div', { class: 'chips' }, kindChip(t.kind), t.status === 'done' && App.chip('done', 'good'), h('b', { text: t.title })),
+          h('div', { class: 'chips' }, kindChip(t.kind), t.status === 'done' && App.chip('done', 'good'), t.status === 'claimed' && App.chip('claimed by ' + t.claimed_by), h('b', { text: t.title })),
           h('span', { class: 'muted small', text: `${who(t)} → ${t.to} · ${t.replies} ${t.replies === 1 ? 'reply' : 'replies'} · ${ago(t.updated)}` + (t.last_reply ? ` · last: ${who(t.last_reply)}` : '') }),
           h('span', { class: 'small', style: 'color:var(--fg-2);overflow-wrap:anywhere', text: t.body.length > 220 ? t.body.slice(0, 220) + '…' : t.body })))
           : [h('p', { class: 'muted', text: state.status === 'open' ? 'No open threads. Post the first one, or ask your assistant to.' : 'Nothing here.' })]));
@@ -112,7 +112,7 @@ App.view({
 
     root.append(list);
 
-    const prompt = `Use the team board of ${base}: read ${base}/llms.txt (section "Team board"), or the tools board_read, board_post and board_reply if this server is connected through MCP. Sign as "<your name> (${state.name.trim() || '<my name>'})", for example "Claude (${state.name.trim() || 'Marta'})". At the start of a session read the open threads addressed to you or to everyone and tell me what concerns us. When you find a bug or have a recommendation for a teammate, post it there; reply and mark the thread done when something is settled.`;
+    const prompt = `Use the team board of ${base}: read ${base}/llms.txt (section "Team board"), or the tools board_read, board_post and board_reply if this server is connected through MCP. Sign as "<your name> (${state.name.trim() || '<my name>'})", for example "Claude (${state.name.trim() || 'Marta'})". At the start of a session read the open threads addressed to you or to everyone and tell me what concerns us. When you find a bug or have a recommendation for a teammate, post it there; when you start working on a thread, reply with status claimed so nobody else does the same work; reply and mark the thread done when something is settled.`;
     const copy = h('button', { class: 'btn', type: 'button', onclick: () => {
       const done = () => { copy.textContent = 'Copied'; setTimeout(() => { copy.textContent = 'Copy'; }, 1500); };
       if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(prompt).then(done, () => {});

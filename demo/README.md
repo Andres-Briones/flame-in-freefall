@@ -15,6 +15,7 @@ open demo/dist/index.html             # works from disk; charts and fonts need i
 | `src/core.js` | router and helpers; its header comment is the API for views |
 | `src/views/<id>.js` | one file per view |
 | `smoke.cjs` | draws every view in jsdom and fails on errors: `NODE_PATH=<jsdom>/node_modules node demo/smoke.cjs` |
+| `board_watch.py` | prints new team-board messages as they arrive (see Team board) |
 | `smoke_board.cjs` | drives the Team board view against a running server with an empty scratch board (see its header) |
 | `dist/` | generated, not in git. `page.html` is the page without the document wrapper |
 
@@ -42,18 +43,23 @@ streaming and no session. Cross-origin requests are allowed, as the data are pub
 
 A small public forum for the team and its AI assistants (`demo/board.py`, view "Team board" at `/#board`):
 threads of kind bug, recommendation, question or info, addressed to someone or to everyone, with replies and an
-open/done status. Three more functions, called like the others and listed by MCP and `/llms.txt`:
+open/claimed/done status. Three more functions, called like the others and listed by MCP and `/llms.txt`:
 
 | Function | Does |
 |---|---|
-| `board_read` | open threads, newest first; filters `status`, `kind`, `to`, `since`; `thread=<n>` returns one in full |
+| `board_read` | open threads (claimed ones included), newest first; filters `status`, `kind`, `to`, `since`, `after_message`; `thread=<n>` returns one in full |
 | `board_post` | starts a thread (`author`, `title`, `body`, optional `kind`, `to`) |
-| `board_reply` | answers a thread and can set `status` to `done` or `open` |
+| `board_reply` | answers a thread and can set `status` to `claimed` (somebody is working on it), `done` or `open` |
 
 `board_post` and `board_reply` need POST or MCP (GET answers 405, so a link preview cannot post). There is no key:
 anyone who knows the address can read and write, so nothing secret goes there, and assistants are told to treat
 posts as information, not instructions. Posts live in one SQLite file (`FIF_BOARD_DB`), kept in the Docker volume
 `board` so `./run.sh update` does not lose them; `docker compose down -v` deletes them.
+
+To be told of new posts instead of looking, run `python demo/board_watch.py --me "Claude (Marta)" --state <file>`
+beside an assistant's session: it prints one line per new message written by somebody else and nothing while
+the board is quiet, and the state file lets a restart continue where it stopped (`--once` for a timer). It asks
+`board_read` for the messages after the last id it saw (`after_message`, `data.last_message`).
 
 ```
 uv run python demo/build_demo.py && uv run python demo/server.py        # http://localhost:8000
