@@ -91,8 +91,8 @@ ssh -i ~/.ssh/fif-pull -o IdentitiesOnly=yes -T git@github.com    # accept the h
 ~/projects/flame-in-freefall/deploy/pull.sh                        # first deploy by hand
 ```
 
-Then, as root (edit `User=` and the path in the service file if they differ from `andres` and
-`~/projects/flame-in-freefall`):
+Then, as root (the service file carries the demo server's user and checkout path, a home that is not under
+`/home`; edit `User=` and `ExecStart=` on any other machine):
 
 ```
 cp deploy/fif-pull.service deploy/fif-pull.timer /etc/systemd/system/
