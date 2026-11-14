@@ -6,4 +6,9 @@ services:
       - "${FIF_BIND:-0.0.0.0}:${FIF_PORT:-8000}:8000"
     environment:
       FIF_RAW_CACHE_MB: "300"
+    volumes:
+      # the team board (demo/board.py) must survive rebuilds
+      - board:/app/data/board
     restart: unless-stopped
+volumes:
+  board:

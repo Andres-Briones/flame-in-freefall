@@ -69,6 +69,14 @@ button, select, input { font: inherit; color: inherit }
 
 .ctl { display: flex; flex-direction: column; gap: 3px; font-size: 12px; color: var(--fg-2); min-width: 0 }
 .ctl select, .ctl input[type="text"], .ctl input[type="search"], .ctl input[type="number"] { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; color: var(--fg); max-width: 100%; min-height: 32px }
+.ctl textarea { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; color: var(--fg); width: 100%; min-height: 96px; font: inherit; resize: vertical }
+.board-row { display: flex; flex-direction: column; gap: 4px; width: 100%; text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; cursor: pointer; color: var(--fg); min-width: 0 }
+.board-row:hover { border-color: var(--accent) }
+.board-row.done { opacity: .65 }
+.board-row b { font-weight: 600; overflow-wrap: anywhere }
+.board-msg { border-left: 3px solid var(--line); padding: 2px 0 2px 10px; display: flex; flex-direction: column; gap: 2px; min-width: 0 }
+.board-msg.ai { border-left-color: var(--accent) }
+.board-msg p { white-space: pre-wrap; overflow-wrap: anywhere }
 .ctl input[type="range"] { accent-color: var(--accent); width: 100% }
 .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--surface) }
 .seg button { border: 0; background: transparent; padding: 6px 10px; cursor: pointer; color: var(--fg-2); min-height: 32px; border-right: 1px solid var(--line-soft) }

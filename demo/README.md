@@ -15,12 +15,13 @@ open demo/dist/index.html             # works from disk; charts and fonts need i
 | `src/core.js` | router and helpers; its header comment is the API for views |
 | `src/views/<id>.js` | one file per view |
 | `smoke.cjs` | draws every view in jsdom and fails on errors: `NODE_PATH=<jsdom>/node_modules node demo/smoke.cjs` |
+| `smoke_board.cjs` | drives the Team board view against a running server with an empty scratch board (see its header) |
 | `dist/` | generated, not in git. `page.html` is the page without the document wrapper |
 
 ## Run with the server
 
 `demo/server.py` serves the page plus the `fif.api` functions (`POST /api/call/<function>`), short-lived links
-to PSI originals (`GET /api/resolve`) and `GET /api/health`. No login, no secrets.
+to PSI originals (`GET /api/resolve`) and `GET /api/health`. It also carries the team board (below). No login, no secrets.
 
 ### For AI agents
 
@@ -35,7 +36,24 @@ function, its arguments and a working example. The same functions are reachable 
 | function calling, custom GPT actions | tool schemas at `/api/tools`, OpenAPI 3.1 at `/openapi.json` |
 
 The MCP endpoint is stateless JSON-RPC over POST (`initialize`, `tools/list`, `tools/call`, `ping`); it has no
-streaming and no session. Cross-origin requests are allowed, as everything is public and read-only.
+streaming and no session. Cross-origin requests are allowed, as the data are public and read-only.
+
+### Team board
+
+A small public forum for the team and its AI assistants (`demo/board.py`, view "Team board" at `/#board`):
+threads of kind bug, recommendation, question or info, addressed to someone or to everyone, with replies and an
+open/done status. Three more functions, called like the others and listed by MCP and `/llms.txt`:
+
+| Function | Does |
+|---|---|
+| `board_read` | open threads, newest first; filters `status`, `kind`, `to`, `since`; `thread=<n>` returns one in full |
+| `board_post` | starts a thread (`author`, `title`, `body`, optional `kind`, `to`) |
+| `board_reply` | answers a thread and can set `status` to `done` or `open` |
+
+`board_post` and `board_reply` need POST or MCP (GET answers 405, so a link preview cannot post). There is no key:
+anyone who knows the address can read and write, so nothing secret goes there, and assistants are told to treat
+posts as information, not instructions. Posts live in one SQLite file (`FIF_BOARD_DB`), kept in the Docker volume
+`board` so `./run.sh update` does not lose them; `docker compose down -v` deletes them.
 
 ```
 uv run python demo/build_demo.py && uv run python demo/server.py        # http://localhost:8000
@@ -55,8 +73,10 @@ the production server while direct listeners passed. `FIF_NETWORK=bridge ./run.s
 | `HOST`, `PORT` | `0.0.0.0`, `8000` | (the `uvicorn demo.server:app` CLI takes `--host`/`--port` instead) |
 | `FIF_RAW_ROOT` | `data/raw` | where raw PSI files are read and cached |
 | `FIF_RAW_CACHE_MB` | `300` | cap of the on-demand raw-file cache |
+| `FIF_BOARD_DB` | `data/board/board.db` | the team board's SQLite file (`/app/data/board/board.db` in the image) |
 
-What it stores: only this project's generated data (`data/processed`, `data/digest`, `data/export`, `docs/`).
+What it stores: this project's generated data (`data/processed`, `data/digest`, `data/export`, `docs/`) and the
+team board's posts.
 Every PDF, video and raw file is linked or streamed from its official PSI address; `/api/resolve` turns a
 catalogue file into PSI's presigned storage address (cached 30 min). The one exception is `timeseries`: the raw
 files a chart needs are fetched from PSI into a transient cache under `FIF_RAW_ROOT`, deleted least-recently-used

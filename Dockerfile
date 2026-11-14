@@ -19,9 +19,9 @@ COPY data/export/ data/export/
 RUN python demo/build_demo.py
 
 RUN useradd --system --uid 10001 --home-dir /app app \
-    && mkdir -p /app/data/raw && chown app /app/data/raw
+    && mkdir -p /app/data/raw /app/data/board && chown app /app/data/raw /app/data/board
 USER app
 
-ENV HOST=0.0.0.0 PORT=8000 FIF_RAW_ROOT=/app/data/raw FIF_RAW_CACHE_MB=300
+ENV HOST=0.0.0.0 PORT=8000 FIF_RAW_ROOT=/app/data/raw FIF_RAW_CACHE_MB=300 FIF_BOARD_DB=/app/data/board/board.db
 EXPOSE 8000
 CMD ["python", "demo/server.py"]

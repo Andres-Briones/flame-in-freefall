@@ -1,5 +1,6 @@
 # Reproducible via scripts/fetch_psi.py and scripts/fetch_psi_files.py
 data/raw/
+data/board/
 __pycache__/
 .env
 node_modules/

@@ -156,7 +156,7 @@ def test_mcp_lists_and_calls_tools(client):
     init = rpc("initialize", {"protocolVersion": "2025-03-26", "capabilities": {}, "clientInfo": {"name": "t", "version": "0"}})
     assert init["result"]["protocolVersion"] == "2025-03-26" and "tools" in init["result"]["capabilities"]
     assert client.post("/mcp", json={"jsonrpc": "2.0", "method": "notifications/initialized"}).status_code == 202
-    assert {t["name"] for t in rpc("tools/list")["result"]["tools"]} == set(server.api.FUNCTIONS)
+    assert {t["name"] for t in rpc("tools/list")["result"]["tools"]} == set(server.ALL_FUNCTIONS)
     ok = rpc("tools/call", {"name": "coverage", "arguments": {}})["result"]
     assert not ok.get("isError") and set(json.loads(ok["content"][0]["text"])) >= {"data", "sources", "notes"}
     bad = rpc("tools/call", {"name": "filter_tests", "arguments": {"limit": -1}})["result"]

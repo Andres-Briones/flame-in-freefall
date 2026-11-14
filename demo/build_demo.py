@@ -16,7 +16,7 @@ SRC = DEMO / "src"
 DIST = DEMO / "dist"
 
 VIEW_ORDER = ["overview", "scenario", "coverage", "tests", "investigation", "files", "insights", "quality", "models",
-              "traces", "search", "ask", "ai", "pipeline", "brief"]
+              "traces", "search", "ask", "ai", "board", "pipeline", "brief"]
 BASE = ["investigations", "synthesis", "coverage", "questions", "discrepancies"]
 LAZY = ["relevance", "tests", "records", "models", "tsfeatures", "tsexamples", "files"]
 

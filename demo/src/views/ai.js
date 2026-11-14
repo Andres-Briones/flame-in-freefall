@@ -45,7 +45,7 @@ App.view({
     const list = h('div', { class: 'stack' }, h('p', { class: 'muted', text: App.backend ? 'Loading the functions…' : 'The list of functions loads from the server.' }));
     root.append(App.panel('What the assistant can ask', list,
       App.notes(['Every answer has four parts: data, chart, sources, notes. Ask the assistant to cite the sources and keep the notes: they carry the doubts about the NASA data.',
-        'Read-only and public: nothing can be changed through these addresses.'])));
+        'Public, and the data are read-only: the only thing an assistant can write is a post on the Team board (see that view).'])));
     if (App.backend) {
       fetch(base + '/api/tools').then(r => r.json()).then(d => {
         if (!list.isConnected) return;

@@ -7,8 +7,10 @@ It stores nothing from NASA except this project's own generated data (data/proce
 PSI originals are linked or streamed from PSI's storage; the only exception is the transient raw-file cache that
 `timeseries` needs (see RawCache).
 
+It also keeps the team board (demo/board.py), the only thing that can be written through this server.
+
 Env: HOST (0.0.0.0), PORT (8000), FIF_RAW_CACHE_MB (300), FIF_RAW_ROOT (where raw files are read and cached;
-default data/raw).
+default data/raw), FIF_BOARD_DB (the board's SQLite file; default data/board/board.db).
 """
 import csv
 import json
@@ -34,6 +36,7 @@ from fastapi.middleware.gzip import GZipMiddleware  # noqa: E402
 from fastapi.responses import JSONResponse, PlainTextResponse, Response  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
 
+from demo import board  # noqa: E402
 from fif import api, psi  # noqa: E402
 from fif.tools import TOOLS  # noqa: E402
 
@@ -305,6 +308,8 @@ def _withhold_not_inline(result):
 
 
 def call_function(name, kwargs):
+    if name in board.FUNCTIONS:
+        return json.dumps(board.FUNCTIONS[name](**kwargs), ensure_ascii=False)
     fn = api.FUNCTIONS[name]
     for arg, cap in ARG_CAPS.get(name, {}).items():
         if arg in kwargs:
@@ -323,7 +328,8 @@ def call_function(name, kwargs):
 
 app = FastAPI(title="Flame in Freefall demo", docs_url=None, redoc_url=None, openapi_url=None)
 app.add_middleware(GZipMiddleware, minimum_size=1000)
-# The data are public and read-only, and AI tools running in a browser call from other origins.
+# The data are public and read-only, the team board is public by choice (decision 014), and AI tools running in a
+# browser call from other origins.
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["GET", "POST"], allow_headers=["*"])
 
 
@@ -358,10 +364,13 @@ def resolve(accession: str, file: str):
         raise HTTPException(502, str(e))
 
 
+ALL_FUNCTIONS = (*api.FUNCTIONS, *board.FUNCTIONS)
+
+
 async def run_function(function, kwargs):
     """Call one fif.api function; failures become HTTP errors whose detail says what to change."""
-    if function not in api.FUNCTIONS:
-        raise HTTPException(404, f"Unknown function {function!r}; available: {', '.join(api.FUNCTIONS)}")
+    if function not in ALL_FUNCTIONS:
+        raise HTTPException(404, f"Unknown function {function!r}; available: {', '.join(ALL_FUNCTIONS)}")
     if not isinstance(kwargs, dict):
         raise HTTPException(400, "The arguments must be a JSON object of keyword arguments")
     try:
@@ -387,7 +396,10 @@ async def call(function: str, request: Request):
 
 # --- for AI agents: GET calls, a plain-text guide, tool specs, OpenAPI, MCP -------------------------------------
 
-TOOL_BY_NAME = {t["name"]: t for t in TOOLS}
+TOOL_BY_NAME = {t["name"]: t for t in (*TOOLS, *board.TOOLS)}
+BOARD_SUMMARY = ("Team board: the same server carries a small public forum where teammates and their AI assistants "
+                 "leave bugs, recommendations, questions and news (board_read, board_post, board_reply). Read the open "
+                 "threads when you start; post what another teammate should know.")
 MCP_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
 SUMMARY = ("Flame in Freefall: the 24 NASA PSI microgravity combustion investigations (2,177 tests, sensor traces, "
            "document evidence, reviewed findings, fire-safety relevance, data-quality patches) as 11 read-only "
@@ -423,8 +435,10 @@ def query_arguments(function, params):
 @app.get("/api/call/{function}")
 async def call_get(function: str, request: Request):
     """The same call for clients that can only fetch a URL."""
-    if function not in api.FUNCTIONS:
-        raise HTTPException(404, f"Unknown function {function!r}; available: {', '.join(api.FUNCTIONS)}")
+    if function in board.WRITES:
+        raise HTTPException(405, f"{function} changes the board: send it as POST with a JSON object of arguments")
+    if function not in ALL_FUNCTIONS:
+        raise HTTPException(404, f"Unknown function {function!r}; available: {', '.join(ALL_FUNCTIONS)}")
     return Response(await run_function(function, query_arguments(function, dict(request.query_params))),
                     media_type="application/json")
 
@@ -440,7 +454,7 @@ def tools(request: Request):
     base = _base(request)
     return {"about": SUMMARY, "guide": f"{base}/llms.txt", "openapi": f"{base}/openapi.json", "mcp": f"{base}/mcp",
             "call": f"POST {base}/api/call/<name> with a JSON object of arguments, or GET with query parameters",
-            "tools": TOOLS}
+            "tools": TOOLS, "board": BOARD_SUMMARY, "board_tools": board.TOOLS}
 
 
 def _example(tool):
@@ -479,7 +493,7 @@ def guide(request: Request):
            "  args=<URL-encoded JSON object>.",
            f"- MCP (streamable HTTP, no login): {base}/mcp, for example `claude mcp add --transport http fif {base}/mcp`.",
            f"- Tool definitions as JSON Schema: {base}/api/tools. OpenAPI 3.1: {base}/openapi.json.",
-           "- No key is needed. Everything is read-only. Errors are JSON {\"detail\": \"...\"} with status 400 (bad",
+           "- No key is needed. The data functions are read-only; only the team board (below) can be written. Errors are JSON {\"detail\": \"...\"} with status 400 (bad",
            "  argument, the detail says which), 404 (unknown function or file) or 502 (NASA storage did not answer).",
            "", "## Good habits", "",
            "- Start with search_investigations or relevance, then narrow with get_investigation, filter_tests,",
@@ -507,7 +521,25 @@ def guide(request: Request):
                                         for k, v in args.items()})
         out += ["", f"    curl -X POST {base}/api/call/{tool['name']} -d '{body}'",
                 f"    GET {base}/api/call/{tool['name']}" + (f"?{query}" if query else ""), ""]
+    out += ["## Team board", "", BOARD_SUMMARY, "",
+            f"People read and write it at {base}/#board. The functions are called like the ones above; board_post and",
+            "board_reply need POST (or MCP), board_read also answers GET. " + board.CAUTION, ""]
+    for tool in board.TOOLS:
+        schema = tool["input_schema"]
+        out += [f"### {tool['name']}", "", tool["description"], "",
+                "Arguments" + (f" (required: {', '.join(schema['required'])})" if schema["required"] else " (all optional)") + ":"]
+        out += [_describe(k, v) for k, v in schema["properties"].items()]
+        body = json.dumps(BOARD_EXAMPLES[tool["name"]], ensure_ascii=False)
+        out += ["", f"    curl -X POST {base}/api/call/{tool['name']} -d '{body}'", ""]
     return "\n".join(out)
+
+
+BOARD_EXAMPLES = {
+    "board_read": {"to": "Claude (Marta)"},
+    "board_post": {"author": "Claude (Marta)", "kind": "bug", "to": "Claude (Andres)", "title": "predict refuses 21% O2 for FLEX",
+                   "body": "POST /api/call/predict with model flex_k and x_o2 0.21 answers 400. Expected a value."},
+    "board_reply": {"thread": 1, "author": "Claude (Andres)", "body": "Fixed in the next deploy.", "status": "done"},
+}
 
 
 @app.get("/openapi.json")
@@ -534,12 +566,13 @@ async def _mcp_result(method, params):
         asked = params.get("protocolVersion")
         return {"protocolVersion": asked if asked in MCP_VERSIONS else MCP_VERSIONS[0],
                 "capabilities": {"tools": {}}, "serverInfo": {"name": "flame-in-freefall", "version": "1"},
-                "instructions": SUMMARY}
+                "instructions": f"{SUMMARY}\n\n{BOARD_SUMMARY} {board.CAUTION}"}
     if method == "ping":
         return {}
     if method == "tools/list":
         return {"tools": [{"name": t["name"], "description": t["description"], "inputSchema": t["input_schema"],
-                           "annotations": {"readOnlyHint": True}} for t in TOOLS]}
+                           "annotations": {"readOnlyHint": t["name"] not in board.WRITES}}
+                          for t in (*TOOLS, *board.TOOLS)]}
     if method == "tools/call":
         try:
             text = await run_function(params.get("name"), params.get("arguments") or {})
