@@ -47,7 +47,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
 | `timeseries(test_id, channels, test_point, accession)` | sensor traces of one test; reads `data/raw/` (or `$FIF_RAW_ROOT`); `demo/server.py` fetches the missing files from PSI on demand (`docs/formats.md`) |
 | `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files |
-| `predict(model_id, **conditions)` | small per-investigation models (`docs/models.md`); no `model_id` lists them |
+| `predict(model_id, **conditions)` | small per-investigation models (`docs/models.md`); no `model_id` lists them, `compact=True` for the short list |
 
 For an AI assistant: pass `data/processed/tools.json` as the tool list and route calls through
 `fif.tools.call(name, arguments)`. Tell the model to cite the `sources` and repeat the `notes`.

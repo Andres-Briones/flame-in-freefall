@@ -603,12 +603,34 @@ def timeseries(test_id, channels=None, max_points=2000, test_point=None, accessi
                                  {"page": "docs/formats.md"}], notes)
 
 
-def predict(model_id=None, **conditions):
-    """Prediction from one of the small per-investigation models (no model_id: list the models)."""
+def _compact_model(card):
+    metric = card.get("cv_metric") or {}
+    return {
+        "id": card["id"], "accession": card["accession"], "kind": card["kind"], "use": card["use"],
+        "question": card["question"], "target": card["target"], "n": card["n"],
+        "inputs": [{"name": f["name"], "unit": f.get("unit"), "domain": f.get("domain"),
+                    "untested": [gap["range"] for gap in f.get("untested") or []]} for f in card["features"]],
+        "accuracy": {"metric": metric.get("name"), "held_out": metric.get("grouped_pooled"),
+                     "ci95_days_resampled": metric.get("grouped_pooled_ci95_days_resampled")},
+        "must_not_be_used_for": card.get("must_not_be_used_for") or [],
+    }
+
+
+def predict(model_id=None, compact=False, **conditions):
+    """Prediction from one of the small per-investigation models (no model_id: list the models; `compact` keeps
+    only what is needed to choose a model and call it)."""
     from fif import models
 
     if model_id is None:
-        return _result(json.loads((psi.PROCESSED / "models.json").read_text()), None, [{"page": "docs/models.md"}])
+        cards = json.loads((psi.PROCESSED / "models.json").read_text())
+        if not compact:
+            return _result(cards, None, [{"page": "docs/models.md"}])
+        return _result({"models": [_compact_model(c) for c in cards["models"]],
+                        "dropped": [{"id": d["id"], "accession": d["accession"]} for d in cards["dropped"]]},
+                       None, [{"page": "docs/models.md"}],
+                       ["Compact list. `use` says whether a model is predictive or descriptive only; `domain` is the "
+                        "fitted range of each input and `untested` the gaps inside it, where predict returns no value. "
+                        "Call predict without `compact` for coefficients, cross-validation detail and caveats."])
     out = models.predict(model_id, **conditions)
     notes = ["Each model is fitted on one investigation's hardware and fuels; it is not a general flammability model."]
     if out.get("in_domain") is False:

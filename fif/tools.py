@@ -60,8 +60,12 @@ TOOLS = [
               "max_points": {"type": "integer"}, "test_point": {"type": "string"}, "accession": ACCESSION}, ["test_id"]),
     {**_tool(api.predict, "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy "
              "and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none "
-             "outside the fitted domain) and the nearest real tests.", {"model_id": {"type": "string"}}),
-     "input_schema": {"type": "object", "properties": {"model_id": {"type": "string"}}, "required": [],
+             "outside the fitted domain) and the nearest real tests. The full list is about 75 kB: pass compact=true "
+             "to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
+             {"model_id": {"type": "string"}}),
+     "input_schema": {"type": "object", "properties": {
+         "model_id": {"type": "string"},
+         "compact": {"type": "boolean", "description": "with no model_id: the short list (about 5 kB)"}}, "required": [],
                       "additionalProperties": {"type": "number"}}},
     _tool(api.discrepancies, "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data "
           "(table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, "

@@ -469,8 +469,8 @@ def _example(tool):
 EXAMPLE_VALUES = {"accession": "PSI-25", "accessions": ["PSI-25", "PSI-26"], "scenario": "moon-habitat",
                   "fuel_phase": "solid", "query": "flame spread over PMMA", "question": "flammability limit of PMMA",
                   "x_o2": [0.18, 0.21], "limit": 20, "k": 5, "model": "cfig_normal_self_extinction",
-                  "test_id": "22024M1"}
-EXAMPLE_OPTIONAL = {"search_investigations": ("query", "fuel_phase"), "filter_tests": ("accession", "x_o2", "limit"),
+                  "test_id": "22024M1", "compact": True}
+EXAMPLE_OPTIONAL = {"predict": ("compact",), "search_investigations": ("query", "fuel_phase"), "filter_tests": ("accession", "x_o2", "limit"),
                     "find_evidence": ("k",), "relevance": ("fuel_phase",)}
 
 

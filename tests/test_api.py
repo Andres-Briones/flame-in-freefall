@@ -136,3 +136,14 @@ def test_every_investigation_card_carries_its_dataset_doi():
         assert c["doi"].startswith("10.60555/") and c["doi_url"] == "https://doi.org/" + c["doi"] and c["psi_url"].startswith("https://")
     one = api.get_investigation("PSI-25")["data"]
     assert one["card"]["doi"] == "10.60555/4qc4-de67" and len(one["publication_dois"]) > 0
+
+
+def test_predict_compact_list_is_small_and_enough_to_call_a_model():
+
+    full, short = api.predict()["data"], api.predict(compact=True)
+    assert [m["id"] for m in short["data"]["models"]] == [m["id"] for m in full["models"]]
+    assert len(json.dumps(short)) < 12000 < len(json.dumps(full))
+    for card, m in zip(full["models"], short["data"]["models"]):
+        assert [i["name"] for i in m["inputs"]] == [f["name"] for f in card["features"]]
+        assert m["use"] == card["use"] and m["accuracy"]["metric"] == card["cv_metric"]["name"]
+    assert any(i["untested"] for m in short["data"]["models"] for i in m["inputs"])

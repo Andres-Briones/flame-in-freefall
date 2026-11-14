@@ -428,12 +428,16 @@
  },
  {
   "name": "predict",
-  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests.",
+  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests. The full list is about 75 kB: pass compact=true to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
   "input_schema": {
    "type": "object",
    "properties": {
     "model_id": {
      "type": "string"
+    },
+    "compact": {
+     "type": "boolean",
+     "description": "with no model_id: the short list (about 5 kB)"
     }
    },
    "required": [],

@@ -143,7 +143,7 @@ def test_guide_tools_and_openapi_cover_every_function(client):
 
 def test_every_guide_example_runs(client):
     for tool in server.TOOLS:
-        if tool["name"] in ("timeseries", "predict"):  # need raw files or model-specific inputs
+        if tool["name"] == "timeseries":  # needs raw files
             continue
         r = client.post(f"/api/call/{tool['name']}", json=server._example(tool))
         assert r.status_code == 200, (tool["name"], r.text[:200])
