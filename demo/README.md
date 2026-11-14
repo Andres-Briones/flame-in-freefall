@@ -74,37 +74,36 @@ refuses if another process holds that port, and waits for `/api/health`. `./run.
 It uses host networking (`demo/compose.host.yml`): ports published through Docker were refused from outside on
 the production server while direct listeners passed. `FIF_NETWORK=bridge ./run.sh` uses published ports instead.
 
-### Automatic deploy from GitHub
+### Automatic deploy
 
-`.github/workflows/deploy.yml` deploys every push to `main`. The server never contacts GitHub: the job pushes
-the commit into the server's checkout over SSH, then runs `./run.sh start` there. It also has a "Run workflow"
-button (Actions tab), and it is skipped while the `DEPLOY_HOST` variable is unset. A dedicated key is locked to
-`deploy/ssh-hook.sh`, which allows only that push and that start. Anyone who can merge to `main` still runs code
-on the server, through `run.sh` and the Docker build.
+The server deploys itself: every minute `deploy/fif-pull.timer` runs `deploy/pull.sh`, which fetches `main` from
+GitHub and, when it holds a commit that is not running yet, fast-forwards the checkout and runs `./run.sh start`.
+Nothing has to reach the server from outside (GitHub's runners could not get through to its SSH port reliably).
+Anyone who can merge to `main` runs code on the server, through `run.sh` and the Docker build.
 
-One-time setup, on your own machine (needs `ssh` and a logged-in `gh`):
-
-```
-ssh-keygen -t ed25519 -N '' -C fif-deploy -f fif-deploy
-gh secret set DEPLOY_KEY -R Andres-Briones/flame-in-freefall < fif-deploy
-ssh-keyscan -p <port> <host> | gh secret set DEPLOY_KNOWN_HOSTS -R Andres-Briones/flame-in-freefall
-```
-
-The repo variables `DEPLOY_HOST`, `DEPLOY_PORT` and `DEPLOY_USER` name the server (`gh variable list`).
-
-On the server (the checkout `./run.sh` runs from; set `FIF_REPO` in the hook's environment if it lives elsewhere
-than `~/projects/flame-in-freefall`):
+One-time setup on the server, as the user who owns the checkout. The repository is private, so the server gets
+its own read-only key:
 
 ```
-mkdir -p ~/bin && cp deploy/ssh-hook.sh ~/bin/fif-deploy-hook && chmod 755 ~/bin/fif-deploy-hook
-git config receive.denyCurrentBranch updateInstead
-echo "command=\"$HOME/bin/fif-deploy-hook\",restrict $(cat fif-deploy.pub)" >> ~/.ssh/authorized_keys
+ssh-keygen -t ed25519 -N '' -C fif-pull -f ~/.ssh/fif-pull
+cat ~/.ssh/fif-pull.pub        # add it on GitHub: Settings > Deploy keys, without write access
+ssh -i ~/.ssh/fif-pull -o IdentitiesOnly=yes -T git@github.com    # accept the host key once; it greets the repo
+~/projects/flame-in-freefall/deploy/pull.sh                        # first deploy by hand
 ```
 
-Copy `fif-deploy.pub` to the server first, then delete both key files from your machine. The hook lives outside
-the repo so a push cannot change it. Settings such as `FIF_DOMAIN` go in `~/.config/fif-deploy.env`
-(`KEY=value` lines), since a forced command gets no login environment. The push fails, visibly in the Actions
-run, if the server's checkout has uncommitted changes or commits that are not on GitHub.
+Then, as root (edit `User=` and the path in the service file if they differ from `andres` and
+`~/projects/flame-in-freefall`):
+
+```
+cp deploy/fif-pull.service deploy/fif-pull.timer /etc/systemd/system/
+systemctl daemon-reload && systemctl enable --now fif-pull.timer
+```
+
+`journalctl -u fif-pull` shows each deploy; a quiet run prints nothing. Settings such as `FIF_DOMAIN` go in
+`~/.config/fif-deploy.env` (`KEY=value` lines), since a systemd unit gets no login environment; `FIF_REPO`,
+`FIF_PULL_URL` and `FIF_PULL_KEY` override the checkout, the GitHub address and the key. A deploy that fails is
+tried again a minute later. It stops, visibly in the journal, if the checkout has commits that are not on GitHub
+or local changes to a file the new commit touches.
 
 | Env | Default | |
 |---|---|---|

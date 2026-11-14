@@ -1,0 +1,11 @@
+# Copy to /etc/systemd/system/ and set User and the path (demo/README.md, "Automatic deploy").
+[Unit]
+Description=Flame in Freefall: deploy main when GitHub has a new commit
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=andres
+ExecStart=/home/andres/projects/flame-in-freefall/deploy/pull.sh
+TimeoutStartSec=30min
