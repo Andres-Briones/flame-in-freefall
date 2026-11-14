@@ -1284,7 +1284,7 @@
  },
  "timeseries_features": {
   "description": "Summary features of each per-test sensor time series. See docs/formats.md.",
-  "rows": 1051,
+  "rows": 1075,
   "files": [
    "data/processed/timeseries_features.parquet",
    "data/processed/timeseries_features.csv"
@@ -1292,39 +1292,39 @@
   "columns": {
    "accession": {
     "dtype": "str",
-    "non_null": 1051,
+    "non_null": 1075,
     "description": "key of the `tests` row the recording belongs to",
     "unit": null,
     "values": {
      "PSI-159": 328,
      "PSI-10": 308,
      "PSI-23": 288,
-     "PSI-39": 123,
+     "PSI-39": 147,
      "PSI-100": 2,
      "PSI-98": 2
     }
    },
    "test_id": {
     "dtype": "str",
-    "non_null": 1051,
+    "non_null": 1075,
     "description": "key of the `tests` row the recording belongs to",
     "unit": null
    },
    "test_point": {
     "dtype": "str",
-    "non_null": 1051,
-    "description": "code of the recording in the file name (21228A1, F068A03, S1)",
+    "non_null": 1075,
+    "description": "code of the recording in the file name (21228A1, F068A03, S1); `FLEX-<id>-reduced` is the investigators' reduced data of a CFI test",
     "unit": null
    },
    "source_file": {
     "dtype": "str",
-    "non_null": 1051,
+    "non_null": 1075,
     "description": "raw file the features were computed from",
     "unit": null
    },
    "n_samples": {
     "dtype": "int64",
-    "non_null": 1051,
+    "non_null": 1075,
     "description": "number of samples",
     "unit": "count",
     "min": 1012.0,
@@ -1332,7 +1332,7 @@
    },
    "duration_s": {
     "dtype": "float64",
-    "non_null": 1051,
+    "non_null": 1075,
     "description": "length of the recording",
     "unit": "s",
     "min": 8.088000000003376,
@@ -1340,10 +1340,10 @@
    },
    "sample_hz": {
     "dtype": "float64",
-    "non_null": 1051,
+    "non_null": 1074,
     "description": "sampling rate",
     "unit": "Hz",
-    "min": 30.303030303016104,
+    "min": 30.00029999698807,
     "max": 125.00000000295586
    },
    "first_sample_utc": {
@@ -1454,13 +1454,14 @@
    },
    "radiometer_array": {
     "dtype": "str",
-    "non_null": 1051,
-    "description": "standard, cfi-g, cfi-droplet or saffire",
+    "non_null": 1075,
+    "description": "standard, cfi-g, cfi-droplet, cfi-droplet-reduced or saffire",
     "unit": null,
     "values": {
      "cfi-g": 466,
      "standard": 458,
      "cfi-droplet": 123,
+     "cfi-droplet-reduced": 24,
      "saffire": 4
     }
    },
@@ -2022,12 +2023,13 @@
    },
    "features_note": {
     "dtype": "str",
-    "non_null": 198,
+    "non_null": 222,
     "description": "problems found while parsing, or why a feature is missing",
     "unit": null,
     "values": {
      "burn duration not derived (radiometer on-time does not track tests.burn_time_s)": 123,
      "no _TP.txt timeline": 56,
+     "reduced data as published by the investigators, time zero as in the files (ignition, inferred); TotalWideBandPower_W is not physical (about -5e6 W) and is left out": 21,
      "1 malformed rows dropped (truncated/NUL-padded)": 6,
      "burn duration not derived (no burn marker; radiometer baseline = median of first 50 s)": 4,
      "2 malformed rows dropped (truncated/NUL-padded)": 3,
@@ -2035,7 +2037,10 @@
      "3 malformed rows dropped (truncated/NUL-padded)": 1,
      "re-opened test point (file name suffix _1); the test point also has a file without the suffix": 1,
      "1 malformed rows dropped (truncated/NUL-padded); time gap of 23.3 s": 1,
-     "_TP.txt timeline does not overlap the data (script times dropped)": 1
+     "_TP.txt timeline does not overlap the data (script times dropped)": 1,
+     "reduced data as published by the investigators, time zero as in the files (ignition, inferred); ColorCamData file holds other columns (CoolFlameDiameterFWHM_mm, CoolFlameDiameterP2P_mm); RadiometerData file is a PDF, not a table": 1,
+     "reduced data as published by the investigators, time zero as in the files (ignition, inferred); RadiometerData file is a PDF, not a table": 1,
+     "reduced data as published by the investigators, time zero as in the files (ignition, inferred); DropletData file is not readable text; RadiometerData file is not readable text": 1
     }
    },
    "radiometer_p60_peak_w_cm2": {
@@ -2307,6 +2312,74 @@
     "unit": "V",
     "min": -9.43,
     "max": -9.33
+   },
+   "reduced_files": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "which reduced files of the test could be read",
+    "unit": null,
+    "values": {
+     "DropletData;ColorCamData;CoolFlameData;RadiometerData": 14,
+     "DropletData;ColorCamData;RadiometerData": 7,
+     "DropletData;ColorCamData;CoolFlameData": 2,
+     "ColorCamData;CoolFlameData": 1
+    }
+   },
+   "droplet_diameter_first_mm": {
+    "dtype": "float64",
+    "non_null": 23,
+    "description": "first and smallest tracked droplet diameter in the reduced data (zeros, which mark lost tracking, ignored)",
+    "unit": "mm",
+    "min": 3.75757168037282,
+    "max": 5.19997456378589
+   },
+   "droplet_diameter_min_mm": {
+    "dtype": "float64",
+    "non_null": 23,
+    "description": "first and smallest tracked droplet diameter in the reduced data (zeros, which mark lost tracking, ignored)",
+    "unit": "mm",
+    "min": 0.1552404134723385,
+    "max": 2.665211617517399
+   },
+   "flame_diameter_max_mm": {
+    "dtype": "float64",
+    "non_null": 23,
+    "description": "largest hot-flame diameter from the colour camera",
+    "unit": "mm",
+    "min": 20.09625,
+    "max": 32.0375
+   },
+   "cool_flame_fwhm_max_mm": {
+    "dtype": "float64",
+    "non_null": 17,
+    "description": "largest cool-flame diameter (FWHM)",
+    "unit": "mm",
+    "min": 14.06579672304215,
+    "max": 35.6861321087503
+   },
+   "narrow_band_power_max_w": {
+    "dtype": "float64",
+    "non_null": 21,
+    "description": "maximum of the published narrow-band radiometer power",
+    "unit": "W",
+    "min": 5.007275904335781,
+    "max": 27.54675473361868
+   },
+   "hot_flame_last_s": {
+    "dtype": "float64",
+    "non_null": 23,
+    "description": "last time the reduced data give a flame diameter above zero",
+    "unit": "s",
+    "min": 4.666666999997688,
+    "max": 21.65000000000146
+   },
+   "cool_flame_last_s": {
+    "dtype": "float64",
+    "non_null": 17,
+    "description": "last time the reduced data give a flame diameter above zero",
+    "unit": "s",
+    "min": 37.79100000000471,
+    "max": 50.79999999999563
    },
    "o2_start_pct": {
     "dtype": "float64",

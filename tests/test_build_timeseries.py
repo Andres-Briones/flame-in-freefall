@@ -140,3 +140,36 @@ def test_timeline_is_found_by_the_test_point_written_inside_it(built):
     assert "no _TP.txt" not in str(note)
     assert built.loc[built["test_point"] == "19189K1", "script_ignition_s"].notna().all()
     assert not built.isna().all().any()
+
+
+def test_reduced_cfi_files_are_read_as_published_and_problems_are_named(tmp_path):
+    base = tmp_path / "PSI-39_Raw Data_FLEX-9999_DropletData.txt"
+    base.write_text("DropletTime_sec\tDropletDiameter_mm\r-1.0\t4.0\r0.0\t3.9\r1.0\t0\r")  # CR line ends, as in PSI
+    base.with_name(base.name.replace("Droplet", "ColorCam")).write_text(
+        "CoolFlameTime_s\tCoolFlameDiameterFWHM_mm\tCoolFlameDiameterP2P_mm\n0.5\t11.0\t0.2\n")  # misnamed file
+    base.with_name(base.name.replace("Droplet", "Radiometer")).write_bytes(b"%PDF-1.3 not a table")
+    parts, problems = bt.read_cfi_reduced_parts(base)
+    assert set(parts) == {"DropletData", "ColorCamData"}
+    assert any("PDF" in p for p in problems) and any("ColorCamData file holds other columns" in p for p in problems)
+    df = bt.read_cfi_reduced(base)[1]
+    assert list(df["time_s"]) == [-1.0, 0.0, 0.5, 1.0]
+    assert list(df["droplet_diameter_mm"].dropna()) == [4.0, 3.9, 0.0]  # the zero stays: it is in the source
+    assert df["cool_flame_fwhm_mm"].notna().sum() == 1
+
+    base.with_name(base.name.replace("Droplet", "Radiometer")).write_text(
+        "RadiometerTime_sec\tTotalWideBandPower_W\tTotalNarrowBandPower_W\n0.0\t-5.4e6\t0.1\n0.01\t-5.4e6\t8.0\n")
+    row = {"accession": "PSI-39", "test_id": "9999", "test_point": "FLEX-9999-reduced", "source_file": str(base)}
+    f = bt.cfi_reduced_features(row)
+    assert f["droplet_diameter_first_mm"] == 4.0 and f["droplet_diameter_min_mm"] == 3.9
+    assert f["narrow_band_power_max_w"] == 8.0 and "not physical" in f["features_note"]
+    assert "narrow_band_power_w" in bt.read_cfi_reduced(base)[1] and "TotalWideBandPower_W" not in bt.read_cfi_reduced(base)[1]
+
+
+def test_reduced_recordings_join_the_24_cfi_tests(built):
+    reduced = built[built["test_point"].str.endswith(bt.CFI_REDUCED_SUFFIX)]
+    assert len(reduced) == 24 and set(reduced["accession"]) == {"PSI-39"} and reduced["test_id"].is_unique
+    tests = pd.read_parquet(psi.PROCESSED / "tests.parquet")
+    tests = tests[tests["accession"] == "PSI-39"].set_index("test_id")
+    both = reduced.set_index("test_id").join(tests[["burn_time_s", "d0_mm"]]).dropna(subset=["hot_flame_last_s", "burn_time_s"])
+    # the published curves agree with the investigators' own summary table: time zero is ignition
+    assert len(both) >= 20 and ((both["hot_flame_last_s"] - both["burn_time_s"]).abs() < 0.5).mean() > 0.9

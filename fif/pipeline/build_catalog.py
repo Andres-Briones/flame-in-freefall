@@ -65,7 +65,8 @@ def tests_descriptions():
 
 FEATURE_RULES = [  # (pattern, description, unit); first match wins
     (r"^(accession|test_id)$", "key of the `tests` row the recording belongs to", None),
-    (r"^test_point$", "code of the recording in the file name (21228A1, F068A03, S1)", None),
+    (r"^test_point$", "code of the recording in the file name (21228A1, F068A03, S1); `FLEX-<id>-reduced` is the "
+     "investigators' reduced data of a CFI test", None),
     (r"^source_file$", "raw file the features were computed from", None),
     (r"^n_samples$", "number of samples", "count"), (r"^duration_s$", "length of the recording", "s"),
     (r"^sample_hz$", "sampling rate", "Hz"), (r"^first_sample_utc$", "time of the first sample (GMT)", None),
@@ -73,7 +74,13 @@ FEATURE_RULES = [  # (pattern, description, unit); first match wins
     (r"_gas$", "gas on this mass-flow controller, from the header gas code", None),
     (r"^thermocouple_rake$", "thermocouple rake fitted, from the header", None),
     (r"^pmt\d_gain_v$", "photomultiplier gain setting", "V"),
-    (r"^radiometer_array$", "standard, cfi-g, cfi-droplet or saffire", None),
+    (r"^radiometer_array$", "standard, cfi-g, cfi-droplet, cfi-droplet-reduced or saffire", None),
+    (r"^reduced_files$", "which reduced files of the test could be read", None),
+    (r"^droplet_diameter_(first|min)_mm$", "first and smallest tracked droplet diameter in the reduced data (zeros, which mark lost tracking, ignored)", "mm"),
+    (r"^flame_diameter_max_mm$", "largest hot-flame diameter from the colour camera", "mm"),
+    (r"^cool_flame_fwhm_max_mm$", "largest cool-flame diameter (FWHM)", "mm"),
+    (r"^(hot|cool)_flame_last_s$", "last time the reduced data give a flame diameter above zero", "s"),
+    (r"^narrow_band_power_max_w$", "maximum of the published narrow-band radiometer power", "W"),
     (r"^radiometer_on_s$", "time the flame signal stays above threshold, igniter glow included", "s"),
     (r"^flame_detected$", "radiometer_on_s of at least 2 s", None),
     (r"^ignition_time_s$", "first sample with the flame signal above threshold", "s"),

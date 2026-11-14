@@ -29,6 +29,19 @@ ROW_START = re.compile(r"\d{1,2}:\d{2}:\d{2}:\d{1,3},")
 CFI = "PSI-39"
 CFI_FILE = re.compile(r"_(F\d{3}[A-Z]\d{2})_Radiometer_Readings\.txt$")
 CFI_SAMPLES_PER_ROW = 100
+# The investigators' reduced per-test data of 24 CFI tests: small tab-separated tables, each on its own time axis.
+CFI_REDUCED_FILE = re.compile(r"_FLEX-(\d{4})_DropletData\.txt$")
+CFI_REDUCED_KINDS = ("DropletData", "ColorCamData", "CoolFlameData", "RadiometerData")
+CFI_REDUCED_TIME = ("DropletTime_sec", "ColorCamTime_sec", "CoolFlameTime_s", "RadiometerTime_sec")
+CFI_REDUCED_COLUMNS = {
+    "DropletDiameter_mm": "droplet_diameter_mm", "ZeroedDropletXpos_mm": "droplet_x_mm",
+    "ZeroedDropletYpos_mm": "droplet_y_mm", "ColorCamFlameDiameter_mm": "flame_diameter_mm",
+    "ColorCamFlameStandoff": "flame_standoff", "CoolFlameDiameterFWHM_mm": "cool_flame_fwhm_mm",
+    "CoolFlameDiameterP2P_mm": "cool_flame_p2p_mm", "TotalNarrowBandPower_W": "narrow_band_power_w",
+}
+# About -5.4e6 "W" in every file: not a power. Left out of the series and named in the notes.
+CFI_REDUCED_DROPPED = ("TotalWideBandPower_W",)
+CFI_REDUCED_SUFFIX = "-reduced"
 CFI_SAMPLE_HZ = 100
 SAFFIRE = ("PSI-98", "PSI-100")
 SAFFIRE_FILE = re.compile(r"Sample (\d+) Sensor")
@@ -606,13 +619,110 @@ def saffire_features(row):
     return {**row, **f, "features_note": note}
 
 
+def cfi_reduced_files():
+    """One row per CFI test with reduced data, keyed by its DropletData file (every such test has one)."""
+    files = pd.read_csv(psi.PROCESSED / "files.csv")
+    files = files[(files["accession"] == CFI) & files["downloaded"].astype(bool)]
+    tests = pd.read_parquet(psi.PROCESSED / "tests.parquet")
+    known = set(tests.loc[tests["accession"] == CFI, "test_id"])
+    rows = []
+    for name, path in zip(files["file_name"], files["local_path"]):
+        m = CFI_REDUCED_FILE.search(name)
+        if m:
+            rows.append({"accession": CFI, "test_id": m.group(1) if m.group(1) in known else None,
+                         "test_point": f"FLEX-{m.group(1)}{CFI_REDUCED_SUFFIX}", "reopened": False, "source_file": path})
+    return pd.DataFrame(rows)
+
+
+def cfi_reduced_siblings(source_file):
+    """The four reduced files of a test, named from its DropletData file (same folder, kind swapped)."""
+    return {kind: str(source_file).replace("_DropletData.txt", f"_{kind}.txt") for kind in CFI_REDUCED_KINDS}
+
+
+def read_cfi_reduced_parts(path):
+    """Each reduced file of a test as published: ({kind: DataFrame with time_s first}, [problems]). Columns are
+    taken from the file's own header, because one ColorCamData file holds cool-flame columns."""
+    parts, problems = {}, []
+    for kind, sibling in cfi_reduced_siblings(path).items():
+        sibling = Path(sibling)
+        if not sibling.exists():
+            if kind != "CoolFlameData":  # only tests with a cool flame have that file
+                problems.append(f"{kind} file absent")
+            continue
+        head = sibling.open("rb").read(8)
+        if head.startswith(b"%PDF"):
+            problems.append(f"{kind} file is a PDF, not a table")
+            continue
+        try:
+            df = pd.read_csv(sibling, sep="\t")
+        except (UnicodeDecodeError, pd.errors.ParserError):
+            problems.append(f"{kind} file is not readable text")
+            continue
+        time = [c for c in df.columns if c in CFI_REDUCED_TIME]
+        keep = [c for c in df.columns if c in CFI_REDUCED_COLUMNS]
+        if len(time) != 1 or not keep:
+            problems.append(f"{kind} file has unexpected columns ({', '.join(map(str, df.columns))})")
+            continue
+        if not any(c.startswith(kind.removesuffix("Data")) for c in keep) and kind != "RadiometerData":
+            problems.append(f"{kind} file holds other columns ({', '.join(keep)})")
+        if any(c in df.columns for c in CFI_REDUCED_DROPPED):
+            problems.append("TotalWideBandPower_W is not physical (about -5e6 W) and is left out")
+        parts[kind] = df[[*time, *keep]].rename(columns={time[0]: "time_s", **CFI_REDUCED_COLUMNS})
+    return parts, problems
+
+
+def read_cfi_reduced(path):
+    """The reduced files of one test stacked on their shared time axis (seconds as published; zero appears to be
+    ignition). Each row comes from one file, so the other files' columns are empty in it; values are unchanged."""
+    parts, _ = read_cfi_reduced_parts(path)
+    if not parts:
+        return None, pd.DataFrame({"time_s": []})
+    out = pd.concat(parts.values(), ignore_index=True).sort_values("time_s", kind="stable").reset_index(drop=True)
+    return None, out
+
+
+def cfi_reduced_features(row):
+    parts, problems = read_cfi_reduced_parts(psi.ROOT / row["source_file"])
+    f = {"radiometer_array": "cfi-droplet-reduced", "reduced_files": ";".join(parts)}
+    if parts:
+        times = pd.concat([p["time_s"] for p in parts.values()])
+        f["n_samples"], f["duration_s"] = int(len(times)), _num(times.max() - times.min())
+
+    def column(name):
+        found = [p[name] for p in parts.values() if name in p]
+        return pd.concat(found) if found else None
+
+    def last_time(name):
+        found = [p.loc[p[name] > 0, "time_s"] for p in parts.values() if name in p]
+        found = pd.concat(found) if found else pd.Series(dtype=float)
+        return _num(found.max()) if len(found) else np.nan
+
+    droplet = parts.get("DropletData")
+    if droplet is not None:
+        f["sample_hz"] = _num(1 / np.median(np.diff(droplet["time_s"])))
+        tracked = droplet.loc[droplet["droplet_diameter_mm"] > 0, "droplet_diameter_mm"]
+        if len(tracked):
+            f["droplet_diameter_first_mm"], f["droplet_diameter_min_mm"] = _num(tracked.iloc[0]), _num(tracked.min())
+    for name, feature in (("flame_diameter_mm", "flame_diameter_max_mm"), ("cool_flame_fwhm_mm", "cool_flame_fwhm_max_mm"),
+                          ("narrow_band_power_w", "narrow_band_power_max_w")):
+        values = column(name)
+        if values is not None:
+            f[feature] = _num(values.max())
+    f["hot_flame_last_s"], f["cool_flame_last_s"] = last_time("flame_diameter_mm"), last_time("cool_flame_fwhm_mm")
+    notes = ["reduced data as published by the investigators, time zero as in the files (ignition, inferred)", *problems]
+    return {**row, **f, "features_note": "; ".join(notes)}
+
+
 def build(workers=None):
-    files = pd.concat([data_files(), cfi_files(), saffire_files()], ignore_index=True)
+    files = pd.concat([data_files(), cfi_files(), cfi_reduced_files(), saffire_files()], ignore_index=True)
     joined = files[files["test_id"].notna()]
     with ProcessPoolExecutor(workers) as ex:
         acme = joined[joined["accession"].isin(ACME)].to_dict("records")
         recs = list(ex.map(file_features, acme, chunksize=4))
-        recs += list(ex.map(cfi_features, joined[joined["accession"] == CFI].to_dict("records")))
+        cfi = joined[joined["accession"] == CFI]
+        reduced = cfi["test_point"].str.endswith(CFI_REDUCED_SUFFIX)
+        recs += list(ex.map(cfi_features, cfi[~reduced].to_dict("records")))
+        recs += list(ex.map(cfi_reduced_features, cfi[reduced].to_dict("records")))
         recs += list(ex.map(saffire_features, joined[joined["accession"].isin(SAFFIRE)].to_dict("records")))
     out = pd.DataFrame(recs).drop(columns=["reopened"])
     out = out.dropna(axis=1, how="all")  # channels no file carries
@@ -627,7 +737,8 @@ def build(workers=None):
 def load_timeseries(test_id, test_point=None, accession=None):
     """Signals of one test in engineering units: `test_point`, `time_s`, then one column per channel with the
     unit in its name. `test_id` is a `tests.test_id` (a test-point or CIR code like "21228A1" also works).
-    Tests with several files (PSI-23 test days, re-opened test points) return all of them stacked; pass
+    Tests with several files (PSI-23 test days, re-opened test points, the 24 CFI tests that also have reduced
+    data as `FLEX-<id>-reduced`) return all of them stacked; pass
     `test_point` to pick one, and `accession` if a test id could be ambiguous."""
     feats = pd.read_parquet(psi.PROCESSED / "timeseries_features.parquet",
                             columns=["accession", "test_id", "test_point", "source_file"])
@@ -641,7 +752,8 @@ def load_timeseries(test_id, test_point=None, accession=None):
         raise KeyError(f"no time series for test {test_id!r}")
     frames = []
     for acc, point, source in zip(sel["accession"], sel["test_point"], sel["source_file"]):
-        reader = read_cfi if acc == CFI else read_saffire if acc in SAFFIRE else read_acme
+        reader = (read_cfi_reduced if point.endswith(CFI_REDUCED_SUFFIX) else read_cfi if acc == CFI
+                  else read_saffire if acc in SAFFIRE else read_acme)
         df = reader(psi.raw_file(source))[1]
         df.insert(0, "test_point", point)
         frames.append(df)

@@ -1,19 +1,19 @@
 App.view({
   id: 'traces', title: 'Sensor traces', tier: 2,
   heading: 'What did the sensors record during a test?',
-  intro: 'Two example recordings with every channel (any recording when the page is served by the dashboard server), and one summary row for each of 1,051 recordings (burn duration, peak temperatures, pressure rise) to compare tests.',
+  intro: 'Two example recordings with every channel (any recording when the page is served by the dashboard server), and one summary row for each of 1,075 recordings (burn duration, peak temperatures, pressure rise) to compare tests.',
   needs: ['tsexamples', 'tsfeatures'],
   brief: {
     need: 'Scientists need the time history behind a test row: when the flame lit and went out, how temperatures and pressure moved, and whether flows held steady. They also need per-recording summaries to compare tests without opening raw files.',
-    data: ['data/export/timeseries_examples.json: 2 decimated recordings (PSI-159 21088 M4, PSI-98 S1) with notes and sources', 'data/export/timeseries_features.json: 1,051 per-recording summaries (PSI-10, 23, 39, 98, 100, 159)', 'docs/formats.md: channel names and units'],
+    data: ['data/export/timeseries_examples.json: 2 decimated recordings (PSI-159 21088 M4, PSI-98 S1) with notes and sources', 'data/export/timeseries_features.json: 1,075 per-recording summaries (PSI-10, 23, 39, 98, 100, 159)', 'docs/formats.md: channel names and units'],
     call: 'timeseries(test_id="21088 M4", channels=["burner_temp_c", "chamber_pressure_kpa"])\ntimeseries(test_id="S1", accession="PSI-98")',
     keep: ['Volt channels (radiometers, PMTs) have no archived calibration: compare shapes, not magnitudes', 'Traces are decimated; say by how much', 'One unit per axis', 'Test ids here have no space (21088M4); the tests table writes 21088 M4', 'Recordings without a timeline file have no ignition or flameout time'],
-    backend: 'Live when the page is served by demo/server.py: "Any recording, live" calls timeseries() for any of the 1,051 recordings (the server fetches the raw file from NASA on first use). The static page has only the two exported examples.',
+    backend: 'Live when the page is served by demo/server.py: "Any recording, live" calls timeseries() for any of the 1,075 recordings (the server fetches the raw file from NASA on first use). The static page has only the two exported examples.',
   },
   render(root, state, update) {
     const c = App.colors();
     const EX = FIF.tsexamples || {}, F = Array.isArray(FIF.tsfeatures) ? FIF.tsfeatures : [];
-    const UNITS = [['_w_cm2', 'W/cm²'], ['_cm_s', 'cm/s'], ['_slpm', 'slpm'], ['_kpa', 'kPa'], ['_pct', '%'], ['_ua', 'µA'], ['_c', '°C'], ['_v', 'V'], ['_k', 'K'], ['_mm', 'mm'], ['_s', 's']];
+    const UNITS = [['_w_cm2', 'W/cm²'], ['_w', 'W'], ['_cm_s', 'cm/s'], ['_slpm', 'slpm'], ['_kpa', 'kPa'], ['_pct', '%'], ['_ua', 'µA'], ['_c', '°C'], ['_v', 'V'], ['_k', 'K'], ['_mm', 'mm'], ['_s', 's']];
     const unitOf = ch => (UNITS.find(([suf]) => ch.endsWith(suf)) || [null, 'other'])[1];
     const isNum = v => typeof v === 'number' && isFinite(v);
 
@@ -137,7 +137,7 @@ App.view({
     // Part A: example recordings
     const keys = Object.keys(EX);
     root.append(h('h2', { text: 'Example recordings' }));
-    if (!App.backend) root.append(h('p', { class: 'muted small', id: 'tr-live-off', text: 'Any of the 1,051 recordings can be plotted when the page is served by demo/server.py. The static page has these two examples.' }));
+    if (!App.backend) root.append(h('p', { class: 'muted small', id: 'tr-live-off', text: 'Any of the 1,075 recordings can be plotted when the page is served by demo/server.py. The static page has these two examples.' }));
     if (!keys.length) root.append(h('p', { class: 'muted', text: 'No example recordings in the export.' }));
     else {
       const key = keys.includes(state.ex) ? state.ex : keys[0];

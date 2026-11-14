@@ -38,6 +38,7 @@ from fastapi.staticfiles import StaticFiles  # noqa: E402
 
 from demo import board  # noqa: E402
 from fif import api, psi  # noqa: E402
+from fif.pipeline import build_timeseries  # noqa: E402
 from fif.tools import TOOLS  # noqa: E402
 
 DIST = ROOT / "demo" / "dist"
@@ -267,6 +268,8 @@ def timeseries_files(test_id, test_point=None, accession=None, **_):
         paths.append(source)
         if "_Radiometer_Readings" in source:
             paths.append(source.replace("_Radiometer_Readings", "_Chamber_Readings"))
+        if row["test_point"].endswith(build_timeseries.CFI_REDUCED_SUFFIX):
+            paths = list(build_timeseries.cfi_reduced_siblings(source).values())
     return [BY_LOCAL_PATH[p] for p in paths if p in BY_LOCAL_PATH]
 
 

@@ -21,7 +21,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `coverage.json` | test counts on the O2-pressure grid, for all fuels and per phase, with the reference atmospheres |
 | `relevance.json` | scenario rankings for 5 scenarios x 3 fuel phases x 4 pillar choices, keyed `scenario|phase|pillar` |
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
-| `timeseries_features.json` | per-recording sensor summaries, 1,051 rows (burn duration, peak temperatures, pressure) |
+| `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
 | `discrepancies.json` | errors and doubts in the PSI tables: 36 raw-data conflicts and notes with evidence, every changed value, flag meanings |
 | `questions.json` | the question bank: question, call, chart, answer |
@@ -113,7 +113,8 @@ $$
   block). Postal addresses, other people's e-mails and phones, and private network addresses are replaced by
   `[address removed]`, `[e-mail removed]`, `[phone removed]`, `[ip removed]` (`fif/pipeline/redact.py`). One file
   that holds credentials is not extracted (`evidence_files.status = withheld`).
-- `timeseries_features` (1,051 recordings, PSI-10, 23, 39, 159, 98, 100) needs no raw files. Its `test_id` is
+- `timeseries_features` (1,075 recordings, PSI-10, 23, 39, 159, 98, 100; 24 of the PSI-39 ones are the
+  investigators' reduced droplet data, `test_point` `FLEX-<id>-reduced`) needs no raw files. Its `test_id` is
   the `tests` id (`21088 M4`); `test_point` is the recording's name without the space (`21088M4`).
   `timeseries()` accepts both.
 - `*_flow_max_slpm` is the whole-file maximum and is often a controller spike before ignition, above the

@@ -26,7 +26,8 @@ TS_KEEP = [
     "chamber_pressure_max_kpa", "burner_temp_max_c", "rake_a_temp_max_c", "rake_b_temp_max_c", "rake_c_temp_max_c",
     "rake_d_temp_max_c", "chamber_gas_temp_max_c", "oxidizer_flow_mean_burn_slpm", "inert_flow_mean_burn_slpm",
     "fuel_flow_mean_burn_slpm", "radiometer_offset_peak_w_cm2", "pmt1_310nm_max_burn_v", "o2_start_pct",
-    "o2_min_pct", "co2_max_pct", "anemometer_start_cm_s", "plume_temp_max_c", "sample_temp_max_c", "features_note",
+    "o2_min_pct", "co2_max_pct", "anemometer_start_cm_s", "plume_temp_max_c", "sample_temp_max_c", "droplet_diameter_first_mm",
+    "flame_diameter_max_mm", "hot_flame_last_s", "cool_flame_fwhm_max_mm", "cool_flame_last_s", "features_note",
 ]
 RANK_DROP = ("one_line", "pillars", "fuel_phases", "acronym")
 

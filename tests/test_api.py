@@ -165,3 +165,21 @@ def test_every_investigation_card_links_an_existing_digest_page():
     assert len(cards) == 24
     for card in cards:
         assert card["page"] and (psi.ROOT / card["page"]).is_file(), card["accession"]
+
+
+def test_timeseries_serves_reduced_droplet_data_as_a_second_recording():
+    feats = api.table("timeseries_features")
+    row = feats[feats["test_point"] == "FLEX-1264-reduced"].iloc[0]
+    if not psi.raw_file(row["source_file"]).exists():
+        pytest.skip("raw data absent")
+    first = api.timeseries("1264")
+    assert first["data"]["test_point"] == "F139A02" and "-reduced" in first["notes"][0]  # the raw recording stays the default
+    out = api.timeseries("1264", test_point="FLEX-1264-reduced", max_points=1500)
+    series = out["data"]["series"]
+    counts = {c: sum(r.get(c) is not None for r in series) for c in out["chart"]["y"]}
+    assert counts["flame_diameter_mm"] == 212  # the short hot-flame curve is not thinned away by the 100 Hz radiometer
+    assert counts["droplet_diameter_mm"] > 300 and len(series) <= 1600
+    assert not any("wide" in c for c in out["chart"]["y"]) and any("not physical" in n for n in out["notes"])
+    assert len([s for s in out["sources"] if s.get("file")]) == 4
+    only = api.timeseries("1264", test_point="FLEX-1264-reduced", channels=["droplet_diameter_mm"], max_points=5000)
+    assert len(only["data"]["series"]) == 1958 and all(r["droplet_diameter_mm"] is not None for r in only["data"]["series"])

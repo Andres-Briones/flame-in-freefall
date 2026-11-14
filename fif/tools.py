@@ -55,7 +55,9 @@ TOOLS = [
         "accession": ACCESSION}),
     _tool(api.timeseries, "Sensor time series of one test (decimated) with summary features (burn duration, peak "
           "temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, "
-          "PSI-100). Needs the raw files on disk.", {
+          "PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and "
+          "cool-flame diameter, radiometer power against time) are a second recording: test_point "
+          "\"FLEX-<test id>-reduced\". Needs the raw files on disk.", {
               "test_id": {"type": "string"}, "channels": {"type": "array", "items": {"type": "string"}},
               "max_points": {"type": "integer"}, "test_point": {"type": "string"}, "accession": ACCESSION}, ["test_id"]),
     {**_tool(api.predict, "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy "

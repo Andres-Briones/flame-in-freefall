@@ -40,7 +40,7 @@ them as a tidy DataFrame in engineering units.
 | ACME 125 Hz `<tp>_data.csv` | PSI-10, PSI-23, PSI-159 | 317 + 288 + 338 = 943 | 308/317, 288/288 (to test days), 328/338 | yes (924 rows) |
 | ACME `mfcSetpoints.csv`, `as run`, `_TP`, `_Comments`, `.mdipsug`, GC `.asc`, logs, workbooks | PSI-10, PSI-23, PSI-159 | see below | 92–100% | `_TP` event times only |
 | CFI `<CIR>_Radiometer_Readings.txt` + `_Chamber_Readings.txt` | PSI-39 | 123 + 123 | 123/123 via `extra.CIR` | yes (123 rows, no burn rule) |
-| CFI reduced `FLEX-<id>_*.txt`, `.meta`, `.metadata`, settings | PSI-39 | 111 + 343 + … | 24/24 ids, 116/116 codes | no |
+| CFI reduced `FLEX-<id>_*.txt`, `.meta`, `.metadata`, settings | PSI-39 | 111 + 343 + … | 24/24 ids, 116/116 codes | yes for the four data files (24 rows, `test_point` `FLEX-<id>-reduced`); TestSheet, `.meta`, settings no |
 | Saffire-I/III per-sample sensor workbooks | PSI-98, PSI-100 | 4 | 4/4 | yes (4 rows, no burn rule) |
 | Saffire telemetry workbooks / CSVs | PSI-98, PSI-100 | 5 | mission-level, not per test | no |
 | SAME-R housekeeping CSV / per-run workbooks | PSI-101 | 44 + 74 | 44/44 and 73/74 on the in-file `TestNumber` / run number, not 1:1 | no |
@@ -417,7 +417,19 @@ t0 = rad.loc[rad["IGNITER_POWER_STATUS(N/A)"] == "On", "PIP TimeStamp"].min()
 | ColorCamData | `ColorCamTime_sec`, `ColorCamFlameDiameter_mm`, `ColorCamFlameStandoff` (unit unknown) |
 | CoolFlameData | `CoolFlameTime_s`, `CoolFlameDiameterFWHM_mm`, `CoolFlameDiameterP2P_mm` |
 
+**In `timeseries`:** each of the 24 tests has a second recording, `test_point = "FLEX-<id>-reduced"` (the raw
+radiometer recording `F…` stays the default for the test id). The four data files are stacked on their common time
+axis as published, one row per file sample, so the other files' columns are empty in that row; nothing is
+interpolated and zeros are kept. Channels: `droplet_diameter_mm` (plus `droplet_x_mm`, `droplet_y_mm` in two tests),
+`flame_diameter_mm`, `flame_standoff`, `cool_flame_fwhm_mm`, `cool_flame_p2p_mm`, `narrow_band_power_w`.
+`TotalWideBandPower_W` is left out. Time zero is ignition: the last time with a hot-flame diameter above zero equals
+`tests.burn_time_s` within 0.13 s for the 23 tests that have both. Feature columns: `reduced_files`,
+`droplet_diameter_first_mm`, `droplet_diameter_min_mm`, `flame_diameter_max_mm`, `hot_flame_last_s`,
+`cool_flame_fwhm_max_mm`, `cool_flame_last_s`, `narrow_band_power_max_w`; unreadable files are named in
+`features_note`. The burning-rate constant is not recomputed: the investigators' value is `tests.burn_rate_k_mm2_s`.
+
 **Oddities:**
+- The `ColorCamData` file of FLEX-1227 holds the cool-flame columns, not the colour-camera ones.
 - `TotalWideBandPower_W` is about **−5.4e6** in all 21 readable files, which is not physical. Use the narrow band, or treat the wide band as uncalibrated.
 - Zeros mark lost tracking at the end of a series.
 - 5 files are not text:
@@ -860,7 +872,7 @@ s = pd.Series(v.values, index=pd.to_timedelta(range(len(v)), unit="s"), name=met
 ## `timeseries_features` table
 
 `data/processed/timeseries_features.{parquet,csv}` has one row per raw per-test time-series file that joins to a
-`tests` row (1,051 rows, 139 columns). It is built by `fif/pipeline/build_timeseries.py`
+`tests` row, plus one row per CFI test with reduced data (1,075 rows, 147 columns). It is built by `fif/pipeline/build_timeseries.py`
 (`uv run python -m fif.pipeline.build_timeseries`, about 45 s).
 
 | accession | rows | tests covered | source |

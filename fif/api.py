@@ -595,22 +595,45 @@ def timeseries(test_id, channels=None, max_points=2000, test_point=None, accessi
         raise KeyError(f"test id {test_id!r} exists in {sorted(features['accession'].unique())}; pass accession")
     if len(features) > 1 and test_point is None:
         notes.append(f"{len(features)} recordings share this test id ({', '.join(features['test_point'])}); "
-                     "showing the first. Pass test_point to pick another.")
+                     "showing the first. Pass test_point to pick another"
+                     + (" (`-reduced` is the investigators' droplet and flame diameters)."
+                        if features["test_point"].str.endswith(build_timeseries.CFI_REDUCED_SUFFIX).any() else "."))
         features = features.iloc[:1]
     row = features.iloc[0]
     df = build_timeseries.load_timeseries(row["test_point"], test_point=row["test_point"], accession=row["accession"])
     df = df.drop(columns="test_point")
     if channels:
         df = df[["time_s", *[c for c in channels if c in df.columns]]]
+    reduced = row["test_point"].endswith(build_timeseries.CFI_REDUCED_SUFFIX)
+    if reduced:
+        # each row comes from one of the reduced files: keep the rows that carry a requested channel
+        df = df.dropna(how="all", subset=[c for c in df.columns if c != "time_s"])
+        notes += ["Reduced data as published by the investigators (droplet and flame diameters from image analysis, "
+                  "radiometer power), not raw sensor output. Each quantity has its own sampling, so a row holds one "
+                  "file's values and the others are empty.",
+                  "Time is as published; zero appears to be ignition (inferred, not stated in the files).",
+                  "Zeros are in the source: they mark lost tracking or no flame, not a zero diameter.",
+                  *str(row.get("features_note") or "").split("; ")[1:]]
     step = max(1, math.ceil(len(df) / max_points))
-    if step > 1:
+    shown = df.iloc[::step]
+    if reduced and step > 1:
+        # thin each file's rows on their own, or the 100 Hz radiometer would crowd out the 7 s flame-diameter curve
+        origin = df.drop(columns="time_s").notna().idxmax(axis=1)
+        budget = max(1, max_points // origin.nunique())
+        shown = pd.concat(g.iloc[::max(1, math.ceil(len(g) / budget))] for _, g in df.groupby(origin, sort=False)).sort_index()
+        notes.append(f"Decimated: {len(shown)} of {len(df)} samples, each quantity thinned separately to about {budget} points.")
+    elif step > 1:
         notes.append(f"Decimated: every {step}th sample of {len(df)}.")
-    if row["accession"] in ("PSI-10", "PSI-23", "PSI-159", "PSI-39"):
+    if row["accession"] in ("PSI-10", "PSI-23", "PSI-159", "PSI-39") and not reduced:
         notes.append("Radiometer and PMT channels in volts have no archived calibration: compare shapes, not magnitudes.")
     chart = {"type": "line", "x": "time_s", "y": [c for c in df.columns if c != "time_s"]}
     data = {"test_id": row["test_id"], "test_point": row["test_point"], "accession": row["accession"],
-            "features": _rows(features.dropna(axis=1, how="all")), "series": _rows(df.iloc[::step])}
-    return _result(data, chart, [{"accession": row["accession"], "file": row["source_file"]},
+            "features": _rows(features.dropna(axis=1, how="all")), "series": _rows(shown)}
+    files = [row["source_file"]]
+    if reduced:
+        used = str(row.get("reduced_files") or "").split(";")
+        files = [f for kind, f in build_timeseries.cfi_reduced_siblings(row["source_file"]).items() if kind in used]
+    return _result(data, chart, [*({"accession": row["accession"], "file": f} for f in files),
                                  {"page": "docs/formats.md"}], notes)
 
 

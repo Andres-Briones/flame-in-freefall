@@ -162,3 +162,8 @@ def test_mcp_lists_and_calls_tools(client):
     bad = rpc("tools/call", {"name": "filter_tests", "arguments": {"limit": -1}})["result"]
     assert bad["isError"] and "limit" in bad["content"][0]["text"]
     assert "error" in rpc("nope")
+
+
+def test_timeseries_fetches_every_reduced_file_of_a_cfi_test():
+    names = [name for _, name in server.timeseries_files("1264", test_point="FLEX-1264-reduced")]
+    assert sorted(n.split("_")[-1] for n in names) == ["ColorCamData.txt", "CoolFlameData.txt", "DropletData.txt", "RadiometerData.txt"]
