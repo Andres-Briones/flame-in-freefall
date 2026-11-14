@@ -54,6 +54,7 @@
       h('div', { class: 'chips' },
         h('span', { class: 'small muted', text: App.name(p.accession) }),
         App.chip('unreviewed raw text', 'warn'),
+        p.transcribed ? App.chip('AI reading of a scan', 'warn') : null,
         h('span', { class: 'small mono', text: file }),
         p.locator ? h('span', { class: 'small muted', text: String(p.locator) }) : null),
       h('p', { class: 'small', style: 'margin:0;white-space:pre-wrap', text: String(p.text || '') }),

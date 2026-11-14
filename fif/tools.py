@@ -62,7 +62,8 @@ TOOLS = [
               "scenario": {"type": ["string", "object"], "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g}"},
               "fuel_phase": {"type": "string", "enum": ["solid", "liquid", "gas"]}, "pillar": PILLAR, "top": {"type": "integer"}}),
     _tool(api.find_evidence, "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI "
-          "documents (file and page). Keyword-based: use the documents' own terms and try synonyms.", {
+          "documents (file and page; `transcribed` marks an AI model's reading of a scanned page). Keyword-based: use the "
+          "documents' own terms and try synonyms.", {
               "query": {"type": "string"}, "accession": ACCESSION, "k": {"type": "integer"}, "raw": {"type": "boolean"}}, ["query"]),
     _tool(api.insights, "Cross-investigation synthesis entries with citations.", {
         "topic": {"type": "string", "enum": ["key_messages", "limits", "micro_vs_1g", "gaps", "lineage", "research_questions", "parameter_coverage"]},

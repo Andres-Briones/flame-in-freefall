@@ -170,7 +170,9 @@ def _index(corpus):
         passages = _digest_passages()
     else:
         ev = table("evidence")
-        passages = ev[["accession", "file_name", "locator", "chunk", "text"]].to_dict("records")
+        if "transcribed" not in ev:
+            ev["transcribed"] = False
+        passages = ev[["accession", "file_name", "locator", "chunk", "text", "transcribed"]].to_dict("records")
     vec = TfidfVectorizer(sublinear_tf=True, ngram_range=(1, 2), min_df=1 if corpus == "digest" else 2, stop_words="english")
     return passages, vec, vec.fit_transform(p["text"] for p in passages)
 
@@ -190,9 +192,13 @@ def find_evidence(query, accession=None, k=8, raw=True):
     for d in documents:
         d["text"] = d["text"][:700]
     sources = [{"ref": d["ref"], "accession": d["accession"]} for d in digest]
-    sources += [{"accession": d["accession"], "file": d["file_name"], "locator": d["locator"]} for d in documents]
+    sources += [{"accession": d["accession"], "file": d["file_name"], "locator": d["locator"],
+                 "transcribed": d["transcribed"]} for d in documents]
     notes = ["`digest` passages are reviewed claims with their own sources; `documents` are unreviewed extracts "
              "from PSI files and may contain extraction errors."]
+    if any(d["transcribed"] for d in documents):
+        notes.append("Documents with `transcribed: true` are an AI model's reading of a scanned page that has no text "
+                     "layer, not the document's own text; numbers and names may be misread. Check them in the original file.")
     return _result({"digest": digest, "documents": documents}, None, sources, notes)
 
 

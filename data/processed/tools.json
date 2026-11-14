@@ -386,7 +386,7 @@
  },
  {
   "name": "find_evidence",
-  "description": "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI documents (file and page). Keyword-based: use the documents' own terms and try synonyms.",
+  "description": "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI documents (file and page; `transcribed` marks an AI model's reading of a scanned page). Keyword-based: use the documents' own terms and try synonyms.",
   "input_schema": {
    "type": "object",
    "properties": {

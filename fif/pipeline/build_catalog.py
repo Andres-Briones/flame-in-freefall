@@ -20,7 +20,7 @@ TABLES = {
     "timeseries_features": "Summary features of each per-test sensor time series. See docs/formats.md.",
     "files": "Every file listed in the 24 PSI records, downloaded or not.",
     "evidence": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
-    "evidence_files": "Extraction status of each document (ok, no_text for scans, unsupported, error, withheld).",
+    "evidence_files": "Extraction status of each document (ok, transcribed, no_text for scans, unsupported, error, withheld).",
 }
 DESCRIPTIONS = {
     "investigations": {
@@ -41,6 +41,7 @@ DESCRIPTIONS = {
         "locator": "page (p3), slide, sheet, zip member or 'all'", "chunk": "chunk number within the locator",
         "text": "extracted text, whitespace-normalised; contact details of people who are not listed authors, postal "
         "addresses and private network addresses are replaced by [... removed] markers", "test_ref": "ACME test id found in the file name",
+        "transcribed": "True when the text is an AI model's reading of a scanned page (no text layer), not the document's own text",
     },
     "discrepancies": {
         "id": "patch id (D01, ...), as listed in tests.extra `discrepancies`", "test_id": "test id as in the PSI table (null for a note on a whole investigation)",
@@ -49,7 +50,7 @@ DESCRIPTIONS = {
         "action": "replace / fill / flag / note", "flag": "flag put on the row",
         "evidence": "what the raw data show", "evidence_source": "file and channel the evidence comes from",
     },
-    "evidence_files": {"status": "ok / no_text / unsupported / error / withheld (holds credentials, not extracted)", "n_chars": "extracted characters"},
+    "evidence_files": {"status": "ok / transcribed (scan read from data/transcriptions/ by an AI model) / no_text / unsupported / error / withheld (holds credentials, not extracted)", "n_chars": "extracted characters"},
 }
 
 

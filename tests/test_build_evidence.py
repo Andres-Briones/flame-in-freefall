@@ -99,3 +99,53 @@ def test_text_from_a_shifted_font_is_shifted_back():
     assert unshift(plain) == plain
     table = "T1 1200 K; P 101.3 KPA; O2 21.0 %; N2 79.0 %; RUN 12 OF 40; CH4 0.5 SLPM"
     assert unshift(table) == table
+
+
+def _scan(tmp_path, monkeypatch, transcription=None):
+    from pypdf import PdfWriter
+
+    from fif.pipeline import build_evidence
+
+    pdf = tmp_path / "scan.pdf"
+    writer = PdfWriter()
+    for _ in range(3):
+        writer.add_blank_page(612, 792)
+    writer.write(pdf)
+    monkeypatch.setattr(build_evidence, "TRANSCRIPTIONS", tmp_path / "transcriptions")
+    if transcription is not None:
+        folder = tmp_path / "transcriptions" / "PSI-10"
+        folder.mkdir(parents=True)
+        (folder / "PSI-10_Raw Data_21301 test sheets.pdf.md").write_text(transcription)
+    return {"accession": "PSI-10", "category": "Raw Data", "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+            "extension": ".pdf", "local_path": str(pdf)}
+
+
+def test_scanned_pdf_without_transcription_stays_no_text(tmp_path, monkeypatch):
+    chunks, info = extract(_scan(tmp_path, monkeypatch))
+    assert info["status"] == "no_text"
+    assert not any(c["transcribed"] for c in chunks)
+
+
+def test_scanned_pdf_is_read_from_its_transcription(tmp_path, monkeypatch):
+    transcription = (
+        "<!-- transcribed from page images -->\n"
+        "## page 1\nTest 21301 M2: ignition at 12 s, flame blue.\n\n"
+        "## page 2\n[blank page]\n\n"
+        "## page 3\nContact Jane Roe at jane.roe@example.com for the logs.\n"
+    )
+    chunks, info = extract(_scan(tmp_path, monkeypatch, transcription))
+    assert info["status"] == "transcribed"
+    assert [c["locator"] for c in chunks] == ["p1", "p3"]
+    assert chunks[0]["text"] == "Test 21301 M2: ignition at 12 s, flame blue."
+    assert all(c["transcribed"] for c in chunks)
+    assert "jane.roe@example.com" not in chunks[1]["text"] and "[e-mail removed]" in chunks[1]["text"]
+
+
+def test_text_layer_chunks_are_not_marked_transcribed(tmp_path):
+    notes = tmp_path / "notes.txt"
+    notes.write_text("Flame ignited on the first attempt and burned blue for 40 s.")
+    row = {"accession": "PSI-10", "category": "Raw Data", "file_name": "notes.txt", "extension": ".txt",
+           "local_path": str(notes)}
+    chunks, info = extract(row)
+    assert info["status"] == "ok"
+    assert chunks and not any(c["transcribed"] for c in chunks)

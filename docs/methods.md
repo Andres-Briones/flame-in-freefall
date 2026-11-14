@@ -121,6 +121,12 @@ $$
   block). Postal addresses, other people's e-mails and phones, and private network addresses are replaced by
   `[address removed]`, `[e-mail removed]`, `[phone removed]`, `[ip removed]` (`fif/pipeline/redact.py`). One file
   that holds credentials is not extracted (`evidence_files.status = withheld`).
+- Scanned PDFs have no text layer (`evidence_files.status = no_text`). Where an AI model has transcribed the page
+  images (`data/transcriptions/<accession>/<file_name>.md`, one `## page N` section per PDF page), the evidence
+  builder reads that file instead: the status is `transcribed`, locators are the PDF pages (`p3`), and every chunk
+  has `evidence.transcribed = True`. The same redaction applies. This text is a machine reading, not the
+  document's own: `find_evidence` returns `transcribed` on each document passage and its source, adds a note when
+  any are present, and the search view shows an "AI reading of a scan" chip. Check numbers and names in the scan.
 - `timeseries_features` (1,075 recordings, PSI-10, 23, 39, 159, 98, 100; 24 of the PSI-39 ones are the
   investigators' reduced droplet data, `test_point` `FLEX-<id>-reduced`) needs no raw files. Its `test_id` is
   the `tests` id (`21088 M4`); `test_point` is the recording's name without the space (`21088M4`).

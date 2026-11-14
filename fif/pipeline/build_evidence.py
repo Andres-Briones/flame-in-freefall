@@ -1,5 +1,6 @@
 """`evidence` table: text extracted from downloaded PSI documents, chunked per locator,
-plus `evidence_files`: one row per processed file with its extraction status.
+plus `evidence_files`: one row per processed file with its extraction status. A scanned PDF with no text layer
+is read from its transcription in data/transcriptions/ when one exists; those chunks have `transcribed` = True.
 
 Run: uv run python -m fif.pipeline.build_evidence
 """
@@ -26,7 +27,10 @@ RAW_DATA_EXTENSIONS = {".pdf", ".docx", ".txt"}
 UNSUPPORTED = {".ppt", ".doc"}
 ZIP_TEXT_MEMBERS = {".txt", ".csv", ".tsv", ".xml", ".json", ".md"}
 TEST_REF = re.compile(r"(?<!\d)(\d{5}[A-Za-z]\d)(?!\d)")
-EVIDENCE_COLUMNS = ["accession", "category", "file_name", "local_path", "locator", "chunk", "text", "test_ref"]
+EVIDENCE_COLUMNS = ["accession", "category", "file_name", "local_path", "locator", "chunk", "text", "test_ref", "transcribed"]
+TRANSCRIPTIONS = psi.ROOT / "data" / "transcriptions"
+PAGE_HEADING = re.compile(r"^## page (\d+)[ \t]*$", re.M)
+BLANK_PAGE = "[blank page]"
 
 
 def in_scope(category, extension):
@@ -108,6 +112,15 @@ def read_pdf(path):
 
     reader = PdfReader(path)
     return [(f"p{i}", unshift(page.extract_text() or "")) for i, page in enumerate(reader.pages, 1)]
+
+
+def read_transcription(accession, file_name):
+    """Pages of an AI model's reading of a scanned PDF, as (locator, text) with the locators `read_pdf` gives."""
+    path = TRANSCRIPTIONS / accession / f"{file_name}.md"
+    if not path.exists():
+        return []
+    parts = PAGE_HEADING.split(path.read_text(encoding="utf-8"))
+    return [(f"p{n}", "" if body.strip() == BLANK_PAGE else body) for n, body in zip(parts[1::2], parts[2::2])]
 
 
 def _shape_text(shape):
@@ -256,17 +269,27 @@ def extract(row):
         locators = READERS[row["extension"]](psi.ROOT / row["local_path"])
     except Exception as e:
         return [], {**meta, "status": "error", "n_locators": 0, "n_chars": 0, "error": f"{type(e).__name__}: {e}"[:200]}
+    chunks = to_chunks(row, locators, transcribed=False)
+    n_chars = sum(len(c["text"]) for c in chunks)
+    status = file_status(row["extension"], locators, n_chars)
+    if status == "no_text" and row["extension"] == ".pdf":
+        pages = read_transcription(row["accession"], row["file_name"])
+        transcribed = to_chunks(row, pages, transcribed=True)
+        if transcribed:
+            locators, chunks, status = pages, transcribed, "transcribed"
+            n_chars = sum(len(c["text"]) for c in chunks)
+    return chunks, {**meta, "status": status, "n_locators": len(locators), "n_chars": n_chars, "error": None}
+
+
+def to_chunks(row, locators, transcribed):
     ref = test_ref(row["file_name"]) if row["category"] == "Raw Data" else None
-    chunks = [
-        {**meta, "local_path": row["local_path"], "locator": loc, "chunk": i, "text": redact(text, context=raw), "test_ref": ref}
+    keys = ("accession", "category", "file_name", "local_path")
+    return [
+        {**{k: row[k] for k in keys}, "locator": loc, "chunk": i, "text": redact(text, context=raw), "test_ref": ref,
+         "transcribed": transcribed}
         for loc, raw in locators
         for i, text in enumerate(chunk_text(raw))
     ]
-    for c in chunks:
-        del c["extension"]
-    n_chars = sum(len(c["text"]) for c in chunks)
-    status = file_status(row["extension"], locators, n_chars)
-    return chunks, {**meta, "status": status, "n_locators": len(locators), "n_chars": n_chars, "error": None}
 
 
 def selected_files():

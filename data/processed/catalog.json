@@ -2787,7 +2787,7 @@
   }
  },
  "evidence_files": {
-  "description": "Extraction status of each document (ok, no_text for scans, unsupported, error, withheld).",
+  "description": "Extraction status of each document (ok, transcribed, no_text for scans, unsupported, error, withheld).",
   "rows": 5521,
   "files": [
    "data/processed/evidence_files.parquet",
@@ -2866,7 +2866,7 @@
    "status": {
     "dtype": "str",
     "non_null": 5521,
-    "description": "ok / no_text / unsupported / error / withheld (holds credentials, not extracted)",
+    "description": "ok / transcribed (scan read from data/transcriptions/ by an AI model) / no_text / unsupported / error / withheld (holds credentials, not extracted)",
     "values": {
      "ok": 5320,
      "no_text": 185,

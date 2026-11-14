@@ -216,3 +216,26 @@ def test_filter_tests_by_the_outcome_read_from_bass_notes():
     limits = api.filter_tests(accession=["PSI-25", "PSI-26"], outcome_action="flow_reduced")["data"]["rows"]
     assert len(limits) == 33 and all(r["outcome_cause"] == "low_flow" for r in limits)
     assert sum(r["outcome_setting"] is not None for r in limits) == 25
+
+
+def test_find_evidence_marks_ai_transcribed_passages(monkeypatch):
+    import pandas as pd
+
+    evidence = pd.DataFrame([
+        {"accession": "PSI-10", "file_name": "scan.pdf", "locator": "p2", "chunk": 0,
+         "text": "soot flame quenched at low flow", "transcribed": True},
+        {"accession": "PSI-10", "file_name": "report.pdf", "locator": "p5", "chunk": 0,
+         "text": "soot flame quenched near the wall", "transcribed": False},
+    ])
+    real_table = api.table
+    monkeypatch.setattr(api, "table", lambda name: evidence if name == "evidence" else real_table(name))
+    api._index.cache_clear()
+    try:
+        result = api.find_evidence("soot flame quenched", k=5)
+    finally:
+        api._index.cache_clear()
+    marks = {d["file_name"]: d["transcribed"] for d in result["data"]["documents"]}
+    assert marks == {"scan.pdf": True, "report.pdf": False}
+    assert {s["file"]: s["transcribed"] for s in result["sources"] if "file" in s} == marks
+    assert any("AI model's reading of a scanned page" in n for n in result["notes"])
+    json.dumps(result, allow_nan=False)
