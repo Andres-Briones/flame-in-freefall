@@ -1,0 +1,26 @@
+# Dashboard demo server. Holds only this project's generated data; NASA PSI originals are linked or streamed from
+# PSI, and data/raw/ is a transient on-demand cache for timeseries (see demo/server.py).
+FROM python:3.12-slim
+
+COPY --from=ghcr.io/astral-sh/uv:0.12.10 /uv /usr/local/bin/uv
+ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_PROJECT_ENVIRONMENT=/opt/venv PATH="/opt/venv/bin:$PATH"
+
+WORKDIR /app
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev --group server
+
+COPY fif/ fif/
+COPY demo/ demo/
+COPY docs/ docs/
+COPY data/processed/ data/processed/
+COPY data/digest/ data/digest/
+COPY data/export/ data/export/
+RUN python demo/build_demo.py
+
+RUN useradd --system --uid 10001 --home-dir /app app \
+    && mkdir -p /app/data/raw && chown app /app/data/raw
+USER app
+
+ENV HOST=0.0.0.0 PORT=8000 FIF_RAW_ROOT=/app/data/raw FIF_RAW_CACHE_MB=300
+EXPOSE 8000
+CMD ["python", "demo/server.py"]

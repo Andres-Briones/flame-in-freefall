@@ -1,0 +1,1012 @@
+{
+  "accession": "PSI-47",
+  "identity": {
+    "acronym": "DAFT / DAFT-2",
+    "title": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+    "principal_investigators": [
+      "David L. Urban (NASA Glenn Research Center) - Principal Investigator",
+      "Gary A. Ruff (NASA Glenn Research Center) - co-PI on the fact sheet and final report (not a PSI contact)",
+      "Claire Fortenberry (NASA Glenn Research Center) - Project Scientist (PSI curation role)",
+      "George Mulholland (University of Maryland), Zeng-guang Yuan (National Center for Space Exploration Research), Jiann Yang and Thomas Cleary (NIST) - Co-Investigators per the 30-day report"
+    ],
+    "dates": {
+      "start": "2003-03-01",
+      "end": "2009-06-01"
+    },
+    "platform": "International Space Station (ISS), US Laboratory (Destiny) and Node 1; Increment 10 (2005) and Increment 13 (2006)",
+    "facility": "Crew-operated, handheld; set up in front of EXPRESS Racks 4 and 5 using EXPRESS laptop for data download",
+    "hardware": "TSI P-Trak condensation nuclei counter with a microgravity-modified (capillary-grooved) condenser tube and no mercury tilt switch; TSI DustTrak laser-photometer aerosol monitor as gravity-insensitive reference; 15 L Mylar sample bags; fill assembly using ISS gaseous nitrogen; Arizona Road Dust holders; DAFT impactor; HEPA zero filters",
+    "project_type": "Microgravity Investigation"
+  },
+  "one_line": "Before flying a smoke-measuring experiment, NASA checked on the Space Station that a commercial particle counter, which normally relies on gravity to recycle its alcohol, still counted particles correctly in weightlessness, and in doing so made the first measurement of how dusty the Station air is.",
+  "summary": "DAFT was a quick risk-reduction test for the Smoke Aerosol Measurement Experiment (SAME). SAME depended on a TSI P-Trak condensation particle counter, which uses gravity to return condensed isopropanol to its wick. NASA cut capillary grooves into the condenser and flew it with a gravity-insensitive TSI DustTrak photometer as reference. In February and March 2005 (Increment 10) the crew sampled cabin air at three locations and air dusted by separating Velcro. In August 2006 (Increment 13) three 15 L bags of Arizona Road Dust in nitrogen were sampled. The P-Trak ran with no clogging or errors. It read up to about 45,000 particles/cm3 for Velcro dust and 11,400-36,500 particles/cm3 (DustTrak 33-71 mg/m3) for the bags. Undisturbed ISS air averaged under 15 particles/cm3 and under 0.005 mg/m3, far cleaner than the Shuttle or offices. The orbital mass-per-count ratio was about 3.2 times the ground value (mean diameter 1.65 µm), consistent with large particles not settling. The modified counter was accepted for SAME, supporting spacecraft smoke-detector design.",
+  "question": {
+    "text": "Can a modified commercial condensation nuclei counter (the TSI P-Trak) count aerosol particles reliably in long-duration microgravity? It was to be the zeroth-moment (number concentration) instrument of the SAME smoke experiment. The P-Trak grows particles into countable droplets by condensing isopropanol on them, and its sloped condenser relies on gravity to drain excess alcohol back to the wick. Two failure modes were feared. Liquid alcohol might clog or obscure the nozzle, laser and optics. The internal flow in the optics chamber might over-count particles. The hypotheses were that the capillary-modified P-Trak would function normally in microgravity, and that the test aerosol, made and filtered as designed, would be within both instruments' ranges. The objective was to retire this risk to SAME by comparing the P-Trak against a DustTrak (insensitive to gravity) and a reference dust aerosol.",
+    "sources": [
+      {
+        "type": "psi_record",
+        "field": "objective"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+        "locator": "p2",
+        "quote": "Two potential failure modes were identified for the device: 1) that the particulate counting system, containing a nozzle, a laser diode and sensitive optics would clog or become obscured and 2) that the internal flow dynamics of the optics chamber of the device would cause an over counting of the particulates and give unreliable (high) readings."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+        "locator": "p1",
+        "quote": "was designed to ensure that a modiﬁed P-Trak®—a key component of the forthcoming NASA Smoke Aerosol Measurement Experiment (SAME)—will perform properly in the unique enviroment of micro- gravity."
+      }
+    ]
+  },
+  "physics": {
+    "text": "Smoke detectors respond to particle size. Ionisation detectors favour small particles; scattering detectors favour particles near and above the wavelength. Spacecraft detectors were designed from 1-g smoke data, but shuttle experiments suggested smoke particles are larger in microgravity, so SAME set out to measure moments of the smoke size distribution in orbit. A condensation particle counter makes particles as small as about 20 nm visible by drawing them through a warm, alcohol-saturated region and then a cooled condenser. The vapour becomes supersaturated and condenses on each particle, growing droplets of a few micrometres that are counted one by one with a laser. On Earth, excess liquid draining down the sloped condenser returns to the wick by gravity. Without gravity it could pool and flood the optics, so the condenser was given fine longitudinal grooves that move liquid by capillary (surface-tension) forces instead. A light-scattering photometer (DustTrak) measures mass concentration and does not depend on gravity. Dividing its mass reading by the number count gives an average particle mass, hence an equivalent diameter, which is a check on the counter. In microgravity, particles in a sample bag do not settle, so a bag aerosol keeps more of its large particles than on Earth.",
+    "sources": [
+      {
+        "type": "background",
+        "note": "Condensation particle counter principle, capillary flow in grooves and gravitational settling of aerosols are standard aerosol and fluids background."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+        "locator": "p1",
+        "quote": "The P-Trak® is a commercial device that counts ultra- ﬁne particles (it can recognize particles as small as 0.02 micrometer in diameter)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+        "locator": "p1",
+        "quote": "NASA scientists modiﬁed the unit’s condenser by forming microgrooves in its wall to increase the alcohol ﬂow back to the wick (see photo on right)."
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+        "quote": "The removal of buoyancy reduces the velocities in the high temperature zones in flames, increasing the residence time of smoke particles and consequently allowing longer growth time for the particles."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+        "locator": "p8",
+        "quote": "This observation makes sense since, on-orbit, without gravity to drive settling, more of the larger particles from the dust sample should remain entrained."
+      }
+    ],
+    "equations": [
+      {
+        "latex": "\\bar{m}_p = \\frac{C_m}{N}, \\qquad \\bar{D} = \\left(\\frac{6\\,\\bar{m}_p}{\\pi\\,\\rho_p}\\right)^{1/3}",
+        "meaning": "Average particle mass and equivalent diameter from the two instruments, as computed in the DAFT spreadsheets. $C_m$ is the DustTrak mass concentration (convert mg/m3 to g/cm3 by multiplying by 1e-9); $N$ is the P-Trak number concentration (particles/cm3); $\\bar{m}_p$ is the mean mass per particle (g); $\\rho_p$ is the assumed particle density (taken as 1 g/cm3, water); $\\bar{D}$ is the diameter of average mass (cm). For DAFT-3 bag 1 (voice-down averages 43.15 mg/m3 and 17,314 cm-3) this gives $\\bar{m}_p$ = 2.49e-12 g and $\\bar{D}$ = 1.68 µm. Valid only as a consistency check. The DustTrak is calibrated for a reference dust, the P-Trak undercounts particles above its range, and the true density of Arizona Road Dust is not 1 g/cm3.",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+            "sheet": "Voice Down Data Summary",
+            "row": "average / D (micon)",
+            "value": "average 17314.285714, 43.15; D (micon) 1.682129; density 1"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+            "locator": "p8",
+            "quote": "The average mass (assuming a material density of water) is 2.5 E-12 grams, with a range from 2 – 3 E-12."
+          }
+        ]
+      },
+      {
+        "latex": "\\frac{\\bar{D}_{0g}}{\\bar{D}_{1g}} = \\left(\\frac{(C_m/N)_{0g}}{(C_m/N)_{1g}}\\right)^{1/3}",
+        "meaning": "Ratio of mean particle diameters in orbit and on the ground, from the DustTrak/P-Trak ratios. $(C_m/N)$ is the mass-per-count ratio (mg/m3 per particle/cm3), labelled \"slope\" in the spreadsheet: 0.00249 from orbital voice-down data (bag 1 alone, not a fit; the mean of the three bags is about 0.00235, ratio 3.06, diameter ratio 1.45) and 0.00077 from the May 2003 ground tests, a ratio of 3.24, so $\\bar{D}_{0g}/\\bar{D}_{1g}$ = 1.48. Using the post-flight logged data (again bag 1) the value is 0.00265, ratio 3.44 and diameter ratio 1.51. Assumes the same particle density and DustTrak response in both cases.",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+            "sheet": "Voice Down Data Summary",
+            "row": "slop 0g / slop 1g / slop ratio / 0gD/1gD",
+            "value": "slop 0g 0.002492; slop 1g 0.000769; slop ratio 3.23981; 0gD/1gD 1.479698; Dtrack/Ptrak~D^3"
+          },
+          {
+            "type": "psi_table",
+            "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+            "sheet": "Logged Data Summary",
+            "row": "slop 0g / slop ratio / 0gD/1gD",
+            "value": "slop 0g 0.002648; slop 1g 0.000769; slop ratio 3.441844; 0gD/1gD 1.509838"
+          }
+        ]
+      },
+      {
+        "latex": "d^{*} = \\frac{4\\,\\sigma\\,v_m}{k_B\\,T\\,\\ln S}",
+        "meaning": "Kelvin equation: the smallest particle diameter $d^*$ (m) on which vapour condenses and grows at saturation ratio $S$. $\\sigma$ is the liquid surface tension (N/m, isopropanol); $v_m$ is the molecular volume of the liquid (m3); $k_B$ is Boltzmann's constant (J/K); $T$ is temperature (K). The P-Trak's cooled condenser sets $S$ so that particles down to about 0.02 µm are activated, which fixes its lower size limit. The equation is unaffected by gravity, but liquid management in the condenser is not. Applies to insoluble, wettable particles.",
+        "sources": [
+          {
+            "type": "background",
+            "note": "Kelvin equation for heterogeneous condensation in condensation particle counters."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+            "locator": "p1",
+            "quote": "The individual particles serve as “seeds” around which the alcohol condenses when cooled, forming droplets large enough to be detected and counted as they scatter light from a laser beam (see the schematic on the other side)."
+          }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "apparatus": {
+      "text": "The P-Trak is a handheld condensation nuclei counter for particles 0.02 to more than 1 µm, with a maximum count of 500,000 particles/cm3. Its pump draws sample through a saturator, where an alcohol-soaked wick supplies isopropanol vapour, then through a cooled condenser tube where droplets grow, and past a laser and photodetector. The flight unit's condenser had about 60 machined longitudinal grooves to return liquid alcohol to the evaporator by capillary action. Its mercury orientation switch was removed, and it was flight-hardened and covered in foil tape for flammability. The DustTrak, a laser (Mie) scattering photometer reading mass concentration in mg/m3 for 0.1-10 µm particles, was the reference; it was fitted with a 2.5 µm inlet impactor for the dust tests. DAFT-1 contained the modified P-Trak, alcohol wick and batteries; DAFT-2 the DustTrak and batteries. DAFT-3 was the aerosol system: a fill assembly that metered ISS gaseous nitrogen through a dust holder (0.25 g Arizona Road Dust) into 15 L Mylar bags, and a DAFT impactor to strip particles above about 2.5 µm (about 50% efficient). DAFT-4 was an unmodified, flight-hardened P-Trak. HEPA filters zeroed both instruments before and after each run.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "approach"
+        },
+        {
+          "type": "psi_record",
+          "field": "experimentHardware"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+          "locator": "p2",
+          "quote": "Particle size range (mm) 0.02 to > 1.0 0.10 to 10"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "several readings above the 30,000 pt/cc mark (P-Trak has a maximum count of 500,000 pt/cc)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p3",
+          "quote": "In conjunction with fluid physics researchers at GRC, a modification to the cooling tube was developed that effectively moves liquid alcohol from the tip of the tube back upstream to the evaporator due to capillary action."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "it is only about 50% efficient;"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "II.B List & Description of All Functional Objectives",
+          "value": "DAFT-1 Contained the modified P-Trak, an Alcohol Wick and batteries DAFT-2 Contained a DustTrak and batteries DAFT-3 Contained the sample generating and filtering equipment DAFT-4 Contained an unmodified (but flight hardened) P-Trak, another alcohol wick and more batteries"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Presentations_DAFT_Increment13SciSymposium_2006.ppt",
+          "sheet": "slide text (read directly; .ppt has no extracted text in evidence)",
+          "row": "P-Trak Modifications for DAFT",
+          "value": "60 grooves around the perimeter of the condenser tube"
+        }
+      ]
+    },
+    "fuels_and_samples": [
+      {
+        "name": "ISS cabin air (undisturbed), US Lab at EXPRESS Rack 4, Lab 1 near Port rack 6, and Node 1",
+        "phase": "aerosol",
+        "form": "ambient air drawn through a common sampling hose",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+            "locator": "p2",
+            "quote": "The tests were conducted in the US laboratory module Destiny in front of EXPRESS Rack 4; in the modules’s aft end and port side; and in Node 1."
+          }
+        ]
+      },
+      {
+        "name": "Lint/dust generated by repeatedly separating Velcro at the sampling inlet",
+        "phase": "aerosol",
+        "form": "ad hoc high-concentration aerosol",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+            "locator": "p2",
+            "quote": "the other test validated the instruments at high particulate levels by having an astronaut create airborne debris at the P- Trak® and DustTrak® inlets by separating pieces of Velcro®."
+          }
+        ]
+      },
+      {
+        "name": "Arizona Road Dust (ARD, Fine) dispersed in ISS gaseous nitrogen, 0.25 g per dust holder (about 25 mg reaching each bag)",
+        "phase": "aerosol",
+        "form": "polydisperse reference dust in 15 L Mylar bag, impactor-filtered",
+        "sources": [
+          {
+            "type": "psi_record",
+            "field": "approach"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+            "locator": "p8",
+            "quote": "Therefore, the net amount of sample delivered to the Sample Bags is about 25 milligrams."
+          },
+          {
+            "type": "psi_table",
+            "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+            "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+            "row": "III.B Completeness/Quality of Data",
+            "value": "The amount of the material that is enclosed in each Dust Holder is small (0.25 gram)."
+          }
+        ]
+      }
+    ],
+    "procedure": {
+      "text": "DAFT-1 and -2 reached the ISS on Progress 16P in December 2004. With no dust source yet on board, cabin air was sampled. Session 1 was on 22 Feb 2005 (GMT 053, Leroy Chiao, Increment 10), test point 1 at EXPRESS Rack 4, about 12 min. Session 2 was on 4 Mar 2005 (GMT 063) with three test points of about 9-13 min each: Velcro separation at the inlet, Lab 1 near Port rack 6, and Node 1 mid-cabin. Each run was: battery in, warm-up (P-Trak about 1 min), HEPA zero check (P-Trak below 10 particles/cm3, DustTrak -0.001 to 0.003 mg/m3), about 6 min of sampling through a shared hose, a second HEPA zero, then shutdown. Both units logged at 1 s, and video was used to synchronise clocks. In Increment 13 (Jeff Williams), the first ARD session (GMT 229, 2006) was aborted. The fill assembly's HEPA filter was found broken off and a laptop COM-port mismatch blocked downloads, so a cabin-air sample was taken instead. After a safety review the opening was covered with grey tape. On 21 Aug 2006 (GMT 233) three bags were filled with 4, 6 and 8 toggles of the dust fill valve and sampled through the DAFT impactor. Readings were called down every 30 s and recorded on the ground, because the electronic data from these runs did not arrive by downlink. DAFT-4 (unmodified P-Trak) was not run. Only 3 of up to 15 planned dust test points were made.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p4",
+          "quote": "The first test point for DAFT was performed on February 22, 2005 during Increment 10."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p5",
+          "quote": "On March 4, 2005, DAFT was given its second opportunity, which involved the performance of three additional test points."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Engineering Documents_Procedure.Sampling.pdf",
+          "locator": "p4",
+          "quote": "2.16 Verify particles per cubic centimeter (PT/CC) display: <10 (upper portion of screen). DustTrak 2.17 Verify milligrams per meters cubed (mg/m3) display: -0.001 to 0.003 (left prominent display)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Engineering Documents_Procedure.Sampling.pdf",
+          "locator": "p5",
+          "quote": "Sampling will take approximately six minutes to complete."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p7",
+          "quote": "Six toggles were used to introduce dust into Sample Bag #2. Eight toggles were used for Sample Bag #3."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p14",
+          "quote": "Due to the constraints listed above, DAFT-4, using the ‘unmodified’ P-Trak, was not performed."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Headers",
+          "row": "Start Date / Duration / Log Interval",
+          "value": "P-Trak tests 1-7 start 2005-02-22, 2005-03-04 (x3), 2006-08-17, 2006-08-21 (x2); durations 00:00:12:04, 00:00:12:04, 00:00:11:47, 00:00:07:35, 00:00:38:50, 00:00:19:47, 00:00:38:12; log interval 00:01:00"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "II.B List & Description of All Functional Objectives",
+          "value": "This was intended to be accomplished utilizing no more than 15 test points of aerosolized ARD in conjunction with a TSI DustTrak to provide a correlation to the readings obtained from the P-Trak."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Presentations_DAFT_Increment13SciSymposium_2006.ppt",
+          "sheet": "slide text (read directly; .ppt has no extracted text in evidence)",
+          "row": "DAFT-1 and -2 delivery",
+          "value": "DAFT-1 and -2 were delivered to the ISS in December 2004 aboard Russian Progress Flight 16P"
+        }
+      ]
+    }
+  },
+  "test_matrix": {
+    "varied": [
+      {
+        "parameter": "aerosol source",
+        "range": "undisturbed cabin air (3 points 2005, 1 point 2006), Velcro-generated debris (1 point), ARD/N2 bags (3 bags with 4, 6, 8 fill toggles)",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+            "locator": "p2",
+            "quote": "Three of the tests sampled undisturbed cabin air; the other test validated the instruments at high particulate levels"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+            "locator": "p7",
+            "quote": "Six toggles were used to introduce dust into Sample Bag #2. Eight toggles were used for Sample Bag #3."
+          }
+        ]
+      },
+      {
+        "parameter": "sampling location",
+        "range": "US Lab at EXPRESS Rack 4, Lab 1 near Port rack 6, Node 1 mid-cabin, EXPRESS Rack 5 (2006)",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Experimental table_DAFT.csv",
+            "locator": "all",
+            "quote": "Sampled separated Velcro and the air near Port rack 6 and in Node 1"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+            "locator": "p5",
+            "quote": "During the hardware was set up procedure in front of EXPRESS Rack 5"
+          }
+        ]
+      }
+    ],
+    "held_constant": [
+      {
+        "parameter": "instruments",
+        "value": "one modified P-Trak (S/N 8525-03031002) and one DustTrak (S/N 23757) throughout; the unmodified P-Trak was never operated",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+            "sheet": "Headers",
+            "row": "Serial Number",
+            "value": "DustTrak 23757 (tests 1-7); P-Trak-01 8525-03031002 (tests 1-7)"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+            "locator": "p14",
+            "quote": "Due to the constraints listed above, DAFT-4, using the ‘unmodified’ P-Trak, was not performed."
+          }
+        ]
+      },
+      {
+        "parameter": "atmosphere",
+        "value": "ISS cabin air (bags: ISS gaseous nitrogen carrier); pressure and O2 not recorded",
+        "sources": [
+          {
+            "type": "psi_record",
+            "field": "approach"
+          }
+        ]
+      }
+    ],
+    "n_tests": {
+      "value": 8,
+      "sources": [
+        {
+          "type": "table",
+          "table": "tests",
+          "note": "tests.csv has only 2 session rows (D1, D2). Count derived from the reports and the Retrieved Data Summary 'Headers' sheet: 4 test points in 2005 (cabin air x3, Velcro x1), 1 cabin-air point on 2006-08-17, 3 ARD bags on 2006-08-21. The instruments logged 7 files because bags 1-2 and bag 3 were logged as two runs."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Headers",
+          "row": "Test ID",
+          "value": "1, 2, 3, 4 (DAFT-1,2); 5, 6, 7 (DAFT-3)"
+        }
+      ]
+    }
+  },
+  "measurements": [
+    {
+      "quantity": "particle number concentration (particles/cm3), 1 s log",
+      "instrument": "modified TSI P-Trak condensation nuclei counter",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Raw Data_PTrk0002.txt",
+          "locator": "preview",
+          "quote": "Instrument: P-Trak SerialNumber: 3031002 TestID: 2"
+        }
+      ]
+    },
+    {
+      "quantity": "aerosol mass concentration (mg/m3), 1 s log",
+      "instrument": "TSI DustTrak laser photometer (2.5 µm inlet impactor for ARD tests)",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Raw Data_DTrk0002.txt",
+          "locator": "preview",
+          "quote": "Instrument: DustTrak SerialNumber: 23757 TestID: 2"
+        }
+      ]
+    },
+    {
+      "quantity": "30 s instrument readings voiced down by the crew during ARD bag tests",
+      "instrument": "crew call-down, manual transcription at GRC",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Analyzed Data_ISS_Daft_Aug21_0611zgy time hist.xls",
+          "locator": "sheet Data",
+          "quote": "The data were voice-downlinked and manually recorded by Bill Sheredy, David Urban and Amber Kauss in GRC TSC."
+        }
+      ]
+    },
+    {
+      "quantity": "mean mass per particle and equivalent diameter; count/mass slope versus ground",
+      "instrument": "ratio of DustTrak to P-Trak readings",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "locator": "sheet Logged Data Summary",
+          "quote": "Mass Per Particle (gram) | 2.64757221832582e-12"
+        }
+      ]
+    },
+    {
+      "quantity": "timing of HEPA on/off and hose connection",
+      "instrument": "near-real-time video synchronised to instrument logs",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Analyzed Data_flight data 063.xls",
+          "locator": "sheet TIMING",
+          "quote": "Seconds into the video | seconds after log"
+        }
+      ]
+    }
+  ],
+  "psi_data": {
+    "summary": "PSI-47 is small but nearly complete for its purpose, about 42 MB. It holds the instrument logs for the 2005 runs (six text files: P-Trak and DustTrak test IDs 2-4) and 12 Excel workbooks. Eight of the workbooks are copies of the same 'flight data 063' workbook. Others hold the 22 Feb 2005 data with a note, the voice-down and post-flight logged data for the three 2006 dust bags with mass-per-particle analysis, and a 'Retrieved Data Summary' with all seven logged runs from both instruments. There are also a 30-day post-flight report (PDF, text extracted) and final and 1-year reports (Word .doc, no extracted text, read directly). Presentations include a fact sheet PDF and two .ppt decks. Engineering documents comprise four crew procedures, a condenser-modification drawing (scanned, no text) and an image deck, plus one on-orbit photo. The time series are directly usable. The 2006 dust-bag time series exist only inside the Retrieved Data Summary workbook. The experimental table has only two rows and mislabels them (see gaps).",
+    "file_groups": [
+      {
+        "category": "Raw Data",
+        "what": "instrument log text files, P-Trak and DustTrak test IDs 2-4 (4 Mar 2005), 1 s resolution",
+        "formats": [
+          ".txt"
+        ],
+        "n_files": 6,
+        "size_gb": 1.9e-05,
+        "usable_now": true
+      },
+      {
+        "category": "Analyzed Data",
+        "what": "Excel workbooks: 2005 flight data with video timing (8 near-identical copies), GMT053 data, 2006 bag voice-down data and particle-size analysis, Retrieved Data Summary with all 7 logged runs",
+        "formats": [
+          ".xls"
+        ],
+        "n_files": 12,
+        "size_gb": 0.0035,
+        "usable_now": true
+      },
+      {
+        "category": "Reports",
+        "what": "30-day post-flight report (PDF), 1-year and final reports (Word)",
+        "formats": [
+          ".pdf",
+          ".doc"
+        ],
+        "n_files": 3,
+        "size_gb": 0.014,
+        "usable_now": true
+      },
+      {
+        "category": "Presentations",
+        "what": "DAFT fact sheet; Increment 13 science symposium deck (2006); ICES 2005 'Detection of Smoke from Microgravity Fires' deck",
+        "formats": [
+          ".pdf",
+          ".ppt"
+        ],
+        "n_files": 3,
+        "size_gb": 0.015,
+        "usable_now": true
+      },
+      {
+        "category": "Engineering Documents",
+        "what": "crew procedures (set-up, sampling, data transfer, restow), condenser tube modification drawing, hardware image deck",
+        "formats": [
+          ".pdf",
+          ".ppt"
+        ],
+        "n_files": 6,
+        "size_gb": 0.008,
+        "usable_now": true
+      },
+      {
+        "category": "Experimental table",
+        "what": "two 'session' rows (D1, D2)",
+        "formats": [
+          ".csv"
+        ],
+        "n_files": 1,
+        "size_gb": 5.2e-07,
+        "usable_now": true
+      },
+      {
+        "category": "Representative Image(s)",
+        "what": "DAFT on ISS photo",
+        "formats": [
+          ".jpg"
+        ],
+        "n_files": 1,
+        "size_gb": 0.0013,
+        "usable_now": true
+      },
+      {
+        "category": "metadata",
+        "what": "ISA-Tab investigation/study files (zip named after PSI-126)",
+        "formats": [
+          ".zip"
+        ],
+        "n_files": 1,
+        "size_gb": 8.5e-06,
+        "usable_now": true
+      }
+    ],
+    "tests_table_rows": 2
+  },
+  "findings": [
+    {
+      "claim": "The modified P-Trak worked in microgravity. In all sessions (2005 and 2006, runs of about 8-39 min) it showed no alcohol flooding, optics obscuration, nozzle clogging or error codes. Readings rose from zero into the middle of the range and returned to zero on HEPA zero checks. This was the main failure mode the condenser modification was meant to prevent.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "The data shows that the devices were able to operate in microgravity for an extended period of time with no apparent failure."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "The units gave readings from zero well up into the middle of their operational ranges"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p7",
+          "quote": "Both of the instrument’s count values went to zero when the HEPA filter was installed on the DAFT Impactor inlet, which is nominal."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Headers",
+          "row": "Duration (P-Trak-01)",
+          "value": "00:00:12:04, 00:00:12:04, 00:00:11:47, 00:00:07:35, 00:00:38:50, 00:00:19:47, 00:00:38:12"
+        }
+      ]
+    },
+    {
+      "claim": "ISS cabin air was exceptionally clean. Undisturbed US Lab and Node 1 air averaged fewer than 15 particles/cm3 (P-Trak) and under 0.005 mg/m3 (DustTrak) in three 2005 runs. For example, the 4 Mar 2005 Lab 1 / Port 6 run had a median of 1 particle/cm3 and a maximum of 10. The 30-day report calls this almost an order of magnitude below a typical laboratory (about 4,000-6,000 particles/cm3), but its own numbers put it roughly 300-fold or more lower, so the report's wording understates the gap. It is also below the roughly 0.050 mg/m3 measured on the Space Shuttle. It is attributed to HEPA filtration of ISS cabin air and the small crew of two. NASA describes this as the first measurement of ISS background particulate.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+          "locator": "p2",
+          "quote": "The three tests that sampled the undisturbed environment in the ISS showed very low levels of airborne particulates, averaging fewer than 0.005 mg/m3 from the DustTrak® and fewer than 15 particles/cm3 from the P-Trak® (these are typical readings at the baseline)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+          "locator": "p2",
+          "quote": "These numbers are dramatically lower than the values recorded in the Space Shuttle in an earlier experiment (~ .050 mg/m3)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p5",
+          "quote": "be seen in a typical laboratory environment ( ~ 4,000 – 6,"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p5",
+          "quote": "these readings are almost an order of magnitude below those that would normally"
+        },
+        {
+          "type": "table",
+          "table": "files",
+          "note": "Computed from PSI-47_Raw Data_PTrk0003.txt (707 points): median 1, max 10 particles/cm3; PTrk0004 (455 points): median 0, max 76"
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+          "quote": "A precursor experiment (DAFT: Dust Aerosol measurement Feasibility Test) flew recently on the ISS and provided the first measurement of the background smoke particulate levels on the ISS."
+        }
+      ]
+    },
+    {
+      "claim": "The P-Trak tracked a high-concentration aerosol (Velcro test, 4 Mar 2005). When the crew repeatedly separated Velcro at the inlet, it rose to several readings above 30,000 particles/cm3 (logged maximum 45,400) and fell back in a logical way. The DustTrak also responded but stayed below 10% of its range. These readings could not be tied quantitatively to individual Velcro separations.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "the observations that the unit’s readings increased and decreased in a logical fashion, were within the unit’s prescribed range and there were no observed anomalies serve to indicate that the unit was functioning normally."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "DustTrak also responded well to the Velcro dust, but did not reach readings above 10% of its overall capability."
+        },
+        {
+          "type": "table",
+          "table": "files",
+          "note": "Computed from PSI-47_Raw Data_PTrk0002.txt: 724 one-second points, maximum 45,400 particles/cm3"
+        }
+      ]
+    },
+    {
+      "claim": "The P-Trak and DustTrak both read the reference dust in range. For three ARD/N2 bags on 21 Aug 2006, voice-down averages were 17,314 particles/cm3 with 43.2 mg/m3 (bag 1, 4 toggles), 17,256 with 34.1 mg/m3 (bag 2, 6 toggles) and 24,350 with 63.2 mg/m3 (bag 3, 8 toggles). The P-Trak ranged from 11,400 to 36,500 and the DustTrak from 32.8 to 71 mg/m3. Data logged in the instruments and read after their return gave similar averages: 17,236/45.6, 16,589/33.8 and 26,578/62.7.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "locator": "sheet Logged Data Summary",
+          "quote": "average** | 17236.2660944206 | 45.63425925925927 | | 16589.36170212766 | 33.83766498740553 | | 26577.984084880638 | 62.650869080779884"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Voice Down Data Summary",
+          "row": "average",
+          "value": "17314.285714 | 43.15 | 17256.25 | 34.0875 | 24350 | 63.183333"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p11",
+          "quote": "average 17314.286 43.15 17256 34.088 24350 63.183"
+        }
+      ]
+    },
+    {
+      "claim": "The orbital count/mass ratio pointed to larger particles, not over-counting. In orbit the DustTrak/P-Trak ratio (mean mass per particle) was about 3.2 times the May 2003 ground value: the spreadsheet's \"slope\" 0.00249 against 0.00077 mg/m3 per particle/cm3. The 0.00249 is the ratio for bag 1 alone, not a fit across bags; the three bags give 0.00249, 0.00198 and 0.00259, and their mean (about 0.00235) gives a ratio of about 3.1. That implies mean particles about 1.45-1.5 times larger in diameter: average mass 2.5e-12 g (range 2-3e-12) and diameter 1.65 µm (range 1.56-1.70) at unit density. The investigators attribute this to large ARD particles staying suspended without settling, with the impactor removing only about 50% of them. Over-counting, the feared failure mode, would have shifted the ratio the other way.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "The data points are clustered to the left of the line (area), in a region where the count/mass ratio is lower than what was determined from ground testing."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "The calculated average diameter is 1.65 micron, ranging from 1.56 – 1.7 micron."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Voice Down Data Summary",
+          "row": "slop 0g / slop 1g / slop ratio / 0gD/1gD",
+          "value": "slop 0g 0.002492; slop 1g 0.000769; slop ratio 3.23981; 0gD/1gD 1.479698"
+        },
+        {
+          "type": "table",
+          "table": "files",
+          "note": "Computed from the bag averages in the Voice Down Data Summary sheet of PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls: 43.15/17,314, 34.09/17,256 and 63.18/24,350 give 0.00249, 0.00198 and 0.00259 mg/m3 per particle/cm3; mean 0.00235, ratio to 0.000769 about 3.06, cube root about 1.45"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p14",
+          "quote": "The count/mass ratio between the devices as measured on orbit, although well outside of the value determined on Earth, is both explainable and credible"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.B Completeness/Quality of Data",
+          "value": "If the data collected on-orbit had been to the lower right of the ground based testing line on the graph in Appendix D, it would have meant that more smaller particles would have been present; which is counter intuitive and would have indicated that the P-Trak may have been over counting the particles, one of the postulated failure modes."
+        }
+      ]
+    },
+    {
+      "claim": "On the ground the two instruments' readings were closely linear across many bag samples, and both fell together with time, consistent with gravitational settling ('rainout') in the bag. That 1-g baseline is what made the orbital ratio shift interpretable.",
+      "kind": "method",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "the relationship between the DustTrak and P-Trak readings is very linear, meaning that the overall composition of the various aerosols created on the ground, regardless of concentration, is very similar with regard to the relationship between the number and the sizes of the particles entrained."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.B Completeness/Quality of Data",
+          "value": "Overall, in the 1-g testing scenario, the particulate levels drop together with time, consistent with gravitational rainout of the particles in the sample bag."
+        }
+      ]
+    },
+    {
+      "claim": "P-Trak performance degraded during the third bag. The count/mass ratio fell as P-Trak run time increased, and the P-Trak beeped before bag 2, possibly a low-alcohol warning. The wick in use had been loaded over 3 years earlier because the spare could not be opened. Lab tests show large ARD particles can build up in the P-Trak optics chamber. The investigators consider build-up and low alcohol consistent with the data, but not proven. A 2007 NASA presentation states the data compared well for the first bag, before low-alcohol effects became significant.",
+      "kind": "limit",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "run time on the P-Trak is increasing, especially during Bag #3, the count/mass ratio is declining."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "Sample Build Up: Testing in the lab has shown that under some circumstances, especially when a significant amount of the larger ARD particles is sent to the devices, a buildup of particles can occur within the optics chamber of the P-Trak."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p7",
+          "quote": "It is unknown if this was an actual low alcohol warning, or merely an artifact of drawing the Sample Low enough to cause a vacuum within the P- Trak."
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+          "quote": "Data compared well for first run before effects of low alcohol became significant."
+        }
+      ]
+    },
+    {
+      "claim": "Operations were compromised by hardware and data-handling problems. These were a broken HEPA filter on the fill assembly (foam packing found deformed; the reports give no cause), an EXPRESS laptop COM-port naming mismatch, a spare alcohol-wick container that could not be opened, and a DustTrak that would not enter Log Mode 2. The 2006 electronic data were not received by downlink; only the 2005 files arrived. The 2006 data were recovered from instrument memory after return to Earth and closely matched the voice-down readings. Only 3 of up to 15 planned dust points were obtained, and the unmodified-P-Trak comparison (DAFT-4) was never run.",
+      "kind": "method",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p7",
+          "quote": "The devices were both queried for test points 5, 6 and 7, and no data was found."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.A List of Pre-, In-, Postflight Anomalies",
+          "value": "Damage to fill assembly observed; Error Communicating with P-Trak; Failure to open Alcohol Wick S/N 02; Failure of DustTrak to enter into Log Mode 2"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.F Final Investigation results",
+          "value": "However when the Ptrak and Dusttrak were returned, the data sets were intact in their memory. The stored data reproduced the read downs very closely giving confidence to the earlier conclusions."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p14",
+          "quote": "Due to the constraints listed above, DAFT-4, using the ‘unmodified’ P-Trak, was not performed."
+        }
+      ]
+    },
+    {
+      "claim": "Outcome: the project judged the risk retired. It accepted the capillary-modified P-Trak for SAME, since the SAME units were built to the same specification as the flight-tested P-Trak-01. The final report adds that SAME later flew in Increment 15 with flawless P-Trak operation over its whole test matrix.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.G Conclusion",
+          "value": "The DAFT experiment adequately demonstrated the reliability of the modified Ptrak as operated in low-gravity. This retired a significant risk that was being carried by the SAME project. It should be added at this point that SAME flew successfully in Increment 15 with flawless operation of the PTraks over the entire test matrix."
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+          "quote": "Demonstrated the functionality of the modified P-Trak in low-g"
+        }
+      ]
+    }
+  ],
+  "fire_safety": {
+    "pillars": [
+      "detection"
+    ],
+    "relevance": {
+      "text": "DAFT burned nothing. Its fire-safety value is in detection. It validated in orbit the condensation particle counter that SAME used to measure the number concentration of smoke from spacecraft materials, data needed to redesign smoke detectors that were sized from 1-g smoke. It also measured the ISS background particle level a detector must discriminate against: under 15 particles/cm3 and 0.005 mg/m3 in undisturbed air, with transient spikes above 30,000 particles/cm3 from ordinary crew activity (Velcro). The low background helps detection sensitivity, but nuisance sources can produce large short-lived signals. The finding that bag aerosols kept more large particles in microgravity illustrates why particle sizes differ from 1 g. Caveats: dust, not smoke, was sampled; only one counter unit; few test points; no comparison with the unmodified instrument.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+          "quote": "Owing to the absence of microgravity smoke data, all current spacecraft smoke detectors were designed based upon normal-g conditions."
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
+          "quote": "These background levels are critical to the design of future smoke detectors."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p8",
+          "quote": "several readings above the 30,000 pt/cc mark (P-Trak has a maximum count of 500,000 pt/cc)."
+        }
+      ]
+    },
+    "habitat_conditions": {
+      "text": "All sampling was in normal ISS cabin air, essentially the Earth sea-level atmosphere (20.9% O2, 101.3 kPa); O2 and pressure were not recorded by DAFT. No measurement was made at reduced pressure or enriched O2 such as the proposed Moon-habitat atmosphere (30% O2 or more at 70.3 kPa or less). Condensation-counter performance and particle behaviour at lower pressure were therefore not tested. Ambient pressure affects the instrument's flow and vapour supersaturation, but this was not evaluated.",
+      "sources": [
+        {
+          "type": "reference",
+          "id": "earth-sea-level"
+        },
+        {
+          "type": "reference",
+          "id": "moon-habitat"
+        },
+        {
+          "type": "background",
+          "note": "Pressure dependence of condensation particle counter operation is general instrument knowledge, not a DAFT result."
+        }
+      ]
+    },
+    "earth_benefits": {
+      "text": "The investigators' report states there are no tangible Earth benefits from DAFT. The PSI record suggests the microgravity-adapted counter could inform instruments for other difficult environments such as submarines or underwater laboratories.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p14",
+          "quote": "There are no tangible Earth benefits from this experiment."
+        },
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    {
+      "text": "Reference aerosol was polydisperse Arizona Road Dust, not the intended monodisperse aerosol (about 0.7 µm, about 50,000 particles/cm3). Its size distribution in the bag was not measured in orbit, so the P-Trak's absolute counting accuracy could only be inferred from a consistency check.",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.F Final Investigation results",
+          "value": "ideally, a mono-disperse aerosol with particulates about 0.7 microns in size would have been created in a density of about 50,000 pt/cc in order to provide a more quantifiable relationship between the readings from the DustTrak and P-Trak."
+        }
+      ]
+    },
+    {
+      "text": "Only three dust test points, one instrument unit, and no unmodified-P-Trak control (DAFT-4 not run). The P-Trak bag averages (about 17,000-27,000 particles/cm3) were below the 30,000-100,000 range the team considered optimal, although the DustTrak readings (33-71 mg/m3) were within its optimal 20-80 mg/m3.",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Reports_DAFT_FinalReport.doc",
+          "sheet": "Word document body text (read directly; .doc has no extracted text in evidence)",
+          "row": "III.F Final Investigation results",
+          "value": "The project team believes that the optimal reading range for the P-Trak is from 30,000 – 100,000 pt/cc (although the published range goes up to 500,000 pt/cc) and for the DustTrak; 20 – 80 mg/m3. Clearly, the latest data was within this range."
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Voice Down Data Summary",
+          "row": "average",
+          "value": "17314.285714 | 43.15 | 17256.25 | 34.0875 | 24350 | 63.183333"
+        }
+      ]
+    },
+    {
+      "text": "The 2005 cabin-air readings never exceeded 20% of either instrument's range, which the team itself called 'somewhat suspect' as a performance test.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "never crossed the 20% of the operational range threshold, leaving the results somewhat suspect."
+        }
+      ]
+    },
+    {
+      "text": "The alcohol supply was old (wick loaded over 3 years earlier), and particle build-up in the optics may have biased the bag 3 counts low.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+          "locator": "p13",
+          "quote": "Sample Build Up: Testing in the lab has shown that under some circumstances, especially when a significant amount of the larger ARD particles is sent to the devices, a buildup of particles can occur within the optics chamber of the P-Trak."
+        }
+      ]
+    },
+    {
+      "text": "The derived particle diameters assume unit density and a fixed DustTrak calibration. They are diameters of average mass, not measured size distributions.",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-47_Analyzed Data_DAFT Retrieved Data Summary.xls",
+          "sheet": "Logged Data Summary",
+          "row": "density",
+          "value": "density 1.0"
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "accession": "PSI-102",
+      "relation": "follow-on"
+    },
+    {
+      "accession": "PSI-101",
+      "relation": "follow-on"
+    }
+  ],
+  "open_questions": [
+    "Re-analyse the 1 s logged time series in the Retrieved Data Summary for all seven runs (rather than 30 s voice-down values). Quantify the count/mass ratio drift during each bag, to separate particle build-up or low alcohol from aerosol evolution in the bag.",
+    "Recompute equivalent diameters with the true ARD density (about 2.65 g/cm3) and the DustTrak's ARD calibration, and compare with the ARD Fine size distribution after the impactor.",
+    "Use the 2005 cabin-air logs (with video timing) as a background-noise reference for spacecraft smoke-detector false-alarm studies, alongside later ISS particulate surveys.",
+    "Compare DAFT background levels with the SAME and SAME-R (PSI-102, PSI-101) background measurements taken with the same instrument type."
+  ],
+  "dashboard_hooks": [
+    {
+      "view": "particle count and mass time series",
+      "fields": [
+        "test_id",
+        "time_s",
+        "ptrak_pt_cc",
+        "dusttrak_mg_m3",
+        "hepa_on_off"
+      ],
+      "why": "Raw 1 s logs are in PSI: shows zero checks, cabin background and the Velcro spike."
+    },
+    {
+      "view": "DustTrak versus P-Trak scatter, orbit versus ground",
+      "fields": [
+        "bag",
+        "ptrak_pt_cc",
+        "dusttrak_mg_m3",
+        "slope_0g",
+        "slope_1g"
+      ],
+      "why": "Visualises the 3.2x count/mass shift that was the key validation argument."
+    },
+    {
+      "view": "ISS background versus other environments",
+      "fields": [
+        "environment",
+        "mass_mg_m3",
+        "count_pt_cc"
+      ],
+      "why": "ISS (<0.005 mg/m3, <15 cm-3) versus Shuttle (about 0.05 mg/m3) and lab air (4,000-6,000 cm-3): detector background context."
+    }
+  ],
+  "gaps": [
+    "The experimental table is misleading. Its two rows are labelled as sessions D1 (GMT 54, 2005) and D2 (GMT 63, 2005) but describe hardware sets DAFT-1 (modified P-Trak) and DAFT-2 (DustTrak); both sessions used both instruments. Both rows say Arizona Road Dust was sampled, but the 2005 sessions sampled cabin air and Velcro debris. ARD was used only on 21 Aug 2006 (DAFT-3), which the table omits, as it omits the aborted 17 Aug 2006 session. tests.csv inherits this: 2 'condition_set' rows with fuel 'arizona road dust' and date 2005-02-23.",
+    "Date inconsistencies. GMT 54 in the table corresponds to 23 Feb 2005, but the reports, analysed-data file name (GMT053) and instrument logs give 22 Feb 2005. The 30-day report says the first 2006 session was 'August 18, 2006 (GMT 229)', but GMT 229 of 2006 is 17 Aug, matching the instrument log date. The time-history workbook has a garbled GMT entry '7:181:25' for bag 1 at 360 s. Bag 3 times are offset by one row between the 'time hist' and 'urban' workbooks.",
+    "The final report (.doc), 1-year report (.doc) and two .ppt decks have no extracted text in evidence.parquet. They were read by extracting text runs directly from the binary files and are cited as psi_table with sheet 'Word document body text' / 'slide text'. This is a workaround: these sources cannot be checked by the quote validator. The 1-year report is an earlier draft of the final report with near-identical content. The condenser-modification drawing (PDF, no text layer) was not read.",
+    "The 30-day report PDF text layer is column-scrambled (fragments missing first letters, for example 'avid Urban'). Only clean spans were quoted; figures 1-7 (time traces and ground correlation) exist only as images.",
+    "Eight Analyzed Data workbooks ('flight data 063' and its _DTrk/_PTrk/_TIMING variants) contain the same sheets and are redundant. Raw Data has text logs only for 2005 test IDs 2-4. Test ID 1 and the 2006 logs exist only inside the Excel workbooks.",
+    "The record's 'removed' list holds 185 legacy files (about 5 GB), 178 of them under 'Legacy/DAFT P-TRAK Experiment Data/DAFT/CVB/...' (bitmap images named stability_*.bmp). These look like misfiled data from another investigation (CVB, possibly the Constrained Vapor Bubble), not DAFT. They were not downloaded.",
+    "Source inconsistency: NTRS 20050215648 says the DAFT impactor removes the smallest particles, whereas the DAFT reports say it removes the larger ones (above about 2.5 µm). The reports were followed.",
+    "The fact sheet lists the particle size range in '(mm)'; values 0.02 to >1.0 and 0.10 to 10 are micrometres.",
+    "Investigator roles differ by source. PSI lists Urban (PI) and Fortenberry (Project Scientist); the fact sheet and final report list Urban and Ruff as PIs; the 30-day report lists Co-Is Mulholland, Yuan, Yang and Cleary. The record gives the acronym 'DAFT / DAFT-2', but DAFT-1 to -4 were hardware packages of one experiment.",
+    "Personal data: the fact sheet, NTRS 20050215648 and the 2007 presentation contain phone numbers and e-mail addresses; the time-history workbook names the ground staff who transcribed data. These were not copied beyond the verbatim measurement-provenance quote. No text addressed to an AI was found.",
+    "External sources used: NTRS 20050215648 (2004 Research & Technology article), NTRS 20070031686 (2007 ISDC presentation). The two DOI publications (AIAA 2005-341, SAE 2005-01-2930) were not read; their content overlaps the PSI presentation 'SmokeDetectionfromMicrogravityFires.ppt'. The DAFT web page cited in the documents (microgravity.grc.nasa.gov/combustion/daft/) was not tried, as it is a defunct GRC address."
+  ]
+}

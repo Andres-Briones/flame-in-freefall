@@ -1,0 +1,1790 @@
+{
+ "all": {
+  "data": {
+   "cells": [
+    {
+     "x_min": 0.12,
+     "x_max": 0.14,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 1,
+     "by_phase": {
+      "solid": 1
+     },
+     "accessions": [
+      "PSI-25"
+     ]
+    },
+    {
+     "x_min": 0.12,
+     "x_max": 0.14,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 17,
+     "by_phase": {
+      "liquid": 17
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 4,
+     "by_phase": {
+      "liquid": 4
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 17,
+     "by_phase": {
+      "solid": 17
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 27,
+     "by_phase": {
+      "liquid": 27
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 11,
+     "by_phase": {
+      "liquid": 11
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 65,
+     "by_phase": {
+      "solid": 65
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 47,
+     "by_phase": {
+      "liquid": 42,
+      "solid": 4,
+      "gas": 1
+     },
+     "accessions": [
+      "PSI-159",
+      "PSI-26",
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 300.0,
+     "y_max": 310.0,
+     "n": 17,
+     "by_phase": {
+      "liquid": 17
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 11,
+     "by_phase": {
+      "liquid": 11
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 25,
+     "by_phase": {
+      "solid": 25
+     },
+     "accessions": [
+      "PSI-25"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 40,
+     "by_phase": {
+      "liquid": 32,
+      "gas": 8
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 24,
+     "by_phase": {
+      "liquid": 19,
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-159",
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 43,
+     "by_phase": {
+      "liquid": 43
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 81,
+     "by_phase": {
+      "solid": 81
+     },
+     "accessions": [
+      "PSI-100",
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 333,
+     "by_phase": {
+      "solid": 130,
+      "liquid": 112,
+      "gas": 91
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-101",
+      "PSI-159",
+      "PSI-26",
+      "PSI-39",
+      "PSI-69",
+      "PSI-98",
+      "PSI-99"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 19,
+     "by_phase": {
+      "liquid": 19
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 200.0,
+     "y_max": 210.0,
+     "n": 32,
+     "by_phase": {
+      "liquid": 20,
+      "gas": 12
+     },
+     "accessions": [
+      "PSI-159",
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 270.0,
+     "y_max": 280.0,
+     "n": 4,
+     "by_phase": {
+      "liquid": 4
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 300.0,
+     "y_max": 310.0,
+     "n": 50,
+     "by_phase": {
+      "liquid": 38,
+      "gas": 12
+     },
+     "accessions": [
+      "PSI-159",
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 500.0,
+     "y_max": 510.0,
+     "n": 16,
+     "by_phase": {
+      "liquid": 16
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 19,
+     "by_phase": {
+      "liquid": 19
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 17,
+     "by_phase": {
+      "solid": 17
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 34,
+     "by_phase": {
+      "solid": 28,
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-159",
+      "PSI-26",
+      "PSI-99"
+     ]
+    },
+    {
+     "x_min": 0.24,
+     "x_max": 0.26,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 16,
+     "by_phase": {
+      "liquid": 16
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.24,
+     "x_max": 0.26,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 9,
+     "by_phase": {
+      "liquid": 9
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.28,
+     "x_max": 0.3,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 5,
+     "by_phase": {
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.3,
+     "x_max": 0.32,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 8,
+     "by_phase": {
+      "liquid": 8
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.3,
+     "x_max": 0.32,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 8,
+     "by_phase": {
+      "liquid": 7,
+      "gas": 1
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.32,
+     "x_max": 0.34,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 2,
+     "by_phase": {
+      "gas": 2
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 7,
+     "by_phase": {
+      "gas": 7
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 9,
+     "by_phase": {
+      "liquid": 9
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 13,
+     "by_phase": {
+      "gas": 13
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 31,
+     "by_phase": {
+      "gas": 31
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 2,
+     "by_phase": {
+      "gas": 2
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 130.0,
+     "y_max": 140.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 5,
+     "by_phase": {
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 9,
+     "by_phase": {
+      "gas": 9
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 65,
+     "by_phase": {
+      "gas": 65
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 42,
+     "by_phase": {
+      "gas": 42
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 130.0,
+     "y_max": 140.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 200.0,
+     "y_max": 210.0,
+     "n": 25,
+     "by_phase": {
+      "gas": 25
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.4,
+     "x_max": 0.42,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 20,
+     "by_phase": {
+      "gas": 20
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    }
+   ],
+   "references": [
+    {
+     "id": "earth-sea-level",
+     "x_o2": 0.209,
+     "pressure_kpa": 101.3,
+     "label": "Earth sea level / ISS cabin",
+     "n_tests_in_cell": 333,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21162 C4",
+      "fuel": "ethane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.20892942,
+      "pressure_kpa": 101.33000000000001
+     }
+    },
+    {
+     "id": "moon-habitat",
+     "x_o2": 0.3,
+     "pressure_kpa": 70.3,
+     "label": "Moon habitat (30% O2 or more, 10.2 psi or less)",
+     "n_tests_in_cell": 8,
+     "nearest_test": {
+      "accession": "PSI-69",
+      "test_id": "219F001",
+      "fuel": "methanol",
+      "fuel_phase": "liquid",
+      "x_o2_ambient": 0.3,
+      "pressure_kpa": 71.23414144736842
+     }
+    },
+    {
+     "id": "exploration-8psi",
+     "x_o2": 0.34,
+     "pressure_kpa": 56.5,
+     "label": "Exploration atmosphere (34% O2, 8.2 psi)",
+     "n_tests_in_cell": 7,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21153 F1",
+      "fuel": "ethane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.34080788,
+      "pressure_kpa": 50.665000000000006
+     }
+    },
+    {
+     "id": "spacesuit",
+     "x_o2": 1.0,
+     "pressure_kpa": 29.6,
+     "label": "Spacesuit (100% O2, 4.3 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21106A4",
+      "fuel": "butane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.3926,
+      "pressure_kpa": 50.665000000000006
+     }
+    }
+   ],
+   "n_on_map": 1254
+  },
+  "chart": {
+   "type": "heatmap",
+   "x": "x_o2_ambient",
+   "y": "pressure_kpa",
+   "value": "n",
+   "facet": "by_phase",
+   "overlay": "references"
+  },
+  "sources": [
+   {
+    "accession": "PSI-10",
+    "file": "data/raw/files/PSI-10/Experimental table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
+    "rows": 207
+   },
+   {
+    "accession": "PSI-100",
+    "file": "data/raw/files/PSI-100/Experimental table/PSI-100_Experimental table_SAFFIRE-3.csv",
+    "rows": 2
+   },
+   {
+    "accession": "PSI-101",
+    "file": "data/raw/files/PSI-101/Experimental table/PSI-101_Experimental table_SAME-R.csv",
+    "rows": 109
+   },
+   {
+    "accession": "PSI-159",
+    "file": "data/raw/files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+    "rows": 179
+   },
+   {
+    "accession": "PSI-25",
+    "file": "data/raw/files/PSI-25/Experimental table/PSI-25_Experimental table_BASS-II.csv",
+    "rows": 129
+   },
+   {
+    "accession": "PSI-26",
+    "file": "data/raw/files/PSI-26/Experimental table/PSI-26_Experimental table_BASS.csv",
+    "rows": 117
+   },
+   {
+    "accession": "PSI-39",
+    "file": "data/raw/files/PSI-39/Science Documents/PSI-39_Science Documents_CFI_DataSummary_Spreadsheet_Jan2021.xlsx",
+    "rows": 227
+   },
+   {
+    "accession": "PSI-69",
+    "file": "data/raw/files/PSI-69/Experimental table/PSI-69_Experimental table_FLEX.csv",
+    "rows": 273
+   },
+   {
+    "accession": "PSI-98",
+    "file": "data/raw/files/PSI-98/Experimental table/PSI-98_Experimental table_SAFFIRE-1.csv",
+    "rows": 2
+   },
+   {
+    "accession": "PSI-99",
+    "file": "data/raw/files/PSI-99/Experimental table/PSI-99_Experimental table_SAFFIRE-2.csv",
+    "rows": 9
+   }
+  ],
+  "notes": [
+   "1254 of 2059 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map.",
+   "250 rows had no per-test value and use their investigation's (narrow) stated range, e.g. cabin pressure about 1 atm."
+  ]
+ },
+ "solid": {
+  "data": {
+   "cells": [
+    {
+     "x_min": 0.12,
+     "x_max": 0.14,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 1,
+     "by_phase": {
+      "solid": 1
+     },
+     "accessions": [
+      "PSI-25"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 17,
+     "by_phase": {
+      "solid": 17
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 65,
+     "by_phase": {
+      "solid": 65
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 4,
+     "by_phase": {
+      "solid": 4
+     },
+     "accessions": [
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 25,
+     "by_phase": {
+      "solid": 25
+     },
+     "accessions": [
+      "PSI-25"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 81,
+     "by_phase": {
+      "solid": 81
+     },
+     "accessions": [
+      "PSI-100",
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 130,
+     "by_phase": {
+      "solid": 130
+     },
+     "accessions": [
+      "PSI-101",
+      "PSI-26",
+      "PSI-98",
+      "PSI-99"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 17,
+     "by_phase": {
+      "solid": 17
+     },
+     "accessions": [
+      "PSI-25",
+      "PSI-26"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 28,
+     "by_phase": {
+      "solid": 28
+     },
+     "accessions": [
+      "PSI-26",
+      "PSI-99"
+     ]
+    }
+   ],
+   "references": [
+    {
+     "id": "earth-sea-level",
+     "x_o2": 0.209,
+     "pressure_kpa": 101.3,
+     "label": "Earth sea level / ISS cabin",
+     "n_tests_in_cell": 130,
+     "nearest_test": {
+      "accession": "PSI-101",
+      "test_id": "51",
+      "fuel": "kapton",
+      "fuel_phase": "solid",
+      "x_o2_ambient": 0.21,
+      "pressure_kpa": 100.5
+     }
+    },
+    {
+     "id": "moon-habitat",
+     "x_o2": 0.3,
+     "pressure_kpa": 70.3,
+     "label": "Moon habitat (30% O2 or more, 10.2 psi or less)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-26",
+      "test_id": "2",
+      "fuel": "sibal fabric",
+      "fuel_phase": "solid",
+      "x_o2_ambient": 0.22721982701616103,
+      "pressure_kpa": 100.81037565789474
+     }
+    },
+    {
+     "id": "exploration-8psi",
+     "x_o2": 0.34,
+     "pressure_kpa": 56.5,
+     "label": "Exploration atmosphere (34% O2, 8.2 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-26",
+      "test_id": "2",
+      "fuel": "sibal fabric",
+      "fuel_phase": "solid",
+      "x_o2_ambient": 0.22721982701616103,
+      "pressure_kpa": 100.81037565789474
+     }
+    },
+    {
+     "id": "spacesuit",
+     "x_o2": 1.0,
+     "pressure_kpa": 29.6,
+     "label": "Spacesuit (100% O2, 4.3 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-26",
+      "test_id": "2",
+      "fuel": "sibal fabric",
+      "fuel_phase": "solid",
+      "x_o2_ambient": 0.22721982701616103,
+      "pressure_kpa": 100.81037565789474
+     }
+    }
+   ],
+   "n_on_map": 368
+  },
+  "chart": {
+   "type": "heatmap",
+   "x": "x_o2_ambient",
+   "y": "pressure_kpa",
+   "value": "n",
+   "facet": "by_phase",
+   "overlay": "references"
+  },
+  "sources": [
+   {
+    "accession": "PSI-100",
+    "file": "data/raw/files/PSI-100/Experimental table/PSI-100_Experimental table_SAFFIRE-3.csv",
+    "rows": 2
+   },
+   {
+    "accession": "PSI-101",
+    "file": "data/raw/files/PSI-101/Experimental table/PSI-101_Experimental table_SAME-R.csv",
+    "rows": 109
+   },
+   {
+    "accession": "PSI-25",
+    "file": "data/raw/files/PSI-25/Experimental table/PSI-25_Experimental table_BASS-II.csv",
+    "rows": 129
+   },
+   {
+    "accession": "PSI-26",
+    "file": "data/raw/files/PSI-26/Experimental table/PSI-26_Experimental table_BASS.csv",
+    "rows": 117
+   },
+   {
+    "accession": "PSI-98",
+    "file": "data/raw/files/PSI-98/Experimental table/PSI-98_Experimental table_SAFFIRE-1.csv",
+    "rows": 2
+   },
+   {
+    "accession": "PSI-99",
+    "file": "data/raw/files/PSI-99/Experimental table/PSI-99_Experimental table_SAFFIRE-2.csv",
+    "rows": 9
+   }
+  ],
+  "notes": [
+   "368 of 372 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map.",
+   "250 rows had no per-test value and use their investigation's (narrow) stated range, e.g. cabin pressure about 1 atm."
+  ]
+ },
+ "liquid": {
+  "data": {
+   "cells": [
+    {
+     "x_min": 0.12,
+     "x_max": 0.14,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 17,
+     "by_phase": {
+      "liquid": 17
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 4,
+     "by_phase": {
+      "liquid": 4
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.14,
+     "x_max": 0.16,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 27,
+     "by_phase": {
+      "liquid": 27
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 11,
+     "by_phase": {
+      "liquid": 11
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 42,
+     "by_phase": {
+      "liquid": 42
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 300.0,
+     "y_max": 310.0,
+     "n": 17,
+     "by_phase": {
+      "liquid": 17
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 11,
+     "by_phase": {
+      "liquid": 11
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 32,
+     "by_phase": {
+      "liquid": 32
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 19,
+     "by_phase": {
+      "liquid": 19
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 43,
+     "by_phase": {
+      "liquid": 43
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 112,
+     "by_phase": {
+      "liquid": 112
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 19,
+     "by_phase": {
+      "liquid": 19
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 200.0,
+     "y_max": 210.0,
+     "n": 20,
+     "by_phase": {
+      "liquid": 20
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 270.0,
+     "y_max": 280.0,
+     "n": 4,
+     "by_phase": {
+      "liquid": 4
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 300.0,
+     "y_max": 310.0,
+     "n": 38,
+     "by_phase": {
+      "liquid": 38
+     },
+     "accessions": [
+      "PSI-39",
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 500.0,
+     "y_max": 510.0,
+     "n": 16,
+     "by_phase": {
+      "liquid": 16
+     },
+     "accessions": [
+      "PSI-39"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 19,
+     "by_phase": {
+      "liquid": 19
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.24,
+     "x_max": 0.26,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 16,
+     "by_phase": {
+      "liquid": 16
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.24,
+     "x_max": 0.26,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 9,
+     "by_phase": {
+      "liquid": 9
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.3,
+     "x_max": 0.32,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 8,
+     "by_phase": {
+      "liquid": 8
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.3,
+     "x_max": 0.32,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 7,
+     "by_phase": {
+      "liquid": 7
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 70.0,
+     "y_max": 80.0,
+     "n": 9,
+     "by_phase": {
+      "liquid": 9
+     },
+     "accessions": [
+      "PSI-69"
+     ]
+    }
+   ],
+   "references": [
+    {
+     "id": "earth-sea-level",
+     "x_o2": 0.209,
+     "pressure_kpa": 101.3,
+     "label": "Earth sea level / ISS cabin",
+     "n_tests_in_cell": 112,
+     "nearest_test": {
+      "accession": "PSI-39",
+      "test_id": "1206",
+      "fuel": "n-dodecane",
+      "fuel_phase": "liquid",
+      "x_o2_ambient": 0.21,
+      "pressure_kpa": 101.325
+     }
+    },
+    {
+     "id": "moon-habitat",
+     "x_o2": 0.3,
+     "pressure_kpa": 70.3,
+     "label": "Moon habitat (30% O2 or more, 10.2 psi or less)",
+     "n_tests_in_cell": 8,
+     "nearest_test": {
+      "accession": "PSI-69",
+      "test_id": "219F001",
+      "fuel": "methanol",
+      "fuel_phase": "liquid",
+      "x_o2_ambient": 0.3,
+      "pressure_kpa": 71.23414144736842
+     }
+    },
+    {
+     "id": "exploration-8psi",
+     "x_o2": 0.34,
+     "pressure_kpa": 56.5,
+     "label": "Exploration atmosphere (34% O2, 8.2 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-69",
+      "test_id": "220R001",
+      "fuel": "methanol",
+      "fuel_phase": "liquid",
+      "x_o2_ambient": 0.34,
+      "pressure_kpa": 71.23414144736842
+     }
+    },
+    {
+     "id": "spacesuit",
+     "x_o2": 1.0,
+     "pressure_kpa": 29.6,
+     "label": "Spacesuit (100% O2, 4.3 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-69",
+      "test_id": "220R001",
+      "fuel": "methanol",
+      "fuel_phase": "liquid",
+      "x_o2_ambient": 0.34,
+      "pressure_kpa": 71.23414144736842
+     }
+    }
+   ],
+   "n_on_map": 500
+  },
+  "chart": {
+   "type": "heatmap",
+   "x": "x_o2_ambient",
+   "y": "pressure_kpa",
+   "value": "n",
+   "facet": "by_phase",
+   "overlay": "references"
+  },
+  "sources": [
+   {
+    "accession": "PSI-39",
+    "file": "data/raw/files/PSI-39/Science Documents/PSI-39_Science Documents_CFI_DataSummary_Spreadsheet_Jan2021.xlsx",
+    "rows": 227
+   },
+   {
+    "accession": "PSI-69",
+    "file": "data/raw/files/PSI-69/Experimental table/PSI-69_Experimental table_FLEX.csv",
+    "rows": 273
+   }
+  ],
+  "notes": [
+   "500 of 501 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map."
+  ]
+ },
+ "gas": {
+  "data": {
+   "cells": [
+    {
+     "x_min": 0.16,
+     "x_max": 0.18,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 1,
+     "by_phase": {
+      "gas": 1
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.18,
+     "x_max": 0.2,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 8,
+     "by_phase": {
+      "gas": 8
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 5,
+     "by_phase": {
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 91,
+     "by_phase": {
+      "gas": 91
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 200.0,
+     "y_max": 210.0,
+     "n": 12,
+     "by_phase": {
+      "gas": 12
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.2,
+     "x_max": 0.22,
+     "y_min": 300.0,
+     "y_max": 310.0,
+     "n": 12,
+     "by_phase": {
+      "gas": 12
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.22,
+     "x_max": 0.24,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.28,
+     "x_max": 0.3,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 5,
+     "by_phase": {
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.3,
+     "x_max": 0.32,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 1,
+     "by_phase": {
+      "gas": 1
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.32,
+     "x_max": 0.34,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 2,
+     "by_phase": {
+      "gas": 2
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 7,
+     "by_phase": {
+      "gas": 7
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.34,
+     "x_max": 0.36,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 13,
+     "by_phase": {
+      "gas": 13
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 31,
+     "by_phase": {
+      "gas": 31
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 2,
+     "by_phase": {
+      "gas": 2
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.36,
+     "x_max": 0.38,
+     "y_min": 130.0,
+     "y_max": 140.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 50.0,
+     "y_max": 60.0,
+     "n": 5,
+     "by_phase": {
+      "gas": 5
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 9,
+     "by_phase": {
+      "gas": 9
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 100.0,
+     "y_max": 110.0,
+     "n": 65,
+     "by_phase": {
+      "gas": 65
+     },
+     "accessions": [
+      "PSI-10",
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 120.0,
+     "y_max": 130.0,
+     "n": 42,
+     "by_phase": {
+      "gas": 42
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 130.0,
+     "y_max": 140.0,
+     "n": 6,
+     "by_phase": {
+      "gas": 6
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    },
+    {
+     "x_min": 0.38,
+     "x_max": 0.4,
+     "y_min": 200.0,
+     "y_max": 210.0,
+     "n": 25,
+     "by_phase": {
+      "gas": 25
+     },
+     "accessions": [
+      "PSI-159"
+     ]
+    },
+    {
+     "x_min": 0.4,
+     "x_max": 0.42,
+     "y_min": 90.0,
+     "y_max": 100.0,
+     "n": 20,
+     "by_phase": {
+      "gas": 20
+     },
+     "accessions": [
+      "PSI-10"
+     ]
+    }
+   ],
+   "references": [
+    {
+     "id": "earth-sea-level",
+     "x_o2": 0.209,
+     "pressure_kpa": 101.3,
+     "label": "Earth sea level / ISS cabin",
+     "n_tests_in_cell": 91,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21162 C4",
+      "fuel": "ethane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.20892942,
+      "pressure_kpa": 101.33000000000001
+     }
+    },
+    {
+     "id": "moon-habitat",
+     "x_o2": 0.3,
+     "pressure_kpa": 70.3,
+     "label": "Moon habitat (30% O2 or more, 10.2 psi or less)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21153 A5",
+      "fuel": "ethane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.332446428,
+      "pressure_kpa": 50.665000000000006
+     }
+    },
+    {
+     "id": "exploration-8psi",
+     "x_o2": 0.34,
+     "pressure_kpa": 56.5,
+     "label": "Exploration atmosphere (34% O2, 8.2 psi)",
+     "n_tests_in_cell": 7,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21153 F1",
+      "fuel": "ethane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.34080788,
+      "pressure_kpa": 50.665000000000006
+     }
+    },
+    {
+     "id": "spacesuit",
+     "x_o2": 1.0,
+     "pressure_kpa": 29.6,
+     "label": "Spacesuit (100% O2, 4.3 psi)",
+     "n_tests_in_cell": 0,
+     "nearest_test": {
+      "accession": "PSI-159",
+      "test_id": "21106A4",
+      "fuel": "butane",
+      "fuel_phase": "gas",
+      "x_o2_ambient": 0.3926,
+      "pressure_kpa": 50.665000000000006
+     }
+    }
+   ],
+   "n_on_map": 386
+  },
+  "chart": {
+   "type": "heatmap",
+   "x": "x_o2_ambient",
+   "y": "pressure_kpa",
+   "value": "n",
+   "facet": "by_phase",
+   "overlay": "references"
+  },
+  "sources": [
+   {
+    "accession": "PSI-10",
+    "file": "data/raw/files/PSI-10/Experimental table/PSI-10_Experimental table_Flame Design_Normal Flame.csv",
+    "rows": 207
+   },
+   {
+    "accession": "PSI-159",
+    "file": "data/raw/files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv",
+    "rows": 179
+   }
+  ],
+  "notes": [
+   "386 of 1186 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map."
+  ]
+ }
+}

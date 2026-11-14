@@ -1,0 +1,8 @@
+services:
+  demo:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      FIF_RAW_CACHE_MB: "300"
+    restart: unless-stopped

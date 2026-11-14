@@ -1,0 +1,769 @@
+{
+  "accession": "PSI-142",
+  "identity": {
+    "acronym": null,
+    "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+    "principal_investigators": [
+      "Yiguang Ju (Princeton University) - Principal Investigator",
+      "Christopher B. Reuter (Princeton University) - Co-Investigator (graduate student)",
+      "Daniel L. Dietrich (NASA Glenn Research Center) - Technical Point of Contact"
+    ],
+    "dates": {
+      "start": "2016-08-01",
+      "end": "2021-07-31"
+    },
+    "platform": "Ground laboratory (Princeton University) and numerical modelling; motivated by ISS FLEX droplet data (PSI-69)",
+    "facility": "Principal Investigator laboratory hardware (atmospheric counterflow burner with ozone generator)",
+    "hardware": "Counterflow burner with ozone-sensitised oxidiser; diagnostics: thermocouple thermometry, formaldehyde (CH2O) planar laser-induced fluorescence, chemiluminescence imaging",
+    "project_type": "Ground Investigation"
+  },
+  "one_line": "A ground study at Princeton, prompted by the surprising cool flames seen around burning droplets on the Space Station, used ozone-assisted counterflow burners and simulations to map when hot flames turn into low-temperature 'cool' and 'warm' flames and when those go out.",
+  "summary": "This PSI-funded ground investigation (2016-2021) set out to explain the cool flames observed after radiative extinction of n-alkane droplets in the ISS Flame Extinguishment Experiment (FLEX). Princeton researchers measured extinction limits of hot and cool non-premixed flames of n-heptane to n-tetradecane in an atmospheric counterflow burner, with and without ozone added to the oxidiser to boost low-temperature chemistry, probed multistage 'warm' flames with formaldehyde fluorescence, chemiluminescence and thermometry, and computed flame regimes for dimethyl ether up to elevated pressure. Without ozone, n-tetradecane cool flames survived at a fuel mass fraction near 0.32 at a stretch rate of about 83 1/s, versus about 0.55 for n-heptane at 78 1/s; ozone brought both to about 0.11 near 69 1/s. Hot-flame extinction occurred at fuel mass fractions of 0.04-0.055 for all fuels. Kinetic models overpredicted cool-flame extinction limits, and cool-flame reactivity scaled with oxygen mole fraction to a power of 1.5-2. Warm flames bridge cool and hot flames. For fire safety the work is fundamental: low-temperature flames can persist after visible flames go out.",
+  "question": {
+    "text": "Under what conditions does a hot diffusion flame turn into a cool flame (a self-sustaining flame at roughly 600-800 K driven by low-temperature peroxy chemistry), and how does the cool-flame flammable region relate to hot-flame flammability and extinction limits? FLEX on the ISS had shown n-alkane droplet flames that continued to burn as cool flames after the visible hot flame radiatively extinguished. The investigation hypothesised that oxygen concentration, dilution, pressure, diffusion and convective transport control the transition, and aimed to (1) build a flammability diagram of diffusional cool flames affected by radiation, diffusion and convection, (2) bridge hot- and cool-flame flammability and extinction limits, (3) verify phenomena seen in FLEX, (4) provide quantitative extinction, temperature and species data for kinetic and radiation model validation, and (5) extend the droplet results to a one-dimensional ground system (the counterflow flame).",
+    "sources": [
+      {
+        "type": "psi_record",
+        "field": "objective"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis"
+      },
+      {
+        "type": "external",
+        "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=1-Cover%20Page.docx",
+        "quote": "Discipline Area:Combustion Science (FLEX flame extinction experiments)",
+        "psi_status": "removed"
+      }
+    ]
+  },
+  "physics": {
+    "text": "Hydrocarbons such as n-alkanes have two oxidation routes. Above roughly 1000 K, hot-flame chemistry is driven by H + O2 chain branching. Between roughly 600 and 800 K, low-temperature chemistry adds O2 to fuel radicals (peroxy chemistry), producing ketohydroperoxides that branch into radicals; this chemistry weakens as temperature rises (the negative temperature coefficient region) and so can sustain only a weak, low-temperature 'cool flame'. In the counterflow geometry, fuel and oxidiser jets meet at a stagnation plane and the flame residence time is set by the strain (stretch) rate a: high a extinguishes a flame by shortening residence time, while very low a (long residence time, as in microgravity droplets) lets radiative loss grow until the flame extinguishes radiatively. Large, slowly burning microgravity droplet flames reach this radiative limit, which is how FLEX produced cool flames. Adding ozone to the oxidiser supplies O atoms at low temperature, initiating low-temperature chemistry so that cool flames can be stabilised in a 1 g laboratory burner. Between cool and hot flames there is a 'warm' flame with two spatially separate reaction zones: a cool-flame stage on the fuel side and an intermediate-temperature stage on the oxidiser side.",
+    "sources": [
+      {
+        "type": "background",
+        "note": "Two-stage hydrocarbon oxidation, negative temperature coefficient and strain/radiative extinction of counterflow flames are textbook combustion background."
+      },
+      {
+        "type": "external",
+        "url": "https://doi.org/10.1016/j.proci.2018.05.082",
+        "quote": "It is found that there are three different flame regimes—hot flame, warm flame, and cool flame—which exist, respectively, at high, intermediate, and low temperatures. Furthermore, they are governed by three distinct chain-branching reaction pathways."
+      },
+      {
+        "type": "external",
+        "url": "https://doi.org/10.1016/j.combustflame.2018.03.013",
+        "quote": "It was found that the warm diffusion flame has a two-staged double flame structure, with a leading diffusion cool flame stage on the fuel side and a second intermediate stage on the oxidizer side"
+      }
+    ],
+    "equations": [
+      {
+        "latex": "a = \\frac{2 V_O}{L}\\left(1 + \\frac{V_F \\sqrt{\\rho_F}}{V_O \\sqrt{\\rho_O}}\\right)",
+        "meaning": "Global strain (stretch) rate of a counterflow flame (Seshadri-Williams form): V_O, V_F are oxidiser and fuel nozzle exit velocities (m/s), rho_O, rho_F their densities (kg/m^3), L the nozzle separation (m); a in 1/s. Its inverse is the flow residence time. Valid for plug-flow nozzles with the flame away from the nozzles; the investigators' exact strain-rate definition was not confirmed from the deposited files.",
+        "sources": [
+          {
+            "type": "background",
+            "note": "Standard counterflow global strain-rate expression."
+          }
+        ]
+      },
+      {
+        "latex": "Da = \\frac{\\tau_{flow}}{\\tau_{chem}} \\sim \\frac{1}{a\\,\\tau_{chem}}, \\qquad \\text{extinction when } Da < Da_{ext}",
+        "meaning": "Damkohler number: ratio of flow residence time (about 1/a, s) to chemical time tau_chem (s). Stretch extinction occurs at high a when Da falls below a critical value. Cool flames, with slow peroxy chemistry (long tau_chem), extinguish at much lower a or need more fuel than hot flames, which is why the cool-flame limits in data IDs 1-2 sit at larger Yf than the hot-flame limits in data ID 3. At very low a, radiative loss rather than Da sets the (radiative) extinction limit.",
+        "sources": [
+          {
+            "type": "background",
+            "note": "Damkohler-number interpretation of flame extinction is textbook background."
+          }
+        ]
+      },
+      {
+        "latex": "\\omega_{LTC} \\propto X_{O_2}^{\\,n}, \\qquad n \\approx 1.5\\text{--}2",
+        "meaning": "Empirical scaling reported by the investigators: cool-flame low-temperature reactivity of n-alkanes (n-heptane to n-dodecane) is proportional to oxygen mole fraction X_O2 to the power n = 1.5-2, inferred from non-premixed cool-flame extinction limits at atmospheric pressure in a counterflow burner. omega_LTC is a generic low-temperature reaction rate (symbol introduced here).",
+        "sources": [
+          {
+            "type": "external",
+            "url": "https://collaborate.princeton.edu/en/publications/the-radical-index-and-the-effect-of-oxygen-concentration-on-non-p/",
+            "quote": "the cool flame low temperature reactivity of n-alkanes is proportional to nth power of oxygen mole fraction, [O 2 ] n , with n = 1.5–2."
+          }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "apparatus": {
+      "text": "An atmospheric-pressure counterflow burner at Princeton (fuel vaporised and diluted on one side, oxidiser on the other), with ozone generated and added to the oxidiser stream; the PI's earlier counterflow cool-flame burner paper (Combust. Flame 166, 2016) is given as the hardware reference. Diagnostics included thermocouple thermometry, CH2O planar laser-induced fluorescence and chemiluminescence imaging. A micro-jet was used to impinge vortices on premixed double flames. Numerical work used 1-D counterflow and freely propagating flame codes (with arc-length continuation to trace extinction turning points) with detailed and reduced kinetic models, and 2-D transient simulations for the vortex study.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "experimentHardwareLink"
+        },
+        {
+          "type": "psi_record",
+          "field": "approach"
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.06.161",
+          "quote": "Multistage diffusion flames of n-heptane, n-decane, and n-dodecane are established in an atmospheric counterflow burner. Planar laser-induced fluorescence, chemiluminescence, and thermometry are used to probe the structures of such flames."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.07.050",
+          "quote": "The transient interactions between double flames and impinging vortices are then investigated experimentally using a micro-jet and numerically in two-dimensional transient modeling."
+        }
+      ]
+    },
+    "fuels_and_samples": [
+      {
+        "name": "n-alkanes: n-heptane, n-octane, n-decane, n-dodecane, n-tetradecane",
+        "phase": "liquid",
+        "form": "prevaporised fuel stream in counterflow burner",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 2",
+            "row": "fuel block headers",
+            "value": "nC14, nC12, nC10, nC8, nC7"
+          },
+          {
+            "type": "external",
+            "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+            "quote": "The extinction limits of both hot diffusion flames and cool diffusion flames are measured at atmospheric pressure for a range of n-alkanes from n-heptane to n-tetradecane."
+          }
+        ]
+      },
+      {
+        "name": "dimethyl ether (DME), with O2/O3 oxidiser",
+        "phase": "gas",
+        "form": "premixed counterflow flame; also computed non-premixed flames at elevated pressure",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 4",
+            "row": "header",
+            "value": "a | ϕ_HFE | ϕ_CFE"
+          },
+          {
+            "type": "external",
+            "url": "https://doi.org/10.1016/j.proci.2018.07.050",
+            "quote": "the impact of a vortex on a premixed double flame, which consists of a coupled cool flame and a hot flame, is examined experimentally and computationally using dimethyl ether/oxygen/ozone mixtures."
+          }
+        ]
+      },
+      {
+        "name": "dibutyl ether (warm-flame study)",
+        "phase": "liquid",
+        "form": "prevaporised fuel stream in counterflow burner",
+        "sources": [
+          {
+            "type": "external",
+            "url": "https://doi.org/10.1016/j.combustflame.2018.03.013",
+            "quote": "In the case of dibutyl ether, the low-temperature peroxy branching pathway supports the first cool flame oxidation stage"
+          }
+        ]
+      }
+    ],
+    "procedure": {
+      "text": "For extinction limits, a flame (hot, or cool with ozone assistance) was established at a given fuel mass fraction Yf and the strain rate a was raised (or fuel reduced) until extinction; the extinction strain rates of cool flames (aCFE) and hot flames (aHFE) were recorded versus Yf for each n-alkane, with and without ozone, and compared with simulations using detailed and reduced kinetic models. Warm/multistage flames were mapped with CH2O PLIF, chemiluminescence and thermocouple profiles across the burner gap, at several fuel mole fractions and fuel inlet temperatures (550-650 K), with and without ozone. Computations explored (a) spark-assisted propagation of n-heptane/air, (b) 1-D freely propagating DME flames by arc-length continuation and (c) DME/air cool-flame regimes and burning limits up to 20 atm, under FLEX-like oxygen conditions. PSI's deposited data are the digitised figure data from eight published figures.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "approach"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Experimental table_Data Summary Table.csv",
+          "locator": "all",
+          "quote": "Data ID | Data Description | Reference Publication Link | Figure ID in Reference"
+        },
+        {
+          "type": "external",
+          "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx",
+          "quote": "Measured and computed maximum flame temperatures for varying fuel inlet temperatures. The lower range of measurements was limited by the onset of instability near extinction.",
+          "psi_status": "removed"
+        }
+      ]
+    }
+  },
+  "test_matrix": {
+    "varied": [
+      {
+        "parameter": "fuel mass fraction Yf at cool-flame extinction, no ozone (n-C7 to n-C14)",
+        "range": "0.23-0.56",
+        "unit": "mass fraction",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 2",
+            "row": "all fuel blocks (29 points)",
+            "value": "Yf min 0.2339 (nC14), max 0.5550 (nC7)"
+          }
+        ]
+      },
+      {
+        "parameter": "fuel mass fraction Yf at cool-flame extinction, with ozone",
+        "range": "0.044-0.22",
+        "unit": "mass fraction",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 1",
+            "row": "all fuel blocks (41 points)",
+            "value": "Yf min 0.0439 (nC7), max 0.2200 (nC7)"
+          }
+        ]
+      },
+      {
+        "parameter": "extinction strain rate (cool and hot non-premixed flames)",
+        "range": "43-130",
+        "unit": "1/s",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 1-3",
+            "row": "all fuel blocks",
+            "value": "aCFE 42.97-129.66 1/s; aHFE 45.04-123.12 1/s"
+          }
+        ]
+      },
+      {
+        "parameter": "premixed DME/O2/O3 strain rate (equivalence ratio at extinction recorded)",
+        "range": "59-107",
+        "unit": "1/s",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 4",
+            "row": "C4-C8",
+            "value": "a = 59, 71, 83, 95, 107"
+          }
+        ]
+      },
+      {
+        "parameter": "ozone in oxidiser (warm-flame profiles)",
+        "range": "0, 4.1, 4.5",
+        "unit": "mol%",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "locator": "sheet data ID 5",
+            "quote": "O3 = 0.0 mol.% | distance [cm] | PLIF signal [a.u.] | | O3 = 4.1 mol.%"
+          }
+        ]
+      },
+      {
+        "parameter": "fuel inlet temperature (n-dodecane multistage flames)",
+        "range": "550-650",
+        "unit": "K",
+        "sources": [
+          {
+            "type": "psi_table",
+            "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+            "sheet": "data ID 8",
+            "row": "block headers",
+            "value": "550,O3 / 550, no O3 / 600,O3 / 600, no O3"
+          },
+          {
+            "type": "external",
+            "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx",
+            "quote": "The flame temperature is shown for different fuel inlet temperatures (T1 = 550, 600, 650 K).",
+            "psi_status": "removed"
+          }
+        ]
+      },
+      {
+        "parameter": "pressure (computations, DME/air)",
+        "range": "1-20",
+        "unit": "atm (101-2026 kPa)",
+        "sources": [
+          {
+            "type": "psi_record",
+            "field": "approach"
+          }
+        ]
+      }
+    ],
+    "held_constant": [
+      {
+        "parameter": "experimental pressure",
+        "value": "atmospheric (~101 kPa)",
+        "sources": [
+          {
+            "type": "external",
+            "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+            "quote": "The extinction limits of both hot diffusion flames and cool diffusion flames are measured at atmospheric pressure"
+          }
+        ]
+      },
+      {
+        "parameter": "geometry",
+        "value": "1-D counterflow (stagnation-plane) flames",
+        "sources": [
+          {
+            "type": "psi_record",
+            "field": "objective"
+          }
+        ]
+      }
+    ],
+    "n_tests": {
+      "value": null,
+      "sources": []
+    }
+  },
+  "measurements": [
+    {
+      "quantity": "cool-flame and hot-flame extinction strain rate vs fuel mass fraction",
+      "instrument": "counterflow burner flow settings at observed extinction",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "locator": "sheet data ID 1",
+          "quote": "nC14 | Yf | aCFE (1/s)"
+        }
+      ]
+    },
+    {
+      "quantity": "premixed hot- and cool-flame extinction equivalence ratio vs strain rate",
+      "instrument": "counterflow burner",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "locator": "sheet data ID 4",
+          "quote": "a | ϕ_HFE | ϕ_CFE"
+        }
+      ]
+    },
+    {
+      "quantity": "formaldehyde (CH2O) profile across the flame",
+      "instrument": "planar laser-induced fluorescence",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Experimental table_Data Summary Table.csv",
+          "locator": "all",
+          "quote": "CH2O PLIF and thermometry"
+        }
+      ]
+    },
+    {
+      "quantity": "temperature profile and maximum flame temperature",
+      "instrument": "thermocouple",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "locator": "sheet data ID 8",
+          "quote": "Xf | T_max [K]"
+        }
+      ]
+    },
+    {
+      "quantity": "chemiluminescence profile (proxy for heat release)",
+      "instrument": "chemiluminescence imaging",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "locator": "sheet data ID 6",
+          "quote": "nC12 | distance[cm] | chemi. signal [counts]"
+        }
+      ]
+    }
+  ],
+  "psi_data": {
+    "summary": "PSI holds digitised data behind eight published figures, not raw measurements: one workbook (8 data sheets plus a summary sheet) and a 9-row summary table listing data ID, description, publication link and figure number. The data are directly usable for re-plotting or model validation (extinction curves for five n-alkanes with and without ozone, premixed DME extinction, PLIF/temperature/chemiluminescence profiles, peak temperatures). Two Word files (a proposal cover page and a 'PSI Data Description' document) are listed in the record's 'removed' legacy files; they were retrieved from the PSI download service for this record. A metadata zip (named after PSI-164) was not downloaded. The summary table and workbook disagree on which of data IDs 1 and 2 is with ozone, and two DOIs in the summary table are wrong (see gaps).",
+    "file_groups": [
+      {
+        "category": "Analyzed Data",
+        "what": "Workbook 'PSI data summary Princeton with links': summary sheet + sheets 'data ID 1'-'data ID 8' with digitised figure data",
+        "formats": [
+          ".xlsx"
+        ],
+        "n_files": 1,
+        "size_gb": 0.000735,
+        "usable_now": true
+      },
+      {
+        "category": "Experimental table",
+        "what": "Data summary table: 8 data IDs with description, publication DOI and figure number",
+        "formats": [
+          ".csv"
+        ],
+        "n_files": 1,
+        "size_gb": 7.3e-07,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data (legacy, listed as removed)",
+        "what": "Proposal cover page and 'PSI Data Description' document describing data IDs 1-8",
+        "formats": [
+          ".docx"
+        ],
+        "n_files": 2,
+        "size_gb": 0.00013,
+        "usable_now": true
+      },
+      {
+        "category": "metadata",
+        "what": "ISA-Tab metadata zip (file name refers to PSI-164); not downloaded",
+        "formats": [
+          ".zip"
+        ],
+        "n_files": 1,
+        "size_gb": 1.2e-05,
+        "usable_now": false
+      }
+    ],
+    "tests_table_rows": 8
+  },
+  "findings": [
+    {
+      "claim": "Without ozone, cool diffusion flames of larger n-alkanes survive at much leaner fuel loading: at similar strain rates, n-tetradecane cool flames extinguished at Yf = 0.322 (a = 82.6 1/s) whereas n-heptane needed Yf = 0.555 (a = 78.2 1/s); over the data set, cool-flame extinction Yf ranges 0.23-0.39 for n-C14 versus 0.50-0.56 for n-C7. The authors conclude the larger n-alkanes are substantially more reactive in the low-temperature regime.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 2",
+          "row": "E6 (nC14)",
+          "value": "0.3219421040011245 | 82.55"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 2",
+          "row": "E40 (nC7)",
+          "value": "0.5549646606738489 | 78.21"
+        },
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+          "quote": "It is observed that while these fuels behave similarly for hot flames, the larger n-alkanes are substantially more reactive in the low-temperature cool flame regime."
+        }
+      ]
+    },
+    {
+      "claim": "Ozone addition to the oxidiser strongly enhances cool flames and nearly removes the fuel-size effect: with ozone, cool flames extinguished at Yf = 0.107 (n-C14, a = 69.1 1/s) and 0.109 (n-C7, a = 68.5 1/s), and the whole ozone data set spans Yf 0.044-0.22, i.e. roughly a third (n-C14) to a fifth (n-C7) of the fuel loading needed without ozone.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 1",
+          "row": "E7 (nC14)",
+          "value": "0.10683053160956824 | 69.08"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 1",
+          "row": "E46 (nC7)",
+          "value": "0.10894178361726216 | 68.5"
+        },
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+          "quote": "Moreover, ozone addition strongly enhances the low-temperature chemistry to the point where the differences in fuel reactivity are nearly suppressed."
+        }
+      ]
+    },
+    {
+      "claim": "Hot diffusion flames of all five n-alkanes (C7-C14) extinguish at nearly the same, much lower fuel mass fraction, Yf = 0.041-0.055, over strain rates 45-123 1/s (e.g. n-C14 at Yf = 0.0546, a = 123.1 1/s; n-C7 at Yf = 0.0409, a = 47.4 1/s).",
+      "kind": "limit",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 3",
+          "row": "E8 (nC14)",
+          "value": "0.054633627761437806 | 123.11"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 3",
+          "row": "E33 (nC7)",
+          "value": "0.040901780267317396 | 47.4"
+        }
+      ]
+    },
+    {
+      "claim": "Kinetic models (detailed and reduced) predict hot-flame extinction adequately but scatter widely for cool flames and generally overpredict the measured cool-flame extinction limit for all n-alkanes; cool-flame heat release is spread over many reactions of large molecules, making reduced models hard to build. The same overprediction was found for DME/methane cool flames until the DME + OH H-abstraction rate, among others, was updated.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+          "quote": "Although the different kinetic models adequately predict the extinction limits of the hot flames, a large scatter is present in the model results for cool flames, and a general overprediction of the measured cool flame extinction limit is observed for all of the fuels studied."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.combustflame.2018.06.004",
+          "quote": "The measurements indicate that the original kinetic model significantly overpredicts the cool flame extinction limits."
+        }
+      ]
+    },
+    {
+      "claim": "Cool-flame reactivity of n-alkanes (n-heptane to n-dodecane) scales with oxygen mole fraction as [O2]^n with n = 1.5-2, a nonlinear dependence common to all fuels tested, attributed to multiple O2-addition steps and the negative temperature coefficient; a 'radical index' derived from the extinction data increases with carbon chain length.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/the-radical-index-and-the-effect-of-oxygen-concentration-on-non-p/",
+          "quote": "the cool flame low temperature reactivity of n-alkanes is proportional to nth power of oxygen mole fraction, [O 2 ] n , with n = 1.5–2."
+        }
+      ]
+    },
+    {
+      "claim": "A self-sustaining multistage 'warm' diffusion flame exists between cool and hot flames at atmospheric pressure: a cool-flame stage on the fuel side and an intermediate-temperature stage on the oxidiser side with comparable heat release. Ozone strengthens the second stage without changing the structure; in the deposited thermometry, peak temperature rose from 657 K without ozone to 788 K with 4.5 mol% ozone. Hot flames can extinguish directly into warm or cool flames, so the warm flame is a bridge between regimes.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.combustflame.2018.03.013",
+          "quote": "Finally, under certain conditions, a hot flame can extinguish directly into either a warm flame or a cool flame. Hence, the results suggest that the multistage warm flame can act as a critical bridge between cool flames and hot flames"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 5",
+          "row": "L14 (O3 = 0.0 mol.%, max) and P16 (O3 = 4.5 mol.%, max)",
+          "value": "657 K; 788 K"
+        }
+      ]
+    },
+    {
+      "claim": "Computed DME counterflow diffusion flames at elevated pressure and temperature, with and without radiation, give a general 'epsilon-shaped' (€) flammability diagram of hot, warm and cool flames versus oxygen mole fraction. A cool flame can form by radiative or stretch extinction of a hot flame, or stretch extinction of a warm flame. Raising oxidiser temperature, oxygen fraction or pressure shifts the cool-flame regime to higher stretch rates, and unlike hot flames cool flames cannot be scaled by pressure-weighted stretch rate.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.05.082",
+          "quote": "It is also shown that the cool flame can be formed in several different ways: by either radiative extinction or stretch extinction of a hot flame or by stretch extinction of a warm flame."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.05.082",
+          "quote": "Increases in oxidizer temperature, oxygen concentration, and pressure shift the cool flame regime to higher stretch rates and cause the warm flame to have two extinction limits."
+        },
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        }
+      ]
+    },
+    {
+      "claim": "Premixed DME/O2/O3 'double flames' (coupled cool and hot flame) occur near the hot-flame extinction limit. Measured hot-flame extinction equivalence ratio rose from 0.0876 to 0.1089 as strain rate rose from 59 to 107 1/s, and cool-flame extinction from 0.0664 (59 1/s) to 0.1149 (95 1/s). An impinging vortex can locally extinguish the near-limit hot flame, leaving a lone cool flame; extinguished holes, cool flames and double flames can coexist.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 4",
+          "row": "C4 and C8",
+          "value": "59 | 0.0876 | 0.0664 ; 107 | 0.1089"
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.07.050",
+          "quote": "It is seen that the vortex can extinguish the near-limit hot flame locally, resulting in a lone cool flame."
+        }
+      ]
+    },
+    {
+      "claim": "In n-dodecane multistage flames, ozone doping raised the maximum flame temperature and extended burning to leaner fuel: at fuel inlet 550 K and fuel mole fraction 0.1, T_max = 814 K with ozone versus 751 K without; with ozone the flame persisted down to Xf = 0.051 (767 K) versus 0.075 (731 K) without. Near extinction, multistage flame dynamics are controlled by the first (peroxy) stage.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-142_Analyzed Data_PSI data summary Princeton with links.xlsx",
+          "sheet": "data ID 8",
+          "row": "D5 (550,O3) and D11 (550, no O3)",
+          "value": "0.1 | 814 ; 0.1 | 751"
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.06.161",
+          "quote": "near extinction where the flame temperature is low, the multistage flame dynamics are controlled by the first oxidation stage, governed by peroxy chemistry"
+        }
+      ]
+    }
+  ],
+  "fire_safety": {
+    "pillars": [
+      "fundamental"
+    ],
+    "relevance": {
+      "text": "The work is fundamental combustion chemistry rather than spacecraft material testing. Its fire-safety relevance is that low-temperature (cool and warm) flames, which emit little visible light and run at roughly 600-800 K, can persist after a hot flame extinguishes radiatively, as FLEX showed for droplets in microgravity where long residence times favour them; the investigators note warm flames are particularly relevant to microgravity for this reason. A fire that appears extinguished may therefore still be oxidising fuel and producing partially oxidised species (e.g. formaldehyde). Transferability is limited: the fuels are n-alkanes, DME and dibutyl ether, not cabin materials; the laboratory flames are stabilised by ozone, which is absent in cabins; and most measurements are at 1 atm in 1 g counterflow geometry.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.combustflame.2018.03.013",
+          "quote": "The multistage warm diffusion flame is particularly relevant to combustion in highly turbulent flow fields and in microgravity environments, owing to the possibility of long residence times."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.pecs.2019.100787",
+          "quote": "the recent experimental and computational findings of cool flames in microchannels, microgravity droplet combustion, counterflow flames, and turbulent combustion environments are reviewed."
+        }
+      ]
+    },
+    "habitat_conditions": {
+      "text": "Experiments were at atmospheric pressure (comparable to the Earth sea-level reference, 101.3 kPa). Computations reached 20 atm and showed that higher oxygen fraction and pressure enlarge cool- and warm-flame regions, which qualitatively suggests enriched-oxygen atmospheres would not suppress cool flames; however, no tests were made at reduced-pressure, enriched-oxygen habitat conditions such as the 30%-or-more O2 at 70.3 kPa planned for the Moon, so no quantitative comparison is possible. The oxygen mole fractions of the extinction tests were not recorded in the deposited data.",
+      "sources": [
+        {
+          "type": "reference",
+          "id": "earth-sea-level"
+        },
+        {
+          "type": "reference",
+          "id": "moon-habitat"
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2018.05.082",
+          "quote": "Increases in oxidizer temperature, oxygen concentration, and pressure shift the cool flame regime to higher stretch rates"
+        }
+      ]
+    },
+    "earth_benefits": {
+      "text": "Cool and warm flames govern ignition timing, knock and emissions in advanced engines, many of which operate at 20-40 atm; the ozone-assisted counterflow cool flame is proposed as a platform for validating low-temperature chemical kinetic models of fuels.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        },
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+          "quote": "The results of this study suggest that the cool flame platform can provide crucial validation of the coupling between chemistry, transport, and heat release in flames at low temperatures."
+        }
+      ]
+    }
+  },
+  "limitations": [
+    {
+      "text": "PSI holds only digitised figure data; raw images, PLIF frames, flow-rate settings, oxidiser composition and uncertainties are not deposited, so the extinction curves cannot be re-reduced or re-expressed in other variables (e.g. oxygen mole fraction).",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx",
+          "quote": "For further detailed information regarding the experimental and/or computational approaches, please refer to the relevant peer-reviewed journal publications.",
+          "psi_status": "removed"
+        }
+      ]
+    },
+    {
+      "text": "Laboratory cool flames are ozone-assisted and in 1 g; FLEX microgravity cool flames had no ozone. The connection to FLEX is by analogy (radiative extinction at long residence time) rather than by direct comparison of measured quantities in the deposited data.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "objective"
+        },
+        {
+          "type": "psi_record",
+          "field": "approach"
+        }
+      ]
+    },
+    {
+      "text": "The elevated-pressure regime maps (up to 20 atm) are computational only, for DME, and depend on kinetic models that the same investigation showed overpredict cool-flame extinction limits.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "approach"
+        },
+        {
+          "type": "external",
+          "url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+          "quote": "a general overprediction of the measured cool flame extinction limit is observed for all of the fuels studied."
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "accession": "PSI-69",
+      "relation": "ground re-analysis"
+    }
+  ],
+  "open_questions": [
+    "Fit the deposited extinction curves (data IDs 1-3) with a Damkohler-number scaling to give one reactivity parameter per fuel, with and without ozone, and compare with the [O2]^n scaling.",
+    "Place the FLEX cool-flame extinction conditions (droplet diameter, oxygen, pressure from PSI-69) on the counterflow flammability diagram via an equivalent strain rate to test the claimed correspondence quantitatively.",
+    "Measure cool-flame extinction at reduced pressure and enriched oxygen (habitat-like atmospheres) without ozone, which the deposited data do not cover."
+  ],
+  "dashboard_hooks": [
+    {
+      "view": "cool vs hot flame extinction curves",
+      "fields": [
+        "fuel",
+        "Yf",
+        "a_ext_1_s",
+        "regime (cool/hot)",
+        "ozone (yes/no)"
+      ],
+      "why": "Data IDs 1-3 give 95 points across five n-alkanes; shows the large gap between cool- and hot-flame limits and the ozone effect."
+    },
+    {
+      "view": "premixed double-flame limits",
+      "fields": [
+        "a_1_s",
+        "phi_HFE",
+        "phi_CFE"
+      ],
+      "why": "Data ID 4: hot and cool extinction curves cross near a = 90 1/s."
+    },
+    {
+      "view": "multistage flame profiles",
+      "fields": [
+        "distance_cm",
+        "CH2O_PLIF",
+        "temperature_K",
+        "chemiluminescence",
+        "ozone_mol_pct"
+      ],
+      "why": "Data IDs 5-7 show the two-stage warm-flame structure."
+    }
+  ],
+  "gaps": [
+    "Possible copy or digitisation artefact in the workbook: the same Yf value, 0.046868483248794515, appears in sheet 'data ID 1' (n-C12, a = 44.53 1/s, Excel row 19) and in sheet 'data ID 3' (n-C12, a = 45.04 1/s, Excel row 13). Kept as deposited; no claimed number depends on it.",
+    "Data ID labels conflict: the workbook's 'data summary' sheet labels ID 1 'no ozone' and ID 2 'with ozone', while the CSV summary table and the 'PSI Data Description' docx say ID 1 is with ozone (Fig. 4) and ID 2 without (Fig. 5). The data support the CSV/docx (ID 1 extinction Yf 0.04-0.22, ID 2 0.23-0.56; ozone lowers the needed fuel), and this record follows the CSV/docx.",
+    "Wrong DOIs in the CSV summary table: IDs 7 and 8 link to 10.1016/j.proci.2018.06.162 and .163, which resolve (OpenAlex) to unrelated papers on Cu2O chemical looping and pulverised-coal oxy-fuel flames. The docx and workbook give O.R. Yehia et al., Proc. Combust. Inst. 37 (2019) 1717-1724, i.e. 10.1016/j.proci.2018.06.161, which is ID 6's paper.",
+    "CSV data ID 3 is described as 'CFE and HFE Predicted vs Measured' but the workbook sheet contains only measured hot-flame extinction points (aHFE vs Yf); the model curves are not deposited.",
+    "The fuel for data ID 5 (CH2O PLIF and thermometry, Yehia et al. 2018) is not stated in the deposited files; the paper abstract mentions dibutyl ether. Data ID 6 nC10/nC7 column order differs from its header in the workbook (columns appear shifted).",
+    "The two .docx files are listed only under the record's 'removed' legacy files and are not in files.csv or evidence.parquet; they were downloaded from psi.nasa.gov/geode-py/ws/studies/PSI-142/download and cited as external. '1-Cover Page.docx' contains personal phone numbers and contact details of the investigators and a university administrator; these were not copied.",
+    "The metadata zip ('PSI-142_metadata_PSI-164_Quantitative Studies.zip') is named after PSI-164 and was not downloaded.",
+    "Journal abstracts were read for Combust. Flame 179 (2017), 195 (2018), 196 (2018), 231 (2021), Proc. Combust. Inst. 37 (three papers) and the two reviews, via Princeton's research portal and Semantic Scholar; full texts (ScienceDirect) returned HTTP 403, so figure-level details (oxidiser O2 fractions, ozone levels for IDs 1-2, uncertainties) were not available. Abstracts for Combust. Flame 178 (2017) and 166 (2016) were not found.",
+    "No microgravity tests were done in this investigation; the number of laboratory runs is not reported, so n_tests is null.",
+    "The record's 'approach' mentions spark-assisted n-heptane/air propagation computations; no deposited data or abstract read here reports their results."
+  ]
+}

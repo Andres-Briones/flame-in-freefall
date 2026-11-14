@@ -1,0 +1,239 @@
+# PSI-22: ACME E-FIELD Flames (Advanced Combustion via Microgravity Experiments - Electric-Field Effects on Laminar Diffusion Flames)
+
+Small methane and ethylene flames on the Space Station were placed in a strong electric field between the burner and a metal mesh; the field drags the flame's natural ions and the gas around them, creating an adjustable 'ion wind' that can reshape, compact, de-soot or stabilise the flame with no buoyancy present.
+
+Investigators: Derek Dunn-Rankin (University of California, Irvine) - Principal Investigator; Yu-Chien (Alice) Chien (University of California, Irvine) - listed in PSI as Technical Point of Contact; co-investigator on NASA slides; Dennis P. Stocker (NASA Glenn Research Center) - Project Scientist; Sunny Karnani - Co-Investigator (NASA ACME publication list; Felix J. Weinberg and Zeng-Guang Yuan listed as former Co-Is)
+
+## At a glance
+
+| | |
+|---|---|
+| Platform | International Space Station (ISS) |
+| Facility | Combustion Integrated Rack (CIR) |
+| Dates | 2016-11-18 to 2020-11-17 |
+| Fuels and samples | methane; methane, 40% in N2 bottle; ethylene; ethylene, 30% in N2 bottle |
+| Varied | applied voltage (field strength), ramped within a test: 0 to 10 kV magnitude (mesh at ~35 or ~50 mm; mean field up to ~2-3 kV/cm) kV<br>mesh polarity relative to burner: negative (10 days), positive (10 days)<br>burner: coflow burner (round 1, 11 days), gas-jet burner (round 2, 9 days)<br>fuel: methane (11 days, 123 flames), ethylene (9 days, 96 flames)<br>fuel mole fraction in N2: CH4: 0.40, 0.70, 1.00; C2H4: 0.25, 0.30, 0.50, 0.80, 1.00 mole (volume) fraction<br>fuel flow rate and coflow velocity: values not in PSI; example coflow case: fuel 15 or 19 cm/s, coflow air 3.1 cm/s; some tests with no coflow cm/s |
+| Number of tests | 219 |
+| Fire-safety pillars | fundamental |
+
+## Question
+
+How does an applied DC electric field act on a laminar non-premixed (diffusion) flame once buoyancy is removed? Flames contain a small population of chemi-ions; a field drives them through the gas, and by collisions they drag neutral gas along (the ion wind). On Earth this ion-driven flow is entangled with buoyant convection, which acts in a similar way, so the two are hard to separate. The stated objectives were to (1) relate applied voltage to chemi-ion current (the voltage-current characteristic), (2) analyse the dynamic response of flames to changes in the field, (3) evaluate soot formation, and (4) characterise stabilised near-limit lifted flames. The hypothesis was that fields in microgravity would allow precise manipulation of flame stability, soot and combustion dynamics through ion-driven convection and chemi-ionization. The motivation stated by NASA and the PSI record is terrestrial (cleaner, leaner, more efficient combustion); the record says the work does not serve space applications, although it might aid space-based combustors such as waste processors.
+
+## Summary
+
+E-FIELD Flames studied how a DC electric field changes small laminar diffusion flames when buoyancy is absent. In the ACME insert of the Combustion Integrated Rack on the ISS, up to 10 kV of either polarity was applied between the burner and a copper mesh about 35-50 mm downstream, while the ion current, flame images, chemiluminescence and radiation were recorded. Nitrogen-diluted methane (40-100%) and ethylene (25-100%) flames were burned on 20 test days between March and November 2018, on a coflow burner (11 days) and a gas-jet burner (9 days), 219 flames. In microgravity the ion current versus voltage curve shows a distinct peak at saturation, where the flame is most compact, and then falls, unlike in 1 g. Fields could suppress soot, stabilise highly diluted flames with very weak fields, and produced corona and arcs at high strength. A drop-tower precursor showed an electric field alone can make microgravity flames resemble 1 g flames; this ion-wind body force is the basis for describing E-FIELD as mimicking partial gravity, but no calibrated partial-gravity tests were reported. Fire-safety relevance is indirect.
+
+## Physics
+
+Hydrocarbon flames are weak plasmas. Chemi-ionization in the reaction zone (chiefly CH + O -> CHO$^+$ + e$^-$, followed by fast proton transfer that makes H$_3$O$^+$ the dominant positive ion) produces ions and electrons at a rate set by the flame chemistry, but their number density is many orders of magnitude below that of the neutral gas. When a voltage is applied between the burner and a downstream mesh, positive ions drift toward the negative electrode and electrons (which soon attach to form negative ions) toward the positive one. Outside the thin reaction zone each electrode gap carries charge of one sign only. Ions drift at $v = \mu E$ (mobility $\mu$ of order $10^{-4}$ m$^2$ V$^{-1}$ s$^{-1}$), colliding constantly with neutrals, so their momentum is handed to the gas: the net force per unit volume on the gas is the electrohydrodynamic (EHD) body force $f = \rho_q E = j/\mu$. This 'ion wind' is a body force like buoyancy, $(\rho_\infty-\rho) g$, and the analogy is the reason E-FIELD is described as able to mimic gravity: a field that drives positive ions downstream pushes hot gas away from the burner much as buoyancy does on Earth, and its strength can be dialled with the voltage. Equating the two forces defines an equivalent gravity $g_{eq} = j/[\mu(\rho_\infty-\rho)]$. In 1 g the field can cancel buoyancy locally (the 'microbuoyant' condition found at ion-current saturation); in microgravity it can add a controllable convection. Illustrative estimate (not an ISS measurement): air at 300 K versus ~1800 K combustion products at 1 atm gives $\rho_\infty-\rho \approx 1.0$ kg/m$^3$, so buoyancy is ~10 N/m$^3$ at Earth gravity, ~3.6 N/m$^3$ at Mars (3.71 m/s$^2$) and ~1.6 N/m$^3$ at Moon gravity (1.62 m/s$^2$). With $\mu \approx 2\times10^{-4}$ m$^2$/(V s), the current densities needed are only ~0.2, ~0.07 and ~0.03 $\mu$A/cm$^2$; ground measurements of EHD body force in a coflow flame were 200-400 N/m$^3$, i.e. 20-40 times 1 g buoyancy. The total ion supply caps the force: once every ion produced is collected (saturation current $I_{sat}$), extra voltage cannot raise $j$. Why this is only an analogue and not true partial gravity: (1) buoyancy acts on every parcel in proportion to its density deficit, everywhere in the flow; the EHD force acts only where ion current flows (between the flame sheet and the electrodes, along field lines) and is independent of temperature; (2) its direction follows the field lines and polarity, not a uniform vector; (3) it is coupled to the flame itself - ion extraction, field-induced changes to the flame position and chemistry, and space charge that reshapes the field; (4) it does nothing to condensed phases (melt flow, dripping, particle settling) or to the cold ambient outside the current path. Microgravity is valuable because it removes buoyancy so that the ion-driven flow can be measured on its own, and because quasi-steady small flames can be held for minutes.
+
+$$
+\mathbf{f}_{EHD} = \rho_q \mathbf{E} = \frac{\mathbf{j}}{\mu}, \qquad \mathbf{j} = \rho_q \mu \mathbf{E}
+$$
+
+Electrohydrodynamic (ion-wind) body force per unit volume on the gas. $\rho_q$ net space-charge density (C/m3); $\mathbf{E}$ local electric field (V/m); $\mathbf{j}$ ion current density (A/m2); $\mu$ ion mobility (m2 V-1 s-1, of order 1e-4 for flame ions in air; drop-tower fits gave 2.2-10.3 cm2/(V s) for positive ions). Valid in the unipolar drift regions between the flame and each electrode, where ions move at drift speed $\mu E$ and pass their momentum to neutrals by collisions (ion density tiny compared with gas density). For a spherically symmetric gap the same relation gives $f = I/(4\pi \mu r^2)$. Not valid inside the quasi-neutral reaction zone, where $\rho_q \approx 0$.
+
+Textbook background: standard EHD relation
+<https://ntrs.nasa.gov/api/citations/20040053587/downloads/20040053587.pdf>: *this body force is proportional to the total current and inversely proportional to the ion mobility*
+<https://ntrs.nasa.gov/api/citations/20040053587/downloads/20040053587.pdf>: *for negative applied voltages, the mobilities are 45.9 cm 2/s/v and 2.2 cm 2/s/v for negative and positive ions, respectively, and (b) for positive applied voltages, the mobilities are 0.44 cm 2/s/v and 10.3 cm2/s/v for negative and positive ions, respectively.*
+
+$$
+f_b = (\rho_\infty - \rho)\,g \quad\Rightarrow\quad g_{eq} = \frac{j}{\mu\,(\rho_\infty - \rho)}
+$$
+
+Buoyancy body force per unit volume on hot gas of density $\rho$ in ambient of density $\rho_\infty$ (kg/m3) under gravity $g$ (m/s2), and the 'equivalent gravity' $g_{eq}$ (m/s2) at which the ion-wind force matches it locally. Example: $\rho_\infty-\rho \approx 1.0$ kg/m3 (300 K air vs ~1800 K products at 1 atm) and $\mu = 2\times10^{-4}$ m2/(V s) give $g_{eq}$ = 1.62 m/s2 (Moon) at $j \approx 3.2\times10^{-4}$ A/m2 (0.032 uA/cm2) and 9.81 m/s2 at ~0.2 uA/cm2. The match is local only: buoyancy acts on every hot parcel, the EHD force only where current flows, so $g_{eq}$ varies in space and with polarity. Record author's illustration, not an investigator correlation.
+
+Textbook background: buoyancy body force and planetary gravities are textbook values; the estimate is illustrative
+<https://ntrs.nasa.gov/citations/19990054083>: *In addition, the electric field generated ionic winds allow varying gravitational convection equivalents even if the test occurs in reduced gravity environments.*
+<https://doi.org/10.1196/annals.1362.038>: *Electric fields applied to combustion plasmas can be used to manipulate the thermofluid flow field to reduce buoyant forces and, hence, convection in locations near and within the flame. The resulting flow field is similar to that which is obtained in microgravity.*
+
+$$
+I_{sat} = e \int_V \dot{\omega}_{ci}\, dV
+$$
+
+Saturation ion current (A): all chemi-ions produced in the flame volume $V$ (m3) at volumetric production rate $\dot{\omega}_{ci}$ (ions m-3 s-1, mainly from CH + O -> CHO+ + e-) are collected; $e = 1.602\times10^{-19}$ C. Above saturation extra voltage raises $E$ but not the ion supply, so the total EHD force (and hence any gravity-equivalent) is capped by the flame's ion production unless secondary ionisation (corona) adds carriers. On the ground, the buoyancy-cancelling (microbuoyant) condition for methane coincided with saturation; on the ISS the most compact flame occurred at saturation.
+
+Textbook background: standard saturation-current definition
+<https://doi.org/10.1196/annals.1362.038>: *the microbuoyant condition for methane is found to coincide with ion current saturation when the capillary-to-plane distance is varied.*
+<https://doi.org/10.1016/j.combustflame.2022.112443>: *The results show that the flame is most compact at saturation while the measured voltage-current characteristic (VCC) curve demonstrates parabolic behavior after saturation which differs from observations in 1 g on Earth.*
+
+$$
+j \approx \frac{9}{8}\,\varepsilon_0\,\mu\,\frac{V^2}{d^3}
+$$
+
+Space-charge-limited (Mott-Gurney-type) current density for unipolar ions crossing a planar gap of width $d$ (m) at voltage $V$ (V); $\varepsilon_0 = 8.85\times10^{-12}$ F/m. Idealised 1-D description of the sub-saturation branch of a flame voltage-current characteristic (current rising roughly with $V^2$) when the flame supplies more ions than the gap can carry. It ceases to apply at saturation ($I = I_{sat}$); the ISS curves then peaked and fell ('parabolic super-saturation region'), behaviour this relation does not describe. Real burner-to-mesh geometries are not planar.
+
+Textbook background: textbook space-charge-limited current
+<https://www.osti.gov/servlets/purl/2339551>: *The grey curve represents the four datapoints from the experiment crossing from the sub-saturation domain, the first two points, to the acme point and through the parabolic super-saturation region [12].*
+
+$$
+U_{EHD} \sim \sqrt{\frac{j\,d}{\rho\,\mu}}
+$$
+
+Order-of-magnitude ion-wind velocity (m/s) from balancing dynamic pressure $\rho U^2$ against the EHD force acting over the drift length $d$ (m); $\rho$ gas density (kg/m3). With $j$ = 0.2 uA/cm2 (2e-3 A/m2), $d$ = 0.04 m, $\rho$ = 0.3 kg/m3, $\mu$ = 2e-4 m2/(V s): $U \sim 1$ m/s, i.e. larger than the 3.1 cm/s coflow and comparable to buoyant velocities of small 1 g flames, which is why weak fields visibly reshape microgravity flames. Scaling only; ignores viscosity and flow geometry.
+
+Textbook background: dimensional estimate
+
+## Method
+
+### Apparatus
+
+ACME chamber insert in the CIR combustion chamber (nominally 100 L; ~83 L free volume; constant-volume tests of a few minutes). Two burners were used: the small coflow burner shared with CLD Flame (fuel tube ~2.1-2.2 mm inner diameter inside a 25 mm air nozzle) and a gas-jet burner (ACME gas-jet burners span 0.4-3.2 mm inner diameter; the one used is not identified in sources reached). A crew-removable flat circular copper mesh electrode, orthogonal to the burner axis, was set ~35 or ~50 mm downstream of the electrically insulated burner and driven by a high-voltage supply between +10 and -10 kV (average field up to roughly 2-3 kV/cm, derived). The ion current between burner and mesh was measured from the voltage drop across a known resistor. Other instruments: high-definition colour camera and other CIR cameras (flame shape, luminosity, soot), photomultiplier tubes for CH* and OH* chemiluminescence, thermopile radiometers for flame radiant emission, three mass flow controllers for fuel/nitrogen/coflow, and a hot-wire igniter. Tests were configured by crew and commanded from NASA Glenn.
+
+### Fuels and samples
+
+- methane (CH4), 100% bottle, run at 100% and 70% (N2-diluted) (gas, coflow burner and gas-jet burner flames)
+- methane, 40% in N2 bottle (gas, coflow burner and gas-jet burner flames)
+- ethylene (C2H4), 100% bottle, run at 25-100% (N2-diluted) (gas, coflow burner and gas-jet burner flames)
+- ethylene, 30% in N2 bottle (gas, coflow burner and gas-jet burner flames)
+
+### Procedure
+
+Each test day the crew installed the appropriate burner, fuel bottle and electrode and the ground team ran pre-programmed scripts. A flame was ignited in the air-filled chamber (with a weak synthetic-air coflow on the coflow burner, or with no coflow), then the voltage was ramped and the ion current and images recorded as a function of field strength, polarity, fuel and dilution; fuel flow rate and coflow velocity were also varied. Fuel was diluted on orbit with nitrogen to span highly stable to near-extinction flames. Mesh polarity (polarity of the supply and copper electrode relative to the burner) was fixed per test day. Round 1 used the coflow burner on 11 days (2018-03-14 to 2018-05-17; 5 negative, 6 positive polarity; 120 flames); round 2 used the gas-jet burner on 9 days (2018-09-26 to 2018-11-15; 5 negative, 4 positive; 99 flames). Total 219 flames on 20 unique test days. In the published coflow-flame example (used for simulation), 70% CH4 issued at 15 or 19 cm/s into 3.1 cm/s air coflow.
+
+## Test matrix
+
+Varied:
+
+| Parameter | Range | Unit |
+|---|---|---|
+| applied voltage (field strength), ramped within a test | 0 to 10 kV magnitude (mesh at ~35 or ~50 mm; mean field up to ~2-3 kV/cm) | kV |
+| mesh polarity relative to burner | negative (10 days), positive (10 days) |  |
+| burner | coflow burner (round 1, 11 days), gas-jet burner (round 2, 9 days) |  |
+| fuel | methane (11 days, 123 flames), ethylene (9 days, 96 flames) |  |
+| fuel mole fraction in N2 | CH4: 0.40, 0.70, 1.00; C2H4: 0.25, 0.30, 0.50, 0.80, 1.00 | mole (volume) fraction |
+| fuel flow rate and coflow velocity | values not in PSI; example coflow case: fuel 15 or 19 cm/s, coflow air 3.1 cm/s; some tests with no coflow | cm/s |
+
+Held constant:
+
+- ambient: air in the CIR chamber (pressure not stated in sources reached; constant-volume chamber, so pressure rises slightly during a test)
+- electrode: flat circular copper mesh, orthogonal to the burner axis, gap fixed per set-up (~35 or ~50 mm)
+- gravity level: ISS microgravity only; no partial-gravity platform was used
+
+Number of tests: 219
+
+## Measurements
+
+| Quantity | Instrument | Direct or derived |
+|---|---|---|
+| ion current through the flame vs applied voltage (voltage-current characteristic) | voltage drop across a known resistor in the burner-mesh circuit | direct |
+| flame shape, size, luminosity, soot distribution | high-definition colour camera and other CIR cameras | derived |
+| CH* and OH* chemiluminescence; soot volume fraction from spectral imaging | photomultiplier tubes and filtered/intensified cameras | derived |
+| flame radiant emission | thermopile detectors (radiometers) | direct |
+| flame response time to electric forcing | camera / ion current time series | derived |
+
+## Findings
+
+1. First buoyancy-free mapping of ion-wind effects on flames: ISS tests ran March-November 2018 (20 test days, 219 flames) with methane and ethylene flames on coflow and gas-jet burners in fields of either polarity up to 10 kV, giving data on ion current and flame response without the confounding natural convection present in all ground tests. *(method, high)*
+   - <https://doi.org/10.1016/j.combustflame.2022.112443>: *the current measurements represent the first mapping of the effects of an ion-driven wind on flame behavior under an electric field in the absence of the confounding influences of buoyancy*
+   - <https://doi.org/10.1016/j.combustflame.2022.112443>: *The on-orbit tests began in March 2018 using the modular ACME hardware within the ISS' Combustion Integrated Rack (CIR) and were completed in the same year November.*
+   - <https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf>: *The ISS tests were conducted burning pure and diluted methane and ethylene with both gas-jet and coflow flame configurations.*
+   - Table `tests`: 20 unique test days, 219 flames
+2. In microgravity the voltage-current characteristic of methane coflow flames shows a distinct peak ion current at saturation, where the flame is most compact; beyond the saturation peak the current falls along a parabolic branch, unlike the 1 g plateau. *(result, high)*
+   - <https://doi.org/10.1016/j.combustflame.2022.112443>: *The results show that the flame is most compact at saturation while the measured voltage-current characteristic (VCC) curve demonstrates parabolic behavior after saturation which differs from observations in 1 g on Earth.*
+   - <https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf>: *In microgravity, flames exhibit a distinct peak ion current that corresponds to the most compact flame.*
+   - <https://www.osti.gov/servlets/purl/2339551>: *The grey curve represents the four datapoints from the experiment crossing from the sub-saturation domain, the first two points, to the acme point and through the parabolic super-saturation region [12].*
+3. Flame luminosity, combustion intensity and ion current are clearly correlated in the ISS data, supporting ion current as a diagnostic of flame state. *(trend, medium)*
+   - <https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf>: *There are clear correlations between flame luminosity, combustion intensity, and ion current.*
+   - <https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf>: *Soot generation could be suppressed and more broadly there are clear correlations between the flame luminosity, combustion intensity, and ion current in the ISS data.*
+4. Highly nitrogen-diluted (near-limit) flames could be stabilised with very weak electric fields; field values were not given in the sources reached. *(result, medium)*
+   - <https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf>: *Highly-diluted flames can be stabilized with very weak electric fields.*
+   - <https://science.nasa.gov/biological-physical/investigations/e-field-flames/>: *For example, electric fields can enable stable burner operation at fuel-lean conditions with reduced pollutant emission, i.e., where the flame is not reliably sustained without the electric field.*
+5. Soot generation could be suppressed, and in some ISS cases soot was eliminated, under the field; when soot was present, fields produced a wide range of behaviours. Investigators said this was not what 1 g experience led them to expect. *(result, medium)*
+   - <https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf>: *Soot generation could be suppressed and more broadly there are clear correlations between the flame luminosity, combustion intensity, and ion current in the ISS data.*
+   - <https://ntrs.nasa.gov/api/citations/20210022542/downloads/ACME%20JASMAC-33%2020211007.pdf>: *When soot is present in a flame, electric fields create a wide range of behaviors.*
+   - <https://www.ycc.eng.uci.edu/tag/iss/page/2>: *But from the Space Station, we actually are seeing soot eliminated in some cases under the influences of the electric field.*
+6. Polarity sets the ion-wind direction. By electrostatics, with the mesh positive relative to the burner the dominant positive ions are driven back toward the burner, a downward ion wind opposite to Earth buoyancy; with the mesh negative, positive ions move downstream as buoyancy would move hot gas on Earth. A poster caption describes a flame 'pushed' toward the coflow burner, and a JASMAC figure with the mesh negative shows the flame size changing with field strength. The investigators' own wording reads the other way if their field sign means mesh polarity: the UCI group's page links a downward ion wind to negative field strength, and the OSTI modelling report links a positive field to a taller, narrower flame. Their field-sign convention is not given in the sources reached, so the pairing of mesh polarity with flame shape here is inferred, not observed; the sources show images, not velocity data. *(result, low)*
+   - <https://ntrs.nasa.gov/api/citations/20220015583/downloads/PS-03790%20ACME%20poster%2013thUSNCM%202023.pdf>: *Flame 'pushed' toward the coflow burner in an Electric-Field Effects on Laminar Diffusion Flames (E-FIELD Flames) test.*
+   - <https://www.ycc.eng.uci.edu/tag/iss/page/2>: *Downward ion wind generates with negative field strength*
+   - <https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf>: *Fig. 6 Example of the effect of the electric field strength on the flame size where the mesh was negatively charged*
+   - `PSI-22_Experimental table_ACME E-FIELD Flames.csv` (all): *Mesh polarity refers to the polarity of the high-voltage power supply and the copper electrode relative to the burner.*
+7. Operating limit: at high field strengths the flames exhibited corona and arc discharges, bounding the usable voltage range. *(limit, high)*
+   - <https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf>: *But at high field strengths, the flames exhibited corona and arc discharges.*
+8. What 'mimicking gravity' rests on (precursor, not ISS data): in 2.2 s NASA Glenn drop-tower tests of a jet flame, an electric field alone made microgravity flames resemble 1 g flames. On the ground, ion winds were used to cancel buoyancy locally (a 'microbuoyant' condition), which for methane coincided with ion-current saturation. The investigators proposed as early as 1999 that ion winds allow 'varying gravitational convection equivalents' in reduced gravity. No source reached reports ISS tests calibrated to a specific partial-gravity level (e.g. lunar or Martian). *(result, medium)*
+   - <https://doi.org/10.1080/00102202.2012.694740>: *Testing shows that microgravity flames can be manipulated to resemble 1 g flames by using an electric field alone.*
+   - <https://doi.org/10.1080/00102202.2012.694740>: *All tests are performed at the NASA Glenn 2.2-s Drop Tower.*
+   - <https://doi.org/10.1196/annals.1362.038>: *the microbuoyant condition for methane is found to coincide with ion current saturation when the capillary-to-plane distance is varied.*
+   - <https://doi.org/10.1098/rspa.2001.0929>: *To accomplish an equivalent microbuoyant condition in the laboratory, we use flame–ion generated winds driven by electric fields to balance local convection.*
+   - <https://ntrs.nasa.gov/citations/19990054083>: *In addition, the electric field generated ionic winds allow varying gravitational convection equivalents even if the test occurs in reduced gravity environments.*
+   - [Reference value `partial-gravity`](reference.md)
+9. Size of the force (ground measurements): in a 1 g coflow flame the derived electrical body force was 200-400 N/m^3 (reported as N/m2 in the abstract), roughly 20-40 times the ~10 N/m^3 buoyancy of hot products at 1 g, so modest currents suffice to rival or exceed lunar/Martian buoyancy. In a 2.2 s drop-tower test with a spherical burner the ion wind was negligible: the spherically symmetric force acts like an apparent pressure, and that pressure was about six orders of magnitude below ambient, so the density and velocity changes it causes were negligible. Geometry decides whether the force can be written as a pressure; its size decides whether it matters. *(result, low)*
+   - <https://doi.org/10.1016/j.combustflame.2018.10.036>: *The calculated body force (200–400 N/m2) agreed well with the theoretical model.*
+   - <https://ntrs.nasa.gov/api/citations/20040053587/downloads/20040053587.pdf>: *Therefore, the ionic wind effect is negligible in the current test conditions.*
+   - Textbook background: buoyancy estimate (rho_inf - rho) g with ~1.0 kg/m3 density difference
+10. Modelling with the E-FIELD data (a NASA PSI-funded project): a PeleLMeX simulation of the 70% CH4 coflow flame (2.2 mm fuel tube, 15-19 cm/s fuel, 3.1 cm/s coflow) at 1.5 kV/cm in zero gravity gives a taller, narrower flame, similar to the 1 g shape and to the ISS images; the ion-current comparison was still preliminary. *(method, low)*
+   - <https://www.osti.gov/servlets/purl/2339551>: *The computed flame temperature profile under the effect of an electric field is taller and narrower which is similar to what is observed on earth and also from the experiment with the flame stretching in the vertical (y) direction.*
+   - <https://www.osti.gov/servlets/purl/2339551>: *The comparison with experimental results cannot be done with certainty as the results of the simulation are still under development and verification.*
+   - <https://www.osti.gov/servlets/purl/2339551>: *A 70% methane fuel concentration (balance nitrogen) in positive field strength is chosen (among various methane fuel concentrations) to avoid the complication of soot appearance.*
+   - <https://www.osti.gov/servlets/purl/2339551>: *This research is funded by NASA Physical Science Informatics (PSI) System under cooperative agreement 80NSSC22K0364.*
+
+## Fire-safety relevance
+
+E-FIELD is not a fire-safety experiment: the PSI record states it serves no space application. Its relevance to spacecraft and habitat fire safety is indirect: (1) it is the only PSI investigation that applies a controllable, gravity-like body force to flames in orbit, so it is the nearest PSI has to partial-gravity combustion data, but the force is an ion-wind analogue acting only along the current path, not true buoyancy acting on all hot gas; results cannot be read as lunar or Martian fire behaviour; (2) the strong correlation between ion current and flame state hints at electrical flame sensing in microgravity (detection), not demonstrated for fires; (3) high-voltage fields near flames produced corona and arcs. All flames were small gas-jet or coflow burner flames in air; nothing here is a material flammability limit.
+
+### Habitat conditions
+
+Tests were in air (about 21% O2); the chamber pressure is not given in the sources reached, presumably near the Earth sea-level reference of 101.3 kPa, but this is not documented. No enriched-oxygen or reduced-pressure atmospheres such as the lunar habitat concept (>=30% O2 at <=70.3 kPa) were tested. On gravity: PSI holds no partial-gravity combustion data; E-FIELD only offers an electrically imposed convection analogue in microgravity.
+
+### Earth benefits
+
+Electric-field control could enable stable lean burning with lower pollutant and soot emission and improved efficiency in terrestrial combustors; the ISS data serve as buoyancy-free validation cases for electrified-flame models.
+
+## Limitations
+
+- The ion-wind body force is not equivalent to partial gravity: it acts only where ion current flows, scales with current density over mobility rather than with density deficit, follows field lines and polarity, and changes the flame's chemistry and position. No ISS test was reported as calibrated to a partial-gravity level.
+- Only the 2022 foundation paper (methane coflow flames) is published from the ISS data; ethylene, gas-jet, soot and near-limit results are known only from slides, a conference paper and press items without numbers.
+- Strong dependence on burner/electrode geometry: ground work found I-V behaviour above saturation depends strongly on burner configuration, so results from the ACME burner-to-mesh geometry may not transfer to other geometries.
+- Corona and arc discharges at high field strengths limit the usable range and may contaminate ion-current readings.
+- Small laminar gas flames in air only, a few minutes per test in a constant-volume chamber; no condensed fuels, no enriched atmospheres.
+
+## Data in PSI
+
+PSI holds a one-page experimental table (date, test type/burner, mesh polarity, fuel bottle, fuel concentrations, flames ignited for each test day), four representative images and an ISA-Tab metadata zip that repeats the record text. The images are an ACME logo and three uncaptioned flame photographs: a blue, soot-free flame bulging to an almost spherical shape around the burner tip, a blue flame flattened into a low dome over the burner (similar to the NASA poster image captioned as a flame 'pushed' toward the coflow burner), and a teardrop-shaped flame with a yellow (sooty) tip; their test conditions are not given. No ion-current data, voltage ramps, video, radiometer or PMT signals are in PSI, so none of the findings below can be re-derived from PSI data. The record's totalFileSize (950,212,491,107 bytes, ~0.95 TB) suggests a large archive that is not exposed in PSI.
+
+| Category | What | Formats | Files | Size | Usable now |
+|---|---|---|---|---|---|
+| Experimental table | summary of 20 ISS test days (CSV has 22 day rows incl. one duplicate, plus continuation rows listing extra fuel concentrations) | .csv | 1 | 2.5 kB | yes |
+| Representative Image(s) | ACME logo and three uncaptioned flame photographs | .png .jpg | 4 | 350 kB | yes |
+| metadata | ISA-Tab i_Investigation.txt and s_PSI-22.txt ('Do not use this' placeholder rows) | .zip .txt | 1 | 15 kB | yes |
+
+Rows in the unified `tests` table: 21
+
+## Related investigations
+
+- [PSI-21](PSI-21-acme-cld-flame.md): shared hardware
+- [PSI-23](PSI-23-acme-s-flame.md): shared hardware
+- [PSI-20](PSI-20-acme-bre.md): shared hardware
+- [PSI-10](PSI-10-acme-flame-design.md): shared hardware
+- [PSI-159](PSI-159-acme-cfi-g.md): shared hardware
+
+## Open questions
+
+- Using the ion-current and image records (not in PSI), quantify an equivalent gravity g_eq = j/[mu (rho_inf - rho)] for each voltage step and compare flame height/width with 1 g and partial-g flame-shape scalings; this would make the 'mimics partial gravity' statement quantitative.
+- Compare negative-polarity (downstream ion wind, buoyancy-like) and positive-polarity (anti-buoyancy) days at matched fuel and dilution to separate ion-wind convection from chemical/ion-extraction effects.
+- Map dilution vs field strength for the 'very weak field' stabilisation of near-limit flames reported in slides.
+- Analyse the ethylene and gas-jet round (Sept-Nov 2018), which has no peer-reviewed results in the sources reached.
+- Test whether ion current could serve as a microgravity flame detector, given the reported correlation with luminosity and combustion intensity.
+
+## Dashboard ideas
+
+- **ISS test-day timeline** (`date`, `config`, `mesh_polarity`, `fuel`, `fuel_fraction`, `n_flames`): Only quantitative data PSI holds; shows the coflow round and the gas-jet round and the polarity/fuel design.
+- **polarity x fuel x burner matrix** (`mesh_polarity`, `fuel`, `config`, `n_flames`): Shows the balanced design (10 days each polarity) behind the ion-wind direction comparison.
+- **ion-wind vs buoyancy explainer** (`j_uA_cm2`, `mobility`, `delta_rho`, `g_eq`): Explains, with the f = j/mu and (rho_inf - rho) g equations, why E-FIELD is the only PSI proxy for partial gravity and why it is not true partial gravity.
+- **representative image gallery** (`image_file`): Three uncaptioned ISS flame images showing spherical, flattened (pushed toward burner) and sooty-tip flames.
+
+## Gaps and data-quality notes
+
+- No Science Documents, Reports, Presentations, Analyzed or Raw Data in PSI: only the experimental table, four representative images and a metadata zip. All results come from the PSI record text and external sources.
+- No per-test voltages, ion currents, flow rates, coflow velocities, electrode gap or chamber pressure in PSI. Gap (~35 or ~50 mm) and coflow-burner size are from a 2014 pre-flight paper; example flows from a 2023 modelling preprint.
+- Full text of the foundation paper (Chien et al. 2022, Combustion and Flame 246:112443, open access CC BY-NC-ND) could not be read: ScienceDirect returned HTTP 403 and the Elsevier API returned metadata only. Its abstract was read via OpenAlex. Numeric values (saturation currents, field strengths, flame dimensions) therefore come only from secondary sources.
+- Karnani et al. 2012 (drop-tower 'Simulating Gravity in Microgravity Combustion Using Electric Fields') and Tinajero & Dunn-Rankin 2019 were read as abstracts only (OpenAlex, Semantic Scholar). Tinajero's abstract gives the body force in 'N/m2', presumably meaning N/m3.
+- The Space Apps challenge page (source of the 'mimicked partial gravity' wording) could not be fetched (TLS certificate error); the claim is used via docs/digest/reference.md. No ISS source reached describes partial-gravity-calibrated tests; the gravity-mimicking demonstration found is the 2012 drop-tower work (1 g resemblance, not partial g).
+- Poster captions (NTRS 20220015583) were read from the image of the poster, which has no text layer.
+- Gas-jet burner diameter used in round 2 is not given in sources reached; the coflow burner's fuel-tube inner diameter is given as 2.1 mm (2014 NASA paper) and 2.2 mm (2023 preprint).
+- Table data issues: the 2018-11-15 (18319) row and its three continuation rows are duplicated, so the CSV implies 21 test days / 230 flames whereas unique values give 20 days / 219 flames (data/processed/tests.csv also carries the duplicate, 21 rows). Continuation rows with only a Fuel Conc value list extra concentrations for the row above. Row 18319 lists 25% first for a 100% C2H4 bottle (fine, diluted on orbit).
+- PSI record: 'added' list is empty although an experimental table exists; investigation dates (2016-11-18 to 2020-11-17) are wider than ISS operations (March-Nov 2018). Study design keywords include OH PLIF and CO PLIF, which are ground-laboratory techniques from related papers, not ISS diagnostics. Several listed publications are ground or background work (e.g. Tse et al. 2001 spherical flames, Weinberg & Carleton 2009) rather than E-FIELD ISS results; 4 have no DOI.
+- files.csv marks the metadata zip as not downloaded, yet a file of slightly different size (15,166 vs 15,169 bytes) is on disk. totalFileSize (~0.95 TB) is inconsistent with the ~0.37 MB of files listed.
+- Investigator roles: PSI lists Chien as Technical Point of Contact; NASA slides list her as an investigator; NASA's publication list names Karnani as Co-I and Weinberg and Yuan as former Co-Is.
+- No text addressed to an AI or unrelated instructions was found in the PSI files.

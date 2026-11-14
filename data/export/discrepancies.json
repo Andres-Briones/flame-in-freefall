@@ -1,0 +1,1159 @@
+{
+ "raw_data_conflicts": [
+  {
+   "id": "D01",
+   "accession": "PSI-10",
+   "test_id": "22042M1",
+   "test_id_now": "22024M1",
+   "column": "test_id",
+   "table_value": "22042M1",
+   "evidence_value": "22024M1",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The raw data file name and its header both say test point 22024M1, and the row sits in the table's day group 22024. The table id swaps two digits.",
+   "evidence_source": "PSI-10 Raw Data 22024M1_data.csv (file name and header)"
+  },
+  {
+   "id": "D02",
+   "accession": "PSI-10",
+   "test_id": "22042M1",
+   "test_id_now": "22024M1",
+   "column": "date",
+   "table_value": null,
+   "evidence_value": "2022-01-24",
+   "action": "fill",
+   "flag": "filled_from_raw",
+   "evidence": "Day code 22024 is 24 January 2022, the date of the other 22024 rows; the raw file starts at 2022-01-25 01:06 UTC.",
+   "evidence_source": "PSI-10 Raw Data 22024M1_data.csv; other 22024 rows of the experiment table"
+  },
+  {
+   "id": "D03",
+   "accession": "PSI-159",
+   "test_id": "21106 F4",
+   "test_id_now": "21106 F4",
+   "column": "ignited",
+   "table_value": "False",
+   "evidence_value": "True",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "Logged as not ignited, but the radiometers show a 20.4 s flame, the table's own burn time is 22 s and its comment says 'hot flame'.",
+   "evidence_source": "PSI-159 Raw Data 21106F4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D04",
+   "accession": "PSI-159",
+   "test_id": "21112 A6",
+   "test_id_now": "21112 A6",
+   "column": "burn_time_s",
+   "table_value": "259.0",
+   "evidence_value": "147.0",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The radiometers show a flame for 147.0 s; the experiment table says 259.0 s. The script shut the gas flows off 180.5 s into the recording, 155 s after ignition, so 259 s of burning is not possible.",
+   "evidence_source": "PSI-159 Raw Data 21112A6_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D05",
+   "accession": "PSI-159",
+   "test_id": "21270 H3",
+   "test_id_now": "21270 H3",
+   "column": "burn_time_s",
+   "table_value": "43.0",
+   "evidence_value": "94.0",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The radiometers show a flame for 94.0 s; the experiment table says 43.0 s. 43 s is also the value of the previous test point H2, so it was probably copied.",
+   "evidence_source": "PSI-159 Raw Data 21270H3_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D06",
+   "accession": "PSI-159",
+   "test_id": "21270 H2",
+   "test_id_now": "21270 H2",
+   "column": "burn_time_s",
+   "table_value": "43.0",
+   "evidence_value": "57.0",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 57.0 s; the experiment table says 43.0 s.",
+   "evidence_source": "PSI-159 Raw Data 21270H2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D07",
+   "accession": "PSI-159",
+   "test_id": "21270 A1",
+   "test_id_now": "21270 A1",
+   "column": "burn_time_s",
+   "table_value": "60.0",
+   "evidence_value": "66.5",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 66.5 s; the experiment table says 60.0 s.",
+   "evidence_source": "PSI-159 Raw Data 21270A1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D08",
+   "accession": "PSI-159",
+   "test_id": "21270 A2",
+   "test_id_now": "21270 A2",
+   "column": "burn_time_s",
+   "table_value": "90.0",
+   "evidence_value": "96.5",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 96.5 s; the experiment table says 90.0 s.",
+   "evidence_source": "PSI-159 Raw Data 21270A2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D09",
+   "accession": "PSI-159",
+   "test_id": "21270 A4",
+   "test_id_now": "21270 A4",
+   "column": "burn_time_s",
+   "table_value": "90.0",
+   "evidence_value": "96.8",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 96.8 s; the experiment table says 90.0 s.",
+   "evidence_source": "PSI-159 Raw Data 21270A4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D10",
+   "accession": "PSI-159",
+   "test_id": "21277 M1",
+   "test_id_now": "21277 M1",
+   "column": "burn_time_s",
+   "table_value": "66.0",
+   "evidence_value": "81.9",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 81.9 s; the experiment table says 66.0 s.",
+   "evidence_source": "PSI-159 Raw Data 21277M1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D11",
+   "accession": "PSI-39",
+   "test_id": "1301",
+   "test_id_now": "1301",
+   "column": "date",
+   "table_value": "2017-07-29",
+   "evidence_value": "2017-06-29",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The raw recording of this test starts on 2017-06-29 15:06 UTC; the table says July.",
+   "evidence_source": "PSI-39 Raw Data, CIR test point F180D02 (first sample time)"
+  },
+  {
+   "id": "D12",
+   "accession": "PSI-39",
+   "test_id": "1237",
+   "test_id_now": "1237",
+   "column": "date",
+   "table_value": "2017-05-02",
+   "evidence_value": "2017-05-01",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The raw recording of this test starts on 2017-05-01 13:10 UTC; the table says 2 May.",
+   "evidence_source": "PSI-39 Raw Data, CIR test point F121A02 (first sample time)"
+  },
+  {
+   "id": "D13",
+   "accession": "PSI-39",
+   "test_id": "1336",
+   "test_id_now": "1336",
+   "column": "pressure_kpa",
+   "table_value": "303.975",
+   "evidence_value": "309.4",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The chamber transducer reads 309.4 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.",
+   "evidence_source": "PSI-39 Raw Data, CIR test point F200D03 (chamber pressure at start)"
+  },
+  {
+   "id": "D14",
+   "accession": "PSI-39",
+   "test_id": "1337",
+   "test_id_now": "1337",
+   "column": "pressure_kpa",
+   "table_value": "303.975",
+   "evidence_value": "309.6",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The chamber transducer reads 309.6 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.",
+   "evidence_source": "PSI-39 Raw Data, CIR test point F200D04 (chamber pressure at start)"
+  },
+  {
+   "id": "D15",
+   "accession": "PSI-39",
+   "test_id": "1338",
+   "test_id_now": "1338",
+   "column": "pressure_kpa",
+   "table_value": "303.975",
+   "evidence_value": "309.7",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The chamber transducer reads 309.7 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.",
+   "evidence_source": "PSI-39 Raw Data, CIR test point F200D05 (chamber pressure at start)"
+  },
+  {
+   "id": "D16",
+   "accession": "PSI-23",
+   "test_id": "20190",
+   "test_id_now": "20190",
+   "column": "fuel_fraction",
+   "table_value": "0.35",
+   "evidence_value": "0.45",
+   "action": "replace",
+   "flag": "corrected_from_raw",
+   "evidence": "The raw data headers of this day give the fuel bottle as H2/He 45/55, and the science reports also give 45% H2. The table says 35%.",
+   "evidence_source": "PSI-23 Raw Data 20190*_data.csv headers (fuel gas code)"
+  },
+  {
+   "id": "D17",
+   "accession": "PSI-23",
+   "test_id": "20136",
+   "test_id_now": "20136",
+   "column": "fuel_raw",
+   "table_value": "20% H2, 25% CH4, with He",
+   "evidence_value": "H2/CH4/He 25/20/55",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The raw data headers give the same fuel bottle, H2/CH4/He 25/20/55, on days 20132, 20136 and 20142, while the table lists a different mixture for each day. Not resolved: the header code may not have been updated between bottles.",
+   "evidence_source": "PSI-23 Raw Data 20136*_data.csv headers (fuel gas code)"
+  },
+  {
+   "id": "D18",
+   "accession": "PSI-23",
+   "test_id": "20142",
+   "test_id_now": "20142",
+   "column": "fuel_raw",
+   "table_value": "30% H2, 15% CH4, with He",
+   "evidence_value": "H2/CH4/He 25/20/55",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The raw data headers give the same fuel bottle, H2/CH4/He 25/20/55, on days 20132, 20136 and 20142, while the table lists a different mixture for each day. Not resolved: the header code may not have been updated between bottles.",
+   "evidence_source": "PSI-23 Raw Data 20142*_data.csv headers (fuel gas code)"
+  },
+  {
+   "id": "D19",
+   "accession": "PSI-98",
+   "test_id": "S1",
+   "test_id_now": "S1",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "102.3",
+   "action": "fill",
+   "flag": "filled_from_raw",
+   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 102.3 kPa at the start of the burn.",
+   "evidence_source": "PSI-98 Raw Data, sample 1 sensor workbook (pressure at start)"
+  },
+  {
+   "id": "D20",
+   "accession": "PSI-98",
+   "test_id": "S2",
+   "test_id_now": "S2",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "102.6",
+   "action": "fill",
+   "flag": "filled_from_raw",
+   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 102.6 kPa at the start of the burn.",
+   "evidence_source": "PSI-98 Raw Data, sample 2 sensor workbook (pressure at start)"
+  },
+  {
+   "id": "D21",
+   "accession": "PSI-100",
+   "test_id": "S1",
+   "test_id_now": "S1",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "99.5",
+   "action": "fill",
+   "flag": "filled_from_raw",
+   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 99.5 kPa at the start of the burn.",
+   "evidence_source": "PSI-100 Raw Data, sample 1 sensor workbook (pressure at start)"
+  },
+  {
+   "id": "D22",
+   "accession": "PSI-100",
+   "test_id": "S2",
+   "test_id_now": "S2",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "99.4",
+   "action": "fill",
+   "flag": "filled_from_raw",
+   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 99.4 kPa at the start of the burn.",
+   "evidence_source": "PSI-100 Raw Data, sample 2 sensor workbook (pressure at start)"
+  },
+  {
+   "id": "D23",
+   "accession": "PSI-98",
+   "test_id": "S2",
+   "test_id_now": "S2",
+   "column": "x_o2_ambient",
+   "table_value": "0.215",
+   "evidence_value": "0.223",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The flight O2 sensor reads 22.3% at the start of the burn (22.6% for sample 1) against the table's 21.5%. The sensor's accuracy is not documented in PSI, so the table value is kept.",
+   "evidence_source": "PSI-98 Raw Data, sample 2 sensor workbook (O2 at start)"
+  },
+  {
+   "id": "D24",
+   "accession": "PSI-100",
+   "test_id": "S1",
+   "test_id_now": "S1",
+   "column": "x_o2_ambient",
+   "table_value": null,
+   "evidence_value": "0.198",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table has no oxygen value. The flight O2 sensor reads 19.8% at the start of the burn; its accuracy is not documented in PSI, so the value is not filled in.",
+   "evidence_source": "PSI-100 Raw Data, sample 1 sensor workbook (O2 at start)"
+  },
+  {
+   "id": "D25",
+   "accession": "PSI-100",
+   "test_id": "S2",
+   "test_id_now": "S2",
+   "column": "x_o2_ambient",
+   "table_value": null,
+   "evidence_value": "0.198",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table has no oxygen value. The flight O2 sensor reads 19.8% at the start of the burn; its accuracy is not documented in PSI, so the value is not filled in.",
+   "evidence_source": "PSI-100 Raw Data, sample 2 sensor workbook (O2 at start)"
+  },
+  {
+   "id": "D26",
+   "accession": "PSI-159",
+   "test_id": null,
+   "test_id_now": null,
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "For inverse flames the measured chamber pressure at the start of a test is 5.7% below the table value (median of 153 tests; equivalently the table is 6.0% above the measurement; single tests range from 7.3% below to 7.6% above). 148 of the 154 inverse rows carry the flag pressure_9pct_above_nominal; the six rows of day 21196 at 49.5 kPa do not, because their table value is 2% below the 0.5 atm fill level and the raw data agree with it.",
+   "evidence_source": "PSI-159 Raw Data _data.csv files; chamber pressure in timeseries_features"
+  },
+  {
+   "id": "D27",
+   "accession": "PSI-10",
+   "test_id": null,
+   "test_id_now": null,
+   "column": null,
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "Nine recorded test points are missing from the experiment table (19115C1, 19115D1, 19115H1, 19115P1, 19123H1, 19123L8, 19142B1, 19175B2, 19196N2), and 19 table rows have no raw data file.",
+   "evidence_source": "PSI-10 Raw Data file list against the experiment table"
+  },
+  {
+   "id": "D28",
+   "accession": "PSI-159",
+   "test_id": null,
+   "test_id_now": null,
+   "column": null,
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "Ten recorded test points are missing from the experiment table (21106A1-A3, 21106G1-G5, 21106G8, 21242F1), and five table rows have no raw data file (21102 M6, 21125 A4, 21125 H3, 21130 A9, 21209 A2).",
+   "evidence_source": "PSI-159 Raw Data file list against the experiment table"
+  },
+  {
+   "id": "D29",
+   "accession": "PSI-101",
+   "test_id": null,
+   "test_id_now": null,
+   "column": null,
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "Run 112 (Kapton, 2 cm/s, Rt/R0 1.48) was flown and analysed but has no row in the test list. The list has 109 rows and so does the results workbook: the list holds a false 'Teflon 57' row (patch D30) where run 112 should be. An earlier version of this note said run 112 has housekeeping data; it does not (the housekeeping files cover runs 58-108).",
+   "evidence_source": "PSI-101 Analyzed Data workbook of run 112 (file name ending 2010_253_14_kapton_run112.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort"
+  },
+  {
+   "id": "D30",
+   "accession": "PSI-101",
+   "test_id": "57",
+   "test_id_now": "57",
+   "column": "fuel",
+   "table_value": "teflon",
+   "evidence_value": null,
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The test list has run 57 twice: once as Lampwick and once as Teflon, with identical cells (date 29-Jul, Rt/R0 1.253, 8.1 cm/s). The raw data hold one run 57, a lampwick run; there is no Teflon run 57, and the results workbook lists run 57 once, as Lampwick. The other Teflon rows have Rt/R0 1.445-1.452, not 1.253. This Teflon row is not a test that was run; it is kept and flagged.",
+   "evidence_source": "PSI-101 Analyzed Data workbook of run 57 (file name ending 2010_210_10_lampwick_run57.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort"
+  },
+  {
+   "id": "D31",
+   "accession": "PSI-98",
+   "test_id": "S1",
+   "test_id_now": "S1",
+   "column": "x_o2_max",
+   "table_value": "0.217",
+   "evidence_value": "0.226",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The flight O2 sensor reads 22.6% at the start of the burn against the table's 21.5-21.7%. The sensor's accuracy is not documented in PSI, so the table range is kept (as for sample 2, patch D23).",
+   "evidence_source": "PSI-98 Raw Data, sample 1 sensor workbook (O2 at start)"
+  },
+  {
+   "id": "D32",
+   "accession": "PSI-159",
+   "test_id": null,
+   "test_id_now": null,
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "For normal flames the table gives the nominal fill pressure (0.5, 0.93, 1, 2 or 3 atm). The chamber transducer reads about 3 kPa more at the start of every test: 5.9% above the table at 0.5 atm (median), 3.0% at 1 atm, 1.7% at 2 atm and 0.8% at 3 atm; overall 0.6% to 7.4% over 175 tests, more than 5% in 32 of them (all of days 21106, 21153 and 21174 at 0.5 atm, and 21125 H1, H2, H4, H5, J1, K1-K3 and 21137 A4-A7 at 1 atm). The table values are kept; measured values are in timeseries_features (chamber_pressure_start_kpa).",
+   "evidence_source": "PSI-159 Raw Data _data.csv files; chamber pressure in timeseries_features"
+  },
+  {
+   "id": "D33",
+   "accession": "PSI-159",
+   "test_id": "21162 B1",
+   "test_id_now": "21162 B1",
+   "column": "burn_time_s",
+   "table_value": "158.0",
+   "evidence_value": "163.3",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The radiometers show a flame for 163.3 s; the experiment table says 158.0 s. Burn times from the radiometers depend on the detection threshold: differences under 5 s are not recorded as conflicts.",
+   "evidence_source": "PSI-159 Raw Data 21162B1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)"
+  },
+  {
+   "id": "D34",
+   "accession": "PSI-39",
+   "test_id": null,
+   "test_id_now": null,
+   "column": null,
+   "table_value": null,
+   "evidence_value": null,
+   "action": "note",
+   "flag": null,
+   "evidence": "The 'Local Time' cell of the data-summary spreadsheet (kept in extra) is wrong for several tests when compared with the start of the raw recording (UTC): tests 1338, 1349 and 1386 say 12:xx am for recordings that start at 16:xx UTC (12:xx pm local); test 1300 says 10:42 pm for 14:41 UTC; test 1234 reads '011:11:09 am'; tests 1260 and 1332 also disagree, and tests 1320-1323, 1376 and 1377 are off by about 5 h instead of 4. Dates are not affected. The cells are kept as given; use first_sample_utc in timeseries_features for timing.",
+   "evidence_source": "PSI-39 Raw Data, first sample time of each CIR test point against the Master Sheet of the data-summary spreadsheet"
+  },
+  {
+   "id": "D35",
+   "accession": "PSI-23",
+   "test_id": "20006",
+   "test_id_now": "20006",
+   "column": "fuel_fraction",
+   "table_value": "1.0",
+   "evidence_value": "1.0",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The raw data headers of this day give the fuel bottle as H2/CH4 44.4/55.6, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (20% H2 / 25% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.",
+   "evidence_source": "PSI-23 Raw Data 20006*_data.csv headers (fuel gas code)"
+  },
+  {
+   "id": "D36",
+   "accession": "PSI-23",
+   "test_id": "20013",
+   "test_id_now": "20013",
+   "column": "fuel_fraction",
+   "table_value": "1.0",
+   "evidence_value": "1.0",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.",
+   "evidence_source": "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)"
+  }
+ ],
+ "actions": {
+  "replace": "table value replaced by the raw-data value; the table value is kept in extra as `<column>_original`",
+  "fill": "table cell was empty; filled from the raw data",
+  "flag": "raw data disagree with the table; the table value is kept and the row is flagged",
+  "note": "applies to the whole investigation, not to one cell"
+ },
+ "values_changed": [
+  {
+   "accession": "PSI-10",
+   "test_id": "22024M1",
+   "column": "test_id",
+   "table_value": "22042M1",
+   "value_now": "22024M1",
+   "flags": "id_suspect;ramped;o2_is_burner_stream;corrected_from_raw;filled_from_raw",
+   "patch_ids": [
+    "D01",
+    "D02"
+   ]
+  },
+  {
+   "accession": "PSI-10",
+   "test_id": "22024M1",
+   "column": "date",
+   "table_value": null,
+   "value_now": "2022-01-24",
+   "flags": "id_suspect;ramped;o2_is_burner_stream;corrected_from_raw;filled_from_raw",
+   "patch_ids": [
+    "D01",
+    "D02"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S1",
+   "column": "geometry",
+   "table_value": "thickness .33 cm, length 94 cm, width 40.6 cm",
+   "value_now": "thickness 0.33 mm, length 94 cm, width 40.6 cm",
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D21",
+    "D24"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S1",
+   "column": "flow_cm_s",
+   "table_value": 30.0,
+   "value_now": 25.0,
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D21",
+    "D24"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S1",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "value_now": 99.5,
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D21",
+    "D24"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S2",
+   "column": "geometry",
+   "table_value": "thickness .33 cm, length 94 cm, width 40.6 cm",
+   "value_now": "thickness 0.33 mm, length 94 cm, width 40.6 cm",
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D22",
+    "D25"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S2",
+   "column": "flow_cm_s",
+   "table_value": 30.0,
+   "value_now": 25.0,
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D22",
+    "D25"
+   ]
+  },
+  {
+   "accession": "PSI-100",
+   "test_id": "S2",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "value_now": 99.4,
+   "flags": "unit_corrected;value_from_report;corrected_from_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D22",
+    "D25"
+   ]
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "1",
+   "column": "row_kind",
+   "table_value": "test",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "2",
+   "column": "row_kind",
+   "table_value": "test",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "3",
+   "column": "row_kind",
+   "table_value": "test",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "4",
+   "column": "row_kind",
+   "table_value": "test",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "5",
+   "column": "row_kind",
+   "table_value": "condition_set",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "6",
+   "column": "row_kind",
+   "table_value": "condition_set",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "7",
+   "column": "row_kind",
+   "table_value": "condition_set",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-102",
+   "test_id": "8",
+   "column": "row_kind",
+   "table_value": "condition_set",
+   "value_now": "planned",
+   "flags": "planned_not_flown",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-106",
+   "test_id": "PSI-106-r12",
+   "column": "fuel_raw",
+   "table_value": "100% C2H4",
+   "value_now": "100% C3H8 and then 100% C2H4",
+   "flags": "label_fixed",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-107",
+   "test_id": "PSI-107-r397",
+   "column": "flow_cm_s",
+   "table_value": "-5.918369593325366",
+   "value_now": null,
+   "flags": "flow_missing_los",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-107",
+   "test_id": "PSI-107-r398",
+   "column": "flow_cm_s",
+   "table_value": "-5.918369593325366",
+   "value_now": null,
+   "flags": "flow_missing_los",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-107",
+   "test_id": "PSI-107-r399",
+   "column": "flow_cm_s",
+   "table_value": "-5.918369593325366",
+   "value_now": null,
+   "flags": "flow_missing_los",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-159",
+   "test_id": "21270 H3",
+   "column": "burn_time_s",
+   "table_value": 43.0,
+   "value_now": 94.0,
+   "flags": "pressure_9pct_above_nominal;o2_is_burner_stream;corrected_from_raw",
+   "patch_ids": [
+    "D05"
+   ]
+  },
+  {
+   "accession": "PSI-159",
+   "test_id": "21106 F4",
+   "column": "ignited",
+   "table_value": false,
+   "value_now": true,
+   "flags": "corrected_from_raw",
+   "patch_ids": [
+    "D03"
+   ]
+  },
+  {
+   "accession": "PSI-159",
+   "test_id": "21112 A6",
+   "column": "burn_time_s",
+   "table_value": 259.0,
+   "value_now": 147.0,
+   "flags": "burner_over_limit;corrected_from_raw",
+   "patch_ids": [
+    "D04"
+   ]
+  },
+  {
+   "accession": "PSI-23",
+   "test_id": "20006",
+   "column": "fuel_fraction",
+   "table_value": 1.0,
+   "value_now": 0.45,
+   "flags": "corrected_from_report;autofill_artifact;conflicts_with_raw",
+   "patch_ids": [
+    "D35"
+   ]
+  },
+  {
+   "accession": "PSI-23",
+   "test_id": "20013",
+   "column": "fuel_fraction",
+   "table_value": 1.0,
+   "value_now": 0.45,
+   "flags": "corrected_from_report;autofill_artifact;conflicts_with_raw",
+   "patch_ids": [
+    "D36"
+   ]
+  },
+  {
+   "accession": "PSI-23",
+   "test_id": "20190",
+   "column": "fuel_fraction",
+   "table_value": 0.35,
+   "value_now": 0.45,
+   "flags": "conflicts_with_report;corrected_from_raw",
+   "patch_ids": [
+    "D16"
+   ]
+  },
+  {
+   "accession": "PSI-25",
+   "test_id": "T9",
+   "column": "date",
+   "table_value": "2018-06-24",
+   "value_now": "2014-06-24",
+   "flags": "date_corrected",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-25",
+   "test_id": "T18",
+   "column": "date",
+   "table_value": "2018-06-24",
+   "value_now": "2014-06-24",
+   "flags": "date_corrected;ramped",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "100",
+   "column": "x_o2_ambient",
+   "table_value": "0.21111",
+   "value_now": 0.17300000000000001,
+   "flags": "ramped;o2_from_notes",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "85",
+   "column": "x_o2_ambient",
+   "table_value": "0.21111",
+   "value_now": 0.168,
+   "flags": "o2_from_notes",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "93",
+   "column": "x_o2_ambient",
+   "table_value": "0.2113",
+   "value_now": null,
+   "flags": "ramped;needs_review",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "105",
+   "column": "x_o2_ambient",
+   "table_value": "0.205",
+   "value_now": null,
+   "flags": "fuel_inferred;ramped;needs_review",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "72",
+   "column": "x_o2_ambient",
+   "table_value": "0.21",
+   "value_now": null,
+   "flags": "needs_review",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-26",
+   "test_id": "73",
+   "column": "x_o2_ambient",
+   "table_value": "0.21",
+   "value_now": null,
+   "flags": "needs_review",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-39",
+   "test_id": "1237",
+   "column": "date",
+   "table_value": "2017-05-02",
+   "value_now": "2017-05-01",
+   "flags": "corrected_from_raw",
+   "patch_ids": [
+    "D12"
+   ]
+  },
+  {
+   "accession": "PSI-39",
+   "test_id": "1301",
+   "column": "date",
+   "table_value": "2017-07-29",
+   "value_now": "2017-06-29",
+   "flags": "corrected_from_raw",
+   "patch_ids": [
+    "D11"
+   ]
+  },
+  {
+   "accession": "PSI-39",
+   "test_id": "1411",
+   "column": "date",
+   "table_value": "2011-09-06",
+   "value_now": "2017-09-06",
+   "flags": "date_corrected",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-98",
+   "test_id": "S1",
+   "column": "geometry",
+   "table_value": "thickness 0.37 cm, length 40.6 cm, width 94 cm",
+   "value_now": "thickness 0.37 mm, length 40.6 cm, width 94 cm",
+   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D19",
+    "D31"
+   ]
+  },
+  {
+   "accession": "PSI-98",
+   "test_id": "S1",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "value_now": 102.3,
+   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D19",
+    "D31"
+   ]
+  },
+  {
+   "accession": "PSI-98",
+   "test_id": "S2",
+   "column": "geometry",
+   "table_value": "thickness 0.37 cm, length 40.6 cm, width 94 cm",
+   "value_now": "thickness 0.37 mm, length 40.6 cm, width 94 cm",
+   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D20",
+    "D23"
+   ]
+  },
+  {
+   "accession": "PSI-98",
+   "test_id": "S2",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "value_now": 102.6,
+   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
+   "patch_ids": [
+    "D20",
+    "D23"
+   ]
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-4",
+   "column": "geometry",
+   "table_value": "thickness 037 mm, length 29 cm, width 5 cm",
+   "value_now": "thickness 0.37 mm, length 29 cm, width 5 cm",
+   "flags": "unit_corrected",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-5",
+   "column": "geometry",
+   "table_value": "thickness 037 mm, length 29 cm, width 5 cm",
+   "value_now": "thickness 0.37 mm, length 29 cm, width 5 cm",
+   "flags": "unit_corrected",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-6",
+   "column": "geometry",
+   "table_value": "thickness 037 mm, length 29 cm, width 5 cm",
+   "value_now": "thickness 0.37 mm, length 29 cm, width 5 cm",
+   "flags": "unit_corrected;corrected_from_report",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-6",
+   "column": "flow_cm_s",
+   "table_value": 20.0,
+   "value_now": 25.0,
+   "flags": "unit_corrected;corrected_from_report",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-6",
+   "column": "fuel_raw",
+   "table_value": null,
+   "value_now": "Cotton-Fiberglass (SIBAL)",
+   "flags": "unit_corrected;corrected_from_report",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-6",
+   "column": "fuel",
+   "table_value": null,
+   "value_now": "sibal fabric",
+   "flags": "unit_corrected;corrected_from_report",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-9",
+   "column": "fuel_raw",
+   "table_value": null,
+   "value_now": "PMMA (flat, 1 cm)",
+   "flags": "corrected_from_report",
+   "patch_ids": null
+  },
+  {
+   "accession": "PSI-99",
+   "test_id": "2-9",
+   "column": "fuel",
+   "table_value": null,
+   "value_now": "pmma",
+   "flags": "corrected_from_report",
+   "patch_ids": null
+  }
+ ],
+ "flags": [
+  {
+   "flag": "o2_is_burner_stream",
+   "rows": 274,
+   "meaning": "inverse flame: the table's O2 is the burner stream (up to 0.85); stored in `x_o2_burner`, ambient O2 null"
+  },
+  {
+   "flag": "ramped",
+   "rows": 205,
+   "meaning": "a condition was ramped during the test, so no single value is given (PSI-10 RAMP/RAMPED cells; PSI-25 and PSI-26 air display lists several speeds)"
+  },
+  {
+   "flag": "pressure_9pct_above_nominal",
+   "rows": 148,
+   "meaning": "CFI-G inverse table pressures are ~9% above the nominal 0.507-3.04 bar fill levels (kept as given). Not set on the six rows of day 21196 at 49.5 kPa, which are 2% below the 0.5 atm level"
+  },
+  {
+   "flag": "fuel_inferred",
+   "rows": 85,
+   "meaning": "the sample label names only a shape (rod, film, sphere); `fuel` = pmma follows the investigators' documents (`fuel_source` in extra)"
+  },
+  {
+   "flag": "burner_over_limit",
+   "rows": 30,
+   "meaning": "peak burner temperature above the stated 450 °C (723 K) termination limit"
+  },
+  {
+   "flag": "smoke_point_bracket",
+   "rows": 26,
+   "meaning": "PSI-107: a reviewed smoke point lies between this row and the neighbouring logged row of the same burn; `review_point` in extra names the point"
+  },
+  {
+   "flag": "placeholder_values",
+   "rows": 20,
+   "meaning": "propane day: nominal 0.40 O2, one initial pressure and repeated Zst/Tad for the whole day, no final values"
+  },
+  {
+   "flag": "conflicts_with_raw",
+   "rows": 18,
+   "meaning": "raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`)"
+  },
+  {
+   "flag": "duplicate_id",
+   "rows": 12,
+   "meaning": "the same test id appears on two rows of the investigation; `source_file` + `source_row` identify a row"
+  },
+  {
+   "flag": "flow_below_sensor_range",
+   "rows": 11,
+   "meaning": "air rate below the anemometer's 5 cm/s rated minimum (kept, unreliable)"
+  },
+  {
+   "flag": "needs_review",
+   "rows": 11,
+   "meaning": "value left null or doubtful: PSI-26 undiluted O2 reading right after a vitiated run with no value in the notes; PSI-107 air rate given although the AIR reading was lost (LOS)"
+  },
+  {
+   "flag": "date_conflict",
+   "rows": 10,
+   "meaning": "the source date is unreadable or is not the day its GMT day-of-year column gives; `date` left null, source text in extra"
+  },
+  {
+   "flag": "composition_sum",
+   "rows": 10,
+   "meaning": "ambient mole fractions do not sum to 1 ± 0.01"
+  },
+  {
+   "flag": "ext_gt_d0",
+   "rows": 9,
+   "meaning": "extinction diameter larger than initial diameter"
+  },
+  {
+   "flag": "planned_not_flown",
+   "rows": 8,
+   "meaning": "row is the pre-flight planning matrix, not an as-flown test"
+  },
+  {
+   "flag": "flash_only",
+   "rows": 8,
+   "meaning": "\"flash\" hot ignition: momentary flame of about 1 s"
+  },
+  {
+   "flag": "ext_zero",
+   "rows": 8,
+   "meaning": "extinction diameter recorded as 0"
+  },
+  {
+   "flag": "corrected_from_raw",
+   "rows": 7,
+   "meaning": "value replaced by the raw sensor data (table value kept as `<column>_original`; patch ids in extra `discrepancies`)"
+  },
+  {
+   "flag": "unit_corrected",
+   "rows": 7,
+   "meaning": "thickness unit or decimal error fixed in `geometry` (original in `geometry_original`)"
+  },
+  {
+   "flag": "autofill_artifact",
+   "rows": 7,
+   "meaning": "PSI-23: \"N2\" dragged down a spreadsheet column became \"N3\", \"N4\", ...; read as N2"
+  },
+  {
+   "flag": "corrected_from_report",
+   "rows": 6,
+   "meaning": "value changed to the value in the reports or publications (original kept)"
+  },
+  {
+   "flag": "filled_from_raw",
+   "rows": 5,
+   "meaning": "empty table cell filled from the raw sensor data"
+  },
+  {
+   "flag": "conflicts_with_report",
+   "rows": 5,
+   "meaning": "table disagrees with the reports; not changed (`report_value` in extra)"
+  },
+  {
+   "flag": "o2_final_artifact",
+   "rows": 5,
+   "meaning": "BASS-II \"Calibrated final O2\" is a spreadsheet artefact (sensor offset, or offset plus raw reading); removed from extra and kept as `..._original`"
+  },
+  {
+   "flag": "value_from_report",
+   "rows": 4,
+   "meaning": "outcome value taken from a digest-record finding, not from a PSI table (`outcome_source` in extra)"
+  },
+  {
+   "flag": "flow_missing_los",
+   "rows": 3,
+   "meaning": "air rate equals the conversion intercept (-5.918) because the AIR reading was lost; flow set to null"
+  },
+  {
+   "flag": "date_corrected",
+   "rows": 3,
+   "meaning": "date corrected (original in `date_original`)"
+  },
+  {
+   "flag": "low_o2_in_source",
+   "rows": 2,
+   "meaning": "PSI-10: the table gives the text \"LOW O2\" instead of the burner O2, flows, Zst and Tad; left null"
+  },
+  {
+   "flag": "o2_from_notes",
+   "rows": 2,
+   "meaning": "as-run O2 cell is the pre-dilution reading; the diluted value from the crew notes is used"
+  },
+  {
+   "flag": "id_suspect",
+   "rows": 1,
+   "meaning": "test id looks mistyped"
+  },
+  {
+   "flag": "label_fixed",
+   "rows": 1,
+   "meaning": "a label split across cells was repaired (original in extra)"
+  },
+  {
+   "flag": "pressure_zero_in_source",
+   "rows": 1,
+   "meaning": "source gives 0 mmHg; pressure left null"
+  }
+ ],
+ "rows_flagged": 676,
+ "rows_total": 2177,
+ "removed_sources": [
+  {
+   "accession": "PSI-142",
+   "where": "question[3]",
+   "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=1-Cover%20Page.docx"
+  },
+  {
+   "accession": "PSI-142",
+   "where": "method.procedure[3]",
+   "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx"
+  },
+  {
+   "accession": "PSI-142",
+   "where": "test_matrix.varied[6][2]",
+   "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx"
+  },
+  {
+   "accession": "PSI-142",
+   "where": "limitations[1][1]",
+   "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx"
+  }
+ ]
+}

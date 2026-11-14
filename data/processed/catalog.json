@@ -1,0 +1,2762 @@
+{
+ "investigations": {
+  "description": "One row per PSI investigation, flattened from the PSI API record.",
+  "rows": 24,
+  "files": [
+   "data/processed/investigations.parquet",
+   "data/processed/investigations.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "PSI accession",
+    "values": {
+     "PSI-10": 1,
+     "PSI-20": 1,
+     "PSI-21": 1,
+     "PSI-22": 1,
+     "PSI-23": 1,
+     "PSI-25": 1,
+     "PSI-26": 1,
+     "PSI-39": 1,
+     "PSI-47": 1,
+     "PSI-60": 1,
+     "PSI-62": 1,
+     "PSI-68": 1,
+     "PSI-69": 1,
+     "PSI-98": 1,
+     "PSI-99": 1,
+     "PSI-100": 1,
+     "PSI-101": 1,
+     "PSI-102": 1,
+     "PSI-106": 1,
+     "PSI-107": 1,
+     "PSI-115": 1,
+     "PSI-117": 1,
+     "PSI-142": 1,
+     "PSI-159": 1
+    }
+   },
+   "acronym": {
+    "dtype": "str",
+    "non_null": 19,
+    "description": "short name",
+    "values": {
+     "ACME/Flame Design": 1,
+     "ACME BRE": 1,
+     "ACME CLD Flame": 1,
+     "ACME E-FIELD Flames": 1,
+     "ACME s-Flame": 1,
+     "BASS-II": 1,
+     "BASS": 1,
+     "CFI": 1,
+     "DAFT / DAFT-2": 1,
+     "FLEX-2": 1,
+     "FLEX": 1,
+     "SAFFIRE-I": 1,
+     "SAFFIRE-II": 1,
+     "SAFFIRE-III": 1,
+     "SAME-R": 1,
+     "SAME": 1,
+     "SLICE": 1,
+     "SPICE": 1,
+     "ACME CFI-G": 1
+    }
+   },
+   "title": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "Advanced Combustion via Microgravity Experiments / Flame Design": 1,
+     "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator": 1,
+     "Advanced Combustion via Microgravity Experiments / Coflow Laminar Diffusion Flame": 1,
+     "Advanced Combustion via Microgravity Experiments Electric-Field Effects on Laminar Diffusion Flames": 1,
+     "Advanced Combustion via Microgravity Experiments-Structure and Response of Spherical Diffusion Flames": 1,
+     "Burning and Suppression of Solids - II": 1,
+     "Burning and Suppression of Solids": 1,
+     "Cool Flames Investigation": 1,
+     "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2": 1,
+     "Computational and Experimental Analysis of SPICE Data Sets": 1,
+     "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography": 1,
+     "Flame Extinguishment Experiment - 2": 1,
+     "Flame Extinguishment Experiment": 1,
+     "Spacecraft Fire Safety Experiment-I": 1,
+     "Spacecraft Fire Experiment-II": 1,
+     "Spacecraft Fire Experiment-III": 1,
+     "Smoke Aerosol Measurement Experiment-Reflight": 1,
+     "Smoke and Aerosol Measurement Experiment": 1,
+     "Structure and Liftoff In Combustion Experiment": 1,
+     "Smoke Point In Co-flow Experiment": 1,
+     "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity": 1,
+     "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis": 1,
+     "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames": 1,
+     "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases": 1
+    }
+   },
+   "project_type": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "Microgravity or Ground Investigation",
+    "values": {
+     "Microgravity Investigation": 19,
+     "Ground Investigation": 5
+    }
+   },
+   "sub_research_area": {
+    "dtype": "str",
+    "non_null": 23,
+    "description": null,
+    "values": {
+     "Spacecraft Fire Safety": 10,
+     "Flames of Gaseous Fuels": 3,
+     "Flames of gaseous fuel": 1,
+     "Laminar Flames": 1,
+     "Flames of gaseous fuels": 1,
+     "Droplets": 1,
+     "Gaseous": 1,
+     "Spacecraft Fire, Smoke Distribution": 1,
+     "Surface Combustion": 1,
+     "Fire Safety": 1,
+     "Smoke Aerosol, Combustion Simulation": 1,
+     "Droplet": 1
+    }
+   },
+   "flight_program": {
+    "dtype": "str",
+    "non_null": 21,
+    "description": null,
+    "values": {
+     "International Space Station (ISS)": 18,
+     "Not Applicable": 2,
+     "Cygnus Spacecraft": 1
+    }
+   },
+   "hardware": {
+    "dtype": "str",
+    "non_null": 19,
+    "description": "hardware and facility names",
+    "values": {
+     "Combustion Integrated Rack (CIR), ACME": 4,
+     "Microgravity Science Glovebox (MSG)": 2,
+     "Advanced Combustion via Microgravity Experiments (ACME), Combustion Integrated Rack (CIR), Reconfiguration of Combustion Integrated Rack (CIR)": 1,
+     "Microgravity Science Glovebox": 1,
+     "Multi-User Droplet Combustion Apparatus (MDCA), Combustion Integrated Rack (CIR)": 1,
+     "TSI P-Trak": 1,
+     "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)": 1,
+     "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)": 1,
+     "Saffire 1 enclosure in Cygnus": 1,
+     "Cygnus Pressurized Cargo Module, SAFFIRE": 1,
+     "Saffire III enclosure in Cygnus": 1,
+     "Comparitive Soot Diagnostic Hardware; Refer to final report": 1,
+     "Comparitive Soot Diagnostic Hardware": 1,
+     "Principal Investigator Laboratory Hardware": 1,
+     "ACME, Combustion Integrated Rack (CIR)": 1
+    }
+   },
+   "hardware_link": {
+    "dtype": "str",
+    "non_null": 19,
+    "description": null,
+    "values": {
+     "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/": 2,
+     "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/implementation/": 2,
+     "https://www1.grc.nasa.gov/space/iss-research/msg/": 2,
+     "https://issnationallab.org/facilities/combustion-integrated-rack/, https://gipoc.grc.nasa.gov/wp/fcf-cir/mdca/": 2,
+     "https://www1.grc.nasa.gov/space/iss-research/msg/saffire/": 2,
+     "https://ntrs.nasa.gov/api/citations/19960008413/downloads/19960008413.pdf": 2,
+     "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/implementation/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/, https://www.esa.int/ESA_Multimedia/Videos/2017/11/Refurbishing_the_ISS_combustion_rack": 1,
+     "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/mdca/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/": 1,
+     "https://ntrs.nasa.gov/api/citations/20050215648/downloads/20050215648.pdf": 1,
+     "https://cdn.northropgrumman.com/-/media/wp-content/uploads/Cygnus-Fact-Sheet-1.pdf, https://ntrs.nasa.gov/api/citations/20170000230/downloads/20170000230.pdf": 1,
+     "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/Columbus/Microgravity_Science_Glovebox": 1,
+     "https://doi.org/10.1016/j.combustflame.2016.01.008": 1,
+     "https://www1.grc.nasa.gov/space/iss-research/iss-fcf/combustion-science/acme/implementation/, https://www1.grc.nasa.gov/space/iss-research/iss-fcf/cir/": 1
+    }
+   },
+   "start_date": {
+    "dtype": "str",
+    "non_null": 21,
+    "description": "MM-DD-YYYY, as in the PSI record; several are wrong (see digest)",
+    "values": {
+     "01-01-2010": 2,
+     "03-02-2001": 2,
+     "01-14-1999": 1,
+     "10-01-2006": 1,
+     "11-18-2016": 1,
+     "02-05-2015": 1,
+     "10-01-2009": 1,
+     "10-01-2020": 1,
+     "03-01-2003": 1,
+     "06-05-2019": 1,
+     "05-01-2019": 1,
+     "08-12-2016": 1,
+     "08-01-2007": 1,
+     "09-30-2016": 1,
+     "04-18-2017": 1,
+     "07-01-2010": 1,
+     "01-30-2017": 1,
+     "02-15-2017": 1,
+     "08-01-2016": 1
+    }
+   },
+   "end_date": {
+    "dtype": "str",
+    "non_null": 20,
+    "description": null,
+    "values": {
+     "02-28-2008": 2,
+     "04-30-2025": 1,
+     "02-08-2025": 1,
+     "05-31-2022": 1,
+     "11-17-2020": 1,
+     "11-24-2019": 1,
+     "12-31-2022": 1,
+     "06-30-2013": 1,
+     "10-20-2021": 1,
+     "06-01-2009": 1,
+     "08-29-2022": 1,
+     "04-30-2021": 1,
+     "09-30-2019": 1,
+     "07-31-2016": 1,
+     "04-01-2017": 1,
+     "09-30-2010": 1,
+     "12-31-2019": 1,
+     "02-14-2022": 1,
+     "07-31-2021": 1
+    }
+   },
+   "managing_center": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "Glenn Research Center (GRC)": 24
+    }
+   },
+   "contacts": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "investigator names from the PSI record contact block, '; '-separated",
+    "values": {
+     "David Urban": 2,
+     "Richard Axelbaum; Peter Sunderland; David Urban; Sergey Frolov; Dennis Stocker": 1,
+     "John L de Ris; Peter Sunderland; James Quintiere; Dennis Stocker": 1,
+     "Mitchell Smooke; Dennis Stocker; Marshall Long": 1,
+     "Alice Chien; Derek Dunn-Rankin; Dennis Stocker": 1,
+     "Dennis Stocker; Chung Law; Stephen Tse": 1,
+     "Paul Ferkul; Carlos Fernandez-Pello; Fletcher J. Miller; James T'ien; Subrata Bhattachjee": 1,
+     "Sandra L. Olson; Paul Ferkul; Funiaki Takahashi; James T'ien": 1,
+     "Frederick Dryer; Daniel Dietrich; Tanvir Farouk; Vedha Nayagam; Forman Williams": 1,
+     "David Urban; Claire Fortenberry": 1,
+     "Marshall Long; Mitchell Smooke; Daniel Dietrich": 1,
+     "Paul DesJardin; David Urban": 1,
+     "Frederick Dryer; Benjamin D. Shaw; Mun Choi; Vedha Nayagam; Thomas Avedisian; Daniel Dietrich; Michael Hicks; Forman Williams": 1,
+     "Benjamin Shaw; Michael Hicks; Forman Williams; Vedha Nayagam; Mun Choi; Frederick Dryer; Daniel Dietrich": 1,
+     "David Urban; Gary Ruff": 1,
+     "Zeng-guang Yuan; Claire Fortenberry; David Urban; Jiann Yang; Thomas Cleary; George Mulholland": 1,
+     "David Urban; George Mulholland; Claire Fortenberry; Thomas Cleary; Jiann Yang": 1,
+     "Mitchell Smooke; Fumiaki Takahashi; Marshall Long; Dennis Stocker": 1,
+     "Peter Sunderland; David Urban": 1,
+     "Sean Garrick; Michael Hicks": 1,
+     "Tanvir Farouk; Mike Hicks": 1,
+     "Yiguang Ju; Daniel Dietrich; Christopher Reuter": 1,
+     "Dennis Stocker; Peter Sunderland; Richard Axelbaum; Forman Williams": 1
+    }
+   },
+   "author_contacts": {
+    "dtype": "object",
+    "non_null": 24,
+    "description": "per-author name, affiliation, role and e-mail from the PSI record contact block"
+   },
+   "objective": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "objective text from the PSI record",
+    "values": {
+     "The objectives of this investigation were to: (1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.": 2,
+     "The primary objectives of this flight experiment are: A. Obtain soot-inception limits of quasi-steady normal and inverse spherical diffusion flames as functions of flow rate, Zst, amount of inert (N2 or CO2), and pressure for C2H4 and CH4 flames. Identify the corresponding temperatures in hot regions. Obtain similar limits and temperatures for inverse and normal coflow flames. B. Obtain detailed measurements in quasi-steady normal and inverse spherical diffusion flames for C2H4 and CH4. Determine the effects of flow rate, Zst, amount of N2, and pressure on flame temperature, size, color, and soot volume fraction. Evaluate the possible existence of steady flames. C. Obtain extinction limits as functions of Zst, amount of N2, and pressure for normal and inverse spherical C2H4 and CH4 flames. Identify the corresponding temperatures in hot regions. Identify the presence of radiative or kinetic extinction. Evaluate whether pseudo-flammability limits can be obtained for these flames.": 1,
+     "The BRE flight program seeks to establish the burning conditions in a quiescent microgravity ambient in terms of material properties. The specific flight objectives are as follows. 1. Observe burning behavior in long-duration microgravity for CH4/N2 and C2H4/N2mixtures on porous circular burners of 25 and 50 mm diameter. Consider O2/N2 ambients with various pressures and ambient O2 concentrations and pressures. NASA - considered atmosphere for human space missions will be examined: 14.7 psia, 21 % oxygen: 10.2 psia, 26.5 %; and 8.2 psia, 34 % oxygen. Emphasize fuel conditions that can be related to a diverse range of condensed fuels. 2. Consider the conditions of Objective 1 for ambients of O2/CO2 (desired). 3. Consider the conditions of Objectives 1 – 2 for extinction limits.": 1,
+     "In order to provide the experimental data needed to allow rigorous testing of computational models at the extremes of the fuel dilution spectrum, we have the following objectives: A) Characterize the behavior of weak coflow diffusion flames of methane and ethylene, as a function of velocity and fuel dilution, through measurement of flame shape, lift-off heights, temperatures and extinction limits. B) Characterize the sooting tendencies of diffusion flames with long residence times, as a function of velocity and fuel dilution, through measurement of flame shape, gas temperatures in the soot-free portion of the flame, soot luminosity, soot temperatures, and soot volume fractions.": 1,
+     "The objective of this investigation is to better understand the relationship between electric field voltage and chemi-ion current, analyze the dynamic response of flames to electric field changes, evaluate soot formation, and characterize stabilized near-limit lifted flames.": 1,
+     "A series of experiments is proposed with the following specific objectives, in both soot-free and sooty flames, to compare with detailed computational simulation to assess transport properties and detailed chemical kinetics (including chemiluminescence): Objective A. Measure and characterize the transient structure (such as temperature and species distribution) of diffusion flames established at initially non-steady, spherical flame structures for mixtures of different H2/CH4/diluent ratios (soot-free) and different C2H4/diluent ratios (sooty), for different flow rates. Objective B. Determine the quasi-steady convective/chemical-kinetic extinction limits (low system Damköhler numbers) and radiative/chemical-kinetic extinction limits (high system Damköhler numbers) for mixtures of different H2/CH4/diluent ratios (soot-free) and different C2H4/diluent ratios (sooty). Objective C. Determine the existence (for different Zeldovich number, Ze), onset (as a function Da), and nature (i.e. mode, frequency, amplitude) of pulsating instabilities theoretically predicted to occur in transient spherical diffusion flames using fuel/diluent mixtures that are above a critical Lewis number.": 1,
+     "BASS-II results contribute to the combustion computational models used in the design of fire detection and suppression systems in microgravity and on Earth. Objectives Include: 1) Study the ignition, flame growth, flame spread, and extinction limits for solid fuels burning in low-velocity forced flows in microgravity. 2) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test #1 method, ground-based microgravity tests, and actual material flammability in microgravity. 3) Provide SoFIE PIs with preliminary data to refine Science Requirements. 4) Practical, realistic (thicker) fuels in typical geometries will be examined, including slabs, cylinders, and spherical sections. The primary variables include: • Forced flow velocity (speed and direction) • Ambient oxygen concentration (via working volume nitrogen vitiation) • Sample geometry (rods, spherical section, slabs, films, and fabric sheets": 1,
+     "The two main objectives for BASS are to: 1.) Begin to bridge the gap between the normal gravity NASA-STD-6001 Test#1 method, ground-based microgravity tests, and actual material flammability in microgravity. The relation between these can be investigated by observing flames burning for the longer times available in flight. Practical, realistic (thicker) fuels in typical geometries will be examined, including wake flames which have characteristics of a fire burning behind another object (for example, a fire burning in tight area which may not be easily accessible). 2.) Assess the effectiveness of an inert, gaseous extinguishing agent (similar to that used on ISS) in putting out flames over different materials, geometries, preheating, and flow.": 1,
+     "The objectives of this investigation are to: 1) Examine the combustion behavior of n-dodecane and mixtures of n-dodecane/iso-dodecane at pressures ranging from 0.25 atm to 5 atm. 2) Analyze the effects of helium dilution on cool flame behavior. 3) Examine the behavior of combustion characteristics. 4) Investigate the relationship between droplet size, pressure, and flame extinction, and (5) understand the consequence of soot formation during cool flame combustion.": 1,
+     "The focus of DAFT / DAFT-2 was to mitigate the risk for the Smoke Aerosol Measurement Experiment (SAME). SAME relied on a commercially available condensate nuclei counter, the TSI P-Trak, to quantify smoke aerosols in a microgravity environment, however there were concerns that th P-Trak would not be reliable in microgravity as it relies on gravity to recycle isopropyl alcohol used in the measurement process. DAFT / DAFT-2 tests that a modified P-Trak particulate counter would be accurate in microgravity. Summarized objectives include: 1) Demonstrate the Functionality of the Modified TSI P-Trak in Microgravity 2) Compare the TSI P-Trak Performance against the DustTrak control 3) Create and Analyze Aerosol Standards in Microgravity 4) Ensure the reliability of future aerosol experiments": 1,
+     "This ground investigation sought to increase understanding of the issues that control the large discrepancy between soot formation in 1g and in 0g flames. The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI. By analyzing over 1600 raw DSLR images and incorporating advanced soot models, the study sought to improve understanding of soot formation, oxidation, radiative re-absorption, and aggregate growth in heavily sooting flames. The work further aimed to reconcile microgravity and normal gravity flame behavior, identify key physical and chemical processes influencing smoke point development, and provide a framework for evaluating model parameter sensitivity.": 1,
+     "The objective of this research was to develop and validate new flamelet generated manifold (FGM) modeling techniques for concurrent flame spread in microgravity. Concurrent flame spread presented one of the greatest modeling challenges in combustion science due to the intricate coupling between heat transfer, mass transport, and chemical kinetics near the solid-vapor interface. Traditional modeling strategies often relied on hybridized turbulence and chemistry models that were not fully consistent and failed to capture important intermediate reaction pathways. To overcome these shortcomings, this PSI grant advanced the use of an unsteady flamelet generated manifold (UFGM) framework that reduced the complexity of reacting systems by mapping them into lower-dimensional manifolds. The research aimed to leverage this methodology to simulate solid fuel combustion processes with high fidelity, using the NASA Burning and Suppression of Solids (BASS and BASS-II) experiments as benchmarks. Ultimately, the long-term goal was to enable accurate prediction of flammability limits for spacecraft materials and to provide a tool that could also serve as a subgrid-scale model in large-eddy simulations of fires, supporting spacecraft safety and hazard mitigation.": 1,
+     "The primary goal of the FLEX-2 flight experiments is to extend the results of FLEX-1 to fuels and environmental conditions that mimic real combustor conditions, as well as, provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions in order to validate numerical simulations and to develop new theoretical models. Detailed experimental objectives can be further itemized as: 1. Investigate the role of liquid-phase mixing on the burning characteristics of bi-component fuel droplets. 2. Examine the steady and unsteady liquid and gas-phase phenomena in pure fuel combustion. 3. Study flame extinction mechanisms and their boundaries. 4. Analyze the soot formation process, including soot volume fraction soot-shell dynamics. 5. Determine the influence of droplet interactions on the flammability limits and extinction behavior of droplet arrays. 6. Validate theoretical models of droplet combustion through comprehensive experimental data collection in microgravity environments.": 1,
+     "The FLEX (Flame Extinguishment Experiment) investigation aims to map the flammability limits of liquid fuels in microgravity environments, measure the effectiveness of various gaseous fire suppressants such as CO2, He, and SF6, and develop reliable predictive models for combustion limits under reduced gravity conditions. The mission seeks to validate and improve simplified models by incorporating detailed chemical reactions, heat transfer, and material movement, using both space-based data and extensive ground-based tests. Key flight experiment goals include obtaining high-resolution measurements of droplet burning rates, flame extinction behavior, heat radiation, soot levels, and temperature profiles, while systematically analyzing the effects of different ambient conditions and suppressant concentrations. These investigations are essential for advancing the fundamental understanding of combustion processes in microgravity and enhancing fire safety protocols for future space missions.": 1,
+     "The objectives of SAFFIRE-II are to determine how rapidly a large scale fire grows in low-gravity and to investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.": 1,
+     "Similar to the original SAME investigation, the primary objective of the SAME-R investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment. One of the problems encountered during the SAME investigation was that after the thermal precipitators were returned to the ground, it was found that all the TEM grids were severely contaminated with some unidentified foreign particles, making these grids unusable although some of them showed shapes of certain types of smoke particles. Based on that experience the SAME-R investigation employed several modification covering new materials, extended operating conditions, and diagnostic equipments.": 1,
+     "One of the major goals of this investigation was to quantify the sizes that the liquid smoke particulate achieves in low gravity and to relate the droplet size distribution to the smoke generation and smoke transport conditions in the experiment. A numerical code was to be developed to predict the smoke droplet growth as a function of the fuel pyrolysis rate, the thermodynamic properties of the pyrolysis vapor, and the flow environment.": 1,
+     "Objective: The objective of this investigation is to better understand the structure and stability of laminar diffusion flames in microgravity. Specific objectives of this investigation were: 1. To investigate the structure of laminar diffusion flames in microgravity to understand the stabilizing mechanisms at the flames base. 2. Determine the liftoff velocity limits for different fuels and burner diameters. 3. Evaluate the impact of fuel dilution with nitrogen on soot formation and flame stability. 4. Quantify the effects of microgravity on flame length and radiative heat loss compared to normal gravity conditions. 5. Validate numerical models for flame dynamics, soot production, and thermal radiation in non-premixed flames.": 1,
+     "The objective of SPICE is to better understand the complex process of combustion by observing flames in a microgravity environment aboard the International Space Station (ISS) and analogous ground experiments. Specific objectives were: (1) Identify the laminar smoke-point properties of non-buoyant jet diffusion flames under various co-flow conditions in microgravity. (2) Determine the effects of burner diameter and co-flow velocity on the luminous flame lengths and smoke points. (3) Quantify the sooting propensity of different fuels, such as ethylene, propane, and propylene mixtures. (4) Validate the correlation between luminous flame shape and residence time under microgravity conditions. (5) Investigate the impact of air and fuel flow rate variations on smoke point phenomena in space.": 1,
+     "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective. The intention of this effort is to quantify the differences between microgravity and Earth gravity smoke, and to identify the fluid dynamic mechanisms that cause the differences.": 1,
+     "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX) to quantify how externally imposed thermal and convective perturbations regulated the dynamics and ultimate fate of already established droplet cool flames, and to explain run-to-run variability by isolating the roles of deliberate heating and unintentional drift-induced convection. Focusing on both small and large droplets, the work mapped stability windows for ignition, sustained oscillation, transitions to hot ignition and warm-flame behavior, and extinction under microgravity. By leveraging and extending the FLEX data in the PSI, this study produced reusable models and sensitivity analyses that coupled low-temperature chemistry with transport and radiative effects.": 1,
+     "By using the Flame Extinguishment (FLEX) experimental data from the Physical Sciences Informatics (PSI) system of combustion science, the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames to: 1) Develop a new diagram of the flammability limits of diffusional cool flames affected by radiation, diffusion, and convection. 2) Bridge the knowledge gap between the flammability limits and extinction limits of hot flames and cool flames. 3) Verify the phenomena observed on the ISS flame extinguishment experiments. 4) Obtain new, quantitative data of extinction limit, flame temperature, and species distribution for the validation of kinetic and radiation models involving cool flames. 5) Extend the cool flame experiments from the original ISS droplet experiments to a more general ground-based combustion system involving radiation, diffusion, convection, and low-temperature chemistry while maintaining a one-dimensional geometry.": 1,
+     "1. Plan and support flight testing on the International Space Station (ISS). 2. Determine the conditions for which cool diffusion flames occur for propane, n-butane, and n-pentane; normal and inverse flames; and a broad range of Zst, Tad, and fluent flow rate. 3. Support the flight tests with advanced CFD simulations. 4. Identify or develop a chemical kinetics mechanism that yields good agreement between the CFD predictions and the ISS measurements. 5. Disseminate the results as widely as possible.": 1
+    }
+   },
+   "approach": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station. Consider a broad range of reactant dilutions, flow rates and pressures for normal and inverse convection directions. Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.": 1,
+     "To accomplish the above objectives, flight experiments are proposed. Additionally, preliminary flight tests will be performed to verify the experiment operations and for comparison with ground-based tests. For each test, conditions will be established for the chamber contents, namely choice of diluent, oxygen concentration, and pressure. Fuel flow will commence followed by ignition. The flames will initially be observed without varying the fuel flow rate. Because burner surface temperature and heat flux will vary, this will allow a broad range of conditions to be observed during a single test. As the surface temperature of the burner increases, and the flame remains steady, a continuous set of data is produced for the flammability map. Eventually either the flame will extinguish, the surface temperature of the burner will equilibrate, or the temperature limit of the heat flux sensor will be reached. At this time the fuel flow will be terminated. So a test should terminate for a given flow rate at extinction, and for continued burning when the burner surface temperature has steadied or the temperature limit of the heat flux sensor is neared. The extinction limit could be found once the burner temperature has steadied, and the heat flux sensor has not exceeded its limit. At that state, the flow rate can be reduced in small increments, until extinction is observed and the flow rate shut off. Again, in this process, new data is being produced for the flammability map. Ignition limit tests are not proposed for microgravity, but we will explore these under normal gravity. We believe there is better control on Earth-based ignition testing and that these results should carry over to microgravity conditions. In addition to the flight experiments, in normal gravity testing will continue. These tests will involve gaseous, liquid, and solid fuels. These experiments will further establish the validation of the BRE for 1-g applications and show its usefulness to establish 1-g ignition and extinction limits. As available, drop facility testing will be used to refine procedures, test instrumentation, and help to establish viable flow conditions. We will also pursue a CFD model for the quiescent microgravity burning. This will also guide us in the flight experiments, and potentially provide a predictive methodology.": 1,
+     "ACME CLD Flame project goals include the generation of improved computational models with improved soot sub-models that are effective for both dilute flames and sooting flames that vary from low to high soot loading levels. The enhanced time and spatial scales in a microgravity environment will be important for achieving both goals. Experimentally, we plan to study methane and ethylene diffusion flames over a wide range of test conditions. For the more dilute flames, measurements will be made of flame chemiluminesence of OH* and CH* to observe variations in lift-off height and flame shape as extinction limits are approached. The sooting tendencies of the more fuel-rich flames will be investigated using soot luminosity and laser extinction measurements to determine soot temperatures and soot volume fractions. Flame temperatures in non-sooting regions will be measured using thin-filament pyrometry. Based on observations, modifications can be made to the kinetics and soot model to match better the experimental results. If the overall agreement of the measurements and computations is good, the results of the computations can be “mined” to provide insight on species (and hence chemical processes) that cannot be measured directly using the diagnostics available for the proposed experiment.": 1,
+     "The E-FIELD flames experiment investigates how electric fields influence the behavior of laminar diffusion flames in microgravity. This unique environment is ideal for isolating electric field effects from buoyancy forces. The experiment is conducted with gas-fueled flames, both with and without a coflow of air. In the former case, the tests are conducted using the same coflow burner used by the Coflow Laminar Diffusion (CLD) Flame experiment. An electric field is generated by creating a high voltage (up to 10 kV) differential between the burner and a flat circular mesh suspended above (i.e., downstream of) the burner. Measurements, as a function of the field strength and fuel, are taken of the ion current through the flame and the flame’s response time to electric forcing. The gas-jet burner is used to create a small, focused flame for detailed ion-driven convection studies while the coflow burner surrounds the fuel jet with a weak synthetic air flow to enable flame stability and soot behavior analysis. A high-voltage copper mesh electrode positioned above the burner tip generated an electric field with controlled polarity and strength. The electric field interacts with ions generated through chemi-ionization during combustion, driving ion-driving convection and influencing flame behavior. Methane and ethylene were used as fuels and diluted with nitrogen to control flame strength. Dilution levels were varied to explore a range of combustion dynamics, from highly stable to near-extinction flames. Voltage-current curves were recorded to assess the relationship between electric field strength and chemi-ion current, revealing ion-driven convection effects. High-resolution cameras captured flame shape, luminosity, and soot distribution. Spectral imaging with filters measures chemiluminescent emissions and soot volume fraction. There were thermopile detectors to measure flame radiant emissions. All experiments were conducted in the combustion integrated rack (CIR). Tests were administered with Glenn Research Center (GRC) directing astronaut actions. Parameters such as fuel flow rate, coflow velocity, and field polarity are were varied to isolate specific effects on ion production, flame stability, and soot behavior.": 1,
+     "A series of experiments is proposed in which mixtures of various gaseous fuels and diluents will be issued into an oxidizing environment through a spherical porous burner and ignited to obtain, nominally, a spherical, one-dimensional stabilized flame. Synchronized measurements are to be made including spectrally resolved images, flame and burner temperatures, radiative flux measurements, and system operating conditions (including reactant flow rates, ambient temperatures, pressures and acceleration levels, etc.). These data are to be used for comparisons of flame behavior and structure with detailed numerical simulations of the flames. Conventional gaseous fuels including hydrogen, methane, and ethylene will be used. Hydrogen is the simplest fuel and its reaction mechanism is also reasonably established. Methane is the simplest hydrocarbon and extensive studies have been conducted on its combustion chemistry. Ethylene is a typical sooty fuel and is also an important intermediate for the oxidation of higher hydrocarbons. Diluents mixed with fuel are to include nitrogen and helium to adjust mixture diffusivities, and carbon dioxide to influence flame radiation characteristics.": 1,
+     "To summarize, BASS-II's approach, microgravity combustion tests were performed aboard the International Space Station. Active crew support for real-time “lab partner” operations. The wind tunnel was installed in the Microgravity Science Glovebox which supplied power, imaging, and a level of containment. Fuel samples were mounted inside a small wind tunnel which could impose airflow speeds up to 40 cm/s. Main variables are airflow speed and oxygen concentration (oxygen varied below 21% by adding nitrogen). Flame appearance, flame growth, and spread rates were determined in both the opposed and concurrent flow.": 1,
+     "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG). Custom-made fabric samples consisting of 75% cotton and 25% fiberglass (by mass) measuring were used as a fuel source as well as Nomex fabric and Ultem. A Kanthal wire (29-gage)igniter was used to initiate combustion at one end of the fabric. Airflow was controlled using a variable speed fan, with airflow speeds reaching as high as 40 cm/s. The airflow was directed along the fuel surface in either the opposed or concurrent direction. This investigation explored two primary air flow configurations; concurrent-flow and opposed-flow. With concurrent-flow air flows in the same direction as the flame spread and in opposed-flow air flows in the opposite direction of flame spread. Flames were observed in the top and edge profiles and data was collected on flame size, shape, color, spread rate, and potential flame quenching. The samples were placed in a small flow duct (76 mm x 76 mm cross section) that allowed for airflow across the fabric. Other sample shapes were utilized as well including spheres and cylinders.": 1,
+     "The Combustion Integrated Rack (CIR) contains the Multi-User Droplet Combustion Apparatus (MDCA) which facilitates the controlled combustion of fuel droplets. A system of gas bottles and fuel syringes delivers the desired gas mixture to the combustion chamber ranging from 0.25 to 0.5 atm. Droplets of fuel are dispensed and suspended between hypodermic needles or tethered using silicon-carbide fibers. A hot-wire igniter is positioned near the droplet for ignition. After ignition the wire is retracted. Fuels observed include n-dodecane, farnesane, and mixtures of n-dodecane/iso-dodecane. Fuels diluted with molecular oxygen, atomic nitrogen, and helium to study the influence on flame extinction and dynamics. Flames were observed with a black-and-white camera for droplet size measurements. A UV camera was used for capturing the OH* radical emissions and flame size. Other high resolution cameras were used for monitoring and documentation. Narrow-band and wide-band radiometers for analyzed flame radiation.": 1,
+     "The experimental approach consists of the following components: 1) Modification of Instrumentation: TSI P-Trak was modified for use in microgravity by redesigning the condenser tube to use capillary forces for recycling isopropyl alcohol and removing the mercury switch responsible for detecting instrument orientation. 2) Aerosol Generation: Arizona Red Dust (ARD) was chosen as an aerosol standard due to its ease of dispersion. The ARD was aerosolized with GN2 to create particle samples. The aerosol was contained within 15-liter Mylar bags. 3) On-Orbit Testing: The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak CNC specifically designed to work in microgravity.": 1,
+     "The approach was to combine image processing, experimental diagnostics, and detailed soot modeling. Raw Nikon NEF images were decoded into three color channels and analyzed using color-ratio pyrometry to extract soot temperature fields. Absolute light calibration from SPICE was then used to calculate soot volume fractions. For computational modeling, a coupled flow–species–soot system was implemented, modified to include radiation re-absorption and discrete-sectional aggregate formation. Simulations were performed for both Yale and ACME burner configurations under normal and microgravity conditions. Comparisons between experimental data and computed results guided sensitivity analyses of soot evolution parameters, including the effects of radiation, scattering, boundary conditions, and heat transfer to the burner structure.": 1,
+     "The approach combined high-resolution computational modeling with experimental validation to study concurrent flame spread in microgravity. A previously developed computational framework was employed to run fully coupled simulations of fluid–solid responses, focusing on materials subject to charring and ablation. Within this framework, the unsteady FGM method was implemented and tested on various BASS geometries, including flat sheets, spheres, and rod-shaped polymethyl methacrylate (PMMA) samples, as well as wax cylinders. Experimental imagery found in PSI from the BASS and BASS-II investigations was post-processed using newly developed two-color tomography methods with DSLR cameras, enabling 3D reconstructions of soot and temperature fields for direct comparison to model predictions. The evaluation metrics included flame geometry, temperature distribution, soot volume fraction, and flame spread rate, with special emphasis on reproducing the “Goldilocks” flammability zone reported by Olson and Ferkul. Comparative analyses were also carried out with a parallel NSF-supported terrestrial flame spread project, ensuring that the predictive capabilities of the UFGM approach were assessed across both microgravity and normal-gravity conditions.": 1,
+     "The chamber was filled with the appropriate atmosphere, which was varied in pressure between 0.5 atm to 3.0 atm and O2 concentration between 0.1 to 0.4 mole fraction with the diluent gas making up the balance. A settling time of approximately 2 minutes elapsed prior to initiating the test in order to ensure that the temperature and pressure of the chamber gases have stabilized. This settling time was followed by the dispensing of a predetermined amount of fuel (based on the target droplet size) onto the support fiber for those tests in which the droplet is not freely deployed. When sufficient fuel has been dispensed the dispensing needles were retracted and a dwell period of at least 10 seconds was allowed for the droplet internal fluid motion induced by deployment to subside. This was then followed by initiating power to the ignitor for a selectable amount of time ranging from 1 second to 5 seconds after which the ignitor was retracted from the field of view. If the flow field is to be generated by translating the droplet then droplet motion would commence at the same time that the ignitor is retracted. A near real-time download of the color camera video was employed in order to verify successful droplet deployment, ignition, and overall progress of the experiment. Pressure and temperature data of the chamber environment was also recorded in near real time. The overall investigation approach can be summarized as: 1. Test parameters are determined, including pressure, temperature, fuel mixture, and humidity. 2. Fill the combustion chamber with the selected gas mixtures. 3. Deploy the droplet(s) carefully controlling the droplet diameter. 4. Allow the droplet to stabilize in the microgravity environment. 5. Ignite the droplet in a uniform and controlled fashion. 6. Monitor combustions and track flame evolution using high speed photography. 7. Monitor and adjust experimental conditions as needed. 8. Analyze data. The independently varied experimental parameters during FLEX-2 experiments were 1) Fuel type 2) Ambient gas composition 3) Ambient Pressure 4) Droplet initial diameter 5) Droplet translation velocity (and acceleration) 6) Droplet spacing and initial size in a binary linear array.": 1,
+     "The FLEX experiments involve igniting and observing the burning behavior of relatively large droplets. A primary objective of the experiments is to determine the Limiting Oxygen Index (LOI) as a function of ambient pressure and determine how the presence of a suppressant influences the LOI . The basic outline of the procedure to construct this diagram is as follows: 1. Select the test pressure (0.5 − 1.5 atm) for the LOI tests. 2. Select a smaller droplet size (≈ 3 mm) 3. Select an ambient oxygen mole fraction that, based on ground-based testing, will support droplets burning to completion (as opposed to extinguishing at a finite droplet size). 4. Perform a droplet combustion test. 5. Increase the droplet size or repeat the test (if finite extinction diameter at flame extinction observed). 6. Continue steps 4 and 5 until flame exists for only a short time after ignition (radiative extinction). 7. Continue steps 4 thru 6 at a decreased ambient oxygen mole fraction. 8. Continue step 7 to an ambient oxygen mole fraction where the droplet does not ignite. There were ambient conditions where the extinction droplet sizes at all ambient oxygen mole fractions were too small to either be observed or measured with the available diagnostics. In this case, the determination of the LOI is similar, but more iterative. Instead of observing flame extinction, however, the procedure involved an iterative sequence of tests (burn to completion followed by a no ignition test) with progressively smaller increments in ambient oxygen mole fraction to determine the LOI . For the slow flow tests (in the flight experiment), the configuration of the flight hardware did not allow for adequate diagnostics over the entire test for a droplet in a uniform, steady convective flow. In these tests, the procedure will be to duplicate tests above which yield finite-sized extinction droplet diameters. Near the end of the tests, prior to flame extinction, the droplet will be subjected to a small, sub-buoyant, convective flow (imparted by translating the droplet at a slow, uniform speed). The goal of the experiment is then to see how the presence of this flow influences the extinction process. Note, a large number of the tests involve free droplets (as opposed to fiber-supported droplets) and a number of these tests will have droplets with a slow drift velocity. Data gathered from these tests to examine the influences of a small, sub-buoyant flow on both the burning and extinction process.": 1,
+     "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS. The sample material for Saffire-I is a composite fabric called Sibal consisting of cotton on a fiberglass substrate (75% cotton, 25% fiberglass by weight). It has been used in many space experiments because it burns like cotton but maintains structural integrity after the cotton is consumed. The sample was approximately 0.94 meters long and 0.4 meters wide, simulating a large piece of flammable fabric. The Saffire-1 flight unit had a sample card installed in the middle of a large flow duct. Air is drawn through the flow duct by fans located at the top of the duct with flow straighteners at the bottom of the experiment module. Saffire-I was conducted at an air flow velocity of 20 cm/s. Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity. All data was compressed, and subsequently downlinked.": 1,
+     "The Saffire-II experiment was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS. As a follow on to the Saffire-I investigation, the Saffire-II investigation added more samples including SIBAL, silicone, structure PMMA, flat PMMA, and PMMA with Nomex. The Saffire-1I flight unit had a sample card installed in the middle of a large flow duct. Air is drawn through the flow duct by fans located at the top of the duct with flow straighteners at the bottom of the experiment module. Saffire-II has a sample card that contains 9 samples, each 5 cm x 29 cm. Depending on the sample material, the Saffire-II was conducted at an air flow velocity of either 20 or 30 cm/s, the flow being either concurrent or opposed. Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity. All data was compressed, and subsequently downlinked. Details related to samples and experimental parameters are provided in the Experimental Details file in the Science document folder.": 1,
+     "The Saffire-III experiments were performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS. As a follow on to the Saffire 1 investigation, the Saffire III investigation also used SIBAL as the sample material. However, the experiments were conducted at a flow velocity of 30 cm/s compared to 20 cm/s during Saffire I. The flow was either concurrent or opposed. Once the sample was ignited flame images were captured using two cameras. In addition, thermocouples provided flow, flame, and plume temperatures, two radiometers recorded flame radiation, solid state sensors were used to measure pressure, CO2 and O2 mole faction, and two anemometer tracked flow velocity. All data was compressed, and subsequently downlinked. Details related to samples and experimental parameters are provided in the Experimental Details file in the Science document folder.": 1,
+     "SAME-R utilized the SAME hardware used on-orbit. Based on the experience gained from SAME, SAME-R included the following modifications: 1) a new test material, Pyrell®, an intumescent fire-retardant foam by Foamex, was introduced to replace DBP samples, 2) test conditions were broadened including higher heating temperatures and no-flow during sample heating time, and 3) a new instrument, M-pass, developed in-house GRC, was used to replace one of the two Commercial Diagnostic Enclosures that includes a DustTrak and an ionization detector used in SAME. SAME-R flight tests were conducted from July 16, to September 9, 2010, successfully completing 66 test points. After SAME-R flight tests, three major post–flight ground tests were performed to improve data reduction process and to validate the lognormal distribution assumption, the key to the moment method employed by SAME and SAME-R.": 1,
+     "The crew installed the near field hardware in the Glovebox, attached the Far Field Box to the Glovebox, and positioned the video cameras. The operator then ran the self diagnostic procedures on the two smoke detectors and activated the video cameras, turned on the igniter for a predefined period of time (15 to 60 seconds), and initiated the thermophoretic soot samplers to sample the smoke. The actual duration of each combustion event was typically 2 minutes. After flight, the particulate collected on the thermophoretic probes were analyzed using a Transmission Electron microscope (TEM) to determine primary and aggregate particle dimensions. The remains of the samples were weighed to determine their mass loss. The digital data was transcribed from the video record and analyzed to determine the response of the detectors. Once the flight mass loss rates were determined, 1-g operation conditions to produce the same loss were determined.The measurements were made using smoke generated by overheated spacecraft materials where variables such as the sample temperature, flow field, and particle aging time were more rigorously controlled.": 1,
+     "The SLICE apparatus consisted of a fan-driven flow duct, exchangeable burner tubes, and integrated sensors to measure flow rates and temperature. This setup used several fuels such as methane, ethylene, and nitrogen-diluted mixtures. Flames were then manually ignited and observed under controlled coflow air conditions. A high resolution camera captured still images while sensor data was overlaid on these images. Calibration tests for airflow velocity, soot measurement, and the fans were conducted to ensure the accuracy of the results. More than 4,000 high-resolution images were captured across 13 testing experiments. Data was then analyzed to correlate flame structure with stability with flow dynamics and fuel properties.": 1,
+     "The experimental setup in the microgravity science glovebox consisted of an apparatus with a flow duct with integrated nozzles, cameras, and fuel delivery systems. Fuels tested included methane, ethylene, propane, propylene, and propylene mixtures. Each flame was ignited in a controlled co-flow air environment, with burner diameters of 0.41 mm, 0.76 mm, and 1.6 mm and co-flow velocities ranging from 5.4 cm/s to 65 cm/s. Fuel flow rates were adjusted to identify the smoke point, marked by the flame's transition to emitting soot. Data such as flame lengths were recorded using still and video cameras. Measurements included flame height, radiative heat losses, and co-flow air velocity distributions. In total 526 flames were studied.": 1,
+     "The formation and growth of dibutyl-phthalate (DBP) particles in Earth gravity and microgravity environments was simulated. Direct numerical simulation via a Navier-Stokes nodal approach was utlilized. The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments. This study considered two cross-flow velocities of sufficiently low speed that buoyancy cannot be neglected in the presence of gravity. Simulations are presented to assess the dependence of particle size distributions on thermophoresis, particle settling, and flow geometry. The final report for this investigation introduces the simulation and modeling methodology, followed by a description of the flow geometry and the parameter space under consideration.The differences in the wake geometry attributable to buoyancy for the lower of two flow speeds was examined. Instantaneous scalar fields were used to describe particle accumulation and growth in the buoyant and non-buoyant wakes that form downstream of the hot vapor source.": 1,
+     "OpenFOAM was used to develop a 3-D CFD model of n-alkane droplet cool flames in microgravity, coupling variable-density Navier–Stokes flow with low-temperature combustion chemistry, coupled heat and mass transfer, and radiation. Model fidelity was established against ISS FLEX measurements, after which controlled simulations examined three forcing modes (i) convection alone to mimic droplet drift, (ii) imposed heat flux, and (iii) combined convection plus heating applied to both large (1–4 mm) and sub-millimeter (~0.5 mm) droplets. To accelerate progress, the study began with simplified chemistry and transitioned to reduced mechanisms for parameter sweeps over forcing amplitude and frequency, ambient composition (including ozone-assisted cases), and pressure. From each case, predictive observables were extracted (ignition delay, oscillation frequency and amplitude, stand-off and extinction diameters), and were used to construct stability maps that delineated conditions for cool-flame onset, persistence, and quenching. These maps were reconciled with FLEX observations and were used to guide next-generation test matrices for both large- and small-droplet experiments.": 1,
+     "Using the experimental conditions of FLEX flight, a comparative studies of the oxygen concentration effects on the extinction limits of cool flames was conducted using three different numerical modeling schemes, (a) spark-assisted flame propagation of a n-heptane/air mixture, (b) one dimensional freely-propagating dimethyl ether (DME) flames using an arc-length continuation method and (c) simulated cool flame regimes and burning limits at elevated pressure (up to 20 atm) using DME/air mixtures. Specific research details are outlined in the publication, ''Dynamics of cool flames'' [https://doi.org/10.1016/j.pecs.2019.100787]; '' Understanding Cool Flames and Warm Flames'', [https://doi.org/10.1016/j.proci.2020.09.019] and ''Study of the low-temperature reactivity of large n-alkanes through cool diffusion flame extinction'', [https://doi.org/10.1016/j.combustflame.2017.01.028].": 1,
+     "Perform spherical diffusion flame tests aboard the International Space Station. Consider multiple fuels, a range of reactant dilutions, flow rates, and pressures for normal and inverse convection directions. Observe the flames with a broad suite of cameras, radiometers, photomultiplier tubes, and thermocouples.": 1
+    }
+   },
+   "hypothesis": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "This investigation hypothesizes that due to large differences between fire behavior in normal and reduced gravity, the use of terrestrial fires and fire standards to design spacecraft fire safety systems presents an inherent risk to the vehicle because of the significant level of uncertainty. While this approach has been successful thus far, the uncertainty and risk will increase as exploration missions venture further from earth with considerably longer transit times for a safe return. There is a significant lack of microgravity data available for spacecraft designers on which to base their fire safety designs and procedures. To address this knowledge gap, this investigation proposed to conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew.": 3,
+     "1. Soot formation requires a region where local C/O ratio and T exceed their critical values, and where strain rate is sufficiently low. 2. Microgravity spherical diffusion flames extinguish when the peak temperature first decreases below 1130 K. 3. Steady-state spherical diffusion flames are possible.": 1,
+     "The BRE investigation hypothesizes that there can exist a regime of quasi-steady burning in microgravity as a function of materials properties. Steady burning may never be achieved, and only slowly changing unsteady flames are possible. The proposed tests aboard the ISS aims to query this hypothesis by establishing a range of quasi-steady burning conditions for condensed fuels in the microgravity environment. It is hypothesized that BRE can determine a range of burning conditions in microgravity as a function of heat of gasification, reradiation heat flux, applied radiant heat flux, heat of combustion and smoke point. This could enable the Cone Calorimeter (NASA Test 2) test as a basis for establishing flammability maps for real materials. The key hypothesis is that the heat of combustion, smoke point, and heat of gasification of the fuel mixture will represent a real solid fuel (or liquid fuel absorbed in an inert matrix). Thus achieved steady burning would represent the potential for real solid fuels to achieve steady burning in microgravity. Other than a candle flame, this has not been shown before.": 1,
+     "This investigation was focused on gathering bench mark data to validate the hypothesis of computation models, the details of which are available within the following publications: 1) Smooke, M.D., Hall, R.J., Colket, M.B., Fielding, J., Long, M.B., McEnally, C.S., and Pfefferle, L.D., Investigation of the transition from lightly sooting towards heavily sooting co-flow ethylene diffusion flames. Combustion Theory and Modelling, 2004. 8(3): p. 593-606. https://doi.org/10.1088/1364-7830/8/3/009 2) Luque, J., Jeffries, J.B., Smith, G.P., Crosley, D.R., Walsh, K.T., Long, M.B., and Smooke, M.D., CH(A-X) and OH(A-X) optical emission in an axisymmetric laminar diffusion flame. Combustion and Flame, 2000. 122(1/2): p. 172-175. https://doi.org/10.1016/S0010-2180(00)00112-7 3) Walsh, K.T., Fielding, J., Smooke, M.D., and Long, M.B., Experimental and computational study of temperature, species, and soot in buoyant and non-buoyant coflow laminar diffusion flames. Proceedings of the Combustion Institute, 2000. 28: p. 1973-1979. https://doi.org/10.1016/S0082-0784(00)80603-7 4) Walsh, K.T., Long, M.B., Tanoff, M.A., and Smooke, M.D., Experimental and computational study of CH, CH*, and OH* in an axisymmetric laminar diffusion flame. Proceedings of the Combustion Institute, 1998. 27(Vol. 1): p. 615-623. https://doi.org/10.1016/S0082-0784(98)80453-0": 1,
+     "The application of electric fields in microgravity environments will significantly influence laminar diffusion flames by enabling precise manipulation of flame stability, soot behavior, and combustion dynamics through ion-driven convection and chemi-ionization processes.": 1,
+     "The transient numerical simulation of spherical flames developed as part of this program includes detailed chemistry and transport models, especially radiation mechanisms. Each description of the flames obtained from the experiment, including measurements of aspects of the flame structure, growth or flame front velocities, and the specific test conditions where steady state flames, flame extinctions, flame front instabilities, soot suppression limits, etc., comprise a rigorous test of the detailed model. Together they provide a measure of the comprehensiveness of the chemical kinetic and transport models. The numerical simulation is also being used as a predictive tool to develop the science requirements for this experiment, especially the collection of test conditions and most aspects of the measurement systems. Due to time and g-jitter limitations, little of the planned test matrix can be adequately explored in the ground based test facilities, and the flight experiment definition will rely on the best effort in the modeling work.": 1,
+     "BASS–II tests the hypothesis that materials in microgravity, with adequate ventilation, burn as well if not better than the same material in normal gravity with other conditions being identical (pressure, O2 concentration, temperature, etc.). NASA tests and controls materials from a flammability perspective using an upward burning test in normal gravity, which is considered to be the worst-case geometry for flammability of the material on Earth. However, it may not be conservative for flammability in space. Testing at constant O2 mole fractions permits studying flame spread and extinction at low and high flow speed. We are interested in finding the fundamental limit for a given material.": 1,
+     "BASS experiments were based on the hypothesis that materials in microgravity, with adequate ventilation, burn as well if not better than the same material in normal gravity with other conditions being identical (pressure, oxygen concentration, temperature, etc.) To test this hypothesis with any but the thinnest materials requires extended microgravity time – longer than available in drop towers or parabolic aircraft.": 1,
+     "Flame combustion of liquid hydrocarbon fuels such as n-dodecane, n-dodecane/iso-dodecane mixtures, and faresane in microgravity can provide insights into low-temperature chemical kinetics, revealing critical parameters like droplet extinction diameters and flame dynamics that are not observable on Earth.": 1,
+     "The TSI P-Trak operates by condensing isopropanol around aerosol particulates that are subsequently laser counted. It was hypothesized that the P-Trak would not work in microgravity due to two potential failure modes that exist. 1) the system would clog or become obscured by isopropanol, and 2) the internal air-flow dynamics of the optics chamber of the device will cause an over counting of particulates. The TSI P-Trak was modified for microgravity use via using capillary action to recycle the isopropanol. Therefore, there are two basic hypotheses: 1) that the P-Trak, as modified for use in SAME, would function normally in microgravity. 2) that the aerosol created and filtered per the experiment design would be within the measurement capabilities of the test devices.": 1,
+     "Microgravity conditions would produce longer, more diffuse flames with lower temperatures and increased soot concentrations compared to normal gravity, and that careful integration of experimental temperature fields into the simulations would reduce discrepancies between measured and predicted soot distributions.": 1,
+     "The unsteady flamelet generated manifold (UFGM) approach was believed to be able to accurately reproduce concurrent flame spread in microgravity, including phenomena such as the “Goldilocks” flammability zone, by coupling near-wall thermal, mass transport, and chemical processes with far-field flow dynamics.": 1,
+     "Fairly sophisticated numerical simulations of convective droplet combustion have been developed in the last decade where the key contribution is the inclusion of full Navier-Stokes equations for the gas-phase flow field. However, due to the inherent complexity of the problem, varying degrees of approximations have been made in treating the chemistry, radiation, and the coupling between the gas and liquid phases. The validity of the assumptions or the hypothesis used in these simulation have not been confirmed by using benchmark data. By conducting these experiments in a microgravity environment, the effects of buoyancy are minimized, and the droplet can be characterized only as a function of thermocapillary or solutalcapillary stresses allowing for a clear observation of the fundamental combustion processes, The present FLEX-2 experiments using bi-component mixtures. In addition, the microgravity environment allows study of such phenomena as the transitions between radiative and diffusive extension of the flame. The primary goal of the flight experiments is to provide benchmark experimental data on bi-component droplet combustion over a wide range of initial conditions that could be used to validate numerical simulations and to develop new theoretical models.": 1,
+     "The primary hypothesis of the FLEX mission is that microgravity conditions fundamentally alter the combustion and extinction characteristics of liquid fuel droplets due to changes in species and energy transport dynamics, radiative heat loss, and chemical kinetics. Specifically, the hypothesis posits that the lack of buoyant convection in microgravity will lead to significant differences in the flammability limits and suppression efficacy of various fire suppressant agents compared to normal gravity conditions. This hypothesis underpins the design of the FLEX experiments, which aim to map flammability boundaries, quantify suppressant efficacy, and develop predictive models to improve fire safety in space environments.": 1,
+     "The three hypotheses that motivated the original SAME investigation is also applicable for the reflight SAME-R investigation: In a μg environment, with the absence of the strong buoyancy-induced flows, smoke particle growth from a pyrolyzing/smoldering source, as a result of nucleation, condensation, and coagulation, will lead to larger particles compared to those produced in 1g. The formation of the larger particles is favored by the expected higher vapor concentration and smoke residence times near the source due to the reduced velocities and mixing at μg conditions. In particular, it is hypothesized that liquid aerosol smokes produced in microgravity will exhibit substantially larger droplet sizes than under the same conditions in normal gravity (with a corresponding decrease in the particle number density for the same mass of smoke). The change in the size distribution and number density will, in turn, affect the response of the smoke detectors and possibly result in some detectors not producing an alarm when exposed to this smoke.": 1,
+     "The three hypotheses that motivated this investigation: In a μg environment, with the absence of the strong buoyancy-induced flows, smoke particle growth from a pyrolyzing/smoldering source, as a result of nucleation, condensation, and coagulation, will lead to larger particles compared to those produced in 1g. The formation of the larger particles is favored by the expected higher vapor concentration and smoke residence times near the source due to the reduced velocities and mixing at μg conditions. In particular, it is hypothesized that liquid aerosol smokes produced in microgravity will exhibit substantially larger droplet sizes than under the same conditions in normal gravity (with a corresponding decrease in the particle number density for the same mass of smoke). The change in the size distribution and number density will, in turn, affect the response of the smoke detectors and possibly result in some detectors not producing an alarm when exposed to this smoke.": 1,
+     "The hypothesis is that the structure and stability of laminar diffusion flames in microgravity are significantly influenced by burner diameter, coflow velocity, and fuel composition and are fundamentally different than flames observed on Earth.": 1,
+     "The research hypothesizes that by minimizing gravity-driven transport phenomena scientists can study the laminar smoke-point properties of non-buoyant jet diffusion flames. Flame properties are expected to differ significantly from those observed under normal gravity.": 1,
+     "Without buoyancy, mixing and heat transfer are reduced, the time-temperature history of the combustion vapors (or particle precursors) and particle trajectories are significantly altered, changing the composition of the smoke. The chemical composition of the burning material also affects the characteristics of the smoke generated.": 1,
+     "External thermo-convective perturbations (imposed temperature gradients, non-uniform heating, oscillatory/shear inflow) were expected to govern cool-flame ignition, oscillation, transition to hot ignition, and extinction by shifting residence time and scalar dissipation. In microgravity, where buoyancy was suppressed, this forcing was anticipated to dominate transport. A multidimensional, multi-physics CFD model was used to map perturbation-dependent stability boundaries and predict observables for comparison with FLEX data.": 1,
+     "This investigation attempts to answer the critical question as to what conditions causes the hot flames transfer to cool flames and how the cool flame flammable region is related to hot flame flammability limit and extinction limit. The investigation hypothesizes that factors such as oxygen concentration, dilution, pressure, diffusion, and convection transport processes affect the cool flame transition.": 1,
+     "The hypotheses of this research are that testing aboard the ISS can demonstrate the following for the first time, contributing to an improved understanding of cool flame kinetics. 1. Steady-state cool diffusion flames on spherical porous burners. 2. Cool diffusion flames burning propane, n-butane, and n-pentane. 3. Cool diffusion flames for a wide range of Zst, Tad, and pressures. 4. Inverse cool diffusion flames. 5. Cool diffusion flames for which a decrease in fluent flow rate will cause extinction, whereas an increase will cause a transition to a hot diffusion flame, with oscillation possible between hot and cool flames.": 1
+    }
+   },
+   "research_impacts": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "The Saffire-I experiment provides a new way to study a realistic fire on an exploration vehicle, which has not been possible in the past because the risks are too high. Instruments on an unmanned cargo vessel measure oxygen, carbon dioxide, heat, pressure and flame growth, and two video cameras provide views of the flame. Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria, and how microgravity and limited oxygen affect flame size. The investigation is crucial for the safety of current and future space missions. Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.": 2,
+     "This project has the potential for improving efficiency and reducing pollutant emissions in terrestrial combustors. For example, it is contributing to novel designs of future coal power plants.": 1,
+     "BRE yielded important data relevant to spacecraft fire safety. Quasi-steady burning corresponding to various condensed-phase materials (such as PMMA and Nylon) was observed in microgravity despite the absence of air flow, where the cessation of ventilation is an established step in putting out spacecraft fires. The ongoing combustion without air flow was notably seen in elevated-oxygen atmospheres which are being considered for use in future spacecraft, whereas such flames in a normal atmosphere of 21% oxygen self-extinguished in a short time. While BRE’s results are still preliminary, they suggest that NASA may want to increase use of its alternative flammability Test 2, with the cone calorimeter, where that test can measure material properties corresponding to the microgravity flames observed with the BRE burner.": 1,
+     "Diffusion flames are the flame type of most practical combustion devices. The ability to predict the coupled effects of complex transport phenomena with detailed chemical kinetics in such systems is critical in the modeling of turbulent reacting flows and in understanding the processes by which soot formation and radiative transfer take place. In addition, an understanding of those factors that affect flame extinction in diffusion flames is critical in the suppression of fires and in improving engine efficiency. While normal gravity combustion studies can provide important information on combustion processes, the effects of gravitational forces often complicate the interpretation of both computational and experimental results. Momentum effects dominate most practical combustion devices, but the contribution of buoyancy forces is hard to eliminate in normal gravity. A goal of the study will be to apply sophisticated numerical tools and quantitative diagnostic techniques to the study of hydrocarbon diffusion flames in a microgravity environment. This will lead to a more detailed understanding of the interaction of convection, diffusion and chemistry under momentum-dominated conditions.": 1,
+     "The E-FIELD Flames research is not being conducted to serve any space applications, but it is possible that its findings could aid the development of future space-based combustion devices (e.g., for solid waste processing). The use of electric fields to control flames can reduce the production of harmful pollutants in practical terrestrial combustion. The combustion of fossil fuel is the primary human source of greenhouse gas and acid rain and furthermore creates soot, which can be beneficial but is also a health hazard. Combustion using electrical fields may also allow for more efficient combustion, reducing fuel consumption in addition to unwanted emissions.": 1,
+     "The impact of this work consists of both practical and fundamental aspects. Practically, with diffusion flame burning as the basis in many combustion engines and devices, understanding the underlying dynamics and chemistry of diffusion flames is important in improving performance in terms of power, efficiency, pollutant emissions, and reliability. Fundamentally, the unique buoyancy-free environment offered by microgravity affords simple aerodynamic flow fields to acquire diffusion flame data of high fidelity, with the prospect of understanding unit thermochemical processes as well as quantifying the associated physico-chemical parameters.": 1,
+     "A primary goal of BASS-II is improved spacecraft fire safety, improved understanding of combustion in space and how to avoid it. If you’re on a mission far from Earth, a fire can be catastrophic. BASS-II helps engineers select the safest materials and improve firefighting methods on future space missions. In outer space, fuels burn as oval balls rather than with an upward pointed cone flame as they do on Earth. This simpler combustion process enables researchers to evaluate computer models of fuel burning. These models can then be used to more accurately study flames on Earth, such as in wildfires, building fires, energy recapture from waste recycling, and other combustion problems.": 1,
+     "Current NASA spacecraft materials selection is based on a standard test method (NASA–STD–6001 Test 1) that segregates material based on 1-g behavior without consideration of low gravity effects. A critical element of this understanding is the radiative heat emission from the flame. These results are used in first order models and predictions of heat release in spacecraft fires and as a means to extend heat release data from tests like the NASA cone calorimeter test (NASA–STD–6001 Test 2) to a performance-based material selection process. Using nitrogen as a flame suppressant in microgravity provides a direct link to current and planned extinguishment techniques. BASS results provide essential guidance to ground-based microgravity combustion research efforts. Detailed combustion models are validated using the simpler flow environment afforded by tests in microgravity. Once validated, they can be used to build more complex combustion models needed to capture the important details of flames burning in normal gravity. These models have wide applicability to the general understanding of many terrestrial combustion problems and will guide novel spacecraft design and ensure the safety of future crewed missions.": 1,
+     "A basic understanding of cool flames is important for understanding ignition phenomena of practical fuels and fuel additives. Cool flames play a key role in the development and selection of new fuels and the design of advanced engines such as clean, high-efficiency Homogeneous Charge Compression Ignition (HCCI) engines. The research will also help combustion chemists to develop new computational models to compute combustion performance in for many practical applications on earth, including an understanding of how cool flame reactivity determines octane and cetane number for fuels in spark ignition and diesel engines. Cool Flames Investigation (CFI) will provide critical validation for complex chemical kinetic mechanisms, advance the understanding of flame dynamics and instabilities in low-temperature combustion, and support the design of safer spacecraft systems by refining knowledge of combustion in microgravity environments.": 1,
+     "Extended duration space flight missions with larger vessels will require fire detection systems with increased reliability and sensitivity. This research will impact the development of novel fire and smoke detection systems for the International Space Station and future spacecrafts. Additionally, the successful adaptation of the TSI P-Trak for microgravity can inform the design of instruments for use in other challenging Earth environments, such as submarines or underwater laboratories where accurate detection of smoke can save lives.": 1,
+     "This study sought to enhance understanding of soot formation, flame structure, and radiative transport under microgravity and normal gravity, improving predictive models for combustion in both spacecraft and terrestrial systems. For space applications, the results support safer fire detection, suppression, and cleaner combustion technologies critical for long-duration missions. On Earth, the insights help reduce pollutant emissions, optimize combustion efficiency, and inform the design of cleaner energy and industrial systems.": 1,
+     "This research provides predictive tools for screening new materials’ flammability limits, which can lead to the design of safer spacecrafts. The development of Large Eddy Simulation subgrid models is expected to improve hazard assessment capabilities critical for managing fire risks during long-duration space missions and within confined spacecraft habitats. On Earth, these advancements could improve combustion modeling by deepening our understanding of coupled thermal, chemical, and flow processes, which betters fire safety standards. The computational methods being refined have the potential to enable more effective fire prevention and mitigation strategies and foster innovations in diagnostics and simulations applicable across a variety of combustion scenarios. Overall, this research can contribute significantly to safer human exploration in space and improvements to fire safety protocols on Earth.": 1,
+     "The combustion of liquid fuels is the overwhelming energy source in the transportation sector. Insights gained from these studies can lead to more efficient and cleaner combustion technologies which are crucial for reducing pollution and greenhouse gas emissions. By improving fuel efficiency and developing better fuels, these experiments can contribute to: 1) More sustainable energy production. 2) Future combustor designs with minimal carbon footprint, maximum fuel efficiency and less pollutant emissions. 3) Allow quantitative evaluation of the performance of future fuels in combustors through the development of surrogates (mixtures of pure fuels that simulate the behavior of real fuels). 4) Validation of jet engine models by engine manufacturers with support from prior droplet results.": 1,
+     "The research impacts and Earth benefits of the FLEX mission are significant and multifaceted. By enhancing our understanding of microgravity combustion, the mission directly contributes to improved fire safety protocols for future space missions, ensuring the safety of crew members in environments where traditional fire suppression methods may be ineffective. On Earth, the insights gained from these experiments have the potential to advance fire safety in confined and reduced-gravity environments, such as submarines or high-altitude aircraft. The mission's findings on the effectiveness of various fire suppressants, including CO2, He, and SF6, in microgravity can lead to the development of more efficient and less harmful fire suppression systems, reducing the risk of toxic byproducts during fire events. Additionally, the study of ''cool flames'' and low-temperature combustion processes observed in microgravity can inform the design of advanced combustion engines, leading to improved fuel efficiency and reduced emissions in automotive and industrial applications. Overall, the FLEX mission's contributions to combustion science have the potential to enhance both space exploration safety and terrestrial fire safety technologies.": 1,
+     "The Saffire-II experiment provides a new way to study a realistic fire on an exploration vehicle, which has not been possible in the past because the risks are too high. Instruments on an unmanned cargo vessel measure oxygen, carbon dioxide, heat, pressure and flame growth, and two video cameras provide views of the flame. Results determine microgravity flammability limits for several spacecraft materials, help to validate NASA’s material selection criteria, and how microgravity and limited oxygen affect flame size. The investigation is crucial for the safety of current and future space missions. Studying fire in small, sealed environments such as the Cygnus cargo supply vehicle benefits fire safety and prevention efforts on Earth, including inside mines, airplanes, or submarines.": 1,
+     "Along with the results from the original SAME investigation, the results from SAME-R can lead to technology for an advanced fire detector for future spacecraft that will be used for long duration missions. SAME will provide quantitative data on the sensitivity of these detectors to reduced gravity smokes that will allow evaluation of the adequacy of these existing technologies using relevant data. The current Fire Prevention, Detection, and Suppression (FPDS) program plan allows for the re-evaluation of future sensor technology, to allow new technology and capability to be utilized. The results from SAME are needed to provide the reduced gravity baseline data against which future detection technology developments can be evaluated. The smoke detectors developed from the results of SAME can also be useful in other extreme environments on Earth, such as submarines or underwater laboratories. Accurate detection of smoke in these environments can save lives.": 1,
+     "The SAME experiment will provide technology for an advanced fire detector for future spacecraft that will be used for long duration missions. SAME will provide quantitative data on the sensitivity of these detectors to reduced gravity smokes that will allow evaluation of the adequacy of these existing technologies using relevant data. The current Fire Prevention, Detection, and Suppression (FPDS) program plan allows for the re-evaluation of future sensor technology, to allow new technology and capability to be utilized. The results from SAME are needed to provide the reduced gravity baseline data against which future detection technology developments can be evaluated.The smoke detectors developed from the results of SAME can also be useful in other extreme environments on Earth, such as submarines or underwater laboratories. Accurate detection of smoke in these environments can save lives.": 1,
+     "1. Improved numerical models for flame behavior lead to more efficient combustion technologies on Earth. 2. Understanding soot formation aids in designing combustion systems with minimum emissions. 3. Insights into flame stability and behavior to enhance fire safety. 4. Findings will inform the development of cleaner, more efficient engines and industrial burners.": 1,
+     "(1) Will improve our understanding of soot formation mechanisms and help design safer spacecraft environments. (2) Will contribute to refining our computational models for predicting flame behaviors under non-buoyant conditions. (3) Will enhance our knowledge of soot generation (4) Could possibly provide insights to better fuel formulations and combustion processes.": 1,
+     "Models and tools that characterize particles generated as smoke can be used to ascertain how temperature, gravity, and material properties affect the smoke produced. This would directly lead to better smoke detection devices and prevent fires that can lead to loss of materiel and loss of life.": 1,
+     "Space Benefits: Potential to improve spacecraft fire-safety modeling by resolving cool-flame/extinction behavior in microgravity; leverages FLEX to define safer operating envelopes/materials. Earth Benefits: Advances low-temperature combustion understanding relevant to engine knock, efficiency, and emissions; delivers validated CFD tools transferrable to practical combustors.": 1,
+     "Obtaining a fundamental understanding of the warm diffusion flame is particularly relevant to combustion in highly turbulent flow fields and in microgravity environments, owing to the possibility of long residence times. The results showed that the warm flame has a double reaction zone structure and plays a critical role in the transition between cool flames and hot flames. At elevated pressures, it was found that the flammable region of warm flames and cool flames expands due to the increase in low-temperature and intermediate-temperature reactivity with pressure. Since many real engines operate in the 20-40 atm pressure range, therefore, cool flames and warm flames are relevant and important flame regimes for high-pressure near-limit combustion applications. These calculations from this investigation will serve to advance the understanding of near-limit flame dynamics and provide guidance for experimental observation of different flame regimes.": 1,
+     "Combustion provides 86% of the world’s energy and an even higher fraction of the energy used for transportation. The internal combustion engines used for transportation generally have thermal efficiencies of 38% or lower because of thermal losses. These efficiencies may increase to 60% if future engines can take advantage of ultra-lean combustion. However, this progress is being impeded by the limited understanding of the chemistry of cool flames. Research into cool diffusion flames (whose peak temperatures are 500 – 1000 K) has grown exponentially since they were discovered in 2012. The measurements performed for this project will help to test and advance cool flame kinetics mechanisms. This should facilitate the development of more efficient internal combustion engines.": 1
+    }
+   },
+   "description": {
+    "dtype": "object",
+    "non_null": 0,
+    "description": null
+   },
+   "related_accessions": {
+    "dtype": "str",
+    "non_null": 15,
+    "description": null,
+    "values": {
+     "PSI-102": 3,
+     "PSI-69": 2,
+     "PSI-107": 2,
+     "PSI-23": 1,
+     "PSI-26": 1,
+     "PSI-107,PSI-25": 1,
+     "PSI-25,PSI-26": 1,
+     "PSI-99,PSI-100,PSI-26": 1,
+     "PSI-99,PSI-98": 1,
+     "PSI-101": 1,
+     "PSI-69,PSI-142": 1
+    }
+   },
+   "doi": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": null,
+    "values": {
+     "10.60555/w4zy-bt45": 1,
+     "10.60555/vb93-3y72": 1,
+     "10.60555/23e1-9950": 1,
+     "10.60555/se5a-8c73": 1,
+     "10.60555/k57n-p030": 1,
+     "10.60555/4qc4-de67": 1,
+     "10.60555/58h4-dy80": 1,
+     "10.60555/m6pj-a914": 1,
+     "10.60555/ztgj-d202": 1,
+     "10.60555/mzjm-yv57": 1,
+     "10.60555/e9xp-ex83": 1,
+     "10.60555/byp8-h018": 1,
+     "10.60555/mbq8-0451": 1,
+     "10.60555/0t15-1z43": 1,
+     "10.60555/2chp-m469": 1,
+     "10.60555/040q-4h36": 1,
+     "10.60555/2np7-jv14": 1,
+     "10.60555/gd4k-8h62": 1,
+     "10.60555/pm12-rg61": 1,
+     "10.60555/9kbh-e962": 1,
+     "10.60555/q0v5-1v28": 1,
+     "10.60555/gz0q-b577": 1,
+     "10.60555/80qf-vj95": 1,
+     "10.60555/cyt1-kh64": 1
+    }
+   },
+   "license": {
+    "dtype": "str",
+    "non_null": 23,
+    "description": null,
+    "values": {
+     "CC0-1.0": 23
+    }
+   },
+   "n_publications": {
+    "dtype": "int64",
+    "non_null": 24,
+    "description": null,
+    "min": 0.0,
+    "max": 51.0
+   },
+   "publication_dois": {
+    "dtype": "str",
+    "non_null": 22,
+    "description": "DOIs listed in the record, '; '-separated",
+    "values": {
+     "10.1080/13647830.2024.2326830; 10.3390/math11020261; 10.1016/j.proci.2022.07.049; 10.1016/j.proci.2022.07.043; 10.1016/j.combustflame.2022.112158; 10.30826/NEPCAP9B-13; 10.1016/j.combustflame.2021.02.019; 10.1016/j.combustflame.2019.09.014; 10.1016/j.proci.2018.06.085; 10.1016/j.proci.2018.07.096; 10.1016/j.combustflame.2017.08.024; 10.1021/acs.energyfuels.7b01092; 10.1016/j.combustflame.2016.07.025; 10.1021/acs.energyfuels.5b00071; 10.1016/j.proci.2012.07.029; 10.1016/j.camwa.2013.01.008; 10.1016/j.proci.2012.06.043; 10.1016/j.proci.2012.05.088; 10.1016/j.combustflame.2011.05.022; 10.1016/j.combustflame.2010.12.007; 10.1016/j.combustflame.2010.07.024; 10.1016/j.combustflame.2010.04.013; 10.1016/j.combustflame.2009.07.009; 10.1016/j.combustflame.2008.03.008; 10.1016/j.combustflame.2007.08.009; 10.1080/13647830601161567; 10.1016/j.proci.2024.105400; 10.1080/00102209808952065; 10.1016/j.combustflame.2006.08.004; 10.1016/j.combustflame.2005.02.008; 10.1016/j.combustflame.2004.08.016; 10.1080/00102200490514994; 10.1016/S0010-2180(02)00424-8": 1,
+     "10.1177/0734904113495650; 10.3850/978-981-07-5936-0_03-01; 10.1016/j.combustflame.2021.01.035; 10.1016/j.proci.2020.06.110; 10.1002/fam.2896; 10.1134/S0010508220040036; 10.1016/j.combustflame.2019.09.030; 10.1016/j.proci.2018.05.006; 10.1016/j.firesaf.2019.02.003; 10.1016/j.combustflame.2018.01.044; 10.1016/j.firesaf.2016.11.003; 10.1016/j.combustflame.2015.05.005; 10.1016/j.combustflame.2023.112809; 10.1016/j.proci.2022.08.107; 10.1016/j.combustflame.2021.111572": 1,
+     "10.1016/j.combustflame.2016.02.012; 10.1007/s00348-016-2218-5; 10.1016/j.proci.2014.05.138; 10.1080/00102202.2022.2041621; 10.1016/j.proci.2020.06.034; 10.1080/13647830.2017.1403051; 10.1364/OL.43.001103; 10.1016/j.proci.2014.05.138; 10.1016/j.proci.2014.05.064; 10.1016/j.proci.2012.05.030; 10.1016/j.carbon.2011.07.050; 10.1016/j.proci.2010.05.006; 10.1142/9789814295789_0004; 10.1016/j.proci.2008.05.066; 10.1016/j.proci.2008.06.182; 10.1080/13647830903159293; 10.1016/j.proci.2008.05.083; 10.1016/j.proci.2006.08.109": 1,
+     "10.3390/en11051235; 10.1016/j.combustflame.2009.08.008; 10.1080/13647830701383814; 10.1196/annals.1362.038; 10.1016/j.combustflame.2015.03.019; 10.1016/S0010-2180(01)00247-4; 10.1016/j.combustflame.2022.112067; 10.1016/j.combustflame.2019.03.022; 10.1016/j.combustflame.2018.10.036; 10.1016/j.proci.2016.06.193; 10.1080/00102202.2017.1331218; 10.1016/j.combustflame.2016.09.004; 10.1016/j.proci.2012.07.007; 10.1016/j.combustflame.2011.06.002; 10.1016/j.combustflame.2009.02.002; 10.1016/j.combustflame.2007.07.007; 10.1016/j.elstat.2007.04.003; 10.1196/annals.1362.037; 10.1016/j.elstat.2005.09.005; 10.1007/s00348-005-0062-0; 10.1080/00102202.2023.2182205; 10.1016/j.combustflame.2022.112443": 1,
+     "10.1016/0360-1285(94)90006-X; 10.1016/S0082-0784(06)80819-2; 10.1016/0010-2180(94)00102-X; 10.1016/S0082-0784(96)80296-7; 10.1016/S0010-2180(97)00069-2; 10.1016/S0010-2180(97)00051-5; 10.1016/S0082-0784(98)80038-6; 10.1016/S0082-0784(98)80108-2; 10.1016/S0360-1285(00)00018-6; 10.1016/S0010-2180(01)00247-4; 10.1016/S1540-7489(02)80204-8; 10.1016/S1540-7489(02)80008-6; 10.2514/2.7289; 10.1080/13647830500098423; 10.1063/1.2212399; 10.1016/j.proci.2006.07.183; 10.1016/j.ijheatmasstransfer.2006.12.014; 10.1016/j.combustflame.2009.09.018; 10.1103/PhysRevE.83.026305; 10.1016/j.combustflame.2011.07.013; 10.2514/1.J051328; 10.1016/j.combustflame.2012.03.005; 10.1016/j.proci.2012.05.068; 10.1016/j.fuel.2015.11.025; 10.1016/j.combustflame.2015.10.029; 10.1016/j.combustflame.2017.06.015; 10.1016/j.combustflame.2017.10.003; 10.1016/j.proci.2018.06.191; 10.1146/annurev-chembioeng-060718-030141; 10.1016/j.proci.2018.06.198; 10.2514/6.1994-571; 10.2514/6.1998-563; 10.2514/6.2005-1140; 10.2514/6.2005-544; 10.2514/6.2005-1141; 10.2514/6.2009-988; 10.2514/6.2012-1251": 1,
+     "10.1016/j.combustflame.2017.03.001; 10.1016/j.proci.2014.05.093; 10.1016/j.firesaf.2015.11.011; 10.1016/j.combustflame.2015.10.023; 10.1016/j.proci.2014.06.125; 10.1016/j.proci.2016.06.025; 10.1016/j.proci.2016.06.028; 10.2514/6.2012-3493; 10.1511/2016.118.44": 1,
+     "10.2514/6.2006-941; 10.1016/j.firesaf.2015.11.011; 10.1016/j.proci.2014.07.017; 10.1080/00102202.2014.900056; 10.1504/PCFD.2012.048249; 10.1299/jsmeatem.2015.14.289; 10.1016/j.proci.2012.05.076": 1,
+     "10.1016/j.combustflame.2012.07.012; 10.1016/j.combustflame.2015.01.012; 10.2514/1.J054437; 10.1080/13647830.2014.934296; 10.1080/13647830.2016.1248494; 10.1007/s12217-024-10115-x": 1,
+     "10.2514/6.2005-341; 10.4271/2005-01-2930": 1,
+     "10.1080/00102202.2022.2041621": 1,
+     "10.1016/j.combustflame.2017.03.001; 10.1016/j.combustflame.2023.112939; 10.1016/j.combustflame.2023.112910; 10.1016/j.combustflame.2021.111395": 1,
+     "10.2514/6.2014-1019; 10.1007/s12217-014-9372-2; 10.1080/00102202.2015.1072176; 10.1007/s12217-014-9377-x; 10.1021/acs.energyfuels.5b00158; 10.1080/00102202.2014.971950; 10.1080/13647830.2014.934296; 10.1155/2013/154202; 10.1016/j.combustflame.2013.09.011; 10.1016/j.proci.2012.07.074; 10.5566/ias.v31.p137-148; 10.1016/j.combustflame.2012.04.005; 10.1016/j.combustflame.2011.08.015; 10.1021/ef3007849; 10.1016/j.combustflame.2012.07.012; 10.1080/00102202.2012.759946; 10.1155/2012/587987; 10.1080/13647830.2010.547601; 10.1080/00102202.2010.498798; 10.1016/j.icheatmasstransfer.2009.10.006; 10.1016/j.ijheatmasstransfer.2010.08.005; 10.1007/s12217-008-9096-2; 10.1016/j.proci.2008.06.221; 10.1016/j.optlaseng.2009.05.004; 10.1080/00102200903190851; 10.1080/00102200601057394; 10.1007/978-81-322-2211-8_16; 10.1080/00102202.2016.1225730; 10.1016/j.combustflame.2019.10.036; 10.1080/13647830.2019.1588380; 10.1016/j.combustflame.2019.04.027; 10.1016/j.combustflame.2018.01.035; 10.1016/j.combustflame.2018.04.023; 10.1016/j.icheatmasstransfer.2017.06.016; 10.1080/13647830.2017.1280182; 10.2478/gsr-2014-0007": 1,
+     "10.2514/6.2012-1252; 10.1016/j.combustflame.2011.06.014; 10.1016/j.combustflame.2013.05.011; 10.2514/6.2014-1019; 10.1016/j.combustflame.2013.09.011; 10.1016/j.combustflame.2010.08.015; 10.1017/jfm.2011.349; 10.2514/1.J054437; 10.1080/13647830.2016.1248494; 10.1016/j.proci.2014.06.043; 10.1007/s12217-014-9372-2; 10.1080/00102202.2015.1072176; 10.1007/s12217-014-9377-x; 10.1021/acs.energyfuels.5b00158; 10.1080/00102202.2014.971950; 10.1016/j.proci.2014.07.022; 10.1016/j.combustflame.2015.01.012; 10.1016/j.fuel.2014.08.063; 10.1080/13647830.2014.934296; 10.1155/2013/154202; 10.1016/j.proci.2012.07.074; 10.1016/j.combustflame.2012.11.006; 10.1016/j.fuel.2013.02.025; 10.1016/j.proci.2012.05.065; 10.5566/ias.v31.p137-148; 10.1016/j.combustflame.2012.04.005; 10.1016/j.combustflame.2011.08.015; 10.1021/ef3007849; 10.1016/j.combustflame.2012.07.012; 10.1080/00102202.2012.759946; 10.1016/j.compfluid.2013.02.005; 10.1016/j.compfluid.2013.02.011; 10.2478/gsr-2014-0007; 10.1155/2012/587987; 10.1080/13647830.2010.547601; 10.1080/00102202.2010.498798; 10.1016/j.icheatmasstransfer.2009.10.006; 10.1016/j.ijheatmasstransfer.2010.08.005; 10.1007/s12217-008-9096-2; 10.1016/j.proci.2008.06.221; 10.1016/j.optlaseng.2009.05.004; 10.1016/j.optlaseng.2008.08.002; 10.1080/00102200903190851; 10.1080/00102200601057394; 10.1007/978-81-322-2211-8_16": 1,
+     "10.1016/j.combustflame.2018.10.012; 10.1016/j.proci.2018.05.168; 10.1016/j.actaastro.2014.11.025": 1,
+     "10.1016/j.combustflame.2018.10.012; 10.1016/j.combustflame.2018.10.016; 10.1007/s10694-019-00863-3; 10.1016/j.proci.2018.05.168; 10.1016/j.firesaf.2020.102977": 1,
+     "10.2514/6.2013-3433; 10.2514/6.2012-3536; 10.1016/j.firesaf.2018.04.004": 1,
+     "10.4271/2008-01-2089; 10.4271/2009-01-2468; 10.2514/6.2008-806; 10.4271/2007-01-3076; 10.1017/S1431927610060563; 10.2514/6.2005-341; 10.1080/02786826.2015.1025125; 10.1080/02786826.2015.1025124; 10.1016/j.firesaf.2018.04.004; 10.2514/6.2007-546": 1,
+     "10.1016/j.proci.2014.05.138; 10.1080/00102202.2022.2041621; 10.1016/j.proci.2014.05.064; 10.1016/j.combustflame.2016.02.012": 1,
+     "10.2514/6.2010-1105; 10.1007/978-1-4020-8682-3_22; 10.2514/6.2006-941; 10.1080/00102202.2022.2041621; 10.1016/j.combustflame.2004.12.009; 10.1016/S0010-2180(98)00100-X; 10.1016/j.firesaf.2011.08.002": 1,
+     "10.1016/j.proci.2022.07.094; 10.1016/j.proci.2020.06.200; 10.1016/j.combustflame.2020.06.012; 10.1016/j.proci.2018.05.151; 10.1016/j.pecs.2019.100787": 1,
+     "10.1016/j.pecs.2019.100787; 10.1016/j.combustflame.2021.111471; 10.1016/j.combustflame.2017.01.006; 10.1016/j.combustflame.2017.01.028; 10.1016/j.combustflame.2018.06.004; 10.1016/j.combustflame.2018.03.013; 10.1016/j.proci.2018.05.082; 10.1016/j.proci.2018.06.161; 10.1016/j.proci.2014.05.120; 10.1016/j.proci.2018.07.050": 1,
+     "10.1016/j.proci.2022.07.015; 10.1016/j.combustflame.2023.112852": 1
+    }
+   },
+   "n_files": {
+    "dtype": "int64",
+    "non_null": 24,
+    "description": "files listed in the record",
+    "min": 1.0,
+    "max": 4165.0
+   },
+   "total_gb": {
+    "dtype": "float64",
+    "non_null": 24,
+    "description": "size of all listed files",
+    "min": 0.0,
+    "max": 2180.435
+   },
+   "source_url": {
+    "dtype": "str",
+    "non_null": 24,
+    "description": "PSI page of the investigation",
+    "values": {
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-10": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-20": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-21": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-22": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-23": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-25": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-26": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-39": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-47": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-60": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-62": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-68": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-69": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-98": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-99": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-100": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-101": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-102": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-106": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-107": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-115": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-117": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-142": 1,
+     "https://psi.nasa.gov/physci/repo/data/studies/PSI-159": 1
+    }
+   }
+  }
+ },
+ "tests": {
+  "description": "One row per test, test day or condition set. Dictionary and caveats: docs/tests-table.md.",
+  "rows": 2177,
+  "files": [
+   "data/processed/tests.parquet",
+   "data/processed/tests.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "PSI accession",
+    "unit": null,
+    "values": {
+     "PSI-107": 526,
+     "PSI-159": 333,
+     "PSI-10": 327,
+     "PSI-69": 274,
+     "PSI-39": 227,
+     "PSI-25": 129,
+     "PSI-26": 121,
+     "PSI-101": 109,
+     "PSI-21": 32,
+     "PSI-22": 20,
+     "PSI-20": 18,
+     "PSI-23": 18,
+     "PSI-106": 12,
+     "PSI-99": 9,
+     "PSI-102": 8,
+     "PSI-68": 8,
+     "PSI-100": 2,
+     "PSI-47": 2,
+     "PSI-98": 2
+    }
+   },
+   "acronym": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "investigation acronym (from `investigations.csv`)",
+    "unit": null,
+    "values": {
+     "SPICE": 526,
+     "ACME CFI-G": 333,
+     "ACME/Flame Design": 327,
+     "FLEX": 274,
+     "CFI": 227,
+     "BASS-II": 129,
+     "BASS": 121,
+     "SAME-R": 109,
+     "ACME CLD Flame": 32,
+     "ACME E-FIELD Flames": 20,
+     "ACME BRE": 18,
+     "ACME s-Flame": 18,
+     "SLICE": 12,
+     "SAFFIRE-II": 9,
+     "SAME": 8,
+     "FLEX-2": 8,
+     "SAFFIRE-III": 2,
+     "DAFT / DAFT-2": 2,
+     "SAFFIRE-I": 2
+    }
+   },
+   "test_id": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "test identifier from the source (test no., FLEX no., day code). When the source has none: `<accession>-r<source_row>`",
+    "unit": null
+   },
+   "row_kind": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "`test` (one test or burn), `test_day` (one row per day), `condition_set` (one test condition, possibly several runs), `planned` (pre-flight planning matrix, not flown)",
+    "unit": null,
+    "values": {
+     "test": 2059,
+     "test_day": 100,
+     "condition_set": 10,
+     "planned": 8
+    }
+   },
+   "date": {
+    "dtype": "str",
+    "non_null": 2029,
+    "description": "test date (ISO). Null when the source date is missing, garbled or inconsistent",
+    "unit": null
+   },
+   "fuel": {
+    "dtype": "str",
+    "non_null": 2169,
+    "description": "normalised fuel name(s), joined with `/`. For BASS / BASS-II rows whose label names only a shape it is inferred (`fuel_inferred`)",
+    "unit": null,
+    "values": {
+     "ethylene": 403,
+     "propylene": 368,
+     "pmma": 176,
+     "propane": 169,
+     "methanol": 157,
+     "butane": 140,
+     "n-heptane": 118,
+     "n-dodecane/isododecane": 103,
+     "methane": 101,
+     "ethane": 95,
+     "n-dodecane": 80,
+     "sibal fabric": 45,
+     "farnesane": 44,
+     "kapton": 30,
+     "silicone": 27,
+     "teflon": 22,
+     "lampwick": 21,
+     "pyrell": 20,
+     "japan wax": 11,
+     "nomex": 9,
+     "paraffin wax": 7,
+     "hydrogen/methane": 5,
+     "hydrogen": 4,
+     "ultem": 2,
+     "arizona road dust": 2,
+     "propanol/glycerol": 2,
+     "dibutyl phthalate": 1,
+     "propane/ethylene": 1,
+     "isooctane": 1,
+     "n-octane": 1,
+     "n-decane": 1,
+     "ethanol": 1,
+     "n-heptane/isooctane": 1,
+     "pmma/nomex": 1
+    }
+   },
+   "fuel_raw": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "fuel or material text as in the source (or as corrected, see `fuel_raw_original`)",
+    "unit": null
+   },
+   "fuel_phase": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "`gas`, `liquid`, `solid` or `aerosol`",
+    "unit": null,
+    "values": {
+     "gas": 1286,
+     "liquid": 510,
+     "solid": 379,
+     "aerosol": 2
+    }
+   },
+   "fuel_fraction": {
+    "dtype": "float64",
+    "non_null": 914,
+    "description": "fuel mole fraction of the fuel stream. For inverse flames (PSI-10, PSI-159 `config = inverse`) it is the ambient (chamber) fuel fraction",
+    "unit": "mole fraction",
+    "min": 0.0,
+    "max": 1.0
+   },
+   "config": {
+    "dtype": "str",
+    "non_null": 1763,
+    "description": "flame or sample configuration (normal / inverse, coflow, droplet, free / fiber-supported droplet, opposed / concurrent flow)",
+    "unit": null,
+    "values": {
+     "coflow": 558,
+     "normal": 386,
+     "droplet": 351,
+     "inverse": 274,
+     "fiber-supported droplet": 103,
+     "free droplet": 55,
+     "coflow burner": 11,
+     "concurrent flow": 10,
+     "gas-jet burner": 9,
+     "opposed flow": 6
+    }
+   },
+   "geometry": {
+    "dtype": "str",
+    "non_null": 1077,
+    "description": "burner, nozzle, sample or droplet size as text",
+    "unit": "as stated"
+   },
+   "x_o2_ambient": {
+    "dtype": "float64",
+    "non_null": 1158,
+    "description": "O2 mole fraction of the surrounding chamber or cabin atmosphere (single value). Null for inverse flames, whose ambient is fuel + N2",
+    "unit": "mole fraction",
+    "min": 0.12,
+    "max": 0.4
+   },
+   "x_o2_burner": {
+    "dtype": "float64",
+    "non_null": 263,
+    "description": "O2 mole fraction of a burner oxidiser stream (inverse flames)",
+    "unit": "mole fraction",
+    "min": 0.12,
+    "max": 0.85
+   },
+   "x_o2_min": {
+    "dtype": "float64",
+    "non_null": 1188,
+    "description": "range of ambient O2 over the row (a day or condition set may list several values). Ambient only: null for inverse flames",
+    "unit": "mole fraction",
+    "min": 0.12,
+    "max": 0.4
+   },
+   "x_o2_max": {
+    "dtype": "float64",
+    "non_null": 1188,
+    "description": "range of ambient O2 over the row (a day or condition set may list several values). Ambient only: null for inverse flames",
+    "unit": "mole fraction",
+    "min": 0.12,
+    "max": 0.4
+   },
+   "x_o2": {
+    "dtype": "float64",
+    "non_null": 1421,
+    "description": "deprecated, ambiguous; not in `data/export/tests.json`. The single O2 value as first parsed: ambient for most rows but the burner stream for inverse flames. Kept for backward compatibility; use `x_o2_ambient` / `x_o2_burner`",
+    "unit": "mole fraction",
+    "min": 0.12,
+    "max": 0.85
+   },
+   "diluent": {
+    "dtype": "str",
+    "non_null": 545,
+    "description": "ambient inert: `n2`, `he`, `co2`, `mix`, or `n2 or he`",
+    "unit": null,
+    "values": {
+     "n2": 303,
+     "mix": 225,
+     "he": 9,
+     "n2 or he": 8
+    }
+   },
+   "pressure_kpa": {
+    "dtype": "float64",
+    "non_null": 1811,
+    "description": "chamber or cabin pressure",
+    "unit": "kPa",
+    "min": 43.023308328,
+    "max": 506.625
+   },
+   "flow_cm_s": {
+    "dtype": "float64",
+    "non_null": 695,
+    "description": "imposed air or oxidiser flow velocity (single value; null when the flow was ramped through several values)",
+    "unit": "cm/s",
+    "min": -0.2770772862718003,
+    "max": 85.28252270404062
+   },
+   "gravity": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "always `micro`",
+    "unit": null,
+    "values": {
+     "micro": 2177
+    }
+   },
+   "n_flames": {
+    "dtype": "float64",
+    "non_null": 88,
+    "description": "flames ignited on a test day",
+    "unit": "count",
+    "min": 0.0,
+    "max": 23.0
+   },
+   "ignited": {
+    "dtype": "boolean",
+    "non_null": 326,
+    "description": "hot ignition yes/no (null for CFI-G \"flash\"). For PSI-25 only `False`, on the 3 rows whose air-display cell says the sample did not ignite",
+    "unit": "bool"
+   },
+   "burn_time_s": {
+    "dtype": "float64",
+    "non_null": 751,
+    "description": "burn time. For PSI-39 it is the hot-flame burn time",
+    "unit": "s",
+    "min": 0.0,
+    "max": 900.0
+   },
+   "extinction_mode": {
+    "dtype": "str",
+    "non_null": 546,
+    "description": "`self_extinguished`, `flow_terminated`, `extinction`, `disruption`, `completion`",
+    "unit": null,
+    "values": {
+     "extinction": 186,
+     "self_extinguished": 183,
+     "flow_terminated": 89,
+     "disruption": 61,
+     "completion": 27
+    }
+   },
+   "t_ad_k": {
+    "dtype": "float64",
+    "non_null": 587,
+    "description": "computed adiabatic flame temperature",
+    "unit": "K",
+    "min": 1397.031071,
+    "max": 2978.371796
+   },
+   "peak_temp_c": {
+    "dtype": "float64",
+    "non_null": 284,
+    "description": "peak burner temperature",
+    "unit": "°C",
+    "min": 25.6,
+    "max": 651.5
+   },
+   "d0_mm": {
+    "dtype": "float64",
+    "non_null": 410,
+    "description": "initial droplet diameter",
+    "unit": "mm",
+    "min": 1.1,
+    "max": 6.447
+   },
+   "ext_diameter_mm": {
+    "dtype": "float64",
+    "non_null": 341,
+    "description": "droplet diameter at (hot / visible) flame extinction",
+    "unit": "mm",
+    "min": 0.0,
+    "max": 6.415
+   },
+   "burn_rate_k_mm2_s": {
+    "dtype": "float64",
+    "non_null": 406,
+    "description": "burning-rate constant K (hot flame for PSI-39). PSI-69's \"Burning rate; mm\" column is K in mm²/s",
+    "unit": "mm²/s",
+    "min": 0.001,
+    "max": 1.703
+   },
+   "n_reignitions": {
+    "dtype": "float64",
+    "non_null": 151,
+    "description": "hot-flame re-ignitions after radiative extinction",
+    "unit": "count",
+    "min": 0.0,
+    "max": 7.0
+   },
+   "cool_flame": {
+    "dtype": "boolean",
+    "non_null": 127,
+    "description": "`True` when cool-flame data exist (k_cool, cool-flame extinction diameter or an extrapolated cool flame). Never `False`: missing cool-flame data do not show there was none",
+    "unit": "bool"
+   },
+   "spread_rate_mm_s": {
+    "dtype": "float64",
+    "non_null": 6,
+    "description": "microgravity flame spread rate",
+    "unit": "mm/s",
+    "min": 0.98,
+    "max": 2.6
+   },
+   "burn_length_cm": {
+    "dtype": "float64",
+    "non_null": 10,
+    "description": "microgravity burned length",
+    "unit": "cm",
+    "min": 0.0,
+    "max": 84.0
+   },
+   "flame_length_mm": {
+    "dtype": "float64",
+    "non_null": 155,
+    "description": "measured flame length: video length, or Nikon still flame height",
+    "unit": "mm",
+    "min": 2.284499999999994,
+    "max": 110.6434
+   },
+   "at_smoke_point": {
+    "dtype": "boolean",
+    "non_null": 97,
+    "description": "the log marks this flame as at its smoke point (`Smoke Height` / `SH ?` Y/N)",
+    "unit": "bool"
+   },
+   "smoke_point_reviewed": {
+    "dtype": "boolean",
+    "non_null": 15,
+    "description": "`True` when the row is one of the 55 smoke points of the science team's review (`SmokePointReview-0g-3.xlsx`), matched to this single log row (review values in extra, `review_*`). Never `False`: points between two log rows are flagged `smoke_point_bracket` instead",
+    "unit": "bool"
+   },
+   "measurement": {
+    "dtype": "str",
+    "non_null": 513,
+    "description": "`video` (downlink video measurement / timestamp) or `still` (Nikon still)",
+    "unit": null,
+    "values": {
+     "video": 320,
+     "still": 193
+    }
+   },
+   "flags": {
+    "dtype": "str",
+    "non_null": 676,
+    "description": "semicolon-separated codes (below); null when none",
+    "unit": null
+   },
+   "extra": {
+    "dtype": "str",
+    "non_null": 2169,
+    "description": "JSON object: uncaptured source cells, `<column>_original` values, notes and provenance",
+    "unit": null
+   },
+   "source_file": {
+    "dtype": "str",
+    "non_null": 2177,
+    "description": "file the row came from, relative to the repo",
+    "unit": null,
+    "values": {
+     "data/raw/files/PSI-107/Raw Data/PSI-107_Raw Data_Spice Flight Test Data II modified.xls": 526,
+     "data/raw/files/PSI-69/Experimental table/PSI-69_Experimental table_FLEX.csv": 274,
+     "data/raw/files/PSI-39/Science Documents/PSI-39_Science Documents_CFI_DataSummary_Spreadsheet_Jan2021.xlsx": 227,
+     "data/raw/files/PSI-10/Experimental table/PSI-10_Experimental table_Flame Design_Normal Flame.csv": 207,
+     "data/raw/files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Normal Flames.csv": 179,
+     "data/raw/files/PSI-159/Experimental table/PSI-159_Experimental table_CFI-G_Inverse Flames.csv": 154,
+     "data/raw/files/PSI-25/Experimental table/PSI-25_Experimental table_BASS-II.csv": 129,
+     "data/raw/files/PSI-26/Experimental table/PSI-26_Experimental table_BASS.csv": 121,
+     "data/raw/files/PSI-10/Experimental table/PSI-10_Experimental table_Flame Design_Inverse Flame.csv": 120,
+     "data/raw/files/PSI-101/Experimental table/PSI-101_Experimental table_SAME-R.csv": 109,
+     "data/raw/files/PSI-21/Experimental table/PSI-21_Experimental table_CLD Flame.csv": 32,
+     "data/raw/files/PSI-22/Experimental table/PSI-22_Experimental table_ACME E-FIELD Flames.csv": 20,
+     "data/raw/files/PSI-20/Experimental table/PSI-20_Experimental table_ACME BRE.csv": 18,
+     "data/raw/files/PSI-23/Experimental table/PSI-23_Experimental table_ACME s-Flame.csv": 18,
+     "data/raw/files/PSI-106/Experimental table/PSI-106_Experimental table_Slice.csv": 12,
+     "data/raw/files/PSI-99/Experimental table/PSI-99_Experimental table_SAFFIRE-2.csv": 9,
+     "data/raw/files/PSI-102/Experimental table/PSI-102_Experimental table_SAME.csv": 8,
+     "data/raw/files/PSI-68/Experimental table/PSI-68_Experimental table_Flex2.csv": 8,
+     "data/raw/files/PSI-100/Experimental table/PSI-100_Experimental table_SAFFIRE-3.csv": 2,
+     "data/raw/files/PSI-47/Experimental table/PSI-47_Experimental table_DAFT.csv": 2,
+     "data/raw/files/PSI-98/Experimental table/PSI-98_Experimental table_SAFFIRE-1.csv": 2
+    }
+   },
+   "source_row": {
+    "dtype": "int64",
+    "non_null": 2177,
+    "description": "row number in that file: 1-based data row for CSVs, Excel row number for spreadsheets",
+    "unit": null,
+    "min": 1.0,
+    "max": 530.0
+   }
+  }
+ },
+ "discrepancies": {
+  "description": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
+  "rows": 36,
+  "files": [
+   "data/processed/discrepancies.parquet",
+   "data/processed/discrepancies.csv"
+  ],
+  "columns": {
+   "id": {
+    "dtype": "str",
+    "non_null": 36,
+    "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`",
+    "values": {
+     "D01": 1,
+     "D02": 1,
+     "D03": 1,
+     "D04": 1,
+     "D05": 1,
+     "D06": 1,
+     "D07": 1,
+     "D08": 1,
+     "D09": 1,
+     "D10": 1,
+     "D11": 1,
+     "D12": 1,
+     "D13": 1,
+     "D14": 1,
+     "D15": 1,
+     "D16": 1,
+     "D17": 1,
+     "D18": 1,
+     "D19": 1,
+     "D20": 1,
+     "D21": 1,
+     "D22": 1,
+     "D23": 1,
+     "D24": 1,
+     "D25": 1,
+     "D26": 1,
+     "D27": 1,
+     "D28": 1,
+     "D29": 1,
+     "D30": 1,
+     "D31": 1,
+     "D32": 1,
+     "D33": 1,
+     "D34": 1,
+     "D35": 1,
+     "D36": 1
+    }
+   },
+   "accession": {
+    "dtype": "str",
+    "non_null": 36,
+    "description": null,
+    "values": {
+     "PSI-159": 12,
+     "PSI-39": 6,
+     "PSI-23": 5,
+     "PSI-98": 4,
+     "PSI-100": 4,
+     "PSI-10": 3,
+     "PSI-101": 2
+    }
+   },
+   "test_id": {
+    "dtype": "str",
+    "non_null": 30,
+    "description": "test id as in the PSI table (null for a note on a whole investigation)",
+    "values": {
+     "S1": 4,
+     "S2": 4,
+     "22042M1": 2,
+     "21106 F4": 1,
+     "21112 A6": 1,
+     "21270 H3": 1,
+     "21270 H2": 1,
+     "21270 A1": 1,
+     "21270 A2": 1,
+     "21270 A4": 1,
+     "21277 M1": 1,
+     "1301": 1,
+     "1237": 1,
+     "1336": 1,
+     "1337": 1,
+     "1338": 1,
+     "20190": 1,
+     "20136": 1,
+     "20142": 1,
+     "57": 1,
+     "21162 B1": 1,
+     "20006": 1,
+     "20013": 1
+    }
+   },
+   "test_id_now": {
+    "dtype": "str",
+    "non_null": 30,
+    "description": "test id in `tests` after a test_id correction",
+    "values": {
+     "S1": 4,
+     "S2": 4,
+     "22024M1": 2,
+     "21106 F4": 1,
+     "21112 A6": 1,
+     "21270 H3": 1,
+     "21270 H2": 1,
+     "21270 A1": 1,
+     "21270 A2": 1,
+     "21270 A4": 1,
+     "21277 M1": 1,
+     "1301": 1,
+     "1237": 1,
+     "1336": 1,
+     "1337": 1,
+     "1338": 1,
+     "20190": 1,
+     "20136": 1,
+     "20142": 1,
+     "57": 1,
+     "21162 B1": 1,
+     "20006": 1,
+     "20013": 1
+    }
+   },
+   "column": {
+    "dtype": "str",
+    "non_null": 32,
+    "description": "`tests` column concerned",
+    "values": {
+     "pressure_kpa": 9,
+     "burn_time_s": 8,
+     "date": 3,
+     "fuel_fraction": 3,
+     "x_o2_ambient": 3,
+     "fuel_raw": 2,
+     "test_id": 1,
+     "ignited": 1,
+     "fuel": 1,
+     "x_o2_max": 1
+    }
+   },
+   "table_value": {
+    "dtype": "str",
+    "non_null": 23,
+    "description": "value in the PSI table",
+    "values": {
+     "303.975": 3,
+     "43.0": 2,
+     "90.0": 2,
+     "1.0": 2,
+     "22042M1": 1,
+     "False": 1,
+     "259.0": 1,
+     "60.0": 1,
+     "66.0": 1,
+     "2017-07-29": 1,
+     "2017-05-02": 1,
+     "0.35": 1,
+     "20% H2, 25% CH4, with He": 1,
+     "30% H2, 15% CH4, with He": 1,
+     "0.215": 1,
+     "teflon": 1,
+     "0.217": 1,
+     "158.0": 1
+    }
+   },
+   "evidence_value": {
+    "dtype": "str",
+    "non_null": 29,
+    "description": "value the raw data give",
+    "values": {
+     "H2/CH4/He 25/20/55": 2,
+     "0.198": 2,
+     "1.0": 2,
+     "22024M1": 1,
+     "2022-01-24": 1,
+     "True": 1,
+     "147.0": 1,
+     "94.0": 1,
+     "57.0": 1,
+     "66.5": 1,
+     "96.5": 1,
+     "96.8": 1,
+     "81.9": 1,
+     "2017-06-29": 1,
+     "2017-05-01": 1,
+     "309.4": 1,
+     "309.6": 1,
+     "309.7": 1,
+     "0.45": 1,
+     "102.3": 1,
+     "102.6": 1,
+     "99.5": 1,
+     "99.4": 1,
+     "0.223": 1,
+     "0.226": 1,
+     "163.3": 1
+    }
+   },
+   "action": {
+    "dtype": "str",
+    "non_null": 36,
+    "description": "replace / fill / flag / note",
+    "values": {
+     "flag": 18,
+     "replace": 7,
+     "note": 6,
+     "fill": 5
+    }
+   },
+   "flag": {
+    "dtype": "str",
+    "non_null": 30,
+    "description": "flag put on the row",
+    "values": {
+     "conflicts_with_raw": 18,
+     "corrected_from_raw": 7,
+     "filled_from_raw": 5
+    }
+   },
+   "evidence": {
+    "dtype": "str",
+    "non_null": 36,
+    "description": "what the raw data show",
+    "values": {
+     "The raw data headers give the same fuel bottle, H2/CH4/He 25/20/55, on days 20132, 20136 and 20142, while the table lists a different mixture for each day. Not resolved: the header code may not have been updated between bottles.": 2,
+     "The table has no oxygen value. The flight O2 sensor reads 19.8% at the start of the burn; its accuracy is not documented in PSI, so the value is not filled in.": 2,
+     "The raw data file name and its header both say test point 22024M1, and the row sits in the table's day group 22024. The table id swaps two digits.": 1,
+     "Day code 22024 is 24 January 2022, the date of the other 22024 rows; the raw file starts at 2022-01-25 01:06 UTC.": 1,
+     "Logged as not ignited, but the radiometers show a 20.4 s flame, the table's own burn time is 22 s and its comment says 'hot flame'.": 1,
+     "The radiometers show a flame for 147.0 s; the experiment table says 259.0 s. The script shut the gas flows off 180.5 s into the recording, 155 s after ignition, so 259 s of burning is not possible.": 1,
+     "The radiometers show a flame for 94.0 s; the experiment table says 43.0 s. 43 s is also the value of the previous test point H2, so it was probably copied.": 1,
+     "The radiometers show a flame for 57.0 s; the experiment table says 43.0 s.": 1,
+     "The radiometers show a flame for 66.5 s; the experiment table says 60.0 s.": 1,
+     "The radiometers show a flame for 96.5 s; the experiment table says 90.0 s.": 1,
+     "The radiometers show a flame for 96.8 s; the experiment table says 90.0 s.": 1,
+     "The radiometers show a flame for 81.9 s; the experiment table says 66.0 s.": 1,
+     "The raw recording of this test starts on 2017-06-29 15:06 UTC; the table says July.": 1,
+     "The raw recording of this test starts on 2017-05-01 13:10 UTC; the table says 2 May.": 1,
+     "The chamber transducer reads 309.4 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
+     "The chamber transducer reads 309.6 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
+     "The chamber transducer reads 309.7 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
+     "The raw data headers of this day give the fuel bottle as H2/He 45/55, and the science reports also give 45% H2. The table says 35%.": 1,
+     "The experiment table has no pressure. The flight pressure sensor reads 102.3 kPa at the start of the burn.": 1,
+     "The experiment table has no pressure. The flight pressure sensor reads 102.6 kPa at the start of the burn.": 1,
+     "The experiment table has no pressure. The flight pressure sensor reads 99.5 kPa at the start of the burn.": 1,
+     "The experiment table has no pressure. The flight pressure sensor reads 99.4 kPa at the start of the burn.": 1,
+     "The flight O2 sensor reads 22.3% at the start of the burn (22.6% for sample 1) against the table's 21.5%. The sensor's accuracy is not documented in PSI, so the table value is kept.": 1,
+     "For inverse flames the measured chamber pressure at the start of a test is 5.7% below the table value (median of 153 tests; equivalently the table is 6.0% above the measurement; single tests range from 7.3% below to 7.6% above). 148 of the 154 inverse rows carry the flag pressure_9pct_above_nominal; the six rows of day 21196 at 49.5 kPa do not, because their table value is 2% below the 0.5 atm fill level and the raw data agree with it.": 1,
+     "Nine recorded test points are missing from the experiment table (19115C1, 19115D1, 19115H1, 19115P1, 19123H1, 19123L8, 19142B1, 19175B2, 19196N2), and 19 table rows have no raw data file.": 1,
+     "Ten recorded test points are missing from the experiment table (21106A1-A3, 21106G1-G5, 21106G8, 21242F1), and five table rows have no raw data file (21102 M6, 21125 A4, 21125 H3, 21130 A9, 21209 A2).": 1,
+     "Run 112 (Kapton, 2 cm/s, Rt/R0 1.48) was flown and analysed but has no row in the test list. The list has 109 rows and so does the results workbook: the list holds a false 'Teflon 57' row (patch D30) where run 112 should be. An earlier version of this note said run 112 has housekeeping data; it does not (the housekeeping files cover runs 58-108).": 1,
+     "The test list has run 57 twice: once as Lampwick and once as Teflon, with identical cells (date 29-Jul, Rt/R0 1.253, 8.1 cm/s). The raw data hold one run 57, a lampwick run; there is no Teflon run 57, and the results workbook lists run 57 once, as Lampwick. The other Teflon rows have Rt/R0 1.445-1.452, not 1.253. This Teflon row is not a test that was run; it is kept and flagged.": 1,
+     "The flight O2 sensor reads 22.6% at the start of the burn against the table's 21.5-21.7%. The sensor's accuracy is not documented in PSI, so the table range is kept (as for sample 2, patch D23).": 1,
+     "For normal flames the table gives the nominal fill pressure (0.5, 0.93, 1, 2 or 3 atm). The chamber transducer reads about 3 kPa more at the start of every test: 5.9% above the table at 0.5 atm (median), 3.0% at 1 atm, 1.7% at 2 atm and 0.8% at 3 atm; overall 0.6% to 7.4% over 175 tests, more than 5% in 32 of them (all of days 21106, 21153 and 21174 at 0.5 atm, and 21125 H1, H2, H4, H5, J1, K1-K3 and 21137 A4-A7 at 1 atm). The table values are kept; measured values are in timeseries_features (chamber_pressure_start_kpa).": 1,
+     "The radiometers show a flame for 163.3 s; the experiment table says 158.0 s. Burn times from the radiometers depend on the detection threshold: differences under 5 s are not recorded as conflicts.": 1,
+     "The 'Local Time' cell of the data-summary spreadsheet (kept in extra) is wrong for several tests when compared with the start of the raw recording (UTC): tests 1338, 1349 and 1386 say 12:xx am for recordings that start at 16:xx UTC (12:xx pm local); test 1300 says 10:42 pm for 14:41 UTC; test 1234 reads '011:11:09 am'; tests 1260 and 1332 also disagree, and tests 1320-1323, 1376 and 1377 are off by about 5 h instead of 4. Dates are not affected. The cells are kept as given; use first_sample_utc in timeseries_features for timing.": 1,
+     "The raw data headers of this day give the fuel bottle as H2/CH4 44.4/55.6, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (20% H2 / 25% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1,
+     "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1
+    }
+   },
+   "evidence_source": {
+    "dtype": "str",
+    "non_null": 36,
+    "description": "file and channel the evidence comes from",
+    "values": {
+     "PSI-159 Raw Data _data.csv files; chamber pressure in timeseries_features": 2,
+     "PSI-10 Raw Data 22024M1_data.csv (file name and header)": 1,
+     "PSI-10 Raw Data 22024M1_data.csv; other 22024 rows of the experiment table": 1,
+     "PSI-159 Raw Data 21106F4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21112A6_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21270H3_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21270H2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21270A1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21270A2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21270A4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-159 Raw Data 21277M1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-39 Raw Data, CIR test point F180D02 (first sample time)": 1,
+     "PSI-39 Raw Data, CIR test point F121A02 (first sample time)": 1,
+     "PSI-39 Raw Data, CIR test point F200D03 (chamber pressure at start)": 1,
+     "PSI-39 Raw Data, CIR test point F200D04 (chamber pressure at start)": 1,
+     "PSI-39 Raw Data, CIR test point F200D05 (chamber pressure at start)": 1,
+     "PSI-23 Raw Data 20190*_data.csv headers (fuel gas code)": 1,
+     "PSI-23 Raw Data 20136*_data.csv headers (fuel gas code)": 1,
+     "PSI-23 Raw Data 20142*_data.csv headers (fuel gas code)": 1,
+     "PSI-98 Raw Data, sample 1 sensor workbook (pressure at start)": 1,
+     "PSI-98 Raw Data, sample 2 sensor workbook (pressure at start)": 1,
+     "PSI-100 Raw Data, sample 1 sensor workbook (pressure at start)": 1,
+     "PSI-100 Raw Data, sample 2 sensor workbook (pressure at start)": 1,
+     "PSI-98 Raw Data, sample 2 sensor workbook (O2 at start)": 1,
+     "PSI-100 Raw Data, sample 1 sensor workbook (O2 at start)": 1,
+     "PSI-100 Raw Data, sample 2 sensor workbook (O2 at start)": 1,
+     "PSI-10 Raw Data file list against the experiment table": 1,
+     "PSI-159 Raw Data file list against the experiment table": 1,
+     "PSI-101 Analyzed Data workbook of run 112 (file name ending 2010_253_14_kapton_run112.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort": 1,
+     "PSI-101 Analyzed Data workbook of run 57 (file name ending 2010_210_10_lampwick_run57.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort": 1,
+     "PSI-98 Raw Data, sample 1 sensor workbook (O2 at start)": 1,
+     "PSI-159 Raw Data 21162B1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
+     "PSI-39 Raw Data, first sample time of each CIR test point against the Master Sheet of the data-summary spreadsheet": 1,
+     "PSI-23 Raw Data 20006*_data.csv headers (fuel gas code)": 1,
+     "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)": 1
+    }
+   }
+  }
+ },
+ "timeseries_features": {
+  "description": "Summary features of each per-test sensor time series. See docs/formats.md.",
+  "rows": 1051,
+  "files": [
+   "data/processed/timeseries_features.parquet",
+   "data/processed/timeseries_features.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 1051,
+    "description": "key of the `tests` row the recording belongs to",
+    "unit": null,
+    "values": {
+     "PSI-159": 328,
+     "PSI-10": 308,
+     "PSI-23": 288,
+     "PSI-39": 123,
+     "PSI-100": 2,
+     "PSI-98": 2
+    }
+   },
+   "test_id": {
+    "dtype": "str",
+    "non_null": 1051,
+    "description": "key of the `tests` row the recording belongs to",
+    "unit": null
+   },
+   "test_point": {
+    "dtype": "str",
+    "non_null": 1051,
+    "description": "code of the recording in the file name (21228A1, F068A03, S1)",
+    "unit": null
+   },
+   "source_file": {
+    "dtype": "str",
+    "non_null": 1051,
+    "description": "raw file the features were computed from",
+    "unit": null
+   },
+   "n_samples": {
+    "dtype": "int64",
+    "non_null": 1051,
+    "description": "number of samples",
+    "unit": "count",
+    "min": 1012.0,
+    "max": 114220.0
+   },
+   "duration_s": {
+    "dtype": "float64",
+    "non_null": 1051,
+    "description": "length of the recording",
+    "unit": "s",
+    "min": 8.088000000003376,
+    "max": 913.7510000000038
+   },
+   "sample_hz": {
+    "dtype": "float64",
+    "non_null": 1051,
+    "description": "sampling rate",
+    "unit": "Hz",
+    "min": 30.303030303016104,
+    "max": 125.00000000295586
+   },
+   "first_sample_utc": {
+    "dtype": "datetime64[us]",
+    "non_null": 1051,
+    "description": "time of the first sample (GMT)",
+    "unit": null
+   },
+   "experiment_code": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "code from the file header",
+    "unit": null,
+    "min": 0.0,
+    "max": 5.0
+   },
+   "burner_code": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "code from the file header",
+    "unit": null,
+    "min": 0.0,
+    "max": 0.0
+   },
+   "oxidizer_gas": {
+    "dtype": "str",
+    "non_null": 924,
+    "description": "gas on this mass-flow controller, from the header gas code",
+    "unit": null,
+    "values": {
+     "O2/N2 40/60": 314,
+     "O2/N2 85/15": 273,
+     "O2/N2 30/70": 149,
+     "O2/He 30/70": 139,
+     "O2/N2 21/79": 49
+    }
+   },
+   "inert_gas": {
+    "dtype": "str",
+    "non_null": 924,
+    "description": "gas on this mass-flow controller, from the header gas code",
+    "unit": null,
+    "values": {
+     "N2": 924
+    }
+   },
+   "fuel_gas": {
+    "dtype": "str",
+    "non_null": 924,
+    "description": "gas on this mass-flow controller, from the header gas code",
+    "unit": null,
+    "values": {
+     "C2H4": 290,
+     "code 19": 81,
+     "code 20": 74,
+     "code 21": 66,
+     "C2H4/N2 50/50": 53,
+     "H2/He 45/55": 37,
+     "H2/CH4/He 25/20/55": 36,
+     "code 22": 35,
+     "code 23": 34,
+     "CH4/N2 45/55": 31,
+     "code 24": 29,
+     "code 25": 27,
+     "H2": 26,
+     "C2H4/He 30/70": 23,
+     "H2/CH4 66.7/33.3": 22,
+     "C2H4/He 25/75": 20,
+     "H2/CH4 44.4/55.6": 17,
+     "CH4/He 45/55": 12,
+     "C2H4/He 20/80": 11
+    }
+   },
+   "thermocouple_rake": {
+    "dtype": "str",
+    "non_null": 924,
+    "description": "thermocouple rake fitted, from the header",
+    "unit": null,
+    "values": {
+     "far": 864,
+     "removed": 30,
+     "near": 30
+    }
+   },
+   "pmt1_gain_v": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "photomultiplier gain setting",
+    "unit": "V",
+    "min": 4.0,
+    "max": 10.0
+   },
+   "pmt2_gain_v": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "photomultiplier gain setting",
+    "unit": "V",
+    "min": 4.0,
+    "max": 10.0
+   },
+   "pmt3_gain_v": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "photomultiplier gain setting",
+    "unit": "V",
+    "min": 4.0,
+    "max": 10.0
+   },
+   "radiometer_array": {
+    "dtype": "str",
+    "non_null": 1051,
+    "description": "standard, cfi-g, cfi-droplet or saffire",
+    "unit": null,
+    "values": {
+     "cfi-g": 466,
+     "standard": 458,
+     "cfi-droplet": 123,
+     "saffire": 4
+    }
+   },
+   "radiometer_on_s": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "time the flame signal stays above threshold, igniter glow included",
+    "unit": "s",
+    "min": 0.0,
+    "max": 869.7989999999991
+   },
+   "flame_detected": {
+    "dtype": "object",
+    "non_null": 924,
+    "description": "radiometer_on_s of at least 2 s",
+    "unit": null
+   },
+   "ignition_time_s": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "first sample with the flame signal above threshold",
+    "unit": "s",
+    "min": 16.19199999999546,
+    "max": 54.20900000000256
+   },
+   "flameout_time_s": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "last sample with the flame signal above threshold",
+    "unit": "s",
+    "min": 25.176000000006752,
+    "max": 906.2550000000047
+   },
+   "burn_duration_s": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "flameout minus ignition; 0 when no flame is detected",
+    "unit": "s",
+    "min": 0.0,
+    "max": 869.7989999999991
+   },
+   "flame_threshold": {
+    "dtype": "float64",
+    "non_null": 914,
+    "description": "detection threshold used (W/cm2 standard array, V CFI-G)",
+    "unit": null,
+    "min": 0.0001,
+    "max": 1.7646022799999999
+   },
+   "script_ignition_s": {
+    "dtype": "float64",
+    "non_null": 948,
+    "description": "event of the test script, relative to the first sample",
+    "unit": "s",
+    "min": 14.523,
+    "max": 120.345
+   },
+   "script_extinction_detected_s": {
+    "dtype": "float64",
+    "non_null": 569,
+    "description": "event of the test script, relative to the first sample",
+    "unit": "s",
+    "min": 26.551,
+    "max": 362.527
+   },
+   "script_mfcs_off_s": {
+    "dtype": "float64",
+    "non_null": 846,
+    "description": "event of the test script, relative to the first sample",
+    "unit": "s",
+    "min": 26.551,
+    "max": 902.783
+   },
+   "chamber_pressure_start_kpa": {
+    "dtype": "float64",
+    "non_null": 1051,
+    "description": "chamber pressure at the start, the end, its maximum, or its mean during the burn",
+    "unit": "kPa",
+    "min": 45.12657968283941,
+    "max": 510.00517529
+   },
+   "chamber_pressure_end_kpa": {
+    "dtype": "float64",
+    "non_null": 1051,
+    "description": "chamber pressure at the start, the end, its maximum, or its mean during the burn",
+    "unit": "kPa",
+    "min": 45.47958030615481,
+    "max": 510.76359856
+   },
+   "chamber_pressure_max_kpa": {
+    "dtype": "float64",
+    "non_null": 1051,
+    "description": "chamber pressure at the start, the end, its maximum, or its mean during the burn",
+    "unit": "kPa",
+    "min": 45.58458049156023,
+    "max": 512.69413052
+   },
+   "chamber_pressure_mean_burn_kpa": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "chamber pressure at the start, the end, its maximum, or its mean during the burn",
+    "unit": "kPa",
+    "min": 45.400712536507534,
+    "max": 314.3440324556178
+   },
+   "cold_junction_temp_mean_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 21.736725947770413,
+    "max": 24.90173136128643
+   },
+   "burner_temp_start_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 22.902016666169914,
+    "max": 26.582389325675443
+   },
+   "burner_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 24.09305591192407,
+    "max": 651.5071289274396
+   },
+   "burner_temp_time_of_max_s": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 2.849000000001979,
+    "max": 248.79200000000128
+   },
+   "burner_temp_final_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 23.687628458504726,
+    "max": 623.4817427304725
+   },
+   "ambient_200mm_a_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 22.926870490273885,
+    "max": 36.770052132471584
+   },
+   "ambient_200mm_a_temp_final_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 22.58342027047221,
+    "max": 36.1474698562553
+   },
+   "ambient_200mm_b_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 22.01241707903523,
+    "max": 38.38087653779875
+   },
+   "ambient_200mm_b_temp_final_c": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 21.65094016824017,
+    "max": 24.458717062240623
+   },
+   "rake_a_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 894,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 26.713292057370353,
+    "max": 270.7299773760038
+   },
+   "rake_b_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 244,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 249.95343933220119,
+    "max": 920.5532826727765
+   },
+   "rake_c_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 82,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 250.59189622643714,
+    "max": 682.9822022140535
+   },
+   "rake_d_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 894,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 22.990476047893672,
+    "max": 153.00188517564183
+   },
+   "oxidizer_flow_max_slpm": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "whole-file maximum of the flow reading; often a controller spike before ignition, not the test's flow",
+    "unit": "slpm",
+    "min": -0.0120638,
+    "max": 1.0006
+   },
+   "oxidizer_flow_max_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "maximum flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.04168480000000001,
+    "max": 0.523635
+   },
+   "oxidizer_flow_mean_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.06197894973262031,
+    "max": 0.4990351538461538
+   },
+   "inert_flow_max_slpm": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "whole-file maximum of the flow reading; often a controller spike before ignition, not the test's flow",
+    "unit": "slpm",
+    "min": -0.1993568,
+    "max": 3.94399
+   },
+   "inert_flow_max_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "maximum flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.1995096,
+    "max": 1.988244
+   },
+   "inert_flow_mean_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.19969170303951367,
+    "max": 1.4334028638222331
+   },
+   "fuel_flow_max_slpm": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "whole-file maximum of the flow reading; often a controller spike before ignition, not the test's flow",
+    "unit": "slpm",
+    "min": -0.0008392359999999999,
+    "max": 2.39242
+   },
+   "fuel_flow_max_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "maximum flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.001113896,
+    "max": 2.39242
+   },
+   "fuel_flow_mean_burn_slpm": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean flow during the detected burn",
+    "unit": "slpm",
+    "min": -0.0020609623562374917,
+    "max": 2.00699486940966
+   },
+   "pmt1_310nm_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.017611461663169164,
+    "max": 4.472548634020619
+   },
+   "pmt1_310nm_max_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.212899,
+    "max": 4.57945
+   },
+   "pmt2_broadband_uv_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.0070026008180472,
+    "max": 4.487495970866585
+   },
+   "pmt2_broadband_uv_max_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.0246812,
+    "max": 4.58029
+   },
+   "pmt3_430nm_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.00029888689314775156,
+    "max": 4.491102558139534
+   },
+   "pmt3_430nm_max_burn_v": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.0108719,
+    "max": 4.57998
+   },
+   "radiometer_offset_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -0.00012983776000000027,
+    "max": 0.00645553502
+   },
+   "radiometer_offset_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 6.096000000005006,
+    "max": 357.7020000000002
+   },
+   "radiometer_offset_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 924,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -0.00014965172000000037,
+    "max": 0.006451921039999999
+   },
+   "radiometer_offset_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 825,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": 1.2558026338329622e-05,
+    "max": 0.006446534284085131
+   },
+   "radiometer_offset_clipped": {
+    "dtype": "object",
+    "non_null": 924,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "radiometer3_p60_lo_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.02621,
+    "max": 4.76414
+   },
+   "radiometer3_p60_lo_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 19.0570000000007,
+    "max": 157.6889999999985
+   },
+   "radiometer3_p60_lo_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.0264162,
+    "max": 0.298752
+   },
+   "radiometer3_p60_lo_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.168032946326707,
+    "max": 2.2606148430609596
+   },
+   "radiometer3_p60_hi_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.289886,
+    "max": 4.78394
+   },
+   "radiometer3_p60_hi_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 19.0570000000007,
+    "max": 301.29099999999744
+   },
+   "radiometer3_p60_hi_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.292014,
+    "max": 3.3031550000000003
+   },
+   "radiometer3_p60_hi_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 1.8553958677614524,
+    "max": 4.781699514731369
+   },
+   "radiometer3_p30_lo_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.0280507,
+    "max": 4.76308
+   },
+   "radiometer3_p30_lo_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 14.512999999991735,
+    "max": 122.12799999999697
+   },
+   "radiometer3_p30_lo_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.0306567,
+    "max": 0.31722700000000004
+   },
+   "radiometer3_p30_lo_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 0.22088742744845363,
+    "max": 3.002525481193256
+   },
+   "radiometer3_p30_hi_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.313626,
+    "max": 4.78189
+   },
+   "radiometer3_p30_hi_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 14.512999999991735,
+    "max": 903.935000000005
+   },
+   "radiometer3_p30_hi_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.3422085,
+    "max": 3.495195
+   },
+   "radiometer3_p30_hi_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": 2.3180830786516857,
+    "max": 4.779750992594927
+   },
+   "radiometer3_m10_lo_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.152124,
+    "max": 4.73671
+   },
+   "radiometer3_m10_lo_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 18.648999999990338,
+    "max": 121.95200000000477
+   },
+   "radiometer3_m10_lo_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.152803,
+    "max": 0.02104555
+   },
+   "radiometer3_m10_lo_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": -0.025703905125006626,
+    "max": 1.4830999540856034
+   },
+   "radiometer3_m10_hi_peak_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -0.628545,
+    "max": 4.76135
+   },
+   "radiometer3_m10_hi_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 20.896000000007916,
+    "max": 252.82200000000012
+   },
+   "radiometer3_m10_hi_final_v": {
+    "dtype": "float64",
+    "non_null": 466,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -0.6634145,
+    "max": 0.18966300000000003
+   },
+   "radiometer3_m10_hi_mean_burn_v": {
+    "dtype": "float64",
+    "non_null": 381,
+    "description": "mean or maximum signal during the detected burn, uncalibrated (PMT: 4.4 V or more is the rail)",
+    "unit": "V",
+    "min": -0.24735488876195266,
+    "max": 4.757617418864098
+   },
+   "features_note": {
+    "dtype": "str",
+    "non_null": 198,
+    "description": "problems found while parsing, or why a feature is missing",
+    "unit": null,
+    "values": {
+     "burn duration not derived (radiometer on-time does not track tests.burn_time_s)": 123,
+     "no _TP.txt timeline": 56,
+     "1 malformed rows dropped (truncated/NUL-padded)": 6,
+     "burn duration not derived (no burn marker; radiometer baseline = median of first 50 s)": 4,
+     "2 malformed rows dropped (truncated/NUL-padded)": 3,
+     "no _TP.txt timeline; re-opened test point (file name suffix _1); the test point also has a file without the suffix": 2,
+     "3 malformed rows dropped (truncated/NUL-padded)": 1,
+     "re-opened test point (file name suffix _1); the test point also has a file without the suffix": 1,
+     "1 malformed rows dropped (truncated/NUL-padded); time gap of 23.3 s": 1,
+     "_TP.txt timeline does not overlap the data (script times dropped)": 1
+    }
+   },
+   "radiometer_p60_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -9.913365999999991e-05,
+    "max": 0.009400975400000003
+   },
+   "radiometer_p60_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 4.335999999995693,
+    "max": 357.7579999999998
+   },
+   "radiometer_p60_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -0.00010395813999999979,
+    "max": 0.008790232940000002
+   },
+   "radiometer_p60_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 444,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": -8.271870479657378e-05,
+    "max": 0.00858800855052
+   },
+   "radiometer_p60_clipped": {
+    "dtype": "object",
+    "non_null": 458,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "radiometer_p30_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -6.856309999999982e-05,
+    "max": 0.006444051579999999
+   },
+   "radiometer_p30_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 3.7839999999996508,
+    "max": 357.7659999999996
+   },
+   "radiometer_p30_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -6.87963199999999e-05,
+    "max": 0.00643686661
+   },
+   "radiometer_p30_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 444,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": -5.3374340631578785e-05,
+    "max": 0.006422097803292934
+   },
+   "radiometer_p30_clipped": {
+    "dtype": "object",
+    "non_null": 458,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "radiometer_center_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -0.00031858053999999974,
+    "max": 0.010120482620000001
+   },
+   "radiometer_center_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 5.440999999991618,
+    "max": 357.7510000000002
+   },
+   "radiometer_center_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -0.0003405604699999998,
+    "max": 0.01011434734
+   },
+   "radiometer_center_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 444,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": -0.00017928426389721616,
+    "max": 0.010083043259373339
+   },
+   "radiometer_center_clipped": {
+    "dtype": "object",
+    "non_null": 458,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "radiometer_m30_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -7.993502000000008e-05,
+    "max": 0.008594112849999998
+   },
+   "radiometer_m30_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 6.440999999991618,
+    "max": 357.77400000000034
+   },
+   "radiometer_m30_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -8.058221000000008e-05,
+    "max": 0.00858917503
+   },
+   "radiometer_m30_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 444,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": 6.712873179871509e-05,
+    "max": 0.008564431669798995
+   },
+   "radiometer_m30_clipped": {
+    "dtype": "object",
+    "non_null": 458,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "radiometer_m60_peak_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "peak irradiance (0.2 s smoothing)",
+    "unit": "W/cm2",
+    "min": -5.05750800000003e-05,
+    "max": 0.009309023769999997
+   },
+   "radiometer_m60_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 7.584999999991851,
+    "max": 357.7430000000004
+   },
+   "radiometer_m60_final_w_cm2": {
+    "dtype": "float64",
+    "non_null": 458,
+    "description": "irradiance in the last second of the file",
+    "unit": "W/cm2",
+    "min": -5.098964000000003e-05,
+    "max": 0.009300201415
+   },
+   "radiometer_m60_mean_burn_w_cm2": {
+    "dtype": "float64",
+    "non_null": 444,
+    "description": "mean irradiance during the detected burn",
+    "unit": "W/cm2",
+    "min": -3.421011316916487e-05,
+    "max": 0.008932139605926693
+   },
+   "radiometer_m60_clipped": {
+    "dtype": "object",
+    "non_null": 458,
+    "description": "peak within 1% of the channel's recorder ceiling: the peak and burn mean are lower bounds",
+    "unit": null
+   },
+   "chamber_gas_temp_start_c": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 24.427500000000002,
+    "max": 27.2275
+   },
+   "chamber_gas_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 26.0,
+    "max": 29.01
+   },
+   "narrow_band_radiometer_peak_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -8.34,
+    "max": 6.995
+   },
+   "narrow_band_radiometer_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 54.696,
+    "max": 136.018
+   },
+   "narrow_band_radiometer_final_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -9.765,
+    "max": -9.165
+   },
+   "narrow_band_radiometer_baseline_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "signal before ignition, uncalibrated",
+    "unit": "V",
+    "min": -9.78,
+    "max": -9.64
+   },
+   "wide_band_radiometer_peak_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "peak signal, uncalibrated",
+    "unit": "V",
+    "min": -8.344999999999999,
+    "max": 9.885000000000002
+   },
+   "wide_band_radiometer_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 54.236,
+    "max": 135.798
+   },
+   "wide_band_radiometer_final_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "signal in the last second, uncalibrated",
+    "unit": "V",
+    "min": -9.43,
+    "max": -9.01
+   },
+   "wide_band_radiometer_baseline_v": {
+    "dtype": "float64",
+    "non_null": 123,
+    "description": "signal before ignition, uncalibrated",
+    "unit": "V",
+    "min": -9.43,
+    "max": -9.33
+   },
+   "o2_start_pct": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "Saffire cabin gas sensor reading at the start, or its extreme",
+    "unit": "%",
+    "min": 19.7697049033555,
+    "max": 22.637939614743203
+   },
+   "o2_min_pct": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "Saffire cabin gas sensor reading at the start, or its extreme",
+    "unit": "%",
+    "min": 19.41398614063825,
+    "max": 22.230917704061305
+   },
+   "co2_start_pct": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "Saffire cabin gas sensor reading at the start, or its extreme",
+    "unit": "%",
+    "min": 0.37559312811114,
+    "max": 0.62853552465092
+   },
+   "co2_max_pct": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "Saffire cabin gas sensor reading at the start, or its extreme",
+    "unit": "%",
+    "min": 0.38888882752461,
+    "max": 0.64565267657986
+   },
+   "anemometer_start_cm_s": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "Saffire flow speed at the start",
+    "unit": "cm/s",
+    "min": 19.992358791799997,
+    "max": 25.0138486315
+   },
+   "plume_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 48.118343530594544,
+    "max": 121.23867083937228
+   },
+   "sample_temp_max_c": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "temperature at the start, the end, its maximum or its mean",
+    "unit": "C",
+    "min": 18.78382630356702,
+    "max": 1090.8543737157804
+   },
+   "radiometer_1_rise_peak_mw_cm2": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "peak radiometer signal above its pre-ignition baseline",
+    "unit": "mW/cm2",
+    "min": 0.3644586791278641,
+    "max": 167.46780236515752
+   },
+   "radiometer_1_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 99.46200000000285,
+    "max": 343.3319999999945
+   },
+   "radiometer_2_rise_peak_mw_cm2": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "peak radiometer signal above its pre-ignition baseline",
+    "unit": "mW/cm2",
+    "min": 0.5551687349426793,
+    "max": 174.676757403526
+   },
+   "radiometer_2_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 129.92100000000332,
+    "max": 293.4029999999731
+   },
+   "radiometer_3_rise_peak_mw_cm2": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "peak radiometer signal above its pre-ignition baseline",
+    "unit": "mW/cm2",
+    "min": 0.23342188074065362,
+    "max": 165.3796906043724
+   },
+   "radiometer_3_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 0.0,
+    "max": 219.31799999997068
+   },
+   "radiometer_4_rise_peak_mw_cm2": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "peak radiometer signal above its pre-ignition baseline",
+    "unit": "mW/cm2",
+    "min": 11.447786505553474,
+    "max": 186.35785490478958
+   },
+   "radiometer_4_time_of_peak_s": {
+    "dtype": "float64",
+    "non_null": 4,
+    "description": "time of the channel's maximum",
+    "unit": "s",
+    "min": 104.84000000000307,
+    "max": 343.4639999999945
+   }
+  }
+ },
+ "files": {
+  "description": "Every file listed in the 24 PSI records, downloaded or not.",
+  "rows": 16383,
+  "files": [
+   "data/processed/files.parquet",
+   "data/processed/files.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": null,
+    "values": {
+     "PSI-23": 4165,
+     "PSI-10": 3807,
+     "PSI-159": 3756,
+     "PSI-39": 2832,
+     "PSI-25": 695,
+     "PSI-101": 343,
+     "PSI-26": 212,
+     "PSI-107": 188,
+     "PSI-102": 105,
+     "PSI-100": 87,
+     "PSI-98": 76,
+     "PSI-115": 47,
+     "PSI-47": 33,
+     "PSI-117": 16,
+     "PSI-22": 6,
+     "PSI-142": 3,
+     "PSI-20": 2,
+     "PSI-21": 2,
+     "PSI-99": 2,
+     "PSI-106": 2,
+     "PSI-60": 1,
+     "PSI-62": 1,
+     "PSI-68": 1,
+     "PSI-69": 1
+    }
+   },
+   "category": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": "PSI file category (Raw Data, Science Documents, ...)",
+    "values": {
+     "Raw Data": 15792,
+     "Analyzed Data": 248,
+     "Engineering Documents": 124,
+     "Reference Data": 57,
+     "Presentations": 50,
+     "Science Documents": 36,
+     "Experimental table": 22,
+     "metadata": 21,
+     "Reports": 20,
+     "Representative Image(s)": 13
+    }
+   },
+   "file_name": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": null
+   },
+   "extension": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": null,
+    "values": {
+     ".zip": 5197,
+     ".txt": 4779,
+     ".csv": 1965,
+     ".mdipsug": 1116,
+     ".mp4": 855,
+     ".ts": 773,
+     ".pdf": 522,
+     ".asc": 236,
+     ".meta": 236,
+     ".xls": 171,
+     ".log": 125,
+     ".metadata": 117,
+     ".pptx": 84,
+     ".xlsx": 49,
+     ".dat": 44,
+     ".pxp": 29,
+     ".rtf": 22,
+     ".ppt": 17,
+     ".jpg": 11,
+     ".docx": 11,
+     ".doc": 5,
+     ".png": 4,
+     ".xml": 4,
+     ".next": 3,
+     ".tif": 3,
+     ".errors": 2,
+     ".sfk": 1,
+     ".nef": 1,
+     ".avi": 1
+    }
+   },
+   "size_bytes": {
+    "dtype": "int64",
+    "non_null": 16383,
+    "description": null,
+    "min": 0.0,
+    "max": 32911249730.0
+   },
+   "downloaded": {
+    "dtype": "bool",
+    "non_null": 16383,
+    "description": "present under data/raw/files/ with the size PSI lists"
+   },
+   "status": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": "on_disk / size_differs (on disk, PSI now lists another size) / dead_link (listed by PSI, storage link fails; data/corrections/files_status.json) / not_downloaded",
+    "values": {
+     "on_disk": 9455,
+     "not_downloaded": 6912,
+     "dead_link": 11,
+     "size_differs": 5
+    }
+   },
+   "local_path": {
+    "dtype": "str",
+    "non_null": 16383,
+    "description": "path relative to the repo"
+   }
+  }
+ },
+ "evidence": {
+  "description": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
+  "rows": 21570,
+  "files": [
+   "data/processed/evidence.parquet",
+   "data/processed/evidence.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": null,
+    "values": {
+     "PSI-39": 4119,
+     "PSI-23": 4042,
+     "PSI-10": 2974,
+     "PSI-159": 2857,
+     "PSI-25": 2543,
+     "PSI-101": 1903,
+     "PSI-102": 1343,
+     "PSI-107": 552,
+     "PSI-117": 475,
+     "PSI-26": 405,
+     "PSI-47": 145,
+     "PSI-115": 59,
+     "PSI-100": 46,
+     "PSI-98": 44,
+     "PSI-20": 14,
+     "PSI-99": 10,
+     "PSI-142": 10,
+     "PSI-62": 9,
+     "PSI-106": 9,
+     "PSI-60": 7,
+     "PSI-21": 1,
+     "PSI-22": 1,
+     "PSI-68": 1,
+     "PSI-69": 1
+    }
+   },
+   "category": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": null,
+    "values": {
+     "Raw Data": 12196,
+     "Engineering Documents": 2401,
+     "Reports": 2228,
+     "Science Documents": 1492,
+     "Analyzed Data": 1350,
+     "Presentations": 996,
+     "Reference Data": 728,
+     "metadata": 157,
+     "Experimental table": 22
+    }
+   },
+   "file_name": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": null
+   },
+   "local_path": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": null
+   },
+   "locator": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": "page (p3), slide, sheet, zip member or 'all'"
+   },
+   "chunk": {
+    "dtype": "int64",
+    "non_null": 21570,
+    "description": "chunk number within the locator",
+    "min": 0.0,
+    "max": 149.0
+   },
+   "text": {
+    "dtype": "str",
+    "non_null": 21570,
+    "description": "extracted text, whitespace-normalised; contact details of people who are not listed authors, postal addresses and private network addresses are replaced by [... removed] markers"
+   },
+   "test_ref": {
+    "dtype": "str",
+    "non_null": 3970,
+    "description": "ACME test id found in the file name"
+   }
+  }
+ },
+ "evidence_files": {
+  "description": "Extraction status of each document (ok, no_text for scans, unsupported, error, withheld).",
+  "rows": 5521,
+  "files": [
+   "data/processed/evidence_files.parquet",
+   "data/processed/evidence_files.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 5521,
+    "description": null,
+    "values": {
+     "PSI-39": 1822,
+     "PSI-159": 1118,
+     "PSI-10": 1072,
+     "PSI-23": 1003,
+     "PSI-25": 134,
+     "PSI-101": 130,
+     "PSI-102": 96,
+     "PSI-26": 37,
+     "PSI-47": 32,
+     "PSI-107": 26,
+     "PSI-117": 16,
+     "PSI-98": 9,
+     "PSI-100": 9,
+     "PSI-115": 3,
+     "PSI-20": 2,
+     "PSI-99": 2,
+     "PSI-106": 2,
+     "PSI-142": 2,
+     "PSI-21": 1,
+     "PSI-22": 1,
+     "PSI-60": 1,
+     "PSI-62": 1,
+     "PSI-68": 1,
+     "PSI-69": 1
+    }
+   },
+   "category": {
+    "dtype": "str",
+    "non_null": 5521,
+    "description": null,
+    "values": {
+     "Raw Data": 5077,
+     "Analyzed Data": 199,
+     "Engineering Documents": 97,
+     "Presentations": 47,
+     "Science Documents": 36,
+     "Experimental table": 22,
+     "Reports": 18,
+     "metadata": 16,
+     "Reference Data": 9
+    }
+   },
+   "file_name": {
+    "dtype": "str",
+    "non_null": 5521,
+    "description": null
+   },
+   "extension": {
+    "dtype": "str",
+    "non_null": 5521,
+    "description": null,
+    "values": {
+     ".txt": 4757,
+     ".pdf": 514,
+     ".xls": 141,
+     ".csv": 31,
+     ".xlsx": 30,
+     ".zip": 16,
+     ".docx": 11,
+     ".ppt": 10,
+     ".pptx": 7,
+     ".doc": 4
+    }
+   },
+   "status": {
+    "dtype": "str",
+    "non_null": 5521,
+    "description": "ok / no_text / unsupported / error / withheld (holds credentials, not extracted)",
+    "values": {
+     "ok": 5320,
+     "no_text": 185,
+     "unsupported": 14,
+     "withheld": 1,
+     "error": 1
+    }
+   },
+   "n_locators": {
+    "dtype": "int64",
+    "non_null": 5521,
+    "description": null,
+    "min": 0.0,
+    "max": 240.0
+   },
+   "n_chars": {
+    "dtype": "int64",
+    "non_null": 5521,
+    "description": "extracted characters",
+    "min": 0.0,
+    "max": 394744.0
+   },
+   "error": {
+    "dtype": "str",
+    "non_null": 1,
+    "description": null,
+    "values": {
+     "PdfStreamError: Stream has ended unexpectedly": 1
+    }
+   }
+  }
+ }
+}

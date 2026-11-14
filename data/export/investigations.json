@@ -1,0 +1,413 @@
+[
+ {
+  "accession": "PSI-10",
+  "acronym": "ACME/Flame Design",
+  "title": "Advanced Combustion via Microgravity Experiments / Flame Design (proposal title: Flame Design: A Novel Approach to Clean Efficient Diffusion Flames)",
+  "one_line": "On the space station, small ball-shaped flames of ethylene gas were burned for minutes around a porous sphere, either as fuel blowing into oxygen-rich air or as oxygen blowing into a fuel atmosphere, to learn when such flames make soot and when they go out.",
+  "pillars": [
+   "fundamental",
+   "prevention"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 327,
+  "n_findings": 12,
+  "page": "docs/digest/PSI-10-acme-flame-design.md"
+ },
+ {
+  "accession": "PSI-20",
+  "acronym": "ACME BRE",
+  "title": "Advanced Combustion via Microgravity Experiments - Burning Rate Emulator",
+  "one_line": "A flat gas burner on the Space Station imitated small burning patches of plastics and liquids in still air, showing that such flames can burn steadily for minutes without any air flow when oxygen is raised to about 26.5% or more, but go out within tens of seconds at 21%.",
+  "pillars": [
+   "prevention",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 18,
+  "n_findings": 11,
+  "page": "docs/digest/PSI-20-acme-bre.md"
+ },
+ {
+  "accession": "PSI-21",
+  "acronym": "ACME CLD Flame",
+  "title": "Advanced Combustion via Microgravity Experiments - Coflow Laminar Diffusion Flame",
+  "one_line": "Small methane and ethylene flames surrounded by a gentle co-flowing air stream were burned on the Space Station, from very diluted near-extinction flames to very sooty ones, to give computer models clean, buoyancy-free benchmark data; the sooty flames held several times more soot than on Earth and diluted flames survived at lower fuel concentrations.",
+  "pillars": [
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 32,
+  "n_findings": 9,
+  "page": "docs/digest/PSI-21-acme-cld-flame.md"
+ },
+ {
+  "accession": "PSI-22",
+  "acronym": "ACME E-FIELD Flames",
+  "title": "Advanced Combustion via Microgravity Experiments - Electric-Field Effects on Laminar Diffusion Flames",
+  "one_line": "Small methane and ethylene flames on the Space Station were placed in a strong electric field between the burner and a metal mesh; the field drags the flame's natural ions and the gas around them, creating an adjustable 'ion wind' that can reshape, compact, de-soot or stabilise the flame with no buoyancy present.",
+  "pillars": [
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 20,
+  "n_findings": 10,
+  "page": "docs/digest/PSI-22-acme-e-field-flames.md"
+ },
+ {
+  "accession": "PSI-23",
+  "acronym": "ACME s-Flame",
+  "title": "Structure and Response of Spherical Diffusion Flames (Advanced Combustion via Microgravity Experiments)",
+  "one_line": "On the space station, gas fuels (hydrogen, methane, ethylene, diluted with nitrogen or helium) were fed out of a small porous ball into still oxygen-containing gas to make nearly perfect spherical flames, to see how such flames grow, and how they go out when the fuel supply is too small or when the flame becomes so large that it loses too much heat by radiation.",
+  "pillars": [
+   "fundamental",
+   "detection",
+   "prevention"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 18,
+  "n_findings": 13,
+  "page": "docs/digest/PSI-23-acme-s-flame.md"
+ },
+ {
+  "accession": "PSI-25",
+  "acronym": "BASS-II",
+  "title": "Burning and Suppression of Solids - II",
+  "one_line": "Astronauts ran 129 burns of small plastic and fabric samples in a gentle, adjustable air stream on the ISS while lowering the oxygen with nitrogen, to find the weakest airflow and the lowest oxygen at which solids keep burning without gravity, and to compare that with the Earth test NASA uses to approve materials.",
+  "pillars": [
+   "prevention",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 129,
+  "n_findings": 13,
+  "page": "docs/digest/PSI-25-bass-ii.md"
+ },
+ {
+  "accession": "PSI-26",
+  "acronym": "BASS",
+  "title": "Burning and Suppression of Solids",
+  "one_line": "Astronauts burned small fabric strips, plastic spheres and slabs, and wax candles in a gentle, adjustable air stream on the ISS to see whether solids burn more readily without gravity than in the Earth-based test NASA uses to approve materials, and whether a puff of nitrogen puts the flames out.",
+  "pillars": [
+   "fundamental",
+   "prevention",
+   "suppression"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 121,
+  "n_findings": 16,
+  "page": "docs/digest/PSI-26-bass.md"
+ },
+ {
+  "accession": "PSI-39",
+  "acronym": "CFI",
+  "title": "Cool Flames Investigation",
+  "one_line": "Fuel droplets about 4 mm across were burned in a sealed chamber on the ISS to study 'cool flames': invisible, low-temperature flames (roughly 700-900 K) that keep a droplet burning after its normal hot flame has gone out.",
+  "pillars": [
+   "fundamental",
+   "prevention",
+   "detection"
+  ],
+  "fuel_phases": [
+   "liquid"
+  ],
+  "flight": true,
+  "n_test_rows": 227,
+  "n_findings": 12,
+  "page": "docs/digest/PSI-39-cfi.md"
+ },
+ {
+  "accession": "PSI-47",
+  "acronym": "DAFT / DAFT-2",
+  "title": "Dust and Aerosol Measurement Feasibility Test / Dust and Aerosol Measurement Feasibility Test-2",
+  "one_line": "Before flying a smoke-measuring experiment, NASA checked on the Space Station that a commercial particle counter, which normally relies on gravity to recycle its alcohol, still counted particles correctly in weightlessness, and in doing so made the first measurement of how dusty the Station air is.",
+  "pillars": [
+   "detection"
+  ],
+  "fuel_phases": [
+   "aerosol"
+  ],
+  "flight": true,
+  "n_test_rows": 2,
+  "n_findings": 9,
+  "page": "docs/digest/PSI-47-daft-daft-2.md"
+ },
+ {
+  "accession": "PSI-60",
+  "acronym": null,
+  "title": "Computational and Experimental Analysis of SPICE Data Sets",
+  "one_line": "Yale researchers re-analysed Space Station photographs of sooty ethylene flames and ran detailed computer models to find out why flames in weightlessness make so much more soot than on Earth, concluding that the models mainly get the flame temperature wrong.",
+  "pillars": [
+   "fundamental",
+   "detection"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": false,
+  "n_test_rows": 0,
+  "n_findings": 6,
+  "page": "docs/digest/None"
+ },
+ {
+  "accession": "PSI-62",
+  "acronym": null,
+  "title": "Concurrent Flame Spread Modeling using Flamelet Generated Manifolds in Microgravity with Comparison to BASS Experiments using Two-Color Tomography",
+  "one_line": "University at Buffalo researchers built and tested fast computer models of flames spreading over solid fuels in weightlessness, checking them against Space Station burning tests, as a step toward predicting which spacecraft materials can burn at which oxygen levels and air speeds.",
+  "pillars": [
+   "prevention",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": false,
+  "n_test_rows": 0,
+  "n_findings": 6,
+  "page": "docs/digest/None"
+ },
+ {
+  "accession": "PSI-68",
+  "acronym": "FLEX-2",
+  "title": "Flame Extinguishment Experiment - 2",
+  "one_line": "The follow-on to FLEX burned single drops and pairs of drops of practical-fuel ingredients and fuel mixtures (octanes, heptane, decane, alcohols) on the Space Station to give engine and fire modellers clean benchmark data, and showed that the 'cool flames' found in FLEX occur for many normal-alkane fuels.",
+  "pillars": [
+   "fundamental",
+   "suppression",
+   "detection"
+  ],
+  "fuel_phases": [
+   "liquid"
+  ],
+  "flight": true,
+  "n_test_rows": 8,
+  "n_findings": 8,
+  "page": "docs/digest/PSI-68-flex-2.md"
+ },
+ {
+  "accession": "PSI-69",
+  "acronym": "FLEX",
+  "title": "Flame Extinguishment Experiment",
+  "one_line": "Single drops of methanol and heptane were burned floating freely on the Space Station in air thinned with nitrogen, carbon dioxide or helium, to find how little oxygen still lets a fuel burn in weightlessness and how well these gases put flames out; it also discovered that heptane drops keep burning with an invisible 'cool flame' after the visible flame dies.",
+  "pillars": [
+   "suppression",
+   "fundamental",
+   "prevention"
+  ],
+  "fuel_phases": [
+   "liquid"
+  ],
+  "flight": true,
+  "n_test_rows": 274,
+  "n_findings": 12,
+  "page": "docs/digest/PSI-69-flex.md"
+ },
+ {
+  "accession": "PSI-98",
+  "acronym": "SAFFIRE-I",
+  "title": "Spacecraft Fire Safety Experiment-I (Saffire-I)",
+  "one_line": "NASA lit a 94-cm-long sheet of cotton-fibreglass fabric inside an empty cargo spacecraft after it left the ISS, the first large fire deliberately set in orbit, to see whether a fire in microgravity keeps growing or settles to a steady size.",
+  "pillars": [
+   "fundamental",
+   "prevention",
+   "detection"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 2,
+  "n_findings": 11,
+  "page": "docs/digest/PSI-98-saffire-i.md"
+ },
+ {
+  "accession": "PSI-99",
+  "acronym": "SAFFIRE-II",
+  "title": "Spacecraft Fire Experiment-II",
+  "one_line": "Nine strip-shaped samples of spacecraft materials were set alight inside an empty cargo spacecraft in orbit to see whether they burn more or less readily than in NASA's standard ground flammability test; silicone and Nomex would not burn in weightlessness, while a cotton-fibreglass fabric and thick acrylic burned but with flames that stopped growing.",
+  "pillars": [
+   "prevention",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 9,
+  "n_findings": 11,
+  "page": "docs/digest/PSI-99-saffire-ii.md"
+ },
+ {
+  "accession": "PSI-100",
+  "acronym": "SAFFIRE-III",
+  "title": "Spacecraft Fire Experiment-III (Saffire-III)",
+  "one_line": "A repeat of the first large spacecraft fire experiment, with the air blowing a little faster, to see how ventilation speed changes how fast a large sheet of fabric burns in an empty cargo spacecraft in orbit.",
+  "pillars": [
+   "fundamental",
+   "prevention",
+   "detection"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 2,
+  "n_findings": 10,
+  "page": "docs/digest/PSI-100-saffire-iii.md"
+ },
+ {
+  "accession": "PSI-101",
+  "acronym": "SAME-R",
+  "title": "Smoke Aerosol Measurement Experiment - Reflight (also called SAME-2 in the papers)",
+  "one_line": "On the ISS, small pieces of five common spacecraft materials were overheated (without burning) to make smoke, and instruments measured how big the smoke particles were and whether the Shuttle and ISS smoke detectors would have noticed them.",
+  "pillars": [
+   "detection"
+  ],
+  "fuel_phases": [
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 109,
+  "n_findings": 13,
+  "page": "docs/digest/PSI-101-same-r.md"
+ },
+ {
+  "accession": "PSI-102",
+  "acronym": "SAME",
+  "title": "Smoke and Aerosol Measurement Experiment (called Smoke Aerosol Measurement Experiment in the investigators' reports)",
+  "one_line": "On the Space Station, small pieces of common spacecraft materials (Teflon, Kapton, silicone rubber, cotton lamp wick) were overheated without burning, and the size of the smoke particles was measured to find out what kind of smoke detector would reliably catch an early spacecraft fire.",
+  "pillars": [
+   "detection",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "liquid",
+   "solid"
+  ],
+  "flight": true,
+  "n_test_rows": 8,
+  "n_findings": 13,
+  "page": "docs/digest/PSI-102-same.md"
+ },
+ {
+  "accession": "PSI-106",
+  "acronym": "SLICE",
+  "title": "Structure and Liftoff In Combustion Experiment",
+  "one_line": "Astronauts on the Space Station photographed small gas flames burning from a tube into a gentle stream of air, to see how flames lift off, hold on and make soot without gravity and to provide test cases for computer models of flames.",
+  "pillars": [
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 12,
+  "n_findings": 8,
+  "page": "docs/digest/PSI-106-slice.md"
+ },
+ {
+  "accession": "PSI-107",
+  "acronym": "SPICE",
+  "title": "Smoke Point In Co-flow Experiment",
+  "one_line": "Astronauts on the Space Station burned tiny gas jets in a gentle, adjustable air stream and turned the fuel up until each flame just started to give off smoke, to learn how air flow and burner size control soot release when there is no gravity.",
+  "pillars": [
+   "fundamental",
+   "detection"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 526,
+  "n_findings": 12,
+  "page": "docs/digest/PSI-107-spice.md"
+ },
+ {
+  "accession": "PSI-115",
+  "acronym": null,
+  "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+  "one_line": "A computer simulation of smoke forming from a hot, vapour-releasing sample in a slow air stream shows that, without gravity, smoke particles can grow larger than on Earth, which matters for how spacecraft smoke detectors are designed.",
+  "pillars": [
+   "detection",
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "aerosol"
+  ],
+  "flight": false,
+  "n_test_rows": 0,
+  "n_findings": 10,
+  "page": "docs/digest/None"
+ },
+ {
+  "accession": "PSI-117",
+  "acronym": null,
+  "title": "Effect of External Thermo-Convective Perturbation on Cool Flame Dynamics: A Multidimensional Multi-Physics CFD Analysis",
+  "one_line": "Detailed computer models of single burning fuel droplets, checked against droplet fires on the Space Station, explain when a droplet flame drops into a dim, low-temperature 'cool flame', how long it survives, and why the gas xenon is a poor fire suppressant.",
+  "pillars": [
+   "fundamental",
+   "suppression"
+  ],
+  "fuel_phases": [
+   "liquid"
+  ],
+  "flight": false,
+  "n_test_rows": 0,
+  "n_findings": 12,
+  "page": "docs/digest/None"
+ },
+ {
+  "accession": "PSI-142",
+  "acronym": null,
+  "title": "Quantitative Studies of Cool Flame Transitions at Radiation / Stretch Extinction Using Counterflow Flames",
+  "one_line": "A ground study at Princeton, prompted by the surprising cool flames seen around burning droplets on the Space Station, used ozone-assisted counterflow burners and simulations to map when hot flames turn into low-temperature 'cool' and 'warm' flames and when those go out.",
+  "pillars": [
+   "fundamental"
+  ],
+  "fuel_phases": [
+   "liquid"
+  ],
+  "flight": false,
+  "n_test_rows": 0,
+  "n_findings": 9,
+  "page": "docs/digest/None"
+ },
+ {
+  "accession": "PSI-159",
+  "acronym": "ACME CFI-G",
+  "title": "Advanced Combustion via Microgravity Experiments / Cool Flames Investigation with Gases",
+  "one_line": "Ground-commanded tests on the ISS burned ethane, propane and butane on a pea-sized porous sphere, both normally (fuel out of the sphere into an oxygen/nitrogen atmosphere) and inside-out (an oxygen-rich stream of up to 85% O2 out of the sphere into a fuel-filled chamber), and found the first spherical 'cool flames' of gaseous fuel.",
+  "pillars": [
+   "fundamental",
+   "prevention",
+   "detection"
+  ],
+  "fuel_phases": [
+   "gas"
+  ],
+  "flight": true,
+  "n_test_rows": 333,
+  "n_findings": 13,
+  "page": "docs/digest/PSI-159-acme-cfi-g.md"
+ }
+]

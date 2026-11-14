@@ -1,0 +1,3175 @@
+{
+  "_about": "Machine-readable twin of docs/digest/synthesis.md. Derived only from data/digest/PSI-*.json. Citation index for section findings is the 1-based position in the record findings list; for limitations/gaps/open_questions it is the 1-based list position; null means the whole section.",
+  "key_messages": [
+    {
+      "text": "Without buoyancy the flammability of a solid depends on ventilation speed: the boundary in O2 against flow is U-shaped, with a minimum at flows of about 1-10 cm/s. At that minimum PMMA rods burned down to 13.5% O2, against 15.4% for upward burning in 1 g with an extra 4 cm/s of forced flow. The boundary was mapped on one rod geometry and one fabric.",
+      "confidence": "high",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 6
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 8
+        },
+        {
+          "accession": "PSI-62",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-25",
+          "section": "fire_safety",
+          "index": null
+        }
+      ]
+    },
+    {
+      "text": "Normal-gravity screening does not bound flammability in orbit for every material and configuration. The comparisons below are with downward (opposed-flow) burning in 1 g, not with the upward-burning Test 1 itself; for Test 1 the investigators only suggest that it may act as an ignition test. SIBAL fabric that cannot burn downward in 1 g spread against 9-25 cm/s flows in orbit. Opposed spread over PMMA rods persisted to about 17-17.5% O2, against 18-19% in 1 g (sources disagree on the exact values). Near-limit ignition took up to 230 s, against the roughly 25 s Test 1 igniter time.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 7
+        }
+      ]
+    },
+    {
+      "text": "For the fire-retarded and silicone materials flown (Ultem, Nomex HT90-40, silicone), Test 1 was conservative at about 21-22% O2 and 15-20 cm/s (one sample per condition). Nomex III gave contradictory results near its 1-g limit.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 12
+        }
+      ]
+    },
+    {
+      "text": "Under forced ventilation, concurrent flames reach a bounded size and steady spread instead of accelerating. A 41 x 94 cm fabric sheet spread at 1.8 mm/s with a 40 mm flame and about 1.2 kW at 20 cm/s, and at 2.3 mm/s at 25 cm/s. Thick PMMA stayed anchored at a limiting size.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 3
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 3
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 11
+        }
+      ]
+    },
+    {
+      "text": "Small glovebox ducts overstate concurrent spread compared with large enclosures, attributed to flow acceleration from hot-gas expansion.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 6
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "text": "Quiescent microgravity flames are weak but persistent. They survive until radiative loss cools them to about 1100-1200 K, several hundred kelvin below 1-g extinction temperatures, and larger flames die sooner.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-117",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-23",
+          "section": "findings",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "text": "Stopping ventilation extinguished small flames in air, but emulated condensed-fuel flames burned steadily for minutes in quiescent 26.5-40% O2. Hot thermoplastics also keep emitting fuel vapour after extinction.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 6
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "text": "Inert-gas margins are smaller in orbit. The droplet LOI in N2 is 0.12 (methanol) and 0.15 (n-heptane), as much as 2-3 points below 1 g. CO2 raised it to 0.14 and 0.17, and He to 0.14 and 0.15. Modelling indicates xenon would be a poor agent.",
+      "confidence": "high",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 3
+        },
+        {
+          "accession": "PSI-117",
+          "section": "findings",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "text": "Visible extinction is not the end of reaction. Cool flames (about 700 K in simulations) follow radiative extinction of n-alkane droplets and of gaseous n-butane flames. Above about 2 atm they often re-ignite a hot flame, and a catalytic surface can do the same.",
+      "confidence": "high",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-68",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-39",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-159",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-39",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-68",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-159",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "text": "Non-buoyant flames are sootier, cooler and more radiative: 4-8 times the 1-g soot, about 200 K cooler soot, and a radiative fraction about an order of magnitude higher (simulation). Smoke emission depends on ventilation speed and fuel-jet size.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-106",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 8
+        },
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "text": "Pre-ignition smoke from spacecraft materials is sub-micrometre (diameter of average mass about 0.1-0.5 um) and coarsens with aging and stagnation. The ISS light-scattering detector stayed below its alarm level for most Kapton and Teflon smokes. At 8 cm/s or more, flight and ground sizes matched. Single-moment detectors are inadequate.",
+      "confidence": "high",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 12
+        },
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "text": "Exploration atmospheres (30% O2 or more at 70.3 kPa or less) are untested for solid materials: every solid burn was near 1 atm at 22.7% O2 or less. The nearest data are gas-burner emulation at 34% O2 and 56 kPa (steady burning) and droplets at 30-34% O2 and 0.7 atm (no extinction).",
+      "confidence": "high",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-25",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 4
+        }
+      ]
+    }
+  ],
+  "parameter_coverage": [
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-26",
+      "min": 0.159,
+      "max": 0.227,
+      "unit": "mole fraction",
+      "fuel_phase": "solid",
+      "note": "2013 runs N2-vitiated; logged O2 sometimes the pre-vitiation reading",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-26",
+          "section": "limitations",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-25",
+      "min": 0.136,
+      "max": 0.222,
+      "unit": "mole fraction",
+      "fuel_phase": "solid",
+      "note": "calibrated before/after readings; fell up to 3.2 points during a burn",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-25",
+          "section": "limitations",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-98",
+      "min": 0.215,
+      "max": 0.217,
+      "unit": "mole fraction",
+      "fuel_phase": "solid",
+      "note": "Cygnus cabin air, not controlled",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-99",
+      "min": 0.219,
+      "max": 0.221,
+      "unit": "mole fraction",
+      "fuel_phase": "solid",
+      "note": "cabin air; inferred from CO2",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-100",
+      "min": 0.21,
+      "max": 0.212,
+      "unit": "mole fraction",
+      "fuel_phase": "solid",
+      "note": "cabin air",
+      "citations": [
+        {
+          "accession": "PSI-100",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-69",
+      "min": 0.12,
+      "max": 0.34,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "droplets; 0.30-0.34 at 0.7 and 1 atm",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-68",
+      "min": 0.14,
+      "max": 0.3,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "planned table 0.17-0.30; published 14-25%",
+      "citations": [
+        {
+          "accession": "PSI-68",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-68",
+          "section": "findings",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-39",
+      "min": 0.17,
+      "max": 0.21,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "0.35-0.40 planned, not flown",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-39",
+          "section": "limitations",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction (ambient)",
+      "accession": "PSI-10",
+      "min": 0.198,
+      "max": 0.399,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "normal flames",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction (burner stream, NOT ambient)",
+      "accession": "PSI-10",
+      "min": 0.21,
+      "max": 0.85,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "inverse flames; chamber held C2H4/N2",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-10",
+          "section": "fire_safety",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction (ambient)",
+      "accession": "PSI-159",
+      "min": 0.18,
+      "max": 0.4,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "normal flames; ACME cap 40%",
+      "citations": [
+        {
+          "accession": "PSI-159",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction (burner stream, NOT ambient)",
+      "accession": "PSI-159",
+      "min": 0.12,
+      "max": 0.85,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "inverse flames; chamber held fuel + N2, no O2",
+      "citations": [
+        {
+          "accession": "PSI-159",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-159",
+          "section": "fire_safety",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-20",
+      "min": 0.21,
+      "max": 0.4,
+      "unit": "mole fraction",
+      "fuel_phase": "gas (condensed-fuel emulator)",
+      "note": "quiescent",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-23",
+      "min": 0.175,
+      "max": 0.3,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "N2 or He atmospheres",
+      "citations": [
+        {
+          "accession": "PSI-23",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-107",
+      "min": 0.19,
+      "max": 0.24,
+      "unit": "mole fraction",
+      "fuel_phase": "gas",
+      "note": "cabin air, assumed 0.21 +/- 0.01",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "oxygen fraction",
+      "accession": "PSI-117",
+      "min": 0.04,
+      "max": 0.21,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid (model)",
+      "note": "LOI sweeps",
+      "citations": [
+        {
+          "accession": "PSI-117",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-39",
+      "min": 50.7,
+      "max": 506.6,
+      "unit": "kPa",
+      "fuel_phase": "liquid",
+      "note": "0.25 atm in record text never run",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-39",
+          "section": "gaps",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-69",
+      "min": 70,
+      "max": 309,
+      "unit": "kPa",
+      "fuel_phase": "liquid",
+      "note": "groups 70-73, 100-103, 206-309",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-68",
+      "min": 50.7,
+      "max": 304,
+      "unit": "kPa",
+      "fuel_phase": "liquid",
+      "note": "planned envelope",
+      "citations": [
+        {
+          "accession": "PSI-68",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-117",
+      "min": 50.7,
+      "max": 506.6,
+      "unit": "kPa",
+      "fuel_phase": "liquid (model)",
+      "note": "ozone cases to 2533 kPa",
+      "citations": [
+        {
+          "accession": "PSI-117",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-10",
+      "min": 43,
+      "max": 306,
+      "unit": "kPa",
+      "fuel_phase": "gas",
+      "note": "normal 94-133; inverse 43-306",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-159",
+      "min": 49.5,
+      "max": 331,
+      "unit": "kPa",
+      "fuel_phase": "gas",
+      "note": "inverse table values about 9% high",
+      "citations": [
+        {
+          "accession": "PSI-159",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-159",
+          "section": "gaps",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-20",
+      "min": 56,
+      "max": 100,
+      "unit": "kPa",
+      "fuel_phase": "gas (condensed-fuel emulator)",
+      "note": "per-test pressure not in PSI",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-20",
+          "section": "gaps",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-23",
+      "min": 101,
+      "max": 110,
+      "unit": "kPa",
+      "fuel_phase": "gas",
+      "note": "fill about 1 atm; uncalibrated transducer",
+      "citations": [
+        {
+          "accession": "PSI-23",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-26",
+      "min": 98.3,
+      "max": 102.2,
+      "unit": "kPa",
+      "fuel_phase": "solid",
+      "note": "cabin pressure",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-25",
+      "min": 99.2,
+      "max": 99.5,
+      "unit": "kPa",
+      "fuel_phase": "solid",
+      "note": "reported for film tests; about 1 atm overall",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-98",
+      "min": 99.9,
+      "max": 102.3,
+      "unit": "kPa",
+      "fuel_phase": "solid",
+      "note": "two sensors disagree",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-98",
+          "section": "limitations",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "parameter": "pressure",
+      "accession": "PSI-100",
+      "min": 96.3,
+      "max": 99.4,
+      "unit": "kPa",
+      "fuel_phase": "solid",
+      "note": "two sensors disagree",
+      "citations": [
+        {
+          "accession": "PSI-100",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-100",
+          "section": "limitations",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "parameter": "pressure (1-g ground)",
+      "accession": "PSI-99",
+      "min": 40,
+      "max": 100,
+      "unit": "kPa",
+      "fuel_phase": "solid",
+      "note": "ground reduced-pressure PMMA tests, not flight",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-26",
+      "min": 0,
+      "max": 44,
+      "unit": "cm/s",
+      "fuel_phase": "solid",
+      "note": "below 1 cm/s only as fan settings",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-26",
+          "section": "limitations",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-25",
+      "min": 0,
+      "max": 55,
+      "unit": "cm/s",
+      "fuel_phase": "solid",
+      "note": "opposed and concurrent",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-25",
+          "section": "limitations",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-98",
+      "min": 20,
+      "max": 20,
+      "unit": "cm/s",
+      "fuel_phase": "solid",
+      "note": "concurrent and opposed",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-99",
+      "min": 20,
+      "max": 25,
+      "unit": "cm/s",
+      "fuel_phase": "solid",
+      "note": "25 cm/s for one sample",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-100",
+      "min": 25,
+      "max": 25,
+      "unit": "cm/s",
+      "fuel_phase": "solid",
+      "note": "planned 30",
+      "citations": [
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-101",
+      "min": 0,
+      "max": 8.1,
+      "unit": "cm/s",
+      "fuel_phase": "solid pyrolysis",
+      "note": "flow past heated sample",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-102",
+      "min": 2,
+      "max": 8,
+      "unit": "cm/s",
+      "fuel_phase": "solid pyrolysis",
+      "note": "flow past heated sample",
+      "citations": [
+        {
+          "accession": "PSI-102",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed (coflow)",
+      "accession": "PSI-107",
+      "min": 5.4,
+      "max": 65,
+      "unit": "cm/s",
+      "fuel_phase": "gas",
+      "note": "at smoke points",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed (coflow)",
+      "accession": "PSI-106",
+      "min": 15,
+      "max": 70,
+      "unit": "cm/s",
+      "fuel_phase": "gas",
+      "note": "fuel jets up to 320 cm/s",
+      "citations": [
+        {
+          "accession": "PSI-106",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed (relative)",
+      "accession": "PSI-68",
+      "min": 0.1,
+      "max": 5,
+      "unit": "cm/s",
+      "fuel_phase": "liquid",
+      "note": "droplet translation, planned",
+      "citations": [
+        {
+          "accession": "PSI-68",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "airflow speed",
+      "accession": "PSI-115",
+      "min": 8,
+      "max": 10,
+      "unit": "cm/s",
+      "fuel_phase": "aerosol (model)",
+      "note": "channel flow",
+      "citations": [
+        {
+          "accession": "PSI-115",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "diluent CO2",
+      "accession": "PSI-69",
+      "min": 0.05,
+      "max": 0.7,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "0.70 only at 2-3 atm",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "diluent He",
+      "accession": "PSI-69",
+      "min": 0.05,
+      "max": 0.45,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "diluent He",
+      "accession": "PSI-39",
+      "min": 0,
+      "max": 0.59,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid",
+      "note": "replacing N2 at 21% O2",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "diluent Xe",
+      "accession": "PSI-117",
+      "min": 0,
+      "max": 0.63,
+      "unit": "mole fraction",
+      "fuel_phase": "liquid (model)",
+      "note": "FLEX-563 validation",
+      "citations": [
+        {
+          "accession": "PSI-117",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "N2 suppressant jet",
+      "accession": "PSI-26",
+      "min": 0,
+      "max": 500,
+      "unit": "sccm",
+      "fuel_phase": "solid",
+      "note": "3.2 mm upstream nozzle",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "droplet initial diameter",
+      "accession": "PSI-69",
+      "min": 1.1,
+      "max": 4.67,
+      "unit": "mm",
+      "fuel_phase": "liquid",
+      "note": "",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "droplet initial diameter",
+      "accession": "PSI-39",
+      "min": 3.8,
+      "max": 6.4,
+      "unit": "mm",
+      "fuel_phase": "liquid",
+      "note": "",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "sample width",
+      "accession": "PSI-98",
+      "min": 406,
+      "max": 406,
+      "unit": "mm",
+      "fuel_phase": "solid",
+      "note": "40.6 x 94 cm sheet",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "sample width",
+      "accession": "PSI-25",
+      "min": 12,
+      "max": 22,
+      "unit": "mm",
+      "fuel_phase": "solid",
+      "note": "films, slabs, fabric; rods 6.35-12.7 mm",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "burner diameter",
+      "accession": "PSI-20",
+      "min": 25,
+      "max": 50,
+      "unit": "mm",
+      "fuel_phase": "gas (condensed-fuel emulator)",
+      "note": "",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "test_matrix",
+          "index": null
+        }
+      ]
+    },
+    {
+      "parameter": "gravity level",
+      "accession": "all flight records",
+      "min": 0,
+      "max": 0,
+      "unit": "g0",
+      "fuel_phase": "all",
+      "note": "ISS/Cygnus microgravity (<1e-5 g0 in CIR); no partial-gravity data",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "test_matrix",
+          "index": null
+        },
+        {
+          "accession": "PSI-22",
+          "section": "limitations",
+          "index": 1
+        }
+      ]
+    }
+  ],
+  "limits": [
+    {
+      "accession": "PSI-25",
+      "fuel": "PMMA film 100-400 um",
+      "limit_type": "radiative quench flow",
+      "value": 1.0,
+      "unit": "cm/s",
+      "conditions": "about 21% O2, 1 atm, opposed; 1.5 cm/s at 400 um",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "PMMA film",
+      "limit_type": "radiative quench flow",
+      "value": 3.0,
+      "unit": "cm/s",
+      "conditions": "about 16% O2; range 2.6-4 cm/s; 2 tests",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "PMMA rod, concurrent",
+      "limit_type": "minimum O2",
+      "value": 0.135,
+      "unit": "mole fraction",
+      "conditions": "stretch 8-12 1/s, 1 atm",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 6
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "PMMA rod",
+      "limit_type": "ignition limit O2",
+      "value": 0.145,
+      "unit": "mole fraction",
+      "conditions": "flames lit higher survived to 0.136",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 7
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "black PMMA rod, opposed",
+      "limit_type": "minimum O2 for spread",
+      "value": 0.175,
+      "unit": "mole fraction",
+      "conditions": "TM value; journal gives 0.17; 1 g 0.19/0.18",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 9
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "SIBAL fabric, concurrent",
+      "limit_type": "quench flow",
+      "value": 3.0,
+      "unit": "cm/s",
+      "conditions": "range 1-5 cm/s at 16.4-20.8% O2",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 11
+      }
+    },
+    {
+      "accession": "PSI-25",
+      "fuel": "PMMA slab 3-5 mm, one-sided",
+      "limit_type": "quench flow",
+      "value": 15.5,
+      "unit": "cm/s",
+      "conditions": "range 13-18 cm/s at about 20-22% O2",
+      "citation": {
+        "accession": "PSI-25",
+        "section": "findings",
+        "index": 5
+      }
+    },
+    {
+      "accession": "PSI-26",
+      "fuel": "SIBAL fabric, concurrent",
+      "limit_type": "quench flow",
+      "value": 1.0,
+      "unit": "cm/s",
+      "conditions": "below 1 cm/s, about 21% O2",
+      "citation": {
+        "accession": "PSI-26",
+        "section": "findings",
+        "index": 5
+      }
+    },
+    {
+      "accession": "PSI-26",
+      "fuel": "SIBAL fabric",
+      "limit_type": "blow-off flow",
+      "value": 44,
+      "unit": "cm/s",
+      "conditions": "not reached up to 44 cm/s (lower bound)",
+      "citation": {
+        "accession": "PSI-26",
+        "section": "findings",
+        "index": 6
+      }
+    },
+    {
+      "accession": "PSI-99",
+      "fuel": "silicone 0.27-1.03 mm",
+      "limit_type": "no spread",
+      "value": 0.221,
+      "unit": "mole fraction",
+      "conditions": "no spread at 22.1% O2 and 20 cm/s",
+      "citation": {
+        "accession": "PSI-99",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "methanol droplet",
+      "limit_type": "LOI (N2)",
+      "value": 0.12,
+      "unit": "mole fraction",
+      "conditions": "1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "n-heptane droplet",
+      "limit_type": "LOI (N2)",
+      "value": 0.15,
+      "unit": "mole fraction",
+      "conditions": "1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "methanol droplet",
+      "limit_type": "LOI (CO2)",
+      "value": 0.14,
+      "unit": "mole fraction",
+      "conditions": "about 30% CO2, 1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "n-heptane droplet",
+      "limit_type": "LOI (CO2)",
+      "value": 0.17,
+      "unit": "mole fraction",
+      "conditions": "about 20% CO2, 1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "methanol droplet",
+      "limit_type": "LOI (He)",
+      "value": 0.14,
+      "unit": "mole fraction",
+      "conditions": "1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 3
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "n-heptane droplet",
+      "limit_type": "LOI (He)",
+      "value": 0.15,
+      "unit": "mole fraction",
+      "conditions": "1 atm",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 3
+      }
+    },
+    {
+      "accession": "PSI-117",
+      "fuel": "methanol droplet (model)",
+      "limit_type": "LOI (Xe)",
+      "value": 0.05,
+      "unit": "mole fraction",
+      "conditions": "do 1.5 mm; 0.04-0.06 for 1-2 mm; model disagrees with FLEX He value",
+      "citation": {
+        "accession": "PSI-117",
+        "section": "findings",
+        "index": 8
+      }
+    },
+    {
+      "accession": "PSI-69",
+      "fuel": "n-heptane cool flame (theory)",
+      "limit_type": "LOI (cool flame)",
+      "value": 0.1,
+      "unit": "mole fraction",
+      "conditions": "theory, O2/N2",
+      "citation": {
+        "accession": "PSI-69",
+        "section": "findings",
+        "index": 6
+      }
+    },
+    {
+      "accession": "PSI-10",
+      "fuel": "ethylene spherical flame",
+      "limit_type": "radiative extinction temperature",
+      "value": 1130,
+      "unit": "K",
+      "conditions": "about 1 atm, normal and inverse",
+      "citation": {
+        "accession": "PSI-10",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-10",
+      "fuel": "ethylene normal flame",
+      "limit_type": "critical fuel flux",
+      "value": 0.2,
+      "unit": "g/m2/s",
+      "conditions": "about 1 atm",
+      "citation": {
+        "accession": "PSI-10",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-10",
+      "fuel": "ethylene inverse flame",
+      "limit_type": "critical O2 flux",
+      "value": 0.68,
+      "unit": "g/m2/s",
+      "conditions": "about 1 atm",
+      "citation": {
+        "accession": "PSI-10",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-10",
+      "fuel": "ethylene/propane (drop tower)",
+      "limit_type": "radiative extinction onset temperature",
+      "value": 1100,
+      "unit": "K",
+      "conditions": "2.2 s drop tower, 0.98 bar",
+      "citation": {
+        "accession": "PSI-10",
+        "section": "findings",
+        "index": 7
+      }
+    },
+    {
+      "accession": "PSI-20",
+      "fuel": "C2H4/N2, 25 mm burner",
+      "limit_type": "O2 self-extinction threshold",
+      "value": 0.25,
+      "unit": "mole fraction",
+      "conditions": "between 0.21 and 0.265; quiescent, 56-100 kPa",
+      "citation": {
+        "accession": "PSI-20",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-20",
+      "fuel": "C2H4, 25 mm burner",
+      "limit_type": "fuel flux for self-extinction",
+      "value": 3.0,
+      "unit": "g/m2/s",
+      "conditions": "34% O2, 56 kPa",
+      "citation": {
+        "accession": "PSI-20",
+        "section": "findings",
+        "index": 4
+      }
+    },
+    {
+      "accession": "PSI-23",
+      "fuel": "20-30% C2H4 in N2",
+      "limit_type": "kinetic extinction flow",
+      "value": 1.0,
+      "unit": "cc/s",
+      "conditions": "extinguished during ramp-down before 1 cc/s, air",
+      "citation": {
+        "accession": "PSI-23",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-23",
+      "fuel": "20-30% C2H4 in N2",
+      "limit_type": "radiative extinction flow",
+      "value": 8.0,
+      "unit": "cc/s",
+      "conditions": "extinguished during ramp-up before 8 cc/s, air",
+      "citation": {
+        "accession": "PSI-23",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-39",
+      "fuel": "n-dodecane droplet",
+      "limit_type": "cool-flame extinction diameter",
+      "value": 1.83,
+      "unit": "mm",
+      "conditions": "0.5 atm air (1.73-1.92)",
+      "citation": {
+        "accession": "PSI-39",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-39",
+      "fuel": "n-dodecane droplet",
+      "limit_type": "cool-flame extinction diameter",
+      "value": 0.55,
+      "unit": "mm",
+      "conditions": "1 atm air (mostly 0.26-0.85)",
+      "citation": {
+        "accession": "PSI-39",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-39",
+      "fuel": "n-dodecane droplet",
+      "limit_type": "hot-flame radiative extinction diameter",
+      "value": 3.6,
+      "unit": "mm",
+      "conditions": "2.9-4.3 mm after 10-14 s, 0.5-1.25 atm",
+      "citation": {
+        "accession": "PSI-39",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-117",
+      "fuel": "C7-C12 droplets",
+      "limit_type": "hot-to-cool transition temperature",
+      "value": 1200,
+      "unit": "K",
+      "conditions": "1 atm air, do about 4 mm",
+      "citation": {
+        "accession": "PSI-117",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-142",
+      "fuel": "C7-C14 counterflow",
+      "limit_type": "hot-flame extinction fuel mass fraction",
+      "value": 0.048,
+      "unit": "mass fraction",
+      "conditions": "0.041-0.055 at 45-123 1/s",
+      "citation": {
+        "accession": "PSI-142",
+        "section": "findings",
+        "index": 3
+      }
+    },
+    {
+      "accession": "PSI-142",
+      "fuel": "n-heptane counterflow, no ozone",
+      "limit_type": "cool-flame extinction fuel mass fraction",
+      "value": 0.555,
+      "unit": "mass fraction",
+      "conditions": "a = 78 1/s",
+      "citation": {
+        "accession": "PSI-142",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-142",
+      "fuel": "n-tetradecane counterflow, no ozone",
+      "limit_type": "cool-flame extinction fuel mass fraction",
+      "value": 0.322,
+      "unit": "mass fraction",
+      "conditions": "a = 83 1/s",
+      "citation": {
+        "accession": "PSI-142",
+        "section": "findings",
+        "index": 1
+      }
+    },
+    {
+      "accession": "PSI-159",
+      "fuel": "30% n-butane in N2",
+      "limit_type": "cool-flame existence window O2",
+      "value": 0.39,
+      "unit": "mole fraction",
+      "conditions": "0.385-0.399 O2, 2.03 bar, 0.75-1.5 mg/s, burner >515 K",
+      "citation": {
+        "accession": "PSI-159",
+        "section": "findings",
+        "index": 2
+      }
+    },
+    {
+      "accession": "PSI-159",
+      "fuel": "C2H6/C3H8/n-C4H10 normal flames",
+      "limit_type": "maximum burn time at 21% O2",
+      "value": 20,
+      "unit": "s",
+      "conditions": "all self-extinguished; 0.5-3 atm",
+      "citation": {
+        "accession": "PSI-159",
+        "section": "findings",
+        "index": 7
+      }
+    }
+  ],
+  "micro_vs_1g": [
+    {
+      "material": "PMMA rod, concurrent",
+      "quantity": "minimum O2",
+      "microgravity": "0.135",
+      "one_g": "0.154 (upward + 4 cm/s forced)",
+      "direction": "more hazardous",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "material": "black PMMA rod, opposed",
+      "quantity": "minimum O2 for spread",
+      "microgravity": "0.175 (TM) / 0.17 (paper)",
+      "one_g": "0.19 / 0.18",
+      "direction": "more hazardous",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "material": "PMMA rod near limit",
+      "quantity": "ignition delay",
+      "microgravity": "up to 230 s",
+      "one_g": "Test 1 igniter about 25 s",
+      "direction": "screening may act as an ignition test",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 7
+        }
+      ]
+    },
+    {
+      "material": "PMMA film 100 um, opposed",
+      "quantity": "maximum spread rate",
+      "microgravity": "2.2 mm/s",
+      "one_g": "2.0 mm/s (downward)",
+      "direction": "about equal",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "material": "SIBAL fabric, opposed",
+      "quantity": "sustained spread",
+      "microgravity": "yes (BASS 9-10 cm/s; 1.3 and 0.98 mm/s Saffire-I/III)",
+      "one_g": "does not burn downward",
+      "direction": "more hazardous",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 2
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "material": "SIBAL fabric, concurrent",
+      "quantity": "growth",
+      "microgravity": "steady 1.8-2.6 mm/s, limiting length",
+      "one_g": "accelerating, longer, sootier",
+      "direction": "less hazardous (bounded)",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 8
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "material": "silicone 0.27-1.03 mm",
+      "quantity": "burn length",
+      "microgravity": "about 0",
+      "one_g": "complete / 7.6 cm / 0; 0.37 mm downward complete",
+      "direction": "less hazardous at 20 cm/s",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "material": "Nomex HT90-40",
+      "quantity": "ignition / spread",
+      "microgravity": "none, even with a pilot flame",
+      "one_g": "about 0 (burns only at 24-25% O2)",
+      "direction": "same",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "material": "Ultem 1000",
+      "quantity": "burning at 21-22% O2",
+      "microgravity": "none",
+      "one_g": "none (ULOI 23.5%)",
+      "direction": "same",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "material": "Nomex III",
+      "quantity": "burning at about 22% O2",
+      "microgravity": "burned (BASS) / failed (BASS-II)",
+      "one_g": "ULOI 22%",
+      "direction": "unresolved",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 12
+        }
+      ]
+    },
+    {
+      "material": "PMMA slab 10 mm",
+      "quantity": "concurrent spread",
+      "microgravity": "anchored, limiting size, slower",
+      "one_g": "complete, accelerating",
+      "direction": "less hazardous (growth)",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "material": "PMMA rod",
+      "quantity": "flame oscillation persistence",
+      "microgravity": "longer",
+      "one_g": "shorter",
+      "direction": "more persistent",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "material": "methanol / n-heptane droplet",
+      "quantity": "LOI",
+      "microgravity": "0.12 / 0.15",
+      "one_g": "as much as 2-3 points higher",
+      "direction": "more hazardous",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "material": "ethylene spherical flame",
+      "quantity": "extinction temperature",
+      "microgravity": "about 1100-1130 K",
+      "one_g": "about 1500 +/- 50 K",
+      "direction": "more persistent",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 7
+        }
+      ]
+    },
+    {
+      "material": "ethylene BRE burner flame",
+      "quantity": "radiative loss fraction",
+      "microgravity": "about 10x (simulation)",
+      "one_g": "baseline",
+      "direction": "more radiative",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "material": "emulated PMMA (model)",
+      "quantity": "steady burning rate",
+      "microgravity": "about 2.5 g/m2/s",
+      "one_g": "about 19 g/m2/s",
+      "direction": "burns more easily but slower",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 9
+        }
+      ]
+    },
+    {
+      "material": "ethylene coflow flame",
+      "quantity": "soot volume fraction",
+      "microgravity": "5-8x",
+      "one_g": "1x",
+      "direction": "sootier",
+      "citations": [
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "material": "methane coflow flame (SLICE)",
+      "quantity": "peak soot / peak soot temperature",
+      "microgravity": "about 8x / about 200 K lower",
+      "one_g": "reference",
+      "direction": "sootier, cooler",
+      "citations": [
+        {
+          "accession": "PSI-106",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "material": "N2-diluted methane coflow",
+      "quantity": "flame length",
+      "microgravity": "28% longer",
+      "one_g": "reference",
+      "direction": "larger flames",
+      "citations": [
+        {
+          "accession": "PSI-106",
+          "section": "findings",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "material": "CH4, C2H4 coflow",
+      "quantity": "fuel-dilution limit",
+      "microgravity": "extended",
+      "one_g": "reference",
+      "direction": "more hazardous for leaks",
+      "citations": [
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "material": "propane jet",
+      "quantity": "threshold soot index",
+      "microgravity": "1.39",
+      "one_g": "0.6",
+      "direction": "sootier",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "material": "ethylene coflow (simulation)",
+      "quantity": "soot, length, temperature",
+      "microgravity": "more soot, longer, cooler; weaker for small flame",
+      "one_g": "reference",
+      "direction": "sootier (size-dependent)",
+      "citations": [
+        {
+          "accession": "PSI-60",
+          "section": "findings",
+          "index": 1
+        },
+        {
+          "accession": "PSI-60",
+          "section": "findings",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "material": "Kapton, lamp wick, silicone smoke",
+      "quantity": "count mean diameter",
+      "microgravity": "+53-65% (2008)",
+      "one_g": "reference",
+      "direction": "larger (contested)",
+      "citations": [
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "material": "pyrolysis smoke at 8.1 cm/s or more",
+      "quantity": "diameter of average mass",
+      "microgravity": "same as ground",
+      "one_g": "same",
+      "direction": "no gravity effect at this flow",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 12
+        },
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "material": "DBP smoke (2-D simulation)",
+      "quantity": "size distribution",
+      "microgravity": "bimodal 5 and 30 um, up to 100 um",
+      "one_g": "single 5 um mode, none above 40 um",
+      "direction": "larger particles (model)",
+      "citations": [
+        {
+          "accession": "PSI-115",
+          "section": "findings",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "material": "Arizona Road Dust in a bag",
+      "quantity": "mass per particle",
+      "microgravity": "3.2x",
+      "one_g": "1x",
+      "direction": "larger suspended particles",
+      "citations": [
+        {
+          "accession": "PSI-47",
+          "section": "findings",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "material": "fuel jets (SPICE prototype, 1 g)",
+      "quantity": "lift-off and smoke point",
+      "microgravity": "attached; shorter smoke points",
+      "one_g": "lift more easily; smoke at longer lengths",
+      "direction": "sootier in microgravity",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 12
+        }
+      ]
+    },
+    {
+      "material": "methane coflow, E-field",
+      "quantity": "ion current against voltage",
+      "microgravity": "peak at saturation",
+      "one_g": "plateau or rise",
+      "direction": "not a hazard metric",
+      "citations": [
+        {
+          "accession": "PSI-22",
+          "section": "findings",
+          "index": 2
+        }
+      ]
+    }
+  ],
+  "gaps": [
+    {
+      "rank": 1,
+      "gap": "Solid materials at elevated O2 and reduced pressure",
+      "why": "Habitats and rovers are planned at 30% O2 or more and 70.3 kPa or less; no solid flight data exist above 22.7% O2 or below 96 kPa.",
+      "partial_fill": "BRE emulation maps; FLEX droplets at 0.7 atm, 30-34% O2; Saffire-II 1-g reduced-pressure correlation; CFI-G 40% O2 at 0.5 atm; PSI-62 model runs.",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-159",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-62",
+          "section": "open_questions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "rank": 2,
+      "gap": "Partial gravity",
+      "why": "Weak lunar and Martian buoyant flows may sit near the most flammable region of the U-curve; there is no partial-gravity data in PSI.",
+      "partial_fill": "E-FIELD ion-wind analogue; mixed-convection velocity correlation with explicit g; zero-stretch extrapolation of 1-g blow-off; gravity-switch simulations.",
+      "citations": [
+        {
+          "accession": "PSI-22",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 6
+        },
+        {
+          "accession": "PSI-115",
+          "section": "findings",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "rank": 3,
+      "gap": "Unreduced imagery and raw signals; no per-test outcomes",
+      "why": "Terabytes of images and 125 Hz voltages hold burn times, flame radii and extinction modes that no table records.",
+      "partial_fill": "ACME-DOC-010 in PSI-23 Reference Data can convert PSI-10 and PSI-159 voltages; BASS-II O2 table and fan calibrations; CFI analysed spreadsheet.",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-23",
+          "section": "psi_data",
+          "index": null
+        },
+        {
+          "accession": "PSI-159",
+          "section": "open_questions",
+          "index": 6
+        },
+        {
+          "accession": "PSI-25",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-39",
+          "section": "psi_data",
+          "index": null
+        }
+      ]
+    },
+    {
+      "rank": 4,
+      "gap": "Results held outside PSI or unpublished",
+      "why": "BRE, CLD, E-FIELD, FLEX-2, SLICE and Saffire-II have only summary tables; s-Flame has no ISS paper; Flame Design pressure round not analysed in any PSI document; many findings rest on theses and slides.",
+      "partial_fill": "External theses and NTRS documents already cited in the records.",
+      "citations": [
+        {
+          "accession": "PSI-20",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-21",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-22",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-68",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-106",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-99",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-23",
+          "section": "gaps",
+          "index": 1
+        },
+        {
+          "accession": "PSI-10",
+          "section": "gaps",
+          "index": 2
+        },
+        {
+          "accession": "PSI-20",
+          "section": "gaps",
+          "index": 14
+        }
+      ]
+    },
+    {
+      "rank": 5,
+      "gap": "Pressure effects on solid spread and limits",
+      "why": "Reduced pressure changes residence time, radiative loss and buoyancy-equivalent flow; no solid flight data off 1 atm.",
+      "partial_fill": "Saffire-II 1-g reduced-pressure data; BRE and CFI-G pressure trends.",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-159",
+          "section": "findings",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "rank": 6,
+      "gap": "Suppression with realistic agents and geometry",
+      "why": "Only a fixed upstream N2 jet and well-mixed diluents were tested; no extinguisher discharge or water mist.",
+      "partial_fill": "BASS N2 outcome matrix; re-derived FLEX LOIs.",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "limitations",
+          "index": 6
+        },
+        {
+          "accession": "PSI-69",
+          "section": "limitations",
+          "index": 2
+        },
+        {
+          "accession": "PSI-26",
+          "section": "open_questions",
+          "index": 4
+        },
+        {
+          "accession": "PSI-69",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "rank": 7,
+      "gap": "Detection of flaming fires in a real vehicle",
+      "why": "SAME covered only pre-ignition pyrolysis; detector timing not analysed.",
+      "partial_fill": "Cygnus smoke-detector and CO2 telemetry from Saffire-I/III; SAME-R time series.",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "limitations",
+          "index": 6
+        },
+        {
+          "accession": "PSI-98",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-100",
+          "section": "open_questions",
+          "index": 5
+        },
+        {
+          "accession": "PSI-101",
+          "section": "open_questions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "rank": 8,
+      "gap": "Material breadth and complex geometry",
+      "why": "Mostly PMMA and one cellulosic fabric; few repeats; no clutter, foams or wire insulation in flaming tests.",
+      "partial_fill": "BRE emulation; Saffire-II thick PMMA; BASS-II slabs.",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "limitations",
+          "index": 1
+        },
+        {
+          "accession": "PSI-25",
+          "section": "limitations",
+          "index": 3
+        },
+        {
+          "accession": "PSI-98",
+          "section": "limitations",
+          "index": 1
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "rank": 9,
+      "gap": "Flow below 1 cm/s poorly quantified",
+      "why": "The quenching branch lies there; flows logged only as fan settings.",
+      "partial_fill": "Daily fan calibrations in PSI-25 Reference Data; BASS as-run log.",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "limitations",
+          "index": 2
+        },
+        {
+          "accession": "PSI-26",
+          "section": "limitations",
+          "index": 3
+        },
+        {
+          "accession": "PSI-25",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-26",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "rank": 10,
+      "gap": "Cool flames at habitat conditions and for realistic fuels",
+      "why": "Invisible reaction and re-ignition hazard not mapped at 30% O2 or reduced pressure with enrichment.",
+      "partial_fill": "FLEX 0.7 atm runs; model runs at habitat conditions; re-ignition boundary mapping.",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-117",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-68",
+          "section": "open_questions",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "rank": 11,
+      "gap": "Combustion products and toxicity",
+      "why": "One CO dataset (BASS-II) with a saturating sensor.",
+      "partial_fill": "BASS-II per-test CO table; Saffire CO2 records.",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 13
+        },
+        {
+          "accession": "PSI-25",
+          "section": "open_questions",
+          "index": 6
+        },
+        {
+          "accession": "PSI-98",
+          "section": "findings",
+          "index": 8
+        },
+        {
+          "accession": "PSI-100",
+          "section": "findings",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "rank": 12,
+      "gap": "Atmosphere drift and acceleration records",
+      "why": "Closed chambers vitiate during a day; composition computed, not measured; no SAMS data archived.",
+      "partial_fill": "170 unreduced s-Flame GC chromatograms; Flame Design repeated test points.",
+      "citations": [
+        {
+          "accession": "PSI-23",
+          "section": "limitations",
+          "index": 4
+        },
+        {
+          "accession": "PSI-159",
+          "section": "limitations",
+          "index": 3
+        },
+        {
+          "accession": "PSI-10",
+          "section": "limitations",
+          "index": 4
+        },
+        {
+          "accession": "PSI-23",
+          "section": "open_questions",
+          "index": 5
+        },
+        {
+          "accession": "PSI-10",
+          "section": "open_questions",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "rank": 13,
+      "gap": "Validated soot and cool-flame models",
+      "why": "Soot increase and cool-flame extinction are not reproduced quantitatively for n-alkanes by the models in PSI.",
+      "partial_fill": "SPICE soot fields; CFI extinction data; Princeton extinction curves.",
+      "citations": [
+        {
+          "accession": "PSI-106",
+          "section": "findings",
+          "index": 3
+        },
+        {
+          "accession": "PSI-60",
+          "section": "findings",
+          "index": 3
+        },
+        {
+          "accession": "PSI-142",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-60",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-117",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-142",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    }
+  ],
+  "lineage": [
+    {
+      "from": "PSI-107",
+      "to": "PSI-106",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-107",
+      "to": "PSI-26",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-107",
+      "to": "PSI-25",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-26",
+      "to": "PSI-25",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-106",
+      "to": "PSI-21",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-107",
+      "to": "PSI-60",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-21",
+      "to": "PSI-60",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-26",
+      "to": "PSI-62",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-25",
+      "to": "PSI-62",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-26",
+      "to": "PSI-98",
+      "relation": "same fuel"
+    },
+    {
+      "from": "PSI-25",
+      "to": "PSI-99",
+      "relation": "same fuel"
+    },
+    {
+      "from": "PSI-98",
+      "to": "PSI-99",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-98",
+      "to": "PSI-100",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-99",
+      "to": "PSI-100",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-69",
+      "to": "PSI-68",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-68",
+      "to": "PSI-39",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-69",
+      "to": "PSI-39",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-39",
+      "to": "PSI-159",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-69",
+      "to": "PSI-159",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-68",
+      "to": "PSI-159",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-69",
+      "to": "PSI-117",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-39",
+      "to": "PSI-117",
+      "relation": "same fuel"
+    },
+    {
+      "from": "PSI-69",
+      "to": "PSI-142",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-10",
+      "to": "PSI-23",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-10",
+      "to": "PSI-159",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-23",
+      "to": "PSI-159",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-10",
+      "to": "PSI-20",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-10",
+      "to": "PSI-21",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-10",
+      "to": "PSI-22",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-21",
+      "to": "PSI-22",
+      "relation": "shared hardware"
+    },
+    {
+      "from": "PSI-47",
+      "to": "PSI-102",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-102",
+      "to": "PSI-101",
+      "relation": "precursor -> follow-on"
+    },
+    {
+      "from": "PSI-47",
+      "to": "PSI-101",
+      "relation": "precursor"
+    },
+    {
+      "from": "PSI-102",
+      "to": "PSI-115",
+      "relation": "ground re-analysis"
+    },
+    {
+      "from": "PSI-101",
+      "to": "PSI-115",
+      "relation": "ground re-analysis"
+    }
+  ],
+  "research_questions": [
+    {
+      "question": "Unified extinction map for solids: O2 at extinction against flow or stretch for films, slabs, rods and fabric.",
+      "accessions": [
+        "PSI-25"
+      ],
+      "data_needed": "experimental table (calibrated O2/CO2/CO per run), daily fan-calibration workbook, TM Appendix A logs",
+      "expected": "U-curve minima per geometry on one plot",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "question": "BASS low-flow quench limits and N2-jet outcome matrix.",
+      "accessions": [
+        "PSI-26"
+      ],
+      "data_needed": "As Run Test Matrix xlsx (fan pot, GN2, O2, notes), fan calibrations",
+      "expected": "quench flow against O2 for spheres, candles, fabric; suppression success matrix",
+      "citations": [
+        {
+          "accession": "PSI-26",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-26",
+          "section": "open_questions",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "question": "Independent FLEX LOI from diffusive and radiative extinction branches.",
+      "accessions": [
+        "PSI-69"
+      ],
+      "data_needed": "274-row table: D0, D_ext, K, burn time, end mode, O2/N2/CO2/He, pressure",
+      "expected": "LOI with uncertainty per fuel and diluent",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "question": "Diluent effect on droplet burning rate against B-number theory.",
+      "accessions": [
+        "PSI-69"
+      ],
+      "data_needed": "same table; B-number calculation",
+      "expected": "residual K/K_B by diluent and pressure",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "Cool-flame extinction diameter regression and model bias.",
+      "accessions": [
+        "PSI-39",
+        "PSI-117"
+      ],
+      "data_needed": "CFI data-summary spreadsheet DATA sheet; PSI-117 PROCI_2023 and MST_2024 CSVs",
+      "expected": "fit of D_ext,cool against p, X_O2, X_He; model bias by pressure",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-117",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "Farnesane cool flames against n-dodecane.",
+      "accessions": [
+        "PSI-39"
+      ],
+      "data_needed": "raw per-test logs and reduced files for FLEX-1388 to 1431",
+      "expected": "k_cool and D_ext against cetane number",
+      "citations": [
+        {
+          "accession": "PSI-39",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "Radiative-extinction map of gaseous spherical flames, including the inverse-flame pressure effect.",
+      "accessions": [
+        "PSI-159"
+      ],
+      "data_needed": "Normal and Inverse flame CSVs (Z_st, T_ad, p, flows, outcome, burn time)",
+      "expected": "self-extinction probability and burn time against T_ad, Z_st, p",
+      "citations": [
+        {
+          "accession": "PSI-159",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-159",
+          "section": "open_questions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "question": "Screen for unreported gaseous cool flames.",
+      "accessions": [
+        "PSI-159"
+      ],
+      "data_needed": "338 local 125 Hz data.csv files (radiometers, PMTs, burner TC)",
+      "expected": "list of post-extinction radiometer plateaus or a null result",
+      "citations": [
+        {
+          "accession": "PSI-159",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "question": "Convert ACME raw voltages to engineering units across experiments.",
+      "accessions": [
+        "PSI-23",
+        "PSI-10",
+        "PSI-159"
+      ],
+      "data_needed": "ACME-DOC-010 Rev D (PSI-23 Reference Data); per-test data.csv files",
+      "expected": "burn times, extinction times, burner temperatures for about 900 tests; s-Flame extinction classification",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-23",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-159",
+          "section": "open_questions",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "question": "Flame Design extinction against pressure.",
+      "accessions": [
+        "PSI-10"
+      ],
+      "data_needed": "inverse-flame table (0.43-3 atm), TP timelines, data.csv",
+      "expected": "test of 0.68 g/m2/s critical O2 flux against pressure",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "Saffire heat release and vehicle response.",
+      "accessions": [
+        "PSI-98",
+        "PSI-100"
+      ],
+      "data_needed": "calibrated 30 Hz sensor workbooks; Cygnus telemetry",
+      "expected": "HRR from CO2 rise; free-volume estimate; Saffire-III flame power",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-100",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-100",
+          "section": "open_questions",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "question": "Smoke-detector response to a real fire.",
+      "accessions": [
+        "PSI-98",
+        "PSI-100"
+      ],
+      "data_needed": "Cygnus smoke-detector obscuration and scatter channels",
+      "expected": "detection delay and signal level for 1-1.5 kW fabric fires",
+      "citations": [
+        {
+          "accession": "PSI-98",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-100",
+          "section": "open_questions",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "question": "SIBAL spread against flow, width and duct size.",
+      "accessions": [
+        "PSI-26",
+        "PSI-98",
+        "PSI-99",
+        "PSI-100"
+      ],
+      "data_needed": "BASS fits and captions; Saffire-I/II/III spread rates",
+      "expected": "separation of width, duct and flow effects; proportional against linear-with-intercept",
+      "citations": [
+        {
+          "accession": "PSI-99",
+          "section": "open_questions",
+          "index": 5
+        },
+        {
+          "accession": "PSI-100",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "Detector alarm map for pre-fire smoke.",
+      "accessions": [
+        "PSI-101"
+      ],
+      "data_needed": "SAME, SAME-R_Results.xlsx; per-run time series",
+      "expected": "alarm/no-alarm against M0, M1/M0, D_avm; time to alarm",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-101",
+          "section": "open_questions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "question": "Coagulation kernels of spacecraft-material smoke.",
+      "accessions": [
+        "PSI-101",
+        "PSI-102"
+      ],
+      "data_needed": "paired unaged/aged runs; 59 SAME housekeeping spreadsheets",
+      "expected": "effective kernels per material; growth over cabin transport times",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "open_questions",
+          "index": 2
+        },
+        {
+          "accession": "PSI-102",
+          "section": "open_questions",
+          "index": 5
+        }
+      ]
+    },
+    {
+      "question": "Do liquid smokes grow larger in microgravity? Validate the smoke simulation.",
+      "accessions": [
+        "PSI-102",
+        "PSI-115"
+      ],
+      "data_needed": "SAME DBP runs (22 of 47 test points); PSI-115 PSD and field .dat files",
+      "expected": "test of the liquid-droplet hypothesis; first model validation",
+      "citations": [
+        {
+          "accession": "PSI-102",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-115",
+          "section": "open_questions",
+          "index": 1
+        }
+      ]
+    },
+    {
+      "question": "Clean SPICE smoke-point and flame-length table.",
+      "accessions": [
+        "PSI-107"
+      ],
+      "data_needed": "master sheet (526 rows), SmokePointReview-0g-3.xlsx",
+      "expected": "L_f against m_f/Z_st for all conditions; clogging correction; refitted L_SP scaling",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-107",
+          "section": "open_questions",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "question": "Counterflow against droplet cool-flame correspondence.",
+      "accessions": [
+        "PSI-142",
+        "PSI-69",
+        "PSI-39"
+      ],
+      "data_needed": "Princeton workbook data IDs 1-3; FLEX and CFI extinction data",
+      "expected": "one Damkohler reactivity per fuel; FLEX extinctions on the counterflow diagram",
+      "citations": [
+        {
+          "accession": "PSI-142",
+          "section": "open_questions",
+          "index": 1
+        },
+        {
+          "accession": "PSI-142",
+          "section": "open_questions",
+          "index": 2
+        }
+      ]
+    },
+    {
+      "question": "CO yield and heat release by geometry.",
+      "accessions": [
+        "PSI-25"
+      ],
+      "data_needed": "per-test O2/CO2/CO table",
+      "expected": "HRR and CO/CO2 per test; check of geometry clustering",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "open_questions",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "question": "Cabin background against smoke signals.",
+      "accessions": [
+        "PSI-47",
+        "PSI-101",
+        "PSI-102"
+      ],
+      "data_needed": "DAFT 1 s logs and Retrieved Data Summary; SAME background segments",
+      "expected": "background-noise statistics for false-alarm design",
+      "citations": [
+        {
+          "accession": "PSI-47",
+          "section": "open_questions",
+          "index": 3
+        },
+        {
+          "accession": "PSI-47",
+          "section": "open_questions",
+          "index": 4
+        }
+      ]
+    }
+  ]
+}

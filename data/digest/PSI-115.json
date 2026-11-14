@@ -1,0 +1,979 @@
+{
+  "accession": "PSI-115",
+  "identity": {
+    "acronym": null,
+    "title": "Utilization of the Smoke Aerosol Measurement Experiment Data for Advanced Modeling and Simulation of Smoke Generation in Micro-Gravity",
+    "principal_investigators": [
+      "Sean C. Garrick (PI; University of Illinois)",
+      "Michael C. Hicks (Technical Point of Contact; NASA GRC)"
+    ],
+    "dates": {
+      "start": "2017-01-30",
+      "end": "2019-12-31"
+    },
+    "platform": "None (ground-based numerical simulation; geometry and conditions taken from the ISS SAME experiments)",
+    "facility": null,
+    "hardware": null,
+    "project_type": "Ground Investigation"
+  },
+  "one_line": "A computer simulation of smoke forming from a hot, vapour-releasing sample in a slow air stream shows that, without gravity, smoke particles can grow larger than on Earth, which matters for how spacecraft smoke detectors are designed.",
+  "summary": "This NASA-funded ground study (grant NNX17AF08A, 2017-2019) used two-dimensional direct numerical simulation to compare smoke formed in Earth gravity and in microgravity. The configuration mimicked the ISS Smoke Aerosol Measurement Experiment (SAME). Dibutyl phthalate (DBP) vapour, a well-characterised surrogate for pyrolysis products, leaves a 473 K block in a channel with 300 K air flowing at 8 or 10 cm/s. A 45-node sectional aerosol model tracked nucleation, coagulation, condensation, evaporation, thermophoresis and Stokes settling. In Earth gravity, buoyancy makes the flow asymmetric and drives vapour to the cool upper wall. There nucleation is about 100 times faster (about 1e14 vs 1e12 per m3 per s). Settling also removes all particles larger than about 40 um, leaving a single size mode near 5 um. In microgravity the wake recirculation traps hot, vapour-rich gas. This gives a second mode near 30-35 um and particles approaching 100 um, or, without that recirculation, a single mode near 10 um. For fire safety, detectors calibrated on terrestrial smoke may meet larger particles in orbit, and the result depends on geometry.",
+  "question": {
+    "text": "How does gravity, through buoyant convection and particle settling, change the size distribution of smoke formed from pyrolysis vapour, and which fluid-dynamic mechanisms cause the difference between microgravity and Earth-gravity smoke? The motivation is that smoke detectors developed and calibrated on Earth may respond poorly in spacecraft if microgravity smoke has different particle sizes. Earlier measurements suggested microgravity smoke particles are 2-8 times larger than terrestrial ones. The study set out to explain this with simulations that resolve fluid, thermal and particle interactions which cannot be measured on orbit.",
+    "sources": [
+      {
+        "type": "psi_record",
+        "field": "objective"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p4",
+        "quote": "Measurements suggest microgravity smoke particles to be 2 - 8 times larger than terrestrial smoke particles (Urban et al., 2005)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p4",
+        "quote": "systems developed and calibrated for terrestrial use may not perform correctly in microgravity because of inappropriate particle size sensitivities (Urban et al., 2005)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p3",
+        "quote": "The simulations provide detailed information about fluid/thermal/particle interactions that cannot be acquired experimentally on orbit."
+      }
+    ]
+  },
+  "physics": {
+    "text": "Smoke from overheated or smouldering material starts as hot pyrolysis vapour. As it cools and mixes, the vapour becomes supersaturated and nucleates into tiny droplets. These then grow by condensation and by coagulation (collisions between particles). How large they get depends on how long they stay in hot, vapour-rich gas. Gravity acts on this in two ways. Buoyancy lifts hot, vapour-laden gas, changing its time-temperature history and carrying it toward cool walls, where supersaturation and nucleation rise. Gravity also makes large particles settle out: the Stokes settling speed is $u_s=(\\rho_p-\\rho)g d^2/(18\\mu)$. For a DBP droplet ($\\rho_p\\approx1040$ kg/m3) in air ($\\mu\\approx1.8\\times10^{-5}$ Pa s), this is about 0.8 mm/s at 5 um but about 5 cm/s at 40 um, comparable to the 8 cm/s flow. In microgravity neither effect exists. The particles that remain can be recirculated in a wake behind the source, where they keep growing. Thermophoresis, the drift of particles down a temperature gradient (Talbot correlation), pushes particles away from hot surfaces. The study characterises the flow by the Reynolds number $Re=U_0L_0/\\nu$ (22.3 and 27.7) and the Froude number $Fr=U_0/\\sqrt{gL_0}$ (0.385 and 0.481 in 1 g; infinite in microgravity), with $L_0=4.4$ mm. A Froude number below 1 means buoyancy matters at these low SAME-like flow speeds.",
+    "sources": [
+      {
+        "type": "background"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p4",
+        "quote": "Gravity affects the evolution of aerosols by introducing buoyancy and particle settling."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p4",
+        "quote": "These factors combine to increase particle residency times in high temperature, vapor rich regions in microgravity systems relative to terrestrial or Earth gravity systems (Urban et al., 1998, 2005)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p21",
+        "quote": "Table 3: Definitions of primary test cases. Case Uo[m/s] go[m/s2] Re Fr 1EG 0.08 9.81 22.3 0.385 1MG 0.08 0.0 22.3 ∞ 2EG 0.10 9.81 27.7 0.481 2MG 0.10 0.0 27.7 ∞"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+        "locator": "p6",
+        "quote": "Particles are transported in space by convection, diffusion, thermophoresis, and gravitational settling. Their size is affected by nucleation, coagulation, condensation, and evaporation."
+      }
+    ],
+    "equations": [
+      {
+        "latex": "u_{s,k}=\\frac{(\\rho_c-\\rho)\\,g\\,d_k^2}{18\\,\\mu}",
+        "meaning": "Stokes settling velocity of particles in size node k (m/s). $\\rho_c$ is the condensed DBP density (about 1040 kg/m3), $\\rho$ the gas density (kg/m3), $g$ the gravitational acceleration (9.81 or 0 m/s2), $d_k$ the node diameter (m) and $\\mu$ the gas viscosity (Pa s). The report uses it in dimensionless form, divided by $U_0$. It is valid for particle Reynolds number much less than 1; the report applies it to all sizes. It gives about 5 cm/s at 40 um, which is why 1 g smoke loses its large mode.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p6",
+            "quote": "The dimensionless Stokes settling velocity, uss⋆ j,k , is defined by uss⋆ j,k = (ρc −ρ) gjd2 k 18µUo , (18) where gj is the gravitational acceleration in the j direction."
+          }
+        ]
+      },
+      {
+        "latex": "u^{tf}_{j,k}=-k_{tf}\\,\\frac{\\mu}{\\rho\\,T}\\frac{\\partial T}{\\partial x_j},\\quad k_{tf}=\\frac{2.294\\,C_k\\,(k/k_p+2.2Kn_k)}{(1+3.493Kn_k)(1+2k/k_p+4.4Kn_k)}",
+        "meaning": "Talbot thermophoretic drift velocity (m/s; the report divides it by $U_0$). Particles move down the temperature gradient $\\partial T/\\partial x_j$ (K/m). $\\mu$ is gas viscosity (Pa s), $\\rho$ gas density (kg/m3), $T$ temperature (K), $k$ and $k_p$ gas and particle thermal conductivities (W/m K), $Kn_k=2\\lambda/d_k$ the particle Knudsen number, and $C_k$ the Cunningham slip correction. It is valid across the Knudsen range, and it keeps particles away from the 473 K source.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p6",
+            "quote": "The Talbot equation defines the thermophoretic velocity,"
+          }
+        ]
+      },
+      {
+        "latex": "Re=\\frac{U_0L_0}{\\nu},\\qquad Fr=\\frac{U_0}{\\sqrt{g L_0}}",
+        "meaning": "Reynolds and Froude numbers of the channel flow. $U_0$ is the inlet speed (0.08 or 0.10 m/s), $L_0$ = 4.4 mm the source thickness, $\\nu$ about 1.6e-5 m2/s the kinematic viscosity of air, and $g$ the gravitational acceleration. They give Re = 22.3 and 27.7, and Fr = 0.385 and 0.481 in 1 g (infinite in microgravity), matching the report's Table 3. Fr < 1 means buoyancy competes with the imposed flow. The momentum equation carries buoyancy as $(\\rho^*-1)/Fr^2$.",
+        "sources": [
+          {
+            "type": "background"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p21",
+            "quote": "Table 3: Definitions of primary test cases. Case Uo[m/s] go[m/s2] Re Fr 1EG 0.08 9.81 22.3 0.385 1MG 0.08 0.0 22.3 ∞ 2EG 0.10 9.81 27.7 0.481 2MG 0.10 0.0 27.7 ∞"
+          }
+        ]
+      },
+      {
+        "latex": "\\bar Q_k=\\frac{1}{h}\\int_{-h/2}^{h/2}u(y)\\,Q_k(y)\\,dy",
+        "meaning": "Flux-weighted 'collected' number density of size node k at the sampling plane x' = 26 L0. $Q_k$ is the local number density (m-3), $u$ the streamwise velocity (made dimensionless by $U_0$), and $h$ = 6.82 $L_0$ the channel height. It is the quantity plotted in the report's PSD figures and stored in the PSD .dat files. It mimics an instrument sampling everything that passes the plane.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p12",
+            "quote": "where h = 6.82Lo is the height of the domain and u is the x-component of the velocity vector."
+          }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "apparatus": {
+      "text": "Numerical model, no hardware. The solver is an in-house compressible Navier-Stokes code, previously validated for aerosol studies. It solves dimensionless mass, momentum (with a gravity term scaled by 1/Fr^2), total energy and DBP-vapour transport equations. It uses a second-order MacCormack scheme on a non-uniform 960 x 240 grid. A scaled dynamic reference pressure reduces the effective sound speed to 8 m/s, avoiding a Boussinesq approximation. The aerosol is represented by a nodal (sectional) approximation to the general dynamic equation (Prakash et al. 2003). There are 45 size nodes, each 2.25 times the volume of the previous one, starting from a single DBP molecule (4.44e-28 m3). Each node is transported with the gas velocity plus thermophoretic (Talbot) and Stokes settling velocities. Size changes come from Girshick-Chiu self-consistent classical nucleation (enhancement factor 3.2e-4 for DBP), Fuchs-Dahneke coagulation, and condensation/evaporation including the Kelvin effect. Flight data from SAME (Mulholland et al. 2015) entered only through the set-up. The geometry was similar to SAME, the reference length L0 = 4.4 mm was representative of SAME, U0 = 8 cm/s was the SAME flow velocity, and the vapour mass flux (8.4e-5 kg/m2/s) was chosen to represent SAME mass-loss data. Simulated size distributions were not compared quantitatively with SAME measurements in the report.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The domain is non-uniformly discretized by 960 grid points in the x direction and 240 grid point in the y direction. The governing equations are solved on this computational mesh with a second-order MacCormack scheme."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The particle size space is discretized by 45 particle nodes, with the volume of each successive node increased by a factor of 2.25, i.e. vk = 2.25 ×vk−1."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p6",
+          "quote": "This work utilizes a nodal approximation to the general dynamic equation (Prakash et al., 2003), where the particle size distribution is discretized by a set of nodes k, each associated with a particle diameter dk."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p7",
+          "quote": "We consider the classical nucleation expression modified by a self-consistent correction proposed by Girshick and Chiu (1990)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The enhancement factor required for the nucleation expression, Eqn. (20), is defined for DBP as cnuc = 3.2 × 10−4"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "We instead use a scaled dynamic pressure as the reference pressure Po = ρo (c1Uo)2, such that P⋆ = ραRαT Po , where c1 is specified to reduce the effective speed of sound to 8 m/s."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The thickness of the heated DBP source serves as the reference length scale, Lo = 0.0044 m (illustrated in Fig. 1), which is representative of the length scale in the SAME experiments (Mulholland et al., 2015)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The mass flux has been selected to be representative of the mass loss data presented by Mulholland et al. (2015)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "The computational tool used for this work has been well-validated and used for prior studies of aerosols"
+        }
+      ]
+    },
+    "fuels_and_samples": [
+      {
+        "name": "Dibutyl phthalate (DBP) vapour as a surrogate for pyrolysis smoke; condensed-phase DBP droplets",
+        "phase": "aerosol",
+        "form": "vapour released at constant mass flux from a heated rectangular block (473.2 K) in a 2-D channel; particles form by homogeneous nucleation",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "DBP is used as the surrogate material because its properties are known and its use in modeling is well-established (unlike the materials used in the SAME experiments)."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "The heated rectangle is also no-slip, has a fixed temperature of Ts = 473.2 K, and releases DBP vapor at a constant mass flux of q′′ = 8.4 × 10−5 kg/m2 · s."
+          }
+        ]
+      }
+    ],
+    "procedure": {
+      "text": "Air at 300 K enters a channel 40 L0 long and 6.82 L0 high (L0 = 4.4 mm). The channel has isothermal (300 K), no-slip, impermeable upper and lower walls. The air flows past the heated DBP source block, and zero-derivative conditions apply to species and particles at the inlet and outlet. The flow is laminar, and a two-dimensional representation is taken as largely representative of SAME. Each case runs until the hydrodynamic and thermal fields are steady, which takes a few seconds. All fields are reported at t = 7 s, treated as an effective steady state, although particles keep growing slowly in the recirculating wake. Particle size distributions are 'collected' numerically. The particle flux through a vertical plane x' = 26 (in L0 units) downstream of the source is integrated, giving a collected number density per size node (particles per m3, flux-weighted). Mechanisms are isolated by switching off settling (1EG-NS) or thermophoresis (1MG-NT), or by rotating the source block 90 degrees (1MG-R, 1EG-R). Assumptions: spherical particles, particles at the gas temperature and velocity (plus drift velocities), 100% sticking on walls, particle diffusivity floored at node 5, and gas viscosity and conductivity taken as those of air.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p19",
+          "quote": "Inlet Outlet x0 Lo 33Lo 6.82Lo 2.5Lo 11Lo Uo Patm DBP Source Isothermal, no-slip wall Isothermal, no-slip wall 40Lo Figure 1: Flow geometry (not to scale)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The flow is laminar and steady, allowing the two-dimensional representation to present physical characteristics largely representative of the SAME experiments (Mulholland et al., 2015)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "We therefore present all results at time t = 7 seconds, which is considered to be the effective steady-state."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "The sample is collected by computing the flux of particles through a vertical plane located at x′, where x′ is the dimensionless distance from the downstream surface of the heated element, indicated in Fig. 1."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "Particles that impact a solid surface “stick” with 100% efficiency, and are removed from the flow."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p25",
+          "quote": "Table 4: Definitions of modified test cases. Case Modification type 1EG-NS Case 1EG with particle settling deactivated 1MG-NT Case 1MG with thermophoresis deactivated 1MG-R Case 1MG with heated vapor source rotated 90◦ 1EG-R Case 1EG with heated vapor source rotated 90◦"
+        }
+      ]
+    }
+  },
+  "test_matrix": {
+    "varied": [
+      {
+        "parameter": "gravitational acceleration",
+        "range": "0 (microgravity, MG) or 9.81 (Earth gravity, EG)",
+        "unit": "m/s2",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "The gravitational acceleration is considered at terrestrial (go = 9.81 m/s2) and microgravity (go = 0 m/s2) conditions."
+          }
+        ]
+      },
+      {
+        "parameter": "inlet air velocity U0",
+        "range": "8 (SAME value; Case 1) or 10 (Case 2)",
+        "unit": "cm/s",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "We consider two inlet velocities: Uo = 0.08 m/s, the velocity considered in the SAME experiments, and a slightly faster flow of Uo = 0.10 m/s."
+          }
+        ]
+      },
+      {
+        "parameter": "particle settling (on/off)",
+        "range": "on in all EG cases; off in 1EG-NS",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "Case 1EG-NS (where NS stands for “no settling”) is identical to Case 1EG, but the settling mechanism has been neglected."
+          }
+        ]
+      },
+      {
+        "parameter": "thermophoresis (on/off)",
+        "range": "on except in 1MG-NT",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "Case 1MG-NT (where NT stands for “no thermophoresis”) is identical to Case 1MG, but the thermophoresis transport mechanism has been neglected."
+          }
+        ]
+      },
+      {
+        "parameter": "source orientation",
+        "range": "baseline or rotated 90 degrees (1MG-R, 1EG-R)",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "Cases 1MG-R and 1EG-R (where R stands for “rotated”) are identical to Cases 1MG and 1EG, except the heated vapor source has been rotated 90◦."
+          }
+        ]
+      }
+    ],
+    "held_constant": [
+      {
+        "parameter": "inlet air and wall temperature",
+        "value": "300 K",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "The upper and lower boundaries are impermeable, no-slip, iso-thermal surfaces (Twall = To)."
+          }
+        ]
+      },
+      {
+        "parameter": "source temperature and DBP vapour mass flux",
+        "value": "473.2 K; 8.4e-5 kg/(m2 s)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p9",
+            "quote": "The heated rectangle is also no-slip, has a fixed temperature of Ts = 473.2 K, and releases DBP vapor at a constant mass flux of q′′ = 8.4 × 10−5 kg/m2 · s."
+          }
+        ]
+      },
+      {
+        "parameter": "reference length (source thickness) and channel height",
+        "value": "L0 = 4.4 mm; h = 6.82 L0 (about 30 mm)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p12",
+            "quote": "where h = 6.82Lo is the height of the domain and u is the x-component of the velocity vector."
+          }
+        ]
+      },
+      {
+        "parameter": "ambient pressure",
+        "value": "atmospheric (Patm; numerical value not stated)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p6",
+            "quote": "where Patm is the atmospheric pressure and the model parameters are Ts = 110.4K, T1 = 296.15K, and λo = 67.3nm (Otto et al., 1999)."
+          }
+        ]
+      },
+      {
+        "parameter": "analysis time and PSD sampling plane",
+        "value": "t = 7 s; x' = 26 L0 downstream of the source",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+            "locator": "p13",
+            "quote": "Figure 8 shows the particle number densities for Cases 1MG and 1EG at downstream measurement plane x′ = 26 at time t = 7 seconds."
+          }
+        ]
+      }
+    ],
+    "n_tests": {
+      "value": 8,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "In addition to the four base cases listed in Table 3, we examine the aerosol development sensitivity to:"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Science Documents_DataOrganizationDocument.pdf",
+          "locator": "p1",
+          "quote": "In addition to the four base cases listed in Table 3 of the Final Report, and as shown above, the data is further categorized as the researcher examines the aerosol development sensitivity to: • Particle settling • Thermophoresis • The flow geometry"
+        }
+      ]
+    }
+  },
+  "measurements": [
+    {
+      "quantity": "velocity components u, v and vorticity (dimensionless)",
+      "instrument": "simulation output (2-D DNS)",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p11",
+          "quote": "Figure 2 shows the steady dimensionless vorticity."
+        }
+      ]
+    },
+    {
+      "quantity": "gas temperature and DBP vapour mass fraction fields",
+      "instrument": "simulation output",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p11",
+          "quote": "DBP vapor mass fraction is shown in Fig. 4 at time t = 7 seconds."
+        }
+      ]
+    },
+    {
+      "quantity": "nucleation rate and particle number density fields (log10)",
+      "instrument": "simulation output",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p21",
+          "quote": "Figure 5: Log of particle nucleation rate [m−3 ·s] for (a) Case 1MG and (b) Case 1EG. 6 9 12 (a) (b) Figure 6: Log of particle number density [m−3] for (a) Case 1MG and (b) Case 1EG."
+        }
+      ]
+    },
+    {
+      "quantity": "diameter of average mass d_m",
+      "instrument": "simulation output",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p22",
+          "quote": "Figure 7: Diameter of average mass dm [m] for (a) Case 1MG and (b) Case 1EG."
+        }
+      ]
+    },
+    {
+      "quantity": "flux-collected particle size distribution at x' = 26",
+      "instrument": "numerical sampling plane",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "We construct the size distribution by numerically “collecting” a volume of the aerosol and counting the number of particles in each node k contained in the sample."
+        }
+      ]
+    },
+    {
+      "quantity": "smoke visualisation via particle surface-area density S",
+      "instrument": "simulation output",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p14",
+          "quote": "The simulated smoke is visualized by computing the particle surface area densityS(x) according to S(x) = Ns∑ k=2 πd2 kQk(x)."
+        }
+      ]
+    }
+  ],
+  "psi_data": {
+    "summary": "PSI-115 holds 47 files (264.4 MB), all downloaded and readable: the final report (Aug 2020), a 1-page data organisation document, a metadata zip, and 44 analysed-data .dat files. The .dat files are the simulation fields behind the report figures, at t = 7 s. Field files are plain-text Fortran output. Each has a header line '960 240 1 1' (ni, nj, nk, nvar), followed by 230,400 values, one per line, in PLOT3D-style i-fastest order. The two grid files ('*_sGrid_grid3d.dat', header '960 240 1') hold x, y and z for the same 960 x 240 mesh. x runs 0-40 and y -3.41 to +3.41, in units of L0 = 4.4 mm. Units inferred by opening the files: U/V/uR/vR are velocities divided by U0 (range about -2.5 to 3.6). Temperature is T/T0 (1.00-1.58, i.e. 300-474 K). SpeciesMF/VaporMF is DBP vapour mass fraction (0-0.072). NumDen and NucRate are log10 of number density (m-3) and nucleation rate (m-3 s-1). Values of -20, and -inf for NucRate, mark zero. DAM is the diameter of average mass in metres (up to 6e-5 m), and Vort is dimensionless vorticity. 'Smoke' is the Fig. 16 smoke field, with values 0-14 and unstated scaling. The PSD files are two-column text (node index, collected number density, presumably m-3 as in Figs. 8-15). nodeDiameters.dat gives the 44 particle diameters (1.24 nm to 138.5 um) for nodes 2-45. Coverage is uneven. The 8 cm/s cases (1EG, 1MG) have all fields. The 10 cm/s cases have only NumDen, PSD, Smoke, U and V. 1EG-NS and 1MG-NT have only PSD (and, for NT, NumDen/u/v). The rotated cases have NumDen, u and v but no PSD files. No README defines file units; they were inferred. There are no raw data, because no experiment was run, and no SAME measurements are included.",
+    "file_groups": [
+      {
+        "category": "Analyzed Data",
+        "what": "2-D field snapshots at t = 7 s (velocity, vorticity, temperature, vapour mass fraction, log number density, log nucleation rate, diameter of average mass, smoke field) for cases 1EG, 1MG, 2EG, 2MG, 1MG-NT, 1EG-R, 1MG-R",
+        "formats": [
+          ".dat"
+        ],
+        "n_files": 35,
+        "size_gb": 0.2177,
+        "usable_now": true
+      },
+      {
+        "category": "Analyzed Data",
+        "what": "computational grids (x, y, z) for the 8 cm/s and 10 cm/s cases, 960 x 240 nodes",
+        "formats": [
+          ".dat"
+        ],
+        "n_files": 2,
+        "size_gb": 0.0359,
+        "usable_now": true
+      },
+      {
+        "category": "Analyzed Data",
+        "what": "particle size distributions at x' = 26 (1EG, 1MG, 2EG, 2MG, 1EG-NS, 1MG-NT) and the node-diameter table",
+        "formats": [
+          ".dat"
+        ],
+        "n_files": 7,
+        "size_gb": 1e-05,
+        "usable_now": true
+      },
+      {
+        "category": "Reports",
+        "what": "final report NNX17AF08A (25 pp., formulation, case definitions, 16 figures, 4 tables)",
+        "formats": [
+          ".pdf"
+        ],
+        "n_files": 1,
+        "size_gb": 0.0106,
+        "usable_now": true
+      },
+      {
+        "category": "Science Documents",
+        "what": "PSI data organisation document (case naming)",
+        "formats": [
+          ".pdf"
+        ],
+        "n_files": 1,
+        "size_gb": 0.0001,
+        "usable_now": true
+      },
+      {
+        "category": "metadata",
+        "what": "ISA-Tab investigation metadata (zip named PSI-185)",
+        "formats": [
+          ".zip"
+        ],
+        "n_files": 1,
+        "size_gb": 1e-05,
+        "usable_now": true
+      }
+    ],
+    "tests_table_rows": null
+  },
+  "findings": [
+    {
+      "claim": "At the SAME flow speed (8 cm/s), the Earth-gravity size distribution sampled 26 L0 downstream (Case 1EG) has a single maximum near 5 um and no particles larger than about 40 um. The microgravity distribution (Case 1MG) is bimodal, with maxima near 5 um and 30 um, and a small fraction of particles approaching 100 um.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p13",
+          "quote": "The Case 1MG distribution contains two local maximums: one at 5 µm and another at 30 µm. The Case 1EG distribution contains only one local maximum at 5 µm."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p13",
+          "quote": "Case 1EG contains a larger number density than Case 1MG for all particle sizes < 20 µm, and Case 1EG contains no particles > 40 µm – these large particle settle out of the system."
+        }
+      ]
+    },
+    {
+      "claim": "In Earth gravity, buoyancy deflects hot DBP vapour toward the cool (300 K) upper wall. The resulting peak nucleation rate is about 1e14 m-3 s-1, against about 1e12 m-3 s-1 in microgravity, where nucleation occurs only around the edge of the wake. Number densities near the upper wall approach 1e12 m-3, so terrestrial smoke has far more particles below 5 um.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "Nucleation occurs at a higher rate, ∼ 1014 [ m3 · s ]−1 , in Case 1EG than in Case 1MG."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "In Case 1EG, a high particle concentration of nearly ∼ 1012 m−3 appears over a large area near the upper surface due to the high nucleation rate in the region."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p13",
+          "quote": "Case 1EG contains orders of magnitude more particles < 5 µm than Case 1MG."
+        }
+      ]
+    },
+    {
+      "claim": "In microgravity, the flow, temperature and vapour fields stay symmetric about the channel centreline. A symmetric pair of counter-rotating wake vortices forms behind the source and holds particles at about 1e10 m-3, larger than 30 um. Dividing streamlines keep these particles in the hot wake, where they grow by condensation and coagulation until the vapour is used up. In Earth gravity the wake is asymmetric, most of the flow passes below the source, and the wake holds fewer particles.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p11",
+          "quote": "The microgravity case in panel (a) remains symmetric near the heated vapor source, whereas the Earth gravity case in panel (b) develops an asymmetry with the majority of fluid passing below the heated vapor source"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "Large particles (> 30 µm) are present in the wake region downstream of the heated vapor source, and large particle number densities (∼ 1010 m−3) occur inside the wake vortices."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "The Case 1EG wake contains fewer particles than the Case 1MG wake."
+        }
+      ]
+    },
+    {
+      "claim": "Gravitational settling is what removes the large mode in 1 g. With settling switched off (Case 1EG-NS), the Earth-gravity distribution widens from nanometres to about 100 um and becomes bimodal, with a new maximum near 35 um, like the microgravity case. With settling on, all particles larger than about 35-40 um are removed downstream of the wake.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p13",
+          "quote": "Eliminating the settling mechanism has expanded the size distribution to include both smaller and larger particles, and has also introduced a new local maximum in the size distribution near 35 µm."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "Downstream of the wake vortices, gravitational settling elimi- nates all particles with diameter > 35 µm."
+        }
+      ]
+    },
+    {
+      "claim": "Thermophoresis keeps particles off the hot (473 K) source surface. With it switched off (Case 1MG-NT), particles reach the hot surface and evaporate. The peak collected number density rises by about a factor of five, the mode stays near 5 um, and the 30 um mode weakens. This supports the conclusion that the recirculating wake makes the largest particles.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p13",
+          "quote": "the peak number density in Case 1MG-NT is greater than Case 1MG by approximately a factor of five – the most frequent particle size is ∼ 5 µm for both cases."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "With re- spect to the particle size distribution, this has the effect of decreasing the number of large particles and increasing the number of small particles – this supports an assertion that the wake is responsible for producing the largest particles in the system."
+        }
+      ]
+    },
+    {
+      "claim": "Geometry matters as much as gravity. Rotating the source 90 degrees shrinks the wake, and no particles are trapped in it. The microgravity distribution then becomes unimodal (no 30 um mode) with a mode near 10 um, about twice the 5 um mode of the Earth-gravity cases. The rotated Earth-gravity case (1EG-R) still peaks at 5 um and has no particles above 40 um.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p14",
+          "quote": "The most frequent particle diameter for Case 1MG-R is dp = 10 µm – approximately two times larger than Cases 1MG, 1EG, and 1EG-R."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p14",
+          "quote": "Consistent with Case 1EG, Case 1EG-R contains fewer particles larger than approximately dp = 10 µm, and no particles larger than dp = 40 µm."
+        }
+      ]
+    },
+    {
+      "claim": "Raising the inlet speed from 8 to 10 cm/s (Fr 0.385 to 0.481 in 1 g) weakens buoyancy, so particles reach the upper wall only much farther downstream. The most common size stays about 5 um in both gravity levels, and Case 2EG keeps nanometre-scale particles at the sampling plane. The report's summary judges the PSD difference between flow speeds not meaningful, while the same summary also says the faster flow widens the distribution and adds a second maximum near 30 um. The two statements are not fully reconciled.",
+      "kind": "trend",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p14",
+          "quote": "Although the particle field remains asymmetric, the increased flow velocity has decreased the influence of buoyancy, reducing interaction with the upper surface."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p14",
+          "quote": "The most common particle size is ∼ 5 µm for both cases. Case 2EG, unlike Case 1EG, contains particles on the nanometer scale"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "The faster flow conditions present a slightly larger wake but this does not manifest as a meaningful difference in particle size distribution."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "widens the particle size distribution to include particles on the nanometer scale, and introduces a second local maximum to the PSD near dp = 30 µm."
+        }
+      ]
+    },
+    {
+      "claim": "Across the two base cases, the diameter of average mass is typically 10-20 um. It is smaller where nucleation is intense, for example near the upper wall in 1 g. No particles smaller than 400 nm reach the far field in microgravity, because nucleation happens only for a short distance behind the source.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p12",
+          "quote": "The diameter of average mass is typically 10 − 20 µm in both cases."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "No particles are present far downstream with diameter < 400 nm because nucleation only occurs for a short distance downstream of the heated va- por source."
+        }
+      ]
+    },
+    {
+      "claim": "The report identifies three mechanisms that make microgravity smoke larger. First, recirculation geometry changes the time-temperature-concentration history. Second, settling removes large particles in 1 g. Third, buoyancy carries vapour to cool surfaces and raises nucleation. Each is material- and geometry-dependent. The authors hypothesise that microgravity and 1 g smoke are more alike in open spaces without stable recirculation, and most different in a quiescent enclosure (not simulated).",
+      "kind": "limit",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "Each of these factors tend to increase the size of particles in microgravity relative to Earth gravity. How- ever, each of these factors is also highly material- and geometry-dependent"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p16",
+          "quote": "contrast, a quiescent, enclosed system is a relevant case where Earth gravity and microgravity smoke are hypothesized to differ significantly, and is a consideration of future work."
+        }
+      ]
+    },
+    {
+      "claim": "A check of the deposited PSD files against nodeDiameters.dat finds the main peak at nodes 33-34 (5.4-7.1 um) in every case, consistent with the report's ~5 um mode. A secondary maximum appears near 27 um (1MG, 1MG-NT), 36 um (1EG-NS) and 21 um (2EG, 2MG). Ratios between files are smaller than the report states. The 1MG-NT/1MG peak ratio is about 2.4, not about 5. The ratio of total number below 5 um, 1EG/1MG, is about 6 rather than 'orders of magnitude'. This may reflect binning or plotting differences.",
+      "kind": "method",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-115_Analyzed Data_8cmNoGravityPSD.dat",
+          "sheet": "plain text (node, Q)",
+          "row": "node 34",
+          "value": "9.77e+08 (maximum); node 34 = 7.08 um in nodeDiameters.dat"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-115_Analyzed Data_8cmNoGravityNoTF_PSD.dat",
+          "sheet": "plain text (node, Q)",
+          "row": "node 33",
+          "value": "2.39e+09 (maximum); node 33 = 5.40 um"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-115_Analyzed Data_8cmGravityPSD.dat",
+          "sheet": "plain text (node, Q)",
+          "row": "node 34",
+          "value": "2.50e+09 (maximum); no Q > 1 above 35.9 um"
+        },
+        {
+          "type": "psi_table",
+          "file": "PSI-115_Analyzed Data_nodeDiameters.dat",
+          "sheet": "plain text",
+          "row": "header",
+          "value": "Diameter (starting from first non-vapor node)"
+        }
+      ]
+    }
+  ],
+  "fire_safety": {
+    "pillars": [
+      "detection",
+      "fundamental"
+    ],
+    "relevance": {
+      "text": "Detection: spacecraft smoke detectors are sized and calibrated on terrestrial smoke. This study gives a mechanistic reason why smoke from a smouldering or pre-ignition source in microgravity can contain more large particles. With a bimodal distribution, the large mode is above 30 um, a size range almost absent from simulated 1 g smoke. Without recirculation, the mode is about twice the terrestrial size. Detector designs (light-scattering or ionisation sensitivity versus size), sampling inlets and filter or transport losses should therefore be checked against larger particles and broader distributions. The study also shows the answer depends on local geometry (wakes behind objects) and on whether cool surfaces are nearby. A single 'microgravity correction factor' is therefore unlikely to be valid. Transferability is limited. The fuel is a single surrogate (DBP) that forms large droplets, not the SAME materials. The flow is 2-D and laminar at 8-10 cm/s, and no combustion or soot is modelled. This is pre-fire (pyrolysis) smoke only.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p3",
+          "quote": "Results show that future experiments should carefully consider and quantify surface interactions and the presence of hot, recirculating vapor, in order to control geometry-dominated features of the particle size distribution."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p4",
+          "quote": "Understanding gravitational effects is of practical interest because it assists in the design of mission-critical smoke detection systems for use in microgravity environments"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p15",
+          "quote": "(2) particle settling is irrelevant if the condensing species forms particles that are too small to settle (the DBP considered in this work forms large particles)"
+        }
+      ]
+    },
+    "habitat_conditions": {
+      "text": "All cases use air at atmospheric pressure and 300 K, close to the Earth sea-level reference of 20.9% O2 at 101.3 kPa. Oxygen plays no role because the model has no combustion. Exploration atmospheres such as a lunar habitat (30% or more O2 at 70.3 kPa or less) were not simulated. Lower pressure would raise the gas mean free path (eq. 15 of the report scales it as 1/P) and the Knudsen numbers of small particles. It would also lower gas density, and so the Reynolds number at a given ventilation speed. All of these feed the nucleation, coagulation and drift terms, so the size-distribution results cannot be transferred quantitatively without new runs.",
+      "sources": [
+        {
+          "type": "reference",
+          "id": "earth-sea-level"
+        },
+        {
+          "type": "reference",
+          "id": "moon-habitat"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "Room temperature air enters a long chamber and flows over a heated rectangular sam- ple."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p6",
+          "quote": "where Patm is the atmospheric pressure and the model parameters are Ts = 110.4K, T1 = 296.15K, and λo = 67.3nm (Otto et al., 1999)."
+        }
+      ]
+    },
+    "earth_benefits": {
+      "text": "The PSI record cites better smoke-detection devices and prevention of fires causing loss of material and life. More generally, the same sectional CFD-aerosol approach applies to particle formation in industrial aerosol reactors and building fires.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    {
+      "text": "The SAME flight data were used only to set geometry scale, flow speed and vapour mass flux. The report contains no quantitative comparison between simulated and SAME-measured particle sizes, so the model is not validated against flight smoke.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The mass flux has been selected to be representative of the mass loss data presented by Mulholland et al. (2015)."
+        }
+      ]
+    },
+    {
+      "text": "DBP is a surrogate chosen for known properties, not one of the SAME materials (e.g. Teflon, Kapton, silicone, lamp wick). DBP forms large droplets, which exaggerates settling effects relative to materials producing sub-micron smoke.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "DBP is used as the surrogate material because its properties are known and its use in modeling is well-established (unlike the materials used in the SAME experiments)."
+        }
+      ]
+    },
+    {
+      "text": "The simulation is two-dimensional, laminar and short (7 s). The aerosol has not reached true steady state in the recirculating wake. Particles are spherical and in velocity and thermal equilibrium with the gas, Stokes settling is applied even to very large particles, and particle diffusivity is floored at node 5 for numerical reasons.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "The aerosol does not achieve a rigorous steady-state because particle evolution continues (slowly) in regions of the flow with recirculation, particularly behind the hot vapor source."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p10",
+          "quote": "The stokes settling velocity is assumed to apply for all particles in the domain (including the large particles)."
+        }
+      ]
+    },
+    {
+      "text": "The vapour source has a fixed temperature and spatially uniform flux, with no pyrolysis chemistry, no combustion and no soot. The results describe pre-ignition (smouldering or overheating) smoke only.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-115_Reports_NNX17AF08A_FinalReport.pdf",
+          "locator": "p9",
+          "quote": "The simulation mimics the smoldering or pre-conflagration stage of a fire studied in experi- ments performed aboard the ISS (Mulholland et al., 2015)."
+        }
+      ]
+    },
+    {
+      "text": "The data files carry no unit definitions. Units and log scaling were inferred from value ranges and the report figures. The 'Smoke' field scaling is unknown.",
+      "sources": [
+        {
+          "type": "psi_table",
+          "file": "PSI-115_Analyzed Data_8cmNoGravitySmoke.dat",
+          "sheet": "plain text",
+          "row": "header",
+          "value": "960 240 1 1 (values 0 to 14.2, scaling undocumented)"
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "accession": "PSI-102",
+      "relation": "ground re-analysis"
+    },
+    {
+      "accession": "PSI-101",
+      "relation": "ground re-analysis"
+    }
+  ],
+  "open_questions": [
+    "Compare the simulated PSDs, converted to SAME instrument observables (e.g. moments measured by the ionisation/scattering detectors and thermal-precipitator TEM sizes), against the SAME/SAME-R measurements in PSI-101 and PSI-102 for a quantitative validation.",
+    "Re-run the deposited configuration at exploration-atmosphere pressures (e.g. 70.3 kPa) to see how the mean free path and the Re/Fr change shift the 1 g vs microgravity difference.",
+    "Use the field files to compute particle residence-time maps in the wake, and relate them to the large mode, quantifying the 'recirculation' mechanism.",
+    "Test a sub-micron-forming surrogate, where settling is negligible, to isolate the buoyancy-to-cool-wall mechanism.",
+    "Simulate the quiescent enclosure case the authors flag as most different between 1 g and microgravity."
+  ],
+  "dashboard_hooks": [
+    {
+      "view": "particle size distribution overlay (1 g vs microgravity)",
+      "fields": [
+        "case",
+        "node",
+        "diameter_um",
+        "Q_collected_m3"
+      ],
+      "why": "Directly plots the deposited PSD .dat files joined to nodeDiameters.dat, showing the 5 um mode, the 30 um microgravity mode and the 40 um cut-off from settling."
+    },
+    {
+      "view": "2-D field viewer",
+      "fields": [
+        "case",
+        "x_L0",
+        "y_L0",
+        "variable (u, v, T/T0, vapour MF, log10 N, log10 J, d_m)"
+      ],
+      "why": "The 960 x 240 grids and fields are complete for the 8 cm/s cases and render the buoyant vs symmetric wake directly."
+    },
+    {
+      "view": "mechanism switch table",
+      "fields": [
+        "case",
+        "gravity",
+        "U0_cm_s",
+        "settling",
+        "thermophoresis",
+        "source_orientation",
+        "mode_um",
+        "max_d_um"
+      ],
+      "why": "Summarises the eight-case matrix and which mechanism produces which feature."
+    }
+  ],
+  "gaps": [
+    "No quantitative SAME (PSI-102) or SAME-R (PSI-101) comparison is in the PSI-115 files. The report says a journal manuscript (Aerosol Science & Technology) was to be submitted; no publication is listed in the PSI record, and no external search was made because sections 1-4 were sufficient.",
+    "No README or units for the .dat files. Header format, normalisations (U/U0, T/T0), log10 scaling and the -20 floor were inferred by opening the files and matching ranges to the report figures. The 'Smoke' field could not be matched to eq. 34 and its scaling is unknown.",
+    "The PSD files' normalisation does not exactly reproduce some ratios quoted in the report (1MG-NT/1MG peak about 2.4 vs 'about five'; the 1EG main peak at node 34 = 7.1 um vs '5 um'). This may come from binning or plotting choices; not resolved.",
+    "Data quality: the grid files are named 'grid3d' and contain a z array, but the report describes a two-dimensional simulation (nk = 1).",
+    "Data quality: the metadata zip is named 'PSI-115_metadata_PSI-185_...', a different accession number from PSI-115. Some field files contain 230,401 values instead of 230,400 (one trailing value).",
+    "Data quality: the rotated cases (1EG-R, 1MG-R) have NumDen and u/v fields but no PSD file, so Fig. 13 cannot be reproduced from PSI. The 10 cm/s cases lack temperature, vapour, nucleation and vorticity fields.",
+    "The ambient pressure value is not stated, only 'atmospheric'. The PSI record has no experiment hardware, publications or experimental table."
+  ]
+}

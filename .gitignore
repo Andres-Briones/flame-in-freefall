@@ -1,0 +1,7 @@
+# Reproducible via scripts/fetch_psi.py and scripts/fetch_psi_files.py
+data/raw/
+__pycache__/
+.env
+node_modules/
+.venv/
+demo/dist/

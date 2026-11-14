@@ -1,0 +1,174 @@
+{
+  "_about": "Knowledge record for one PSI investigation. Every fact needs a source. Unknown = null plus a note in `gaps`; never guess.",
+  "_source_format": {
+    "psi_record": {
+      "type": "psi_record",
+      "field": "objective"
+    },
+    "psi_file": {
+      "type": "psi_file",
+      "file": "<file_name>",
+      "locator": "p3",
+      "quote": "<verbatim text, max ~300 chars>"
+    },
+    "table": {
+      "type": "table",
+      "table": "tests",
+      "note": "how the number was derived"
+    },
+    "external": {
+      "type": "external",
+      "url": "<url or doi>",
+      "quote": "<verbatim text>"
+    }
+  },
+  "accession": "PSI-0",
+  "identity": {
+    "acronym": null,
+    "title": null,
+    "principal_investigators": [],
+    "dates": {
+      "start": null,
+      "end": null
+    },
+    "platform": null,
+    "facility": null,
+    "hardware": null,
+    "project_type": null
+  },
+  "one_line": "One sentence a non-specialist can read.",
+  "summary": "Stand-alone abstract of 120-180 words: what was done, how, the main results with numbers, and the fire-safety meaning.",
+  "question": {
+    "text": "What the investigation set out to learn and why.",
+    "sources": []
+  },
+  "physics": {
+    "text": "The phenomenon in plain terms; what microgravity changes and why that matters.",
+    "sources": [],
+    "equations": [
+      {
+        "latex": "LaTeX without delimiters, e.g. V_f \\propto \\frac{\\lambda_g}{\\rho_s c_s \\tau}",
+        "meaning": "What it says, each symbol defined with units, and when it applies.",
+        "sources": []
+      }
+    ]
+  },
+  "method": {
+    "apparatus": {
+      "text": null,
+      "sources": []
+    },
+    "fuels_and_samples": [
+      {
+        "name": null,
+        "phase": "gas|liquid|solid|aerosol",
+        "form": "burner, droplet, sheet, rod…",
+        "sources": []
+      }
+    ],
+    "procedure": {
+      "text": null,
+      "sources": []
+    }
+  },
+  "test_matrix": {
+    "varied": [
+      {
+        "parameter": "oxygen fraction",
+        "range": "0.17–0.21",
+        "unit": "mole fraction",
+        "sources": []
+      }
+    ],
+    "held_constant": [
+      {
+        "parameter": null,
+        "value": null,
+        "sources": []
+      }
+    ],
+    "n_tests": {
+      "value": null,
+      "sources": []
+    }
+  },
+  "measurements": [
+    {
+      "quantity": "flame spread rate",
+      "instrument": "video",
+      "derived": true,
+      "sources": []
+    }
+  ],
+  "psi_data": {
+    "summary": "What is in PSI for this investigation and how usable it is.",
+    "file_groups": [
+      {
+        "category": "Raw Data",
+        "what": "per-test video and image zips",
+        "formats": [
+          ".zip",
+          ".mp4"
+        ],
+        "n_files": null,
+        "size_gb": null,
+        "usable_now": false
+      }
+    ],
+    "tests_table_rows": null
+  },
+  "findings": [
+    {
+      "claim": "One finding per item, stated precisely with its conditions.",
+      "kind": "result|limit|trend|method|null_result",
+      "confidence": "high|medium|low",
+      "sources": []
+    }
+  ],
+  "fire_safety": {
+    "pillars": [
+      "prevention|detection|suppression|fundamental"
+    ],
+    "relevance": {
+      "text": "What this means for crewed spacecraft and habitats.",
+      "sources": []
+    },
+    "habitat_conditions": {
+      "text": "How tested O2, pressure and flow compare with exploration atmospheres (e.g. ~34% O2 at 56.5 kPa).",
+      "sources": []
+    },
+    "earth_benefits": {
+      "text": null,
+      "sources": []
+    }
+  },
+  "limitations": [
+    {
+      "text": null,
+      "sources": []
+    }
+  ],
+  "related": [
+    {
+      "accession": "PSI-0",
+      "relation": "follow-on|precursor|shared hardware|ground re-analysis|same fuel"
+    }
+  ],
+  "open_questions": [
+    "Analyses the PSI data would support that we have not seen done."
+  ],
+  "dashboard_hooks": [
+    {
+      "view": "extinction boundary map",
+      "fields": [
+        "x_o2",
+        "flow_cm_s",
+        "extinction_mode"
+      ],
+      "why": "…"
+    }
+  ],
+  "gaps": [
+    "What could not be found, and where we looked."
+  ]
+}

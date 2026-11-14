@@ -1,0 +1,33 @@
+[project]
+name = "flame-in-freefall"
+version = "0.1.0"
+description = "Digest and analysis of NASA PSI microgravity combustion investigations"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas",
+    "pyarrow",
+    "pypdf",
+    "python-pptx",
+    "python-docx",
+    "openpyxl",
+    "xlrd",
+    "scikit-learn",
+    "matplotlib",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "pytest",
+]
+server = [
+    "fastapi>=0.162.7",
+    "uvicorn>=0.54.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.uv]
+default-groups = ["dev", "server"]

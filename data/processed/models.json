@@ -1,0 +1,4844 @@
+{
+ "models": [
+  {
+   "id": "cfig_normal_self_extinction",
+   "accession": "PSI-159",
+   "kind": "classifier",
+   "question": "Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own (radiative self-extinction) before the scripted flow cut-off?",
+   "target": "self_extinguished",
+   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (flow cut by the script timeout or the burner temperature limit)",
+   "use": "predictive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "x_o2_ambient",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "more O2 raises T_f and heat release relative to radiation",
+     "domain": [
+      0.1797,
+      0.3997
+     ],
+     "untested": [
+      {
+       "range": [
+        0.25,
+        0.35
+       ],
+       "n_tests": 3
+      }
+     ]
+    },
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "soot and gas radiation grow with pressure",
+     "domain": [
+      50.67,
+      304.0
+     ]
+    },
+    {
+     "name": "fuel_flow_mg_s",
+     "unit": "mg/s",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "flame radius grows with fuel flow, radiative loss ~ r_f^3 against heat release ~ mdot, so chi_r rises",
+     "domain": [
+      0.125,
+      3.215
+     ]
+    },
+    {
+     "name": "fuel_fraction",
+     "unit": "mole fraction (burner stream)",
+     "transform": null,
+     "expected_sign": "?",
+     "why": "dilution lowers T_ad (favours extinction) but also lowers soot (favours survival)",
+     "domain": [
+      0.031,
+      1.0
+     ]
+    },
+    {
+     "name": "n_carbon",
+     "unit": "C atoms (2 ethane, 3 propane, 4 n-butane)",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "larger alkanes soot more",
+     "domain": [
+      2.0,
+      4.0
+     ],
+     "allowed": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "training_filter": [
+    {
+     "step": "PSI-159 normal-flame tests",
+     "rows": 179
+    },
+    {
+     "excluded": 46,
+     "why": "no established hot flame (ignited False): there is nothing to extinguish (21106 F4 is kept: the table logs it as not ignited, the raw data show a 20 s flame, patch D03)"
+    },
+    {
+     "excluded": 0,
+     "why": "no recorded outcome"
+    },
+    {
+     "step": "training rows",
+     "rows": 133
+    }
+   ],
+   "n": 133,
+   "n_groups": 11,
+   "target_summary": {
+    "class_counts": {
+     "1": 102,
+     "0": 31
+    },
+    "positive_fraction": 0.7669
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LogisticRegression"
+    ],
+    "params": {
+     "C": 1.0,
+     "fit_intercept": true,
+     "max_iter": 5000,
+     "penalty": "deprecated"
+    }
+   },
+   "coefficients": {
+    "scale": "log-odds",
+    "intercept_per_unit": 9.958,
+    "terms": [
+     {
+      "feature": "x_o2_ambient",
+      "per_sd": -1.965,
+      "per_unit": -24.51,
+      "per_sd_ci95_cluster_bootstrap": [
+       -2.602,
+       -1.052
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -32.47,
+       -13.12
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 0.01849,
+      "per_unit": 0.08484,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.6442,
+       0.6174
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -2.956,
+       2.833
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "log10(fuel_flow_mg_s)",
+      "per_sd": 1.34,
+      "per_unit": 5.535,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.685,
+       2.136
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       2.829,
+       8.822
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "fuel_fraction",
+      "per_sd": -0.2782,
+      "per_unit": -0.9847,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.7873,
+       0.1457
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -2.786,
+       0.5158
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     },
+     {
+      "feature": "n_carbon",
+      "per_sd": 0.02893,
+      "per_unit": 0.03484,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.19,
+       0.6159
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -1.433,
+       0.7416
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     }
+    ]
+   },
+   "in_sample": {
+    "roc_auc": 0.876,
+    "brier": 0.1136,
+    "balanced_accuracy": 0.7434
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "StratifiedKFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "roc_auc": {
+      "mean": 0.8377,
+      "sd": 0.06757,
+      "per_fold": [
+       0.7446,
+       0.9242,
+       0.8476,
+       0.8045,
+       0.8676
+      ],
+      "pooled": 0.8083
+     },
+     "brier": {
+      "mean": 0.1362,
+      "sd": 0.02792,
+      "per_fold": [
+       0.1593,
+       0.09387,
+       0.1277,
+       0.163,
+       0.1371
+      ],
+      "pooled": 0.1374
+     },
+     "balanced_accuracy": {
+      "mean": 0.7249,
+      "sd": 0.09615,
+      "per_fold": [
+       0.769,
+       0.7879,
+       0.8048,
+       0.5714,
+       0.6912
+      ],
+      "pooled": 0.709
+     }
+    },
+    "ungrouped": {
+     "roc_auc": {
+      "mean": 0.8464,
+      "sd": 0.1108,
+      "per_fold": [
+       0.9683,
+       0.7937,
+       0.8786,
+       0.9083,
+       0.6833
+      ],
+      "pooled": 0.8501
+     },
+     "brier": {
+      "mean": 0.1245,
+      "sd": 0.03576,
+      "per_fold": [
+       0.09164,
+       0.1231,
+       0.1172,
+       0.1059,
+       0.1848
+      ],
+      "pooled": 0.1242
+     },
+     "balanced_accuracy": {
+      "mean": 0.6871,
+      "sd": 0.04092,
+      "per_fold": [
+       0.6667,
+       0.6667,
+       0.7357,
+       0.725,
+       0.6417
+      ],
+      "pooled": 0.6901
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.3966
+      },
+      "brier": {
+       "mean": 0.1806,
+       "sd": 0.04009,
+       "per_fold": [
+        0.1925,
+        0.125,
+        0.1579,
+        0.1988,
+        0.2291
+       ],
+       "pooled": 0.1811
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.5987,
+       "sd": 0.1042,
+       "per_fold": [
+        0.587,
+        0.75,
+        0.4905,
+        0.5188,
+        0.6471
+       ],
+       "pooled": 0.5493
+      },
+      "brier": {
+       "mean": 0.1897,
+       "sd": 0.02215,
+       "per_fold": [
+        0.1845,
+        0.1576,
+        0.1903,
+        0.2188,
+        0.1972
+       ],
+       "pooled": 0.1897
+      },
+      "balanced_accuracy": {
+       "mean": 0.55,
+       "sd": 0.1118,
+       "per_fold": [
+        0.5,
+        0.75,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4945
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.7391,
+       "sd": 0.1815,
+       "per_fold": [
+        0.769,
+        1.0,
+        0.6095,
+        0.5301,
+        0.7868
+       ],
+       "pooled": 0.7188
+      },
+      "brier": {
+       "mean": 0.1445,
+       "sd": 0.07691,
+       "per_fold": [
+        0.1704,
+        0.01948,
+        0.1741,
+        0.2244,
+        0.134
+       ],
+       "pooled": 0.1465
+      },
+      "balanced_accuracy": {
+       "mean": 0.7658,
+       "sd": 0.1604,
+       "per_fold": [
+        0.769,
+        1.0,
+        0.6762,
+        0.5714,
+        0.8125
+       ],
+       "pooled": 0.7434
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.8195,
+       "sd": 0.104,
+       "per_fold": [
+        0.7418,
+        1.0,
+        0.7714,
+        0.812,
+        0.7721
+       ],
+       "pooled": 0.7687
+      },
+      "brier": {
+       "mean": 0.1601,
+       "sd": 0.08652,
+       "per_fold": [
+        0.2339,
+        0.01083,
+        0.1809,
+        0.1995,
+        0.1755
+       ],
+       "pooled": 0.1639
+      },
+      "balanced_accuracy": {
+       "mean": 0.7181,
+       "sd": 0.1669,
+       "per_fold": [
+        0.6196,
+        1.0,
+        0.7048,
+        0.5714,
+        0.6949
+       ],
+       "pooled": 0.6894
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4813
+      },
+      "brier": {
+       "mean": 0.1788,
+       "sd": 0.008293,
+       "per_fold": [
+        0.173,
+        0.173,
+        0.1931,
+        0.1775,
+        0.1775
+       ],
+       "pooled": 0.1789
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.6031,
+       "sd": 0.153,
+       "per_fold": [
+        0.7619,
+        0.6429,
+        0.4607,
+        0.725,
+        0.425
+       ],
+       "pooled": 0.5783
+      },
+      "brier": {
+       "mean": 0.1802,
+       "sd": 0.04128,
+       "per_fold": [
+        0.1401,
+        0.1622,
+        0.2281,
+        0.1496,
+        0.2209
+       ],
+       "pooled": 0.1801
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.8448,
+       "sd": 0.08275,
+       "per_fold": [
+        0.9444,
+        0.7817,
+        0.8143,
+        0.9208,
+        0.7625
+       ],
+       "pooled": 0.8442
+      },
+      "brier": {
+       "mean": 0.1202,
+       "sd": 0.04204,
+       "per_fold": [
+        0.06437,
+        0.1523,
+        0.1403,
+        0.08654,
+        0.1574
+       ],
+       "pooled": 0.1202
+      },
+      "balanced_accuracy": {
+       "mean": 0.7281,
+       "sd": 0.09005,
+       "per_fold": [
+        0.8333,
+        0.6429,
+        0.7143,
+        0.8083,
+        0.6417
+       ],
+       "pooled": 0.7272
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.892,
+       "sd": 0.1049,
+       "per_fold": [
+        0.9683,
+        0.8889,
+        0.9571,
+        0.9333,
+        0.7125
+       ],
+       "pooled": 0.8847
+      },
+      "brier": {
+       "mean": 0.1062,
+       "sd": 0.04643,
+       "per_fold": [
+        0.05854,
+        0.1158,
+        0.0771,
+        0.1,
+        0.1795
+       ],
+       "pooled": 0.1057
+      },
+      "balanced_accuracy": {
+       "mean": 0.7719,
+       "sd": 0.1155,
+       "per_fold": [
+        0.8333,
+        0.6429,
+        0.925,
+        0.7833,
+        0.675
+       ],
+       "pooled": 0.7785
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "roc_auc",
+    "grouped_mean": 0.8377,
+    "grouped_sd": 0.06757,
+    "grouped_pooled": 0.8083,
+    "ungrouped_mean": 0.8464,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     0.4723,
+     0.8731
+    ],
+    "grouped_pooled_median_days_resampled": 0.7373,
+    "single_feature_grouped_mean": 0.5987,
+    "single_feature_grouped_pooled": 0.5493
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- log10(fuel_flow_mg_s) <= -0.084\n|   |   |--- x_o2_ambient <= 0.389\n|   |   |   |--- class: 0\n|   |   |--- x_o2_ambient >  0.389\n|   |   |   |--- class: 0\n|   |--- log10(fuel_flow_mg_s) >  -0.084\n|   |   |--- x_o2_ambient <= 0.387\n|   |   |   |--- class: 1\n|   |   |--- x_o2_ambient >  0.387\n|   |   |   |--- class: 1\n"
+   },
+   "descriptive_table": [
+    {
+     "o2_band": "about 0.21",
+     "n": 41,
+     "positives": 41,
+     "fraction": 1.0,
+     "wilson95": [
+      0.9143,
+      1.0
+     ]
+    },
+    {
+     "o2_band": "about 0.33",
+     "n": 3,
+     "positives": 1,
+     "fraction": 0.3333,
+     "wilson95": [
+      0.06149,
+      0.7923
+     ]
+    },
+    {
+     "o2_band": "about 0.40",
+     "n": 89,
+     "positives": 60,
+     "fraction": 0.6742,
+     "wilson95": [
+      0.5713,
+      0.7626
+     ]
+    }
+   ],
+   "interpretation": "Partly. Ambient O2 (-) and fuel flow (+, larger flame, more radiative loss) agree, with intervals excluding 0; these two carry the model. Pressure and carbon number are indistinguishable from 0: within these tests, radiative self-extinction does not measurably depend on pressure once O2 and flow are fixed. The depth-3 tree and gradient boosting do no better on held-out days, so the linear form leaves little on the table.",
+   "caveats": [
+    "'Flow-terminated' is not 'stable': flow was cut by scripted timeouts or burner over-temperature, so the target is 'self-extinguished before the cut-off', and the fractions depend on the chosen timeouts.",
+    "At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 3 tests sit at about 33% O2.",
+    "Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.",
+    "Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn."
+   ],
+   "must_not_be_used_for": [
+    "material flammability, cabin fires or condensed fuels",
+    "other burners or flow timeouts (the target is tied to this hardware's cut-off times)",
+    "O2 between 0.25 and 0.35 (3 tests) or any combination not near a listed nearest test"
+   ]
+  },
+  {
+   "id": "cfig_inverse_self_extinction",
+   "accession": "PSI-159",
+   "kind": "classifier",
+   "question": "Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish before the flow cut-off, and how strongly does chamber pressure matter?",
+   "target": "self_extinguished",
+   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (usually the 66 s inverse timeout, sometimes the burner temperature limit)",
+   "use": "predictive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa (table values, ~9% above nominal fill)",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "soot forms outside the inverse flame in the hot fuel-rich gas; radiation grows with pressure",
+     "domain": [
+      49.54,
+      331.0
+     ]
+    },
+    {
+     "name": "x_o2_burner",
+     "unit": "mole fraction (burner stream)",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "more O2 in the burner stream raises T_ad",
+     "domain": [
+      0.15,
+      0.85
+     ]
+    },
+    {
+     "name": "o2_flow_mg_s",
+     "unit": "mg/s",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "O2 is the limiting reactant, so O2 flow sets the flame size and hence radiative loss",
+     "domain": [
+      1.342,
+      9.084
+     ]
+    },
+    {
+     "name": "n_carbon",
+     "unit": "C atoms (2 ethane, 3 propane, 4 n-butane)",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "larger alkanes soot more",
+     "domain": [
+      2.0,
+      4.0
+     ],
+     "allowed": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "training_filter": [
+    {
+     "step": "PSI-159 inverse-flame tests",
+     "rows": 154
+    },
+    {
+     "excluded": 8,
+     "why": "flash_only: a ~1 s momentary flame is a failed ignition, not a radiative extinction of an established flame"
+    },
+    {
+     "excluded": 15,
+     "why": "no hot ignition"
+    },
+    {
+     "excluded": 0,
+     "why": "no recorded outcome"
+    },
+    {
+     "step": "training rows",
+     "rows": 131
+    }
+   ],
+   "n": 131,
+   "n_groups": 12,
+   "target_summary": {
+    "class_counts": {
+     "1": 73,
+     "0": 58
+    },
+    "positive_fraction": 0.5573
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LogisticRegression"
+    ],
+    "params": {
+     "C": 1.0,
+     "fit_intercept": true,
+     "max_iter": 5000,
+     "penalty": "deprecated"
+    }
+   },
+   "coefficients": {
+    "scale": "log-odds",
+    "intercept_per_unit": -14.26,
+    "terms": [
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 1.948,
+      "per_unit": 6.728,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.9189,
+       2.775
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       3.173,
+       9.583
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_o2_burner",
+      "per_sd": 0.8747,
+      "per_unit": 3.338,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.478,
+       1.366
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       1.824,
+       5.212
+      ],
+      "expected_sign": "-",
+      "agreement": "CONTRADICTS (CI excludes 0)"
+     },
+     {
+      "feature": "log10(o2_flow_mg_s)",
+      "per_sd": -0.4876,
+      "per_unit": -2.05,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.353,
+       0.421
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -5.692,
+       1.771
+      ],
+      "expected_sign": "+",
+      "agreement": "opposite sign; CI includes 0"
+     },
+     {
+      "feature": "n_carbon",
+      "per_sd": -0.224,
+      "per_unit": -0.2659,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.7654,
+       0.6602
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -0.9089,
+       0.7839
+      ],
+      "expected_sign": "+",
+      "agreement": "opposite sign; CI includes 0"
+     }
+    ]
+   },
+   "in_sample": {
+    "roc_auc": 0.9217,
+    "brier": 0.1041,
+    "balanced_accuracy": 0.8194
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "StratifiedKFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "roc_auc": {
+      "mean": 0.8313,
+      "sd": 0.1453,
+      "per_fold": [
+       0.9444,
+       0.8696,
+       0.8929,
+       0.6184,
+       null
+      ],
+      "pooled": 0.8723
+     },
+     "brier": {
+      "mean": 0.1445,
+      "sd": 0.07681,
+      "per_fold": [
+       0.118,
+       0.1463,
+       0.2214,
+       0.2067,
+       0.03004
+      ],
+      "pooled": 0.1408
+     },
+     "balanced_accuracy": {
+      "mean": 0.7533,
+      "sd": 0.1745,
+      "per_fold": [
+       0.8301,
+       0.7464,
+       0.5455,
+       0.6447,
+       1.0
+      ],
+      "pooled": 0.7936
+     }
+    },
+    "ungrouped": {
+     "roc_auc": {
+      "mean": 0.9124,
+      "sd": 0.06432,
+      "per_fold": [
+       0.9222,
+       0.9583,
+       0.8512,
+       0.8424,
+       0.9879
+      ],
+      "pooled": 0.8984
+     },
+     "brier": {
+      "mean": 0.1203,
+      "sd": 0.0438,
+      "per_fold": [
+       0.1238,
+       0.09455,
+       0.1461,
+       0.1746,
+       0.06217
+      ],
+      "pooled": 0.1203
+     },
+     "balanced_accuracy": {
+      "mean": 0.7984,
+      "sd": 0.07353,
+      "per_fold": [
+       0.775,
+       0.8036,
+       0.7619,
+       0.7303,
+       0.9212
+      ],
+      "pooled": 0.7971
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        null
+       ],
+       "pooled": 0.167
+      },
+      "brier": {
+       "mean": 0.3027,
+       "sd": 0.1176,
+       "per_fold": [
+        0.2409,
+        0.2689,
+        0.2464,
+        0.2452,
+        0.5122
+       ],
+       "pooled": 0.3084
+      },
+      "balanced_accuracy": {
+       "mean": 0.4,
+       "sd": 0.2236,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.0
+       ],
+       "pooled": 0.3683
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.5599,
+       "sd": 0.05102,
+       "per_fold": [
+        0.6111,
+        0.5362,
+        0.5,
+        0.5921,
+        null
+       ],
+       "pooled": 0.7119
+      },
+      "brier": {
+       "mean": 0.2349,
+       "sd": 0.04822,
+       "per_fold": [
+        0.191,
+        0.2346,
+        0.2932,
+        0.2717,
+        0.1837
+       ],
+       "pooled": 0.233
+      },
+      "balanced_accuracy": {
+       "mean": 0.6479,
+       "sd": 0.2017,
+       "per_fold": [
+        0.6111,
+        0.5362,
+        0.5,
+        0.5921,
+        1.0
+       ],
+       "pooled": 0.7195
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.6524,
+       "sd": 0.1038,
+       "per_fold": [
+        0.5359,
+        0.6159,
+        0.7825,
+        0.6754,
+        null
+       ],
+       "pooled": 0.6346
+      },
+      "brier": {
+       "mean": 0.297,
+       "sd": 0.1097,
+       "per_fold": [
+        0.272,
+        0.2228,
+        0.2699,
+        0.231,
+        0.4892
+       ],
+       "pooled": 0.3021
+      },
+      "balanced_accuracy": {
+       "mean": 0.586,
+       "sd": 0.1571,
+       "per_fold": [
+        0.719,
+        0.6812,
+        0.5097,
+        0.6754,
+        0.3448
+       ],
+       "pooled": 0.5801
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.7013,
+       "sd": 0.1938,
+       "per_fold": [
+        0.4673,
+        0.7754,
+        0.9221,
+        0.6404,
+        null
+       ],
+       "pooled": 0.7853
+      },
+      "brier": {
+       "mean": 0.209,
+       "sd": 0.08675,
+       "per_fold": [
+        0.2198,
+        0.2706,
+        0.254,
+        0.2434,
+        0.05741
+       ],
+       "pooled": 0.205
+      },
+      "balanced_accuracy": {
+       "mean": 0.6774,
+       "sd": 0.1505,
+       "per_fold": [
+        0.6373,
+        0.6812,
+        0.5455,
+        0.5921,
+        0.931
+       ],
+       "pooled": 0.7145
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4813
+      },
+      "brier": {
+       "mean": 0.2469,
+       "sd": 0.002193,
+       "per_fold": [
+        0.2469,
+        0.2491,
+        0.2491,
+        0.2447,
+        0.2447
+       ],
+       "pooled": 0.2469
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.787,
+       "sd": 0.07146,
+       "per_fold": [
+        0.9,
+        0.8095,
+        0.7679,
+        0.7303,
+        0.7273
+       ],
+       "pooled": 0.7935
+      },
+      "brier": {
+       "mean": 0.1619,
+       "sd": 0.03878,
+       "per_fold": [
+        0.1019,
+        0.1541,
+        0.1829,
+        0.2056,
+        0.1649
+       ],
+       "pooled": 0.1614
+      },
+      "balanced_accuracy": {
+       "mean": 0.787,
+       "sd": 0.07146,
+       "per_fold": [
+        0.9,
+        0.8095,
+        0.7679,
+        0.7303,
+        0.7273
+       ],
+       "pooled": 0.7903
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.8684,
+       "sd": 0.05592,
+       "per_fold": [
+        0.9167,
+        0.9077,
+        0.875,
+        0.7758,
+        0.8667
+       ],
+       "pooled": 0.8395
+      },
+      "brier": {
+       "mean": 0.1608,
+       "sd": 0.04341,
+       "per_fold": [
+        0.1496,
+        0.1173,
+        0.1696,
+        0.2306,
+        0.1368
+       ],
+       "pooled": 0.1607
+      },
+      "balanced_accuracy": {
+       "mean": 0.7091,
+       "sd": 0.07358,
+       "per_fold": [
+        0.7083,
+        0.8155,
+        0.631,
+        0.6515,
+        0.7394
+       ],
+       "pooled": 0.7094
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.9017,
+       "sd": 0.05529,
+       "per_fold": [
+        0.95,
+        0.9226,
+        0.869,
+        0.8212,
+        0.9455
+       ],
+       "pooled": 0.8834
+      },
+      "brier": {
+       "mean": 0.1345,
+       "sd": 0.04188,
+       "per_fold": [
+        0.09628,
+        0.1096,
+        0.1565,
+        0.1975,
+        0.1126
+       ],
+       "pooled": 0.1342
+      },
+      "balanced_accuracy": {
+       "mean": 0.7873,
+       "sd": 0.06917,
+       "per_fold": [
+        0.8917,
+        0.8095,
+        0.7202,
+        0.7303,
+        0.7848
+       ],
+       "pooled": 0.7885
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "roc_auc",
+    "grouped_mean": 0.8313,
+    "grouped_sd": 0.1453,
+    "grouped_pooled": 0.8723,
+    "ungrouped_mean": 0.9124,
+    "folds_without_metric": 1,
+    "grouped_pooled_ci95_days_resampled": [
+     0.5657,
+     0.9475
+    ],
+    "grouped_pooled_median_days_resampled": 0.8299,
+    "single_feature_grouped_mean": 0.5599,
+    "single_feature_grouped_pooled": 0.7119
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- log10(pressure_kpa) <= 2.193\n|   |--- class: 0\n|--- log10(pressure_kpa) >  2.193\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- log10(pressure_kpa) <= 2.193\n|   |--- log10(pressure_kpa) <= 2.042\n|   |   |--- class: 0\n|   |--- log10(pressure_kpa) >  2.042\n|   |   |--- n_carbon <= 3.500\n|   |   |   |--- class: 1\n|   |   |--- n_carbon >  3.500\n|   |   |   |--- class: 0\n|--- log10(pressure_kpa) >  2.193\n|   |--- x_o2_burner <= 0.425\n|   |   |--- class: 0\n|   |--- x_o2_burner >  0.425\n|   |   |--- log10(o2_flow_mg_s) <= 0.349\n|   |   |   |--- class: 1\n|   |   |--- log10(o2_flow_mg_s) >  0.349\n|   |   |   |--- class: 1\n"
+   },
+   "descriptive_table": [
+    {
+     "pressure_level_kpa": "50",
+     "n": 3,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.5615
+     ]
+    },
+    {
+     "pressure_level_kpa": "60",
+     "n": 26,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.1287
+     ]
+    },
+    {
+     "pressure_level_kpa": "110",
+     "n": 35,
+     "positives": 15,
+     "fraction": 0.4286,
+     "wilson95": [
+      0.2798,
+      0.5914
+     ]
+    },
+    {
+     "pressure_level_kpa": "220",
+     "n": 35,
+     "positives": 31,
+     "fraction": 0.8857,
+     "wilson95": [
+      0.7405,
+      0.9546
+     ]
+    },
+    {
+     "pressure_level_kpa": "330",
+     "n": 32,
+     "positives": 27,
+     "fraction": 0.8438,
+     "wilson95": [
+      0.6825,
+      0.9314
+     ]
+    }
+   ],
+   "interpretation": "Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.87 for the full model; gradient boosting does worse on held-out days), matching 0/29 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow is added, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.",
+   "caveats": [
+    "All inverse rows carry pressure_9pct_above_nominal: the table pressures are ~9% above the fill levels. Used as given: a uniform multiplicative offset only shifts the intercept of log10(pressure).",
+    "Pressure and O2 flow are partly confounded with test day: pressure levels were run on separate days, so the grouped CV can only test pressure on held-out days with other pressures.",
+    "79 of 154 inverse tests used 85% O2 in the burner stream; low burner-O2 cells are small.",
+    "Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.72 with pressure in the training rows), so the two cannot be separated and the fit would split the pressure effect between them.",
+    "As for normal flames, 'flow_terminated' is a timeout outcome, not a stability limit."
+   ],
+   "must_not_be_used_for": [
+    "normal flames or real fires (an inverse flame has no fire-safety analogue in a cabin)",
+    "pressures outside 0.5-3.3 bar or other burners"
+   ]
+  },
+  {
+   "id": "cfig_normal_ignition",
+   "accession": "PSI-159",
+   "kind": "classifier",
+   "question": "Does a normal flame light (hot ignition) for a given chamber O2, pressure and fuel stream?",
+   "target": "ignited",
+   "target_definition": "1 if the table's 'Hot ignition' is yes, 0 if no",
+   "use": "descriptive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "x_o2_ambient",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "faster chemistry and hotter flame (Damköhler number up)",
+     "domain": [
+      0.1797,
+      0.3997
+     ]
+    },
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "reaction rate ~ p^n with n ~ 2 for chain branching, so Da rises",
+     "domain": [
+      50.67,
+      304.0
+     ]
+    },
+    {
+     "name": "fuel_flow_mg_s",
+     "unit": "mg/s",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "more fuel near the igniter",
+     "domain": [
+      0.1,
+      3.215
+     ]
+    },
+    {
+     "name": "fuel_fraction",
+     "unit": "mole fraction (burner stream)",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "heavily diluted fuel gives a cool, weak mixture near the igniter",
+     "domain": [
+      0.01827,
+      1.0
+     ]
+    },
+    {
+     "name": "n_carbon",
+     "unit": "C atoms",
+     "transform": null,
+     "expected_sign": "?",
+     "why": "no clear expectation across C2-C4 alkanes",
+     "domain": [
+      2.0,
+      4.0
+     ],
+     "allowed": [
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "training_filter": [
+    {
+     "step": "PSI-159 normal-flame tests",
+     "rows": 179
+    },
+    {
+     "excluded": 0,
+     "why": "ignition outcome not recorded"
+    },
+    {
+     "excluded": 2,
+     "why": "zero fuel fraction and zero fuel flow (21125 A4, H3): no fuel was supplied"
+    },
+    {
+     "step": "training rows",
+     "rows": 177
+    }
+   ],
+   "n": 177,
+   "n_groups": 11,
+   "target_summary": {
+    "class_counts": {
+     "1": 133,
+     "0": 44
+    },
+    "positive_fraction": 0.7514
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LogisticRegression"
+    ],
+    "params": {
+     "C": 1.0,
+     "fit_intercept": true,
+     "max_iter": 5000,
+     "penalty": "deprecated"
+    }
+   },
+   "coefficients": {
+    "scale": "log-odds",
+    "intercept_per_unit": 0.6625,
+    "terms": [
+     {
+      "feature": "x_o2_ambient",
+      "per_sd": 0.5866,
+      "per_unit": 7.102,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.1632,
+       1.373
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       1.976,
+       16.62
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 0.223,
+      "per_unit": 1.053,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.2918,
+       0.6265
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -1.377,
+       2.957
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "log10(fuel_flow_mg_s)",
+      "per_sd": 0.3687,
+      "per_unit": 1.382,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.431,
+       1.292
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -1.615,
+       4.843
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "log10(fuel_fraction)",
+      "per_sd": 0.5925,
+      "per_unit": 1.242,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.103,
+       1.422
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -2.311,
+       2.979
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "n_carbon",
+      "per_sd": -0.7098,
+      "per_unit": -0.8907,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.702,
+       0.04743
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -2.136,
+       0.05952
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     }
+    ]
+   },
+   "in_sample": {
+    "roc_auc": 0.8102,
+    "brier": 0.1452,
+    "balanced_accuracy": 0.6405
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "StratifiedKFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "roc_auc": {
+      "mean": 0.614,
+      "sd": 0.1758,
+      "per_fold": [
+       0.3807,
+       0.6225,
+       0.8069,
+       null,
+       0.6459
+      ],
+      "pooled": 0.5652
+     },
+     "brier": {
+      "mean": 0.2141,
+      "sd": 0.107,
+      "per_fold": [
+       0.2754,
+       0.3212,
+       0.1867,
+       0.04382,
+       0.2433
+      ],
+      "pooled": 0.207
+     },
+     "balanced_accuracy": {
+      "mean": 0.6044,
+      "sd": 0.2213,
+      "per_fold": [
+       0.5185,
+       0.5033,
+       0.5,
+       1.0,
+       0.5
+      ],
+      "pooled": 0.5191
+     }
+    },
+    "ungrouped": {
+     "roc_auc": {
+      "mean": 0.7836,
+      "sd": 0.0685,
+      "per_fold": [
+       0.8786,
+       0.7984,
+       0.7199,
+       0.8077,
+       0.7137
+      ],
+      "pooled": 0.7809
+     },
+     "brier": {
+      "mean": 0.1534,
+      "sd": 0.008783,
+      "per_fold": [
+       0.1416,
+       0.1564,
+       0.1648,
+       0.1483,
+       0.1557
+      ],
+      "pooled": 0.1533
+     },
+     "balanced_accuracy": {
+      "mean": 0.6272,
+      "sd": 0.0626,
+      "per_fold": [
+       0.5741,
+       0.5556,
+       0.6944,
+       0.6282,
+       0.6838
+      ],
+      "pooled": 0.6253
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        null,
+        0.5
+       ],
+       "pooled": 0.2482
+      },
+      "brier": {
+       "mean": 0.2099,
+       "sd": 0.08826,
+       "per_fold": [
+        0.1875,
+        0.3372,
+        0.1663,
+        0.1062,
+        0.2524
+       ],
+       "pooled": 0.2047
+      },
+      "balanced_accuracy": {
+       "mean": 0.6,
+       "sd": 0.2236,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.4743,
+       "sd": 0.05147,
+       "per_fold": [
+        0.5,
+        0.3971,
+        0.5,
+        null,
+        0.5
+       ],
+       "pooled": 0.2996
+      },
+      "brier": {
+       "mean": 0.2289,
+       "sd": 0.1328,
+       "per_fold": [
+        0.1926,
+        0.4076,
+        0.1637,
+        0.06768,
+        0.3129
+       ],
+       "pooled": 0.2203
+      },
+      "balanced_accuracy": {
+       "mean": 0.6,
+       "sd": 0.2236,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        1.0,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.6301,
+       "sd": 0.1386,
+       "per_fold": [
+        0.8004,
+        0.5278,
+        0.6852,
+        null,
+        0.5072
+       ],
+       "pooled": 0.5076
+      },
+      "brier": {
+       "mean": 0.2353,
+       "sd": 0.1543,
+       "per_fold": [
+        0.1622,
+        0.4402,
+        0.1645,
+        0.06167,
+        0.3481
+       ],
+       "pooled": 0.2253
+      },
+      "balanced_accuracy": {
+       "mean": 0.5815,
+       "sd": 0.1257,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.6217,
+        0.7857,
+        0.5
+       ],
+       "pooled": 0.4815
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.7264,
+       "sd": 0.05703,
+       "per_fold": [
+        0.7798,
+        0.7059,
+        0.7646,
+        null,
+        0.6555
+       ],
+       "pooled": 0.6596
+      },
+      "brier": {
+       "mean": 0.2138,
+       "sd": 0.1508,
+       "per_fold": [
+        0.1792,
+        0.4006,
+        0.1613,
+        0.01042,
+        0.3175
+       ],
+       "pooled": 0.2029
+      },
+      "balanced_accuracy": {
+       "mean": 0.6429,
+       "sd": 0.2233,
+       "per_fold": [
+        0.7222,
+        0.5294,
+        0.463,
+        1.0,
+        0.5
+       ],
+       "pooled": 0.5495
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4863
+      },
+      "brier": {
+       "mean": 0.1868,
+       "sd": 0.005822,
+       "per_fold": [
+        0.1875,
+        0.1875,
+        0.1769,
+        0.1911,
+        0.1911
+       ],
+       "pooled": 0.1869
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.6568,
+       "sd": 0.05001,
+       "per_fold": [
+        0.7222,
+        0.6111,
+        0.6944,
+        0.6453,
+        0.6111
+       ],
+       "pooled": 0.6601
+      },
+      "brier": {
+       "mean": 0.1524,
+       "sd": 0.02255,
+       "per_fold": [
+        0.1191,
+        0.1546,
+        0.148,
+        0.1819,
+        0.1581
+       ],
+       "pooled": 0.1522
+      },
+      "balanced_accuracy": {
+       "mean": 0.6568,
+       "sd": 0.05001,
+       "per_fold": [
+        0.7222,
+        0.6111,
+        0.6944,
+        0.6453,
+        0.6111
+       ],
+       "pooled": 0.6555
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.8489,
+       "sd": 0.06795,
+       "per_fold": [
+        0.8909,
+        0.856,
+        0.7477,
+        0.9252,
+        0.8248
+       ],
+       "pooled": 0.8425
+      },
+      "brier": {
+       "mean": 0.1232,
+       "sd": 0.01908,
+       "per_fold": [
+        0.1014,
+        0.1156,
+        0.1511,
+        0.1155,
+        0.1322
+       ],
+       "pooled": 0.123
+      },
+      "balanced_accuracy": {
+       "mean": 0.6548,
+       "sd": 0.05301,
+       "per_fold": [
+        0.7222,
+        0.6111,
+        0.7014,
+        0.6282,
+        0.6111
+       ],
+       "pooled": 0.6517
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.9167,
+       "sd": 0.05276,
+       "per_fold": [
+        0.9177,
+        0.963,
+        0.831,
+        0.9573,
+        0.9145
+       ],
+       "pooled": 0.9174
+      },
+      "brier": {
+       "mean": 0.1014,
+       "sd": 0.02695,
+       "per_fold": [
+        0.1063,
+        0.0698,
+        0.1424,
+        0.0872,
+        0.1014
+       ],
+       "pooled": 0.1013
+      },
+      "balanced_accuracy": {
+       "mean": 0.7454,
+       "sd": 0.08102,
+       "per_fold": [
+        0.7407,
+        0.7963,
+        0.6944,
+        0.8504,
+        0.6453
+       ],
+       "pooled": 0.7466
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "roc_auc",
+    "grouped_mean": 0.614,
+    "grouped_sd": 0.1758,
+    "grouped_pooled": 0.5652,
+    "ungrouped_mean": 0.7836,
+    "folds_without_metric": 1,
+    "grouped_pooled_ci95_days_resampled": [
+     0.1148,
+     0.8213
+    ],
+    "grouped_pooled_median_days_resampled": 0.4551,
+    "single_feature_grouped_mean": 0.4743,
+    "single_feature_grouped_pooled": 0.2996
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- log10(fuel_fraction) <= -1.537\n|   |--- class: 0\n|--- log10(fuel_fraction) >  -1.537\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- log10(fuel_fraction) <= -1.537\n|   |--- class: 0\n|--- log10(fuel_fraction) >  -1.537\n|   |--- x_o2_ambient <= 0.368\n|   |   |--- n_carbon <= 2.500\n|   |   |   |--- class: 1\n|   |   |--- n_carbon >  2.500\n|   |   |   |--- class: 1\n|   |--- x_o2_ambient >  0.368\n|   |   |--- log10(fuel_flow_mg_s) <= -0.084\n|   |   |   |--- class: 1\n|   |   |--- log10(fuel_flow_mg_s) >  -0.084\n|   |   |   |--- class: 1\n"
+   },
+   "descriptive_table": [
+    {
+     "fuel_fraction_band": "< 0.05",
+     "n": 38,
+     "positives": 14,
+     "fraction": 0.3684,
+     "wilson95": [
+      0.2338,
+      0.5272
+     ]
+    },
+    {
+     "fuel_fraction_band": ">= 0.05",
+     "n": 139,
+     "positives": 119,
+     "fraction": 0.8561,
+     "wilson95": [
+      0.7882,
+      0.9049
+     ]
+    }
+   ],
+   "interpretation": "O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/38 ignitions below 0.05 fuel fraction against 118/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.",
+   "caveats": [
+    "Igniter energy was deliberately lowered in some tests to try direct cool-flame ignition (final report); igniter settings are not in the table, so some failures are by design and look like condition effects.",
+    "Mass flow controllers are poor below 10% of full scale, which is where most diluted, low-flow failures sit.",
+    "Failures cluster by day: all 45 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 44 of them on 5, and the grouped CV (held-out days) is close to chance. Kept as a descriptive table, not a predictor."
+   ],
+   "must_not_be_used_for": [
+    "flammability limits of materials or of premixed gases",
+    "igniters other than the ACME hot-wire igniter at standard settings"
+   ]
+  },
+  {
+   "id": "cfig_inverse_ignition",
+   "accession": "PSI-159",
+   "kind": "classifier",
+   "question": "Does an inverse flame light, given the burner-stream O2 and chamber pressure?",
+   "target": "ignited",
+   "target_definition": "1 if 'Hot ignition' is yes, 0 if no ('flash' rows excluded)",
+   "use": "descriptive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "x_o2_burner",
+     "unit": "mole fraction (burner stream)",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "a richer oxidiser stream gives a hotter, faster-reacting mixture at the igniter",
+     "domain": [
+      0.12,
+      0.85
+     ]
+    },
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa (table values)",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "Da rises with pressure",
+     "domain": [
+      49.54,
+      331.0
+     ]
+    }
+   ],
+   "training_filter": [
+    {
+     "step": "PSI-159 inverse-flame tests",
+     "rows": 154
+    },
+    {
+     "excluded": 8,
+     "why": "flash_only: momentary flame, neither a clean ignition nor a failure"
+    },
+    {
+     "excluded": 0,
+     "why": "ignition outcome not recorded"
+    },
+    {
+     "step": "training rows",
+     "rows": 146
+    }
+   ],
+   "n": 146,
+   "n_groups": 12,
+   "target_summary": {
+    "class_counts": {
+     "1": 131,
+     "0": 15
+    },
+    "positive_fraction": 0.8973
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LogisticRegression"
+    ],
+    "params": {
+     "C": 1.0,
+     "fit_intercept": true,
+     "max_iter": 5000,
+     "penalty": "deprecated"
+    }
+   },
+   "coefficients": {
+    "scale": "log-odds",
+    "intercept_per_unit": -2.333,
+    "terms": [
+     {
+      "feature": "x_o2_burner",
+      "per_sd": 1.194,
+      "per_unit": 4.297,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.5439,
+       2.189
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       1.957,
+       7.877
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 0.3529,
+      "per_unit": 1.189,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.2791,
+       0.989
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -0.9401,
+       3.332
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     }
+    ]
+   },
+   "in_sample": {
+    "roc_auc": 0.8344,
+    "brier": 0.07567,
+    "balanced_accuracy": 0.5
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "StratifiedKFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "roc_auc": {
+      "mean": 0.8523,
+      "sd": 0.1453,
+      "per_fold": [
+       0.96,
+       0.9038,
+       0.8654,
+       0.9323,
+       0.6
+      ],
+      "pooled": 0.7613
+     },
+     "brier": {
+      "mean": 0.09457,
+      "sd": 0.07368,
+      "per_fold": [
+       0.06058,
+       0.03462,
+       0.03589,
+       0.2015,
+       0.1402
+      ],
+      "pooled": 0.1001
+     },
+     "balanced_accuracy": {
+      "mean": 0.5167,
+      "sd": 0.03727,
+      "per_fold": [
+       0.5,
+       0.5,
+       0.5,
+       0.5,
+       0.5833
+      ],
+      "pooled": 0.5142
+     }
+    },
+    "ungrouped": {
+     "roc_auc": {
+      "mean": 0.8278,
+      "sd": 0.07395,
+      "per_fold": [
+       0.8889,
+       0.8141,
+       0.7051,
+       0.859,
+       0.8718
+      ],
+      "pooled": 0.8079
+     },
+     "brier": {
+      "mean": 0.07684,
+      "sd": 0.006096,
+      "per_fold": [
+       0.06886,
+       0.07983,
+       0.08456,
+       0.07801,
+       0.07295
+      ],
+      "pooled": 0.07679
+     },
+     "balanced_accuracy": {
+      "mean": 0.5,
+      "sd": 0.0,
+      "per_fold": [
+       0.5,
+       0.5,
+       0.5,
+       0.5,
+       0.5
+      ],
+      "pooled": 0.5
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.283
+      },
+      "brier": {
+       "mean": 0.09202,
+       "sd": 0.07537,
+       "per_fold": [
+        0.06982,
+        0.04216,
+        0.04216,
+        0.2231,
+        0.08288
+       ],
+       "pooled": 0.09613
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.7654,
+       "sd": 0.2,
+       "per_fold": [
+        0.9,
+        0.9038,
+        0.9231,
+        0.5,
+        0.6
+       ],
+       "pooled": 0.7224
+      },
+      "brier": {
+       "mean": 0.09641,
+       "sd": 0.08255,
+       "per_fold": [
+        0.05339,
+        0.0382,
+        0.03339,
+        0.2263,
+        0.1308
+       ],
+       "pooled": 0.1023
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.7162,
+       "sd": 0.2691,
+       "per_fold": [
+        0.9,
+        0.9038,
+        0.9231,
+        0.3542,
+        0.5
+       ],
+       "pooled": 0.5168
+      },
+      "brier": {
+       "mean": 0.125,
+       "sd": 0.113,
+       "per_fold": [
+        0.05675,
+        0.03197,
+        0.03963,
+        0.2428,
+        0.2537
+       ],
+       "pooled": 0.1343
+      },
+      "balanced_accuracy": {
+       "mean": 0.4833,
+       "sd": 0.03727,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.4167
+       ],
+       "pooled": 0.4809
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.7433,
+       "sd": 0.2539,
+       "per_fold": [
+        0.96,
+        0.8269,
+        0.9808,
+        0.4375,
+        0.5111
+       ],
+       "pooled": 0.6056
+      },
+      "brier": {
+       "mean": 0.1193,
+       "sd": 0.1126,
+       "per_fold": [
+        0.04693,
+        0.0374,
+        0.0272,
+        0.2419,
+        0.243
+       ],
+       "pooled": 0.1286
+      },
+      "balanced_accuracy": {
+       "mean": 0.4833,
+       "sd": 0.03727,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.4167
+       ],
+       "pooled": 0.4809
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4969
+      },
+      "brier": {
+       "mean": 0.0922,
+       "sd": 0.001223,
+       "per_fold": [
+        0.09001,
+        0.09275,
+        0.09275,
+        0.09275,
+        0.09275
+       ],
+       "pooled": 0.09219
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.7932,
+       "sd": 0.1404,
+       "per_fold": [
+        0.8889,
+        0.8462,
+        0.5513,
+        0.7949,
+        0.8846
+       ],
+       "pooled": 0.7354
+      },
+      "brier": {
+       "mean": 0.0795,
+       "sd": 0.01745,
+       "per_fold": [
+        0.06719,
+        0.07696,
+        0.11,
+        0.07391,
+        0.06948
+       ],
+       "pooled": 0.07942
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.8149,
+       "sd": 0.09592,
+       "per_fold": [
+        0.9012,
+        0.8462,
+        0.6667,
+        0.7756,
+        0.8846
+       ],
+       "pooled": 0.7977
+      },
+      "brier": {
+       "mean": 0.08538,
+       "sd": 0.02443,
+       "per_fold": [
+        0.07585,
+        0.09182,
+        0.1247,
+        0.06234,
+        0.07216
+       ],
+       "pooled": 0.08532
+      },
+      "balanced_accuracy": {
+       "mean": 0.5697,
+       "sd": 0.1348,
+       "per_fold": [
+        0.7778,
+        0.6282,
+        0.4423,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5695
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.7768,
+       "sd": 0.149,
+       "per_fold": [
+        0.8519,
+        0.8013,
+        0.5385,
+        0.7564,
+        0.9359
+       ],
+       "pooled": 0.7453
+      },
+      "brier": {
+       "mean": 0.08995,
+       "sd": 0.03619,
+       "per_fold": [
+        0.07508,
+        0.1252,
+        0.1324,
+        0.06021,
+        0.0569
+       ],
+       "pooled": 0.08985
+      },
+      "balanced_accuracy": {
+       "mean": 0.6323,
+       "sd": 0.1296,
+       "per_fold": [
+        0.7963,
+        0.5897,
+        0.4423,
+        0.6667,
+        0.6667
+       ],
+       "pooled": 0.6323
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "roc_auc",
+    "grouped_mean": 0.8523,
+    "grouped_sd": 0.1453,
+    "grouped_pooled": 0.7613,
+    "ungrouped_mean": 0.8278,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     0.3581,
+     0.883
+    ],
+    "grouped_pooled_median_days_resampled": 0.7469,
+    "single_feature_grouped_mean": 0.7654,
+    "single_feature_grouped_pooled": 0.7224
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- x_o2_burner <= 0.350\n|   |--- class: 1\n|--- x_o2_burner >  0.350\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- x_o2_burner <= 0.350\n|   |--- log10(pressure_kpa) <= 2.042\n|   |   |--- x_o2_burner <= 0.255\n|   |   |   |--- class: 0\n|   |   |--- x_o2_burner >  0.255\n|   |   |   |--- class: 1\n|   |--- log10(pressure_kpa) >  2.042\n|   |   |--- log10(pressure_kpa) <= 2.432\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.432\n|   |   |   |--- class: 1\n|--- x_o2_burner >  0.350\n|   |--- log10(pressure_kpa) <= 1.892\n|   |   |--- class: 1\n|   |--- log10(pressure_kpa) >  1.892\n|   |   |--- log10(pressure_kpa) <= 2.432\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.432\n|   |   |   |--- class: 1\n"
+   },
+   "descriptive_table": [
+    {
+     "x_o2_burner_level": "0.12",
+     "n": 1,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.7935
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.15",
+     "n": 3,
+     "positives": 3,
+     "fraction": 1.0,
+     "wilson95": [
+      0.4385,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.18",
+     "n": 2,
+     "positives": 2,
+     "fraction": 1.0,
+     "wilson95": [
+      0.3424,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.19",
+     "n": 1,
+     "positives": 1,
+     "fraction": 1.0,
+     "wilson95": [
+      0.2065,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.21",
+     "n": 26,
+     "positives": 16,
+     "fraction": 0.6154,
+     "wilson95": [
+      0.4253,
+      0.7757
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.3",
+     "n": 8,
+     "positives": 6,
+     "fraction": 0.75,
+     "wilson95": [
+      0.4093,
+      0.9285
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.4",
+     "n": 3,
+     "positives": 3,
+     "fraction": 1.0,
+     "wilson95": [
+      0.4385,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.45",
+     "n": 1,
+     "positives": 1,
+     "fraction": 1.0,
+     "wilson95": [
+      0.2065,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.5",
+     "n": 22,
+     "positives": 22,
+     "fraction": 1.0,
+     "wilson95": [
+      0.8513,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.7",
+     "n": 1,
+     "positives": 1,
+     "fraction": 1.0,
+     "wilson95": [
+      0.2065,
+      1.0
+     ]
+    },
+    {
+     "x_o2_burner_level": "0.85",
+     "n": 78,
+     "positives": 76,
+     "fraction": 0.9744,
+     "wilson95": [
+      0.9112,
+      0.9929
+     ]
+    }
+   ],
+   "interpretation": "Burner O2 agrees (+) on average, but the table shows the effect is not monotone: the failures concentrate at 0.21 burner O2, while the few lower-O2 tests mostly lit.",
+   "caveats": [
+    "Only 15 non-ignitions, 10 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the descriptive table first.",
+    "Igniter settings varied and are not in the table.",
+    "Not monotone in burner O2: 6 of 7 tests at 0.15-0.19 ignited while 10 of 26 at 0.21 failed, so a logistic curve in O2 misdescribes the low end. Kept as a descriptive table."
+   ],
+   "must_not_be_used_for": [
+    "normal flames",
+    "any fire-safety ignition criterion"
+   ]
+  },
+  {
+   "id": "flex_burning_rate",
+   "accession": "PSI-69",
+   "kind": "regressor",
+   "question": "How fast does a free methanol or n-heptane droplet burn (d²-law constant K) in a given atmosphere?",
+   "target": "burn_rate_k_mm2_s",
+   "target_definition": "average burning-rate constant K (mm²/s) of the d²-law d² = d0² - K t, as tabulated",
+   "use": "predictive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "is_heptane",
+     "unit": "1 n-heptane, 0 methanol",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "heptane has the larger transfer number B",
+     "domain": [
+      0.0,
+      1.0
+     ],
+     "allowed": [
+      0,
+      1
+     ]
+    },
+    {
+     "name": "x_o2_ambient",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "B grows with ambient O2",
+     "domain": [
+      0.12,
+      0.34
+     ]
+    },
+    {
+     "name": "x_co2",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "CO2's heat capacity lowers T_f and B",
+     "domain": [
+      0.0,
+      0.7
+     ]
+    },
+    {
+     "name": "x_he",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "helium raises the gas conductivity lambda",
+     "domain": [
+      0.0,
+      0.45
+     ]
+    },
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa",
+     "transform": "log10",
+     "expected_sign": "?",
+     "why": "quasi-steady theory: K nearly independent of pressure",
+     "domain": [
+      70.17,
+      309.3
+     ]
+    },
+    {
+     "name": "d0_mm",
+     "unit": "mm",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "radiative loss grows with droplet and flame size; small methanol droplets burn faster than predicted",
+     "domain": [
+      1.13,
+      4.53
+     ]
+    }
+   ],
+   "constraints": {
+    "sum_at_most_one": [
+     "x_o2_ambient",
+     "x_co2",
+     "x_he"
+    ]
+   },
+   "training_filter": [
+    {
+     "step": "PSI-69 FLEX tests",
+     "rows": 274
+    },
+    {
+     "excluded": 16,
+     "why": "no burning-rate constant"
+    },
+    {
+     "excluded": 1,
+     "why": "no initial diameter or pressure (includes C11M201, pressure_zero_in_source)"
+    },
+    {
+     "excluded": 4,
+     "why": "composition_sum: O2/N2/CO2/He fractions (features) sum to 0.98"
+    },
+    {
+     "excluded": 2,
+     "why": "duplicate_id: the two 193F001 rows disagree on d0, K and burn time"
+    },
+    {
+     "step": "training rows",
+     "rows": 251
+    }
+   ],
+   "n": 251,
+   "n_groups": 79,
+   "target_summary": {
+    "min": 0.05,
+    "max": 1.06,
+    "mean": 0.5027,
+    "sd": 0.135
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LinearRegression"
+    ],
+    "params": {
+     "fit_intercept": true
+    }
+   },
+   "coefficients": {
+    "scale": "burn_rate_k_mm2_s",
+    "intercept_per_unit": 0.08424,
+    "terms": [
+     {
+      "feature": "is_heptane",
+      "per_sd": 0.01223,
+      "per_unit": 0.02487,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.002015,
+       0.02384
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.004096,
+       0.04847
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_o2_ambient",
+      "per_sd": 0.09623,
+      "per_unit": 2.036,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.07813,
+       0.1134
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       1.653,
+       2.399
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_co2",
+      "per_sd": -0.02035,
+      "per_unit": -0.1249,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.03383,
+       -0.007329
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -0.2077,
+       -0.04499
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_he",
+      "per_sd": 0.06186,
+      "per_unit": 0.5381,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.03713,
+       0.08578
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.323,
+       0.7462
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 0.009273,
+      "per_unit": 0.09064,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.0006531,
+       0.02178
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.006383,
+       0.2129
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     },
+     {
+      "feature": "d0_mm",
+      "per_sd": -0.04358,
+      "per_unit": -0.06464,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.05409,
+       -0.0323
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -0.08023,
+       -0.04791
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees"
+     }
+    ]
+   },
+   "in_sample": {
+    "r2": 0.7701,
+    "mae": 0.04226
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "KFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "r2": {
+      "mean": 0.6861,
+      "sd": 0.09341,
+      "per_fold": [
+       0.6746,
+       0.6852,
+       0.8138,
+       0.7051,
+       0.5516
+      ],
+      "pooled": 0.7413
+     },
+     "mae": {
+      "mean": 0.04529,
+      "sd": 0.00228,
+      "per_fold": [
+       0.04434,
+       0.0491,
+       0.04546,
+       0.04441,
+       0.04316
+      ],
+      "pooled": 0.04529
+     }
+    },
+    "ungrouped": {
+     "r2": {
+      "mean": 0.7661,
+      "sd": 0.1221,
+      "per_fold": [
+       0.603,
+       0.6742,
+       0.878,
+       0.8681,
+       0.8073
+      ],
+      "pooled": 0.7595
+     },
+     "mae": {
+      "mean": 0.04305,
+      "sd": 0.01262,
+      "per_fold": [
+       0.05472,
+       0.0584,
+       0.03168,
+       0.03257,
+       0.03789
+      ],
+      "pooled": 0.0431
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -0.2124,
+       "sd": 0.234,
+       "per_fold": [
+        -0.0002724,
+        -0.5304,
+        -0.000246,
+        -0.1602,
+        -0.3709
+       ],
+       "pooled": -0.06096
+      },
+      "mae": {
+       "mean": 0.1082,
+       "sd": 0.01907,
+       "per_fold": [
+        0.09938,
+        0.1302,
+        0.1238,
+        0.1045,
+        0.08299
+       ],
+       "pooled": 0.1081
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": -0.2909,
+       "sd": 0.3703,
+       "per_fold": [
+        -0.02347,
+        -0.3176,
+        0.1667,
+        -0.7473,
+        -0.533
+       ],
+       "pooled": -0.07525
+      },
+      "mae": {
+       "mean": 0.1102,
+       "sd": 0.01456,
+       "per_fold": [
+        0.09737,
+        0.1148,
+        0.1126,
+        0.1311,
+        0.09536
+       ],
+       "pooled": 0.1102
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": 0.2268,
+       "sd": 0.3244,
+       "per_fold": [
+        0.4166,
+        0.4264,
+        0.4506,
+        0.1518,
+        -0.3112
+       ],
+       "pooled": 0.3859
+      },
+      "mae": {
+       "mean": 0.08165,
+       "sd": 0.006807,
+       "per_fold": [
+        0.07416,
+        0.07675,
+        0.08962,
+        0.08785,
+        0.07984
+       ],
+       "pooled": 0.08162
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": 0.5304,
+       "sd": 0.1152,
+       "per_fold": [
+        0.6031,
+        0.5677,
+        0.656,
+        0.4504,
+        0.3748
+       ],
+       "pooled": 0.6097
+      },
+      "mae": {
+       "mean": 0.05889,
+       "sd": 0.00811,
+       "per_fold": [
+        0.05263,
+        0.0643,
+        0.06641,
+        0.06315,
+        0.04794
+       ],
+       "pooled": 0.05886
+      }
+     }
+    },
+    "ungrouped": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -0.04392,
+       "sd": 0.04048,
+       "per_fold": [
+        -0.1085,
+        -0.04734,
+        -0.04393,
+        -0.004866,
+        -0.01489
+       ],
+       "pooled": -0.01489
+      },
+      "mae": {
+       "mean": 0.1058,
+       "sd": 0.01398,
+       "per_fold": [
+        0.09954,
+        0.1306,
+        0.09809,
+        0.09796,
+        0.1029
+       ],
+       "pooled": 0.1058
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": 0.1088,
+       "sd": 0.08788,
+       "per_fold": [
+        -0.01788,
+        0.1252,
+        0.2281,
+        0.1164,
+        0.09222
+       ],
+       "pooled": 0.1339
+      },
+      "mae": {
+       "mean": 0.0961,
+       "sd": 0.01244,
+       "per_fold": [
+        0.09293,
+        0.1172,
+        0.08408,
+        0.09403,
+        0.09226
+       ],
+       "pooled": 0.09609
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": 0.4194,
+       "sd": 0.2161,
+       "per_fold": [
+        0.08988,
+        0.5039,
+        0.5121,
+        0.6552,
+        0.3358
+       ],
+       "pooled": 0.4504
+      },
+      "mae": {
+       "mean": 0.06883,
+       "sd": 0.01122,
+       "per_fold": [
+        0.07686,
+        0.08422,
+        0.05897,
+        0.05954,
+        0.06456
+       ],
+       "pooled": 0.06886
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": 0.7,
+       "sd": 0.1225,
+       "per_fold": [
+        0.5252,
+        0.6668,
+        0.7397,
+        0.8637,
+        0.7048
+       ],
+       "pooled": 0.7056
+      },
+      "mae": {
+       "mean": 0.04892,
+       "sd": 0.01192,
+       "per_fold": [
+        0.05862,
+        0.06326,
+        0.04053,
+        0.03493,
+        0.04724
+       ],
+       "pooled": 0.04896
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "r2",
+    "grouped_mean": 0.6861,
+    "grouped_sd": 0.09341,
+    "grouped_pooled": 0.7413,
+    "ungrouped_mean": 0.7661,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     0.6335,
+     0.8025
+    ],
+    "grouped_pooled_median_days_resampled": 0.7282,
+    "single_feature_grouped_mean": -0.2909,
+    "single_feature_grouped_pooled": -0.07525
+   },
+   "prediction_interval": {
+    "residual_quantiles": [
+     -0.08916,
+     0.08999
+    ],
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+   },
+   "sensitivity": {
+    "without": "the tests that went out early (D_ext/D0 > 0.9), where K is fitted over a short burn",
+    "excluded": 35,
+    "n": 216,
+    "metric": "r2",
+    "grouped_mean": 0.7364,
+    "grouped_pooled": 0.7582,
+    "per_unit": {
+     "is_heptane": 0.05695,
+     "x_o2_ambient": 1.781,
+     "x_co2": -0.05944,
+     "x_he": 0.5252,
+     "log10(pressure_kpa)": 0.0217,
+     "d0_mm": -0.0523
+    }
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- x_o2_ambient <= 0.235\n|   |--- value: [0.474]\n|--- x_o2_ambient >  0.235\n|   |--- value: [0.630]\n",
+    "decision_tree_depth3": "|--- x_o2_ambient <= 0.235\n|   |--- x_he <= 0.025\n|   |   |--- x_o2_ambient <= 0.185\n|   |   |   |--- value: [0.382]\n|   |   |--- x_o2_ambient >  0.185\n|   |   |   |--- value: [0.487]\n|   |--- x_he >  0.025\n|   |   |--- log10(pressure_kpa) <= 1.927\n|   |   |   |--- value: [0.679]\n|   |   |--- log10(pressure_kpa) >  1.927\n|   |   |   |--- value: [0.546]\n|--- x_o2_ambient >  0.235\n|   |--- x_co2 <= 0.075\n|   |   |--- is_heptane <= 0.500\n|   |   |   |--- value: [0.655]\n|   |   |--- is_heptane >  0.500\n|   |   |   |--- value: [0.729]\n|   |--- x_co2 >  0.075\n|   |   |--- d0_mm <= 2.830\n|   |   |   |--- value: [0.617]\n|   |   |--- d0_mm >  2.830\n|   |   |   |--- value: [0.531]\n"
+   },
+   "interpretation": "Yes, every term with an expectation agrees and its interval excludes 0: K rises with O2 and helium (conductivity), falls with CO2 and with initial diameter (radiative loss), and is slightly higher for heptane. Pressure has a small positive coefficient that is not robust: it shrinks about fourfold when the tests that went out early are left out (see Sensitivity), so K is best read as independent of pressure here, as quasi-steady theory says. The linear model beats gradient boosting on held-out days (R² 0.69 vs 0.53), so there is no evidence of missed non-linearity.",
+   "caveats": [
+    "The rows include tests that went out early (D_ext/D0 > 0.9). They are kept, because leaving them out would select on the outcome, but the pressure coefficient depends on them (see Sensitivity).",
+    "K is one average per test; the tabulated value is not accompanied by the diameter history it came from.",
+    "Needle conformal-coating contamination (2009-2011) is judged by the team to affect K minimally.",
+    "Diluent fractions vary jointly (O2/N2/CO2/He sum to 1), so coefficients are partial effects at fixed remaining fractions; N2 is the implicit reference."
+   ],
+   "must_not_be_used_for": [
+    "other fuels, fibre-supported droplets or sprays",
+    "predicting whether a droplet ignites (no failed-ignition rows exist)",
+    "burn time (needs the extinction diameter, which this model does not predict)"
+   ]
+  },
+  {
+   "id": "flex_methanol_extinction_diameter",
+   "accession": "PSI-69",
+   "kind": "regressor",
+   "question": "At what droplet diameter does a burning methanol droplet go out?",
+   "target": "ext_diameter_mm",
+   "target_definition": "visible-flame extinction diameter (mm), tests that ended in flame extinction",
+   "use": "predictive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "d0_mm",
+     "unit": "mm",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "absorbed product water accumulates to ~30% of the droplet mass, so D_ext grows roughly linearly with D0",
+     "domain": [
+      1.61,
+      4.35
+     ]
+    },
+    {
+     "name": "x_o2_ambient",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "diffusive (Damköhler) extinction diameter grows as O2 falls",
+     "domain": [
+      0.12,
+      0.3
+     ]
+    },
+    {
+     "name": "x_co2",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "?",
+     "why": "the team reports D_ext nearly independent of diluent type",
+     "domain": [
+      0.0,
+      0.7
+     ]
+    },
+    {
+     "name": "x_he",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "?",
+     "why": "as for CO2",
+     "domain": [
+      0.0,
+      0.45
+     ]
+    },
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa",
+     "transform": "log10",
+     "expected_sign": "?",
+     "why": "no clear expectation over 0.7-3 atm",
+     "domain": [
+      70.17,
+      276.3
+     ]
+    }
+   ],
+   "constraints": {
+    "sum_at_most_one": [
+     "x_o2_ambient",
+     "x_co2",
+     "x_he"
+    ]
+   },
+   "training_filter": [
+    {
+     "step": "PSI-69 FLEX tests",
+     "rows": 274
+    },
+    {
+     "excluded": 117,
+     "why": "not methanol (heptane mixes radiative and diffusive branches)"
+    },
+    {
+     "excluded": 31,
+     "why": "test ended by disruption or completion, not extinction"
+    },
+    {
+     "excluded": 0,
+     "why": "ext_zero / ext_gt_d0: extinction diameter (the target) is a placeholder or impossible"
+    },
+    {
+     "excluded": 24,
+     "why": "no extinction diameter, initial diameter or pressure"
+    },
+    {
+     "excluded": 2,
+     "why": "composition_sum: ambient fractions (features) sum to 0.98"
+    },
+    {
+     "excluded": 0,
+     "why": "duplicate_id: the two 193F001 rows disagree"
+    },
+    {
+     "step": "training rows",
+     "rows": 100
+    }
+   ],
+   "n": 100,
+   "n_groups": 37,
+   "target_summary": {
+    "min": 0.81,
+    "max": 3.96,
+    "mean": 1.881,
+    "sd": 0.8024
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LinearRegression"
+    ],
+    "params": {
+     "fit_intercept": true
+    }
+   },
+   "coefficients": {
+    "scale": "ext_diameter_mm",
+    "intercept_per_unit": 1.683,
+    "terms": [
+     {
+      "feature": "d0_mm",
+      "per_sd": 0.532,
+      "per_unit": 0.8243,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.3991,
+       0.6542
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.6184,
+       1.014
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_o2_ambient",
+      "per_sd": -0.3611,
+      "per_unit": -9.986,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.449,
+       -0.2324
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -12.42,
+       -6.427
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "x_co2",
+      "per_sd": 0.2454,
+      "per_unit": 1.408,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.08096,
+       0.3536
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.4646,
+       2.029
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     },
+     {
+      "feature": "x_he",
+      "per_sd": 0.1934,
+      "per_unit": 1.465,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.07317,
+       0.3002
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.554,
+       2.273
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     },
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": -0.03376,
+      "per_unit": -0.3816,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.1456,
+       0.101
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -1.646,
+       1.141
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     }
+    ]
+   },
+   "in_sample": {
+    "r2": 0.7491,
+    "mae": 0.3184
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "KFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "r2": {
+      "mean": 0.6969,
+      "sd": 0.1125,
+      "per_fold": [
+       0.7095,
+       0.5672,
+       0.6039,
+       0.8403,
+       0.7634
+      ],
+      "pooled": 0.7065
+     },
+     "mae": {
+      "mean": 0.3487,
+      "sd": 0.05743,
+      "per_fold": [
+       0.3574,
+       0.3805,
+       0.4219,
+       0.28,
+       0.3036
+      ],
+      "pooled": 0.3487
+     }
+    },
+    "ungrouped": {
+     "r2": {
+      "mean": 0.7052,
+      "sd": 0.1025,
+      "per_fold": [
+       0.6486,
+       0.8105,
+       0.555,
+       0.7569,
+       0.7552
+      ],
+      "pooled": 0.7156
+     },
+     "mae": {
+      "mean": 0.3331,
+      "sd": 0.04852,
+      "per_fold": [
+       0.3331,
+       0.2888,
+       0.3954,
+       0.2827,
+       0.3654
+      ],
+      "pooled": 0.3331
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -0.01789,
+       "sd": 0.02541,
+       "per_fold": [
+        -0.0001486,
+        -0.06055,
+        -0.007122,
+        -6.424e-05,
+        -0.02157
+       ],
+       "pooled": -0.005704
+      },
+      "mae": {
+       "mean": 0.6504,
+       "sd": 0.038,
+       "per_fold": [
+        0.6724,
+        0.6696,
+        0.6011,
+        0.6896,
+        0.6194
+       ],
+       "pooled": 0.6504
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": 0.3531,
+       "sd": 0.1807,
+       "per_fold": [
+        0.4729,
+        0.5712,
+        0.3374,
+        0.283,
+        0.1009
+       ],
+       "pooled": 0.358
+      },
+      "mae": {
+       "mean": 0.5226,
+       "sd": 0.09461,
+       "per_fold": [
+        0.4821,
+        0.3871,
+        0.5219,
+        0.6009,
+        0.6211
+       ],
+       "pooled": 0.5226
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": 0.5264,
+       "sd": 0.2634,
+       "per_fold": [
+        0.3201,
+        0.7325,
+        0.7668,
+        0.6362,
+        0.1763
+       ],
+       "pooled": 0.5286
+      },
+      "mae": {
+       "mean": 0.4098,
+       "sd": 0.09485,
+       "per_fold": [
+        0.4499,
+        0.2942,
+        0.3455,
+        0.42,
+        0.5393
+       ],
+       "pooled": 0.4098
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": 0.7349,
+       "sd": 0.1446,
+       "per_fold": [
+        0.6296,
+        0.8656,
+        0.8152,
+        0.8293,
+        0.5346
+       ],
+       "pooled": 0.737
+      },
+      "mae": {
+       "mean": 0.3074,
+       "sd": 0.08801,
+       "per_fold": [
+        0.3544,
+        0.2004,
+        0.2695,
+        0.2817,
+        0.4308
+       ],
+       "pooled": 0.3074
+      }
+     }
+    },
+    "ungrouped": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -0.0407,
+       "sd": 0.04222,
+       "per_fold": [
+        -0.02406,
+        -0.01922,
+        -0.001613,
+        -0.11,
+        -0.0486
+       ],
+       "pooled": -0.01352
+      },
+      "mae": {
+       "mean": 0.6505,
+       "sd": 0.04905,
+       "per_fold": [
+        0.6506,
+        0.6509,
+        0.653,
+        0.5796,
+        0.7183
+       ],
+       "pooled": 0.6505
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": 0.1914,
+       "sd": 0.2681,
+       "per_fold": [
+        0.4007,
+        -0.2571,
+        0.3006,
+        0.151,
+        0.3618
+       ],
+       "pooled": 0.212
+      },
+      "mae": {
+       "mean": 0.5625,
+       "sd": 0.1034,
+       "per_fold": [
+        0.4382,
+        0.7247,
+        0.543,
+        0.5684,
+        0.5383
+       ],
+       "pooled": 0.5625
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": 0.4797,
+       "sd": 0.2212,
+       "per_fold": [
+        0.6802,
+        0.4059,
+        0.5713,
+        0.1277,
+        0.6132
+       ],
+       "pooled": 0.5077
+      },
+      "mae": {
+       "mean": 0.4283,
+       "sd": 0.07433,
+       "per_fold": [
+        0.3335,
+        0.5002,
+        0.3656,
+        0.4579,
+        0.4843
+       ],
+       "pooled": 0.4283
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": 0.8054,
+       "sd": 0.0607,
+       "per_fold": [
+        0.8274,
+        0.7365,
+        0.8825,
+        0.7509,
+        0.8299
+       ],
+       "pooled": 0.8128
+      },
+      "mae": {
+       "mean": 0.2732,
+       "sd": 0.05893,
+       "per_fold": [
+        0.238,
+        0.3467,
+        0.2019,
+        0.2613,
+        0.3182
+       ],
+       "pooled": 0.2732
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "r2",
+    "grouped_mean": 0.6969,
+    "grouped_sd": 0.1125,
+    "grouped_pooled": 0.7065,
+    "ungrouped_mean": 0.7052,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     0.1306,
+     0.7552
+    ],
+    "grouped_pooled_median_days_resampled": 0.6329,
+    "single_feature_grouped_mean": 0.3531,
+    "single_feature_grouped_pooled": 0.358
+   },
+   "prediction_interval": {
+    "residual_quantiles": [
+     -0.6444,
+     0.7305
+    ],
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- d0_mm <= 3.390\n|   |--- value: [1.575]\n|--- d0_mm >  3.390\n|   |--- value: [2.709]\n",
+    "decision_tree_depth3": "|--- d0_mm <= 3.390\n|   |--- x_o2_ambient <= 0.175\n|   |   |--- d0_mm <= 2.780\n|   |   |   |--- value: [1.634]\n|   |   |--- d0_mm >  2.780\n|   |   |   |--- value: [2.435]\n|   |--- x_o2_ambient >  0.175\n|   |   |--- log10(pressure_kpa) <= 1.852\n|   |   |   |--- value: [1.703]\n|   |   |--- log10(pressure_kpa) >  1.852\n|   |   |   |--- value: [1.225]\n|--- d0_mm >  3.390\n|   |--- x_o2_ambient <= 0.190\n|   |   |--- d0_mm <= 3.870\n|   |   |   |--- value: [2.898]\n|   |   |--- d0_mm >  3.870\n|   |   |   |--- value: [3.784]\n|   |--- x_o2_ambient >  0.190\n|   |   |--- d0_mm <= 3.755\n|   |   |   |--- value: [1.672]\n|   |   |--- d0_mm >  3.755\n|   |   |   |--- value: [2.328]\n"
+   },
+   "interpretation": "Yes. D_ext grows with D0 (0.82 mm per mm, close to the linear water-absorption scaling) and with lower O2. CO2 and helium both enlarge D_ext; that is consistent with the Damköhler picture (CO2 lowers T_f and slows chemistry; helium's higher diffusivity shortens the residence time d_f²/α), though the team describes D_ext as nearly independent of diluent. Gradient boosting is only slightly better (R² 0.74 vs 0.70).",
+   "caveats": [
+    "Rows mix diffusive and (below ~14% O2) radiative extinctions; the table does not label which.",
+    "Some extinction diameters were extrapolated when the droplet drifted out of view.",
+    "Disrupted droplets (often from needle-coating contamination) are excluded, which selects cleaner tests."
+   ],
+   "must_not_be_used_for": [
+    "n-heptane or other fuels",
+    "an oxygen index (LOI) estimate: no failed-ignition rows exist"
+   ]
+  },
+  {
+   "id": "cfi_reignition",
+   "accession": "PSI-39",
+   "kind": "classifier",
+   "question": "At 2-5 atm, does an n-dodecane (or n-/iso-dodecane blend) droplet re-ignite a hot flame from its cool flame after the first radiative extinction?",
+   "target": "reignited",
+   "target_definition": "1 if n_reignitions > 0 (spreadsheet DATA sheet), else 0",
+   "use": "descriptive",
+   "target_transform": null,
+   "features": [
+    {
+     "name": "pressure_kpa",
+     "unit": "kPa",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "low-temperature chemistry and heat release rise with pressure",
+     "domain": [
+      202.7,
+      506.6
+     ]
+    },
+    {
+     "name": "d0_mm",
+     "unit": "mm",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "a larger droplet leaves more fuel and a longer cool-flame phase",
+     "domain": [
+      3.872,
+      6.433
+     ]
+    },
+    {
+     "name": "iso_dodecane_fraction",
+     "unit": "mole fraction of iso-dodecane in the fuel",
+     "transform": null,
+     "expected_sign": "-",
+     "why": "branched iso-dodecane suppresses low-temperature chemistry",
+     "domain": [
+      0.0,
+      0.4
+     ]
+    },
+    {
+     "name": "x_he",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "?",
+     "why": "helium shortens hot flames but the team reports it helps the heat-release/heat-loss balance in the NTC region",
+     "domain": [
+      0.0,
+      0.59
+     ]
+    },
+    {
+     "name": "x_o2_ambient",
+     "unit": "mole fraction",
+     "transform": null,
+     "expected_sign": "+",
+     "why": "more O2, more vigorous cool-flame chemistry",
+     "domain": [
+      0.17,
+      0.21
+     ]
+    }
+   ],
+   "constraints": {
+    "sum_at_most_one": [
+     "x_o2_ambient",
+     "x_he"
+    ]
+   },
+   "training_filter": [
+    {
+     "step": "PSI-39 CFI tests",
+     "rows": 227
+    },
+    {
+     "excluded": 76,
+     "why": "not analysed in the data-summary spreadsheet (all farnesane, untested points)"
+    },
+    {
+     "excluded": 3,
+     "why": "no initial diameter"
+    },
+    {
+     "excluded": 3,
+     "why": "composition_sum: O2 + N2 = 0.97 (FLEX-1219 to 1222)"
+    },
+    {
+     "excluded": 83,
+     "why": "below 2 atm: 0 re-ignitions in every analysed test (see the descriptive table); a logistic fit across that wall is pure separation"
+    },
+    {
+     "step": "training rows",
+     "rows": 62
+    }
+   ],
+   "n": 62,
+   "n_groups": 18,
+   "target_summary": {
+    "class_counts": {
+     "1": 36,
+     "0": 26
+    },
+    "positive_fraction": 0.5806
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LogisticRegression"
+    ],
+    "params": {
+     "C": 1.0,
+     "fit_intercept": true,
+     "max_iter": 5000,
+     "penalty": "deprecated"
+    }
+   },
+   "coefficients": {
+    "scale": "log-odds",
+    "intercept_per_unit": -12.18,
+    "terms": [
+     {
+      "feature": "log10(pressure_kpa)",
+      "per_sd": 0.8451,
+      "per_unit": 6.27,
+      "per_sd_ci95_cluster_bootstrap": [
+       0.1252,
+       2.13
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       0.9293,
+       15.8
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees"
+     },
+     {
+      "feature": "d0_mm",
+      "per_sd": -0.3233,
+      "per_unit": -0.5751,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.255,
+       0.484
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -2.232,
+       0.8611
+      ],
+      "expected_sign": "+",
+      "agreement": "opposite sign; CI includes 0"
+     },
+     {
+      "feature": "iso_dodecane_fraction",
+      "per_sd": -0.3109,
+      "per_unit": -1.752,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.262,
+       0.6774
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -7.108,
+       3.816
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "x_he",
+      "per_sd": -0.4406,
+      "per_unit": -2.045,
+      "per_sd_ci95_cluster_bootstrap": [
+       -1.63,
+       0.8452
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -7.565,
+       3.923
+      ],
+      "expected_sign": "?",
+      "agreement": "no prior expectation"
+     },
+     {
+      "feature": "x_o2_ambient",
+      "per_sd": 0.008926,
+      "per_unit": 0.5648,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.6804,
+       0.5871
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -43.05,
+       37.15
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     }
+    ]
+   },
+   "in_sample": {
+    "roc_auc": 0.7618,
+    "brier": 0.193,
+    "balanced_accuracy": 0.719
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "StratifiedKFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "roc_auc": {
+      "mean": 0.5103,
+      "sd": 0.3551,
+      "per_fold": [
+       0.2,
+       0.7429,
+       0.95,
+       0.5476,
+       0.1111
+      ],
+      "pooled": 0.5
+     },
+     "brier": {
+      "mean": 0.3047,
+      "sd": 0.1202,
+      "per_fold": [
+       0.3626,
+       0.2315,
+       0.1586,
+       0.2996,
+       0.4711
+      ],
+      "pooled": 0.3022
+     },
+     "balanced_accuracy": {
+      "mean": 0.5054,
+      "sd": 0.2578,
+      "per_fold": [
+       0.35,
+       0.6857,
+       0.8125,
+       0.5119,
+       0.1667
+      ],
+      "pooled": 0.5256
+     }
+    },
+    "ungrouped": {
+     "roc_auc": {
+      "mean": 0.7031,
+      "sd": 0.1771,
+      "per_fold": [
+       0.825,
+       0.8333,
+       0.7143,
+       0.4,
+       0.7429
+      ],
+      "pooled": 0.6432
+     },
+     "brier": {
+      "mean": 0.2334,
+      "sd": 0.06451,
+      "per_fold": [
+       0.1821,
+       0.2168,
+       0.2198,
+       0.3456,
+       0.2025
+      ],
+      "pooled": 0.2323
+     },
+     "balanced_accuracy": {
+      "mean": 0.6408,
+      "sd": 0.1009,
+      "per_fold": [
+       0.7375,
+       0.6667,
+       0.5143,
+       0.5571,
+       0.7286
+      ],
+      "pooled": 0.6389
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.3467
+      },
+      "brier": {
+       "mean": 0.2543,
+       "sd": 0.0193,
+       "per_fold": [
+        0.2371,
+        0.2844,
+        0.2386,
+        0.2514,
+        0.26
+       ],
+       "pooled": 0.254
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.2943,
+       "sd": 0.1667,
+       "per_fold": [
+        0.2,
+        0.5,
+        0.45,
+        0.1548,
+        0.1667
+       ],
+       "pooled": 0.2895
+      },
+      "brier": {
+       "mean": 0.38,
+       "sd": 0.08568,
+       "per_fold": [
+        0.3467,
+        0.25,
+        0.4403,
+        0.397,
+        0.4662
+       ],
+       "pooled": 0.3813
+      },
+      "balanced_accuracy": {
+       "mean": 0.2943,
+       "sd": 0.1667,
+       "per_fold": [
+        0.2,
+        0.5,
+        0.45,
+        0.1548,
+        0.1667
+       ],
+       "pooled": 0.2799
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.285,
+       "sd": 0.2966,
+       "per_fold": [
+        0.2,
+        0.2286,
+        0.8,
+        0.1548,
+        0.04167
+       ],
+       "pooled": 0.4017
+      },
+      "brier": {
+       "mean": 0.3801,
+       "sd": 0.1799,
+       "per_fold": [
+        0.2643,
+        0.5126,
+        0.1676,
+        0.3473,
+        0.6085
+       ],
+       "pooled": 0.3761
+      },
+      "balanced_accuracy": {
+       "mean": 0.4093,
+       "sd": 0.1429,
+       "per_fold": [
+        0.45,
+        0.2714,
+        0.575,
+        0.5,
+        0.25
+       ],
+       "pooled": 0.4327
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.3918,
+       "sd": 0.3029,
+       "per_fold": [
+        0.2,
+        0.2286,
+        0.8875,
+        0.4762,
+        0.1667
+       ],
+       "pooled": 0.4087
+      },
+      "brier": {
+       "mean": 0.4143,
+       "sd": 0.1452,
+       "per_fold": [
+        0.3527,
+        0.5046,
+        0.2352,
+        0.3692,
+        0.61
+       ],
+       "pooled": 0.4107
+      },
+      "balanced_accuracy": {
+       "mean": 0.3883,
+       "sd": 0.1781,
+       "per_fold": [
+        0.35,
+        0.3,
+        0.625,
+        0.5,
+        0.1667
+       ],
+       "pooled": 0.3878
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4738
+      },
+      "brier": {
+       "mean": 0.2438,
+       "sd": 0.00463,
+       "per_fold": [
+        0.2386,
+        0.2514,
+        0.2431,
+        0.2431,
+        0.2431
+       ],
+       "pooled": 0.2439
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.5429,
+       "sd": 0.1345,
+       "per_fold": [
+        0.45,
+        0.6071,
+        0.5714,
+        0.3714,
+        0.7143
+       ],
+       "pooled": 0.4984
+      },
+      "brier": {
+       "mean": 0.2694,
+       "sd": 0.06986,
+       "per_fold": [
+        0.2988,
+        0.2455,
+        0.2359,
+        0.3745,
+        0.1924
+       ],
+       "pooled": 0.2695
+      },
+      "balanced_accuracy": {
+       "mean": 0.5429,
+       "sd": 0.1345,
+       "per_fold": [
+        0.45,
+        0.6071,
+        0.5714,
+        0.3714,
+        0.7143
+       ],
+       "pooled": 0.5406
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.4615,
+       "sd": 0.1509,
+       "per_fold": [
+        0.6625,
+        0.3452,
+        0.3571,
+        0.3571,
+        0.5857
+       ],
+       "pooled": 0.4861
+      },
+      "brier": {
+       "mean": 0.3179,
+       "sd": 0.08444,
+       "per_fold": [
+        0.2315,
+        0.4114,
+        0.3422,
+        0.3771,
+        0.2273
+       ],
+       "pooled": 0.318
+      },
+      "balanced_accuracy": {
+       "mean": 0.4557,
+       "sd": 0.1391,
+       "per_fold": [
+        0.55,
+        0.3571,
+        0.2857,
+        0.4571,
+        0.6286
+       ],
+       "pooled": 0.4487
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.5519,
+       "sd": 0.1183,
+       "per_fold": [
+        0.65,
+        0.6667,
+        0.5429,
+        0.5286,
+        0.3714
+       ],
+       "pooled": 0.5775
+      },
+      "brier": {
+       "mean": 0.2982,
+       "sd": 0.062,
+       "per_fold": [
+        0.2621,
+        0.286,
+        0.2781,
+        0.2579,
+        0.4072
+       ],
+       "pooled": 0.2975
+      },
+      "balanced_accuracy": {
+       "mean": 0.5998,
+       "sd": 0.1007,
+       "per_fold": [
+        0.675,
+        0.5952,
+        0.5857,
+        0.7,
+        0.4429
+       ],
+       "pooled": 0.5972
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "roc_auc",
+    "grouped_mean": 0.5103,
+    "grouped_sd": 0.3551,
+    "grouped_pooled": 0.5,
+    "ungrouped_mean": 0.7031,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     0.1248,
+     0.8322
+    ],
+    "grouped_pooled_median_days_resampled": 0.4595,
+    "single_feature_grouped_mean": 0.2943,
+    "single_feature_grouped_pooled": 0.2895
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- log10(pressure_kpa) <= 2.594\n|   |--- class: 0\n|--- log10(pressure_kpa) >  2.594\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- log10(pressure_kpa) <= 2.594\n|   |--- x_he <= 0.440\n|   |   |--- d0_mm <= 4.398\n|   |   |   |--- class: 1\n|   |   |--- d0_mm >  4.398\n|   |   |   |--- class: 0\n|   |--- x_he >  0.440\n|   |   |--- class: 0\n|--- log10(pressure_kpa) >  2.594\n|   |--- x_he <= 0.145\n|   |   |--- class: 1\n|   |--- x_he >  0.145\n|   |   |--- class: 1\n"
+   },
+   "descriptive_table": [
+    {
+     "pressure_level_kpa": "51",
+     "n": 10,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.2775
+     ]
+    },
+    {
+     "pressure_level_kpa": "76",
+     "n": 12,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.2425
+     ]
+    },
+    {
+     "pressure_level_kpa": "101",
+     "n": 52,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.06879
+     ]
+    },
+    {
+     "pressure_level_kpa": "127",
+     "n": 12,
+     "positives": 0,
+     "fraction": 0.0,
+     "wilson95": [
+      0.0,
+      0.2425
+     ]
+    },
+    {
+     "pressure_level_kpa": "203",
+     "n": 12,
+     "positives": 5,
+     "fraction": 0.4167,
+     "wilson95": [
+      0.1933,
+      0.6805
+     ]
+    },
+    {
+     "pressure_level_kpa": "304",
+     "n": 34,
+     "positives": 17,
+     "fraction": 0.5,
+     "wilson95": [
+      0.3407,
+      0.6593
+     ]
+    },
+    {
+     "pressure_level_kpa": "507",
+     "n": 16,
+     "positives": 14,
+     "fraction": 0.875,
+     "wilson95": [
+      0.6398,
+      0.965
+     ]
+    }
+   ],
+   "interpretation": "Pressure agrees (+) and is the only effect: none of 86 analysed tests at or below 1.25 atm re-ignited, against 36 of 62 at 2-5 atm. Within 2-5 atm nothing else is resolvable; d0 has the opposite sign to expectation but its interval spans 0 widely.",
+   "caveats": [
+    "Below 2 atm no analysed test re-ignited (0/86): that wall is reported as a descriptive table, and the logistic model only covers 2-5 atm.",
+    "The type-B thermocouple catalytic re-ignition seen in CFI-G (PSI-159) is a different hardware effect; CFI uses no such probe near the droplet.",
+    "Farnesane tests are not analysed in the spreadsheet and are absent.",
+    "Within 2-5 atm the logistic fit has no skill on held-out days (pressure levels were flown on separate days, and d0, blend and helium add nothing measurable), so only the pressure table is a result."
+   ],
+   "must_not_be_used_for": [
+    "pressures below 2 atm via this model (use the table)",
+    "fuels other than n-dodecane blends"
+   ]
+  },
+  {
+   "id": "spice_smoke_point_length",
+   "accession": "PSI-107",
+   "kind": "regressor",
+   "question": "How long is a microgravity co-flow jet flame at its smoke point, for a given nozzle and co-flow speed?",
+   "target": "flame_length_mm",
+   "target_definition": "luminous flame length (mm, video) of run-log rows marked as at the smoke point",
+   "use": "descriptive",
+   "target_transform": "log10",
+   "features": [
+    {
+     "name": "nozzle_mm",
+     "unit": "mm",
+     "transform": "log10",
+     "expected_sign": "-",
+     "why": "published fit L_SP ~ d^-0.91",
+     "domain": [
+      0.4064,
+      1.6
+     ]
+    },
+    {
+     "name": "flow_cm_s",
+     "unit": "cm/s",
+     "transform": "log10",
+     "expected_sign": "+",
+     "why": "published fit L_SP ~ u_a^0.41: co-flow shortens residence time",
+     "domain": [
+      9.125,
+      57.08
+     ]
+    }
+   ],
+   "training_filter": [
+    {
+     "step": "PSI-107 SPICE run-log rows",
+     "rows": 526
+    },
+    {
+     "excluded": 495,
+     "why": "not marked as at the smoke point"
+    },
+    {
+     "excluded": 8,
+     "why": "no flame length or co-flow"
+    },
+    {
+     "excluded": 0,
+     "why": "flow_below_sensor_range: co-flow (a feature) unreliable"
+    },
+    {
+     "excluded": 0,
+     "why": "needs_review: co-flow (a feature) unreliable"
+    },
+    {
+     "excluded": 0,
+     "why": "flow_missing_los: co-flow (a feature) unreliable"
+    },
+    {
+     "step": "training rows",
+     "rows": 23
+    }
+   ],
+   "n": 23,
+   "n_groups": 6,
+   "target_summary": {
+    "min": 8.79,
+    "max": 91.74,
+    "mean": 29.6,
+    "sd": 22.44
+   },
+   "estimator": {
+    "pipeline": [
+     "StandardScaler",
+     "LinearRegression"
+    ],
+    "params": {
+     "fit_intercept": true
+    }
+   },
+   "coefficients": {
+    "scale": "log10(flame_length_mm)",
+    "intercept_per_unit": 1.026,
+    "terms": [
+     {
+      "feature": "log10(nozzle_mm)",
+      "per_sd": -0.009345,
+      "per_unit": -0.04313,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.2668,
+       0.1563
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -1.231,
+       0.7216
+      ],
+      "expected_sign": "-",
+      "agreement": "agrees in sign; CI includes 0"
+     },
+     {
+      "feature": "log10(flow_cm_s)",
+      "per_sd": 0.0668,
+      "per_unit": 0.2502,
+      "per_sd_ci95_cluster_bootstrap": [
+       -0.02235,
+       0.1989
+      ],
+      "per_unit_ci95_cluster_bootstrap": [
+       -0.08373,
+       0.7451
+      ],
+      "expected_sign": "+",
+      "agreement": "agrees in sign; CI includes 0"
+     }
+    ]
+   },
+   "in_sample": {
+    "r2": 0.0476,
+    "mae": 0.236
+   },
+   "cv_scheme": {
+    "grouped_by_date": "GroupKFold(5) by test date",
+    "ungrouped": "KFold(5, shuffle, random_state=0)"
+   },
+   "cv": {
+    "grouped_by_date": {
+     "r2": {
+      "mean": -45.17,
+      "sd": 61.72,
+      "per_fold": [
+       -7.867,
+       -0.584,
+       -69.91,
+       -4.427,
+       -143.1
+      ],
+      "pooled": -1.793
+     },
+     "mae": {
+      "mean": 0.3692,
+      "sd": 0.173,
+      "per_fold": [
+       0.4716,
+       0.2538,
+       0.6222,
+       0.2891,
+       0.2095
+      ],
+      "pooled": 0.4068
+     }
+    },
+    "ungrouped": {
+     "r2": {
+      "mean": -0.1788,
+      "sd": 0.1537,
+      "per_fold": [
+       -0.01602,
+       -0.2222,
+       -0.3793,
+       -0.03186,
+       -0.2449
+      ],
+      "pooled": -0.05753
+     },
+     "mae": {
+      "mean": 0.2509,
+      "sd": 0.1029,
+      "per_fold": [
+       0.2995,
+       0.228,
+       0.1215,
+       0.3958,
+       0.2097
+      ],
+      "pooled": 0.2464
+     }
+    }
+   },
+   "comparison_cv": {
+    "grouped_by_date": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -49.56,
+       "sd": 77.2,
+       "per_fold": [
+        -2.3,
+        -0.03088,
+        -60.58,
+        -4.836,
+        -180.1
+       ],
+       "pooled": -0.5146
+      },
+      "mae": {
+       "mean": 0.3156,
+       "sd": 0.1531,
+       "per_fold": [
+        0.2953,
+        0.1816,
+        0.5769,
+        0.2879,
+        0.2362
+       ],
+       "pooled": 0.3061
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": -77.02,
+       "sd": 132.0,
+       "per_fold": [
+        -7.285,
+        0.4897,
+        -67.99,
+        -2.679,
+        -307.6
+       ],
+       "pooled": -1.553
+      },
+      "mae": {
+       "mean": 0.3481,
+       "sd": 0.1865,
+       "per_fold": [
+        0.4556,
+        0.1509,
+        0.6112,
+        0.2143,
+        0.3087
+       ],
+       "pooled": 0.3786
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": -134.1,
+       "sd": 246.0,
+       "per_fold": [
+        -3.258,
+        0.438,
+        -91.43,
+        -7.484,
+        -568.9
+       ],
+       "pooled": -1.114
+      },
+      "mae": {
+       "mean": 0.3912,
+       "sd": 0.2034,
+       "per_fold": [
+        0.3332,
+        0.1499,
+        0.7088,
+        0.3444,
+        0.4198
+       ],
+       "pooled": 0.3593
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": -168.6,
+       "sd": 310.2,
+       "per_fold": [
+        -5.919,
+        -1.76,
+        -114.4,
+        -4.033,
+        -716.8
+       ],
+       "pooled": -2.041
+      },
+      "mae": {
+       "mean": 0.4616,
+       "sd": 0.1968,
+       "per_fold": [
+        0.4506,
+        0.3186,
+        0.7841,
+        0.2875,
+        0.4675
+       ],
+       "pooled": 0.4513
+      }
+     }
+    },
+    "ungrouped": {
+     "mean_predictor": {
+      "r2": {
+       "mean": -0.1055,
+       "sd": 0.1107,
+       "per_fold": [
+        -0.0491,
+        -0.1268,
+        -0.2904,
+        -0.03113,
+        -0.02989
+       ],
+       "pooled": -0.02436
+      },
+      "mae": {
+       "mean": 0.2565,
+       "sd": 0.09387,
+       "per_fold": [
+        0.309,
+        0.2367,
+        0.147,
+        0.3876,
+        0.2024
+       ],
+       "pooled": 0.2532
+      }
+     },
+     "single_best_feature_rule": {
+      "r2": {
+       "mean": -0.2817,
+       "sd": 0.7541,
+       "per_fold": [
+        -0.09661,
+        -0.5009,
+        -1.425,
+        -0.002487,
+        0.6165
+       ],
+       "pooled": -0.08621
+      },
+      "mae": {
+       "mean": 0.2572,
+       "sd": 0.1118,
+       "per_fold": [
+        0.3152,
+        0.2964,
+        0.1766,
+        0.3876,
+        0.1104
+       ],
+       "pooled": 0.258
+      }
+     },
+     "decision_tree_depth3": {
+      "r2": {
+       "mean": -0.3825,
+       "sd": 0.9774,
+       "per_fold": [
+        -0.2095,
+        -0.2013,
+        -1.951,
+        -0.3042,
+        0.7539
+       ],
+       "pooled": -0.1828
+      },
+      "mae": {
+       "mean": 0.2637,
+       "sd": 0.1229,
+       "per_fold": [
+        0.3141,
+        0.2417,
+        0.2156,
+        0.4393,
+        0.1079
+       ],
+       "pooled": 0.2629
+      }
+     },
+     "gradient_boosting": {
+      "r2": {
+       "mean": -1.597,
+       "sd": 1.097,
+       "per_fold": [
+        -1.951,
+        -1.696,
+        -3.18,
+        -0.8011,
+        -0.3569
+       ],
+       "pooled": -1.314
+      },
+      "mae": {
+       "mean": 0.3987,
+       "sd": 0.1504,
+       "per_fold": [
+        0.5804,
+        0.3936,
+        0.2643,
+        0.5163,
+        0.239
+       ],
+       "pooled": 0.4005
+      }
+     }
+    }
+   },
+   "cv_metric": {
+    "name": "r2",
+    "grouped_mean": -45.17,
+    "grouped_sd": 61.72,
+    "grouped_pooled": -1.793,
+    "ungrouped_mean": -0.1788,
+    "folds_without_metric": 0,
+    "grouped_pooled_ci95_days_resampled": [
+     -4.594,
+     0.2043
+    ],
+    "grouped_pooled_median_days_resampled": -1.746,
+    "single_feature_grouped_mean": -77.02,
+    "single_feature_grouped_pooled": -1.553
+   },
+   "prediction_interval": {
+    "residual_quantiles": [
+     -0.9252,
+     0.6169
+    ],
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+   },
+   "tree_rules": {
+    "single_best_feature_rule": "|--- log10(flow_cm_s) <= 1.140\n|   |--- value: [1.158]\n|--- log10(flow_cm_s) >  1.140\n|   |--- value: [1.441]\n",
+    "decision_tree_depth3": "|--- log10(flow_cm_s) <= 1.140\n|   |--- value: [1.158]\n|--- log10(flow_cm_s) >  1.140\n|   |--- log10(flow_cm_s) <= 1.582\n|   |   |--- log10(nozzle_mm) <= 0.043\n|   |   |   |--- value: [1.660]\n|   |   |--- log10(nozzle_mm) >  0.043\n|   |   |   |--- value: [1.396]\n|   |--- log10(flow_cm_s) >  1.582\n|   |   |--- value: [1.318]\n"
+   },
+   "interpretation": "Only in sign. The fitted exponents (nozzle -0.04, co-flow +0.25, both intervals spanning 0) are far from the published L_SP ~ d^-0.91 u_a^0.41, and no fit beats the mean on held-out days. With fuels pooled and 23 rows, the fuel-specific smoke point dominates the scatter. The run-log smoke-point rows do not reproduce the published correlation; the 55-point smoke-point review sheet would be needed.",
+   "caveats": [
+    "Only 23 smoke-point rows with a length in the run log against 52-55 smoke points in the reports; the smoke-point review sheet could not be matched row by row.",
+    "Fuels (ethylene, propane, 50/75/100% propylene) are pooled because 23 rows cannot support a fuel term; the smoke point is fuel-specific, so the scatter is large.",
+    "Outlet-screen clogging changed the true co-flow for a given anemometer reading between days."
+   ],
+   "must_not_be_used_for": [
+    "any prediction: this is a descriptive fit",
+    "1 g flames or unconfined burners"
+   ]
+  }
+ ],
+ "dropped": [
+  {
+   "id": "flex_extinction_mode",
+   "accession": "PSI-69",
+   "reason": "The end mode (extinction / disruption / completion) is confounded with needle-coating contamination, which the team blames for disruptions: 46 of 165 tests disrupted in 2009-2010 against 15 of 109 in 2011. Radiative vs diffusive extinction is not labelled in the table; deriving it from D_ext/D0 would put the outcome into the label definition with an arbitrary threshold."
+  },
+  {
+   "id": "flex_ignition",
+   "accession": "PSI-69",
+   "reason": "No failed-ignition rows: 'will it burn' (and an LOI) cannot be estimated."
+  },
+  {
+   "id": "flex_heptane_extinction_diameter",
+   "accession": "PSI-69",
+   "reason": "Heptane extinctions mix an early radiative branch (D_ext/D0 > 0.9 in 24 of 56) and a diffusive branch, unlabelled; a single linear model across both is not physically meaningful."
+  },
+  {
+   "id": "cfi_cool_flame_occurrence",
+   "accession": "PSI-39",
+   "reason": "cool_flame is True-or-null. Null rows are not negatives: among analysed tests with cool_flame null, comments describe cool-flame burning (FLEX-1214, 1216, 1229), droplets leaving the field of view, or no ignition (FLEX-1212)."
+  },
+  {
+   "id": "cfi_hot_burning_rate",
+   "accession": "PSI-39",
+   "reason": "60 of 148 hot-flame K values come from flames that went out with D_ext/D0 > 0.95, where K is fitted over a tiny part of the burn (values down to 0.001 mm²/s). Filtering those out selects on the outcome; keeping them makes K mostly measurement noise."
+  },
+  {
+   "id": "spice_at_smoke_point_classifier",
+   "accession": "PSI-107",
+   "reason": "Only 31 rows are marked True and 66 False (429 null). 'False' lumps flames below the smoke point with flames already past it, so the label is not monotone in flame length and a classifier on length, fuel, nozzle and flow has no physical threshold to learn; 21 of the 66 are Nikon still rows duplicating a video row."
+  },
+  {
+   "id": "psi20_bre",
+   "accession": "PSI-20",
+   "reason": "18 test-day rows (several flames each) with no outcome column at all: nothing to model per test."
+  }
+ ]
+}

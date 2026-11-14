@@ -1,0 +1,1450 @@
+{
+  "accession": "PSI-10",
+  "identity": {
+    "acronym": "ACME/Flame Design",
+    "title": "Advanced Combustion via Microgravity Experiments / Flame Design (proposal title: Flame Design: A Novel Approach to Clean Efficient Diffusion Flames)",
+    "principal_investigators": [
+      "Richard L. Axelbaum (PI; Washington University in St. Louis)",
+      "Peter B. Sunderland (Co-I; University of Maryland)",
+      "David L. Urban (Co-I; NASA Glenn Research Center)",
+      "Sergey M. Frolov (Investigator / lead Russian collaborator; Semenov Institute of Chemical Physics, Russian Academy of Sciences)",
+      "Dennis P. Stocker (Project Scientist; NASA Glenn Research Center)"
+    ],
+    "dates": {
+      "start": "1999-01-14",
+      "end": "2025-04-30"
+    },
+    "platform": "International Space Station (ISS); precursor tests in the NASA Glenn 2.2 s and 5.2 s drop towers",
+    "facility": "Combustion Integrated Rack (CIR)",
+    "hardware": "ACME chamber insert (constant-volume CIR chamber, ~83-90 L free volume) with a 6.35 mm porous sintered stainless-steel spherical burner (serial 1002, then 1003 from June 2019), retractable hot-wire igniter (loop tip in round 1, coil tip in round 2), three mass-flow controllers, ACME colour DataCam, analog ops camera, CIR HiBMs camera, intensified (CFI) camera, 3 PMTs, radiometer array, SiC thin-filament pyrometry array and thermocouple rakes",
+    "project_type": "Microgravity Investigation"
+  },
+  "one_line": "On the space station, small ball-shaped flames of ethylene gas were burned for minutes around a porous sphere, either as fuel blowing into oxygen-rich air or as oxygen blowing into a fuel atmosphere, to learn when such flames make soot and when they go out.",
+  "summary": "ACME/Flame Design burned ethylene spherical diffusion flames on a 6.35 mm porous sphere in the Combustion Integrated Rack on the ISS. In 2019, fuel (pure or nitrogen-diluted) flowed into oxygen/nitrogen atmospheres of 21-40% O2 near 1 atm (normal flames). In 2021-22, oxygen/nitrogen with up to 85% O2 flowed into ethylene/nitrogen atmospheres at 0.43-3 atm (inverse flames); one day used propane. The tables list 327 tests. Flows were held constant while cameras, thin-filament pyrometry, thermocouples and photomultipliers tracked each flame. In the 2019 tests flames grew, cooled by gas radiation, oscillated and went out after 28-336 s. At 1 atm all ethylene flames extinguished near 1130 K, at a fuel flux through the flame of 0.2 g/m2/s (normal) or an oxygen flux of 0.68 g/m2/s (inverse). Small flames burned steadily for up to 870 s. Sustained soot appeared only at 40% O2 with concentrated fuel. For fire safety, quiescent microgravity flames persist far below the about 1500 K extinction temperature typical on Earth, although these gas-burner limits are not material flammability limits.",
+  "question": {
+    "text": "Flame Design asked how the internal structure of a non-premixed (diffusion) flame, set by the stoichiometric mixture fraction Z_st, controls soot inception and extinction, separately from the direction of convection across the flame. Moving nitrogen from the oxidizer to the fuel stream raises Z_st at fixed adiabatic flame temperature, and in normal-gravity work this produced 'permanently blue' flames that never soot, with much higher extinction strain. Buoyancy and strain make those results ambiguous, and spherical flames on Earth are impossible, so the team used microgravity spherical flames, normal (fuel out of the burner) and inverse (oxygen out of the burner), to measure sooting limits, extinction limits (radiative and kinetic) and their temperatures as functions of flow rate, Z_st, dilution and pressure. It also asked whether truly steady spherical diffusion flames can exist despite radiative loss, and whether a 'pseudo-flammability limit' exists for non-premixed flames. The stated hypotheses were that soot needs a region of high enough local C/O ratio and temperature at low strain, that spherical flames extinguish when peak temperature falls below 1130 K, and that steady spherical flames are possible.",
+    "sources": [
+      {
+        "type": "psi_record",
+        "field": "objective"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p4",
+        "quote": "The method involves exchanging nitrogen (or any inert, including carbon dioxide) from the oxidizer stream to the fuel stream such that the stoichiometric mixture fraction, Zst, can be varied with or without affecting adiabatic flame temperature, Tad."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p4",
+        "quote": "By varying Zst at constant Tad, flames have been produced that are soot-free at any strain rate (permanently blue) and have extinction scalar dissipation rates up to 40 times those of their fuel-air counterparts."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+        "locator": "p24",
+        "quote": "the pseudo-flammability limit represents the limiting condition where a nonpremixed flame can exist for a given fuel burning with an inert and oxygen."
+      }
+    ]
+  },
+  "physics": {
+    "text": "In a diffusion flame, fuel and oxidizer meet by diffusion at a thin reaction zone near the stoichiometric surface, Z = Z_st. For ethylene in air Z_st is about 0.064. Diluting the fuel and enriching the oxidizer (for example 1 mol C2H4 with 11.28 mol N2 burning in pure O2) gives the same adiabatic temperature but Z_st near 0.78. The flame then sits on the fuel side of the mixing layer, where hot gas contains free oxygen and little fuel, so soot precursors cannot grow. On Earth, a burner flame is dominated by buoyancy: the Richardson number for these flames is about 1000. Making it much less than 1 needs gravity reduced by about four orders of magnitude, and the team's analysis required about 10 micro-g. In microgravity the porous-sphere flame is one-dimensional. The radial velocity falls as 1/r^2, so at a few burner radii transport is purely diffusive, the diffusion time r^2/D reaches tens of seconds, and the hot zone keeps growing. As it grows, CO2 and H2O accumulate and radiate. Radiative loss scales with flame surface area, while the reactant flux per unit flame area falls, so the peak temperature drops until the flame undergoes radiative extinction. This occurs at a much lower temperature (about 1100-1130 K) than the kinetic (strain or blow-off) extinction familiar on Earth (about 1500 K). Near that limit, low-temperature 'warm flame' chemistry involving HO2 appears. Normal and inverse flames reverse the direction of convection relative to the flame. Soot formed in a normal flame is carried toward the oxidizer and burned; in an inverse flame it is carried toward the fuel and can grow.",
+    "sources": [
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+        "locator": "p8",
+        "quote": "Zst = (1+YF,∞WOνO / YO,∞WFνF)-1"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+        "locator": "p8",
+        "quote": "Tad of a fuel mixture containing 1 mole of C 2H4 and 11.28 moles of N2 burning in pure oxygen is the same as that of pure C2H4 burning in air."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p6",
+        "quote": "we find that Ri is on the order of 1000 in normal gravity."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p6",
+        "quote": "Consequently, for general fuels and inerts the only practical method of obtaining Ri << 1 is to reduce g by four orders of magnitude."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p7",
+        "quote": "As shown, the required g levels are on the order of 10 μg."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p6",
+        "quote": "Since the characteristic diffusion time τd is given by r2/D, τd is on the order of tens of seconds a few centimeters from the burner."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_TaskbookRpts.pdf",
+        "locator": "p34",
+        "quote": "Radiative heat loss was dominated by the combustion products downstream of the flame and was found to scale with flame surface area, not volume."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_TaskbookRpts.pdf",
+        "locator": "p34",
+        "quote": "Peak temperatures at extinction onset were about 1100 K, which is significantly lower than for kinetic extinction."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+        "locator": "p21",
+        "quote": "For example, Williams (1981) indicates an extinction temperature of 1500 ± 50 K for hydrocarbon combustion in oxygen/nitrogen mixtures."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+        "locator": "p14",
+        "quote": "Flame (c) has a high flame temperature and the soot particles formed at the flame are convected towards the fuel, allowing for remarkable soot growth."
+      },
+      {
+        "type": "external",
+        "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/13647830.2024.2326830?fields=title,abstract",
+        "quote": "As the flame cools and the peak temperature approaches the critical extinction temperature, there is increased reactant leakage leading to higher O, OH, and HO2 concentrations on the fuel side."
+      },
+      {
+        "type": "background"
+      }
+    ],
+    "equations": [
+      {
+        "latex": "Z_{st} = \\left(1 + \\frac{Y_{F,\\infty} W_O \\nu_O}{Y_{O,\\infty} W_F \\nu_F}\\right)^{-1}",
+        "meaning": "Stoichiometric mixture fraction. Y_{F,inf}, Y_{O,inf}: fuel and oxygen mass fractions in the fuel and oxidizer supply streams (-); W_F, W_O: molecular weights (kg/kmol); nu_F, nu_O: stoichiometric coefficients. Z_st is the mixture fraction (0 = pure oxidizer stream, 1 = pure fuel stream) at which the flame sits. Low Z_st (~0.06 for C2H4/air) puts the flame on the oxidizer side and favours soot. High Z_st (~0.7-0.8, diluted fuel into O2) gives soot-free 'permanently blue' flames. In the experimental tables, Z_st ranges over 0.06-0.76.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+            "locator": "p8",
+            "quote": "Zst = (1+YF,∞WOνO / YO,∞WFνF)-1"
+          },
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "mean Zst column of both experimental tables: normal 0.061-0.715, inverse 0.095-0.758"
+          }
+        ]
+      },
+      {
+        "latex": "Ri = \\frac{g\\,\\Delta T\\,L}{T\\,u^2}",
+        "meaning": "Richardson number (buoyancy vs inertia). g: gravitational acceleration (m/s^2); Delta T = T_ad - T_b: flame-to-burner temperature difference (K); T: temperature (K); L: length scale, properly the flame diameter (m); u: gas velocity at the flame (m/s). The investigators estimate Ri ~ 1000 for these spherical flames at 1 g. Spherical symmetry needs Ri << 1, which for general fuels requires g reduced by about 10^4, so about 10 micro-g (CIR environment).",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p6",
+            "quote": "Ri = g (ΔT L) / (T u2)"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p6",
+            "quote": "we find that Ri is on the order of 1000 in normal gravity."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p7",
+            "quote": "As shown, the required g levels are on the order of 10 μg."
+          }
+        ]
+      },
+      {
+        "latex": "\\tau_d \\sim \\frac{r^2}{D}",
+        "meaning": "Diffusion time scale of the spherical flame. r: radial distance from burner centre (m); D: gas diffusivity (m^2/s). Because the convective velocity decays as 1/r^2, transport beyond a few burner radii is diffusive. tau_d is tens of seconds at a few cm, and the investigators found the time for an unbounded spherical flame to reach steady state is of order 10^5 s. This is why drop towers (2-5 s) cannot reach quasi-steady conditions.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p6",
+            "quote": "Since the characteristic diffusion time τd is given by r2/D, τd is on the order of tens of seconds a few centimeters from the burner."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p25",
+            "quote": "In the spherical, infinite domain configuration, the characteristic time for the diffusion- controlled system to effectively reach steady-state is found to be on the order of 100,000 s."
+          }
+        ]
+      },
+      {
+        "latex": "T_{ad}\\,[\\mathrm{K}] = 1198\\,Z_{st} + 1838",
+        "meaning": "Sooting-limit correlation (drop-tower spherical flames). Fitted line through the sooting-limit flames from 2.2 s drop-tower tests (ethylene, 1.5 mg/s fuel consumption, normal and inverse flames; Sunderland et al. 2004). Flames with T_ad below the line at a given Z_st were soot-free at the end of the drop ('permanently blue' regime). It is valid only for these transient 2 s flames; the longest-residence-time flames (>0.5 s) were excluded from the fit.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+            "locator": "p15",
+            "quote": "Tad(K) = 1198 Zst + 1838"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+            "locator": "p16",
+            "quote": "The sooting limits follow a linear relationship between adiabatic flame temperature and Zst, with Zst accounting for a variation of about 700 K in the sooting limit ad iabatic flame temperature."
+          }
+        ]
+      },
+      {
+        "latex": "r_{f,ext} = \\sqrt{\\frac{\\dot m_R}{4\\pi\\,\\dot m''_{crit}}},\\quad \\dot m''_{crit} \\approx 0.2\\ \\mathrm{g\\,m^{-2}\\,s^{-1}}\\ (\\text{normal, fuel}),\\ 0.68\\ \\mathrm{g\\,m^{-2}\\,s^{-1}}\\ (\\text{inverse, } O_2)",
+        "meaning": "Flame radius at radiative extinction from the critical mass flux. dot m_R: mass flow of the burner reactant (fuel for normal flames, O2 for inverse flames) (g/s); dot m''_crit: reactant mass flux through the flame sphere at extinction (g/m^2/s); r_f,ext: radius of peak temperature at extinction (m). This is a mass-conservation reconstruction (steady flux through a sphere) of the 'simple equation' the investigators say estimates extinction flame size from reactant flow rate alone. The published form was not available. Valid for 1 atm ethylene flames whose peak temperature reaches 1130 K. For example, 1 mg/s of fuel gives r_f,ext of about 2 cm.",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p25",
+            "quote": "Despite this broad range of conditions, all flames extinguish at a critical extinction temperature of 1130 K, and a fuel-based mass flux of 0.2 g/m2 - s for normal flames, and an oxygen- based mass flux of 0.68 g/m2-s for inverse flames."
+          },
+          {
+            "type": "background"
+          }
+        ]
+      }
+    ]
+  },
+  "method": {
+    "apparatus": {
+      "text": "Tests ran in the Combustion Integrated Rack on the ISS using the ACME chamber insert. The chamber is a constant-volume vessel with about 83-90 L of free volume, so pressure and composition drift during a test day (vitiation). The burner was a 6.35 mm (0.25 in) porous sphere of sintered stainless steel (10 micron pores), fed by a single supply tube. Burner serial 1002 was replaced by 1003 in June 2019 because flames were off-centre at high flows. Three mass-flow controllers metered fuel or oxidizer and ISS nitrogen, allowing on-orbit dilution. A retractable hot-wire igniter lit the flame. Diagnostics were: the ACME colour DataCam (12-bit, 1360x1024, up to 30 frame/s, with filters for colour, BG7 pyrometry, CH* at 430 nm and formaldehyde); an analog ops camera; the CIR HiBMs monochrome camera with backlight, for soot extinction; an intensified CFI camera, generally with a CH* filter; three PMTs (OH* at 310 nm, CH* at 430 nm, and broadband); a thermopile radiometer array; a crew-replaceable array of 14 micron SiC fibres spaced 5 mm apart for thin-filament pyrometry (TFP); a burner-surface thermocouple; far (45, 60, 100, 100 mm) or near (13, 25, 50, 100 mm) thermocouple rakes, plus two thermocouples at 200 mm; and chamber pressure transducers. Non-imaging data were logged at 125 Hz. The CIR gas chromatograph was used occasionally.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p10",
+          "quote": "Ultimately, the spherical burners were limited to a single diameter of 6.35 mm, and the fabricated gas-jet burners were limited to two sizes with nominal inner diameters of 1.3 and 2.1 mm."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_ACME_ISRD.pdf",
+          "locator": "p90",
+          "quote": "Sphere and tube material: stainless steel Sphere pore size: 10 micron, sintered Sphere outside diameter: 6.35 mm (0.25 inch)"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "All ACME experiments will be constant volume (i.e., rather than constant pressure) studies, where the chamber’s free volume will be about 90 liters."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "The chamber’s free volume is approximately 83 liters depending on the installed hardware."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p12",
+          "quote": "The 12-bit digital camera records at up to 30 full frames (1360x1024) per second"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p13",
+          "quote": "TFP tests were conducted with 14-micron fibers spaced apart by 5 mm for a total span of 20 mm (in the case of 5 intact ceramic fibers), neglecting optional translation of the array."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p16",
+          "quote": "The PMTs’ spectral range will be 230-700 nm, i.e., visible and near ultraviolet, but one will have a 310-nm bandpass filter and another will have a 430-nm bandpass filter (where both are with a 10-nm FWHM)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p17",
+          "quote": "The short (far) rake’s thermocouple tips should nominally be at 45, 60, 100, and 100 mm from the spherical burner center. Meanwhile, the thermocouples of the long (near) rake should nominally be at 13, 25, 50, and 100 mm from the spherical burner center."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p17",
+          "quote": "The ACME experiments will use the CIR’s gas chromatograph for pre- and post-test analysis of the chamber atmosphere"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p11",
+          "quote": "Unfortunately, the spherical burners did not always yield spherically symmetric flames, presumably because of (1) greater burner flow through the joint between the porous sphere and supply tube, and (2) heat loss to the support tube (encompassing the supply tube) causing local flame quenching."
+        }
+      ]
+    },
+    "fuels_and_samples": [
+      {
+        "name": "Ethylene (C2H4), pure or diluted with N2 (burner X_fuel 0.05-1) flowing into O2/N2",
+        "phase": "gas",
+        "form": "normal spherical diffusion flame on 6.35 mm porous sphere",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "Except for the single propane (C3H8) test day previously mentioned, all ISS tests were conducted with the fuel ethylene (C2H4), the inert nitrogen, and the spherical flame configuration."
+          },
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Normal Flame table, Fuel = C2H4: 187 rows, Xfuel 0.0498-1.0"
+          }
+        ]
+      },
+      {
+        "name": "O2/N2 (burner X_O2 0.21-0.85) flowing into ethylene/N2 atmosphere (X_C2H4 0.08-0.66)",
+        "phase": "gas",
+        "form": "inverse spherical diffusion flame on 6.35 mm porous sphere",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "The inverse flame tests were conducted with the chamber filled with a mixture of nitrogen and ethylene (C2H4) while an oxygen/nitrogen mixture flowed from the burner."
+          },
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Inverse Flame table: XO2 0.212-0.850, XC2H4 initial 0.080-0.658"
+          }
+        ]
+      },
+      {
+        "name": "Propane (C3H8), pure or diluted with N2 (X_fuel 0.10-1) into 40% O2",
+        "phase": "gas",
+        "form": "normal spherical flame, one test day (21301) used for thermocouple/TFP calibration",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "Except for the single propane (C3H8) test day previously mentioned, all ISS tests were conducted with the fuel ethylene (C2H4), the inert nitrogen, and the spherical flame configuration."
+          },
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Normal Flame table, Fuel = C3H8: 20 rows, all test day 21301, XO2 0.40"
+          }
+        ]
+      }
+    ],
+    "procedure": {
+      "text": "The ISS crew configured the hardware, swapping gas bottles, MFCs, igniter tips, burners, rakes and fibre arrays. Tests were then commanded from the Glenn ISS Payload Operations Center. Each test ran from uplinked script and parameter files in a nominally automated mode, without manual flow changes during a test except halting after extinction. A typical sequence was: pre-ignition data and images, igniter preheat, flow priming, ignition with automatic detection (usually by the OH* PMT) and igniter retraction, then a stabilisation period. The flow was then held constant, or in some tests ramped, for up to a few minutes, with test end on detected extinction or flow timeout. A burner-temperature limit (for example 500 C) protected the sphere. About 16 tests were run per test day, with a couple of failed or unsustained ignitions. The chamber was vented and refilled between days, and recirculated through a sorbent filter mid-day in normal-flame testing. Round 1 (Apr-Jul 2019, Increments 59/60) used normal flames in roughly 21%, 30% and 40% O2. Round 2 (Oct 2021-Feb 2022, Increment 66) began with one propane normal-flame day using the near thermocouple rake to calibrate TFP. It then ran inverse flames with 85% O2 bottle gas diluted on orbit into 8-65% C2H4 atmospheres. From January 2022, after the chamber limit was raised from 1.5 to 3 atm, these included tests at about 0.5, 2 and 3 atm. The same constant-flow flames give soot-inception limits (yellow luminosity disappearing as the flame cools) and radiative-extinction limits (flame growth until extinction). Extinction diameter and burn time come from the ops video and the PMTs.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "ACME tests were always conducted in a nominally automated mode."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p22",
+          "quote": "An average of 16 tests were conducted per Flame Design test day, where ignition was typically unsuccessful (e.g., un-sustained) in a couple of tests."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_21328D1.txt",
+          "locator": "all",
+          "quote": "burnerTemperatureLimitC:500, burnerTemperatureLimitDurationSecs:3"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_19142B1_TP.txt",
+          "locator": "all",
+          "quote": "Test Point Failure: 2019-05-22 16:17:14 Reason: EXTINCTION DETECTED"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p3",
+          "quote": "The two rounds occurred during Increments 59/60 and 66 and respectively featured normal and inverse flames."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari) to enable Flame Design testing at chamber pressures of up to 3 atm in the final round- 2 test days, whereas the limit had been 1.5 atm in preceding testing."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p3",
+          "quote": "The inverse flame tests were conducted with the chamber filled with a mixture of nitrogen and ethylene (C2H4) while an oxygen/nitrogen mixture flowed from the burner."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Radiative extinction is observed when, at constant reactant flow rate, the flame expands until radiation heat loss approaches the chemical heat release."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p3",
+          "quote": "Specifically, soot-inception limits in spherical flames will be measured by establishing a flame at a given Zst and allowing peak temperature to decrease with time until the yellow luminosity is eliminated."
+        }
+      ]
+    }
+  },
+  "test_matrix": {
+    "varied": [
+      {
+        "parameter": "ambient O2 mole fraction (normal flames)",
+        "range": "0.198-0.399 (nominal 21%, 30%, 40%); propane day 0.40",
+        "unit": "mole fraction",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Normal Flame table 'XO2 (init)': min 0.198, max 0.399 over 187 C2H4 rows; 0.40 for the 20 C3H8 rows"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p27",
+            "quote": "In particular, for safety reasons, the O2 mole fraction limit for normal tests was 40% and the C2H4 mole fraction limit for inverse flames was 65%."
+          }
+        ]
+      },
+      {
+        "parameter": "burner O2 mole fraction (inverse flames)",
+        "range": "0.21-0.85 (52 of 109 numeric rows at 0.85)",
+        "unit": "mole fraction",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Inverse Flame table 'XO2': min 0.212, max 0.850; 52 rows at 0.850. Note tests.csv puts this burner value in x_o2 for inverse rows"
+          }
+        ]
+      },
+      {
+        "parameter": "burner fuel mole fraction (normal flames, N2 diluent)",
+        "range": "0.05-1.0",
+        "unit": "mole fraction",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Normal Flame table 'Xfuel', numeric rows: C2H4 0.0498-1.0, C3H8 0.10-1.0"
+          }
+        ]
+      },
+      {
+        "parameter": "ambient C2H4 mole fraction (inverse flames)",
+        "range": "0.080-0.658",
+        "unit": "mole fraction",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "Inverse Flame table 'XC2H4 initial': min 0.0803, max 0.6581"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p27",
+            "quote": "In particular, for safety reasons, the O2 mole fraction limit for normal tests was 40% and the C2H4 mole fraction limit for inverse flames was 65%."
+          }
+        ]
+      },
+      {
+        "parameter": "total burner mass flow rate",
+        "range": "normal 0.31-21.5; inverse 1.76-13.8",
+        "unit": "mg/s",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "'mtot (mg/s)' columns: Normal C2H4 0.313-21.54, C3H8 0.95-4.37; Inverse 1.759-13.760"
+          }
+        ]
+      },
+      {
+        "parameter": "chamber pressure",
+        "range": "normal 0.93-1.31 atm (94-133 kPa); inverse 0.43-3.02 atm (43-306 kPa), in steps near 0.43-0.52, 1.0, 2.0 and 3.0 atm",
+        "unit": "kPa",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "'pinit'/'pmean (atm)' columns x 101.325: normal pinit 0.932 (propane day) to pmean 1.311; inverse pmean 0.426-3.018; inverse rows by pmean: ~0.4-0.5 atm 27, ~1 atm 69, ~2 atm 8, ~3 atm 16"
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p19",
+            "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari) to enable Flame Design testing at chamber pressures of up to 3 atm in the final round- 2 test days, whereas the limit had been 1.5 atm in preceding testing."
+          }
+        ]
+      },
+      {
+        "parameter": "stoichiometric mixture fraction Z_st",
+        "range": "0.061-0.758",
+        "unit": "-",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "'mean Zst' columns: normal 0.061-0.715 (C2H4), 0.106-0.445 (C3H8); inverse 0.095-0.758"
+          }
+        ]
+      },
+      {
+        "parameter": "adiabatic flame temperature T_ad (computed)",
+        "range": "1683-2974",
+        "unit": "K",
+        "sources": [
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "'Tad (K)' columns: normal C2H4 1683-2831, C3H8 2358-2735; inverse 2074-2974"
+          }
+        ]
+      },
+      {
+        "parameter": "flame configuration",
+        "range": "normal (fuel into oxidizer), inverse (oxidizer into fuel)",
+        "unit": null,
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "The two rounds occurred during Increments 59/60 and 66 and respectively featured normal and inverse flames."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "The inverse flame tests were conducted with the chamber filled with a mixture of nitrogen and ethylene (C2H4) while an oxygen/nitrogen mixture flowed from the burner."
+          }
+        ]
+      }
+    ],
+    "held_constant": [
+      {
+        "parameter": "burner",
+        "value": "6.35 mm porous stainless-steel sphere (serial 1002 to June 2019, then 1003)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p10",
+            "quote": "Ultimately, the spherical burners were limited to a single diameter of 6.35 mm, and the fabricated gas-jet burners were limited to two sizes with nominal inner diameters of 1.3 and 2.1 mm."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p36",
+            "quote": "The alternate burner (serial number 1003) showed similar behavior, but to a significantly reduced degree."
+          }
+        ]
+      },
+      {
+        "parameter": "inert diluent",
+        "value": "nitrogen only (CO2 dilution not flown)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p3",
+            "quote": "Except for the single propane (C3H8) test day previously mentioned, all ISS tests were conducted with the fuel ethylene (C2H4), the inert nitrogen, and the spherical flame configuration."
+          },
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p27",
+            "quote": "Tests with CH4 as fuel and CO2 as diluent, were slated for the test matrix by the investigators, but not allowed."
+          }
+        ]
+      },
+      {
+        "parameter": "gravity",
+        "value": "ISS microgravity, CIR without active PaRIS isolation",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p50",
+            "quote": "Although the Combustion Integrated Rack (CIR) is equipped with a Passive Rack Isolation System (PaRIS), it was not used for ACME because of the significant need for crew time that would have resulted."
+          }
+        ]
+      },
+      {
+        "parameter": "burner flow within a test",
+        "value": "nominally constant (some tests ramped)",
+        "sources": [
+          {
+            "type": "psi_file",
+            "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+            "locator": "p26",
+            "quote": "Radiative extinction is observed when, at constant reactant flow rate, the flame expands until radiation heat loss approaches the chemical heat release."
+          },
+          {
+            "type": "table",
+            "table": "tests",
+            "note": "60 normal rows and 11 inverse rows have 'RAMP', 'RAMPED' or 'LOW O2' instead of numeric conditions"
+          }
+        ]
+      }
+    ],
+    "n_tests": {
+      "value": 327,
+      "sources": [
+        {
+          "type": "table",
+          "table": "tests",
+          "note": "207 rows in Normal Flame table (187 C2H4, 20 C3H8) + 120 rows in Inverse Flame table; tests.csv holds 327 PSI-10 rows"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p45",
+          "quote": "A total of 326 flames were ignited for the Flame Design experiment during Increments 59/50 and 66, where 188 and 138 flames were ignited in the two increments, respectively."
+        }
+      ]
+    }
+  },
+  "measurements": [
+    {
+      "quantity": "flame diameter vs time and diameter at extinction",
+      "instrument": "analog ops video (recorded on ground) and colour DataCam",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p39",
+          "quote": "Burn time and extinction diameter have been acquired for radiatively extinguishing flames using the photomultiplier tubes and analog camera, respectively."
+        }
+      ]
+    },
+    {
+      "quantity": "burn time / extinction time",
+      "instrument": "PMTs (OH* 310 nm, CH* 430 nm, broadband)",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p16",
+          "quote": "The PMTs’ spectral range will be 230-700 nm, i.e., visible and near ultraviolet, but one will have a 310-nm bandpass filter and another will have a 430-nm bandpass filter (where both are with a 10-nm FWHM)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Burn times range from 28 –336 s. All flames grow monotonically after ignition. Peak gas temperature generally decreases with time."
+        }
+      ]
+    },
+    {
+      "quantity": "gas temperature profile (fibre temperature)",
+      "instrument": "thin-filament pyrometry, 14 micron SiC fibres imaged by colour DataCam (two-colour ratio and intensity methods)",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p13",
+          "quote": "TFP tests were conducted with 14-micron fibers spaced apart by 5 mm for a total span of 20 mm (in the case of 5 intact ceramic fibers), neglecting optional translation of the array."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_TaskbookRpts.pdf",
+          "locator": "p5",
+          "quote": "Particular focus has been placed on using two-color ratio and ratio intensity pyrometry to obtain fiber temperature."
+        }
+      ]
+    },
+    {
+      "quantity": "soot temperature",
+      "instrument": "two-colour ratio pyrometry from DataCam images",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p39",
+          "quote": "Soot temperature measurements using two-color ratio pyrometry are being acquired from ACME camera images that have soot and no fibers."
+        }
+      ]
+    },
+    {
+      "quantity": "soot volume fraction (attempted)",
+      "instrument": "HiBMs camera with backlight (light extinction) and DataCam",
+      "derived": true,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p41",
+          "quote": "Preliminary analysis of the HiBMs images suggests that significant emission of light from soot particles and dissymmetry of the soot cloud will make acquiring accurate soot volume fraction measurements difficult, if possible."
+        }
+      ]
+    },
+    {
+      "quantity": "burner surface temperature and far-field gas temperature",
+      "instrument": "type B/K thermocouples on rake, at 200 mm and on burner",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p17",
+          "quote": "The short (far) rake’s thermocouple tips should nominally be at 45, 60, 100, and 100 mm from the spherical burner center. Meanwhile, the thermocouples of the long (near) rake should nominally be at 13, 25, 50, and 100 mm from the spherical burner center."
+        }
+      ]
+    },
+    {
+      "quantity": "flame radiant emission",
+      "instrument": "thermopile radiometers (standard array saturated in round 1; CFI-G dual-gain array in round 2)",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "The signal from the standard ACME radiometer array used in round 1 of Flame Design testing was saturated for nearly every test, yielding non-useful data."
+        }
+      ]
+    },
+    {
+      "quantity": "chemiluminescence images (CH*, OH*)",
+      "instrument": "intensified CFI camera",
+      "derived": false,
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p14",
+          "quote": "This was the Cool Flames Investigation (CFI) camera which was generally configured with its CH* filter, where exceptions included CFI-G and s-Flame testing with particularly dim flames."
+        }
+      ]
+    },
+    {
+      "quantity": "chamber pressure, MFC flows",
+      "instrument": "pressure transducers, mass-flow controllers (125 Hz telemetry)",
+      "derived": false,
+      "sources": [
+        {
+          "type": "table",
+          "table": "tests",
+          "note": "Experimental tables give pinit/pfinal/pmean and mass flows per test"
+        }
+      ]
+    }
+  ],
+  "psi_data": {
+    "summary": "PSI holds 3,807 files (about 2.18 TB) for PSI-10. The two experimental tables (327 tests with conditions: mole fractions, mass flows, pressure, Z_st, T_ad) and the documents are small and immediately usable. They are the Final Report (2023, 92+ pages), the SRD (2010), the ACME ISRD and SORD, the Engineering Implementation report and 16 years of NASA Task Book reports. Per-test raw data are complete but heavy. Per test there are a 125 Hz data CSV (raw channel voltages for MFCs, pressure transducers, PMTs, thermocouples and radiometers, not engineering units), an MFC set-point CSV, the as-run parameter file, a test-point timeline (TP) with extinction-detection time, comments on missing images, and daily 'flow traces' PDFs with operator notes. Imagery is 1,183 zip archives (about 2.1 TB: DataCam raw and converted TIFFs, intensified and HiBMs images) and 317 ops-video .ts recordings (75 GB); none is downloaded here. Burn time, flame diameter and temperatures are not tabulated anywhere in PSI.",
+    "file_groups": [
+      {
+        "category": "Experimental table",
+        "what": "Normal Flame (207 rows) and Inverse Flame (120 rows) test-condition tables",
+        "formats": [
+          ".csv"
+        ],
+        "n_files": 2,
+        "size_gb": 4e-05,
+        "usable_now": true
+      },
+      {
+        "category": "Reports / Science / Engineering Documents",
+        "what": "Final Report 2023, Task Book reports FY2004-FY2024, publication list, SRD 2010, ACME ISRD and SORD, ACME Engineering Implementation report",
+        "formats": [
+          ".pdf"
+        ],
+        "n_files": 7,
+        "size_gb": 0.0147,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data",
+        "what": "per-test 125 Hz sensor data in raw volts (_data.csv) and MFC set-points",
+        "formats": [
+          ".csv"
+        ],
+        "n_files": 634,
+        "size_gb": 1.25,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data",
+        "what": "per-test notes: as-run parameter files, test-point timelines (_TP), image-downlink comments, camera configuration files",
+        "formats": [
+          ".txt"
+        ],
+        "n_files": 993,
+        "size_gb": 0.001,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data",
+        "what": "daily test sheets, test-parameter notes, daily test-point logs (scanned, 51 without text layer) and 'flow traces etc' operator-note PDFs",
+        "formats": [
+          ".pdf"
+        ],
+        "n_files": 69,
+        "size_gb": 0.11,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data",
+        "what": "intensified-camera frame index files, module/ACD logs, ACME logs, chamber-calculator workbooks",
+        "formats": [
+          ".mdipsug",
+          ".asc",
+          ".log",
+          ".xlsx"
+        ],
+        "n_files": 593,
+        "size_gb": 0.15,
+        "usable_now": true
+      },
+      {
+        "category": "Raw Data",
+        "what": "image archives: DataCam (_ACME, _ACME_Converted), intensified (_INTNS), HiBMs",
+        "formats": [
+          ".zip"
+        ],
+        "n_files": 1183,
+        "size_gb": 2103.8,
+        "usable_now": false
+      },
+      {
+        "category": "Raw Data",
+        "what": "ops (analog) camera video recorded on the ground",
+        "formats": [
+          ".ts"
+        ],
+        "n_files": 317,
+        "size_gb": 75.1,
+        "usable_now": false
+      },
+      {
+        "category": "Representative Image(s)",
+        "what": "flame and hardware photographs",
+        "formats": [
+          ".jpg",
+          ".png"
+        ],
+        "n_files": 5,
+        "size_gb": 0.0009,
+        "usable_now": true
+      }
+    ],
+    "tests_table_rows": 327
+  },
+  "findings": [
+    {
+      "claim": "At about 1 atm, every ethylene spherical flame that extinguished radiatively did so at a peak temperature of about 1130 K. The reactant mass flux through the flame sphere at extinction was about 0.2 g/m^2/s of fuel for normal flames and 0.68 g/m^2/s of oxygen for inverse flames. This held across normal flames with ambient X_O2 0.20-0.38, burner X_fuel 0.13-1, total flow 0.6-12.2 mg/s and T_ad 2000-2800 K, and inverse flames with ambient X_C2H4 0.08-0.12, burner X_O2 0.40-0.85, 2.3-11.3 mg/s and T_ad 2080-2590 K.",
+      "kind": "limit",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "Despite this broad range of conditions, all flames extinguish at a critical extinction temperature of 1130 K, and a fuel-based mass flux of 0.2 g/m2 - s for normal flames, and an oxygen- based mass flux of 0.68 g/m2-s for inverse flames."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "For normal flames, the ambient oxygen mole fraction was varied from 0.2 to 0.38, burner supply fuel mole fraction from 0.13 to 1, total mass flow rate, mtotal , from 0.6 to 12.2 mg/s, and adiabatic flame temperature, Tad , from 2000 to 2800 K."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "For inverse flames, the ambient fuel mole fraction was varied from 0.08 to 0.12, burner supply oxygen mole fraction from 0.4 to 0.85, mtotal from 2.3 to 11.3 mg/s, and Tad from 2080 to 2590 K."
+        }
+      ]
+    },
+    {
+      "claim": "At constant burner flow, the normal ethylene flames at 1 atm grew monotonically after ignition while their peak gas temperature generally fell. Burn times were 28-336 s. Radiative extinction occurred when the growing flame's radiative loss approached its chemical heat release. Just before total extinction, many flames entered an oscillatory mode, partially extinguishing and re-forming with growing amplitude.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Burn times range from 28 –336 s. All flames grow monotonically after ignition. Peak gas temperature generally decreases with time."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Radiative extinction is observed when, at constant reactant flow rate, the flame expands until radiation heat loss approaches the chemical heat release."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Before a flame experiences complete extinction, it may enter an oscillatory mode in which part of the flame partially extinguishes and then reforms."
+        }
+      ]
+    },
+    {
+      "claim": "Steady-state spherical diffusion flames can exist despite radiative loss. This requires the steady flame to be smaller than the radiative-extinction size, and the flame to develop fast enough that radiation does not first drive its temperature below 1130 K. Flames showing steady behaviour burned for up to 870 s on the ISS. In an unbounded domain, the diffusion-controlled approach to steady state takes of order 10^5 s.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "It is found that steady- state gaseous microgravity spherical diffusion flames can exist in the presence of radiation heat loss, provided that the steady-state flame size is less than the flame size for radiative extinction"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "Despite a narrow range of attainable conditions, flames that exhibit steady-state behavior are observed aboard the ISS for up to 870 s, even with the constraint of a finite boundary."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "In the spherical, infinite domain configuration, the characteristic time for the diffusion- controlled system to effectively reach steady-state is found to be on the order of 100,000 s."
+        }
+      ]
+    },
+    {
+      "claim": "Flame size increased with reactant flow rate and decreased with ambient O2. At a fixed ambient O2, larger (higher-flow) flames extinguished radiatively sooner than smaller ones, because of higher radiative loss and falling heat release.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p39",
+          "quote": "Flame size increases with reactant flow rate and decreases with ambient oxygen concentration."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p39",
+          "quote": "For constant ambient oxygen concentration, larger flames (with higher fuel flow rates) radiatively extinguish faster than smaller flames (with lower flow rates) due to higher radiative losses and decreasing chemical heat release."
+        }
+      ]
+    },
+    {
+      "claim": "For the smallest, near-steady flames, the porous burner acted as a heat sink. As it warmed, its cooling of the flame weakened and the measured fibre temperature rose with time. Test duration was then limited by the burner temperature limit (set at 500 C in the as-run files), so round-1 data could not prove that these flames were fully steady.",
+      "kind": "limit",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p26",
+          "quote": "Sufficiently small flames with low radiation losses exhibit quasi-steady behavior, but burner heating is significant, and the experimental duration is dictated by the temperature limit of the porous sphere."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p40",
+          "quote": "The flames investigated appear to be asymptotically approaching a steady-state size and temperature, however, a decisive conclusion cannot be made because of burner heating."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_21328D1.txt",
+          "locator": "all",
+          "quote": "burnerTemperatureLimitC:500, burnerTemperatureLimitDurationSecs:3"
+        }
+      ]
+    },
+    {
+      "claim": "Sustained soot was seen only in 40% O2 with high fuel concentrations. In 21% O2 no flame sooted steadily. Small flames lost too much heat to the burner, and large flames cooled radiatively below the sooting limit too quickly.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p41",
+          "quote": "Constantly sooting flames were only observed in 40% oxygen and high fuel concentrations. In 21% oxygen, small flames did not soot because of heat loss to the burner and large flames did not soot because high radiative losses caused the flame temperature to quickly drop below the sooting limit."
+        }
+      ]
+    },
+    {
+      "claim": "In the precursor 2.2 s drop-tower tests (ethylene and propane, 0.98 bar), radiatively extinguishing spherical flames had peak temperatures at extinction onset of about 1100 K. That is far below the 1500 +/- 50 K usually quoted for hydrocarbon diffusion-flame extinction in normal gravity. Radiative loss was dominated by products outside the flame and scaled with flame surface area, not volume.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_TaskbookRpts.pdf",
+          "locator": "p34",
+          "quote": "Peak temperatures at extinction onset were about 1100 K, which is significantly lower than for kinetic extinction."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p21",
+          "quote": "The present results indicate an extinction temperature of about 1100 K for the present flames. This is lower than past measurements of this property in normal-gravity flames (Quintiere 2006)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p21",
+          "quote": "For example, Williams (1981) indicates an extinction temperature of 1500 ± 50 K for hydrocarbon combustion in oxygen/nitrogen mixtures."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_TaskbookRpts.pdf",
+          "locator": "p34",
+          "quote": "Radiative heat loss was dominated by the combustion products downstream of the flame and was found to scale with flame surface area, not volume."
+        }
+      ]
+    },
+    {
+      "claim": "In the drop-tower precursor work (2.2 s, ethylene, 1.5 mg/s fuel consumption), the sooting limits of 17 normal and inverse spherical flames were measured. The four at the lowest Z_st (residence times above 0.5 s) were excluded from the fit; the others fell on a line T_ad = 1198 Z_st + 1838 K, so raising Z_st permits about 700 K higher T_ad before soot appears. Convection direction (fuel-to-oxidizer vs oxidizer-to-fuel) had no measurable effect on these sooting limits.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p15",
+          "quote": "Tad(K) = 1198 Zst + 1838"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p16",
+          "quote": "The sooting limits follow a linear relationship between adiabatic flame temperature and Zst, with Zst accounting for a variation of about 700 K in the sooting limit ad iabatic flame temperature."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p16",
+          "quote": "Figure 1.7 shows that convection direction has no measurable effect on the sooting limits of these spherical flames."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p16",
+          "quote": "Error bars are included for the four flames at the lowest Zst and these flames are excluded from the fit shown."
+        }
+      ]
+    },
+    {
+      "claim": "Measured flame sizes agreed with transient numerical models only after the diffusivity was adjusted. On ISS, one-step-chemistry predictions matched flame size with adjusted diffusivity. In the earlier drop-tower comparison (2.2 s and 5.2 s facilities), close agreement needed thermal and mass diffusivities raised by 30% (or flow reduced by 25%).",
+      "kind": "method",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p40",
+          "quote": "Experimental measurements of flame size were in quantitative agreement with numerical results with one-step chemistry, provided the diffusivity was appropriately adjusted."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_TaskbookRpts.pdf",
+          "locator": "p34",
+          "quote": "Close agreement could not be obtained without either increasing the model’s thermal and mass diffusion properties by 30% or reducing mass flowrate by 25%."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_TaskbookRpts.pdf",
+          "locator": "p34",
+          "quote": "Experiments were performed in 2.2 s and 5.2 s microgravity facilities."
+        }
+      ]
+    },
+    {
+      "claim": "Detailed-chemistry simulations of the ISS ethylene flames (UCSD mechanism, 57 species, 270 reactions) show that as peak temperature falls toward the ~1130 K extinction point, reactant leakage grows and HO2-driven 'warm flame' chemistry appears. This chemistry delays extinction but is not exothermic enough to prevent it.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/13647830.2024.2326830?fields=title,abstract",
+          "quote": "As the flame cools and the peak temperature approaches the critical extinction temperature, there is increased reactant leakage leading to higher O, OH, and HO2 concentrations on the fuel side."
+        },
+        {
+          "type": "external",
+          "url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/13647830.2024.2326830?fields=title,abstract",
+          "quote": "The appearance of warm flame chemistry delays extinction but is not sufficiently exothermic to prevent it."
+        }
+      ]
+    },
+    {
+      "claim": "One-dimensional transient modelling with a soot sub-model, by the Russian partner team, of the normal and inverse ISS flames (0.5-2 atm) puts soot formation where the local C/O atom ratio is 0.32-0.44 and the temperature exceeds 1300-1500 K. This is consistent with the project hypothesis that soot needs both a critical C/O ratio and a critical temperature.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://doi.org/10.3390/math11020261",
+          "quote": "The results indicate that soot formation in normal and inverse SDFs is concentrated in the region where the local C/O atomic ratio and local temperature satisfy the conditions 0.32 < C/O < 0.44 and T > 1300–1500 K."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.3390/math11020261",
+          "quote": "The objects of this study were “normal” and “inverse” SDFs of gaseous ethylene in an oxygen atmosphere with nitrogen addition at room temperature and pressures ranging from 0.5 to 2 atm."
+        },
+        {
+          "type": "psi_record",
+          "field": "hypothesis"
+        }
+      ]
+    },
+    {
+      "claim": "Vitiation of the closed 83-90 L chamber appears to shorten flames. On day 19171 (40% O2, burner 1003), tests D1 to D5 burned for about 100 s (D1), about 60 s (D2-D4) and about 58 s (D5). The test notes say D5 was run like D1 apart from chamber vitiation; that accumulating combustion products caused the shortening is our inference.",
+      "kind": "trend",
+      "confidence": "low",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_19171 flow traces etc.pdf",
+          "locator": "p5",
+          "quote": "run just like D1 neglecting chamber vitiation (although some inactive parameters differed), where D5 flame lasted for ~58 s, while D1 lasted ~100 s while D2-D4 lasted ~60 s"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "The chamber’s free volume is approximately 83 liters depending on the installed hardware."
+        }
+      ]
+    }
+  ],
+  "fire_safety": {
+    "pillars": [
+      "fundamental",
+      "prevention"
+    ],
+    "relevance": {
+      "text": "In quiescent microgravity, with no buoyant flow to strain or blow off a flame, gaseous diffusion flames survive until radiative loss cools them to about 1130 K. That is several hundred kelvin below normal-gravity extinction temperatures. Spherical ethylene flames burned for minutes (up to 870 s) at constant fuel supply. For spacecraft fire safety this means: (1) a small, slow fuel leak can sustain a weak, possibly dim flame much longer than ground experience suggests; (2) extinction criteria based on a ~1500 K limit temperature are non-conservative in microgravity; (3) larger flames self-extinguish sooner, by radiation, than smaller ones at the same atmosphere; and (4) the critical flux of about 0.2 g/m^2/s fuel (1 atm, ethylene) offers a simple test for whether a diffusion flame fed at a given rate can persist. The PI explicitly cited pressure-dependent extinction data as valuable for spacecraft fire safety. The ACME documents themselves state that ACME was not designed as a fire-safety project. These are gas-burner flames, not material flammability limits.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "Despite this broad range of conditions, all flames extinguish at a critical extinction temperature of 1130 K, and a fuel-based mass flux of 0.2 g/m2 - s for normal flames, and an oxygen- based mass flux of 0.68 g/m2-s for inverse flames."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "Despite a narrow range of attainable conditions, flames that exhibit steady-state behavior are observed aboard the ISS for up to 870 s, even with the constraint of a finite boundary."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p39",
+          "quote": "For constant ambient oxygen concentration, larger flames (with higher fuel flow rates) radiatively extinguish faster than smaller flames (with lower flow rates) due to higher radiative losses and decreasing chemical heat release."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p21",
+          "quote": "For example, Williams (1981) indicates an extinction temperature of 1500 ± 50 K for hydrocarbon combustion in oxygen/nitrogen mixtures."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "Obtaining extinction data over a wide range of pressures could also be valuable for spacecraft fire safety."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_SRD_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "radiative extinction can be important in microgravity and its improved understanding s hould contribute to spacecraft fire safety."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_ACME_SORD.pdf",
+          "locator": "p4",
+          "quote": "ACME is not focused on the advancement of spacecraft fire safety technology, although it is likely that some ACME findings will be relevant."
+        }
+      ]
+    },
+    "habitat_conditions": {
+      "text": "Normal ethylene flames burned in ambient O2 of 0.20-0.40 at 0.99-1.31 atm (100-133 kPa), so O2 partial pressures were about 21-53 kPa. That brackets sea-level air (20.9% at 101.3 kPa) and exceeds the O2 partial pressure of the proposed Moon habitat (>=30% at <=70.3 kPa, about 21 kPa O2). No normal-flame (oxygen-atmosphere) test was run at reduced total pressure, so the habitat combination of enriched O2 at ~70 kPa was not reproduced. Reduced (0.43-0.52 atm, 43-53 kPa) and elevated (2-3 atm) pressures were used only for inverse flames, where the ambient is ethylene/N2 and O2 comes from the burner at up to 85%. That equals the highest O2 in PSI, also used in ACME CFI-G, but it does not represent a habitat atmosphere. The spacesuit condition (100% O2 at 29.6 kPa) was not approached.",
+      "sources": [
+        {
+          "type": "reference",
+          "id": "earth-sea-level"
+        },
+        {
+          "type": "reference",
+          "id": "moon-habitat"
+        },
+        {
+          "type": "reference",
+          "id": "spacesuit"
+        },
+        {
+          "type": "reference",
+          "id": "highest-o2-in-psi"
+        },
+        {
+          "type": "table",
+          "table": "tests",
+          "note": "Normal C2H4 rows: XO2 (init) 0.198-0.399, pmean 0.992-1.311 atm; Inverse rows: pmean 0.426-3.018 atm, XO2 (burner) up to 0.850"
+        }
+      ]
+    },
+    "earth_benefits": {
+      "text": "The work is aimed at 'designed' non-premixed flames: shifting inert from oxidizer to fuel and enriching oxygen, to get robust, soot-free burners. It is cited as contributing to oxy-fuel combustion and to novel designs of future coal power plants with lower pollutant emissions.",
+      "sources": [
+        {
+          "type": "psi_record",
+          "field": "researchImpacts"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p4",
+          "quote": "By varying Zst at constant Tad, flames have been produced that are soot-free at any strain rate (permanently blue) and have extinction scalar dissipation rates up to 40 times those of their fuel-air counterparts."
+        }
+      ]
+    }
+  },
+  "limitations": [
+    {
+      "text": "The sintered spherical burners did not give truly centred spherical flames, especially at high flow. More flow leaked through the sphere-tube joint, and heat loss to the support tube caused local quenching. The first burner (1002) was replaced mid-round 1 and some tests were repeated; burner 1003 was better but still imperfect. Operator notes record asymmetric flames and asymmetric extinction.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p11",
+          "quote": "Unfortunately, the spherical burners did not always yield spherically symmetric flames, presumably because of (1) greater burner flow through the joint between the porous sphere and supply tube, and (2) heat loss to the support tube (encompassing the supply tube) causing local flame quenching."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_19171 flow traces etc.pdf",
+          "locator": "p7",
+          "quote": "successful ignition, but ASYMMETRIC FLAME with its higher flow"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_19156 flow traces etc.pdf",
+          "locator": "p4",
+          "quote": "successful test in which flame extinguished in an asymmetric fashion"
+        }
+      ]
+    },
+    {
+      "text": "By the PI's own account, gas-temperature and soot-volume-fraction diagnostics fell short. The round-1 radiometers saturated in nearly every test. The TFP fibre array was misaligned to the DataCam for four round-2 test days. HiBMs soot extinction is compromised by soot emission and asymmetric soot clouds, and the BG7 filter cut red too strongly for accurate pyrometry.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "The only significant disappointment with the project was with the diagnostics, particularly with respect to gas temperature and soot volume fraction."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "The signal from the standard ACME radiometer array used in round 1 of Flame Design testing was saturated for nearly every test, yielding non-useful data."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "Unfortunately, this was the fourth day of testing in which the fiber array wasn’t aligned, where it regrettably wasn’t recognized earlier."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p41",
+          "quote": "Preliminary analysis of the HiBMs images suggests that significant emission of light from soot particles and dissymmetry of the soot cloud will make acquiring accurate soot volume fraction measurements difficult, if possible."
+        }
+      ]
+    },
+    {
+      "text": "Methane, CO2 dilution, coflow flames and 0.2 atm tests from the original objectives were not flown. Normal flames were capped at 40% O2 and inverse flames at 65% C2H4 for safety. Only ethylene (plus one propane day) and N2 were used.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p8",
+          "quote": "Desired ISS testing with the fuel methane (CH4), inert carbon dioxide (CO2), and coflow flame configuration was not conducted."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p8",
+          "quote": "And while the chamber pressure was varied in ISS testing, tests were not conducted at pressures as low as 0.2 atm (specified below under 6.3.3)."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p27",
+          "quote": "In particular, for safety reasons, the O2 mole fraction limit for normal tests was 40% and the C2H4 mole fraction limit for inverse flames was 65%."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p27",
+          "quote": "Tests with CH4 as fuel and CO2 as diluent, were slated for the test matrix by the investigators, but not allowed."
+        }
+      ]
+    },
+    {
+      "text": "The chamber is closed, so each successive test on a day burned in a slightly vitiated, higher-pressure atmosphere (table conditions are approximate and ignore vitiation). Mass-flow controllers were not always steady or on set-point. The CIR vibration isolation (PaRIS) was not used, and g-jitter has not been correlated with the data.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p18",
+          "quote": "The chamber’s free volume is approximately 83 liters depending on the installed hardware."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p38",
+          "quote": "ACME’s Mass Flow Controllers (MFCs) used to control the flow of fuel and nitrogen have unfortunately not always performed adequately"
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p50",
+          "quote": "Although the Combustion Integrated Rack (CIR) is equipped with a Passive Rack Isolation System (PaRIS), it was not used for ACME because of the significant need for crew time that would have resulted."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Raw Data_19171 flow traces etc.pdf",
+          "locator": "p5",
+          "quote": "where D5 flame lasted for ~58 s, while D1 lasted ~100 s while D2-D4 lasted ~60 s"
+        }
+      ]
+    },
+    {
+      "text": "Published ISS results (critical extinction point, steady flames) are for about 1 atm. The PSI documents contain no analysis of the round-2 reduced- and elevated-pressure tests, and the pressure paper could not be retrieved.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p25",
+          "quote": "Despite this broad range of conditions, all flames extinguish at a critical extinction temperature of 1130 K, and a fuel-based mass flux of 0.2 g/m2 - s for normal flames, and an oxygen- based mass flux of 0.68 g/m2-s for inverse flames."
+        },
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+          "locator": "p19",
+          "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari) to enable Flame Design testing at chamber pressures of up to 3 atm in the final round- 2 test days, whereas the limit had been 1.5 atm in preceding testing."
+        }
+      ]
+    },
+    {
+      "text": "These are porous-sphere gas-burner flames with prescribed reactant supply. Their extinction and sooting limits are not flammability limits of solid or liquid spacecraft materials.",
+      "sources": [
+        {
+          "type": "psi_file",
+          "file": "PSI-10_Science Documents_ACME_SORD.pdf",
+          "locator": "p4",
+          "quote": "ACME is not focused on the advancement of spacecraft fire safety technology, although it is likely that some ACME findings will be relevant."
+        }
+      ]
+    }
+  ],
+  "related": [
+    {
+      "accession": "PSI-23",
+      "relation": "shared hardware"
+    },
+    {
+      "accession": "PSI-159",
+      "relation": "shared hardware"
+    },
+    {
+      "accession": "PSI-21",
+      "relation": "shared hardware"
+    },
+    {
+      "accession": "PSI-20",
+      "relation": "shared hardware"
+    },
+    {
+      "accession": "PSI-22",
+      "relation": "shared hardware"
+    }
+  ],
+  "open_questions": [
+    "Convert the per-test 125 Hz _data.csv voltages to engineering units and tabulate burn time, extinction time and burner temperature for all 327 tests. PSI contains no outcome column.",
+    "Map extinction (1130 K / critical-flux criterion) against chamber pressure using the round-2 inverse tests at 0.43-0.52, 1, 2 and 3 atm.",
+    "Test whether the critical fuel and oxygen fluxes (0.2 and 0.68 g/m^2/s) hold for the propane day and for normal flames above 1.1 atm.",
+    "Quantify how vitiation within a test day (successive tests in the closed chamber) shifts burn time, using repeated test points such as 19171D1-D5.",
+    "Extract sooting-limit conditions (onset and disappearance of yellow luminosity) versus Z_st and T_ad from the DataCam images, and compare them with the drop-tower line T_ad = 1198 Z_st + 1838 K."
+  ],
+  "dashboard_hooks": [
+    {
+      "view": "test-condition map",
+      "fields": [
+        "config",
+        "x_o2 (ambient for normal, burner for inverse)",
+        "fuel_fraction",
+        "pressure_kpa",
+        "mean Zst",
+        "t_ad_k"
+      ],
+      "why": "Shows the 327 ISS test points in Z_st-T_ad space split by normal/inverse and pressure, with the drop-tower sooting-limit line overlaid."
+    },
+    {
+      "view": "extinction size predictor",
+      "fields": [
+        "mtot (mg/s)",
+        "mfuel or mO2 (mg/s)",
+        "config"
+      ],
+      "why": "Applies r_ext = sqrt(m/(4*pi*m''_crit)) with 0.2 or 0.68 g/m^2/s to show expected flame radius at radiative extinction for any 1 atm test."
+    },
+    {
+      "view": "pressure ladder of inverse tests",
+      "fields": [
+        "test_id",
+        "pmean (atm)",
+        "XO2",
+        "XC2H4 initial",
+        "mtot (mg/s)"
+      ],
+      "why": "Highlights the only PSI flames run at 43-53 kPa and at 2-3 atm, which have not yet been analysed in PSI documents."
+    },
+    {
+      "view": "test-day timeline",
+      "fields": [
+        "date",
+        "test_id",
+        "x_o2",
+        "pressure_kpa",
+        "burner serial"
+      ],
+      "why": "Reveals vitiation and pressure drift within days and the burner swap (1002 to 1003) that affects data quality."
+    }
+  ],
+  "gaps": [
+    "No per-test outcomes (ignited or not, burn time, extinction diameter or temperature, sooting yes/no) exist in the experimental tables or tests.csv. burn_time_s, extinction_mode and ignited are empty for all 327 rows. Outcomes would need the 125 Hz data CSVs (raw volts, no calibration in PSI) or the 2.1 TB of image zips and 75 GB of video, none of which were downloaded.",
+    "Results for the round-2 reduced- and elevated-pressure inverse flames (0.43-3 atm) are not in any PSI document. The relevant paper (Waddell et al., Proc. Combust. Inst. 40 (2024) 105400, doi:10.1016/j.proci.2024.105400) was unreachable: no abstract on Crossref, Semantic Scholar or OpenAlex, and ScienceDirect blocked access. The Waddell 2023 dissertation (University of Maryland) was not located.",
+    "Full texts of Irace et al. 2021 (Combust. Flame 229, 111373) and the two 2023 Proc. Combust. Inst. papers were not retrieved. Their abstracts are reproduced in the Final Report, which was used instead. The 'simple equation' for extinction flame size is therefore reconstructed here from mass conservation, not quoted.",
+    "Ambient (chamber) temperature is not given in the tables. The drop-tower SRD assumes 300 K burner temperature, but no ISS value was found.",
+    "Final Report Table 1 counts 326 ignited flames (188 + 138). The tables have 327 rows (207 normal incl. 20 propane, 120 inverse), and some rows are ramped tests or possibly unsustained ignitions; the mapping is not stated.",
+    "51 scanned Raw Data PDFs (test sheets, test-parameter notes, daily test-point logs) have no text layer and were not read. None is a report.",
+    "Several documents contain institutional contact details (emails, phone numbers, a manufacturer's sales contact in the ACME ISRD; PI phone/address in the Task Book reports, PSI-10_Reports_TaskbookRpts.pdf). These were not copied.",
+    "No document contained text addressed to an AI or unrelated instructions."
+  ]
+}
