@@ -1,0 +1,1052 @@
+[
+ {
+  "accession": "PSI-25",
+  "test_id": "B14",
+  "source_row": 14,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 3 2 ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "B18",
+  "source_row": 18,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Air display",
+  "quote": "10 blowoff",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "B19",
+  "source_row": 19,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Air display",
+  "quote": "10 blowoff",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "B21",
+  "source_row": 21,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "M17",
+  "source_row": 43,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "10 5 3 0ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O4",
+  "source_row": 51,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O7",
+  "source_row": 55,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Fan display",
+  "quote": "blowoff fan max 10",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O8a",
+  "source_row": 56,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Fan display",
+  "quote": ".31 extinguished",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O8b",
+  "source_row": 57,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Fan display",
+  "quote": "blowoff fan pot 6.0",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O9",
+  "source_row": 58,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Fan display",
+  "quote": "blowoff pt 4.0",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O11",
+  "source_row": 60,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Air display",
+  "quote": "5 down then blowoff",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O12",
+  "source_row": 61,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "Air display",
+  "quote": "no ign at any flow",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O14",
+  "source_row": 64,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O19",
+  "source_row": 70,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "O22",
+  "source_row": 73,
+  "outcome": "extinguished",
+  "cause": "blowoff",
+  "field": "Fan display",
+  "quote": "blowoff pot 5 out at fan 87",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P1",
+  "source_row": 74,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 2 slow decr to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P5",
+  "source_row": 79,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P8",
+  "source_row": 81,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "Air display",
+  "quote": "5 would not stay lit 10 15 ibid",
+  "doubt": "Read as: the flame was not sustained at 5, 10 or 15 cm/s."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P9",
+  "source_row": 82,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P10",
+  "source_row": 83,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "0.30 extinguished",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P13a",
+  "source_row": 85,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P13b",
+  "source_row": 86,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P22a",
+  "source_row": 96,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P22b",
+  "source_row": 97,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-25",
+  "test_id": "P25",
+  "source_row": 100,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "Air display",
+  "quote": "5 down to ext",
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "1",
+  "source_row": 1,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "extinguishes at burnout",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "18",
+  "source_row": 3,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Only extinguishes when all flow stops.",
+  "doubt": "N2 had been on and was turned off just after the air; the flame survived N2 and went out only when all flow stopped."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "45",
+  "source_row": 8,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Flame doesn't go out until fan goes to 38.",
+  "doubt": "N2 was also used at the end ('N2 extinguishment'); the notes tie the extinction to the fan reaching 38 (flow off)."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "19",
+  "source_row": 9,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "To extinguish, turned flow off",
+  "doubt": "Extinction is implied by the purpose of the flow-off step rather than stated as observed."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "20",
+  "source_row": 10,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Turned blue and extinguished when fan off",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "21",
+  "source_row": 11,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Turned off flow right when fuel completely ran out.",
+  "doubt": "Fuel ran out at the same moment flow was turned off, so low-flow extinction cannot be excluded."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "12",
+  "source_row": 14,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Died when igniter turned off. Repeated re-ignition attempts failed.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "54",
+  "source_row": 15,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Fan turned to 40 at 16:19:22, flame and flame went out at 16:19:34.",
+  "doubt": "N2 had failed to extinguish earlier and the fan was briefly turned up by accident before being reduced to 40."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "55",
+  "source_row": 16,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Fan off at 35:30 ish. Flame extinuishes right away.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "56",
+  "source_row": 17,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "when turned off fan, and it extinguished right away",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "57",
+  "source_row": 18,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "When he turned flow down to 40.5ish flame extinguished.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "110",
+  "source_row": 19,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished when flow turned off.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "31",
+  "source_row": 21,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished when pot ~ 39.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "32",
+  "source_row": 22,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "All blue sphere just before extinction.",
+  "doubt": "Notes mention extinction but not its trigger; the flow column (5, 0) suggests flow-off."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "12-R",
+  "source_row": 24,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "did not ignite but smoked",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "12-R2",
+  "source_row": 25,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "12 pulses and then on, no joy.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "46",
+  "source_row": 26,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "extinguished when flow is turned off.",
+  "doubt": "Two ignitions: the first died when flow was turned down to 41; this is the second, sustained flame (N2 had earlier blown out only the stagnation region)."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "49",
+  "source_row": 29,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "After several minutes, shut flow off. Flame became very dim blue before extinguishing.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "22",
+  "source_row": 30,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "At fan off, flame turns blue, and oscilates before extinction.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "23",
+  "source_row": 31,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Fan off flame all blue and pulses a few times before extinguished.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "24",
+  "source_row": 32,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "N2 and air off, turned all blue, he turned lights on before flame completely out.",
+  "doubt": "N2 and air were turned off together and N2 at max had not blown the flame out; a small amount of fuel remained around the rod."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "25",
+  "source_row": 33,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "he started to turn fan down when fuel ran out and flame extinguished.",
+  "doubt": "The fan was being turned down at the same time, but the notes attribute the end to fuel running out."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "60",
+  "source_row": 36,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "then flow off goes out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "61",
+  "source_row": 37,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished with flow off at6.75 minutes or so.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "5",
+  "source_row": 38,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished at fan 41, became circular at extinction, sphere shrank to extinction.",
+  "doubt": "About 2.5 cm of sample was left."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "66",
+  "source_row": 40,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "Flame extinguished all by itself.",
+  "doubt": "Went out at steady flow with no stated trigger, after slow downstream spread with base burnout; fuel remained downstream."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "34",
+  "source_row": 42,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "N2 on and flame brightened and stabilized, extinction when air flow off.",
+  "doubt": "N2 was on when the air was turned off."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "35",
+  "source_row": 43,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Burned out completely.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "16",
+  "source_row": 44,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "just smoked slightly, no ignition.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "5b",
+  "source_row": 45,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "seemed to quench 5 mm from the end.",
+  "doubt": "Quenched near the sample end in opposed flow (preburned sample); the cause is not stated."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "6",
+  "source_row": 46,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "didn't complete change before burned out whole sample.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "82",
+  "source_row": 47,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Flame extinguished when fan set to 40.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "82a",
+  "source_row": 48,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Out at 40 again.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "82b",
+  "source_row": 49,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Burned to completion.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "68",
+  "source_row": 50,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "Tiny blue flame. Self-extinguished.",
+  "doubt": "A re-ignition; unclear whether it was ever sustained, so it could count as no_ignition."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "69",
+  "source_row": 51,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "got a brief flame a few times, but went out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "111",
+  "source_row": 52,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Turned off GN2 and flame strengthened, then turned off air flow and flame went out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "112",
+  "source_row": 53,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "air off, flame out, 6 minute burn!",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "113",
+  "source_row": 54,
+  "outcome": "extinguished",
+  "cause": "nitrogen",
+  "field": "asrun_notes",
+  "quote": "GN2 on max did not blow it out right away, but did eventually extinguish it.",
+  "doubt": "Flow had first been reduced to a minimum flame (pot 0.32), so low flow contributed."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "15",
+  "source_row": 57,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Did not ignite.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "13",
+  "source_row": 58,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "brief ignition and extinguished in ~ 3 s. No spread.",
+  "doubt": "The notes do not say the flame died at igniter withdrawal, only that it lasted about 3 s."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "17",
+  "source_row": 59,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "brief ignition and extinguished after 4 seconds. No spread.",
+  "doubt": "The notes do not say the flame died at igniter withdrawal, only that it lasted about 4 s."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "64",
+  "source_row": 63,
+  "outcome": "extinguished",
+  "cause": "nitrogen",
+  "field": "asrun_notes",
+  "quote": "flame did blow out with GN2 at about a pot 6.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "9",
+  "source_row": 68,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "At lowest flows shrank but kept going to end of sample.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "83a",
+  "source_row": 70,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "decreased flow but soot persisted until 0.32 pot when soot disappeared then flame went out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "83c",
+  "source_row": 72,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Burned out all wax",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "84a",
+  "source_row": 73,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Consistenly goes out at pot 0.31",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "86a",
+  "source_row": 75,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Got hot then stepped to 0 flow, went out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "86b",
+  "source_row": 76,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "went out when fan off (38)",
+  "doubt": "N2 had been applied at the flow settings; the end is tied to the fan being turned off."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "86c",
+  "source_row": 77,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "ran out of fuel too quickly.",
+  "doubt": "Says fuel ran out but not explicitly that the flame ended then."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "74",
+  "source_row": 80,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "Shrank slowly and extinguished by itself.",
+  "doubt": "Went out after flow was reduced to 3 cm/s and the leading edge burned out; may be local fuel depletion rather than extinction."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "75",
+  "source_row": 81,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Flame went out when igniter was retracted, with a puff of smoke.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "99",
+  "source_row": 83,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished at very low flow.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "116",
+  "source_row": 86,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "before we put it out (air off)",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "117",
+  "source_row": 87,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Went out at 0.32 pot, got spherical and flashed out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "100",
+  "source_row": 89,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Flame went out when fan set to 39.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "93",
+  "source_row": 91,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "went out on its own at 18:04:30 ish.",
+  "doubt": "Went out 'on its own' at low fan settings (41); flow column ends at 0."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "27",
+  "source_row": 93,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Out when fan off.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "28",
+  "source_row": 94,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Burned out sample.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "87",
+  "source_row": 95,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Candle out at flow change.",
+  "doubt": "Direction of the final flow change is not stated; it followed the low fan-41 setting and the flow column ends at 0."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "103",
+  "source_row": 96,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished on last flow change pot 0.35-0.32",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "104",
+  "source_row": 97,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Extinguished when flow off.",
+  "doubt": "Max GN2 at low flow had failed to blow it out first."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "105",
+  "source_row": 98,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "out at 18:40 at finite extremely low flow.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "38",
+  "source_row": 99,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "brief flame at 62 but also 'flamed out'",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "39",
+  "source_row": 100,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "0.32 (41) flame self-extinguished.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "40",
+  "source_row": 101,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "burned out fuel.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "72",
+  "source_row": 102,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "no luck keeping the flame sustained. After igniter retract, the blue flame leading edge shrinks back",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "73",
+  "source_row": 103,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Got a flame briefly, but did not sustain for any spread, shrank and winked out after maybe 15 s or so.",
+  "doubt": "Lasted about 15 s, possibly beyond igniter retraction."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "118",
+  "source_row": 104,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Went out at finite flow.",
+  "doubt": "'Finite flow' after reductions to <1 cm/s; read as the low-flow limit."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "119",
+  "source_row": 105,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "we shut off flow to put flame out.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "89",
+  "source_row": 106,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "out 14:22:50",
+  "doubt": "Inferred from a log of stepwise pot reductions down to 0.32 followed by 'out'."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "95",
+  "source_row": 107,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "no ignition, despite prolonged attempted ignition.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "92",
+  "source_row": 108,
+  "outcome": "burned_out",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "At extinction, the stag zone opened up before the flame goes out (out of wax).",
+  "doubt": "Went out during low-flow steps, but the notes attribute it to running out of wax."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "78",
+  "source_row": 109,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "Went out on its own at a flow of 0.4 after 75 seconds",
+  "doubt": "Went out 'on its own' at a low pot setting (0.4) without propagating; could be low_flow."
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "53",
+  "source_row": 113,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "No ignition on this test.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "108",
+  "source_row": 116,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "went out when pot turned down to 0.29.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "109",
+  "source_row": 117,
+  "outcome": "extinguished",
+  "cause": "low_flow",
+  "field": "asrun_notes",
+  "quote": "Flame went out at pot 0.27, with oscillations and a big flash at extinction.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "79",
+  "source_row": 118,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "Sample ignited briefly - blue curving around leading edge, but went out. Couldn't get it ignited again",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "80",
+  "source_row": 119,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "No flame.",
+  "doubt": null
+ },
+ {
+  "accession": "PSI-26",
+  "test_id": "75",
+  "source_row": 120,
+  "outcome": "no_ignition",
+  "cause": null,
+  "field": "asrun_notes",
+  "quote": "no joy, just a puff of smoke each time.",
+  "doubt": null
+ }
+]

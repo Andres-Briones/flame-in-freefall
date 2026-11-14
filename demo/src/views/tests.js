@@ -52,8 +52,11 @@
 
   const matchCat = (r, key, want) => !want || (want === NONE ? r[key] == null || r[key] === '' : String(r[key] ?? '') === want);
 
+  // PSI-25 and PSI-26 have no outcome column: theirs is read from the crew notes (outcome, outcome_cause).
+  const outcomeOf = r => r.extinction_mode || (r.outcome ? r.outcome + (r.outcome === 'extinguished' && r.outcome_cause !== 'unspecified' ? ': ' + r.outcome_cause : '') : null);
+
   function haystack(r) {
-    return [r.accession, r.acronym, r.test_id, r.fuel, r.fuel_raw, r.config, r.geometry, r.flags, r.extinction_mode, r.date]
+    return [r.accession, r.acronym, r.test_id, r.fuel, r.fuel_raw, r.config, r.geometry, r.flags, outcomeOf(r), r.date]
       .filter(x => x != null).join(' ').toLowerCase();
   }
 
@@ -255,10 +258,10 @@
         let groups;
         if (colorBy === 'outcome') {
           const counts = new Map();
-          for (const r of pts) if (r.extinction_mode) counts.set(r.extinction_mode, (counts.get(r.extinction_mode) || 0) + 1);
+          for (const r of pts) if (outcomeOf(r)) counts.set(outcomeOf(r), (counts.get(outcomeOf(r)) || 0) + 1);
           const top = [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3).map(x => x[0]);
-          groups = top.map((m, i) => [m.replace(/_/g, ' '), c.s[i], r => r.extinction_mode === m]);
-          groups.push([top.length ? 'other or not recorded' : 'outcome not recorded', c.neutral, r => !top.includes(r.extinction_mode)]);
+          groups = top.map((m, i) => [m.replace(/_/g, ' '), c.s[i], r => outcomeOf(r) === m]);
+          groups.push([top.length ? 'other or not recorded' : 'outcome not recorded', c.neutral, r => !top.includes(outcomeOf(r))]);
         } else {
           groups = PHASES.map(p => [p, App.phaseColor(p), r => r.fuel_phase === p]);
           groups.push(['phase not recorded', c.neutral, r => !PHASES.includes(r.fuel_phase)]);
@@ -306,7 +309,7 @@
         { key: 'pressure_kpa', label: 'kPa', num: true, fmt: v => App.fmt(v, 1) },
         { key: 'flow_cm_s', label: 'Flow cm/s', num: true },
         { key: 'burn_time_s', label: 'Burn s', num: true },
-        { key: 'extinction_mode', label: 'Outcome', fmt: v => v ? String(v).replace(/_/g, ' ') : '–' },
+        { key: 'extinction_mode', label: 'Outcome', fmt: (v, r) => outcomeOf(r) ? outcomeOf(r).replace(/_/g, ' ') : '–' },
         { key: '_nflags', label: 'Flags', num: true, fmt: (v, r) => v ? App.chip(`${v} flag${v > 1 ? 's' : ''}`, 'warn') : '' },
       ].filter(Boolean);
       const tableRows = rows.map(r => Object.assign({}, r, { _nflags: flagList(r).length, _row: r }));

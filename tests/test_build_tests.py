@@ -470,3 +470,30 @@ def test_report_and_recording_disagree_on_s_flame_dilution(table):
 
 def test_replaced_boolean_keeps_a_boolean_original(table):
     assert extra(row(table, "PSI-159", "21106 F4"))["ignited_original"] is False
+
+
+def test_bass_outcomes_are_read_from_the_crews_words_and_quote_them(table):
+    solid = table[table["accession"].isin(["PSI-25", "PSI-26"])]
+    assert table.loc[~table.index.isin(solid.index), "outcome"].isna().all()
+    assert solid.groupby("accession")["outcome"].count().to_dict() == {"PSI-25": 25, "PSI-26": 80}
+    for r in solid[solid["outcome"].notna()].itertuples():
+        assert " ".join(r.outcome_quote.split()) in " ".join(extra(r)[extra(r)["outcome_field"]].split())
+        assert (r.outcome == "extinguished") == (r.outcome_cause in bt.OUTCOME_CAUSES)
+    r = row(table, "PSI-25", "B18")
+    assert (r.outcome, r.outcome_cause, r.outcome_quote) == ("extinguished", "blowoff", "10 blowoff")
+    r = row(table, "PSI-26", "1")
+    assert r.outcome == "burned_out" and pd.isna(r.outcome_cause) and "burnout" in r.outcome_quote
+    assert row(table, "PSI-26", "95").outcome == "no_ignition"
+    assert pd.isna(row(table, "PSI-26", "42").outcome)  # "2 minute burn": a duration, not an ending
+
+
+def test_an_outcome_whose_quote_left_the_source_is_refused():
+    rows = {"PSI-26": [{"test_id": "1", "source_row": 2, "extra": {"asrun_notes": "Burned to completion."}}]}
+    item = {"accession": "PSI-26", "test_id": "1", "source_row": 2, "outcome": "burned_out", "cause": None,
+            "field": "asrun_notes", "quote": "Burned to  completion."}
+    bt.apply_outcomes(rows, [item])
+    assert rows["PSI-26"][0]["outcome"] == "burned_out"
+    with pytest.raises(ValueError, match="quote"):
+        bt.apply_outcomes(rows, [{**item, "quote": "went out"}])
+    with pytest.raises(ValueError, match="cause"):
+        bt.apply_outcomes(rows, [{**item, "cause": "blowoff"}])

@@ -15,6 +15,10 @@ TEST_FILTERS = {
     "pressure_kpa": RANGE,
     "flow_cm_s": RANGE,
     "extinction_mode": {"type": "string", "enum": ["self_extinguished", "flow_terminated", "extinction", "disruption", "completion"]},
+    "outcome": {"type": "string", "enum": ["no_ignition", "extinguished", "burned_out"],
+                "description": "solid-fuel runs of BASS (PSI-26) and BASS-II (PSI-25) only: how the flame ended, read from "
+                               "the crew's notes; each row quotes its source in outcome_quote and gives outcome_cause "
+                               "(blowoff, low_flow, nitrogen, unspecified) when extinguished. Null on most rows: not stated"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
 }
@@ -57,7 +61,7 @@ TOOLS = [
           "temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, "
           "PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and "
           "cool-flame diameter, radiometer power against time) are a second recording: test_point "
-          "\"FLEX-<test id>-reduced\". Needs the raw files on disk.", {
+          "\"FLEX-<test id>-reduced\". Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down.", {
               "test_id": {"type": "string"}, "channels": {"type": "array", "items": {"type": "string"}},
               "max_points": {"type": "integer"}, "test_point": {"type": "string"}, "accession": ACCESSION}, ["test_id"]),
     {**_tool(api.predict, "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy "

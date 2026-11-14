@@ -39,7 +39,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 |---|---|
 | `search_investigations(query, pillar, fuel_phase, flight)` | which investigations exist / match a topic |
 | `get_investigation(accession, sections)` | everything about one investigation |
-| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, ...)` | what was tested and what happened |
+| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, ...)` | what was tested and what happened |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
 | `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase |
 | `relevance(scenario, fuel_phase, pillar)` | which investigations matter for a scenario, and how far the data are from it |

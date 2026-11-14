@@ -28,8 +28,8 @@ COLUMNS = [
     "accession", "acronym", "test_id", "row_kind", "date",
     "fuel", "fuel_raw", "fuel_phase", "fuel_fraction", "config", "geometry",
     "x_o2_ambient", "x_o2_burner", "x_o2_min", "x_o2_max", "x_o2", "diluent", "pressure_kpa", "flow_cm_s", "gravity",
-    "n_flames", "ignited", "burn_time_s", "extinction_mode", "t_ad_k", "peak_temp_c",
-    "d0_mm", "ext_diameter_mm", "burn_rate_k_mm2_s", "n_reignitions", "cool_flame",
+    "n_flames", "ignited", "burn_time_s", "extinction_mode", "outcome", "outcome_cause", "outcome_quote",
+    "t_ad_k", "peak_temp_c", "d0_mm", "ext_diameter_mm", "burn_rate_k_mm2_s", "n_reignitions", "cool_flame",
     "spread_rate_mm_s", "burn_length_cm", "flame_length_mm", "at_smoke_point", "smoke_point_reviewed", "measurement",
     "flags", "extra", "source_file", "source_row",
 ]
@@ -1166,6 +1166,41 @@ def apply_patches(groups, patches):
         row["extra"].setdefault("discrepancies", []).append(patch["id"])
 
 
+OUTCOMES = psi.ROOT / "data" / "corrections" / "tests_outcomes.json"
+OUTCOME_VALUES = ("no_ignition", "extinguished", "burned_out")
+OUTCOME_CAUSES = ("blowoff", "low_flow", "nitrogen", "unspecified")
+
+
+def _squash(text):
+    return " ".join(str(text).split())
+
+
+def apply_outcomes(groups, outcomes):
+    """Fill `outcome` for solid-fuel runs whose tables have no outcome column, from a reading of the crew's own words
+    (data/corrections/tests_outcomes.json). Each entry names the `extra` field it was read from and quotes it; an
+    entry whose quote is no longer in that field fails loudly, so a reading can never outlive its source."""
+    index = {}
+    for acc, rows in groups.items():
+        for row in rows:
+            index[(acc, row["test_id"], row.get("source_row"))] = row
+    for item in outcomes:
+        key = (item["accession"], item["test_id"], item["source_row"])
+        row = index.get(key)
+        if row is None:
+            raise ValueError(f"outcome {key}: no such row")
+        if item["outcome"] not in OUTCOME_VALUES:
+            raise ValueError(f"outcome {key}: unknown outcome {item['outcome']!r}")
+        if (item["outcome"] == "extinguished") != (item.get("cause") in OUTCOME_CAUSES) or \
+                (item["outcome"] != "extinguished" and item.get("cause") is not None):
+            raise ValueError(f"outcome {key}: a cause goes with extinguished, and only with it")
+        if _squash(item["quote"]) not in _squash(row["extra"].get(item["field"], "")):
+            raise ValueError(f"outcome {key}: the quote is not in {item['field']!r}")
+        row["outcome"], row["outcome_cause"], row["outcome_quote"] = item["outcome"], item.get("cause"), item["quote"]
+        row["extra"]["outcome_field"] = item["field"]
+        if item.get("doubt"):
+            row["extra"]["outcome_doubt"] = item["doubt"]
+
+
 def oxygen_semantics(row):
     if row["accession"] in INVERSE_FLAMES and row["config"] == "inverse":
         row["x_o2_burner"], row["x_o2_min"], row["x_o2_max"] = row["x_o2"], None, None
@@ -1191,6 +1226,7 @@ def build():
             if ids[row["test_id"]] > 1:
                 flag(row, "duplicate_id")
     apply_patches(groups, json.loads(PATCHES.read_text()))
+    apply_outcomes(groups, json.loads(OUTCOMES.read_text()))
     for acc, rows in groups.items():
         for row in rows:
             row["acronym"] = acronyms.get(acc)

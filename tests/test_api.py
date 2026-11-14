@@ -183,3 +183,9 @@ def test_timeseries_serves_reduced_droplet_data_as_a_second_recording():
     assert len([s for s in out["sources"] if s.get("file")]) == 4
     only = api.timeseries("1264", test_point="FLEX-1264-reduced", channels=["droplet_diameter_mm"], max_points=5000)
     assert len(only["data"]["series"]) == 1958 and all(r["droplet_diameter_mm"] is not None for r in only["data"]["series"])
+
+
+def test_filter_tests_by_the_outcome_read_from_bass_notes():
+    rows = api.filter_tests(accession="PSI-25", outcome="extinguished")["data"]["rows"]
+    assert len(rows) == 23 and all(r["outcome_quote"] and r["outcome_cause"] for r in rows)
+    assert {r["outcome_cause"] for r in rows} == {"blowoff", "low_flow"}

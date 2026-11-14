@@ -51,9 +51,12 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `flow_cm_s` | imposed air or oxidiser flow velocity (single value; null when the flow was ramped through several values) | cm/s | 25, 26, 98, 99, 100, 101, 102, 107 |
 | `gravity` | always `micro` | - | all |
 | `n_flames` | flames ignited on a test day | count | 20, 21, 22, 23 |
-| `ignited` | hot ignition yes/no (null for CFI-G "flash"). For PSI-25 only `False`, on the 3 rows whose air-display cell says the sample did not ignite | bool | 25, 159 |
+| `ignited` | hot ignition yes/no (null for CFI-G "flash"). For PSI-25 only `False`, on the one row (O12) whose air-display cell says "no ign"; for BASS and BASS-II use `outcome` | bool | 25, 159 |
 | `burn_time_s` | burn time. For PSI-39 it is the hot-flame burn time | s | 39, 69, 98, 99, 159 |
 | `extinction_mode` | `self_extinguished`, `flow_terminated`, `extinction`, `disruption`, `completion` | - | 69, 159 |
+| `outcome` | PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See "Outcomes read from notes" below | - | 25, 26 |
+| `outcome_cause` | with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified` | - | 25, 26 |
+| `outcome_quote` | the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain | - | 25, 26 |
 | `t_ad_k` | computed adiabatic flame temperature | K | 10, 159 |
 | `peak_temp_c` | peak burner temperature | °C | 159 |
 | `d0_mm` | initial droplet diameter | mm | 39, 69 |
@@ -402,3 +405,27 @@ patch no longer matches the table. The same list is the `discrepancies` table an
 
 A patched row lists its patch ids in extra `discrepancies`. Raw files exist only for PSI-10, 23, 39, 159, 98, 100
 and 101, so the other tables could be checked against the reports only.
+
+## Outcomes read from notes (PSI-25, PSI-26)
+
+The BASS and BASS-II tables say what was burned and at which settings, not how the burn ended. The ending is in
+free text: for BASS (PSI-26) the crew notes of the as-run matrix (`extra.asrun_notes`), for BASS-II (PSI-25) the
+shorthand in the flow cells (`Air display`, `Fan display`: "5 down to ext", "10 blowoff", "no ign at any flow").
+`data/corrections/tests_outcomes.json` holds one reading per run that states its ending: the outcome, the cause, the
+cell and the quoted words. `build_tests` refuses an entry whose quote is no longer in that cell.
+
+| | no_ignition | extinguished: low_flow | blowoff | nitrogen | unspecified | burned_out | not stated |
+|---|---|---|---|---|---|---|---|
+| PSI-26 BASS (121) | 17 | 42 | 0 | 2 | 7 | 12 | 41 |
+| PSI-25 BASS-II (129) | 2 | 16 | 7 | 0 | 0 | 0 | 104 |
+
+How to read it:
+
+- It is a reading of prose, done once by a language model and checked by hand, not a NASA column. Show the quote
+  with the outcome.
+- One outcome per run: the final end of the flame. A partial blow-off that left a wake flame is not an extinction.
+- `low_flow` includes runs the crew ended by shutting the flow off: in microgravity the flame goes out without it.
+  It is a quench at (near) zero flow, not a measured limit; the flow at extinction is in the quote when given.
+- Runs where the notes say the flame survived maximum flow or nitrogen but not how it ended are null, as are two
+  runs whose igniter broke.
+- BASS-II has no notes column, so only the 25 runs whose flow cell carries a word are filled.

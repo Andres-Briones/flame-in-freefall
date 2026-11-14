@@ -801,7 +801,7 @@
    "ignited": {
     "dtype": "boolean",
     "non_null": 326,
-    "description": "hot ignition yes/no (null for CFI-G \"flash\"). For PSI-25 only `False`, on the 3 rows whose air-display cell says the sample did not ignite",
+    "description": "hot ignition yes/no (null for CFI-G \"flash\"). For PSI-25 only `False`, on the one row (O12) whose air-display cell says \"no ign\"; for BASS and BASS-II use `outcome`",
     "unit": "bool"
    },
    "burn_time_s": {
@@ -824,6 +824,35 @@
      "disruption": 61,
      "completion": 27
     }
+   },
+   "outcome": {
+    "dtype": "str",
+    "non_null": 105,
+    "description": "PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See \"Outcomes read from notes\" below",
+    "unit": null,
+    "values": {
+     "extinguished": 74,
+     "no_ignition": 19,
+     "burned_out": 12
+    }
+   },
+   "outcome_cause": {
+    "dtype": "str",
+    "non_null": 74,
+    "description": "with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified`",
+    "unit": null,
+    "values": {
+     "low_flow": 58,
+     "blowoff": 7,
+     "unspecified": 7,
+     "nitrogen": 2
+    }
+   },
+   "outcome_quote": {
+    "dtype": "str",
+    "non_null": 105,
+    "description": "the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain",
+    "unit": null
    },
    "t_ad_k": {
     "dtype": "float64",

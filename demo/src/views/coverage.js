@@ -59,7 +59,7 @@ App.view({
         App.table({ pageSize: 10, rows: inCell, onRow: t => App.go('tests', { accession: t.accession, q: t.test_id }), cols: [
           { key: 'acronym', label: 'Investigation' }, { key: 'test_id', label: 'Test' }, { key: 'fuel', label: 'Fuel' }, { key: 'fuel_phase', label: 'Phase' },
           { key: 'x_o2_ambient', label: 'O2', num: true, fmt: v => App.pct(v) }, { key: 'pressure_kpa', label: 'kPa', num: true, fmt: v => App.fmt(v, 1) },
-          { key: 'flow_cm_s', label: 'Flow cm/s', num: true }, { key: 'extinction_mode', label: 'Outcome' } ] })));
+          { key: 'flow_cm_s', label: 'Flow cm/s', num: true }, { key: 'extinction_mode', label: 'Outcome', fmt: (v, t) => (v || t.outcome || '–').replace(/_/g, ' ') } ] })));
     }
     root.append(App.notes(cov.notes));
   },
