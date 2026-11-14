@@ -158,6 +158,15 @@
      ],
      "description": "extinguished runs of BASS and BASS-II: what was done to the flow when the flame went out. flow_reduced = it went out at a finite low setting (a quenching limit, the setting in outcome_setting when stated); flow_shut_off = the crew stopped the flow to end the run (not a limit); flow_raised = blowoff; none = it went out by itself at constant flow. Null when the words do not say. flow_cm_s on these rows is the log's single air-display value, not the flow at extinction"
     },
+    "sheet_out": {
+     "type": "string",
+     "enum": [
+      "ext_detect",
+      "time_out",
+      "temp_limit"
+     ],
+     "description": "ACME gas flames (PSI-10 inverse flames of 2021-22, PSI-159) only: the ending ticked on the test's hand-filled sheet. ext_detect = the flame went out by itself; time_out = it lasted the scripted time; temp_limit = it was cut off because the burner got too hot (neither an extinction nor a full-length flame). An AI reading of a scan, not checked by a human"
+    },
     "row_kind": {
      "type": [
       "string",
@@ -186,6 +195,10 @@
     },
     "limit": {
      "type": "integer"
+    },
+    "sheets": {
+     "type": "boolean",
+     "description": "attach to each PSI-10 / PSI-159 row its hand-filled ACME test sheet as `test_sheet`: ignited, hot or cool flame, how the flame ended (`out`), operator comments, file and page. An AI reading of a scan, not checked by a human: repeat that note"
     }
    },
    "required": []
@@ -323,6 +336,15 @@
       "none"
      ],
      "description": "extinguished runs of BASS and BASS-II: what was done to the flow when the flame went out. flow_reduced = it went out at a finite low setting (a quenching limit, the setting in outcome_setting when stated); flow_shut_off = the crew stopped the flow to end the run (not a limit); flow_raised = blowoff; none = it went out by itself at constant flow. Null when the words do not say. flow_cm_s on these rows is the log's single air-display value, not the flow at extinction"
+    },
+    "sheet_out": {
+     "type": "string",
+     "enum": [
+      "ext_detect",
+      "time_out",
+      "temp_limit"
+     ],
+     "description": "ACME gas flames (PSI-10 inverse flames of 2021-22, PSI-159) only: the ending ticked on the test's hand-filled sheet. ext_detect = the flame went out by itself; time_out = it lasted the scripted time; temp_limit = it was cut off because the burner got too hot (neither an extinction nor a full-length flame). An AI reading of a scan, not checked by a human"
     },
     "row_kind": {
      "type": [

@@ -26,6 +26,11 @@ TEST_FILTERS = {
                                       "end the run (not a limit); flow_raised = blowoff; none = it went out by itself at "
                                       "constant flow. Null when the words do not say. flow_cm_s on these rows is the log's "
                                       "single air-display value, not the flow at extinction"},
+    "sheet_out": {"type": "string", "enum": ["ext_detect", "time_out", "temp_limit"],
+                  "description": "ACME gas flames (PSI-10 inverse flames of 2021-22, PSI-159) only: the ending ticked on the "
+                                 "test's hand-filled sheet. ext_detect = the flame went out by itself; time_out = it lasted "
+                                 "the scripted time; temp_limit = it was cut off because the burner got too hot (neither "
+                                 "an extinction nor a full-length flame). An AI reading of a scan, not checked by a human"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
 }
@@ -48,7 +53,10 @@ TOOLS = [
           ["accession"]),
     _tool(api.filter_tests, "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, "
           "pressure, flow, outcomes). Use for any question about what was tested and what happened.", {
-              **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"}}),
+              **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"},
+              "sheets": {"type": "boolean", "description": "attach to each PSI-10 / PSI-159 row its hand-filled ACME test "
+                         "sheet as `test_sheet`: ignited, hot or cool flame, how the flame ended (`out`), operator "
+                         "comments, file and page. An AI reading of a scan, not checked by a human: repeat that note"}}),
     _tool(api.compare, "Side-by-side comparison of investigations: question, fuels, tested ranges, sensors, key findings, limitations.", {
         "accessions": {"type": "array", "items": ACCESSION}, "findings": {"type": "integer"}}, ["accessions"]),
     _tool(api.coverage, "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference "

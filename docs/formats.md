@@ -869,6 +869,64 @@ s = pd.Series(v.values, index=pd.to_timedelta(range(len(v)), unit="s"), name=met
 - The "Log Interval 00:01:00" notation in the DAFT `Headers` sheet; 1 s is confirmed from the time columns instead.
 - The not-downloaded zips, videos and `.xml` placeholders.
 
+## `test_sheets` table
+
+`data/processed/test_sheets.{parquet,csv}` has one row per page of the 40 "test sheets" PDFs of PSI-10 (18 days,
+301 sheets) and PSI-159 (22 days, 336 sheets): the ACME Science Test Sheet, a one-page form the operations team
+filled in by hand for every test point. It is built by `fif/pipeline/build_test_sheets.py` from the
+transcriptions in `data/transcriptions/` (after `build_tests`, which it needs for the link to `tests`).
+
+**Every value is an AI model's reading of handwriting on a scan, not checked by a human.** Say so wherever a
+value from this table is shown; `filter_tests(sheets=True)` and `data/export/test_sheets.json` carry the note.
+
+Five form versions exist (Flame Design normal 2019, Flame Design normal 2021, Flame Design inverse, CFI-G normal,
+CFI-G inverse) and eight transcribers wrote the labels slightly differently (units after the value or inside the
+label, options kept in the label or dropped). The parser reads a field by its section and label and keeps the
+reading verbatim in a `*_written` column, transcriber remarks included (`[?]` uncertain, `[struck: ...]`,
+`— note: ...`). The normalised column next to it is filled only when the reading is one clear option or one
+number, and is empty otherwise: "not marked", two boxes ticked, a remark instead of a tick, a ramp
+(`0.207 > 0.494 > 0.207`).
+
+| Column | Content | Filled (of 637) |
+|---|---|---|
+| `accession`, `file_name`, `page`, `form`, `day` | where the sheet is, the form title, the day code in the file name | 637 |
+| `test_id_written`, `test_id`, `test_id_basis`, `test_id_note` | the id box as read, and the test point it stands for: the file's day code plus the letter and number written. `test_id_basis` is `as_written` (620), `day_from_file_name` (16: the day digits on the sheet are wrong or unreadable, e.g. `21238N2` in the 21328 file) or `recorded_under_other_id` (1: `21196M3 (M2-1)` is the recording 21196M2_1) | 637 |
+| `in_tests`, `tests_test_id`, `has_data_file` | whether the id is a `tests` row (and how `tests` spells it), and whether PSI lists `<id>_data.csv` | 596 in `tests`, 605 with a data file |
+| `date_written`, `date_parsed`, `date`, `date_note` | the date as read, as an ISO date, the date of the day code, and a note when the two differ (4 sheets: 19171J4, 19189H1, 19189J2, 21256H4) | 637 / 628 / 637 / 4 |
+| `gmt_written`, `test_of_day_written`, `flame_of_day_written`, `test_type_written` | header fields as read; `flame_of_day_written` says "no ignition" or "abort" in words | 636-637 |
+| `chamber_pressure_written`, `chamber_pressure_psia` | chamber pressure before the test | 621 / 588 |
+| `fuel_flow_*`, `o2_flow_*`, `n2_flow_*` (`_written`, `_slpm`) | burner flows, N2 basis. Fuel on normal-flame forms, O2 on inverse-flame forms | fuel 356 / 332, O2 270 / 258, N2 628 / 551 |
+| `ignited_written`, `ignited` | `yes` (485), `yes_but` (34: momentary or unsustained), `no` (97) | 637 / 616 |
+| `flame_written`, `flame` | hot / cool / maybe cool row; not on the normal Flame Design forms. `hot` (384), `hot+cool` (3) | 481 / 387 |
+| `flame_behavior_written` | the other "Flame" rows: asymmetric, hole/opening, partially detached, oscillating, unsteady, quasi-steady, blew out | 568 |
+| `soot_written` | the single "Soot" row of the 2019 form | 156 |
+| `soot_ignition_*`, `soot_middle_*`, `soot_end_*` (`_written`, value) | none / little / lots | ignition 481 / 363, middle 481 / 381, end 637 / 481 |
+| `out_written`, `out` | how the flame ended: `ext_detect` (206: extinction detected, the flame went out), `time_out` (138: it lasted the scripted time), `temp_limit` (33: stopped by the burner temperature limit). Not on the 2019 form, where a handwritten note sometimes says it (`flame_behavior_note`) | 481 / 377 |
+| `chamber_pressure_post_*`, `oxidizer_bottle_pressure_*` (`_written`, `_psia`) | post-test readings | 473 / 456, 625 / 581 |
+| `flame_behavior_note`, `comments` | the note beside the FLAME BEHAVIOR heading; the GENERAL COMMENTS lines joined with ` \| ` | 106 / 574 |
+| `n_uncertain`, `n_illegible` | `[?]` marks and "illegible" marks on the page (259 and 151 marks in all; 302 of the 637 sheets carry at least one) | 637 |
+| `differs_from_asrun`, `differs_text` | the transcriber noted a difference from the as-run parameter file, or that no such file exists | 31 sheets |
+
+No personnel field is read (the transcriptions already replace names by `[name omitted]`), and the page text
+goes through `fif/pipeline/redact.py` like the evidence text.
+
+**Link to `tests`.** 596 sheets are a `tests` row (PSI-10 273 of 327 rows, PSI-159 323 of 333; the other rows are
+days without a sheet PDF). Of the 41 that are not:
+
+- 24 have no data file either: the sheet is the only record of the attempt (PSI-10: 19115M1-M3, 19150A2, B1, D1,
+  G1, 19156A1, A2, B1, B3, 19171B2, 19175A1, B3, 19182G4, G5, 21349D1, 22018H1, J3, 22027A1, 22035D2; PSI-159:
+  21088M1-M3). All are aborts or failed ignitions. No `tests` rows were added for them.
+- 17 have a data file but no table row: the recorded test points the experiment tables leave out (patches D27,
+  D28).
+
+Eight sheets are a `tests` row without a data file (19137C1, 21102M6, 21125A4, 21125H3, 21130A9, 21209A2,
+21301J1, 21301J2).
+
+**Checked against the tables.** On PSI-159 rows the sheets' `ignited` and `out` never contradict the table's
+`ignited` and `extinction_mode`, and the chamber pressures agree to within the known offsets, which is some
+evidence that the readings of ticks and numbers are sound. What the sheets add or contradict is recorded as
+patches (`docs/tests-table.md`, "Test sheets").
+
 ## `timeseries_features` table
 
 `data/processed/timeseries_features.{parquet,csv}` has one row per raw per-test time-series file that joins to a

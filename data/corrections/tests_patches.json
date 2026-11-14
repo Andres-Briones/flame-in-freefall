@@ -405,5 +405,314 @@
   "evidence": "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 100.1 kPa (14.521 psi, 4 samples about 10 s apart) in the 50 s before ignition of sample 2, and 100.1 kPa over the whole record (15 samples). The Saffire ambient-pressure sensor reads 102.6 kPa over the same 50 s, 2.5 kPa more: that is the value this dataset fills in (patch D20). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.",
   "evidence_source": "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 2 sensor workbook (Epoch Time)",
   "id": "D38"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21256 C2",
+  "column": "x_o2_burner",
+  "table_value": 0.5,
+  "evidence_value": 0.85,
+  "action": "flag",
+  "evidence": "No nitrogen flowed. The nitrogen flow controller reads 0.00 slpm during the 9 s flame (the as-run file sets 0.068 slpm) and the oxidizer controller 0.096 slpm of the 85% O2 bottle gas, so the burner stream was 85% O2, not the 50% the table gives. The table's own comment says 'No nitrogen flowed. This repeats A3.', and the test sheet (AI reading of the hand-filled scan, not checked by a human) says the N2 flow was too low to open the controller valve. The table value is kept.",
+  "evidence_source": "PSI-159 Raw Data 21256C2_data.csv (flow controller channels), 'as run21256C2.txt'; test sheet 'PSI-159_Raw Data_21256 test sheets.pdf' p9 (data/transcriptions/PSI-159/)",
+  "id": "D39"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21277 P1",
+  "column": "x_o2_burner",
+  "table_value": 0.3,
+  "evidence_value": 0.55,
+  "action": "flag",
+  "evidence": "The table's 30% burner O2 is what 0.100 slpm of oxidizer and 0.180 slpm of nitrogen would give; the test sheet (AI reading of the hand-filled scan, not checked by a human) has the flows that way round. The as-run file has them the other way (oxidizer 0.180, nitrogen 0.100 slpm: 55% O2) and the flow controllers agree with it: nitrogen never exceeds 0.097 slpm. Nitrogen also started late and the oxidizer fell from 0.121 to 0.057 slpm as its bottle emptied, so the measured flows give 85% O2 at ignition, about 52% in the middle of the 40 s flame and 46% at its end. The table value is kept.",
+  "evidence_source": "PSI-159 Raw Data 21277P1_data.csv (flow controller channels), 'as run21277P1.txt'; test sheet 'PSI-159_Raw Data_21277 test sheets.pdf' p14 (data/transcriptions/PSI-159/)",
+  "id": "D40"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21277 C2",
+  "column": "O2 flow rate (mg/s)",
+  "table_value": "8.946670681",
+  "evidence_value": 8.08,
+  "action": "flag",
+  "evidence": "The table's oxidizer flow is the setpoint (0.492 slpm). The oxidizer bottle was nearly empty on this day and the flow controller reads less: 0.451 slpm at the start of the 36 s flame, 0.453 in the middle and 0.375 at the end, 90% of the table value on average. The test sheet (AI reading of the hand-filled scan, not checked by a human) says the oxidizer flow dropped because the bottle pressure was too low. The evidence value is the measured mean in the table's unit, converted with the table's own ratio of mg/s to slpm.",
+  "evidence_source": "PSI-159 Raw Data 21277C2_data.csv (oxidizer flow controller, mean over the radiometer burn window of timeseries_features), 'as run21277C2.txt'; test sheet 'PSI-159_Raw Data_21277 test sheets.pdf' p8 (data/transcriptions/PSI-159/)",
+  "id": "D41"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21277 F2",
+  "column": "O2 flow rate (mg/s)",
+  "table_value": "8.946670681",
+  "evidence_value": 4.72,
+  "action": "flag",
+  "evidence": "The table's oxidizer flow is the setpoint (0.492 slpm). The oxidizer bottle was nearly empty on this day and the flow controller reads less: 0.294 slpm at the start of the 66 s flame, 0.260 in the middle and 0.212 at the end, 53% of the table value on average. The test sheet (AI reading of the hand-filled scan, not checked by a human) says the oxidizer flow dropped because the bottle pressure was too low. The evidence value is the measured mean in the table's unit, converted with the table's own ratio of mg/s to slpm.",
+  "evidence_source": "PSI-159 Raw Data 21277F2_data.csv (oxidizer flow controller, mean over the radiometer burn window of timeseries_features), 'as run21277F2.txt'; test sheet 'PSI-159_Raw Data_21277 test sheets.pdf' p11 (data/transcriptions/PSI-159/)",
+  "id": "D42"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21277 M1",
+  "column": "O2 flow rate (mg/s)",
+  "table_value": "8.946670681",
+  "evidence_value": 3.63,
+  "action": "flag",
+  "evidence": "The table's oxidizer flow is the setpoint (0.492 slpm). The oxidizer bottle was nearly empty on this day and the flow controller reads less: 0.240 slpm at the start of the 82 s flame, 0.199 in the middle and 0.156 at the end, 41% of the table value on average. The test sheet (AI reading of the hand-filled scan, not checked by a human) says the oxidizer flow dropped because the bottle pressure was too low. The evidence value is the measured mean in the table's unit, converted with the table's own ratio of mg/s to slpm.",
+  "evidence_source": "PSI-159 Raw Data 21277M1_data.csv (oxidizer flow controller, mean over the radiometer burn window of timeseries_features), 'as run21277M1.txt'; test sheet 'PSI-159_Raw Data_21277 test sheets.pdf' p12 (data/transcriptions/PSI-159/)",
+  "id": "D43"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21277 N1",
+  "column": "O2 flow rate (mg/s)",
+  "table_value": "2.98222356",
+  "evidence_value": 2.42,
+  "action": "flag",
+  "evidence": "The table's oxidizer flow is the setpoint (0.164 slpm). The oxidizer bottle was nearly empty on this day and the flow controller reads less: 0.139 slpm at the start of the 56 s flame, 0.140 in the middle and 0.095 at the end, 81% of the table value on average. The test sheet (AI reading of the hand-filled scan, not checked by a human) says the oxidizer flow dropped because the bottle pressure was too low. The evidence value is the measured mean in the table's unit, converted with the table's own ratio of mg/s to slpm.",
+  "evidence_source": "PSI-159 Raw Data 21277N1_data.csv (oxidizer flow controller, mean over the radiometer burn window of timeseries_features), 'as run21277N1.txt'; test sheet 'PSI-159_Raw Data_21277 test sheets.pdf' p13 (data/transcriptions/PSI-159/)",
+  "id": "D44"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21196 A1",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "evidence": "Not an ignition attempt at 21% burner O2: no oxidizer flowed. The oxidizer flow controller stays at 0.00 slpm for the whole recording, only nitrogen flows, and the as-run file has an oxidizer flow of 0. The test sheet (AI reading of the hand-filled scan, not checked by a human) says the parameters 'didn't fully populate when loaded'. The table calls the row 'Failed to ignite'. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "PSI-159 Raw Data 21196A1_data.csv (flow controller channels), 'as run21196A1.txt'; test sheet 'PSI-159_Raw Data_21196 tests sheets.pdf' p1 (data/transcriptions/PSI-159/)",
+  "id": "D45"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21130 A4",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "evidence": "Not an ignition attempt: a no-flame test of the igniter's signal, run without fuel. The fuel flow controller stays at 0.00 slpm for the whole recording, although the table gives a fuel rate of 1 mg/s. The test sheet (AI reading of the hand-filled scan, not checked by a human) says 'test to measure signal w/o flame, i.e. from just the igniter'. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "PSI-159 Raw Data 21130A4_data.csv (flow controller channels); test sheet 'PSI-159_Raw Data_21130 test sheets.pdf' p4 (data/transcriptions/PSI-159/)",
+  "id": "D46"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21242 P2",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "evidence": "Not an ignition attempt: the run was aborted before any gas flowed. The oxidizer and nitrogen flow controllers stay at 0.00 slpm for the whole recording. The test sheet (AI reading of the hand-filled scan, not checked by a human) says 'aborted due to IPSU error'. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "PSI-159 Raw Data 21242P2_data.csv (flow controller channels); test sheet 'PSI-159_Raw Data_21242 test sheets.pdf' p7 (data/transcriptions/PSI-159/)",
+  "id": "D47"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21125 A4",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-159_Raw Data_21125 test sheets.pdf",
+   "page": 4,
+   "quote": "no-flame test of signal from igniter with nitrogen but no fuel flow"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'no-flame test of signal from igniter with nitrogen but no fuel flow'. Not an ignition attempt: a no-flame test without fuel flow. The table agrees in its own cells (fuel rate 0 mg/s) but lists the row as not ignited. There is no data file for this test point. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21125 test sheets.pdf' p4 (data/transcriptions/PSI-159/)",
+  "id": "D48"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21125 H3",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-159_Raw Data_21125 test sheets.pdf",
+   "page": 12,
+   "quote": "no-fuel variant of H2"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'no-fuel variant of H2'. Not an ignition attempt: a no-flame test without fuel flow. The table agrees in its own cells (fuel rate 0 mg/s) but lists the row as not ignited. There is no data file for this test point. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21125 test sheets.pdf' p12 (data/transcriptions/PSI-159/)",
+  "id": "D49"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21209 A2",
+  "column": "ignited",
+  "table_value": false,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-159_Raw Data_21209 test sheets.pdf",
+   "page": 2,
+   "quote": "IPSU error caused an abort"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'IPSU error caused an abort' before gas flow. Not an ignition attempt; the table's comment says 'Aborted' and there is no data file for this test point. The table value is kept; do not count the row as a failed ignition.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21209 test sheets.pdf' p2 (data/transcriptions/PSI-159/)",
+  "id": "D50"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": "21301A1",
+  "column": "fuel_fraction",
+  "table_value": 1.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+   "page": 1,
+   "quote": "wasn't flushed with the pure propane because of the limited bottle pressure"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): the note on the A1 sheet says a 100% propane bottle was used, but the fuel line still held 30% propane (balance N2) and was not flushed, so the concentration reaching the burner 'increased over time and presumably test to test, at least initially'. The propane fraction at the burner was between 0.30 and 1.0 and is not known; the table's 1.0 is kept. The sheets of the later tests of the day do not repeat the remark.",
+  "evidence_source": "test sheet 'PSI-10_Raw Data_21301 test sheets.pdf' p1 (data/transcriptions/PSI-10/)",
+  "id": "D51"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": "21301A2",
+  "column": "fuel_fraction",
+  "table_value": 1.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+   "page": 2,
+   "quote": "about uncertain C3H8 %"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'uncertain C3H8 %', referring to the note on the A1 sheet (patch D51): the fuel line still held 30% propane when the 100% bottle was connected. The propane fraction at the burner was between 0.30 and 1.0 and is not known; the table's 1.0 is kept. The sheets of the later tests of the day do not repeat the remark.",
+  "evidence_source": "test sheet 'PSI-10_Raw Data_21301 test sheets.pdf' p2 (data/transcriptions/PSI-10/)",
+  "id": "D52"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": "21301A3",
+  "column": "fuel_fraction",
+  "table_value": 1.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+   "page": 3,
+   "quote": "about uncertain C3H8 %"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'uncertain C3H8 %', referring to the note on the A1 sheet (patch D51): the fuel line still held 30% propane when the 100% bottle was connected. The propane fraction at the burner was between 0.30 and 1.0 and is not known; the table's 1.0 is kept. The sheets of the later tests of the day do not repeat the remark.",
+  "evidence_source": "test sheet 'PSI-10_Raw Data_21301 test sheets.pdf' p3 (data/transcriptions/PSI-10/)",
+  "id": "D53"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": "21301A4",
+  "column": "fuel_fraction",
+  "table_value": 1.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+   "page": 4,
+   "quote": "about uncertain C3H8 %"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'uncertain C3H8 %', referring to the note on the A1 sheet (patch D51): the fuel line still held 30% propane when the 100% bottle was connected. The propane fraction at the burner was between 0.30 and 1.0 and is not known; the table's 1.0 is kept. The sheets of the later tests of the day do not repeat the remark.",
+  "evidence_source": "test sheet 'PSI-10_Raw Data_21301 test sheets.pdf' p4 (data/transcriptions/PSI-10/)",
+  "id": "D54"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": "21301A5",
+  "column": "fuel_fraction",
+  "table_value": 1.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-10_Raw Data_21301 test sheets.pdf",
+   "page": 5,
+   "quote": "re: uncertain C3H8 %"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'uncertain C3H8 %', referring to the note on the A1 sheet (patch D51): the fuel line still held 30% propane when the 100% bottle was connected. The propane fraction at the burner was between 0.30 and 1.0 and is not known; the table's 1.0 is kept. The sheets of the later tests of the day do not repeat the remark.",
+  "evidence_source": "test sheet 'PSI-10_Raw Data_21301 test sheets.pdf' p5 (data/transcriptions/PSI-10/)",
+  "id": "D55"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21291 A1",
+  "column": "burn_time_s",
+  "table_value": 167.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-159_Raw Data_21291 test sheets.pdf",
+   "page": 1,
+   "quote": "hot flame extinguished & reignited repeatedly until we simply stopped the fuel flow"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): the hot flame went out and re-ignited repeatedly (the ignition box says 'repeatedly, 6x') until the operators stopped the fuel flow. The table's burn time is the span from first ignition to the end of the test, not the life of one hot flame. It is kept.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21291 test sheets.pdf' p1 (data/transcriptions/PSI-159/)",
+  "id": "D56"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": "21291 C1",
+  "column": "burn_time_s",
+  "table_value": 246.0,
+  "evidence_value": null,
+  "action": "flag",
+  "basis": "test_sheet",
+  "sheet": {
+   "file_name": "PSI-159_Raw Data_21291 test sheets.pdf",
+   "page": 2,
+   "quote": "repeated ignitions & extinctions of hot flames with cool flames between"
+  },
+  "evidence": "Test sheet (AI reading of the hand-filled scan, not checked by a human): 'repeated ignitions & extinctions of hot flames with cool flames between', as in A1; the table's comment counts 6 hot and 5 cool flames. The table's burn time is the span from first ignition to the end of the test, not the life of one hot flame. It is kept.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21291 test sheets.pdf' p2 (data/transcriptions/PSI-159/)",
+  "id": "D57"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": null,
+  "column": "extinction_mode",
+  "action": "note",
+  "basis": "test_sheet",
+  "evidence": "How the flames ended, from the ACME test sheets (AI reading of the hand-filled scan, not checked by a human; table test_sheets, column out). The sheets tick one of three endings and agree with the table wherever both speak: all 167 tests ticked 'ext. detect' are self_extinguished in the table, and all 78 ticked 'time out' (54) or 'temp. limit' (24) are flow_terminated. The table's flow_terminated therefore covers two different endings. The 24 temperature-limit tests (21088 F1, 21102 C2, 21102 C5, 21106 F1, 21112A1, 21112 C1, 21112 C2, 21153 A4, 21153 C5, 21174 C5, 21196 M2_1, 21209 A1, 21209 B2, 21242 A1, 21270 A3, 21270 A4, 21270 H2, 21277 A1, 21277 H1, 21277 M1, 21277 N1, 21277 P1, 21291 H2, 21291 J1) were cut off early because the burner got too hot: such a flame neither went out by itself nor lasted the scripted time, and whether it would have gone out is not known. The flag burner_over_limit (peak above 450 C) is not the same set: 22 of the 24 carry it (21102 C5 peaked at 449 C; 21270 A4 at 433 C, and its sheet asks whether it timed out instead), and 8 flagged tests ended otherwise (6 time-outs; 21112 A6 and 21174 C6 went out by themselves).",
+  "evidence_source": "test sheets of PSI-159 (data/transcriptions/PSI-159/, 22 days) against the experiment tables; data/processed/test_sheets",
+  "id": "D58"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": null,
+  "column": null,
+  "action": "note",
+  "basis": "test_sheet",
+  "evidence": "The Flame Design tables have no column for how a flame ended, so nothing in this dataset counts an ending as an extinction. The ACME test sheets (AI reading of the hand-filled scan, not checked by a human; table test_sheets) say that 17 flames were stopped by the burner temperature limit, not by extinction: 'temp. limit' is ticked on 9 sheets of 2021-22 (21301A1, 21301A6, 21301H1, 21301H3, 21301J3, 21349A1, 21349B1, 21349N3, 22024K3), and handwritten notes say so on 8 sheets of 2019, whose form has no such box (19156C1 with a 400 C limit; 19156J2, J4, J5, J6, J7, 19171S1 and 19175N3 with a 500 C limit). The recorded burner temperature agrees for 16 of them (peaks of 451-607 C in 2021-22 and 492-509 C in 2019); 19156C1 peaks at 222 C in the data file. The end of the burn in timeseries_features is not an extinction for these tests.",
+  "evidence_source": "test sheets of PSI-10 (data/transcriptions/PSI-10/, 18 days); burner_temp_max_c in timeseries_features",
+  "id": "D59"
+ },
+ {
+  "accession": "PSI-10",
+  "test_id": null,
+  "column": null,
+  "action": "note",
+  "basis": "test_sheet",
+  "evidence": "The test sheets (AI reading of the hand-filled scan, not checked by a human; table test_sheets, in_tests false and has_data_file false) are the only record of 21 attempts that have no table row and no data file: 19115M1-M3 (igniter did not energise), 19150A2, B1, D1 and 19156A1, A2, B1, B3 (no ignition), 19150G1, 19171B2, 19182G4, G5 and 22018J3 (aborted before gas flow), 22035D2 (aborted), 19175A1, 19175B3, 21349D1, 22018H1 and 22027A1 (no ignition). No rows were added for them.",
+  "evidence_source": "test sheets of PSI-10 (data/transcriptions/PSI-10/) against the experiment tables and the PSI file list",
+  "id": "D60"
+ },
+ {
+  "accession": "PSI-159",
+  "test_id": null,
+  "column": null,
+  "action": "note",
+  "basis": "test_sheet",
+  "evidence": "The test sheets (AI reading of the hand-filled scan, not checked by a human; table test_sheets) record three attempts with no table row and no data file: 21088M1, M2 and M3, each 'abort due to IPSU error'. No rows were added for them. The sheet of 21196 M2_1 is headed '21196M3 (M2-1)'.",
+  "evidence_source": "test sheet 'PSI-159_Raw Data_21088 test sheets.pdf' p11-13 and 'PSI-159_Raw Data_21196 tests sheets.pdf' p16 (data/transcriptions/PSI-159/)",
+  "id": "D61"
  }
 ]

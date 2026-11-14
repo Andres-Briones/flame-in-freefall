@@ -994,7 +994,7 @@
    },
    "flags": {
     "dtype": "str",
-    "non_null": 677,
+    "non_null": 682,
     "description": "semicolon-separated codes (below); null when none",
     "unit": null
    },
@@ -1045,7 +1045,7 @@
  },
  "discrepancies": {
   "description": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
-  "rows": 38,
+  "rows": 61,
   "files": [
    "data/processed/discrepancies.parquet",
    "data/processed/discrepancies.csv"
@@ -1053,151 +1053,65 @@
   "columns": {
    "id": {
     "dtype": "str",
-    "non_null": 38,
-    "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`",
-    "values": {
-     "D01": 1,
-     "D02": 1,
-     "D03": 1,
-     "D04": 1,
-     "D05": 1,
-     "D06": 1,
-     "D07": 1,
-     "D08": 1,
-     "D09": 1,
-     "D10": 1,
-     "D11": 1,
-     "D12": 1,
-     "D13": 1,
-     "D14": 1,
-     "D15": 1,
-     "D16": 1,
-     "D17": 1,
-     "D18": 1,
-     "D19": 1,
-     "D20": 1,
-     "D21": 1,
-     "D22": 1,
-     "D23": 1,
-     "D24": 1,
-     "D25": 1,
-     "D26": 1,
-     "D27": 1,
-     "D28": 1,
-     "D29": 1,
-     "D30": 1,
-     "D31": 1,
-     "D32": 1,
-     "D33": 1,
-     "D34": 1,
-     "D35": 1,
-     "D36": 1,
-     "D37": 1,
-     "D38": 1
-    }
+    "non_null": 61,
+    "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`"
    },
    "accession": {
     "dtype": "str",
-    "non_null": 38,
+    "non_null": 61,
     "description": null,
     "values": {
-     "PSI-159": 12,
+     "PSI-159": 28,
+     "PSI-10": 10,
      "PSI-39": 6,
      "PSI-98": 6,
      "PSI-23": 5,
      "PSI-100": 4,
-     "PSI-10": 3,
      "PSI-101": 2
     }
    },
    "test_id": {
     "dtype": "str",
-    "non_null": 32,
-    "description": "test id as in the PSI table (null for a note on a whole investigation)",
-    "values": {
-     "S1": 5,
-     "S2": 5,
-     "22042M1": 2,
-     "21106 F4": 1,
-     "21112 A6": 1,
-     "21270 H3": 1,
-     "21270 H2": 1,
-     "21270 A1": 1,
-     "21270 A2": 1,
-     "21270 A4": 1,
-     "21277 M1": 1,
-     "1301": 1,
-     "1237": 1,
-     "1336": 1,
-     "1337": 1,
-     "1338": 1,
-     "20190": 1,
-     "20136": 1,
-     "20142": 1,
-     "57": 1,
-     "21162 B1": 1,
-     "20006": 1,
-     "20013": 1
-    }
+    "non_null": 51,
+    "description": "test id as in the PSI table (null for a note on a whole investigation)"
    },
    "test_id_now": {
     "dtype": "str",
-    "non_null": 32,
-    "description": "test id in `tests` after a test_id correction",
-    "values": {
-     "S1": 5,
-     "S2": 5,
-     "22024M1": 2,
-     "21106 F4": 1,
-     "21112 A6": 1,
-     "21270 H3": 1,
-     "21270 H2": 1,
-     "21270 A1": 1,
-     "21270 A2": 1,
-     "21270 A4": 1,
-     "21277 M1": 1,
-     "1301": 1,
-     "1237": 1,
-     "1336": 1,
-     "1337": 1,
-     "1338": 1,
-     "20190": 1,
-     "20136": 1,
-     "20142": 1,
-     "57": 1,
-     "21162 B1": 1,
-     "20006": 1,
-     "20013": 1
-    }
+    "non_null": 51,
+    "description": "test id in `tests` after a test_id correction"
    },
    "column": {
     "dtype": "str",
-    "non_null": 34,
-    "description": "`tests` column concerned",
+    "non_null": 54,
+    "description": "`tests` column concerned, or a source column the table keeps only in `extra`",
     "values": {
      "pressure_kpa": 11,
-     "burn_time_s": 8,
+     "burn_time_s": 10,
+     "fuel_fraction": 8,
+     "ignited": 7,
+     "O2 flow rate (mg/s)": 4,
      "date": 3,
-     "fuel_fraction": 3,
      "x_o2_ambient": 3,
      "fuel_raw": 2,
+     "x_o2_burner": 2,
      "test_id": 1,
-     "ignited": 1,
      "fuel": 1,
-     "x_o2_max": 1
+     "x_o2_max": 1,
+     "extinction_mode": 1
     }
    },
    "table_value": {
     "dtype": "str",
-    "non_null": 23,
+    "non_null": 42,
     "description": "value in the PSI table",
     "values": {
+     "False": 7,
+     "1.0": 7,
      "303.975": 3,
+     "8.946670681": 3,
      "43.0": 2,
      "90.0": 2,
-     "1.0": 2,
      "22042M1": 1,
-     "False": 1,
      "259.0": 1,
      "60.0": 1,
      "66.0": 1,
@@ -1209,12 +1123,17 @@
      "0.215": 1,
      "teflon": 1,
      "0.217": 1,
-     "158.0": 1
+     "158.0": 1,
+     "0.5": 1,
+     "0.3": 1,
+     "2.98222356": 1,
+     "167.0": 1,
+     "246.0": 1
     }
    },
    "evidence_value": {
     "dtype": "str",
-    "non_null": 31,
+    "non_null": 37,
     "description": "value the raw data give",
     "values": {
      "H2/CH4/He 25/20/55": 2,
@@ -1244,116 +1163,46 @@
      "0.226": 1,
      "163.3": 1,
      "99.9": 1,
-     "100.1": 1
+     "100.1": 1,
+     "0.85": 1,
+     "0.55": 1,
+     "8.08": 1,
+     "4.72": 1,
+     "3.63": 1,
+     "2.42": 1
     }
    },
    "action": {
     "dtype": "str",
-    "non_null": 38,
+    "non_null": 61,
     "description": "replace / fill / flag / note",
     "values": {
-     "flag": 20,
+     "flag": 39,
+     "note": 10,
      "replace": 7,
-     "note": 6,
      "fill": 5
     }
    },
    "flag": {
     "dtype": "str",
-    "non_null": 32,
-    "description": "flag put on the row",
+    "non_null": 51,
+    "description": "flag put on the row; conflicts_with_test_sheet when the only evidence is a hand-filled test sheet (an AI reading of a scan, not checked by a human)",
     "values": {
-     "conflicts_with_raw": 20,
+     "conflicts_with_raw": 29,
+     "conflicts_with_test_sheet": 10,
      "corrected_from_raw": 7,
      "filled_from_raw": 5
     }
    },
    "evidence": {
     "dtype": "str",
-    "non_null": 38,
-    "description": "what the raw data show",
-    "values": {
-     "The raw data headers give the same fuel bottle, H2/CH4/He 25/20/55, on days 20132, 20136 and 20142, while the table lists a different mixture for each day. Not resolved: the header code may not have been updated between bottles.": 2,
-     "The table has no oxygen value. The flight O2 sensor reads 19.8% at the start of the burn; its accuracy is not documented in PSI, so the value is not filled in.": 2,
-     "The raw data file name and its header both say test point 22024M1, and the row sits in the table's day group 22024. The table id swaps two digits.": 1,
-     "Day code 22024 is 24 January 2022, the date of the other 22024 rows; the raw file starts at 2022-01-25 01:06 UTC.": 1,
-     "Logged as not ignited, but the radiometers show a 20.4 s flame, the table's own burn time is 22 s and its comment says 'hot flame'.": 1,
-     "The radiometers show a flame for 147.0 s; the experiment table says 259.0 s. The script shut the gas flows off 180.5 s into the recording, 155 s after ignition, so 259 s of burning is not possible.": 1,
-     "The radiometers show a flame for 94.0 s; the experiment table says 43.0 s. 43 s is also the value of the previous test point H2, so it was probably copied.": 1,
-     "The radiometers show a flame for 57.0 s; the experiment table says 43.0 s.": 1,
-     "The radiometers show a flame for 66.5 s; the experiment table says 60.0 s.": 1,
-     "The radiometers show a flame for 96.5 s; the experiment table says 90.0 s.": 1,
-     "The radiometers show a flame for 96.8 s; the experiment table says 90.0 s.": 1,
-     "The radiometers show a flame for 81.9 s; the experiment table says 66.0 s.": 1,
-     "The raw recording of this test starts on 2017-06-29 15:06 UTC; the table says July.": 1,
-     "The raw recording of this test starts on 2017-05-01 13:10 UTC; the table says 2 May.": 1,
-     "The chamber transducer reads 309.4 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
-     "The chamber transducer reads 309.6 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
-     "The chamber transducer reads 309.7 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
-     "The raw data headers of this day give the fuel bottle as H2/He 45/55, and the science reports also give 45% H2. The table says 35%.": 1,
-     "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.3 kPa (14.843 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D37).": 1,
-     "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.6 kPa (14.881 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D38).": 1,
-     "The experiment table has no pressure. The flight pressure sensor reads 99.5 kPa at the start of the burn.": 1,
-     "The experiment table has no pressure. The flight pressure sensor reads 99.4 kPa at the start of the burn.": 1,
-     "The flight O2 sensor reads 22.3% at the start of the burn (22.6% for sample 1) against the table's 21.5%. The sensor's accuracy is not documented in PSI, so the table value is kept.": 1,
-     "For inverse flames the measured chamber pressure at the start of a test is 5.7% below the table value (median of 153 tests; equivalently the table is 6.0% above the measurement; single tests range from 7.3% below to 7.6% above). 148 of the 154 inverse rows carry the flag pressure_9pct_above_nominal; the six rows of day 21196 at 49.5 kPa do not, because their table value is 2% below the 0.5 atm fill level and the raw data agree with it.": 1,
-     "Nine recorded test points are missing from the experiment table (19115C1, 19115D1, 19115H1, 19115P1, 19123H1, 19123L8, 19142B1, 19175B2, 19196N2), and 19 table rows have no raw data file.": 1,
-     "Ten recorded test points are missing from the experiment table (21106A1-A3, 21106G1-G5, 21106G8, 21242F1), and five table rows have no raw data file (21102 M6, 21125 A4, 21125 H3, 21130 A9, 21209 A2).": 1,
-     "Run 112 (Kapton, 2 cm/s, Rt/R0 1.48) was flown and analysed but has no row in the test list. The list has 109 rows and so does the results workbook: the list holds a false 'Teflon 57' row (patch D30) where run 112 should be. An earlier version of this note said run 112 has housekeeping data; it does not (the housekeeping files cover runs 58-108).": 1,
-     "The test list has run 57 twice: once as Lampwick and once as Teflon, with identical cells (date 29-Jul, Rt/R0 1.253, 8.1 cm/s). The raw data hold one run 57, a lampwick run; there is no Teflon run 57, and the results workbook lists run 57 once, as Lampwick. The other Teflon rows have Rt/R0 1.445-1.452, not 1.253. This Teflon row is not a test that was run; it is kept and flagged.": 1,
-     "The flight O2 sensor reads 22.6% at the start of the burn against the table's 21.5-21.7%. The sensor's accuracy is not documented in PSI, so the table range is kept (as for sample 2, patch D23).": 1,
-     "For normal flames the table gives the nominal fill pressure (0.5, 0.93, 1, 2 or 3 atm). The chamber transducer reads about 3 kPa more at the start of every test: 5.9% above the table at 0.5 atm (median), 3.0% at 1 atm, 1.7% at 2 atm and 0.8% at 3 atm; overall 0.6% to 7.4% over 175 tests, more than 5% in 32 of them (all of days 21106, 21153 and 21174 at 0.5 atm, and 21125 H1, H2, H4, H5, J1, K1-K3 and 21137 A4-A7 at 1 atm). The table values are kept; measured values are in timeseries_features (chamber_pressure_start_kpa).": 1,
-     "The radiometers show a flame for 163.3 s; the experiment table says 158.0 s. Burn times from the radiometers depend on the detection threshold: differences under 5 s are not recorded as conflicts.": 1,
-     "The 'Local Time' cell of the data-summary spreadsheet (kept in extra) is wrong for several tests when compared with the start of the raw recording (UTC): tests 1338, 1349 and 1386 say 12:xx am for recordings that start at 16:xx UTC (12:xx pm local); test 1300 says 10:42 pm for 14:41 UTC; test 1234 reads '011:11:09 am'; tests 1260 and 1332 also disagree, and tests 1320-1323, 1376 and 1377 are off by about 5 h instead of 4. Dates are not affected. The cells are kept as given; use first_sample_utc in timeseries_features for timing.": 1,
-     "The raw data headers of this day give the fuel bottle as H2/CH4 44.4/55.6, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (20% H2 / 25% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1,
-     "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1,
-     "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 99.9 kPa (14.488 psi, 5 samples about 10 s apart) in the 50 s before ignition of sample 1, and between 99.9 and 100.2 kPa over the whole record (66 samples, median 100.1). The Saffire ambient-pressure sensor reads 102.3 kPa over the same 50 s, 2.4 kPa more: that is the value this dataset fills in (patch D19). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.": 1,
-     "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 100.1 kPa (14.521 psi, 4 samples about 10 s apart) in the 50 s before ignition of sample 2, and 100.1 kPa over the whole record (15 samples). The Saffire ambient-pressure sensor reads 102.6 kPa over the same 50 s, 2.5 kPa more: that is the value this dataset fills in (patch D20). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.": 1
-    }
+    "non_null": 61,
+    "description": "what the raw data or the test sheet show"
    },
    "evidence_source": {
     "dtype": "str",
-    "non_null": 38,
-    "description": "file and channel the evidence comes from",
-    "values": {
-     "PSI-159 Raw Data _data.csv files; chamber pressure in timeseries_features": 2,
-     "PSI-10 Raw Data 22024M1_data.csv (file name and header)": 1,
-     "PSI-10 Raw Data 22024M1_data.csv; other 22024 rows of the experiment table": 1,
-     "PSI-159 Raw Data 21106F4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21112A6_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21270H3_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21270H2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21270A1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21270A2_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21270A4_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-159 Raw Data 21277M1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-39 Raw Data, CIR test point F180D02 (first sample time)": 1,
-     "PSI-39 Raw Data, CIR test point F121A02 (first sample time)": 1,
-     "PSI-39 Raw Data, CIR test point F200D03 (chamber pressure at start)": 1,
-     "PSI-39 Raw Data, CIR test point F200D04 (chamber pressure at start)": 1,
-     "PSI-39 Raw Data, CIR test point F200D05 (chamber pressure at start)": 1,
-     "PSI-23 Raw Data 20190*_data.csv headers (fuel gas code)": 1,
-     "PSI-23 Raw Data 20136*_data.csv headers (fuel gas code)": 1,
-     "PSI-23 Raw Data 20142*_data.csv headers (fuel gas code)": 1,
-     "PSI-98 Raw Data 'Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)": 1,
-     "PSI-98 Raw Data 'Saffire-I Sample 2 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)": 1,
-     "PSI-100 Raw Data, sample 1 sensor workbook (pressure at start)": 1,
-     "PSI-100 Raw Data, sample 2 sensor workbook (pressure at start)": 1,
-     "PSI-98 Raw Data, sample 2 sensor workbook (O2 at start)": 1,
-     "PSI-100 Raw Data, sample 1 sensor workbook (O2 at start)": 1,
-     "PSI-100 Raw Data, sample 2 sensor workbook (O2 at start)": 1,
-     "PSI-10 Raw Data file list against the experiment table": 1,
-     "PSI-159 Raw Data file list against the experiment table": 1,
-     "PSI-101 Analyzed Data workbook of run 112 (file name ending 2010_253_14_kapton_run112.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort": 1,
-     "PSI-101 Analyzed Data workbook of run 57 (file name ending 2010_210_10_lampwick_run57.xls); PSI-101 'SAME, SAME-R_Results.xlsx', sheet Material Sort": 1,
-     "PSI-98 Raw Data, sample 1 sensor workbook (O2 at start)": 1,
-     "PSI-159 Raw Data 21162B1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
-     "PSI-39 Raw Data, first sample time of each CIR test point against the Master Sheet of the data-summary spreadsheet": 1,
-     "PSI-23 Raw Data 20006*_data.csv headers (fuel gas code)": 1,
-     "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)": 1,
-     "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 1 sensor workbook (Epoch Time)": 1,
-     "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 2 sensor workbook (Epoch Time)": 1
-    }
+    "non_null": 61,
+    "description": "file and channel the evidence comes from"
    }
   }
  },
@@ -1499,6 +1348,697 @@
     "description": "with source_file, the key of the `tests` row",
     "min": 27.0,
     "max": 46.0
+   }
+  }
+ },
+ "test_sheets": {
+  "description": "ACME Science Test Sheets of PSI-10 and PSI-159, one row per page: the form the operators filled in by hand for each test point (ignition, hot or cool flame, soot, how the flame ended, comments). Every value is an AI model's reading of a hand-filled scan (data/transcriptions/), not checked by a human; say so wherever a value is shown. See docs/formats.md.",
+  "rows": 637,
+  "files": [
+   "data/processed/test_sheets.parquet",
+   "data/processed/test_sheets.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "PSI accession (PSI-10 or PSI-159)",
+    "values": {
+     "PSI-159": 336,
+     "PSI-10": 301
+    }
+   },
+   "file_name": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "scanned PDF the page is in (transcription: data/transcriptions/<accession>/<file_name>.md)",
+    "values": {
+     "PSI-159_Raw Data_21125 test sheets.pdf": 24,
+     "PSI-159_Raw Data_21130 test sheets.pdf": 24,
+     "PSI-159_Raw Data_21106 test sheets.pdf": 23,
+     "PSI-10_Raw Data_19123 test sheets.pdf": 21,
+     "PSI-10_Raw Data_19137 test sheets.pdf": 20,
+     "PSI-10_Raw Data_21301 test sheets.pdf": 20,
+     "PSI-10_Raw Data_21361 test sheets.pdf": 20,
+     "PSI-10_Raw Data_22024 test sheets.pdf": 20,
+     "PSI-159_Raw Data_21112 test sheets.pdf": 20,
+     "PSI-10_Raw Data_19150 test sheets.pdf": 19,
+     "PSI-10_Raw Data_19115 test sheets.pdf": 18,
+     "PSI-10_Raw Data_19156 test sheets.pdf": 17,
+     "PSI-10_Raw Data_19182 test sheets.pdf": 17,
+     "PSI-10_Raw Data_22027 test sheets.pdf": 17,
+     "PSI-159_Raw Data_21088 test sheets.pdf": 17,
+     "PSI-159_Raw Data_21228 test sheets.pdf": 17,
+     "PSI-159_Raw Data_21256 test sheets.pdf": 17,
+     "PSI-159_Raw Data_21265 test sheets.pdf": 17,
+     "PSI-10_Raw Data_19175 test sheets.pdf": 16,
+     "PSI-10_Raw Data_21349 test sheets.pdf": 16,
+     "PSI-10_Raw Data_22035 test sheets.pdf": 16,
+     "PSI-159_Raw Data_21102 test sheets.pdf": 16,
+     "PSI-159_Raw Data_21174 test sheets.pdf": 16,
+     "PSI-159_Raw Data_21196 tests sheets.pdf": 16,
+     "PSI-10_Raw Data_19189 test sheets.pdf": 15,
+     "PSI-10_Raw Data_22018 test sheets.pdf": 14,
+     "PSI-159_Raw Data_21153 test sheets.pdf": 14,
+     "PSI-159_Raw Data_21277 test sheets.pdf": 14,
+     "PSI-10_Raw Data_19171 test sheets.pdf": 13,
+     "PSI-10_Raw Data_21340 test sheets.pdf": 13,
+     "PSI-159_Raw Data_21162 test sheets.pdf": 13,
+     "PSI-159_Raw Data_21216 test sheets.pdf": 13,
+     "PSI-159_Raw Data_21137 test sheets.pdf": 12,
+     "PSI-159_Raw Data_21202 test sheets.pdf": 12,
+     "PSI-159_Raw Data_21209 test sheets.pdf": 12,
+     "PSI-159_Raw Data_21291 test sheets.pdf": 12,
+     "PSI-159_Raw Data_21235 test sheets.pdf": 10,
+     "PSI-159_Raw Data_21270 test sheets.pdf": 10,
+     "PSI-10_Raw Data_21328 test sheets.pdf": 9,
+     "PSI-159_Raw Data_21242 test sheets.pdf": 7
+    }
+   },
+   "page": {
+    "dtype": "int64",
+    "non_null": 637,
+    "description": "PDF page; one sheet per page",
+    "min": 1.0,
+    "max": 24.0
+   },
+   "form": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "form title: investigation and flame type",
+    "values": {
+     "CFI-G (normal flame)": 191,
+     "Flame Design (normal flame)": 156,
+     "CFI-G (inverse flame)": 145,
+     "Flame Design (inverse flame)": 125,
+     "Flame Design (normal-flame TFP calibration day)": 20
+    }
+   },
+   "day": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "ACME day code (YYDDD) in the file name",
+    "values": {
+     "21125": 24,
+     "21130": 24,
+     "21106": 23,
+     "19123": 21,
+     "19137": 20,
+     "21301": 20,
+     "21361": 20,
+     "22024": 20,
+     "21112": 20,
+     "19150": 19,
+     "19115": 18,
+     "19156": 17,
+     "19182": 17,
+     "22027": 17,
+     "21088": 17,
+     "21228": 17,
+     "21256": 17,
+     "21265": 17,
+     "19175": 16,
+     "21349": 16,
+     "22035": 16,
+     "21102": 16,
+     "21174": 16,
+     "21196": 16,
+     "19189": 15,
+     "22018": 14,
+     "21153": 14,
+     "21277": 14,
+     "19171": 13,
+     "21340": 13,
+     "21162": 13,
+     "21216": 13,
+     "21137": 12,
+     "21202": 12,
+     "21209": 12,
+     "21291": 12,
+     "21235": 10,
+     "21270": 10,
+     "21328": 9,
+     "21242": 7
+    }
+   },
+   "test_id_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "id box, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "test_id": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "test point: the file's day code and the test letter and number written on the sheet"
+   },
+   "test_id_basis": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "as_written / day_from_file_name (the day digits on the sheet are wrong or unreadable) / recorded_under_other_id",
+    "values": {
+     "as_written": 620,
+     "day_from_file_name": 16,
+     "recorded_under_other_id": 1
+    }
+   },
+   "test_id_note": {
+    "dtype": "str",
+    "non_null": 17,
+    "description": "why test_id differs from test_id_written",
+    "values": {
+     "day digits written as '21238'; the sheet is in the 21328 file": 5,
+     "day digits struck or illegible; the sheet is in the 19182 file": 4,
+     "day digits written as '1923'; the sheet is in the 19123 file": 1,
+     "day digits written as '1917'; the sheet is in the 19171 file": 1,
+     "day digits written as '19171'; the sheet is in the 19175 file": 1,
+     "day digits written as '19182'; the sheet is in the 19189 file": 1,
+     "day digits written as '210888'; the sheet is in the 21088 file": 1,
+     "day digits written as '20137'; the sheet is in the 21137 file": 1,
+     "the sheet adds '(M2-1)' to the id: the run was recorded as 21196M2_1 (its data file starts at 22:06 GMT; the sheet says 22:05)": 1,
+     "day digits written as '21219'; the sheet is in the 21291 file": 1
+    }
+   },
+   "in_tests": {
+    "dtype": "bool",
+    "non_null": 637,
+    "description": "test_id is a row of `tests`"
+   },
+   "tests_test_id": {
+    "dtype": "str",
+    "non_null": 596,
+    "description": "that row's test_id as `tests` spells it (PSI-159 ids have a space)"
+   },
+   "has_data_file": {
+    "dtype": "bool",
+    "non_null": 637,
+    "description": "PSI lists a sensor recording (<test_id>_data.csv) for the test point"
+   },
+   "date_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "test date, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "date_parsed": {
+    "dtype": "str",
+    "non_null": 628,
+    "description": "date_written as an ISO date, when it is a full date"
+   },
+   "date": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "date of the day code",
+    "values": {
+     "2021-05-05": 24,
+     "2021-05-10": 24,
+     "2021-04-16": 23,
+     "2019-05-03": 21,
+     "2019-05-17": 20,
+     "2021-10-28": 20,
+     "2021-12-27": 20,
+     "2022-01-24": 20,
+     "2021-04-22": 20,
+     "2019-05-30": 19,
+     "2019-04-25": 18,
+     "2019-06-05": 17,
+     "2019-07-01": 17,
+     "2022-01-27": 17,
+     "2021-03-29": 17,
+     "2021-08-16": 17,
+     "2021-09-13": 17,
+     "2021-09-22": 17,
+     "2019-06-24": 16,
+     "2021-12-15": 16,
+     "2022-02-04": 16,
+     "2021-04-12": 16,
+     "2021-06-23": 16,
+     "2021-07-15": 16,
+     "2019-07-08": 15,
+     "2022-01-18": 14,
+     "2021-06-02": 14,
+     "2021-10-04": 14,
+     "2019-06-20": 13,
+     "2021-12-06": 13,
+     "2021-06-11": 13,
+     "2021-08-04": 13,
+     "2021-05-17": 12,
+     "2021-07-21": 12,
+     "2021-07-28": 12,
+     "2021-10-18": 12,
+     "2021-08-23": 10,
+     "2021-09-27": 10,
+     "2021-11-24": 9,
+     "2021-08-30": 7
+    }
+   },
+   "date_note": {
+    "dtype": "str",
+    "non_null": 4,
+    "description": "set when the date written on the sheet is not the day code's date",
+    "values": {
+     "sheet says 2017-06-20; day code 19171 is 2019-06-20": 1,
+     "sheet says 2020-07-08; day code 19189 is 2019-07-08": 1,
+     "sheet says 2019-07-20; day code 19189 is 2019-07-08": 1,
+     "sheet says 2021-09-21; day code 21256 is 2021-09-13": 1
+    }
+   },
+   "gmt_written": {
+    "dtype": "str",
+    "non_null": 636,
+    "description": "GMT day and time, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "test_of_day_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "'Test of day #', as transcribed (with the transcriber's remarks in brackets and after '— note:')",
+    "values": {
+     "1": 40,
+     "2": 40,
+     "3": 40,
+     "4": 40,
+     "6": 39,
+     "7": 39,
+     "5": 38,
+     "9": 38,
+     "8": 37,
+     "10": 37,
+     "12": 36,
+     "11": 35,
+     "13": 32,
+     "14": 28,
+     "15": 25,
+     "16": 24,
+     "17": 18,
+     "18": 11,
+     "19": 10,
+     "20": 9,
+     "21": 2,
+     "22": 2,
+     "23": 2,
+     "[struck: illegible] 21": 1,
+     "8 [overwritten]": 1,
+     "[scribbled-out digit] 5": 1,
+     "[scribbled-out value] 6 — note: [scribble in left margin]": 1,
+     "8 [struck: illegible]": 1,
+     "10 [overwritten]": 1,
+     "[scribbled out] 11": 1,
+     "[scribbled out] 21": 1,
+     "[scribbled out] 22": 1,
+     "[scribbled out] 23": 1,
+     "[scribbled out] 24": 1,
+     "24": 1,
+     "[struck: illegible] 7": 1,
+     "[struck: illegible] 9": 1,
+     "5 — note: [scribble in left margin]": 1
+    }
+   },
+   "flame_of_day_written": {
+    "dtype": "str",
+    "non_null": 636,
+    "description": "'Flame of day #' ('Hot flame of day #' on CFI-G inverse sheets); says 'no ignition' or 'abort' in words, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "test_type_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "'Test type?' (standard, ignition, no-flame, other), as transcribed (with the transcriber's remarks in brackets and after '— note:')",
+    "values": {
+     "standard": 458,
+     "standard, other: TFP": 40,
+     "ignition": 26,
+     "not marked": 25,
+     "standard, other TFP": 20,
+     "standard, other — TFP": 18,
+     "standard; other: TFP": 8,
+     "other — imaging test": 6,
+     "standard — note: \"TFP\" written on the \"other\" line, \"other\" box not ticked": 3,
+     "standard — note on \"other\" line: (no TFP)": 2,
+     "standard, other: TFP, down/up ramp": 2,
+     "no-flame [underlined]": 2,
+     "standard, other TFP [both marked]": 2,
+     "standard, other [both marked] — other: TFP": 2,
+     "standard, other — imaging (both boxes appear marked)": 1,
+     "standard — imaging test (written on the \"other\" line)": 1,
+     "other — TFP [standard box appears struck]": 1,
+     "standard — note on \"other\" line: (no TFP for this test)": 1,
+     "standard; other: TFP [other mark partly crossed]": 1,
+     "standard [ignition also ticked, but that option is struck through]": 1,
+     "standard, other TFP [only \"standard\" box ticked; \"TFP\" written on the \"other\" line]": 1,
+     "standard, other (nothing written on the line)": 1,
+     "standard, other: TFP, ramping oxidizer flow up & down": 1,
+     "standard, other: oxider flow ramp (\"ramp\" written above) up, down, up, no TFP": 1,
+     "other: TFP": 1,
+     "standard, other: TFP, ramp down to lower flow": 1,
+     "standard, other: TFP, ramp down flow after ignition": 1,
+     "standard, other: [inserted: TFP] ignition & ramp down in flow, TFP": 1,
+     "standard, other: TFP, ramp down": 1,
+     "standard, other: TFP [inserted: but] to assess effect on flame [of] array inserted and for imaging not temp.": 1,
+     "standard [no-flame marked, then struck through]": 1,
+     "no-flame [circled; mark also next to \"standard\"] — other: w/o fuel": 1,
+     "no-flame": 1,
+     "standard [mark overwritten]": 1,
+     "standard, other: fiber, i.e. TFP": 1,
+     "standard [mark extends through the word \"standard\", possibly striking it], other — other: TFP": 1,
+     "no-flame [?], standard, other TFP": 1
+    }
+   },
+   "chamber_pressure_written": {
+    "dtype": "str",
+    "non_null": 621,
+    "description": "chamber pressure before the test, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "chamber_pressure_psia": {
+    "dtype": "float64",
+    "non_null": 588,
+    "description": "chamber pressure before the test, when one number is written",
+    "unit": "psia",
+    "min": 6.2,
+    "max": 44.2
+   },
+   "fuel_flow_written": {
+    "dtype": "str",
+    "non_null": 356,
+    "description": "burner fuel flow (normal flames), as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "fuel_flow_slpm": {
+    "dtype": "float64",
+    "non_null": 332,
+    "description": "burner fuel flow (normal flames), when one number is written (empty for a ramp)",
+    "unit": "slpm, N2 basis",
+    "min": 0.0,
+    "max": 0.499
+   },
+   "o2_flow_written": {
+    "dtype": "str",
+    "non_null": 270,
+    "description": "burner oxidizer flow (inverse flames), as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "o2_flow_slpm": {
+    "dtype": "float64",
+    "non_null": 258,
+    "description": "burner oxidizer flow (inverse flames), when one number is written (empty for a ramp)",
+    "unit": "slpm, N2 basis",
+    "min": 0.051,
+    "max": 0.499
+   },
+   "n2_flow_written": {
+    "dtype": "str",
+    "non_null": 628,
+    "description": "burner nitrogen flow, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "n2_flow_slpm": {
+    "dtype": "float64",
+    "non_null": 551,
+    "description": "burner nitrogen flow, when one number is written (empty for a ramp)",
+    "unit": "slpm, N2 basis",
+    "min": 0.0,
+    "max": 1181.0
+   },
+   "ignited_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "'Ignited?' (yes / no / yes, but ...), as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "ignited": {
+    "dtype": "str",
+    "non_null": 616,
+    "description": "yes / yes_but (ticked 'yes, but ...': momentary or unsustained) / no / unclear; empty when not marked",
+    "values": {
+     "yes": 485,
+     "no": 97,
+     "yes_but": 34
+    }
+   },
+   "flame_written": {
+    "dtype": "str",
+    "non_null": 481,
+    "description": "'hot / cool / maybe cool' row (inverse and CFI-G forms), as transcribed (with the transcriber's remarks in brackets and after '— note:')",
+    "values": {
+     "hot": 367,
+     "not marked": 79,
+     "marked": 17,
+     "not marked (hot / cool / maybe cool)": 14,
+     "hot, cool": 3,
+     "[struck: hot]": 1
+    }
+   },
+   "flame": {
+    "dtype": "str",
+    "non_null": 387,
+    "description": "hot / cool / hot+cool / maybe_cool; empty when not marked",
+    "values": {
+     "hot": 384,
+     "hot+cool": 3
+    }
+   },
+   "flame_behavior_written": {
+    "dtype": "str",
+    "non_null": 568,
+    "description": "the other 'Flame' rows (asymmetric, hole/opening, partially detached, oscillating, unsteady, quasi-steady, blew out), '; '-separated, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "soot_written": {
+    "dtype": "str",
+    "non_null": 156,
+    "description": "single 'Soot' row of the 2019 normal-flame form, as transcribed (with the transcriber's remarks in brackets and after '— note:')",
+    "values": {
+     "not marked": 54,
+     "none": 21,
+     "ignition only": 16,
+     "ignition only, lots": 15,
+     "little": 11,
+     "lots": 11,
+     "none, little, lots [all three ticked]": 8,
+     "ignition only, lots (both marked)": 3,
+     "little, lots": 3,
+     "ignition only, little": 2,
+     "none, ignition only, lots [three boxes marked]": 1,
+     "ignition only, lots (both marked) — note: \"from\" written above \"ignition\"": 1,
+     "lots [a tick on \"ignition only\" is scribbled out]": 1,
+     "none, little, lots [three boxes crossed; ignition only not marked]": 1,
+     "ignition only, lots [both marked]": 1,
+     "none, lots [both marked]": 1,
+     "little, lots [both marked]": 1,
+     "none, ignition only, little, lots [all four boxes marked]": 1,
+     "ignition only [? written in the box instead of a tick] — note: right margin: \"none obvious [struck: illegible] but could have been soot @ ign.\"": 1,
+     "ignition only [? written in the box instead of a tick]": 1,
+     "none, little, lots [three boxes marked]": 1,
+     "ignition only [box marked with a ? above it]": 1
+    }
+   },
+   "soot_ignition_written": {
+    "dtype": "str",
+    "non_null": 481,
+    "description": "'Soot@ignition', as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "soot_ignition": {
+    "dtype": "str",
+    "non_null": 363,
+    "description": "none / little / lots when exactly one is marked",
+    "values": {
+     "lots": 322,
+     "none": 33,
+     "little": 8
+    }
+   },
+   "soot_middle_written": {
+    "dtype": "str",
+    "non_null": 481,
+    "description": "'Soot@middle', as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "soot_middle": {
+    "dtype": "str",
+    "non_null": 381,
+    "description": "none / little / lots when exactly one is marked",
+    "values": {
+     "none": 264,
+     "little": 75,
+     "lots": 42
+    }
+   },
+   "soot_end_written": {
+    "dtype": "str",
+    "non_null": 637,
+    "description": "'Soot@end', as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "soot_end": {
+    "dtype": "str",
+    "non_null": 481,
+    "description": "none / little / lots when exactly one is marked",
+    "values": {
+     "none": 392,
+     "little": 57,
+     "lots": 32
+    }
+   },
+   "out_written": {
+    "dtype": "str",
+    "non_null": 481,
+    "description": "'Out' row: how the flame ended (ext. detect / time out / temp. limit); not on the 2019 normal-flame form, as transcribed (with the transcriber's remarks in brackets and after '— note:')",
+    "values": {
+     "ext. detect": 182,
+     "not marked": 89,
+     "time out [underlined]": 64,
+     "time out": 49,
+     "ext. detect [underlined]": 20,
+     "time out (\"time out\" underlined)": 20,
+     "temp. limit": 15,
+     "temp. limit [underlined]": 12,
+     "not marked — note: \"probably\" written under time out": 2,
+     "not marked — note: * (refers to general comments)": 2,
+     "not marked — note: \"terminated early\"": 2,
+     "not marked — note: \"^ probably\" written under temp. limit": 1,
+     "time out — note: but was approaching the temp limit quick": 1,
+     "temp. limit — note: but only few seconds from time out": 1,
+     "ext. detect [box ticked; the printed words are written over by hand, apparently \"Manual\" [?]] — note: (arrow) terminated intentionally to save oxidizer": 1,
+     "not marked — note: \"^ probably\" written under time out": 1,
+     "ext. detect [underlined twice]": 1,
+     "[struck: ext. detect] time out [underlined]": 1,
+     "not marked — note: ↳ deactivated, manual shut-off": 1,
+     "ext. detect — note: [symbol] @ 19:06:52": 1,
+     "temp. limit [box ticked; the printed words are written over by hand, apparently \"Manually\" [?]]": 1,
+     "not marked — note: ↑ * (see general comments)": 1,
+     "not marked — note: *": 1,
+     "not marked — note: stopped intentionally": 1,
+     "not marked — note: \"*\" written after the row": 1,
+     "time out — note: \"*\" written below": 1,
+     "not marked — note: arrow below the row: \"stopped [struck: early] intentionally\"": 1,
+     "temp. limit [underlined] [time out also marked but its mark and the words \"time out\" are scribbled out]": 1,
+     "time out [a mark on \"temp. limit\" is scribbled out]": 1,
+     "ext. detect [the \"time out\" option is scribbled over]": 1,
+     "temp. limit (\"temp. limit\" underlined several times)": 1,
+     "temp. limit — note: \"↳?\" below, and \"[struck: illegible] or did this time out? looks like time-out\"": 1,
+     "temp. limit (\"temp. limit\" underlined)": 1,
+     "not marked — note: intentionally stopped": 1,
+     "time out [underlined; \"ext. detect\" ticked and struck through]": 1
+    }
+   },
+   "out": {
+    "dtype": "str",
+    "non_null": 377,
+    "description": "ext_detect (extinction detected: the flame went out) / time_out (lasted the scripted time) / temp_limit (stopped by the burner temperature limit); empty when not exactly one is marked",
+    "values": {
+     "ext_detect": 206,
+     "time_out": 138,
+     "temp_limit": 33
+    }
+   },
+   "chamber_pressure_post_written": {
+    "dtype": "str",
+    "non_null": 473,
+    "description": "chamber pressure after the test, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "chamber_pressure_post_psia": {
+    "dtype": "float64",
+    "non_null": 456,
+    "description": "chamber pressure after the test, when one number is written",
+    "unit": "psia",
+    "min": 6.2,
+    "max": 1370.0
+   },
+   "oxidizer_bottle_pressure_written": {
+    "dtype": "str",
+    "non_null": 625,
+    "description": "oxidizer bottle pressure after the test, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+   },
+   "oxidizer_bottle_pressure_psia": {
+    "dtype": "float64",
+    "non_null": 581,
+    "description": "oxidizer bottle pressure after the test, when one number is written",
+    "unit": "psia",
+    "min": 8.0,
+    "max": 1547.0
+   },
+   "flame_behavior_note": {
+    "dtype": "str",
+    "non_null": 106,
+    "description": "handwritten note next to the FLAME BEHAVIOR heading",
+    "values": {
+     "n/a": 30,
+     "\"n/a\" written next to section title": 17,
+     "\"flame out w/ fuel off\" written beside the heading": 15,
+     "n/a (written beside the heading)": 7,
+     "\"flame out w/ flow off\" written beside the heading": 6,
+     "quasi steady": 4,
+     "\"out w/ fuel off\" written beside the heading": 3,
+     "\"n/a\" written beside the heading": 3,
+     "quasi-steady": 2,
+     "out w/ flow off": 2,
+     "quasi steady, short test (\"quasi\" inserted above)": 1,
+     "spherical but not centered on burner": 1,
+     "stopped due to T": 1,
+     "quasi steady, timed out": 1,
+     "stopped due to 500C temp. limit": 1,
+     "quasi-steady, timed out": 1,
+     "went out w/ 500 C temp limit": 1,
+     "stop w/ burner 500C limit": 1,
+     "flow stop due to 500 C burner limit": 1,
+     "flow stop w/ 500C burner limit": 1,
+     "out w/ fuel flow stop": 1,
+     "out w/ burner temp limit (arrow to comment: \"during flow ramp down toward zero after constant flow time\")": 1,
+     "out w/ fuel ramp to zero": 1,
+     "out at flow off": 1,
+     "\"out w/ flowoff\" written beside the heading": 1,
+     "\"flame out due to burner temp limit\" written beside the heading": 1,
+     "- [inserted: hot] flashes only": 1
+    }
+   },
+   "comments": {
+    "dtype": "str",
+    "non_null": 574,
+    "description": "GENERAL COMMENTS lines, ' | '-separated"
+   },
+   "n_uncertain": {
+    "dtype": "int64",
+    "non_null": 637,
+    "description": "[?] marks on the page: readings the transcriber was unsure of",
+    "unit": "count",
+    "min": 0.0,
+    "max": 5.0
+   },
+   "n_illegible": {
+    "dtype": "int64",
+    "non_null": 637,
+    "description": "places the transcriber marked illegible (struck or overwritten text included)",
+    "unit": "count",
+    "min": 0.0,
+    "max": 4.0
+   },
+   "differs_from_asrun": {
+    "dtype": "bool",
+    "non_null": 637,
+    "description": "the transcriber noted a difference from the as-run parameter file, or that none exists"
+   },
+   "differs_text": {
+    "dtype": "str",
+    "non_null": 31,
+    "description": "those notes",
+    "values": {
+     "[no as-run file with this id in the folder]": 5,
+     "[differs from as-run file: no 19115M1 file exists for this day; M-series data file is 19115M4]": 1,
+     "[differs from as-run file: no 19115M2 file exists for this day; M-series data file is 19115M4]": 1,
+     "[differs from as-run file: no 19115M3 file exists for this day; M-series data file is 19115M4]": 1,
+     "[differs from as-run file: 0.2]": 1,
+     "[differs from as-run file: 0]": 1,
+     "[no as-run file 19171B2 in the folder; the flows written here match as-run 19171B3]": 1,
+     "[differs from as-run file: no 19175A1 file exists for this day; A-series files are 19175A2-A4]": 1,
+     "[differs from as-run file: no 19175B3 file exists for this day; B-series files are B1, B2, B4-B9]": 1,
+     "[differs from as-run file: 19175B5] [differs from as-run file: 0.104]": 1,
+     "[differs from as-run file: 19189A3]": 1,
+     "[differs from as-run file: 0.082]": 1,
+     "[differs from as-run file: 0.092]": 1,
+     "[differs from as-run file: 21328N2]": 1,
+     "[differs from as-run file: 21328N3]": 1,
+     "[differs from as-run file: 21328N4]": 1,
+     "[differs from as-run file: 21328N5]": 1,
+     "[differs from as-run file: 21328P1]": 1,
+     "[no as-run file 22027A1 in the folder]": 1,
+     "[no as-run file 22035D2 in the folder; the sheet says no data files were created]": 1,
+     "[differs from as-run file: 21088H1]": 1,
+     "[differs from as-run file: no as-run file exists for 21102M6; the day's as-run files end at 21102M5]": 1,
+     "[differs from as-run file: no as-run/TP/data file exists for 21130A9 (day's ids are A1–A8, G1–G7, M1–M3, N1–N5)]": 1,
+     "[differs from as-run file: 21137A1]": 1,
+     "[differs from as-run file: oxidizerIgnitionFlowSlpm/oxidizerTestFlow1Slpm 0]": 1,
+     "[differs from as-run file: 0.180] [differs from as-run file: 0.100]": 1,
+     "[differs from as-run file: 21291G1]": 1
+    }
    }
   }
  },

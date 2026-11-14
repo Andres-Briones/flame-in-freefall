@@ -20,10 +20,62 @@ TABLES = {
     "spread_steps": "BASS-II (PSI-25) flame spread rates of the thick-PMMA slab tests, one row per test and flow step, "
                     "transcribed from the BASS-II Summary Report, Table 5.1 (data/corrections/tests_spread_bass2.json). "
                     "Steps of one test are not independent. See docs/tests-table.md.",
+    "test_sheets": "ACME Science Test Sheets of PSI-10 and PSI-159, one row per page: the form the operators filled in "
+                   "by hand for each test point (ignition, hot or cool flame, soot, how the flame ended, comments). "
+                   "Every value is an AI model's reading of a hand-filled scan (data/transcriptions/), not checked by a "
+                   "human; say so wherever a value is shown. See docs/formats.md.",
     "timeseries_features": "Summary features of each per-test sensor time series. See docs/formats.md.",
     "files": "Every file listed in the 24 PSI records, downloaded or not.",
     "evidence": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
     "evidence_files": "Extraction status of each document (ok, transcribed, no_text for scans, unsupported, error, withheld).",
+}
+SHEET_FIELDS = {
+    "test_id": "id box", "date": "test date", "gmt": "GMT day and time", "test_of_day": "'Test of day #'",
+    "flame_of_day": "'Flame of day #' ('Hot flame of day #' on CFI-G inverse sheets); says 'no ignition' or 'abort' in words",
+    "test_type": "'Test type?' (standard, ignition, no-flame, other)",
+    "chamber_pressure": "chamber pressure before the test", "chamber_pressure_post": "chamber pressure after the test",
+    "fuel_flow": "burner fuel flow (normal flames)", "o2_flow": "burner oxidizer flow (inverse flames)",
+    "n2_flow": "burner nitrogen flow", "oxidizer_bottle_pressure": "oxidizer bottle pressure after the test",
+    "ignited": "'Ignited?' (yes / no / yes, but ...)",
+    "flame": "'hot / cool / maybe cool' row (inverse and CFI-G forms)",
+    "flame_behavior": "the other 'Flame' rows (asymmetric, hole/opening, partially detached, oscillating, unsteady, "
+                      "quasi-steady, blew out), '; '-separated",
+    "soot": "single 'Soot' row of the 2019 normal-flame form", "soot_ignition": "'Soot@ignition'",
+    "soot_middle": "'Soot@middle'", "soot_end": "'Soot@end'",
+    "out": "'Out' row: how the flame ended (ext. detect / time out / temp. limit); not on the 2019 normal-flame form",
+}
+TEST_SHEETS = {
+    **{f"{name}_written": f"{about}, as transcribed (with the transcriber's remarks in brackets and after '— note:')"
+       for name, about in SHEET_FIELDS.items()},
+    "accession": "PSI accession (PSI-10 or PSI-159)",
+    "file_name": "scanned PDF the page is in (transcription: data/transcriptions/<accession>/<file_name>.md)",
+    "page": "PDF page; one sheet per page", "form": "form title: investigation and flame type",
+    "day": "ACME day code (YYDDD) in the file name",
+    "test_id": "test point: the file's day code and the test letter and number written on the sheet",
+    "test_id_basis": "as_written / day_from_file_name (the day digits on the sheet are wrong or unreadable) / "
+                     "recorded_under_other_id",
+    "test_id_note": "why test_id differs from test_id_written", "in_tests": "test_id is a row of `tests`",
+    "tests_test_id": "that row's test_id as `tests` spells it (PSI-159 ids have a space)",
+    "has_data_file": "PSI lists a sensor recording (<test_id>_data.csv) for the test point",
+    "date_parsed": "date_written as an ISO date, when it is a full date", "date": "date of the day code",
+    "date_note": "set when the date written on the sheet is not the day code's date",
+    "chamber_pressure_psia": {"description": "chamber pressure before the test, when one number is written", "unit": "psia"},
+    "chamber_pressure_post_psia": {"description": "chamber pressure after the test, when one number is written", "unit": "psia"},
+    "oxidizer_bottle_pressure_psia": {"description": "oxidizer bottle pressure after the test, when one number is written", "unit": "psia"},
+    **{f"{gas}_flow_slpm": {"description": f"{SHEET_FIELDS[f'{gas}_flow']}, when one number is written (empty for a ramp)",
+                            "unit": "slpm, N2 basis"} for gas in ("fuel", "o2", "n2")},
+    "ignited": "yes / yes_but (ticked 'yes, but ...': momentary or unsustained) / no / unclear; empty when not marked",
+    "flame": "hot / cool / hot+cool / maybe_cool; empty when not marked",
+    "soot_ignition": "none / little / lots when exactly one is marked", "soot_middle": "none / little / lots when exactly one is marked",
+    "soot_end": "none / little / lots when exactly one is marked",
+    "out": "ext_detect (extinction detected: the flame went out) / time_out (lasted the scripted time) / temp_limit "
+           "(stopped by the burner temperature limit); empty when not exactly one is marked",
+    "flame_behavior_note": "handwritten note next to the FLAME BEHAVIOR heading",
+    "comments": "GENERAL COMMENTS lines, ' | '-separated",
+    "n_uncertain": {"description": "[?] marks on the page: readings the transcriber was unsure of", "unit": "count"},
+    "n_illegible": {"description": "places the transcriber marked illegible (struck or overwritten text included)", "unit": "count"},
+    "differs_from_asrun": "the transcriber noted a difference from the as-run parameter file, or that none exists",
+    "differs_text": "those notes",
 }
 DESCRIPTIONS = {
     "investigations": {
@@ -48,11 +100,15 @@ DESCRIPTIONS = {
     },
     "discrepancies": {
         "id": "patch id (D01, ...), as listed in tests.extra `discrepancies`", "test_id": "test id as in the PSI table (null for a note on a whole investigation)",
-        "test_id_now": "test id in `tests` after a test_id correction", "column": "`tests` column concerned",
+        "test_id_now": "test id in `tests` after a test_id correction",
+        "column": "`tests` column concerned, or a source column the table keeps only in `extra`",
         "table_value": "value in the PSI table", "evidence_value": "value the raw data give",
-        "action": "replace / fill / flag / note", "flag": "flag put on the row",
-        "evidence": "what the raw data show", "evidence_source": "file and channel the evidence comes from",
+        "action": "replace / fill / flag / note",
+        "flag": "flag put on the row; conflicts_with_test_sheet when the only evidence is a hand-filled test sheet "
+                "(an AI reading of a scan, not checked by a human)",
+        "evidence": "what the raw data or the test sheet show", "evidence_source": "file and channel the evidence comes from",
     },
+    "test_sheets": TEST_SHEETS,
     "spread_steps": {
         "accession": "PSI accession (PSI-25)",
         "test_id": "test id of the `tests` row (M1 ... M20; M6 and M12 have no tracked rate and no row here)",
@@ -186,6 +242,7 @@ def export():
     write(EXPORT / "relevance.json", ranked)
     write(EXPORT / "models.json", api.predict()["data"])
     write(EXPORT / "discrepancies.json", api.discrepancies()["data"])
+    write(EXPORT / "test_sheets.json", {"notes": [api.SHEET_NOTE], "rows": api._rows(api.table("test_sheets"))})
     if (psi.PROCESSED / "timeseries_features.parquet").exists():
         write(EXPORT / "timeseries_features.json", api._rows(api.table("timeseries_features")))
         traces = {f"{q['arguments'].get('accession', '')}|{q['arguments']['test_id']}".lstrip("|"):

@@ -23,7 +23,8 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
 | `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
-| `discrepancies.json` | errors and doubts in the PSI tables: 38 raw-data conflicts and notes with evidence, every changed value, flag meanings |
+| `discrepancies.json` | errors and doubts in the PSI tables: 61 conflicts and notes with evidence (10 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings |
+| `test_sheets.json` | `{notes, rows}`: the 637 hand-filled ACME test sheets of PSI-10 and PSI-159, one row per page (`docs/formats.md`). An AI reading of scans, not checked by a human: show the note with any value |
 | `questions.json` | the question bank: question, call, chart, answer |
 | `synthesis.json` | key messages, limits, microgravity-vs-1-g comparisons, ranked gaps, lineage, research questions |
 
@@ -43,7 +44,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 |---|---|
 | `search_investigations(query, pillar, fuel_phase, flight)` | which investigations exist / match a topic |
 | `get_investigation(accession, sections)` | everything about one investigation |
-| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, ...)` | what was tested and what happened |
+| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, sheet_out, sheets, ...)` | what was tested and what happened; `sheets=True` attaches the operators' test sheet to PSI-10 and PSI-159 rows |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
 | `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase; its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test |
 | `relevance(scenario, fuel_phase, pillar)` | which investigations matter for a scenario, and how far the data are from it |
@@ -144,6 +145,13 @@ $$
   has `evidence.transcribed = True`. The same redaction applies. This text is a machine reading, not the
   document's own: `find_evidence` returns `transcribed` on each document passage and its source, adds a note when
   any are present, and the search view shows an "AI reading of a scan" chip. Check numbers and names in the scan.
+- Test sheets (PSI-10, PSI-159): the form the operators filled in by hand for each test point is in the table
+  `test_sheets` (637 pages, 596 of them a `tests` row) and reaches the API through `filter_tests`: `sheets=True`
+  adds `test_sheet` to each row that has one (ignited, hot or cool flame, `out`, comments, file and page) and
+  `sheet_out="temp_limit"` selects by the ending ticked. It is an AI reading of a scan that nobody checked: the
+  result says so in `notes`; repeat it. `out` = `temp_limit` means the flame was cut off because the burner got too
+  hot: not an extinction, and not a flame that lasted the scripted time. In the CFI-G table these 24 tests are
+  `flow_terminated` together with the 54 time-outs; the Flame Design table has no ending column at all.
 - `timeseries_features` (1,075 recordings, PSI-10, 23, 39, 159, 98, 100; 24 of the PSI-39 ones are the
   investigators' reduced droplet data, `test_point` `FLEX-<id>-reduced`) needs no raw files. Its `test_id` is
   the `tests` id (`21088 M4`); `test_point` is the recording's name without the space (`21088M4`).

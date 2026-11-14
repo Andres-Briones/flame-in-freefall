@@ -19,6 +19,7 @@ import pandas as pd
 import xlrd
 
 from fif import psi
+from fif.pipeline.build_evidence import read_transcription
 
 ATM_KPA = 101.325
 BAR_KPA = 100.0
@@ -1191,6 +1192,21 @@ INVERSE_FLAMES = {"PSI-10", "PSI-159"}  # inverse rows: XO2 is the burner stream
 
 PATCHES = psi.ROOT / "data" / "corrections" / "tests_patches.json"
 PATCH_FLAGS = {"replace": "corrected_from_raw", "fill": "filled_from_raw", "flag": "conflicts_with_raw"}
+# A patch whose only evidence is a hand-filled ACME test sheet, read from the scan by an AI model and not checked by
+# a human (`basis`: "test_sheet"), never changes a value: it flags, with a flag of its own, and quotes the sheet.
+SHEET_BASIS, SHEET_FLAG = "test_sheet", "conflicts_with_test_sheet"
+
+
+def patch_flag(patch):
+    sheet_based = patch["action"] == "flag" and patch.get("basis") == SHEET_BASIS
+    return SHEET_FLAG if sheet_based else PATCH_FLAGS.get(patch["action"])
+
+
+def sheet_quote_missing(patch):
+    """True when the transcription page a patch quotes (`sheet`: file_name, page, quote) no longer says so."""
+    sheet = patch["sheet"]
+    pages = dict(read_transcription(patch["accession"], sheet["file_name"]))
+    return _squash(sheet["quote"]) not in _squash(pages.get(f"p{sheet['page']}", ""))
 
 
 def _same(a, b):
@@ -1204,12 +1220,17 @@ def _same(a, b):
 def apply_patches(groups, patches):
     """Apply the curated raw-data discrepancies (data/corrections/tests_patches.json). `replace` and `fill` change
     the value and keep the table's in extra; `flag` keeps the table value. Every patched row lists the patch ids
-    in extra["discrepancies"]. A patch whose `table_value` no longer matches the table fails loudly."""
+    in extra["discrepancies"]. A patch whose `table_value` no longer matches the table fails loudly. `column` may
+    name a source column the table keeps only in `extra`; such a value, and any value contested only by a test
+    sheet, can be flagged but not changed. A patch that quotes a test sheet fails once the quote is gone."""
     index = {}
     for acc, rows in groups.items():
         for row in rows:
             index.setdefault((acc, row["test_id"]), []).append(row)
     for patch in patches:
+        sheet_based = patch.get("basis") == SHEET_BASIS
+        if (sheet_based and patch["action"] == "flag" or "sheet" in patch) and sheet_quote_missing(patch):
+            raise ValueError(f"patch {patch['id']}: the quote is not on page {patch['sheet']['page']} of the sheet")
         if patch["test_id"] is None:
             continue
         found = [r for r in index[(patch["accession"], patch["test_id"])]
@@ -1218,11 +1239,14 @@ def apply_patches(groups, patches):
             raise ValueError(f"patch {patch['id']}: {len(found)} rows match; give source_row")
         row = found[0]
         col = patch["column"]
-        current = row["extra"].get(f"{col}_original", row[col])
+        in_extra = col not in COLUMNS
+        if (in_extra or sheet_based) and patch["action"] != "flag":
+            raise ValueError(f"patch {patch['id']}: a value in extra or contested by a test sheet can only be flagged")
+        current = row["extra"].get(col) if in_extra else row["extra"].get(f"{col}_original", row[col])
         if not _same(current, patch["table_value"]):
             raise ValueError(f"patch {patch['id']}: table has {current!r}, patch expects {patch['table_value']!r}")
         if patch["action"] == "flag":
-            flag(row, PATCH_FLAGS["flag"])
+            flag(row, patch_flag(patch))
         else:
             value = patch["evidence_value"]
             if col in BOOLEAN and row[col] is not None:
@@ -1329,8 +1353,9 @@ def build():
 
 def discrepancies():
     """The curated patches as a table: what the PSI table says, what the raw data say, and what was done."""
-    df = pd.DataFrame(json.loads(PATCHES.read_text())).drop(columns="source_row", errors="ignore")
-    df["flag"] = df["action"].map(PATCH_FLAGS)
+    patches = json.loads(PATCHES.read_text())
+    df = pd.DataFrame(patches).drop(columns="source_row", errors="ignore")
+    df["flag"] = [patch_flag(p) for p in patches]
     replaced = df[df["column"] == "test_id"].set_index(["accession", "test_id"])["evidence_value"].to_dict()
     df["test_id_now"] = [replaced.get((a, t), t) for a, t in zip(df["accession"], df["test_id"])]
     for col in ("table_value", "evidence_value"):

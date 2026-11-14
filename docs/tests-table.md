@@ -124,10 +124,11 @@ Common `extra` keys:
 | `label_fixed` | a label split across cells was repaired (original in extra) | 1 (PSI-106) |
 | `corrected_from_raw` | value replaced by the raw sensor data (table value kept as `<column>_original`; patch ids in extra `discrepancies`) | 7 (PSI-10 1, PSI-23 1, PSI-39 2, PSI-159 3) |
 | `filled_from_raw` | empty table cell filled from the raw sensor data | 5 (PSI-10 1, PSI-98 2, PSI-100 2) |
-| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 18 (PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 6) |
+| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 26 (PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 14) |
+| `conflicts_with_test_sheet` | the operators' hand-filled test sheet contradicts the value or says the row was not what the table makes of it; the value is kept. The sheet is an AI reading of a scan, not checked by a human (patch ids in extra `discrepancies`) | 10 (PSI-10 5, PSI-159 5) |
 | `conflicts_with_table` | PSI-39 only: the spreadsheet and the old experimental table disagree (old value as `experimental_table_<column>`) | 0 |
 
-677 rows carry at least one flag.
+682 rows carry at least one flag.
 
 **Row key.** `test_id` is not unique: 12 rows in PSI-26, PSI-69 and PSI-101 share an id with another row (flag
 `duplicate_id`). `source_file` + `source_row` is unique and is the key of a row.
@@ -145,6 +146,12 @@ Corrections and flags:
 - Inverse rows are flagged `o2_is_burner_stream`.
 - RAMP/RAMPED rows are flagged `ramped`.
 - The 20 propane-day rows (21301*) are flagged `placeholder_values`.
+- 21301A1 to A5 also carry `conflicts_with_test_sheet` on `fuel_fraction` (patches D51 to D55): the sheets say the
+  fuel line still held 30% propane when the 100% bottle was connected, so the fraction at the burner was
+  somewhere between 0.30 and 1.0.
+- The tables have no column for how a flame ended. The test sheets say 17 flames were stopped by the burner
+  temperature limit (note D59), and they are the only record of 21 attempts with no row and no data file (note
+  D60). See "Test sheets" below.
 - `22042M1` is flagged `id_suspect`: its day group is 22024. The raw files confirm the digit swap, so the row is now
   `22024M1`, dated 2022-01-24 (patches D01, D02; the table id is kept in extra as `test_id_original`).
 
@@ -404,6 +411,19 @@ No match (most review frames fall before the first logged row of their burn, at 
 - Normal rows give the nominal fill pressure; the transducer reads about 3 kPa more (patch D32).
 - "flash" ignitions: `flash_only`.
 - Peak burner temperature above 450 °C: `burner_over_limit` (30 rows).
+- `extinction_mode` = `flow_terminated` covers two endings that the test sheets tell apart: 54 time-outs and 24
+  stops by the burner temperature limit (note D58, `filter_tests(sheet_out="temp_limit")`). A temperature-limit
+  stop is neither a self-extinction nor a flame that lasted the scripted time. No sheet contradicts the column.
+- Six rows listed as not ignited were not ignition attempts: nothing flowed, or it was a no-flame test of the
+  igniter (21196 A1, 21130 A4, 21242 P2: `conflicts_with_raw`, patches D45 to D47; 21125 A4, 21125 H3, 21209 A2,
+  which have no data file: `conflicts_with_test_sheet`, D48 to D50). `ignited` stays false; leave these rows out
+  of ignition statistics with `exclude_flags`, which also drops the other rows carrying those flags.
+- Burner O2 the flow controllers contradict (`conflicts_with_raw` on `x_o2_burner`): 21256 C2 (no nitrogen
+  flowed: 85%, not 50%; D39) and 21277 P1 (oxidizer and nitrogen flows swapped: about 55%, not 30%; D40).
+- Day 21277, oxidizer bottle nearly empty: the measured oxidizer flow of C2, F2, M1 and N1 is 41 to 90% of the
+  table's `O2 flow rate (mg/s)` (in extra), which is the setpoint (`conflicts_with_raw`, D41 to D44).
+- 21291 A1 and C1: `burn_time_s` spans six hot flames with cool flames between, not one flame
+  (`conflicts_with_test_sheet`, D56, D57).
 - For inverse rows `fuel_fraction` is the ambient fuel fraction.
 
 ## Conflicts with the raw sensor data
@@ -421,6 +441,27 @@ patch no longer matches the table. The same list is the `discrepancies` table an
 
 A patched row lists its patch ids in extra `discrepancies`. Raw files exist only for PSI-10, 23, 39, 159, 98, 100
 and 101, so the other tables could be checked against the reports only.
+
+`column` is a `tests` column, or a source column the table keeps only in `extra` (`O2 flow rate (mg/s)`); a value
+in extra can be flagged but not changed.
+
+### Test sheets
+
+For PSI-10 and PSI-159 the operators filled in a paper sheet per test point. The scans were read by an AI model
+(`data/transcriptions/`, table `test_sheets`, `docs/formats.md`) and nobody has checked the readings. A patch
+whose only evidence is a sheet therefore:
+
+- carries `"basis": "test_sheet"` and the flag `conflicts_with_test_sheet`, not `conflicts_with_raw`;
+- can only be a `flag` or a `note`: a sheet never changes a value;
+- names the page and quotes it (`sheet`: file, page, quote). `build_tests.py` fails if the quote is no longer on
+  that page of the transcription, so a patch cannot outlive a corrected reading.
+
+Where the sensor data confirm what a sheet says, the patch is an ordinary `conflicts_with_raw` one and cites the
+sheet as a second source. What the sheets were checked for and did not show: pressures agree with the tables to
+within the known offsets (notes D26, D32); `Ignited?` never contradicts `ignited` (56 no, 252 yes on the PSI-159
+rows that have both); the ending ticked never contradicts `extinction_mode`. Differences between a sheet and the
+as-run parameter file that leave the table untouched (21301H2 and H3 fuel flows swapped on the sheets, 19123L1
+fuel flow, 21106D1 post-test pressure) are in `test_sheets.differs_text` and the written fields, not patches.
 
 ## Outcomes read from notes (PSI-25, PSI-26)
 

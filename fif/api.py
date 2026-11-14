@@ -170,8 +170,6 @@ def _index(corpus):
         passages = _digest_passages()
     else:
         ev = table("evidence")
-        if "transcribed" not in ev:
-            ev["transcribed"] = False
         passages = ev[["accession", "file_name", "locator", "chunk", "text", "transcribed"]].to_dict("records")
     vec = TfidfVectorizer(sublinear_tf=True, ngram_range=(1, 2), min_df=1 if corpus == "digest" else 2, stop_words="english")
     return passages, vec, vec.fit_transform(p["text"] for p in passages)
@@ -243,11 +241,33 @@ def _between(series, bounds):
     return mask
 
 
+SHEET_NOTE = ("`test_sheet` values are an AI model's reading of a hand-filled scanned form (the ACME Science Test "
+              "Sheets of PSI-10 and PSI-159), not checked by a human: ids, numbers and ticks may be misread. Check "
+              "them in the scan (file and page are given) before relying on one.")
+SHEET_FIELDS = ["file_name", "page", "ignited", "flame", "out", "flame_behavior_written", "flame_behavior_note", "comments"]
+
+
+@lru_cache(maxsize=None)
+def _sheets():
+    """The test-sheet page of each `tests` row that has one, keyed by (accession, test id as in `tests`)."""
+    s = table("test_sheets")
+    s = s[s["in_tests"]]
+    return {(row["accession"], row["tests_test_id"]): row for row in _rows(s)}
+
+
+def _sheet_keys(df):
+    return pd.Series([key in _sheets() for key in zip(df["accession"], df["test_id"])], index=df.index, dtype=bool)
+
+
 def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=None, pressure_kpa=None,
-                  flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None,
+                  flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None, sheet_out=None,
                   row_kind="test", exclude_flags=None):
     t = table("tests")
     mask = pd.Series(True, index=t.index)
+    if sheet_out:
+        wanted = [sheet_out] if isinstance(sheet_out, str) else sheet_out
+        mask &= pd.Series([_sheets().get(key, {}).get("out") in wanted for key in zip(t["accession"], t["test_id"])],
+                          index=t.index)
     if accession:
         accs = [accession] if isinstance(accession, str) else accession
         mask &= t["accession"].isin([_accession(a) for a in accs])
@@ -273,9 +293,11 @@ def _test_sources(df):
     return [{"accession": a, "file": f, "rows": int(n)} for (a, f), n in df.groupby(["accession", "source_file"]).size().items()]
 
 
-def filter_tests(columns=None, limit=500, **filters):
+def filter_tests(columns=None, limit=500, sheets=False, **filters):
     """Rows of the per-test table. Ranges are [min, max] with None for open ends; `fuel` matches a whole fuel name
-    (ethane does not return methane; heptane returns n-heptane and its blends), `config` is a substring match; row_kind defaults to "test" (pass None for all kinds)."""
+    (ethane does not return methane; heptane returns n-heptane and its blends), `config` is a substring match; row_kind defaults to "test" (pass None for all kinds).
+    `sheets=True` attaches to each PSI-10 / PSI-159 row its hand-filled test sheet as `test_sheet` (ignited, hot or
+    cool flame, how the flame ended, operator comments); `sheet_out` keeps the rows whose sheet ticks that ending."""
     df = _select_tests(**filters)
     notes = []
     if len(df) > limit:
@@ -296,7 +318,21 @@ def filter_tests(columns=None, limit=500, **filters):
         shown = shown.dropna(axis=1, how="all").drop(columns=["x_o2"], errors="ignore")
     numeric = [c for c in ("x_o2_ambient", "pressure_kpa", "flow_cm_s") if c in shown.columns and shown[c].notna().any()]
     chart = {"type": "scatter", "x": numeric[0], "y": numeric[1], "color": "fuel"} if len(numeric) > 1 else None
-    return _result({"n_matching": len(df), "rows": _rows(shown)}, chart, _test_sources(df), notes)
+    rows, sources = _rows(shown), _test_sources(df)
+    n_sheets = int(_sheet_keys(df).sum())
+    if n_sheets and (sheets or filters.get("sheet_out")):
+        pages = {}
+        for row in rows:
+            sheet = _sheets().get((row["accession"], row["test_id"]))
+            if sheet:
+                row["test_sheet"] = {k: sheet[k] for k in SHEET_FIELDS if sheet[k] is not None}
+                pages.setdefault((sheet["accession"], sheet["file_name"]), []).append(f"p{sheet['page']}")
+        sources += [{"accession": a, "file": f, "locator": ", ".join(p), "transcribed": True} for (a, f), p in pages.items()]
+        notes.append(SHEET_NOTE)
+    elif n_sheets:
+        notes.append(f"{n_sheets} of {len(df)} rows have a hand-filled test sheet (ignition, how the flame ended, operator "
+                     "comments; an AI reading of a scan, not checked by a human): pass sheets=true to attach it.")
+    return _result({"n_matching": len(df), "rows": rows}, chart, sources, notes)
 
 
 @lru_cache(maxsize=None)
@@ -731,7 +767,8 @@ def predict(model_id=None, compact=False, **conditions):
 ACTIONS = {
     "replace": "table value replaced by the raw-data value; the table value is kept in extra as `<column>_original`",
     "fill": "table cell was empty; filled from the raw data",
-    "flag": "raw data disagree with the table; the table value is kept and the row is flagged",
+    "flag": "raw data disagree with the table; the table value is kept and the row is flagged. With the flag "
+            "conflicts_with_test_sheet the evidence is a hand-filled test sheet, not sensor data",
     "note": "applies to the whole investigation, not to one cell",
 }
 
@@ -815,6 +852,9 @@ def discrepancies(accession=None, test_id=None):
              "the other tables were checked against the reports only."]
     if data["removed_sources"]:
         notes.append("Some statements rest on files that PSI lists as removed but still serves; they are marked.")
+    if raw["evidence_source"].str.contains("test sheet").any():
+        notes.append("Entries that cite a test sheet rest, in part or (flag conflicts_with_test_sheet) entirely, on an AI "
+                     "model's reading of a hand-filled scanned form, not checked by a human; they never change a value.")
     sources = [{"file": "data/corrections/tests_patches.json"}, {"page": "docs/tests-table.md"}, {"page": "docs/formats.md"}]
     return _result(data, {"type": "table", "group_by": "accession", "badge": "action"}, sources, notes)
 

@@ -20,8 +20,8 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 - **Knowledge records** (`data/digest/`): one per investigation: question, physics with equations, method,
   findings with quoted sources, limitations, open questions.
 - **Tables** (`data/processed/`): investigations, 2,177 test rows (2,059 single tests) on a common schema, the 39
-  BASS-II spread rates by flow step (18 tests), sensor time-series summaries, document text for search, and a
-  column catalogue.
+  BASS-II spread rates by flow step (18 tests), the 637 hand-filled ACME test sheets (an AI reading of scans, not
+  checked by a human), sensor time-series summaries, document text for search, and a column catalogue.
 - **Methods** (`fif/api.py`): 11 functions that each return data, a chart suggestion, sources and caveats.
   Tool specs for an AI assistant are in `data/processed/tools.json`.
 - **Static export** (`data/export/`): the same answers pre-computed as JSON, for a front end without a backend.
@@ -39,7 +39,8 @@ uv run pytest -q
 Raw NASA files (`data/raw/`, 7.5 GB, not in git) are needed only to rebuild the tables or to plot full sensor
 traces. Fetch them with `scripts/fetch_psi.py` and `scripts/fetch_psi_files.py`; rebuild with
 `uv run python -m fif.pipeline.<step>` in the order `build_files`, `build_investigations`, `build_tests`,
-`build_evidence`, `build_timeseries`, `build_models`, `check_digest`, `render_digest`, `build_catalog`.
+`build_test_sheets`, `build_evidence`, `build_timeseries`, `build_models`, `check_digest`, `render_digest`,
+`build_catalog`.
 
 ## Limits to keep in mind
 
