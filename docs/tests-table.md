@@ -40,7 +40,7 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `fuel_raw` | fuel or material text as in the source (or as corrected, see `fuel_raw_original`) | - | all |
 | `fuel_phase` | `gas`, `liquid`, `solid` or `aerosol` | - | all |
 | `fuel_fraction` | fuel mole fraction of the fuel stream. For inverse flames (PSI-10, PSI-159 `config = inverse`) it is the ambient (chamber) fuel fraction | mole fraction | 10, 20, 21, 22, 23, 106, 107, 159 |
-| `config` | flame or sample configuration (normal / inverse, coflow, droplet, free / fiber-supported droplet, opposed / concurrent flow) | - | 10, 21, 22, 26, 39, 68, 69, 98, 99, 100, 107, 159 |
+| `config` | flame or sample configuration (normal / inverse, coflow, droplet, free / fiber-supported droplet, opposed / concurrent flow). For the 20 BASS-II slab tests (M series) it is `opposed flow`, from the summary report | - | 10, 21, 22, 25, 26, 39, 68, 69, 98, 99, 100, 107, 159 |
 | `geometry` | burner, nozzle, sample or droplet size as text | as stated | 20, 25, 26, 68, 69, 98, 99, 100, 107 |
 | `x_o2_ambient` | O2 mole fraction of the surrounding chamber or cabin atmosphere (single value). Null for inverse flames, whose ambient is fuel + N2 | mole fraction | 10, 20, 23, 25, 26, 39, 69, 98, 99, 159 |
 | `x_o2_burner` | O2 mole fraction of a burner oxidiser stream (inverse flames) | mole fraction | 10, 159 |
@@ -52,7 +52,7 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `gravity` | always `micro` | - | all |
 | `n_flames` | flames ignited on a test day | count | 20, 21, 22, 23 |
 | `ignited` | hot ignition yes/no (null for CFI-G "flash"). For PSI-25 only `False`, on the one row (O12) whose air-display cell says "no ign"; for BASS and BASS-II use `outcome` | bool | 25, 159 |
-| `burn_time_s` | burn time. For PSI-39 it is the hot-flame burn time | s | 39, 69, 98, 99, 159 |
+| `burn_time_s` | burn time. For PSI-39 it is the hot-flame burn time. For PSI-25 (M series only) it is the summary report's burn time, given in minutes to 0.1 min | s | 25, 39, 69, 98, 99, 159 |
 | `extinction_mode` | `self_extinguished`, `flow_terminated`, `extinction`, `disruption`, `completion` | - | 69, 159 |
 | `outcome` | PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See "Outcomes read from notes" below | - | 25, 26 |
 | `outcome_cause` | with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified` | - | 25, 26 |
@@ -66,7 +66,7 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `burn_rate_k_mm2_s` | burning-rate constant K (hot flame for PSI-39). PSI-69's "Burning rate; mm" column is K in mm²/s | mm²/s | 39, 69 |
 | `n_reignitions` | hot-flame re-ignitions after radiative extinction | count | 39 |
 | `cool_flame` | `True` when cool-flame data exist (k_cool, cool-flame extinction diameter or an extrapolated cool flame). Never `False`: missing cool-flame data do not show there was none | bool | 39 |
-| `spread_rate_mm_s` | microgravity flame spread rate | mm/s | 98, 99, 100 |
+| `spread_rate_mm_s` | microgravity flame spread rate, one value for the whole test. Null for BASS-II: its rates belong to flow steps within a test and are in `extra.spread_steps` and the `spread_steps` table (see "BASS-II spread rates" below) | mm/s | 98, 99, 100 |
 | `burn_length_cm` | microgravity burned length | cm | 98, 99, 100 |
 | `flame_length_mm` | measured flame length: video length, or Nikon still flame height | mm | 107 |
 | `at_smoke_point` | the log marks this flame as at its smoke point (`Smoke Height` / `SH ?` Y/N) | bool | 107 |
@@ -81,6 +81,8 @@ Common `extra` keys:
 
 - `report_value`: what the report says, where it conflicts.
 - `outcome_source`: the record finding behind a value.
+- `report_source`, `spread_steps`, `report_width_cm`, `report_sides_burning`, `report_velocity_cm_s`,
+  `spread_rate_note`: PSI-25 M series, from the summary report's Table 5.1 (see "BASS-II spread rates" below).
 - `asrun_*`: PSI-26 as-run cells.
 - `experimental_table_row`: PSI-39, the row in the old CSV.
 - `verbatim_duplicate_dropped`: PSI-22.
@@ -106,9 +108,9 @@ Common `extra` keys:
 | `planned_not_flown` | row is the pre-flight planning matrix, not an as-flown test | 8 (PSI-102) |
 | `unit_corrected` | thickness unit or decimal error fixed in `geometry` (original in `geometry_original`) | 7 (PSI-98 2, PSI-99 3, PSI-100 2) |
 | `corrected_from_report` | value changed to the value in the reports or publications (original kept) | 6 (PSI-23 2, PSI-99 2, PSI-100 2) |
-| `conflicts_with_report` | table disagrees with the reports; not changed (`report_value` in extra) | 5 (PSI-23 2, PSI-98 2, PSI-99 1) |
+| `conflicts_with_report` | table disagrees with the reports; not changed (`report_value` in extra) | 7 (PSI-23 2, PSI-25 2, PSI-98 2, PSI-99 1) |
 | `o2_final_artifact` | BASS-II "Calibrated final O2" is a spreadsheet artefact (sensor offset, or offset plus raw reading); removed from extra and kept as `..._original` | 5 (PSI-25) |
-| `value_from_report` | outcome value taken from a digest-record finding, not from a PSI table (`outcome_source` in extra) | 4 (PSI-98 2, PSI-100 2) |
+| `value_from_report` | value taken from a report, not from a PSI table: Saffire spread rate and burned length from a digest-record finding (`outcome_source` in extra); BASS-II M series `config`, `burn_time_s` and the spread rates in extra from the summary report's Table 5.1 (`report_source` in extra) | 24 (PSI-25 20, PSI-98 2, PSI-100 2) |
 | `flow_missing_los` | air rate equals the conversion intercept (-5.918) because the AIR reading was lost; flow set to null | 3 (PSI-107) |
 | `date_corrected` | date corrected (original in `date_original`) | 3 (PSI-25 2, PSI-39 1) |
 | `o2_from_notes` | as-run O2 cell is the pre-dilution reading; the diluted value from the crew notes is used | 2 (PSI-26) |
@@ -125,7 +127,7 @@ Common `extra` keys:
 | `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 18 (PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 6) |
 | `conflicts_with_table` | PSI-39 only: the spreadsheet and the old experimental table disagree (old value as `experimental_table_<column>`) | 0 |
 
-676 rows carry at least one flag.
+677 rows carry at least one flag.
 
 **Row key.** `test_id` is not unique: 12 rows in PSI-26, PSI-69 and PSI-101 share an id with another row (flag
 `duplicate_id`). `source_file` + `source_row` is unique and is the key of a row.
@@ -175,6 +177,8 @@ Corrections and flags:
 - F3, named in the record, has "none" in the CSV, so there was nothing to blank.
 - T9 and T18 were dated 2018-06-24. They are GMT 175 of 2014, so the date is now 2014-06-24
   (`date_corrected`).
+- The 20 thick-PMMA slab tests (M1 to M20) carry values from the BASS-II Summary Report (`value_from_report`):
+  `config`, `burn_time_s` and, in extra, the spread rate at each flow step. See "BASS-II spread rates" below.
 
 **PSI-26 BASS** (121 tests). Each experimental-table row was joined to the as-run matrix (sheets 2012 and 2013)
 by (as-run no., test no.). All 121 rows matched exactly one as-run row. From the as-run row:
@@ -472,3 +476,53 @@ What was done to the flow on the 74 extinguished runs (`outcome_action`), and ho
   quote is now the fan cell), 31 (notes "pot ~ 39", a fan-display value).
 - Three `low_flow` causes rest on the fan and air cells, not on the quoted words, and carry
   `extra.outcome_cause_inferred`: 87, 118 (2013) and 89. The cause was left as it was.
+
+## BASS-II spread rates (PSI-25, M series)
+
+The PSI table has no spread rate for BASS-II. The BASS-II Summary Report (NASA/TM-20210011385), Table 5.1 (PDF
+page 65, printed page 57) lists, for the 20 thick-PMMA slab tests in opposed flow (M1 to M20): thickness, width,
+one or two sides burning, the flow velocities at which a spread rate was tracked, the spread rate at each, burn
+time, and initial and final O2. The table is transcribed in `data/corrections/tests_spread_bass2.json`, from the
+rendered page with every cell checked against the extracted text; the two agree on every cell, and a test checks
+the file against the extracted text. `build_tests` fails if an entry does not match exactly one row or has a
+different number of velocities and rates.
+
+What the M rows get:
+
+- `extra.spread_steps`: the steps in the report's order, `[{"flow_cm_s": 10, "spread_rate_mm_s": 0.106}, ...]`.
+  18 tests, 39 steps (5 tests with one step, 6 with two, 6 with three, 1 with four), 0.012 to 0.144 mm/s.
+  M6 and M12 are "Not tracked" (`extra.spread_rate_note`); their listed velocities are in
+  `extra.report_velocity_cm_s`.
+- `spread_rate_mm_s` stays null on all 20, also on the five one-step tests. A rate here is the rate at one flow
+  step, and the row has no flow for it (`flow_cm_s` is null, the run log shows the flow was changed in those five
+  tests too). Filling the column for five tests would offer a subset as if it were the set, and no average is taken.
+- `config` = `opposed flow` ("The airflow was always opposed") and `burn_time_s` (report minutes x 60).
+- `extra.report_width_cm` (2.2 or 1.2) and `extra.report_sides_burning` (1 or 2). The PSI sample label says 2 or
+  1 cm wide on all 20 rows; the report's own text uses both pairs of numbers, so this is read as nominal against
+  actual width and is not flagged. The label states the sides on 6 rows; they agree.
+- `extra.report_source` (report, table, page) and the flag `value_from_report`.
+
+Compared with the PSI row at build time, a difference being flagged `conflicts_with_report` and never written
+over: thickness (20 of 20 agree), sides (6 of 6), initial O2 (20 of 20) and final O2 (20 of 20).
+
+Velocities. The report's velocities are not the run log's: in 10 of the 20 tests at least one is not among the
+whole-cm/s values of the `Air display` cell (9 against "10 8" for M1, 21 against "10 20 15 12" for M11); the
+report does not say how they were obtained. Two tests are flagged `conflicts_with_report`, with the words in
+`extra.report_value`:
+
+- M12: the table lists 12 and 10 cm/s (spread not tracked). The Air display says "<1", and the report's own
+  Figure 5.4(c) caption gives <1 cm/s for that sample.
+- M14: rates are given at 15, 14 and 10 cm/s; the Air display says "10 ~8". The rates are kept as reported.
+
+`data/processed/spread_steps.{parquet,csv}` (`api.table("spread_steps")`) is the same data with one row per test
+and step (39 rows): `test_id`, `step`, `n_steps`, `flow_cm_s`, `spread_rate_mm_s`, `thickness_mm`, `width_cm`,
+`sides_burning`, `x_o2_initial`, `x_o2_final`, `burn_time_s`, `flags`, `source`, and `source_file` + `source_row`,
+the key of the `tests` row. It is not in `data/export/`.
+
+**The steps of a test are not independent points.** They are successive flow settings on one sample that is
+already burning and preheated, in the order listed, while the O2 falls (by 0.3 to 3.2 vol% over a test). O2 was
+measured only at the start and the end of a test, not per step: `x_o2_initial` and `x_o2_final` repeat on every
+step of a test, and the report itself assumes a linear decay between them. The honest sample size is the number
+of tests, 18 (5 one-sided, 13 two-sided), not 39. A fit of spread rate against flow across all 39 rows treats
+within-test trends as independent evidence and mixes thickness, width, sides and O2; group by `test_id` or use a
+per-test effect.

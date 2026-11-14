@@ -29,6 +29,10 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 
 Rebuild after any table change: `uv run python -m fif.pipeline.build_catalog`.
 
+One table has no export and no function: `data/processed/spread_steps` (`fif.api.table("spread_steps")`), the 39
+BASS-II spread rates by test and flow step. Read the independence caveat in `docs/tests-table.md` ("BASS-II spread
+rates") before plotting it: the sample size is 18 tests, not 39 points.
+
 ## Functions (`fif/api.py`)
 
 Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources` are citations to show, and

@@ -17,6 +17,9 @@ TABLES = {
     "tests": "One row per test, test day or condition set. Dictionary and caveats: docs/tests-table.md.",
     "discrepancies": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. "
                      "Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
+    "spread_steps": "BASS-II (PSI-25) flame spread rates of the thick-PMMA slab tests, one row per test and flow step, "
+                    "transcribed from the BASS-II Summary Report, Table 5.1 (data/corrections/tests_spread_bass2.json). "
+                    "Steps of one test are not independent. See docs/tests-table.md.",
     "timeseries_features": "Summary features of each per-test sensor time series. See docs/formats.md.",
     "files": "Every file listed in the 24 PSI records, downloaded or not.",
     "evidence": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
@@ -49,6 +52,21 @@ DESCRIPTIONS = {
         "table_value": "value in the PSI table", "evidence_value": "value the raw data give",
         "action": "replace / fill / flag / note", "flag": "flag put on the row",
         "evidence": "what the raw data show", "evidence_source": "file and channel the evidence comes from",
+    },
+    "spread_steps": {
+        "accession": "PSI accession (PSI-25)",
+        "test_id": "test id of the `tests` row (M1 ... M20; M6 and M12 have no tracked rate and no row here)",
+        "step": "position of the flow step in the report's list for the test (1 = first listed)",
+        "n_steps": "steps with a spread rate in this test; the independent unit is the test, not the step",
+        "flow_cm_s": "opposed-flow velocity of the step, as the report lists it (cm/s)",
+        "spread_rate_mm_s": "flame spread rate tracked at that step (mm/s)",
+        "thickness_mm": "PMMA slab thickness (mm)", "width_cm": "sample width as the report gives it (cm); the PSI table says 1 or 2 cm",
+        "sides_burning": "1 = one side burning (other side on a metal substrate), 2 = both sides",
+        "x_o2_initial": "O2 mole fraction at the start of the test (the `tests` row's x_o2_ambient)",
+        "x_o2_final": "O2 mole fraction at the end of the test; O2 fell during the test and was not measured per step",
+        "burn_time_s": "burn time of the whole test (s), from the report's minutes",
+        "flags": "flags of the `tests` row", "source": "report, table and page the step was transcribed from",
+        "source_file": "with source_row, the key of the `tests` row", "source_row": "with source_file, the key of the `tests` row",
     },
     "evidence_files": {"status": "ok / transcribed (scan read from data/transcriptions/ by an AI model) / no_text / unsupported / error / withheld (holds credentials, not extracted)", "n_chars": "extracted characters"},
 }

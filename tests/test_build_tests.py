@@ -1,4 +1,5 @@
 import json
+import re
 
 import pandas as pd
 import pytest
@@ -552,3 +553,74 @@ def test_an_action_or_setting_the_source_does_not_carry_is_refused():
     blown = rows()
     bt.apply_outcomes(blown, [{k: v for k, v in item.items() if k not in ("action", "setting")} | {"cause": "blowoff"}])
     assert blown["PSI-26"][0]["outcome_action"] == "flow_raised" and blown["PSI-26"][0].get("outcome_setting") is None
+
+
+def test_bass2_spread_rates_come_from_the_summary_report_one_per_flow_step(table):
+    m = table[(table.accession == "PSI-25") & table.test_id.str.startswith("M")]
+    assert len(m) == 20 and m.spread_rate_mm_s.isna().all()  # a rate belongs to a flow step, not to the test
+    assert (m.config == "opposed flow").all() and m["flags"].str.contains("value_from_report").all()
+    steps = {r.test_id: extra(r).get("spread_steps") for r in m.itertuples()}
+    assert sorted(t for t, s in steps.items() if s is None) == ["M12", "M6"]
+    assert sum(len(s) for s in steps.values() if s) == 39
+    r = row(table, "PSI-25", "M7")
+    assert extra(r)["spread_steps"] == [
+        {"flow_cm_s": 10, "spread_rate_mm_s": 0.106}, {"flow_cm_s": 6, "spread_rate_mm_s": 0.099},
+        {"flow_cm_s": 5, "spread_rate_mm_s": 0.083}, {"flow_cm_s": 3, "spread_rate_mm_s": 0.07}]
+    assert r.burn_time_s == 1104 and extra(r)["report_width_cm"] == 1.2 and extra(r)["report_sides_burning"] == 2
+    assert "Table 5.1, p65" in extra(r)["report_source"] and "conflicts_with_report" not in flags(r)
+    r = row(table, "PSI-25", "M6")
+    assert extra(r)["spread_rate_note"] == "Not tracked" and extra(r)["report_velocity_cm_s"] == [10, 8]
+    # the report's thickness, sides and O2 agree with the PSI table on all 20; only two velocity lists do not
+    assert sorted(m[m["flags"].str.contains("conflicts_with_report")].test_id) == ["M12", "M14"]
+    assert "<1" in extra(row(table, "PSI-25", "M12"))["report_value"]
+
+
+def test_bass2_spread_steps_table_keys_back_to_the_tests_rows(table):
+    steps = bt.spread_steps(table, json.loads(bt.BASS2_SPREAD.read_text()))
+    assert len(steps) == 39 and steps.test_id.nunique() == 18
+    assert (steps.spread_rate_mm_s.min(), steps.spread_rate_mm_s.max()) == (0.012, 0.144)
+    assert (steps.groupby("test_id").step.max() == steps.groupby("test_id").n_steps.first()).all()
+    joined = steps.merge(table, on=["source_file", "source_row"], suffixes=("", "_test"))
+    assert len(joined) == 39 and (joined.test_id == joined.test_id_test).all()
+    assert (joined.x_o2_initial == joined.x_o2_ambient).all() and (joined.x_o2_final < joined.x_o2_initial).all()
+
+
+def test_bass2_transcription_matches_the_extracted_page_text():
+    path = bt.psi.PROCESSED / "evidence.parquet"
+    if not path.exists():
+        pytest.skip("evidence table not built")
+    ev = pd.read_parquet(path)
+    page = " ".join(ev[ev.file_name.str.contains("BASS-II Summary Report") & (ev.accession == "PSI-25")
+                       & (ev.locator == "p65")].sort_values("chunk").text)
+    numbers = lambda text: [float(v) for v in re.findall(r"\d*\.?\d+", text)]
+    entries = json.loads(bt.BASS2_SPREAD.read_text())["tests"]
+    cells = re.findall(r"\b(M\d+) (.+?)(?= M\d+ \d| Figure)", page.split("vol%")[2])
+    assert [t for t, _ in cells] == [e["test_id"] for e in entries]
+    for (_, text), e in zip(cells, entries):
+        expected = [e["thickness_mm"], e["width_cm"], e["sides_burning"], *e["velocity_cm_s"],
+                    *(e["spread_rate_mm_s"] or []), e["burn_time_min"], e["o2_initial_pct"], e["o2_final_pct"]]
+        assert numbers(text) == expected, e["test_id"]
+        assert ("Not tracked" in text) == (e["spread_rate_mm_s"] is None)
+
+
+def test_a_spread_entry_must_match_one_row_and_a_disagreement_is_flagged_not_overwritten():
+    def rows():
+        return [{"test_id": "M1", "fuel_raw": "3 mm thick PMMA 1 sided", "config": None, "burn_time_s": None,
+                 "x_o2": 0.21, "flags": [], "extra": {bt.BASS2_FINAL_O2: "20"}}]
+    item = {"test_id": "M1", "thickness_mm": 3, "width_cm": 2.2, "sides_burning": 1, "velocity_cm_s": [10, 8],
+            "spread_rate_mm_s": [0.05, 0.04], "burn_time_min": 2.5, "o2_initial_pct": 21, "o2_final_pct": 20}
+    table = {"source": {"report": "R", "table": "Table 5.1", "page": "p65"}, "tests": [item]}
+    out = rows()
+    bt.apply_report_spread(out, table)
+    assert out[0]["burn_time_s"] == 150 and out[0]["flags"] == ["value_from_report"]
+    out = rows()
+    bt.apply_report_spread(out, {**table, "tests": [{**item, "thickness_mm": 5, "o2_final_pct": 19.5}]})
+    assert out[0]["flags"] == ["value_from_report", "conflicts_with_report"]
+    assert "thickness (mm) 5" in out[0]["extra"]["report_value"] and "19.5" in out[0]["extra"]["report_value"]
+    assert out[0]["fuel_raw"].startswith("3 mm") and out[0]["extra"][bt.BASS2_FINAL_O2] == "20"
+    with pytest.raises(ValueError, match="M9"):
+        bt.apply_report_spread(rows(), {**table, "tests": [{**item, "test_id": "M9"}]})
+    with pytest.raises(ValueError, match="2 rows"):
+        bt.apply_report_spread(rows() + rows(), table)
+    with pytest.raises(ValueError, match="velocities"):
+        bt.apply_report_spread(rows(), {**table, "tests": [{**item, "spread_rate_mm_s": [0.05]}]})

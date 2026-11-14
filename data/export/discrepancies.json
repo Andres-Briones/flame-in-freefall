@@ -1032,6 +1032,11 @@
    "meaning": "PSI-107: a reviewed smoke point lies between this row and the neighbouring logged row of the same burn; `review_point` in extra names the point"
   },
   {
+   "flag": "value_from_report",
+   "rows": 24,
+   "meaning": "value taken from a report, not from a PSI table: Saffire spread rate and burned length from a digest-record finding (`outcome_source` in extra); BASS-II M series `config`, `burn_time_s` and the spread rates in extra from the summary report's Table 5.1 (`report_source` in extra)"
+  },
+  {
    "flag": "placeholder_values",
    "rows": 20,
    "meaning": "propane day: nominal 0.40 O2, one initial pressure and repeated Zst/Tad for the whole day, no final values"
@@ -1102,6 +1107,11 @@
    "meaning": "PSI-23: \"N2\" dragged down a spreadsheet column became \"N3\", \"N4\", ...; read as N2"
   },
   {
+   "flag": "conflicts_with_report",
+   "rows": 7,
+   "meaning": "table disagrees with the reports; not changed (`report_value` in extra)"
+  },
+  {
    "flag": "corrected_from_report",
    "rows": 6,
    "meaning": "value changed to the value in the reports or publications (original kept)"
@@ -1112,19 +1122,9 @@
    "meaning": "empty table cell filled from the raw sensor data"
   },
   {
-   "flag": "conflicts_with_report",
-   "rows": 5,
-   "meaning": "table disagrees with the reports; not changed (`report_value` in extra)"
-  },
-  {
    "flag": "o2_final_artifact",
    "rows": 5,
    "meaning": "BASS-II \"Calibrated final O2\" is a spreadsheet artefact (sensor offset, or offset plus raw reading); removed from extra and kept as `..._original`"
-  },
-  {
-   "flag": "value_from_report",
-   "rows": 4,
-   "meaning": "outcome value taken from a digest-record finding, not from a PSI table (`outcome_source` in extra)"
   },
   {
    "flag": "flow_missing_los",
@@ -1162,7 +1162,7 @@
    "meaning": "source gives 0 mmHg; pressure left null"
   }
  ],
- "rows_flagged": 676,
+ "rows_flagged": 677,
  "rows_total": 2177,
  "removed_sources": [
   {

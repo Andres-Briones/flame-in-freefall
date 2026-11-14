@@ -691,8 +691,8 @@
    },
    "config": {
     "dtype": "str",
-    "non_null": 1763,
-    "description": "flame or sample configuration (normal / inverse, coflow, droplet, free / fiber-supported droplet, opposed / concurrent flow)",
+    "non_null": 1783,
+    "description": "flame or sample configuration (normal / inverse, coflow, droplet, free / fiber-supported droplet, opposed / concurrent flow). For the 20 BASS-II slab tests (M series) it is `opposed flow`, from the summary report",
     "unit": null,
     "values": {
      "coflow": 558,
@@ -701,10 +701,10 @@
      "inverse": 274,
      "fiber-supported droplet": 103,
      "free droplet": 55,
+     "opposed flow": 26,
      "coflow burner": 11,
      "concurrent flow": 10,
-     "gas-jet burner": 9,
-     "opposed flow": 6
+     "gas-jet burner": 9
     }
    },
    "geometry": {
@@ -806,11 +806,11 @@
    },
    "burn_time_s": {
     "dtype": "float64",
-    "non_null": 751,
-    "description": "burn time. For PSI-39 it is the hot-flame burn time",
+    "non_null": 771,
+    "description": "burn time. For PSI-39 it is the hot-flame burn time. For PSI-25 (M series only) it is the summary report's burn time, given in minutes to 0.1 min",
     "unit": "s",
     "min": 0.0,
-    "max": 900.0
+    "max": 1842.0
    },
    "extinction_mode": {
     "dtype": "str",
@@ -949,7 +949,7 @@
    "spread_rate_mm_s": {
     "dtype": "float64",
     "non_null": 6,
-    "description": "microgravity flame spread rate",
+    "description": "microgravity flame spread rate, one value for the whole test. Null for BASS-II: its rates belong to flow steps within a test and are in `extra.spread_steps` and the `spread_steps` table (see \"BASS-II spread rates\" below)",
     "unit": "mm/s",
     "min": 0.98,
     "max": 2.6
@@ -994,7 +994,7 @@
    },
    "flags": {
     "dtype": "str",
-    "non_null": 676,
+    "non_null": 677,
     "description": "semicolon-separated codes (below); null when none",
     "unit": null
    },
@@ -1354,6 +1354,151 @@
      "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 1 sensor workbook (Epoch Time)": 1,
      "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 2 sensor workbook (Epoch Time)": 1
     }
+   }
+  }
+ },
+ "spread_steps": {
+  "description": "BASS-II (PSI-25) flame spread rates of the thick-PMMA slab tests, one row per test and flow step, transcribed from the BASS-II Summary Report, Table 5.1 (data/corrections/tests_spread_bass2.json). Steps of one test are not independent. See docs/tests-table.md.",
+  "rows": 39,
+  "files": [
+   "data/processed/spread_steps.parquet",
+   "data/processed/spread_steps.csv"
+  ],
+  "columns": {
+   "accession": {
+    "dtype": "str",
+    "non_null": 39,
+    "description": "PSI accession (PSI-25)",
+    "values": {
+     "PSI-25": 39
+    }
+   },
+   "test_id": {
+    "dtype": "str",
+    "non_null": 39,
+    "description": "test id of the `tests` row (M1 ... M20; M6 and M12 have no tracked rate and no row here)",
+    "values": {
+     "M7": 4,
+     "M8": 3,
+     "M11": 3,
+     "M13": 3,
+     "M14": 3,
+     "M16": 3,
+     "M17": 3,
+     "M2": 2,
+     "M3": 2,
+     "M4": 2,
+     "M10": 2,
+     "M18": 2,
+     "M19": 2,
+     "M1": 1,
+     "M5": 1,
+     "M9": 1,
+     "M15": 1,
+     "M20": 1
+    }
+   },
+   "step": {
+    "dtype": "int64",
+    "non_null": 39,
+    "description": "position of the flow step in the report's list for the test (1 = first listed)",
+    "min": 1.0,
+    "max": 4.0
+   },
+   "n_steps": {
+    "dtype": "int64",
+    "non_null": 39,
+    "description": "steps with a spread rate in this test; the independent unit is the test, not the step",
+    "min": 1.0,
+    "max": 4.0
+   },
+   "flow_cm_s": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "opposed-flow velocity of the step, as the report lists it (cm/s)",
+    "min": 2.0,
+    "max": 21.0
+   },
+   "spread_rate_mm_s": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "flame spread rate tracked at that step (mm/s)",
+    "min": 0.012,
+    "max": 0.144
+   },
+   "thickness_mm": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "PMMA slab thickness (mm)",
+    "min": 1.0,
+    "max": 5.0
+   },
+   "width_cm": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "sample width as the report gives it (cm); the PSI table says 1 or 2 cm",
+    "min": 1.2,
+    "max": 2.2
+   },
+   "sides_burning": {
+    "dtype": "int64",
+    "non_null": 39,
+    "description": "1 = one side burning (other side on a metal substrate), 2 = both sides",
+    "min": 1.0,
+    "max": 2.0
+   },
+   "x_o2_initial": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "O2 mole fraction at the start of the test (the `tests` row's x_o2_ambient)",
+    "min": 0.179,
+    "max": 0.222
+   },
+   "x_o2_final": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "O2 mole fraction at the end of the test; O2 fell during the test and was not measured per step",
+    "min": 0.168,
+    "max": 0.21899999999999997
+   },
+   "burn_time_s": {
+    "dtype": "float64",
+    "non_null": 39,
+    "description": "burn time of the whole test (s), from the report's minutes",
+    "min": 384.0,
+    "max": 1842.0
+   },
+   "flags": {
+    "dtype": "str",
+    "non_null": 39,
+    "description": "flags of the `tests` row",
+    "values": {
+     "ramped;value_from_report": 36,
+     "ramped;value_from_report;conflicts_with_report": 3
+    }
+   },
+   "source": {
+    "dtype": "str",
+    "non_null": 39,
+    "description": "report, table and page the step was transcribed from",
+    "values": {
+     "BASS-II Summary Report, NASA/TM-20210011385, Table 5.1, p65 (printed page 57)": 39
+    }
+   },
+   "source_file": {
+    "dtype": "str",
+    "non_null": 39,
+    "description": "with source_row, the key of the `tests` row",
+    "values": {
+     "data/raw/files/PSI-25/Experimental table/PSI-25_Experimental table_BASS-II.csv": 39
+    }
+   },
+   "source_row": {
+    "dtype": "int64",
+    "non_null": 39,
+    "description": "with source_file, the key of the `tests` row",
+    "min": 27.0,
+    "max": 46.0
    }
   }
  },

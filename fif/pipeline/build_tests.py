@@ -1049,7 +1049,71 @@ def fix_bass2(rows):
             flag(row, "ramped")
         if re.search(r"\bno ign", air or "", re.I):
             row["ignited"] = 0.0
+    apply_report_spread(rows, json.loads(BASS2_SPREAD.read_text()))
     return rows
+
+
+BASS2_SPREAD = psi.ROOT / "data" / "corrections" / "tests_spread_bass2.json"
+
+
+def apply_report_spread(rows, table):
+    """Miller's thick-PMMA slab tests (series M): what Table 5.1 of the BASS-II Summary Report gives and the PSI
+    table lacks (data/corrections/tests_spread_bass2.json). The spread rates belong to successive flow steps of one
+    burn, so they go to extra `spread_steps` in order and `spread_rate_mm_s` stays null: no single rate describes the
+    test. `config` and `burn_time_s` are filled. Thickness, sides and O2 are compared with the PSI row; a difference
+    is flagged, never written over. An entry that does not match exactly one row fails loudly."""
+    source = "{report}, {table}, {page}".format(**table["source"])
+    for item in table["tests"]:
+        found = [r for r in rows if r["test_id"] == item["test_id"]]
+        if len(found) != 1:
+            raise ValueError(f"spread {item['test_id']}: {len(found)} rows match")
+        row, flows, rates = found[0], item["velocity_cm_s"], item["spread_rate_mm_s"]
+        if rates is not None and len(rates) != len(flows):
+            raise ValueError(f"spread {item['test_id']}: {len(flows)} velocities for {len(rates)} spread rates")
+        ex = row["extra"]
+        ex |= {"report_source": source, "report_width_cm": item["width_cm"],
+               "report_sides_burning": item["sides_burning"]}
+        if rates is None:
+            ex |= {"report_velocity_cm_s": flows, "spread_rate_note": item["spread_rate_note"]}
+        else:
+            ex["spread_steps"] = [{"flow_cm_s": f, "spread_rate_mm_s": r} for f, r in zip(flows, rates)]
+        label = row["fuel_raw"] or ""
+        thickness, sides = re.search(r"(\d+)\s*mm", label), re.search(r"(\d) sided", label)
+        filled = {"config": "opposed flow", "burn_time_s": round(item["burn_time_min"] * 60, 1)}
+        compared = [(col, row[col], value) for col, value in filled.items()] + [
+            ("thickness (mm)", float(thickness.group(1)) if thickness else None, item["thickness_mm"]),
+            ("sides burning", float(sides.group(1)) if sides else None, item["sides_burning"]),
+            ("initial O2 (%)", row["x_o2"] * 100 if row["x_o2"] is not None else None, item["o2_initial_pct"]),
+            ("final O2 (%)", num(ex.get(BASS2_FINAL_O2)), item["o2_final_pct"]),
+        ]
+        conflicts = [f"{table['source']['table']} gives {name} {theirs}; the PSI table gives {ours}."
+                     for name, ours, theirs in compared if ours is not None and not _same(ours, theirs)]
+        row |= {col: value for col, value in filled.items() if row[col] is None}
+        flag(row, "value_from_report")
+        conflicts += [item["conflict"]] if item.get("conflict") else []
+        if conflicts:
+            ex["report_value"] = " ".join(conflicts)
+            flag(row, "conflicts_with_report")
+
+
+def spread_steps(df, table):
+    """The BASS-II spread rates as a table: one row per test and flow step, keyed to the `tests` row by
+    `source_file` + `source_row`. Steps of one test are not independent points (docs/tests-table.md)."""
+    tests = df[df["accession"] == table["accession"]].set_index("test_id")
+    out = []
+    for item in table["tests"]:
+        row, rates = tests.loc[item["test_id"]], item["spread_rate_mm_s"] or []
+        for step, (flow, rate) in enumerate(zip(item["velocity_cm_s"], rates), start=1):
+            out.append({
+                "accession": table["accession"], "test_id": item["test_id"], "step": step, "n_steps": len(rates),
+                "flow_cm_s": float(flow), "spread_rate_mm_s": rate, "thickness_mm": float(item["thickness_mm"]),
+                "width_cm": item["width_cm"], "sides_burning": item["sides_burning"],
+                "x_o2_initial": row["x_o2_ambient"], "x_o2_final": item["o2_final_pct"] / 100,
+                "burn_time_s": row["burn_time_s"], "flags": row["flags"],
+                "source": "{report}, {table}, {page}".format(**table["source"]),
+                "source_file": row["source_file"], "source_row": row["source_row"],
+            })
+    return pd.DataFrame(out)
 
 
 def fix_flex(rows):
@@ -1283,6 +1347,7 @@ if __name__ == "__main__":
     df = build()
     psi.write_table(df, "tests")
     psi.write_table(discrepancies(), "discrepancies")
+    psi.write_table(spread_steps(df, json.loads(BASS2_SPREAD.read_text())), "spread_steps")
     print(df.groupby(["accession", "acronym", "row_kind"]).size().to_string())
     print(df.notna().sum().to_string())
     print(flag_counts(df).to_string())
