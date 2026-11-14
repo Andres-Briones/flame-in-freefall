@@ -30,6 +30,8 @@ docker compose up -d --build                                             # same,
 On a server, use `./run.sh` from the repo root: it builds and starts the container on port 5187 (`FIF_PORT`),
 refuses if another process holds that port, and waits for `/api/health`. `./run.sh update` pulls and restarts;
 `stop`, `restart`, `logs`, `status` do what they say. Behind nginx or Caddy, run it with `FIF_BIND=127.0.0.1`.
+It uses host networking (`demo/compose.host.yml`): ports published through Docker were refused from outside on
+the production server while direct listeners passed. `FIF_NETWORK=bridge ./run.sh` uses published ports instead.
 
 | Env | Default | |
 |---|---|---|

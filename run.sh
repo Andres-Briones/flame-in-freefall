@@ -5,13 +5,19 @@
 #   ./run.sh update    git pull, then start
 #   ./run.sh stop | restart | logs | status
 #
-# Env: FIF_PORT (5187), FIF_BIND (0.0.0.0; use 127.0.0.1 behind nginx/Caddy).
+# Env: FIF_PORT (5187), FIF_BIND (0.0.0.0; use 127.0.0.1 behind nginx/Caddy),
+#      FIF_NETWORK (host; "bridge" publishes the port through Docker instead).
 set -euo pipefail
 cd "$(dirname "$0")"
 
 export FIF_PORT="${FIF_PORT:-5187}"
 export FIF_BIND="${FIF_BIND:-0.0.0.0}"
-compose() { docker compose "$@"; }
+# Host networking by default (see demo/compose.host.yml); FIF_NETWORK=bridge uses published ports instead.
+if [ "${FIF_NETWORK:-host}" = host ]; then
+    compose() { docker compose -f docker-compose.yml -f demo/compose.host.yml "$@"; }
+else
+    compose() { docker compose "$@"; }
+fi
 
 port_owner() {
     command -v ss >/dev/null || return 0
@@ -45,5 +51,5 @@ case "${1:-start}" in
     restart) compose down && start ;;
     logs)    compose logs -f demo ;;
     status)  compose ps; curl -fsS "http://127.0.0.1:$FIF_PORT/api/health" && echo ;;
-    *)       sed -n 2,7p "$0"; exit 1 ;;
+    *)       sed -n 2,8p "$0"; exit 1 ;;
 esac

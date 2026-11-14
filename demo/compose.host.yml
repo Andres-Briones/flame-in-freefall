@@ -1,0 +1,9 @@
+# Used by run.sh: the container shares the host's network and listens on FIF_PORT itself. Published ports go
+# through Docker's forwarding, which the production server's firewall rejects from outside (direct listeners pass).
+services:
+  demo:
+    network_mode: host
+    ports: !reset []
+    environment:
+      HOST: "${FIF_BIND:-0.0.0.0}"
+      PORT: "${FIF_PORT:-8000}"
