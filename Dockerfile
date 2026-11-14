@@ -2,7 +2,8 @@
 # PSI, and data/raw/ is a transient on-demand cache for timeseries (see demo/server.py).
 FROM python:3.12-slim
 
-COPY --from=ghcr.io/astral-sh/uv:0.12.10 /uv /usr/local/bin/uv
+# uv from PyPI rather than ghcr.io/astral-sh/uv: the deploy host times out reaching ghcr.io.
+RUN pip install --no-cache-dir uv==0.12.10
 ENV UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy UV_PROJECT_ENVIRONMENT=/opt/venv PATH="/opt/venv/bin:$PATH"
 
 WORKDIR /app
