@@ -3392,7 +3392,7 @@
  },
  "evidence": {
   "description": "Text extracted from the downloaded documents, in chunks of about 1,500 characters.",
-  "rows": 22879,
+  "rows": 23810,
   "files": [
    "data/processed/evidence.parquet",
    "data/processed/evidence.csv"
@@ -3400,13 +3400,13 @@
   "columns": {
    "accession": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": null,
     "values": {
      "PSI-39": 4119,
      "PSI-23": 4086,
-     "PSI-159": 3496,
-     "PSI-10": 3420,
+     "PSI-159": 3936,
+     "PSI-10": 3911,
      "PSI-25": 2543,
      "PSI-101": 1960,
      "PSI-102": 1400,
@@ -3431,10 +3431,10 @@
    },
    "category": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": null,
     "values": {
-     "Raw Data": 13286,
+     "Raw Data": 14217,
      "Engineering Documents": 2606,
      "Reports": 2228,
      "Science Documents": 1492,
@@ -3447,29 +3447,29 @@
    },
    "file_name": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": null
    },
    "local_path": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": null
    },
    "locator": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": "page (p3), slide, sheet, zip member or 'all'"
    },
    "chunk": {
     "dtype": "int64",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": "chunk number within the locator",
     "min": 0.0,
     "max": 149.0
    },
    "text": {
     "dtype": "str",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": "extracted text, whitespace-normalised; contact details of people who are not listed authors, postal addresses and private network addresses are replaced by [... removed] markers"
    },
    "test_ref": {
@@ -3479,7 +3479,7 @@
    },
    "transcribed": {
     "dtype": "bool",
-    "non_null": 22879,
+    "non_null": 23810,
     "description": "True when the text is an AI model's reading of a scanned page (no text layer), not the document's own text"
    }
   }
@@ -3567,8 +3567,7 @@
     "description": "ok / transcribed (scan read from data/transcriptions/ by an AI model) / no_text / unsupported / error / withheld (holds credentials, not extracted)",
     "values": {
      "ok": 5320,
-     "transcribed": 107,
-     "no_text": 78,
+     "transcribed": 185,
      "unsupported": 14,
      "withheld": 1,
      "error": 1
