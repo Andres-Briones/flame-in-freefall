@@ -12,6 +12,7 @@ It also keeps the team board (demo/board.py), the only thing that can be written
 Env: HOST (0.0.0.0), PORT (8000), FIF_RAW_CACHE_MB (300), FIF_RAW_ROOT (where raw files are read and cached;
 default data/raw), FIF_BOARD_DB (the board's SQLite file; default data/board/board.db).
 """
+import asyncio
 import csv
 import json
 import math
@@ -33,7 +34,7 @@ from fastapi import FastAPI, HTTPException, Request  # noqa: E402
 from fastapi.concurrency import run_in_threadpool  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.middleware.gzip import GZipMiddleware  # noqa: E402
-from fastapi.responses import JSONResponse, PlainTextResponse, Response  # noqa: E402
+from fastapi.responses import JSONResponse, PlainTextResponse, Response, StreamingResponse  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
 
 from demo import board  # noqa: E402
@@ -50,6 +51,9 @@ RESOLVE_CACHE_SIZE = 2000
 S3_DEFAULT_EXPIRES_S = 7200
 MAX_RAW_FILE_BYTES = 100 * 1024 * 1024
 DATA_MAX_AGE_S = 300
+EVENT_POLL_S = 1.0
+EVENT_KEEPALIVE_S = 20
+MAX_EVENT_STREAMS = 50
 
 # These PSI files contain credentials or personal data (rule in docs/digest/AUTHORING.md), so the server never
 # resolves them for inline viewing and never returns their extracted text. The PSI-102 manual is a byte-identical
@@ -342,7 +346,7 @@ async def cache_headers(request: Request, call_next):
     if request.url.path.startswith("/data/") and response.status_code == 200:
         response.headers["Cache-Control"] = f"public, max-age={DATA_MAX_AGE_S}"
     elif request.url.path.startswith(("/api", "/mcp", "/llms.txt", "/openapi.json")):
-        response.headers["Cache-Control"] = "no-store"
+        response.headers.setdefault("Cache-Control", "no-store")
     return response
 
 
@@ -402,7 +406,8 @@ async def call(function: str, request: Request):
 TOOL_BY_NAME = {t["name"]: t for t in (*TOOLS, *board.TOOLS)}
 BOARD_SUMMARY = ("Team board: the same server carries a small public forum where teammates and their AI assistants "
                  "leave bugs, recommendations, questions and news (board_read, board_post, board_reply). Read the open "
-                 "threads when you start; post what another teammate should know.")
+                 "threads when you start; post what another teammate should know. New messages can also be followed "
+                 "live at GET /api/board/events (Server-Sent Events).")
 MCP_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
 SUMMARY = ("Flame in Freefall: the 24 NASA PSI microgravity combustion investigations (2,177 table rows, 2,059 of them "
            "single tests; sensor traces, document evidence, reviewed findings, fire-safety relevance, data-quality "
@@ -446,6 +451,52 @@ async def call_get(function: str, request: Request):
                     media_type="application/json")
 
 
+_event_streams = 0
+
+
+async def board_event_stream(cursor, poll_s=EVENT_POLL_S, keepalive_s=EVENT_KEEPALIVE_S):
+    """Server-Sent Events for the board messages after `cursor`, read from SQLite about once a second (a poll per
+    stream; enough for a team). Runs until the client goes away, which cancels it."""
+    global _event_streams
+    _event_streams += 1
+    try:
+        quiet_since = time.monotonic()
+        while True:
+            events = await run_in_threadpool(board.events_after, cursor)
+            for event in events:
+                cursor = event["id"]
+                yield f"id: {cursor}\ndata: {json.dumps(event, ensure_ascii=False)}\n\n"
+            if events:
+                quiet_since = time.monotonic()
+            elif time.monotonic() - quiet_since >= keepalive_s:
+                quiet_since = time.monotonic()
+                yield ": keepalive\n\n"
+            await asyncio.sleep(poll_s)
+    finally:
+        _event_streams -= 1
+
+
+@app.get("/api/board/events")
+async def board_events(request: Request):
+    """A live feed of new board messages; `after_message` or the Last-Event-ID header (EventSource sends it on
+    reconnect, and it wins) say where to start, otherwise it starts from the present."""
+    if _event_streams >= MAX_EVENT_STREAMS:
+        raise HTTPException(503, f"Too many open event streams ({MAX_EVENT_STREAMS}); poll board_read(after_message=) "
+                                 "instead or try later")
+    start = request.headers.get("last-event-id") or request.query_params.get("after_message")
+    if start is None:
+        cursor = await run_in_threadpool(board.last_message)
+    else:
+        try:
+            cursor = int(start)
+        except ValueError:
+            cursor = -1
+        if cursor < 0:
+            raise HTTPException(400, "after_message (or Last-Event-ID) must be a message id (0 or more)")
+    return StreamingResponse(board_event_stream(cursor), media_type="text/event-stream",
+                             headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+
 def _base(request):
     proto = request.headers.get("x-forwarded-proto") or request.url.scheme
     return f"{proto}://{request.headers.get('host') or request.url.netloc}"
@@ -457,7 +508,8 @@ def tools(request: Request):
     base = _base(request)
     return {"about": SUMMARY, "guide": f"{base}/llms.txt", "openapi": f"{base}/openapi.json", "mcp": f"{base}/mcp",
             "call": f"POST {base}/api/call/<name> with a JSON object of arguments, or GET with query parameters",
-            "tools": TOOLS, "board": BOARD_SUMMARY, "board_tools": board.TOOLS}
+            "tools": TOOLS, "board": BOARD_SUMMARY, "board_tools": board.TOOLS,
+            "board_events": f"GET {base}/api/board/events: {BOARD_EVENTS}"}
 
 
 def _example(tool):
@@ -526,7 +578,8 @@ def guide(request: Request):
                 f"    GET {base}/api/call/{tool['name']}" + (f"?{query}" if query else ""), ""]
     out += ["## Team board", "", BOARD_SUMMARY, "",
             f"People read and write it at {base}/#board. The functions are called like the ones above; board_post and",
-            "board_reply need POST (or MCP), board_read also answers GET. " + board.CAUTION, "", board.SIGNING, ""]
+            "board_reply need POST (or MCP), board_read also answers GET. " + board.CAUTION, "", board.SIGNING, "",
+            f"Live feed: GET {base}/api/board/events. {BOARD_EVENTS}", ""]
     for tool in board.TOOLS:
         schema = tool["input_schema"]
         out += [f"### {tool['name']}", "", tool["description"], "",
@@ -535,6 +588,15 @@ def guide(request: Request):
         body = json.dumps(BOARD_EXAMPLES[tool["name"]], ensure_ascii=False)
         out += ["", f"    curl -X POST {base}/api/call/{tool['name']} -d '{body}'", ""]
     return "\n".join(out)
+
+
+BOARD_EVENTS = ("Server-Sent Events, one per new message: `id:` is the message id and `data:` one JSON line {thread, id, "
+                "author, author_kind, to, kind, title, created, signature} without the body (board_read with `thread` "
+                "gives it). It starts from the present, or after the query parameter after_message, or after the "
+                "Last-Event-ID header that EventSource sends when it reconnects; a comment line every 20 s keeps it "
+                "open. Polling board_read(after_message=data.last_message) remains the fallback: use it when the "
+                f"stream answers 404 (an older server) or 503 (more than {MAX_EVENT_STREAMS} streams open), or when "
+                "your client cannot hold a connection open.")
 
 
 BOARD_EXAMPLES = {

@@ -5,6 +5,7 @@ App.view({
   needs: [],
   render(root, state, update) {
     clearInterval(App._boardTimer);
+    if (App._boardEvents) { App._boardEvents.close(); App._boardEvents = null; }
     if (!App.backend) {
       root.append(h('div', { class: 'callout' }, h('p', { text: 'The board lives on the demo server, and this copy of the page runs without it. Open the dashboard from the server to read and post.' })));
       return;
@@ -38,6 +39,14 @@ App.view({
       chip.title = tip(m.key || '');
       return chip;
     };
+    // live feed of new messages; the 30 s refresh of the list stays as the fallback
+    const listen = (alive, onEvent) => {
+      if (!window.EventSource) return;
+      const es = App._boardEvents = new EventSource(base + '/api/board/events');
+      const stop = () => { es.close(); clearInterval(watchdog); };
+      const watchdog = setInterval(() => { if (!alive()) stop(); }, 5000);
+      es.onmessage = e => { if (!alive()) return stop(); try { onEvent(JSON.parse(e.data)); } catch (err) {} };
+    };
     const field = (label, input, style) => h('label', { class: 'ctl', style }, label, input);
     const text = (value, onInput, placeholder, max) => h('input', { type: 'text', value: value || '', placeholder: placeholder || '', maxlength: max, oninput: e => onInput(e.target.value) });
     const area = (value, onInput, placeholder) => { const t = h('textarea', { placeholder: placeholder || '', maxlength: 8000, oninput: e => onInput(e.target.value) }); t.value = value || ''; return t; };
@@ -58,6 +67,10 @@ App.view({
       App.api('board_read', { thread: state.thread }).then(r => {
         if (!box.isConnected) return;
         const t = r.data.thread;
+        listen(() => box.isConnected, ev => {
+          const typing = document.activeElement && document.activeElement.tagName === 'TEXTAREA' && box.contains(document.activeElement);
+          if (ev.thread === t.thread && !typing) update({});
+        });
         const reply = async status => {
           const body = (state.reply || '').trim();
           if (!body && !status) { error.textContent = 'Write a reply first.'; return; }
@@ -98,6 +111,7 @@ App.view({
       }).catch(e => { if (list.isConnected) list.replaceChildren(h('div', { class: 'notes' }, h('p', { text: 'The board did not answer: ' + e.message }))); });
     };
     load();
+    listen(() => list.isConnected, () => load());
     App._boardTimer = setInterval(() => { if (list.isConnected) load(); else clearInterval(App._boardTimer); }, 30000);
 
     root.append(h('div', { class: 'row' },

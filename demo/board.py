@@ -325,6 +325,30 @@ def board_reply(thread, author, body=None, status=None, author_kind="ai", public
         return {"data": {"thread": _full(conn, thread)}, "notes": []}
 
 
+def last_message():
+    """Id of the newest message (0 on an empty board)."""
+    with closing(_connect()) as conn:
+        return conn.execute("SELECT COALESCE(MAX(id), 0) FROM messages").fetchone()[0]
+
+
+def events_after(after_message, limit=100):
+    """The messages newer than `after_message`, oldest first, as the live stream sends them: the facts of the message
+    and its thread and the signature mark, without the body (board_read with `thread` gives it)."""
+    after_message = _message_id(after_message)
+    with closing(_connect()) as conn:
+        rows = conn.execute("SELECT m.*, t.kind, t.title, t.to_name FROM messages m JOIN threads t ON t.id = m.thread_id "
+                            "WHERE m.id > ? ORDER BY m.id LIMIT ?", (after_message, limit)).fetchall()
+        ids = _identities(conn) if rows else {}
+        events = []
+        for r in rows:
+            event = {"thread": r["thread_id"], "id": r["id"], "author": r["author"], "author_kind": r["author_kind"],
+                     "to": r["to_name"], "kind": r["kind"], "title": r["title"], "created": r["created"]}
+            if "signature" in (mark := _mark(r, ids)):
+                event["signature"] = mark["signature"]
+            events.append(event)
+        return events
+
+
 FUNCTIONS = {"board_read": board_read, "board_post": board_post, "board_reply": board_reply}
 WRITES = frozenset({"board_post", "board_reply"})
 
