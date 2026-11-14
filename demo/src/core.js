@@ -310,6 +310,13 @@ const App = {
   cite(c) { return h('button', { class: 'chip cite', type: 'button', title: 'Show the source', onclick: e => { e.stopPropagation(); App.openCite(c); } }, App.citeLabel(c)); },
   cites(list) { return list && list.length ? h('div', { class: 'chips' }, list.map(App.cite)) : null; },
 
+  // a PSI file or tests-table row is part of an investigation's dataset, which PSI asks to be cited by its own DOI
+  datasetDoi(s) {
+    const m = /^psi_/.test(s.type || '') && /^(PSI-\d+)_/.exec(s.file || s.table || '');
+    const i = m && App.inv(m[1]);
+    return i && i.doi_url ? h('div', { class: 'small muted' }, `Dataset DOI (${m[1]}): `,
+      h('a', { href: i.doi_url, target: '_blank', rel: 'noopener', text: i.doi, onclick: e => e.stopPropagation() })) : null;
+  },
   sourceNode(s) {
     if (!s) return null;
     const where = s.file ? `${s.file}${s.locator ? ', ' + s.locator : ''}` : s.url || s.doi || s.table || s.field || '';
@@ -317,6 +324,7 @@ const App = {
       h('div', { class: 'small muted' }, s.type ? s.type.replace(/_/g, ' ') + ': ' : '', s.url ? h('a', { href: s.url, target: '_blank', rel: 'noopener' }, s.url) : where,
         s.psi_status === 'removed' && App.chip('removed from PSI', 'warn')),
       s.quote && h('div', { class: 'quote', text: '“' + s.quote + '”' }),
+      App.datasetDoi(s),
       App.parseSource(s) && h('div', {}, h('button', { class: 'btn link small', type: 'button', onclick: e => { e.stopPropagation(); App.openFile(App.parseSource(s)); } },
         App.parseSource(s).page ? `Open the document at page ${App.parseSource(s).page}` : 'Open the document')),
       s.note && h('div', { class: 'small', text: s.note }));

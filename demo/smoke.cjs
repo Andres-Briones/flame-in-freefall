@@ -61,6 +61,14 @@ async function show(id, patch) {
   JSON.stringify(F.synthesis, (k, v) => { if (v && v.accession && v.section && !Array.isArray(v)) { cites++;
     const sec = (F.records[v.accession] || {})[v.section]; const item = Array.isArray(sec) && v.index != null ? sec[v.index - 1] : sec;
     if (item == null) problems.push(`citation does not resolve: ${JSON.stringify(v)}`); } return v; });
+  // PSI asks for each investigation's dataset to be cited by its own DOI: cards, the record page and PSI sources show it
+  await show('overview');
+  const doiLinks = () => main().querySelectorAll('a[href^="https://doi.org/10.60555/"]').length;
+  if (doiLinks() !== F.investigations.length) problems.push(`overview: ${doiLinks()} dataset DOI links for ${F.investigations.length} investigations`);
+  if (has('investigation')) { await show('investigation', { accession: 'PSI-68', compare: [] }); if (doiLinks() < 2) problems.push('investigation: dataset DOI missing from the header or the Identity section'); }
+  const psiSrc = A.sourceNode({ type: 'psi_table', file: 'PSI-21_Experimental table_CLD Flame.csv', row: '1' });
+  if (!psiSrc.querySelector(`a[href="${A.inv('PSI-21').doi_url}"]`)) problems.push('source: a PSI table row does not show its dataset DOI');
+  if (A.sourceNode({ type: 'external', doi: '10.1080/13647830.2024.2326830' }).querySelector('a[href*="10.60555"]')) problems.push('source: an external source shows a dataset DOI');
   // the drawer must really disappear on Close and on Escape (its display rule once overrode the hidden attribute)
   const drawerEl = w.document.getElementById('drawer'), shown = () => w.getComputedStyle(drawerEl).display !== 'none';
   if (shown()) problems.push('drawer: visible before anything opened it');

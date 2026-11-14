@@ -85,6 +85,9 @@ App.view({
         h('div', { class: 'row', style: 'justify-content:space-between;align-items:baseline;gap:6px' },
           h('h4', { text: label(i) }), h('span', { class: 'mono muted', text: i.accession })),
         h('p', { class: 'small', style: 'font-weight:500', text: i.title || '' }),
+        h('p', { class: 'small muted' }, 'Dataset DOI: ', i.doi_url
+          ? h('a', { href: i.doi_url, target: '_blank', rel: 'noopener', text: i.doi, onclick: e => e.stopPropagation(), onkeydown: e => e.stopPropagation() })
+          : 'missing'),
         i.one_line && h('p', { class: 'small muted', text: i.one_line }),
         h('div', { class: 'chips' }, (i.pillars || []).map(App.pillar), (i.fuel_phases || []).map(App.phase), App.chip(i.flight ? 'flight' : 'ground or analysis')),
         h('p', { class: 'small num' }, `${App.fmt(i.n_test_rows)} test rows · ${App.fmt(i.n_findings)} findings`));

@@ -122,6 +122,8 @@ App.view({
     const findings = rec.findings || [];
 
     sec('identity', 'Identity', h('dl', { class: 'kv' },
+      h('dt', { text: 'Dataset DOI' }), h('dd', {}, info.doi_url ? h('a', { href: info.doi_url, target: '_blank', rel: 'noopener', text: info.doi }) : 'missing'),
+      info.psi_url && [h('dt', { text: 'PSI record' }), h('dd', {}, h('a', { href: info.psi_url, target: '_blank', rel: 'noopener', text: info.psi_url }))],
       h('dt', { text: 'Principal investigators' }), h('dd', {}, gen(id.principal_investigators)),
       h('dt', { text: 'Dates' }), h('dd', { text: id.dates && typeof id.dates === 'object' ? `${id.dates.start || '?'} to ${id.dates.end || '?'}` : txt(id.dates) }),
       ...['platform', 'facility', 'hardware', 'project_type'].flatMap(k => [h('dt', { text: pretty(k) }), h('dd', {}, gen(id[k]))])));
