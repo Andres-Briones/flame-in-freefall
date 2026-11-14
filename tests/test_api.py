@@ -1,4 +1,5 @@
 import json
+import math
 
 import pytest
 
@@ -134,6 +135,63 @@ def test_relevance_says_when_the_top_rows_did_not_test_the_requested_phase():
     liquid = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase="liquid")
     assert liquid["data"]["ranking"][0]["nearest_test"]["fuel_phase"] == "liquid"
     assert not any(n.startswith("Phase:") for n in liquid["notes"])
+
+
+def test_relevance_marks_every_condition_not_measured_for_the_nearest_test():
+    measured = api.table("tests").set_index(["accession", "test_id"])
+    seen = set()
+    for scenario in [*api.SCENARIOS, {"x_o2": 0.30, "pressure_kpa": 70.3}]:
+        out = api.relevance(scenario)["data"]
+        asked = set(out["scenario"]) & set(api.TEST_COLUMN)
+        closest = out["closest_same_phase_test"]
+        tests = [(r["accession"], r["nearest_test"] or r["nearest_test_other_phase"], r) for r in out["ranking"]]
+        for acc, near, row in tests + [(closest["accession"], closest, closest)]:
+            marked = set(row.get("conditions_from_range", [])) | set(row.get("conditions_assumed_cabin_air", []))
+            if "conditions_unknown" in row:
+                assert marked == set(row["condition_ranges"]) and marked | set(row["conditions_unknown"]) <= asked
+                assert not set(row["conditions_from_range"]) & set(row["conditions_assumed_cabin_air"])
+            if near is None:
+                assert marked | set(row["conditions_unknown"]) == asked
+                continue
+            source = measured.loc[[(acc, near["test_id"])]]
+            for key, column in api.TEST_COLUMN.items():
+                if column in near["not_measured"]:
+                    assert source[column].isna().any()
+                    assert near[column] is None or key in row["condition_ranges"]
+                    seen.add((acc, key, near[column] is None))
+                else:
+                    assert near[column] is not None and (source[column] == near[column]).any()
+    assert ("PSI-25", "pressure_kpa", False) in seen and ("PSI-99", "pressure_kpa", False) in seen
+
+
+def test_relevance_gives_the_range_behind_a_midpoint_and_keeps_narrow_ranges_undiscounted():
+    out = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase="solid")
+    bass2 = next(r for r in out["data"]["ranking"] if r["accession"] == "PSI-25")
+    assert bass2["nearest_test"]["not_measured"] == ["pressure_kpa"] and bass2["conditions_from_range"] == ["pressure_kpa"]
+    assert bass2["condition_ranges"] == {"pressure_kpa": {
+        "min": 99.2, "max": 99.5, "from": "digest", "wide": False, "note": "reported for film tests; about 1 atm overall"}}
+    assert bass2["components"]["conditions"] == pytest.approx(math.exp(-bass2["distance_to_scenario"] / 2), abs=0.01)
+    wide = next(r for r in out["data"]["ranking"] if r["accession"] == "PSI-20")
+    assert all(c["wide"] for c in wide["condition_ranges"].values())
+    assert wide["components"]["conditions"] == pytest.approx(
+        api.ENVELOPE_DISCOUNT * math.exp(-wide["distance_to_scenario"] / 2), abs=0.01)
+    closest = out["data"]["closest_same_phase_test"]
+    assert closest["not_measured"] == ["pressure_kpa"]
+    assert closest["condition_ranges"]["pressure_kpa"]["from"] == "assumed cabin air"
+    assert any(n.startswith("Gap:") and "assumed cabin air" in n for n in out["notes"])
+
+
+def test_coverage_marks_nearest_tests_placed_from_a_stated_range():
+    measured = api.table("tests").set_index(["accession", "test_id"])
+    marked = 0
+    for phase in (None, "solid"):
+        for ref in api.coverage(fuel_phase=phase)["data"]["references"]:
+            near = ref["nearest_test"]
+            source = measured.loc[[(near["accession"], near["test_id"])]]
+            for column in ("x_o2_ambient", "pressure_kpa"):
+                assert (column in near["not_measured"]) == bool(source[column].isna().all())
+            marked += bool(near["not_measured"])
+    assert marked
 
 
 def test_relevance_rejects_unknown_choices():

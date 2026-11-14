@@ -215,7 +215,7 @@
  },
  {
   "name": "coverage",
-  "description": "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference atmospheres (ISS cabin, Moon habitat, exploration, spacesuit) have no data. Use for gap questions.",
+  "description": "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference atmospheres (ISS cabin, Moon habitat, exploration, spacesuit) have no data. Use for gap questions. A reference's `nearest_test` lists in `not_measured` the columns filled from the investigation's stated range, not measured for that test.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -350,7 +350,7 @@
  },
  {
   "name": "relevance",
-  "description": "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; `nearest_test` is always a test of that phase (null if none), and `closest_same_phase_test` is the nearest one overall. Never present `nearest_test_other_phase` as a test of the requested material. Scenario names: iss-cabin, moon-habitat, mars-habitat, pressurised-rover, spacecraft-transit.",
+  "description": "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; `nearest_test` is always a test of that phase (null if none), and `closest_same_phase_test` is the nearest one overall. Never present `nearest_test_other_phase` as a test of the requested material. A condition a test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the investigation's range in `condition_ranges` (stated range or assumed cabin air), so say so when quoting it. Scenario names: iss-cabin, moon-habitat, mars-habitat, pressurised-rover, spacecraft-transit.",
   "input_schema": {
    "type": "object",
    "properties": {

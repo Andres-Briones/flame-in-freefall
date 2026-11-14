@@ -122,6 +122,10 @@
       if (!r) return;
       const i = App.inv(r.accession), other = !r.nearest_test && r.nearest_test_other_phase, t = r.nearest_test || other || {};
       const flagList = (title, arr, kind) => arr && arr.length ? h('div', { class: 'chips' }, h('span', { class: 'small muted', text: title }), arr.map(x => App.chip(x, kind))) : null;
+      const ranges = r.condition_ranges || {}, missing = t.not_measured || [];
+      const rangeOf = k => ranges[k] ? `${k} ${App.fmt(ranges[k].min)}–${App.fmt(ranges[k].max)} (${ranges[k].from}${ranges[k].wide ? ', wide: score −20%' : ''})` : k;
+      // A value shown for a column the test did not record is the middle of the investigation's range.
+      const mark = (col, key) => missing.includes(col) && t[col] != null ? ` (not measured for this test: ${ranges[key] && ranges[key].from === 'assumed cabin air' ? 'assumed cabin air' : 'middle of the investigation\'s range'})` : '';
       App.drawer(`${i.acronym}: score ${App.fmt(r.score, 1)}`, h('div', { class: 'stack' },
         h('p', { text: r.one_line || i.one_line || '' }),
         h('dl', { class: 'kv' }, comps.flatMap(k => [h('dt', { text: k }), h('dd', { class: 'num', text: `${App.fmt(r.components[k], 2)} × weight ${d.weights[k]}` })])),
@@ -129,13 +133,13 @@
         h('dl', { class: 'kv' },
           h('dt', { text: 'test' }), h('dd', { text: t.test_id || '–' }),
           h('dt', { text: 'fuel' }), h('dd', { text: `${t.fuel || '–'} (${t.fuel_phase || '–'})` }),
-          h('dt', { text: 'O2' }), h('dd', { text: App.pct(t.x_o2_ambient) }),
-          h('dt', { text: 'pressure' }), h('dd', { text: App.fmt(t.pressure_kpa, 1) + ' kPa' }),
+          h('dt', { text: 'O2' }), h('dd', { text: App.pct(t.x_o2_ambient) + mark('x_o2_ambient', 'x_o2') }),
+          h('dt', { text: 'pressure' }), h('dd', { text: App.fmt(t.pressure_kpa, 1) + ' kPa' + mark('pressure_kpa', 'pressure_kpa') }),
           h('dt', { text: 'flow' }), h('dd', { text: App.fmt(t.flow_cm_s) + ' cm/s' }),
           h('dt', { text: 'distance' }), h('dd', { text: App.fmt(r.distance_to_scenario, 2) + ' steps (1 step = 3 points O2, 15 kPa or 10 cm/s)' })),
         flagList('not recorded:', r.conditions_unknown, 'crit'),
-        flagList('known only as a range:', r.conditions_from_range, 'warn'),
-        flagList('assumed cabin air:', r.conditions_assumed_cabin_air, 'warn'),
+        flagList('no per-test value, read from the investigation\'s range:', (r.conditions_from_range || []).map(rangeOf), 'warn'),
+        flagList('assumed cabin air:', (r.conditions_assumed_cabin_air || []).map(rangeOf), 'warn'),
         Array.isArray(r.key_findings) && r.key_findings.length ? h('div', { class: 'stack', style: 'gap:6px' }, h('h4', { text: 'Key findings' }),
           r.key_findings.map(f => h('div', { class: 'small' }, citeOf(f.ref) && App.cite(citeOf(f.ref)), ' ', App.tex(f.claim || '')))) : null,
         h('div', { class: 'row' },
@@ -143,6 +147,8 @@
           h('button', { class: 'btn', type: 'button', onclick: () => App.go('tests', { accession: r.accession }) }, 'See its tests'))));
     }
 
+    // "~" marks a value that is not a reading of that test (range midpoint or assumed cabin air).
+    const est = (o, col) => (o.not_measured || []).includes(col) && o[col] != null ? '~' : '';
     root.append(App.table({
       rows, pageSize: 24, onRow: showRow, sort: { key: 'score', dir: -1 },
       cols: [
@@ -150,7 +156,7 @@
         { key: 'score', label: 'Score', num: true, fmt: v => App.fmt(v, 1) },
         { key: 'distance_to_scenario', label: 'Distance (steps)', num: true, fmt: v => App.fmt(v, 2) },
         { key: 'nearest_test', label: 'Nearest test', sortable: false, fmt: (t, r) => { const o = t || r.nearest_test_other_phase;
-          return o ? `${o.fuel || '?'}${t ? '' : ` (${o.fuel_phase}, not ${ph})`} · ${App.pct(o.x_o2_ambient)} O2 · ${App.fmt(o.pressure_kpa, 0)} kPa` : '–'; } },
+          return o ? `${o.fuel || '?'}${t ? '' : ` (${o.fuel_phase}, not ${ph})`} · ${App.pct(o.x_o2_ambient)}${est(o, 'x_o2_ambient')} O2 · ${App.fmt(o.pressure_kpa, 0)}${est(o, 'pressure_kpa')} kPa` : '–'; } },
         { key: 'flags', label: 'Assumptions', sortable: false, fmt: (_, r) => h('div', { class: 'chips' },
           (r.conditions_unknown || []).length ? App.chip('not recorded', 'crit') : null,
           (r.conditions_from_range || []).length ? App.chip('from a range', 'warn') : null,

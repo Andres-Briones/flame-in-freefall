@@ -48,7 +48,7 @@ App.view({
       { key: 'x_o2', label: 'O2', num: true, fmt: v => App.pct(v, 0) },
       { key: 'pressure_kpa', label: 'kPa', num: true, fmt: v => App.fmt(v, 1) },
       { key: 'n_tests_in_cell', label: phase === 'all' ? 'Tests in its cell' : `${phase} tests in its cell`, num: true, fmt: v => v ? String(v) : h('span', { class: 'chip crit' }, 'none') },
-      { key: 'nearest_test', label: 'Nearest test', sortable: false, fmt: t => t ? `${App.inv(t.accession).acronym} ${t.test_id}: ${t.fuel} (${t.fuel_phase}), ${App.pct(t.x_o2_ambient)} O2, ${App.fmt(t.pressure_kpa, 0)} kPa` : '–' } ] }));
+      { key: 'nearest_test', label: 'Nearest test', sortable: false, fmt: t => t ? `${App.inv(t.accession).acronym} ${t.test_id}: ${t.fuel} (${t.fuel_phase}), ${App.pct(t.x_o2_ambient)} O2, ${App.fmt(t.pressure_kpa, 0)} kPa${(t.not_measured || []).length ? ` (${t.not_measured.map(c => c === 'x_o2_ambient' ? 'O2' : 'pressure').join(' and ')} not measured for this test: middle of the investigation's stated range)` : ''}` : '–' } ] }));
 
     if (state.cell != null && cells[state.cell]) {
       const k = cells[state.cell];

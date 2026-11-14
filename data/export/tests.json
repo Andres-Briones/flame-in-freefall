@@ -101844,7 +101844,7 @@
   "smoke_point_reviewed": null,
   "measurement": null,
   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
-  "extra": "{\"Percent O2\": \"21.5 - 21.7\", \"Ignition Power (W)\": \"182\", \"Ignition Time (s)\": \"8\", \"Camera 1\": \"S1C1\", \"Camera 2\": \"S1C2\", \"geometry_original\": \"thickness 0.37 cm, length 40.6 cm, width 94 cm\", \"outcome_source\": \"PSI-98 record finding 1 (NTRS 20170008805 results table, test 1-1: ~84 cm, 1.8 mm/s)\", \"report_value\": \"documents give 40.6 cm wide x 94 cm long (table swaps length and width)\", \"pressure_kpa_original\": null, \"discrepancies\": [\"D19\", \"D31\"]}",
+  "extra": "{\"Percent O2\": \"21.5 - 21.7\", \"Ignition Power (W)\": \"182\", \"Ignition Time (s)\": \"8\", \"Camera 1\": \"S1C1\", \"Camera 2\": \"S1C2\", \"geometry_original\": \"thickness 0.37 cm, length 40.6 cm, width 94 cm\", \"outcome_source\": \"PSI-98 record finding 1 (NTRS 20170008805 results table, test 1-1: ~84 cm, 1.8 mm/s)\", \"report_value\": \"documents give 40.6 cm wide x 94 cm long (table swaps length and width)\", \"pressure_kpa_original\": null, \"discrepancies\": [\"D19\", \"D31\", \"D37\"]}",
   "source_file": "data/raw/files/PSI-98/Experimental table/PSI-98_Experimental table_SAFFIRE-1.csv",
   "source_row": 1
  },
@@ -101891,7 +101891,7 @@
   "smoke_point_reviewed": null,
   "measurement": null,
   "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
-  "extra": "{\"Percent O2\": \"~ 21.5\", \"Ignition Power (W)\": \"182\", \"Ignition Time (s)\": \"8\", \"Camera 1\": \"S2C1\", \"Camera 2\": \"S2C2\", \"geometry_original\": \"thickness 0.37 cm, length 40.6 cm, width 94 cm\", \"outcome_source\": \"PSI-98 record finding 2 (NTRS 20170008805 results table, test 1-2: ~10 cm, 1.3 mm/s)\", \"report_value\": \"documents give 40.6 cm wide x 94 cm long (table swaps length and width)\", \"pressure_kpa_original\": null, \"discrepancies\": [\"D20\", \"D23\"]}",
+  "extra": "{\"Percent O2\": \"~ 21.5\", \"Ignition Power (W)\": \"182\", \"Ignition Time (s)\": \"8\", \"Camera 1\": \"S2C1\", \"Camera 2\": \"S2C2\", \"geometry_original\": \"thickness 0.37 cm, length 40.6 cm, width 94 cm\", \"outcome_source\": \"PSI-98 record finding 2 (NTRS 20170008805 results table, test 1-2: ~10 cm, 1.3 mm/s)\", \"report_value\": \"documents give 40.6 cm wide x 94 cm long (table swaps length and width)\", \"pressure_kpa_original\": null, \"discrepancies\": [\"D20\", \"D23\", \"D38\"]}",
   "source_file": "data/raw/files/PSI-98/Experimental table/PSI-98_Experimental table_SAFFIRE-1.csv",
   "source_row": 2
  },

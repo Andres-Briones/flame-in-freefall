@@ -390,7 +390,8 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
                 "n_from_stated_range": int((in_cell["filled"] != "").sum()),
                 "nearest_test": None if near is None else {
                     "accession": near["accession"], "test_id": near["test_id"], "fuel": near["fuel"],
-                    "fuel_phase": near["fuel_phase"], x: near[x], y: near[y]},
+                    "fuel_phase": near["fuel_phase"], x: near[x], y: near[y],
+                    "not_measured": [c for c in near["filled"].split(";") if c]},
             })
     notes = [f"{len(have)} of {len(df)} selected rows have both {x} and {y}; the rest are not on the map."]
     if "row_kind" not in filters:
@@ -399,8 +400,9 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
     n_filled = int((have["filled"] != "").sum())
     if n_filled:
         notes.append(f"{n_filled} rows had no per-test value and use their investigation's (narrow) stated range, "
-                     "e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell. filter_tests "
-                     "returns these cells empty, as in the source.")
+                     "e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell and `not_measured` "
+                     "names the columns of a reference's `nearest_test` filled that way (the value is the middle of "
+                     "the range, not a reading of that test). filter_tests returns these cells empty, as in the source.")
     if references and not (filters.get("fuel_phase") or filters.get("fuel")):
         notes.append("`n_tests_in_cell` counts every fuel (gas flames, droplets, solids). Before saying a material was "
                      "tested at a reference atmosphere, read `n_tests_in_cell_by_phase` or filter by fuel_phase or fuel.")
@@ -427,8 +429,7 @@ def _distance(row, env, scenario, unknown_steps):
         elif key in env:
             lo, hi, _ = env[key]
             parts[key] = max(lo - target, target - hi, 0) / scale
-            if not _narrow(lo, hi):
-                ranged.append(key)
+            ranged.append(key)
         else:
             parts[key] = unknown_steps.get(key, UNKNOWN_STEPS)
             unknown.append(key)
@@ -446,13 +447,20 @@ def _conditions(acc, scenario, fuel_phase, unknown_steps=None):
     nearest = None
     if row is not None:
         nearest = {k: row[k] for k in ("test_id", "fuel", "fuel_phase", "x_o2_ambient", "pressure_kpa", "flow_cm_s")}
+        nearest["not_measured"] = [c for c in TEST_COLUMN.values() if pd.isna(nearest[c])]
         for key in ("x_o2", "pressure_kpa"):
             if pd.isna(nearest[TEST_COLUMN[key]]) and key in env and _narrow(*env[key][:2]):
                 nearest[TEST_COLUMN[key]] = round((env[key][0] + env[key][1]) / 2, 3)
-    assumed = [k for k in parts if k in env and env[k][2] == "assumed cabin air"]
-    return {"score": math.exp(-d / 2) * (ENVELOPE_DISCOUNT if ranged else 1.0), "distance": round(d, 2), "assumed": assumed,
-            "per_dimension": {k: round(v, 4) for k, v in parts.items()}, "unknown": unknown, "from_range": ranged,
-            "nearest_test": nearest}
+    ranges = {k: {"min": round(env[k][0], 4), "max": round(env[k][1], 4), "from": env[k][2], "wide": not _narrow(*env[k][:2])} for k in ranged}
+    for p in synthesis()["parameter_coverage"]:
+        key = COVERAGE_PARAMETER.get(p["parameter"])
+        if p["accession"] == acc and key in ranges and "digest" in ranges[key]["from"] and p.get("note"):
+            ranges[key]["note"] = p["note"]
+    assumed = [k for k in ranged if env[k][2] == "assumed cabin air"]
+    wide = any(r["wide"] for r in ranges.values())
+    return {"score": math.exp(-d / 2) * (ENVELOPE_DISCOUNT if wide else 1.0), "distance": round(d, 2), "assumed": assumed,
+            "per_dimension": {k: round(v, 4) for k, v in parts.items()}, "unknown": unknown,
+            "from_range": [k for k in ranged if k not in assumed], "ranges": ranges, "nearest_test": nearest}
 
 
 def _pillar_score(rec, pillar):
@@ -531,21 +539,26 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
             "phase_match": fuel_phase in _phases(acc), "nearest_test": nearest if same else None,
             "nearest_test_other_phase": None if same else nearest, "conditions_unknown": cond["unknown"],
             "conditions_from_range": cond["from_range"], "conditions_assumed_cabin_air": cond["assumed"],
+            "condition_ranges": cond["ranges"],
             "pillars": rec["fire_safety"]["pillars"], "fuel_phases": _phases(acc), "one_line": rec["one_line"],
             "key_findings": [{"ref": _finding_ref(acc, i), "claim": f["claim"]} for i, f in findings],
         })
     ranked.sort(key=lambda r: -r["score"])
     same_phase = [r for r in ranked if fuel_phase in r["fuel_phases"] and r["nearest_test"]
-                  and not r["conditions_unknown"] and not r["conditions_from_range"]]
+                  and not r["conditions_unknown"] and not any(c["wide"] for c in r["condition_ranges"].values())]
     closest = min(same_phase, key=lambda r: r["distance_to_scenario"], default=None)
     notes = [
         "Score = weighted mean of four components in [0, 1]: conditions (closeness of the nearest test to the "
         "scenario's O2, pressure and flow), material (fuel-phase transfer), pillar and evidence strength. "
         "Weights and scales are in fif/api.py and docs/methods.md; they are a judgement, shown so it can be argued with.",
         "A distance of 1 means one scale step away: 3 points of O2, 15 kPa or 10 cm/s. A condition that was not "
-        "recorded counts as far away as the farthest investigation that did record it (at least 2 steps); a condition known only as a wide range lowers the conditions score by 20%; "
+        "recorded counts as far away as the farthest investigation that did record it (at least 2 steps); "
         "cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere "
         "(listed in conditions_assumed_cabin_air).",
+        "A condition with no per-test value is read from the investigation's range (conditions_from_range or "
+        "conditions_assumed_cabin_air; range and origin in condition_ranges); a wide range lowers the conditions "
+        "score by 20%. A value shown for a column in a test's `not_measured` is the middle of a narrow range, not a "
+        "reading of that test.",
     ]
     if partial_g:
         notes.append(f"No PSI combustion test was run at partial gravity ({sc['gravity_g']} g). The gravity component "
@@ -565,12 +578,19 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         notes.append(f"Phase: no investigation has a {fuel_phase}-fuel test in the table.")
     if closest and closest["distance_to_scenario"] > 1:
         n = closest["nearest_test"]
+
+        def origin(key):
+            c = closest["condition_ranges"].get(key)
+            if not c:
+                return ""
+            return " assumed cabin air" if c["from"] == "assumed cabin air" else f" not measured, middle of the range {c['min']:g}-{c['max']:g}"
         notes.append(f"Gap: the closest {fuel_phase}-fuel test to this scenario is {closest['accession']} {n['test_id']} "
-                     f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}, {n['pressure_kpa']:.0f} kPa), "
+                     f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}{origin('x_o2')}, {n['pressure_kpa']:.0f} kPa{origin('pressure_kpa')}), "
                      f"{closest['distance_to_scenario']} scale steps away. Conclusions for this scenario are extrapolations.")
     data = {"scenario": {"name": name, **sc, "fuel_phase": fuel_phase, "pillar": pillar}, "weights": weights,
             "ranking": ranked[:top], "closest_same_phase": closest and closest["accession"],
             "closest_same_phase_test": closest and {"accession": closest["accession"], **closest["nearest_test"],
+                                                    "condition_ranges": closest["condition_ranges"],
                                                     "distance_to_scenario": closest["distance_to_scenario"]}}
     chart = {"type": "stacked-bar", "x": "components", "y": "acronym", "sort": "score"}
     sources = [{"ref": f"[{r['accession']}]"} for r in ranked[:top]]

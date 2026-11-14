@@ -23,7 +23,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
 | `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
-| `discrepancies.json` | errors and doubts in the PSI tables: 36 raw-data conflicts and notes with evidence, every changed value, flag meanings |
+| `discrepancies.json` | errors and doubts in the PSI tables: 38 raw-data conflicts and notes with evidence, every changed value, flag meanings |
 | `questions.json` | the question bank: question, call, chart, answer |
 | `synthesis.json` | key messages, limits, microgravity-vs-1-g comparisons, ranked gaps, lineage, research questions |
 
@@ -41,7 +41,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `get_investigation(accession, sections)` | everything about one investigation |
 | `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, ...)` | what was tested and what happened |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
-| `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase |
+| `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase; its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test |
 | `relevance(scenario, fuel_phase, pillar)` | which investigations matter for a scenario, and how far the data are from it |
 | `find_evidence(query, accession)` | passages: reviewed findings and raw document text (keyword search) |
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
@@ -95,9 +95,22 @@ $$
 - `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`.
 - Eight cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere
   (20.5-21.5% O2, 98-103 kPa). Each result lists them in `conditions_assumed_cabin_air`.
+- A condition with no per-test value is never shown as measured. `conditions_from_range` lists every condition
+  read from the investigation's range (stated in the documents or spanned by its other tests), wide or narrow;
+  `condition_ranges` gives the range of each, its origin (`from`: digest, tests table, assumed cabin air), for a digest range the `note` saying what it was
+  reported for, and
+  `wide`. Only a wide range (over 10% of its upper end) takes the 20% discount; a narrow one scores like a
+  measured value. Each test dict (`nearest_test`, `nearest_test_other_phase`, `closest_same_phase_test`) lists
+  in `not_measured` the columns the tests table has no value for: an O2 or pressure shown for one of them is
+  the middle of a narrow range. BASS-II has no per-test pressure at all: its 99.35 kPa is the middle of the
+  99.2-99.5 kPa the summary report states for the thin-film tests.
 - The output always states the gap: the nearest test of the requested fuel phase and its distance. For a Moon
   habitat and solid fuels that is Saffire-II sample 2-2 (silicone, 22.1% O2, cabin pressure assumed 100 kPa),
-  3.2 steps away; the nearest test with both values measured is a BASS-II PMMA test at 22.2% O2 and 99 kPa.
+  3.2 steps away. A BASS-II PMMA test at 22.2% O2 follows, with a pressure (99 kPa) that is the middle of the
+  campaign range, not a reading of that test. The nearest solid-fuel tests with both values in the tests table
+  are from BASS: test 2 (SIBAL fabric, 22.7% O2, 100.8 kPa, airflow ramped during the test) at 3.17 steps and
+  PMMA tests at 22.4% O2 and 100.1 kPa at 3.22. `closest_same_phase_test` does not return them, because the BASS
+  row nearest to the scenario has no O2 value and is placed from the investigation's wide O2 range.
 - No PSI test was run at partial gravity. The gravity component does not pretend otherwise; it rewards
   investigations that bracket partial gravity with microgravity and 1-g results.
 

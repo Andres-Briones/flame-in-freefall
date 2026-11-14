@@ -1045,7 +1045,7 @@
  },
  "discrepancies": {
   "description": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
-  "rows": 36,
+  "rows": 38,
   "files": [
    "data/processed/discrepancies.parquet",
    "data/processed/discrepancies.csv"
@@ -1053,7 +1053,7 @@
   "columns": {
    "id": {
     "dtype": "str",
-    "non_null": 36,
+    "non_null": 38,
     "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`",
     "values": {
      "D01": 1,
@@ -1091,18 +1091,20 @@
      "D33": 1,
      "D34": 1,
      "D35": 1,
-     "D36": 1
+     "D36": 1,
+     "D37": 1,
+     "D38": 1
     }
    },
    "accession": {
     "dtype": "str",
-    "non_null": 36,
+    "non_null": 38,
     "description": null,
     "values": {
      "PSI-159": 12,
      "PSI-39": 6,
+     "PSI-98": 6,
      "PSI-23": 5,
-     "PSI-98": 4,
      "PSI-100": 4,
      "PSI-10": 3,
      "PSI-101": 2
@@ -1110,11 +1112,11 @@
    },
    "test_id": {
     "dtype": "str",
-    "non_null": 30,
+    "non_null": 32,
     "description": "test id as in the PSI table (null for a note on a whole investigation)",
     "values": {
-     "S1": 4,
-     "S2": 4,
+     "S1": 5,
+     "S2": 5,
      "22042M1": 2,
      "21106 F4": 1,
      "21112 A6": 1,
@@ -1140,11 +1142,11 @@
    },
    "test_id_now": {
     "dtype": "str",
-    "non_null": 30,
+    "non_null": 32,
     "description": "test id in `tests` after a test_id correction",
     "values": {
-     "S1": 4,
-     "S2": 4,
+     "S1": 5,
+     "S2": 5,
      "22024M1": 2,
      "21106 F4": 1,
      "21112 A6": 1,
@@ -1170,10 +1172,10 @@
    },
    "column": {
     "dtype": "str",
-    "non_null": 32,
+    "non_null": 34,
     "description": "`tests` column concerned",
     "values": {
-     "pressure_kpa": 9,
+     "pressure_kpa": 11,
      "burn_time_s": 8,
      "date": 3,
      "fuel_fraction": 3,
@@ -1212,7 +1214,7 @@
    },
    "evidence_value": {
     "dtype": "str",
-    "non_null": 29,
+    "non_null": 31,
     "description": "value the raw data give",
     "values": {
      "H2/CH4/He 25/20/55": 2,
@@ -1240,15 +1242,17 @@
      "99.4": 1,
      "0.223": 1,
      "0.226": 1,
-     "163.3": 1
+     "163.3": 1,
+     "99.9": 1,
+     "100.1": 1
     }
    },
    "action": {
     "dtype": "str",
-    "non_null": 36,
+    "non_null": 38,
     "description": "replace / fill / flag / note",
     "values": {
-     "flag": 18,
+     "flag": 20,
      "replace": 7,
      "note": 6,
      "fill": 5
@@ -1256,17 +1260,17 @@
    },
    "flag": {
     "dtype": "str",
-    "non_null": 30,
+    "non_null": 32,
     "description": "flag put on the row",
     "values": {
-     "conflicts_with_raw": 18,
+     "conflicts_with_raw": 20,
      "corrected_from_raw": 7,
      "filled_from_raw": 5
     }
    },
    "evidence": {
     "dtype": "str",
-    "non_null": 36,
+    "non_null": 38,
     "description": "what the raw data show",
     "values": {
      "The raw data headers give the same fuel bottle, H2/CH4/He 25/20/55, on days 20132, 20136 and 20142, while the table lists a different mixture for each day. Not resolved: the header code may not have been updated between bottles.": 2,
@@ -1287,8 +1291,8 @@
      "The chamber transducer reads 309.6 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
      "The chamber transducer reads 309.7 kPa before ignition against the table's 303.975 kPa (3 atm nominal). Across the 123 CFI tests with a recording the transducer reads between 3.6 kPa below and 3.6 kPa above the table (median 2.4 kPa above), except these three tests at 5.5-5.7 kPa above.": 1,
      "The raw data headers of this day give the fuel bottle as H2/He 45/55, and the science reports also give 45% H2. The table says 35%.": 1,
-     "The experiment table has no pressure. The flight pressure sensor reads 102.3 kPa at the start of the burn.": 1,
-     "The experiment table has no pressure. The flight pressure sensor reads 102.6 kPa at the start of the burn.": 1,
+     "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.3 kPa (14.843 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D37).": 1,
+     "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.6 kPa (14.881 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D38).": 1,
      "The experiment table has no pressure. The flight pressure sensor reads 99.5 kPa at the start of the burn.": 1,
      "The experiment table has no pressure. The flight pressure sensor reads 99.4 kPa at the start of the burn.": 1,
      "The flight O2 sensor reads 22.3% at the start of the burn (22.6% for sample 1) against the table's 21.5%. The sensor's accuracy is not documented in PSI, so the table value is kept.": 1,
@@ -1302,12 +1306,14 @@
      "The radiometers show a flame for 163.3 s; the experiment table says 158.0 s. Burn times from the radiometers depend on the detection threshold: differences under 5 s are not recorded as conflicts.": 1,
      "The 'Local Time' cell of the data-summary spreadsheet (kept in extra) is wrong for several tests when compared with the start of the raw recording (UTC): tests 1338, 1349 and 1386 say 12:xx am for recordings that start at 16:xx UTC (12:xx pm local); test 1300 says 10:42 pm for 14:41 UTC; test 1234 reads '011:11:09 am'; tests 1260 and 1332 also disagree, and tests 1320-1323, 1376 and 1377 are off by about 5 h instead of 4. Dates are not affected. The cells are kept as given; use first_sample_utc in timeseries_features for timing.": 1,
      "The raw data headers of this day give the fuel bottle as H2/CH4 44.4/55.6, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (20% H2 / 25% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1,
-     "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1
+     "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.": 1,
+     "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 99.9 kPa (14.488 psi, 5 samples about 10 s apart) in the 50 s before ignition of sample 1, and between 99.9 and 100.2 kPa over the whole record (66 samples, median 100.1). The Saffire ambient-pressure sensor reads 102.3 kPa over the same 50 s, 2.4 kPa more: that is the value this dataset fills in (patch D19). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.": 1,
+     "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 100.1 kPa (14.521 psi, 4 samples about 10 s apart) in the 50 s before ignition of sample 2, and 100.1 kPa over the whole record (15 samples). The Saffire ambient-pressure sensor reads 102.6 kPa over the same 50 s, 2.5 kPa more: that is the value this dataset fills in (patch D20). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.": 1
     }
    },
    "evidence_source": {
     "dtype": "str",
-    "non_null": 36,
+    "non_null": 38,
     "description": "file and channel the evidence comes from",
     "values": {
      "PSI-159 Raw Data _data.csv files; chamber pressure in timeseries_features": 2,
@@ -1329,8 +1335,8 @@
      "PSI-23 Raw Data 20190*_data.csv headers (fuel gas code)": 1,
      "PSI-23 Raw Data 20136*_data.csv headers (fuel gas code)": 1,
      "PSI-23 Raw Data 20142*_data.csv headers (fuel gas code)": 1,
-     "PSI-98 Raw Data, sample 1 sensor workbook (pressure at start)": 1,
-     "PSI-98 Raw Data, sample 2 sensor workbook (pressure at start)": 1,
+     "PSI-98 Raw Data 'Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)": 1,
+     "PSI-98 Raw Data 'Saffire-I Sample 2 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)": 1,
      "PSI-100 Raw Data, sample 1 sensor workbook (pressure at start)": 1,
      "PSI-100 Raw Data, sample 2 sensor workbook (pressure at start)": 1,
      "PSI-98 Raw Data, sample 2 sensor workbook (O2 at start)": 1,
@@ -1344,7 +1350,9 @@
      "PSI-159 Raw Data 21162B1_data.csv; radiometer burn window in timeseries_features (flame on above 40% of the 90th-percentile signal, at least 2 s)": 1,
      "PSI-39 Raw Data, first sample time of each CIR test point against the Master Sheet of the data-summary spreadsheet": 1,
      "PSI-23 Raw Data 20006*_data.csv headers (fuel gas code)": 1,
-     "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)": 1
+     "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)": 1,
+     "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 1 sensor workbook (Epoch Time)": 1,
+     "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 2 sensor workbook (Epoch Time)": 1
     }
    }
   }

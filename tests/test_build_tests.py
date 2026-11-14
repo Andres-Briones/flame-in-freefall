@@ -413,6 +413,13 @@ def test_patch_fills_empty_cell(table):
     assert r.pressure_kpa == pytest.approx(102.3) and "filled_from_raw" in flags(r)
 
 
+def test_second_pressure_sensor_is_flagged_and_the_filled_value_kept(table):
+    for test_id, filled, patches in (("S1", 102.3, {"D19", "D37"}), ("S2", 102.6, {"D20", "D38"})):
+        r = row(table, "PSI-98", test_id)
+        assert r.pressure_kpa == pytest.approx(filled) and "conflicts_with_raw" in flags(r)
+        assert patches <= set(extra(r)["discrepancies"])
+
+
 def test_stale_patch_fails():
     from fif.pipeline import build_tests
 

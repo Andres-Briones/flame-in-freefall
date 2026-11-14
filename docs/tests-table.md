@@ -244,6 +244,11 @@ Spread rate and burned length:
 - Saffire-I and Saffire-III: from the PSI-98 and PSI-100 record findings (`value_from_report`, cited in
   `outcome_source`).
 
+Pressure of Saffire-I (patches D19, D20, D37, D38): the table has none. `pressure_kpa` is filled with the Saffire
+ambient-pressure sensor before ignition (median of the first 50 s; the igniter comes on at 60 s): 102.3 and
+102.6 kPa. The Cygnus cabin sensor reads 99.9 and 100.1 kPa over the same 50 s, about 2.5 kPa less. Neither
+sensor's accuracy is documented, so the filled value is kept and the rows carry `conflicts_with_raw`.
+
 Flagged `conflicts_with_report` without a change:
 
 - Saffire-I: the table swaps the length and width.

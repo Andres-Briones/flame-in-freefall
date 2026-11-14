@@ -244,8 +244,8 @@
    "evidence_value": "102.3",
    "action": "fill",
    "flag": "filled_from_raw",
-   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 102.3 kPa at the start of the burn.",
-   "evidence_source": "PSI-98 Raw Data, sample 1 sensor workbook (pressure at start)"
+   "evidence": "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.3 kPa (14.843 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D37).",
+   "evidence_source": "PSI-98 Raw Data 'Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)"
   },
   {
    "id": "D20",
@@ -257,8 +257,8 @@
    "evidence_value": "102.6",
    "action": "fill",
    "flag": "filled_from_raw",
-   "evidence": "The experiment table has no pressure. The flight pressure sensor reads 102.6 kPa at the start of the burn.",
-   "evidence_source": "PSI-98 Raw Data, sample 2 sensor workbook (pressure at start)"
+   "evidence": "The experiment table has no pressure. The Saffire ambient-pressure sensor reads 102.6 kPa (14.881 psia) before ignition: the median of the first 50 s of the 660 s record, in which the igniter comes on at 60 s. The Cygnus cabin sensor reads about 2.5 kPa less over the same 50 s (patch D38).",
+   "evidence_source": "PSI-98 Raw Data 'Saffire-I Sample 2 Sensor Data Complete TM graphs.xlsx', sheet Calibrated Data, column Ambient Pressure (PSIA)"
   },
   {
    "id": "D21",
@@ -467,6 +467,32 @@
    "flag": "conflicts_with_raw",
    "evidence": "The raw data headers of this day give the fuel bottle as H2/CH4 66.7/33.3, with no diluent, which agrees with the experiment table. This dataset nevertheless gives a fuel fraction of 0.45, following the science reports (30% H2 / 15% CH4 / 55% N2 at the burner; flag corrected_from_report). The recordings do not show where the nitrogen was added, so the two sources are both kept: 0.45 in fuel_fraction, the table's undiluted value in fuel_fraction_original.",
    "evidence_source": "PSI-23 Raw Data 20013*_data.csv headers (fuel gas code)"
+  },
+  {
+   "id": "D37",
+   "accession": "PSI-98",
+   "test_id": "S1",
+   "test_id_now": "S1",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "99.9",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 99.9 kPa (14.488 psi, 5 samples about 10 s apart) in the 50 s before ignition of sample 1, and between 99.9 and 100.2 kPa over the whole record (66 samples, median 100.1). The Saffire ambient-pressure sensor reads 102.3 kPa over the same 50 s, 2.4 kPa more: that is the value this dataset fills in (patch D19). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.",
+   "evidence_source": "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 1 sensor workbook (Epoch Time)"
+  },
+  {
+   "id": "D38",
+   "accession": "PSI-98",
+   "test_id": "S2",
+   "test_id_now": "S2",
+   "column": "pressure_kpa",
+   "table_value": null,
+   "evidence_value": "100.1",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "Two pressure sensors disagree. The Cygnus cabin sensor (PCM Press) reads 100.1 kPa (14.521 psi, 4 samples about 10 s apart) in the 50 s before ignition of sample 2, and 100.1 kPa over the whole record (15 samples). The Saffire ambient-pressure sensor reads 102.6 kPa over the same 50 s, 2.5 kPa more: that is the value this dataset fills in (patch D20). PSI documents the accuracy of neither sensor, so the filled value is kept and the Cygnus reading is given here.",
+   "evidence_source": "PSI-98 Raw Data 'Saffire-I Telemetry Data Good Process Version.xlsx', sheet CygnusPressureData, column PCM Press (psi), rows whose CygnusTimestamp falls in the record of the sample 2 sensor workbook (Epoch Time)"
   }
  ],
  "actions": {
@@ -858,7 +884,8 @@
    "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
    "patch_ids": [
     "D19",
-    "D31"
+    "D31",
+    "D37"
    ]
   },
   {
@@ -870,7 +897,8 @@
    "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
    "patch_ids": [
     "D19",
-    "D31"
+    "D31",
+    "D37"
    ]
   },
   {
@@ -882,7 +910,8 @@
    "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
    "patch_ids": [
     "D20",
-    "D23"
+    "D23",
+    "D38"
    ]
   },
   {
@@ -894,7 +923,8 @@
    "flags": "unit_corrected;value_from_report;conflicts_with_report;filled_from_raw;conflicts_with_raw",
    "patch_ids": [
     "D20",
-    "D23"
+    "D23",
+    "D38"
    ]
   },
   {

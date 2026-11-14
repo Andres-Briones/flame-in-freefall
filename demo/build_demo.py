@@ -40,6 +40,10 @@ def compact(row):
     return {k: v for k, v in row.items() if v is not None and v != ""}
 
 
+def slim(value):
+    return {k: v for k, v in value.items() if v is not None and v != []} if isinstance(value, dict) else value
+
+
 def trimmed():
     out = {name: load(name) for name in BASE + ["records", "models"]}
     out["tests"] = [compact({**r, "source_file": (r.get("source_file") or "").replace("data/raw/files/", "")})
@@ -49,7 +53,8 @@ def trimmed():
     rel = load("relevance")
     for entry in rel.values():
         entry.pop("sources", None)
-        entry["data"]["ranking"] = [{k: v for k, v in r.items() if k not in RANK_DROP}
+        # empty lists and dicts (no assumption to show) are left out: the view reads them as absent
+        entry["data"]["ranking"] = [{k: slim(v) for k, v in r.items() if k not in RANK_DROP and v not in ([], {})}
                                     for r in entry["data"]["ranking"]]
     out["relevance"] = rel
     out["files"] = file_catalogue()
