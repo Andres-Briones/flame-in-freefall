@@ -128,11 +128,14 @@ def _finding_ref(acc, i):
 def _card(acc):
     rec = records()[acc]
     t = table("tests")
+    psi_row = table("investigations").set_index("accession").loc[acc]
+    doi = psi_row["doi"] if isinstance(psi_row["doi"], str) and psi_row["doi"] else None
     return {
         "accession": acc, "acronym": rec["identity"]["acronym"], "title": rec["identity"]["title"],
         "one_line": rec["one_line"], "pillars": rec["fire_safety"]["pillars"], "fuel_phases": _phases(acc),
         "flight": _is_flight(rec), "n_test_rows": int((t["accession"] == acc).sum()),
         "n_findings": len(rec["findings"]), "page": f"docs/digest/{_page_name(acc)}",
+        "doi": doi, "doi_url": f"https://doi.org/{doi}" if doi else None, "psi_url": psi_row["source_url"],
     }
 
 
@@ -215,6 +218,9 @@ def get_investigation(accession, sections=None):
     data = {k: v for k, v in rec.items() if sections is None or k in sections or k == "accession"}
     data["card"] = _card(acc)
     api = table("investigations").set_index("accession").loc[acc]
+    if sections is None or "publication_dois" in sections:
+        dois = api["publication_dois"]
+        data["publication_dois"] = [d.strip() for d in dois.split(";") if d.strip()] if isinstance(dois, str) else []
     return _result(data, None, [{"ref": f"[{acc}]", "page": data["card"]["page"], "url": api["source_url"], "doi": api["doi"]}])
 
 

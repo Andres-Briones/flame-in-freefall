@@ -95,6 +95,10 @@ App.view({
     root.append(h('div', { class: 'stack', style: 'gap:6px' },
       h('h2', { text: `${id.acronym || info.acronym || acc} · ${acc}` }),
       h('p', { text: id.title || info.title || '' }),
+      (info.doi_url || info.psi_url) && h('p', { class: 'small muted' },
+        info.doi_url && ['Dataset DOI: ', h('a', { href: info.doi_url, target: '_blank', rel: 'noopener', text: info.doi })],
+        info.doi_url && info.psi_url && ' · ',
+        info.psi_url && h('a', { href: info.psi_url, target: '_blank', rel: 'noopener', text: 'Record at NASA PSI' })),
       h('div', { class: 'chips' }, (info.pillars || []).map(App.pillar), (info.fuel_phases || []).map(App.phase), App.chip(info.flight ? 'flight' : 'ground or analysis'))));
     root.append(h('div', { class: 'grid tiles' },
       h('div', { class: 'tile' }, h('b', { text: App.fmt(info.n_test_rows) }), h('span', { text: 'rows in the tests table' })),

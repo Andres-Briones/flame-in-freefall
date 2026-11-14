@@ -127,3 +127,12 @@ def test_values_changed_lists_originals_kept_under_a_source_column_name():
 def test_filter_tests_note_separates_remarks_from_doubts():
     note = api.filter_tests(accession="PSI-159")["notes"][0]
     assert "a correction or a doubt" in note and "only a remark" in note
+
+
+def test_every_investigation_card_carries_its_dataset_doi():
+    cards = api.search_investigations()["data"]
+    assert len(cards) == 24
+    for c in cards:
+        assert c["doi"].startswith("10.60555/") and c["doi_url"] == "https://doi.org/" + c["doi"] and c["psi_url"].startswith("https://")
+    one = api.get_investigation("PSI-25")["data"]
+    assert one["card"]["doi"] == "10.60555/4qc4-de67" and len(one["publication_dois"]) > 0

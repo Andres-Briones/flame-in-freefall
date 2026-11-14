@@ -15,7 +15,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 
 | File | Content |
 |---|---|
-| `investigations.json` | 24 cards: accession, acronym, title, one-line description, pillars, fuel phases, counts |
+| `investigations.json` | 24 cards: accession, acronym, title, one-line description, pillars, fuel phases, counts, dataset `doi`, `doi_url`, `psi_url` |
 | `records.json` | the 24 full knowledge records (question, physics with LaTeX equations, method, findings with quoted sources, limitations, open questions, dashboard hooks) |
 | `tests.json` | the per-test table, 2,177 rows (dictionary: `docs/tests-table.md`) |
 | `coverage.json` | test counts on the O2-pressure grid, for all fuels and per phase, with the reference atmospheres |

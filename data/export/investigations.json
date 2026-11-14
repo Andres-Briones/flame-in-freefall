@@ -14,7 +14,10 @@
   "flight": true,
   "n_test_rows": 327,
   "n_findings": 12,
-  "page": "docs/digest/PSI-10-acme-flame-design.md"
+  "page": "docs/digest/PSI-10-acme-flame-design.md",
+  "doi": "10.60555/w4zy-bt45",
+  "doi_url": "https://doi.org/10.60555/w4zy-bt45",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-10"
  },
  {
   "accession": "PSI-20",
@@ -31,7 +34,10 @@
   "flight": true,
   "n_test_rows": 18,
   "n_findings": 11,
-  "page": "docs/digest/PSI-20-acme-bre.md"
+  "page": "docs/digest/PSI-20-acme-bre.md",
+  "doi": "10.60555/vb93-3y72",
+  "doi_url": "https://doi.org/10.60555/vb93-3y72",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-20"
  },
  {
   "accession": "PSI-21",
@@ -47,7 +53,10 @@
   "flight": true,
   "n_test_rows": 32,
   "n_findings": 9,
-  "page": "docs/digest/PSI-21-acme-cld-flame.md"
+  "page": "docs/digest/PSI-21-acme-cld-flame.md",
+  "doi": "10.60555/23e1-9950",
+  "doi_url": "https://doi.org/10.60555/23e1-9950",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-21"
  },
  {
   "accession": "PSI-22",
@@ -63,7 +72,10 @@
   "flight": true,
   "n_test_rows": 20,
   "n_findings": 10,
-  "page": "docs/digest/PSI-22-acme-e-field-flames.md"
+  "page": "docs/digest/PSI-22-acme-e-field-flames.md",
+  "doi": "10.60555/se5a-8c73",
+  "doi_url": "https://doi.org/10.60555/se5a-8c73",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-22"
  },
  {
   "accession": "PSI-23",
@@ -81,7 +93,10 @@
   "flight": true,
   "n_test_rows": 18,
   "n_findings": 13,
-  "page": "docs/digest/PSI-23-acme-s-flame.md"
+  "page": "docs/digest/PSI-23-acme-s-flame.md",
+  "doi": "10.60555/k57n-p030",
+  "doi_url": "https://doi.org/10.60555/k57n-p030",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-23"
  },
  {
   "accession": "PSI-25",
@@ -98,7 +113,10 @@
   "flight": true,
   "n_test_rows": 129,
   "n_findings": 13,
-  "page": "docs/digest/PSI-25-bass-ii.md"
+  "page": "docs/digest/PSI-25-bass-ii.md",
+  "doi": "10.60555/4qc4-de67",
+  "doi_url": "https://doi.org/10.60555/4qc4-de67",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-25"
  },
  {
   "accession": "PSI-26",
@@ -116,7 +134,10 @@
   "flight": true,
   "n_test_rows": 121,
   "n_findings": 16,
-  "page": "docs/digest/PSI-26-bass.md"
+  "page": "docs/digest/PSI-26-bass.md",
+  "doi": "10.60555/58h4-dy80",
+  "doi_url": "https://doi.org/10.60555/58h4-dy80",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-26"
  },
  {
   "accession": "PSI-39",
@@ -134,7 +155,10 @@
   "flight": true,
   "n_test_rows": 227,
   "n_findings": 12,
-  "page": "docs/digest/PSI-39-cfi.md"
+  "page": "docs/digest/PSI-39-cfi.md",
+  "doi": "10.60555/m6pj-a914",
+  "doi_url": "https://doi.org/10.60555/m6pj-a914",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-39"
  },
  {
   "accession": "PSI-47",
@@ -150,7 +174,10 @@
   "flight": true,
   "n_test_rows": 2,
   "n_findings": 9,
-  "page": "docs/digest/PSI-47-daft-daft-2.md"
+  "page": "docs/digest/PSI-47-daft-daft-2.md",
+  "doi": "10.60555/ztgj-d202",
+  "doi_url": "https://doi.org/10.60555/ztgj-d202",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-47"
  },
  {
   "accession": "PSI-60",
@@ -167,7 +194,10 @@
   "flight": false,
   "n_test_rows": 0,
   "n_findings": 6,
-  "page": "docs/digest/None"
+  "page": "docs/digest/None",
+  "doi": "10.60555/mzjm-yv57",
+  "doi_url": "https://doi.org/10.60555/mzjm-yv57",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-60"
  },
  {
   "accession": "PSI-62",
@@ -184,7 +214,10 @@
   "flight": false,
   "n_test_rows": 0,
   "n_findings": 6,
-  "page": "docs/digest/None"
+  "page": "docs/digest/None",
+  "doi": "10.60555/e9xp-ex83",
+  "doi_url": "https://doi.org/10.60555/e9xp-ex83",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-62"
  },
  {
   "accession": "PSI-68",
@@ -202,7 +235,10 @@
   "flight": true,
   "n_test_rows": 8,
   "n_findings": 8,
-  "page": "docs/digest/PSI-68-flex-2.md"
+  "page": "docs/digest/PSI-68-flex-2.md",
+  "doi": "10.60555/byp8-h018",
+  "doi_url": "https://doi.org/10.60555/byp8-h018",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-68"
  },
  {
   "accession": "PSI-69",
@@ -220,7 +256,10 @@
   "flight": true,
   "n_test_rows": 274,
   "n_findings": 12,
-  "page": "docs/digest/PSI-69-flex.md"
+  "page": "docs/digest/PSI-69-flex.md",
+  "doi": "10.60555/mbq8-0451",
+  "doi_url": "https://doi.org/10.60555/mbq8-0451",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-69"
  },
  {
   "accession": "PSI-98",
@@ -238,7 +277,10 @@
   "flight": true,
   "n_test_rows": 2,
   "n_findings": 11,
-  "page": "docs/digest/PSI-98-saffire-i.md"
+  "page": "docs/digest/PSI-98-saffire-i.md",
+  "doi": "10.60555/0t15-1z43",
+  "doi_url": "https://doi.org/10.60555/0t15-1z43",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-98"
  },
  {
   "accession": "PSI-99",
@@ -255,7 +297,10 @@
   "flight": true,
   "n_test_rows": 9,
   "n_findings": 11,
-  "page": "docs/digest/PSI-99-saffire-ii.md"
+  "page": "docs/digest/PSI-99-saffire-ii.md",
+  "doi": "10.60555/2chp-m469",
+  "doi_url": "https://doi.org/10.60555/2chp-m469",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-99"
  },
  {
   "accession": "PSI-100",
@@ -273,7 +318,10 @@
   "flight": true,
   "n_test_rows": 2,
   "n_findings": 10,
-  "page": "docs/digest/PSI-100-saffire-iii.md"
+  "page": "docs/digest/PSI-100-saffire-iii.md",
+  "doi": "10.60555/040q-4h36",
+  "doi_url": "https://doi.org/10.60555/040q-4h36",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-100"
  },
  {
   "accession": "PSI-101",
@@ -289,7 +337,10 @@
   "flight": true,
   "n_test_rows": 109,
   "n_findings": 13,
-  "page": "docs/digest/PSI-101-same-r.md"
+  "page": "docs/digest/PSI-101-same-r.md",
+  "doi": "10.60555/2np7-jv14",
+  "doi_url": "https://doi.org/10.60555/2np7-jv14",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-101"
  },
  {
   "accession": "PSI-102",
@@ -307,7 +358,10 @@
   "flight": true,
   "n_test_rows": 8,
   "n_findings": 13,
-  "page": "docs/digest/PSI-102-same.md"
+  "page": "docs/digest/PSI-102-same.md",
+  "doi": "10.60555/gd4k-8h62",
+  "doi_url": "https://doi.org/10.60555/gd4k-8h62",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-102"
  },
  {
   "accession": "PSI-106",
@@ -323,7 +377,10 @@
   "flight": true,
   "n_test_rows": 12,
   "n_findings": 8,
-  "page": "docs/digest/PSI-106-slice.md"
+  "page": "docs/digest/PSI-106-slice.md",
+  "doi": "10.60555/pm12-rg61",
+  "doi_url": "https://doi.org/10.60555/pm12-rg61",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-106"
  },
  {
   "accession": "PSI-107",
@@ -340,7 +397,10 @@
   "flight": true,
   "n_test_rows": 526,
   "n_findings": 12,
-  "page": "docs/digest/PSI-107-spice.md"
+  "page": "docs/digest/PSI-107-spice.md",
+  "doi": "10.60555/9kbh-e962",
+  "doi_url": "https://doi.org/10.60555/9kbh-e962",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-107"
  },
  {
   "accession": "PSI-115",
@@ -357,7 +417,10 @@
   "flight": false,
   "n_test_rows": 0,
   "n_findings": 10,
-  "page": "docs/digest/None"
+  "page": "docs/digest/None",
+  "doi": "10.60555/q0v5-1v28",
+  "doi_url": "https://doi.org/10.60555/q0v5-1v28",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-115"
  },
  {
   "accession": "PSI-117",
@@ -374,7 +437,10 @@
   "flight": false,
   "n_test_rows": 0,
   "n_findings": 12,
-  "page": "docs/digest/None"
+  "page": "docs/digest/None",
+  "doi": "10.60555/gz0q-b577",
+  "doi_url": "https://doi.org/10.60555/gz0q-b577",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-117"
  },
  {
   "accession": "PSI-142",
@@ -390,7 +456,10 @@
   "flight": false,
   "n_test_rows": 0,
   "n_findings": 9,
-  "page": "docs/digest/None"
+  "page": "docs/digest/None",
+  "doi": "10.60555/80qf-vj95",
+  "doi_url": "https://doi.org/10.60555/80qf-vj95",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-142"
  },
  {
   "accession": "PSI-159",
@@ -408,6 +477,9 @@
   "flight": true,
   "n_test_rows": 333,
   "n_findings": 13,
-  "page": "docs/digest/PSI-159-acme-cfi-g.md"
+  "page": "docs/digest/PSI-159-acme-cfi-g.md",
+  "doi": "10.60555/cyt1-kh64",
+  "doi_url": "https://doi.org/10.60555/cyt1-kh64",
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/studies/PSI-159"
  }
 ]
