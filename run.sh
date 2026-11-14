@@ -6,18 +6,22 @@
 #   ./run.sh stop | restart | logs | status
 #
 # Env: FIF_PORT (5187), FIF_BIND (0.0.0.0; use 127.0.0.1 behind nginx/Caddy),
-#      FIF_NETWORK (host; "bridge" publishes the port through Docker instead).
+#      FIF_NETWORK (host; "bridge" publishes the port through Docker instead),
+#      FIF_DOMAIN (unset; a DNS name of this host adds HTTPS on 443 through Caddy, host networking only).
 set -euo pipefail
 cd "$(dirname "$0")"
 
 export FIF_PORT="${FIF_PORT:-5187}"
 export FIF_BIND="${FIF_BIND:-0.0.0.0}"
 # Host networking by default (see demo/compose.host.yml); FIF_NETWORK=bridge uses published ports instead.
+files=(-f docker-compose.yml)
 if [ "${FIF_NETWORK:-host}" = host ]; then
-    compose() { docker compose -f docker-compose.yml -f demo/compose.host.yml "$@"; }
-else
-    compose() { docker compose "$@"; }
+    files+=(-f demo/compose.host.yml)
+    [ -z "${FIF_DOMAIN:-}" ] || files+=(-f demo/compose.https.yml)
+elif [ -n "${FIF_DOMAIN:-}" ]; then
+    echo "FIF_DOMAIN needs host networking (unset FIF_NETWORK)"; exit 1
 fi
+compose() { docker compose "${files[@]}" "$@"; }
 
 port_owner() {
     command -v ss >/dev/null || return 0
@@ -37,6 +41,7 @@ start() {
     for _ in $(seq 60); do
         if curl -fsS "http://127.0.0.1:$FIF_PORT/api/health" >/dev/null 2>&1; then
             echo; echo "Up: http://$(hostname -f 2>/dev/null || hostname):$FIF_PORT  (bound to $FIF_BIND)"
+            [ -z "${FIF_DOMAIN:-}" ] || echo "HTTPS: https://$FIF_DOMAIN  (certificate takes a few seconds on first start; ./run.sh logs caddy)"
             return 0
         fi
         echo -n .; sleep 2
@@ -49,7 +54,7 @@ case "${1:-start}" in
     update)  git pull --ff-only && start ;;
     stop)    compose down ;;
     restart) compose down && start ;;
-    logs)    compose logs -f demo ;;
+    logs)    compose logs -f "${2:-demo}" ;;
     status)  compose ps; curl -fsS "http://127.0.0.1:$FIF_PORT/api/health" && echo ;;
-    *)       sed -n 2,8p "$0"; exit 1 ;;
+    *)       sed -n 2,9p "$0"; exit 1 ;;
 esac

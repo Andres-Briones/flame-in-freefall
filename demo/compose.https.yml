@@ -1,0 +1,12 @@
+# Used by run.sh when FIF_DOMAIN is set: Caddy on the host's ports 80/443 obtains a Let's Encrypt certificate for
+# that name and forwards to the demo server. Browsers that force HTTPS on a domain cannot open the plain-HTTP port.
+services:
+  caddy:
+    image: caddy:2
+    network_mode: host
+    command: caddy reverse-proxy --from "${FIF_DOMAIN}" --to "127.0.0.1:${FIF_PORT:-8000}"
+    volumes:
+      - caddy_data:/data
+    restart: unless-stopped
+volumes:
+  caddy_data:
