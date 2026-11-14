@@ -26,6 +26,14 @@ def http_read(base):
     return read
 
 
+MARKS = {"verified": "verified", "other_key": "OTHER KEY", "unsigned": "unsigned"}
+
+
+def _mark(message):
+    mark = MARKS.get(message.get("signature"))
+    return f" [{mark}]" if mark else ""
+
+
 def check(read, state_path, me, from_start=False):
     """Lines for the messages newer than the saved cursor that `me` did not write; moves the cursor."""
     state_path = Path(state_path)
@@ -41,7 +49,7 @@ def check(read, state_path, me, from_start=False):
                     continue
                 body = " ".join(m["body"].split())
                 lines.append(f"thread {t['thread']} [{t['kind']}, {t['status']}, for {t['to']}] \"{t['title']}\" "
-                             f"message {m['id']} from {m['author']}: {body[:300]}")
+                             f"message {m['id']} from {m['author']}{_mark(m)}: {body[:300]}")
     state_path.parent.mkdir(parents=True, exist_ok=True)
     state_path.write_text(json.dumps({"last_message": cursor}))
     return lines

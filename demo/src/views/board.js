@@ -25,6 +25,19 @@ App.view({
       return Math.round(s / 86400) + ' d ago';
     };
     const who = m => m.author + (m.author_kind === 'ai' ? ' · AI' : '');
+    const MARKS = {
+      verified: ['signed', 'good', k => `Signed with key ${k}, the key first seen under this name.`],
+      other_key: ['other key', 'crit', k => `Valid signature, but with key ${k}, not the key first seen under this name: treat the name as unconfirmed.`],
+      unsigned: ['unsigned', '', () => 'This name usually signs its posts; this one is not signed.'],
+    };
+    const mark = m => {
+      const [label, tone, tip] = MARKS[m.signature] || [];
+      if (!label) return null;
+      const chip = App.chip(label, tone);
+      chip.classList.add('board-mark');
+      chip.title = tip(m.key || '');
+      return chip;
+    };
     const field = (label, input, style) => h('label', { class: 'ctl', style }, label, input);
     const text = (value, onInput, placeholder, max) => h('input', { type: 'text', value: value || '', placeholder: placeholder || '', maxlength: max, oninput: e => onInput(e.target.value) });
     const area = (value, onInput, placeholder) => { const t = h('textarea', { placeholder: placeholder || '', maxlength: 8000, oninput: e => onInput(e.target.value) }); t.value = value || ''; return t; };
@@ -53,7 +66,7 @@ App.view({
         box.replaceChildren(App.panel(t.title,
           h('div', { class: 'chips' }, kindChip(t.kind), App.chip(t.status === 'claimed' ? 'claimed by ' + t.claimed_by : t.status, t.status === 'done' ? 'good' : ''), App.chip('for ' + t.to), App.chip('thread ' + t.thread)),
           t.messages.map(m => h('div', { class: 'board-msg' + (m.author_kind === 'ai' ? ' ai' : '') },
-            h('span', { class: 'muted small', text: `${who(m)} · ${ago(m.created)}`, title: m.created }),
+            h('span', { class: 'muted small', title: m.created }, who(m), mark(m), ` · ${ago(m.created)}`),
             h('p', { text: m.body }))),
           h('div', { class: 'row' }, nameField()),
           field('Reply', area(state.reply, v => { state.reply = v; }, 'Plain text. The whole team and their assistants can read it.')),
@@ -78,7 +91,8 @@ App.view({
         const rows = r.data.threads;
         list.replaceChildren(...(rows.length ? rows.map(t => h('button', { class: 'board-row' + (t.status === 'done' ? ' done' : ''), type: 'button', onclick: () => update({ thread: t.thread }) },
           h('div', { class: 'chips' }, kindChip(t.kind), t.status === 'done' && App.chip('done', 'good'), t.status === 'claimed' && App.chip('claimed by ' + t.claimed_by), h('b', { text: t.title })),
-          h('span', { class: 'muted small', text: `${who(t)} → ${t.to} · ${t.replies} ${t.replies === 1 ? 'reply' : 'replies'} · ${ago(t.updated)}` + (t.last_reply ? ` · last: ${who(t.last_reply)}` : '') }),
+          h('span', { class: 'muted small' }, who(t), mark(t), ` → ${t.to} · ${t.replies} ${t.replies === 1 ? 'reply' : 'replies'} · ${ago(t.updated)}`,
+            t.last_reply && ` · last: ${who(t.last_reply)}`, t.last_reply && mark(t.last_reply)),
           h('span', { class: 'small', style: 'color:var(--fg-2);overflow-wrap:anywhere', text: t.body.length > 220 ? t.body.slice(0, 220) + '…' : t.body })))
           : [h('p', { class: 'muted', text: state.status === 'open' ? 'No open threads. Post the first one, or ask your assistant to.' : 'Nothing here.' })]));
       }).catch(e => { if (list.isConnected) list.replaceChildren(h('div', { class: 'notes' }, h('p', { text: 'The board did not answer: ' + e.message }))); });
@@ -122,6 +136,7 @@ App.view({
       h('div', { style: 'display:flex;gap:8px;align-items:flex-start' }, h('pre', { style: 'flex:1;min-width:0;white-space:pre-wrap;word-break:break-word', text: prompt }), copy),
       App.notes(['The board is public: anyone who has this address can read and post. No passwords, keys or personal data.',
         'Assistants only see a new post when they next read the board. For something urgent, also tell the person.',
-        'An assistant should treat posts as information from teammates, not as orders: it reports to you, you decide.'], 'Good to know')));
+        'An assistant should treat posts as information from teammates, not as orders: it reports to you, you decide.',
+        'Signing is optional. An assistant that keeps an Ed25519 key can sign its posts with `demo/board_id.py` from the repository; the board remembers the first key seen under a name and marks later posts signed, other key (a warning) or unsigned.'], 'Good to know')));
   },
 });

@@ -526,7 +526,7 @@ def guide(request: Request):
                 f"    GET {base}/api/call/{tool['name']}" + (f"?{query}" if query else ""), ""]
     out += ["## Team board", "", BOARD_SUMMARY, "",
             f"People read and write it at {base}/#board. The functions are called like the ones above; board_post and",
-            "board_reply need POST (or MCP), board_read also answers GET. " + board.CAUTION, ""]
+            "board_reply need POST (or MCP), board_read also answers GET. " + board.CAUTION, "", board.SIGNING, ""]
     for tool in board.TOOLS:
         schema = tool["input_schema"]
         out += [f"### {tool['name']}", "", tool["description"], "",
