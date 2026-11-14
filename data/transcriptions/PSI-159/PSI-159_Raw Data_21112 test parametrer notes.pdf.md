@@ -1,0 +1,619 @@
+<!-- visual transcription of a scanned PDF, read from page images by an AI model on 2026-11-14; not checked by a human -->
+
+## page 1
+
+(printed parameter table; one printed value column, other columns blank unless noted)
+
+testpointName: 21112A1  [handwritten] columns headed "A1", "A2", "A3", "A4" -> "A5" [struck: [illegible]] "A6"; above the A4-A6 columns: "same flows" with arrows down to A4 and A6
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 1000
+igniterIgnitionPowerV: 4
+igniterIgnitionDurationMs: 3000
+igniterDelayBeforeRetractMs: 1800
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5  [handwritten] A1: 7[?] (struck through[?]); A2: 6.5; A3: 6.75 (overwritten); arrows -> across A4, A5, A6
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150  [handwritten] A4: 210; A5: [struck: [illegible]] 150[?]; A6: 270
+fuelFlowIgnitionDeltaMs: 2000  [handwritten] A2: 0, with arrows -> across A3 to A6
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.076  [handwritten] A2: 0.152; A3: 0.114; A4: 0.095; A5: 0.190; A6: 0.095
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.076  [handwritten] A2: 0.152; A3: 0.114; A4: 0.095; A5: 0.190; A6: 0.095
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120  [handwritten] A4: 180; A5: [struck: [illegible]] 120[?]; A6: 240
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 2
+
+testpointName: 21112B1
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 1000
+igniterIgnitionPowerV: 4
+igniterIgnitionDurationMs: 3000
+igniterDelayBeforeRetractMs: 1800
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.057
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.057
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 3
+
+testpointName: 21112C1  [handwritten] columns headed "C6" (left of the printed value), "C1", "C2", "C3", "C4", "C5" (overwritten); a bracket over the top runs from the C6 column to the C5 column
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3  [handwritten] C6: 2.55; C2: 2.8; C3: 2.6; C4: 2.4; C5: 2.5
+igniterPreheatDurationMs: 10000
+igniterIgnitionPowerV: 3.2  [handwritten] C6: 2.75; C2: 3.0; C3: 2.8[?]; C4: 2.6; C5: 2.7
+igniterIgnitionDurationMs: 10000
+igniterDelayBeforeRetractMs: 18000  [handwritten] C6: 8800; C1: 8800, with arrows -> across C2 to C5
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5  [handwritten] C6: 6.75; C1: 6.75, with arrows -> across C2 to C5
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150  [handwritten] C6: 55; C5: 100
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.076  [handwritten] C6: 0.048; C1: 0.048 -> (brackets > carrying it across C3, C4, C5)
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.076  [handwritten] C6: 0.048; C1: 0.048 ->
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120  [handwritten] C6: 30; C5: 70
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 4
+
+testpointName: 21112D1
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 10000
+igniterIgnitionPowerV: 3.2
+igniterIgnitionDurationMs: 10000
+igniterDelayBeforeRetractMs: 18000
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.057
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.057
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 5
+
+testpointName: 21112F1  [handwritten] columns headed "F5", "F4" (left of the printed value) and "F1", "F2", "F3" (right of it)
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 1000  [handwritten] F4: 10000[?] with arrow < into F5; F2: 10000 with bracket > into F3
+igniterIgnitionPowerV: 4  [handwritten] F4: 4.1; F2: 4.1
+igniterIgnitionDurationMs: 3000
+igniterDelayBeforeRetractMs: 1800
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5  [handwritten] F5: <- ; F4: 6.75; F1: 6.75 -> ->
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE  [handwritten] F1: [struck: [illegible]]
+flowTimeoutSec: 150  [handwritten] F5: < ; F4: <- ; F1: 270 -> ; F3: 150
+fuelFlowIgnitionDeltaMs: 500  [handwritten] F4: 0; F2: 0 ->
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.076  [handwritten] F5: 0.038; F4: 0.057; F1: 0.095; (bracket > in F2); F3: 0.076
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.076  [handwritten] F5: 0.038; F4: 0.057; F1: 0.095; F3: 0.076
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120  [handwritten] F5: <- ; F4: [struck: [illegible]]; F1: 240 -> ; F3: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 6
+
+testpointName: 21112G1
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 1000
+igniterIgnitionPowerV: 4
+igniterIgnitionDurationMs: 3000
+igniterDelayBeforeRetractMs: 1800
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.057
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.057
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 7
+
+testpointName: 21112H1  [handwritten] columns headed "H3", "H2" (left of the printed value) and "H1" (right of it)
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3  [handwritten] H3: 2.6; H2: 2.8
+igniterPreheatDurationMs: 10000  [handwritten] H1: 10000
+igniterIgnitionPowerV: 3.2  [handwritten] H3: 2.8; H2: 3
+igniterIgnitionDurationMs: 10000
+igniterDelayBeforeRetractMs: 18000  [handwritten] H3: <- ; H2: 8800; H1: 8800
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5  [handwritten] H3: <- ; H2: 6.75; H1: 6.75
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.076  [handwritten] H2: 0.048 (bracket < into H3); H1: 0.048
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.076  [handwritten] H2: 0.048; H1: 0.048
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
+
+## page 8
+
+testpointName: 21112J1
+dataCameraPreIgnitionExposureUs: 1000000
+dataCameraTestExposureUs: 100000
+analogCameraShutter: 2
+useIntensifiedCamera: TRUE
+intensifierIgnitionGain: 20000
+intensifierTestGain: 60000
+preIgnitionImageTimeSec: 0
+postFlameImagingTimeSec: 5
+useDataCameraAutoGain: FALSE
+autoGainTolerancePercent: 5
+autoGainMaxDb: 33
+autoGainMinDb: 0
+autoGainOutliers: 0
+autoGainRatePercent: 100
+autoGainTargetPercent: 50
+rampDataCameraGain: FALSE
+dataCameraGain1dB: 0
+dataCameraGain2dB: 0
+dataCameraGain3dB: 0
+dataCameraHoldTime1Sec: 0
+dataCameraHoldTime2Sec: 0
+dataCameraRamp1to2TimeSec: 5
+dataCameraRamp2to3TimeSec: 5
+dataCameraManualGain: 33
+useBracketedExposures: FALSE
+bracketingImagesPerExposure: 1
+bracketingNumberOfExposures: 4
+bracketingExposureStartUsec: 5000
+bracketingExposureMultiplierTimes100: 1000
+igniterStartPosition: 2170
+igniterEndPosition: 2290
+igniterVelocityCountsPerSec: 80
+igniterPreheatPowerV: 3
+igniterPreheatDurationMs: 10000
+igniterIgnitionPowerV: 3.2
+igniterIgnitionDurationMs: 10000
+igniterDelayBeforeRetractMs: 18000
+igniterRetractVelocityCountsPerSec: 500
+pmt1Gain: 5.5
+pmt2Gain: 5.5
+pmt3Gain: 5.5
+fiberIgnitionPosition: 0
+fiberTestPosition: 0
+fiberMoveDuringTest: FALSE
+fiberSegmentDistance: 100
+fiberVelocity: 3000
+fiberHoldDurationSec: 1
+fiberCycles: 100
+useFoma: TRUE
+flowTimeoutSec: 150
+fuelFlowIgnitionDeltaMs: 0
+nitrogenFlowIgnitionDeltaMs: 0
+stabilizationTime1Sec: 0
+stabilizationTime2Sec: 5
+fuelIgnitionFlowSlpm: 0.057
+nitrogenIgnitionFlowSlpm: 0.000
+fuelTestFlow1Slpm: 0.057
+nitrogenTestFlow1Slpm: 0.000
+fuelTestFlow2Slpm: 0.000
+nitrogenTestFlow2Slpm: 0.000
+fuelTestFlow3Slpm: 0.000
+nitrogenTestFlow3Slpm: 0.000
+constantFlowTime1Sec: 120
+constantFlowTime2Sec: 0
+constantFlowTime3Sec: 0
+ignitionToTestRampTimeSec: 0
+testFlowRamp1To2TimeSec: 0
+testFlowRamp2To3TimeSec: 0
+postExtinctionDelaySec: 3
+postExtinctionFlowChangeFuelPercent: 0
+postExtinctionFlowChangeNitrogenPercent: 0
+postExtinctionFlowChangeRampTimeSec: 0
+postExtinctionFlowChangeHoldSec: 0
