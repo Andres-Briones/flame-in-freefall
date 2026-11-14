@@ -112,6 +112,30 @@ def test_relevance_unknown_conditions_never_beat_measured_ones():
             assert unknown and min(unknown) >= max(known) and min(unknown) >= api.UNKNOWN_STEPS
 
 
+def test_relevance_nearest_test_is_of_the_requested_phase():
+    for phase in api.TRANSFER:
+        for row in api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase=phase)["data"]["ranking"]:
+            near, other = row["nearest_test"], row["nearest_test_other_phase"]
+            assert near is None or (near["fuel_phase"] == phase and row["phase_match"] and other is None)
+            assert other is None or other["fuel_phase"] != phase
+            assert row["phase_match"] == (phase in row["fuel_phases"])
+
+
+def test_relevance_says_when_the_top_rows_did_not_test_the_requested_phase():
+    out = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase="solid")
+    top = out["data"]["ranking"][0]
+    assert top["accession"] == "PSI-69" and not top["phase_match"] and top["nearest_test"] is None
+    assert top["nearest_test_other_phase"]["fuel_phase"] == "liquid"
+    assert any(n.startswith("Phase:") and "PSI-69" in n for n in out["notes"])
+    closest = out["data"]["closest_same_phase_test"]
+    assert closest["fuel_phase"] == "solid" and closest["x_o2_ambient"] < 0.23 and closest["distance_to_scenario"] > 3
+    assert closest["accession"] == out["data"]["closest_same_phase"]
+
+    liquid = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase="liquid")
+    assert liquid["data"]["ranking"][0]["nearest_test"]["fuel_phase"] == "liquid"
+    assert not any(n.startswith("Phase:") for n in liquid["notes"])
+
+
 def test_relevance_rejects_unknown_choices():
     for kwargs in ({"pillar": "foo"}, {"fuel_phase": "aerosol"}, {"fuel_phase": None}, {"scenario": "venus"}):
         with pytest.raises(ValueError, match="must be one of"):

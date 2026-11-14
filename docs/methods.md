@@ -84,6 +84,14 @@ $$
   therefore mean "the stated range contains the point" (BRE, FLEX-2), not "a test was run there".
 - The weights are a judgement. Jittering them by 20% keeps FLEX first for a Moon habitat every time, but the
   set of the top five changes in about half the draws: read the ranking as tiers, not as an order.
+- `fuel_phase` weights the ranking through the material component; it does not filter it. A droplet or gas-flame
+  investigation run at the scenario's atmosphere can therefore rank above every solid-fuel one (FLEX for a Moon
+  habitat). Each row says so: `phase_match` is false when the investigation has no fuel of that phase, and
+  `nearest_test` is always a test of the requested phase, or null. For an investigation without such a test, the
+  test its conditions score and distance come from is in `nearest_test_other_phase`. `closest_same_phase_test`
+  gives the nearest test of the requested phase over all investigations, with its distance: use it, not the top
+  row, to answer "what is the nearest real test for this material". A `Phase:` note is added when the top of
+  the ranking has no test of the requested phase.
 - `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`.
 - Eight cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere
   (20.5-21.5% O2, 98-103 kPa). Each result lists them in `conditions_assumed_cabin_air`.

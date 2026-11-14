@@ -476,7 +476,9 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
     """Rank the investigations by how much they tell us about a fire-safety scenario.
 
     scenario: a name in SCENARIOS or a dict with x_o2, pressure_kpa and optionally flow_cm_s, gravity_g.
-    fuel_phase: phase of the hazard ("solid" for cables, fabrics and plastics; "liquid"; "gas").
+    fuel_phase: phase of the hazard ("solid" for cables, fabrics and plastics; "liquid"; "gas"). It weights the
+        ranking (the material component) and does not filter it: `phase_match` marks the investigations that tested
+        that phase, and `nearest_test` is always a test of that phase or None.
     pillar: "prevention", "detection" or "suppression" (None = any).
     """
     if fuel_phase not in TRANSFER:
@@ -513,11 +515,14 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
             comp["gravity"] = min(1.0, _gravity_comparisons().get(acc, 0) / 3)
         score = 100 * sum(weights[k] * comp[k] for k in weights) / total
         findings = [(i, f) for i, f in enumerate(rec["findings"], 1) if f.get("confidence") == "high"][:2]
+        nearest = cond["nearest_test"]
+        same = nearest is not None and nearest["fuel_phase"] == fuel_phase
         ranked.append({
             "accession": acc, "acronym": rec["identity"]["acronym"], "score": round(score, 1),
             "components": {k: round(v, 2) for k, v in comp.items()},
             "distance_to_scenario": cond["distance"], "distance_per_dimension": {k: round(v, 2) for k, v in cond["per_dimension"].items()},
-            "nearest_test": cond["nearest_test"], "conditions_unknown": cond["unknown"],
+            "phase_match": fuel_phase in _phases(acc), "nearest_test": nearest if same else None,
+            "nearest_test_other_phase": None if same else nearest, "conditions_unknown": cond["unknown"],
             "conditions_from_range": cond["from_range"], "conditions_assumed_cabin_air": cond["assumed"],
             "pillars": rec["fire_safety"]["pillars"], "fuel_phases": _phases(acc), "one_line": rec["one_line"],
             "key_findings": [{"ref": _finding_ref(acc, i), "claim": f["claim"]} for i, f in findings],
@@ -538,13 +543,28 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
     if partial_g:
         notes.append(f"No PSI combustion test was run at partial gravity ({sc['gravity_g']} g). The gravity component "
                      "only rewards investigations that compare microgravity with 1 g, which brackets partial gravity.")
+    notes.append(f"fuel_phase weights the ranking, it does not filter it: an investigation on another fuel phase keeps "
+                 f"its place with a lower material component and `phase_match` false. `nearest_test` is always a "
+                 f"{fuel_phase}-fuel test (null when the investigation ran none); the test of another phase that its "
+                 f"conditions score and distance come from is in `nearest_test_other_phase`.")
+    first = next((i for i, r in enumerate(ranked) if r["nearest_test"]), None)
+    if first:
+        r = ranked[first]
+        notes.append(f"Phase: the top {first} of this ranking ({', '.join(x['accession'] for x in ranked[:first])}) "
+                     f"ran no {fuel_phase}-fuel test; they rank on conditions tested with another fuel phase. The "
+                     f"best-ranked investigation with a {fuel_phase}-fuel test is {r['accession']}, rank {first + 1}, "
+                     f"{r['distance_to_scenario']} scale steps from the scenario.")
+    elif first is None:
+        notes.append(f"Phase: no investigation has a {fuel_phase}-fuel test in the table.")
     if closest and closest["distance_to_scenario"] > 1:
         n = closest["nearest_test"]
         notes.append(f"Gap: the closest {fuel_phase}-fuel test to this scenario is {closest['accession']} {n['test_id']} "
                      f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}, {n['pressure_kpa']:.0f} kPa), "
                      f"{closest['distance_to_scenario']} scale steps away. Conclusions for this scenario are extrapolations.")
     data = {"scenario": {"name": name, **sc, "fuel_phase": fuel_phase, "pillar": pillar}, "weights": weights,
-            "ranking": ranked[:top], "closest_same_phase": closest and closest["accession"]}
+            "ranking": ranked[:top], "closest_same_phase": closest and closest["accession"],
+            "closest_same_phase_test": closest and {"accession": closest["accession"], **closest["nearest_test"],
+                                                    "distance_to_scenario": closest["distance_to_scenario"]}}
     chart = {"type": "stacked-bar", "x": "components", "y": "acronym", "sort": "score"}
     sources = [{"ref": f"[{r['accession']}]"} for r in ranked[:top]]
     return _result(data, chart, sources, notes)

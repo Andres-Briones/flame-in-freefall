@@ -120,12 +120,12 @@
 
     function showRow(r) {
       if (!r) return;
-      const i = App.inv(r.accession), t = r.nearest_test || {};
+      const i = App.inv(r.accession), other = !r.nearest_test && r.nearest_test_other_phase, t = r.nearest_test || other || {};
       const flagList = (title, arr, kind) => arr && arr.length ? h('div', { class: 'chips' }, h('span', { class: 'small muted', text: title }), arr.map(x => App.chip(x, kind))) : null;
       App.drawer(`${i.acronym}: score ${App.fmt(r.score, 1)}`, h('div', { class: 'stack' },
         h('p', { text: r.one_line || i.one_line || '' }),
         h('dl', { class: 'kv' }, comps.flatMap(k => [h('dt', { text: k }), h('dd', { class: 'num', text: `${App.fmt(r.components[k], 2)} × weight ${d.weights[k]}` })])),
-        h('h4', { text: 'Nearest test to the scenario' }),
+        h('h4', { text: other ? `Nearest test to the scenario (${other.fuel_phase} fuel: no ${ph}-fuel test in this investigation)` : 'Nearest test to the scenario' }),
         h('dl', { class: 'kv' },
           h('dt', { text: 'test' }), h('dd', { text: t.test_id || '–' }),
           h('dt', { text: 'fuel' }), h('dd', { text: `${t.fuel || '–'} (${t.fuel_phase || '–'})` }),
@@ -149,7 +149,8 @@
         { key: 'accession', label: 'Investigation', fmt: v => App.name(v) },
         { key: 'score', label: 'Score', num: true, fmt: v => App.fmt(v, 1) },
         { key: 'distance_to_scenario', label: 'Distance (steps)', num: true, fmt: v => App.fmt(v, 2) },
-        { key: 'nearest_test', label: 'Nearest test', sortable: false, fmt: t => t ? `${t.fuel || '?'} · ${App.pct(t.x_o2_ambient)} O2 · ${App.fmt(t.pressure_kpa, 0)} kPa` : '–' },
+        { key: 'nearest_test', label: 'Nearest test', sortable: false, fmt: (t, r) => { const o = t || r.nearest_test_other_phase;
+          return o ? `${o.fuel || '?'}${t ? '' : ` (${o.fuel_phase}, not ${ph})`} · ${App.pct(o.x_o2_ambient)} O2 · ${App.fmt(o.pressure_kpa, 0)} kPa` : '–'; } },
         { key: 'flags', label: 'Assumptions', sortable: false, fmt: (_, r) => h('div', { class: 'chips' },
           (r.conditions_unknown || []).length ? App.chip('not recorded', 'crit') : null,
           (r.conditions_from_range || []).length ? App.chip('from a range', 'warn') : null,
