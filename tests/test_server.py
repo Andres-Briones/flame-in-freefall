@@ -119,3 +119,46 @@ def test_timeseries_needs_the_cfi_chamber_file_too():
     point = feats.loc[feats["accession"] == "PSI-39", "test_point"].iloc[0]
     names = [name for _, name in server.timeseries_files(point)]
     assert any("_Radiometer_Readings" in n for n in names) and any("_Chamber_Readings" in n for n in names)
+
+
+def test_get_call_reads_typed_arguments_from_the_query(client):
+    posted = client.post("/api/call/filter_tests", json={"accession": "PSI-25", "x_o2": [0.18, 0.21], "limit": 5}).json()
+    fetched = client.get("/api/call/filter_tests", params={"accession": "PSI-25", "x_o2": "[0.18,0.21]", "limit": "5"})
+    assert fetched.status_code == 200 and fetched.json() == posted
+    as_json = client.get("/api/call/filter_tests", params={"args": json.dumps({"accession": "PSI-25", "x_o2": [0.18, 0.21], "limit": 5})})
+    assert as_json.json() == posted
+    assert client.get("/api/call/filter_tests", params={"limit": "many"}).status_code == 400
+    assert client.get("/api/call/nope").status_code == 404
+
+
+def test_guide_tools_and_openapi_cover_every_function(client):
+    text = client.get("/llms.txt").text
+    spec = client.get("/openapi.json").json()
+    listed = {t["name"] for t in client.get("/api/tools").json()["tools"]}
+    assert listed == set(server.api.FUNCTIONS)
+    for name in server.api.FUNCTIONS:
+        assert f"### {name}" in text and f"/api/call/{name}" in spec["paths"]
+    assert "http://testserver/api/call/" in text
+
+
+def test_every_guide_example_runs(client):
+    for tool in server.TOOLS:
+        if tool["name"] in ("timeseries", "predict"):  # need raw files or model-specific inputs
+            continue
+        r = client.post(f"/api/call/{tool['name']}", json=server._example(tool))
+        assert r.status_code == 200, (tool["name"], r.text[:200])
+
+
+def test_mcp_lists_and_calls_tools(client):
+    def rpc(method, params=None, id=1):
+        return client.post("/mcp", json={"jsonrpc": "2.0", "id": id, "method": method, "params": params or {}}).json()
+
+    init = rpc("initialize", {"protocolVersion": "2025-03-26", "capabilities": {}, "clientInfo": {"name": "t", "version": "0"}})
+    assert init["result"]["protocolVersion"] == "2025-03-26" and "tools" in init["result"]["capabilities"]
+    assert client.post("/mcp", json={"jsonrpc": "2.0", "method": "notifications/initialized"}).status_code == 202
+    assert {t["name"] for t in rpc("tools/list")["result"]["tools"]} == set(server.api.FUNCTIONS)
+    ok = rpc("tools/call", {"name": "coverage", "arguments": {}})["result"]
+    assert not ok.get("isError") and set(json.loads(ok["content"][0]["text"])) >= {"data", "sources", "notes"}
+    bad = rpc("tools/call", {"name": "filter_tests", "arguments": {"limit": -1}})["result"]
+    assert bad["isError"] and "limit" in bad["content"][0]["text"]
+    assert "error" in rpc("nope")

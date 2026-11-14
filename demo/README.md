@@ -22,6 +22,21 @@ open demo/dist/index.html             # works from disk; charts and fonts need i
 `demo/server.py` serves the page plus the `fif.api` functions (`POST /api/call/<function>`), short-lived links
 to PSI originals (`GET /api/resolve`) and `GET /api/health`. No login, no secrets.
 
+### For AI agents
+
+Give a teammate's AI the address `<server>/llms.txt`: a plain-text guide, generated from `fif/tools.py`, with every
+function, its arguments and a working example. The same functions are reachable four ways:
+
+| Client | Use |
+|---|---|
+| can only fetch a URL | `GET /api/call/<function>?accession=PSI-25&x_o2=[0.18,0.21]` (non-string values as JSON, or `args=<JSON>`) |
+| can send HTTP | `POST /api/call/<function>` with a JSON object |
+| Claude Code, Claude Desktop, other MCP clients | `claude mcp add --transport http fif <server>/mcp` |
+| function calling, custom GPT actions | tool schemas at `/api/tools`, OpenAPI 3.1 at `/openapi.json` |
+
+The MCP endpoint is stateless JSON-RPC over POST (`initialize`, `tools/list`, `tools/call`, `ping`); it has no
+streaming and no session. Cross-origin requests are allowed, as everything is public and read-only.
+
 ```
 uv run python demo/build_demo.py && uv run python demo/server.py        # http://localhost:8000
 docker compose up -d --build                                             # same, from the repo root

@@ -11,6 +11,7 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 | building the dashboard | [docs/methods.md](docs/methods.md): what to load, the functions, the pitfalls |
 | looking for what the data can answer | [docs/question-bank.md](docs/question-bank.md): 33 questions with the call and today's answer |
 | interested in the science | [docs/digest/README.md](docs/digest/README.md), [docs/digest/synthesis.md](docs/digest/synthesis.md) |
+| an AI agent, or pointing one at the data | `<demo server>/llms.txt` (guide), `/mcp`, `/api/tools`: see "For AI agents" in [demo/README.md](demo/README.md) |
 | wanting to see it all on screen | [demo/README.md](demo/README.md): a static capability demo of the dashboard, built from `data/export/` |
 | checking the data | [docs/tests-table.md](docs/tests-table.md) (per-test table, flags, corrections), [docs/formats.md](docs/formats.md) (raw files), [docs/models.md](docs/models.md) |
 
