@@ -497,3 +497,51 @@ def test_an_outcome_whose_quote_left_the_source_is_refused():
         bt.apply_outcomes(rows, [{**item, "quote": "went out"}])
     with pytest.raises(ValueError, match="cause"):
         bt.apply_outcomes(rows, [{**item, "cause": "blowoff"}])
+
+
+def test_bass_extinctions_say_what_was_done_to_the_flow(table):
+    out = table[table["outcome"] == "extinguished"]
+    assert table.loc[table["outcome"] != "extinguished", ["outcome_action", "outcome_setting"]].isna().all().all()
+    assert out.fillna({"outcome_action": "not stated"}).groupby("accession")["outcome_action"].value_counts().to_dict() == {
+        ("PSI-25", "flow_reduced"): 14, ("PSI-25", "flow_raised"): 7, ("PSI-25", "flow_shut_off"): 2,
+        ("PSI-26", "flow_shut_off"): 22, ("PSI-26", "flow_reduced"): 19, ("PSI-26", "none"): 6,
+        ("PSI-26", "nitrogen"): 2, ("PSI-26", "not stated"): 2}
+    assert set(out["outcome_action"].dropna()) == set(bt.OUTCOME_ACTIONS)
+    assert out.groupby("accession")["outcome_setting"].count().to_dict() == {"PSI-25": 13, "PSI-26": 18}
+    for r in out[out["outcome_setting"].notna()].itertuples():
+        number = r.outcome_setting.split()[-1]
+        assert number.lstrip("0") in extra(r)[extra(r)["outcome_setting_field"]]
+    r = row(table, "PSI-26", source_row=116)  # the crew turned the pot down and the flame went out: a limit
+    assert (r.outcome_cause, r.outcome_action, r.outcome_setting) == ("low_flow", "flow_reduced", "pot 0.29")
+    r = row(table, "PSI-26", source_row=105)  # the crew stopped the flow to end the run: not a limit
+    assert (r.outcome_cause, r.outcome_action) == ("low_flow", "flow_shut_off") and pd.isna(r.outcome_setting)
+    r = row(table, "PSI-25", "P5")  # the quote shows the pot going to 0, which "5 down to ext" did not
+    assert r.outcome_action == "flow_shut_off" and r.outcome_quote.endswith("0.28 0 ext")
+    assert extra(r)["outcome_field"] == "Fan display"
+    r = row(table, "PSI-26", source_row=95)  # "out at flow change": the direction is not stated
+    assert r.outcome_cause == "low_flow" and pd.isna(r.outcome_action) and extra(r)["outcome_cause_inferred"] is True
+    assert row(table, "PSI-26", "66").outcome_action == "none"
+    inferred = [r.source_row for r in out.itertuples() if extra(r).get("outcome_cause_inferred")]
+    assert inferred == [95, 104, 106]
+
+
+def test_an_action_or_setting_the_source_does_not_carry_is_refused():
+    def rows():
+        return {"PSI-26": [{"test_id": "108", "source_row": 116, "extra": {"asrun_notes": "went out when pot turned down to 0.29."}}]}
+    item = {"accession": "PSI-26", "test_id": "108", "source_row": 116, "outcome": "extinguished", "cause": "low_flow",
+            "field": "asrun_notes", "quote": "went out when pot turned down to 0.29.", "action": "flow_reduced",
+            "setting": "pot 0.29"}
+    done = rows()
+    bt.apply_outcomes(done, [item])
+    assert (done["PSI-26"][0]["outcome_action"], done["PSI-26"][0]["outcome_setting"]) == ("flow_reduced", "pot 0.29")
+    with pytest.raises(ValueError, match="setting"):
+        bt.apply_outcomes(rows(), [{**item, "setting": "pot 0.2"}])
+    with pytest.raises(ValueError, match="action"):
+        bt.apply_outcomes(rows(), [{k: v for k, v in item.items() if k != "action"}])
+    with pytest.raises(ValueError, match="action"):
+        bt.apply_outcomes(rows(), [{**item, "action": "flow_raised"}])
+    with pytest.raises(ValueError, match="action"):
+        bt.apply_outcomes(rows(), [{**item, "cause": "blowoff"}])
+    blown = rows()
+    bt.apply_outcomes(blown, [{k: v for k, v in item.items() if k not in ("action", "setting")} | {"cause": "blowoff"}])
+    assert blown["PSI-26"][0]["outcome_action"] == "flow_raised" and blown["PSI-26"][0].get("outcome_setting") is None

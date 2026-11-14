@@ -238,14 +238,15 @@ def _between(series, bounds):
 
 
 def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=None, pressure_kpa=None,
-                  flow_cm_s=None, extinction_mode=None, outcome=None, row_kind="test", exclude_flags=None):
+                  flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None,
+                  row_kind="test", exclude_flags=None):
     t = table("tests")
     mask = pd.Series(True, index=t.index)
     if accession:
         accs = [accession] if isinstance(accession, str) else accession
         mask &= t["accession"].isin([_accession(a) for a in accs])
     for column, value in (("fuel_phase", fuel_phase), ("extinction_mode", extinction_mode), ("outcome", outcome),
-                          ("row_kind", row_kind)):
+                          ("outcome_action", outcome_action), ("row_kind", row_kind)):
         if value:
             mask &= t[column].isin([value] if isinstance(value, str) else value)
     if fuel:

@@ -7,7 +7,8 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 3 2 ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-25",
@@ -37,7 +38,8 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-25",
@@ -45,9 +47,11 @@
   "source_row": 43,
   "outcome": "extinguished",
   "cause": "low_flow",
-  "field": "Air display",
-  "quote": "10 5 3 0ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "field": "Fan display",
+  "quote": "0.5 0.3ext",
+  "doubt": "The Air display cell ends \"3 0ext\": the display read 0 cm/s while the fan pot was at 0.3, a setting at which other runs still burned. Read as a quench at pot 0.3, not a shut-off.",
+  "action": "flow_reduced",
+  "setting": "pot 0.3"
  },
  {
   "accession": "PSI-25",
@@ -57,7 +61,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.36",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -77,7 +84,9 @@
   "cause": "low_flow",
   "field": "Fan display",
   "quote": ".31 extinguished",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.31"
  },
  {
   "accession": "PSI-25",
@@ -87,7 +96,8 @@
   "cause": "blowoff",
   "field": "Fan display",
   "quote": "blowoff fan pot 6.0",
-  "doubt": null
+  "doubt": null,
+  "setting": "pot 6.0"
  },
  {
   "accession": "PSI-25",
@@ -97,7 +107,8 @@
   "cause": "blowoff",
   "field": "Fan display",
   "quote": "blowoff pt 4.0",
-  "doubt": null
+  "doubt": null,
+  "setting": "pot 4.0"
  },
  {
   "accession": "PSI-25",
@@ -107,7 +118,9 @@
   "cause": "blowoff",
   "field": "Air display",
   "quote": "5 down then blowoff",
-  "doubt": null
+  "doubt": null,
+  "setting": "pot 6.0",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -127,7 +140,8 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-25",
@@ -137,7 +151,8 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-25",
@@ -147,7 +162,8 @@
   "cause": "blowoff",
   "field": "Fan display",
   "quote": "blowoff pot 5 out at fan 87",
-  "doubt": null
+  "doubt": null,
+  "setting": "fan 87"
  },
  {
   "accession": "PSI-25",
@@ -157,7 +173,8 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 2 slow decr to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-25",
@@ -165,9 +182,10 @@
   "source_row": 79,
   "outcome": "extinguished",
   "cause": "low_flow",
-  "field": "Air display",
-  "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "field": "Fan display",
+  "quote": "0.29 0.28 0 ext",
+  "doubt": "The fan pot was stepped down to 0.28 with the flame still lit, then set to 0: the crew shut the flow off. The Air display cell says only \"5 down to ext\".",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-25",
@@ -187,7 +205,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.28",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -197,7 +218,9 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "0.30 extinguished",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.30"
  },
  {
   "accession": "PSI-25",
@@ -205,9 +228,10 @@
   "source_row": 85,
   "outcome": "extinguished",
   "cause": "low_flow",
-  "field": "Air display",
-  "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "field": "Fan display",
+  "quote": "0.28 0.26 0 ext",
+  "doubt": "The fan pot was stepped down to 0.26 with the flame still lit, then set to 0: the crew shut the flow off. The Air display cell says only \"5 down to ext\".",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-25",
@@ -217,7 +241,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.32",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -227,7 +254,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.32",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -237,7 +267,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.31",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-25",
@@ -247,7 +280,10 @@
   "cause": "low_flow",
   "field": "Air display",
   "quote": "5 down to ext",
-  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out."
+  "doubt": "Shorthand in the flow cell: the flow was stepped down until the flame went out.",
+  "action": "flow_reduced",
+  "setting": "pot 0.31",
+  "setting_field": "Fan display"
  },
  {
   "accession": "PSI-26",
@@ -267,7 +303,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Only extinguishes when all flow stops.",
-  "doubt": "N2 had been on and was turned off just after the air; the flame survived N2 and went out only when all flow stopped."
+  "doubt": "N2 had been on and was turned off just after the air; the flame survived N2 and went out only when all flow stopped.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -277,7 +314,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Flame doesn't go out until fan goes to 38.",
-  "doubt": "N2 was also used at the end ('N2 extinguishment'); the notes tie the extinction to the fan reaching 38 (flow off)."
+  "doubt": "N2 was also used at the end ('N2 extinguishment'); the notes tie the extinction to the fan reaching 38 (flow off). Fan 38 is the stopped fan: run 86b writes 'fan off (38)'.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -287,7 +325,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "To extinguish, turned flow off",
-  "doubt": "Extinction is implied by the purpose of the flow-off step rather than stated as observed."
+  "doubt": "Extinction is implied by the purpose of the flow-off step rather than stated as observed.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -297,7 +336,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Turned blue and extinguished when fan off",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -327,7 +367,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Fan turned to 40 at 16:19:22, flame and flame went out at 16:19:34.",
-  "doubt": "N2 had failed to extinguish earlier and the fan was briefly turned up by accident before being reduced to 40."
+  "doubt": "N2 had failed to extinguish earlier and the fan was briefly turned up by accident before being reduced to 40. Fan 40 is two counts above the stopped fan (38, run 86b); a single reduction from 61, not a stepped series.",
+  "action": "flow_reduced",
+  "setting": "fan 40"
  },
  {
   "accession": "PSI-26",
@@ -337,7 +379,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Fan off at 35:30 ish. Flame extinuishes right away.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -347,7 +390,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "when turned off fan, and it extinguished right away",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -357,7 +401,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "When he turned flow down to 40.5ish flame extinguished.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "fan 40.5"
  },
  {
   "accession": "PSI-26",
@@ -367,7 +413,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished when flow turned off.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -377,7 +424,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished when pot ~ 39.",
-  "doubt": null
+  "doubt": "The notes write 'pot ~ 39', but 39 is on the fan-display scale (the pot runs 0 to 10; the fan cell reads \"49, 42\"). Fan 38 is the stopped fan (run 86b: 'fan off (38)'), so this is one count above off.",
+  "action": "flow_reduced",
+  "setting": "fan 39"
  },
  {
   "accession": "PSI-26",
@@ -387,7 +436,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "All blue sphere just before extinction.",
-  "doubt": "Notes mention extinction but not its trigger; the flow column (5, 0) suggests flow-off."
+  "doubt": "Notes mention extinction but not its trigger; the flow column (5, 0) suggests flow-off.",
+  "action": null
  },
  {
   "accession": "PSI-26",
@@ -417,7 +467,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "extinguished when flow is turned off.",
-  "doubt": "Two ignitions: the first died when flow was turned down to 41; this is the second, sustained flame (N2 had earlier blown out only the stagnation region)."
+  "doubt": "Two ignitions: the first died when flow was turned down to 41; this is the second, sustained flame (N2 had earlier blown out only the stagnation region).",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -427,7 +478,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "After several minutes, shut flow off. Flame became very dim blue before extinguishing.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -437,7 +489,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "At fan off, flame turns blue, and oscilates before extinction.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -447,7 +500,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Fan off flame all blue and pulses a few times before extinguished.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -457,7 +511,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "N2 and air off, turned all blue, he turned lights on before flame completely out.",
-  "doubt": "N2 and air were turned off together and N2 at max had not blown the flame out; a small amount of fuel remained around the rod."
+  "doubt": "N2 and air were turned off together and N2 at max had not blown the flame out; a small amount of fuel remained around the rod.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -477,7 +532,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "then flow off goes out.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -487,7 +543,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished with flow off at6.75 minutes or so.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -497,7 +554,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished at fan 41, became circular at extinction, sphere shrank to extinction.",
-  "doubt": "About 2.5 cm of sample was left."
+  "doubt": "About 2.5 cm of sample was left.",
+  "action": "flow_reduced",
+  "setting": "fan 41"
  },
  {
   "accession": "PSI-26",
@@ -507,7 +566,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "Flame extinguished all by itself.",
-  "doubt": "Went out at steady flow with no stated trigger, after slow downstream spread with base burnout; fuel remained downstream."
+  "doubt": "Went out at steady flow with no stated trigger, after slow downstream spread with base burnout; fuel remained downstream.",
+  "action": "none"
  },
  {
   "accession": "PSI-26",
@@ -517,7 +577,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "N2 on and flame brightened and stabilized, extinction when air flow off.",
-  "doubt": "N2 was on when the air was turned off."
+  "doubt": "N2 was on when the air was turned off.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -547,7 +608,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "seemed to quench 5 mm from the end.",
-  "doubt": "Quenched near the sample end in opposed flow (preburned sample); the cause is not stated."
+  "doubt": "Quenched near the sample end in opposed flow (preburned sample); the cause is not stated.",
+  "action": "none"
  },
  {
   "accession": "PSI-26",
@@ -567,7 +629,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Flame extinguished when fan set to 40.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "fan 40"
  },
  {
   "accession": "PSI-26",
@@ -577,7 +641,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Out at 40 again.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "fan 40"
  },
  {
   "accession": "PSI-26",
@@ -597,7 +663,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "Tiny blue flame. Self-extinguished.",
-  "doubt": "A re-ignition; unclear whether it was ever sustained, so it could count as no_ignition."
+  "doubt": "A re-ignition; unclear whether it was ever sustained, so it could count as no_ignition.",
+  "action": "none"
  },
  {
   "accession": "PSI-26",
@@ -617,7 +684,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Turned off GN2 and flame strengthened, then turned off air flow and flame went out.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -627,7 +695,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "air off, flame out, 6 minute burn!",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -677,7 +746,8 @@
   "cause": "nitrogen",
   "field": "asrun_notes",
   "quote": "flame did blow out with GN2 at about a pot 6.",
-  "doubt": null
+  "doubt": null,
+  "setting": "gn2 pot 6"
  },
  {
   "accession": "PSI-26",
@@ -697,7 +767,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "decreased flow but soot persisted until 0.32 pot when soot disappeared then flame went out.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.32"
  },
  {
   "accession": "PSI-26",
@@ -717,7 +789,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Consistenly goes out at pot 0.31",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.31"
  },
  {
   "accession": "PSI-26",
@@ -727,7 +801,10 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Got hot then stepped to 0 flow, went out.",
-  "doubt": null
+  "doubt": "The notes say 'stepped to 0 flow'; the fan cell ends \"0.31 (out)\" and the air display reads 0 at that setting. Read as a quench at pot 0.31, not a shut-off (the next run writes a shut-off as \"off (out)\").",
+  "action": "flow_reduced",
+  "setting": "pot 0.31",
+  "setting_field": "asrun_fan_display"
  },
  {
   "accession": "PSI-26",
@@ -737,7 +814,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "went out when fan off (38)",
-  "doubt": "N2 had been applied at the flow settings; the end is tied to the fan being turned off."
+  "doubt": "N2 had been applied at the flow settings; the end is tied to the fan being turned off.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -757,7 +835,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "Shrank slowly and extinguished by itself.",
-  "doubt": "Went out after flow was reduced to 3 cm/s and the leading edge burned out; may be local fuel depletion rather than extinction."
+  "doubt": "Went out after flow was reduced to 3 cm/s and the leading edge burned out; may be local fuel depletion rather than extinction.",
+  "action": "none"
  },
  {
   "accession": "PSI-26",
@@ -777,7 +856,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished at very low flow.",
-  "doubt": null
+  "doubt": "The fan cell says the fan was turned 'slowly to zero'; the notes put the extinction at very low flow, before zero. No setting is given.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-26",
@@ -787,7 +867,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "before we put it out (air off)",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -797,7 +878,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Went out at 0.32 pot, got spherical and flashed out.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.32"
  },
  {
   "accession": "PSI-26",
@@ -807,7 +890,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Flame went out when fan set to 39.",
-  "doubt": null
+  "doubt": "Fan 39 is one count above the stopped fan (38, run 86b: 'fan off (38)').",
+  "action": "flow_reduced",
+  "setting": "fan 39"
  },
  {
   "accession": "PSI-26",
@@ -817,7 +902,8 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "went out on its own at 18:04:30 ish.",
-  "doubt": "Went out 'on its own' at low fan settings (41); flow column ends at 0."
+  "doubt": "Went out 'on its own' at low fan settings (41); flow column ends at 0.",
+  "action": "none"
  },
  {
   "accession": "PSI-26",
@@ -827,7 +913,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Out when fan off.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -847,7 +934,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Candle out at flow change.",
-  "doubt": "Direction of the final flow change is not stated; it followed the low fan-41 setting and the flow column ends at 0."
+  "doubt": "Direction of the final flow change is not stated; it followed the low fan-41 setting and the flow column ends at 0.",
+  "action": null,
+  "cause_inferred": true
  },
  {
   "accession": "PSI-26",
@@ -857,7 +946,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished on last flow change pot 0.35-0.32",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.32"
  },
  {
   "accession": "PSI-26",
@@ -867,7 +958,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Extinguished when flow off.",
-  "doubt": "Max GN2 at low flow had failed to blow it out first."
+  "doubt": "Max GN2 at low flow had failed to blow it out first.",
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -877,7 +969,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "out at 18:40 at finite extremely low flow.",
-  "doubt": null
+  "doubt": "The notes say the flow had been reduced to fan 41 and that the flame went out at a finite flow; they do not say whether a further reduction came just before.",
+  "action": "flow_reduced"
  },
  {
   "accession": "PSI-26",
@@ -897,7 +990,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "0.32 (41) flame self-extinguished.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.32"
  },
  {
   "accession": "PSI-26",
@@ -937,7 +1032,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Went out at finite flow.",
-  "doubt": "'Finite flow' after reductions to <1 cm/s; read as the low-flow limit."
+  "doubt": "'Finite flow' after reductions to <1 cm/s; read as the low-flow limit. The reduction (pot 3, 1, 0.32; air 8, 4, <1) is in the fan and air cells, not in the notes.",
+  "action": "flow_reduced",
+  "cause_inferred": true
  },
  {
   "accession": "PSI-26",
@@ -947,7 +1044,8 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "we shut off flow to put flame out.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_shut_off"
  },
  {
   "accession": "PSI-26",
@@ -957,7 +1055,10 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "out 14:22:50",
-  "doubt": "Inferred from a log of stepwise pot reductions down to 0.32 followed by 'out'."
+  "doubt": "Inferred from a log of stepwise pot reductions down to 0.32 followed by 'out'. The log does not say what was done at 'out'; the last pot logged is 0.32, 80 s earlier.",
+  "action": "flow_reduced",
+  "setting": "pot 0.32",
+  "cause_inferred": true
  },
  {
   "accession": "PSI-26",
@@ -987,7 +1088,9 @@
   "cause": "unspecified",
   "field": "asrun_notes",
   "quote": "Went out on its own at a flow of 0.4 after 75 seconds",
-  "doubt": "Went out 'on its own' at a low pot setting (0.4) without propagating; could be low_flow."
+  "doubt": "Went out 'on its own' at a low pot setting (0.4) without propagating; could be low_flow.",
+  "action": "none",
+  "setting": "pot 0.4"
  },
  {
   "accession": "PSI-26",
@@ -1007,7 +1110,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "went out when pot turned down to 0.29.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.29"
  },
  {
   "accession": "PSI-26",
@@ -1017,7 +1122,9 @@
   "cause": "low_flow",
   "field": "asrun_notes",
   "quote": "Flame went out at pot 0.27, with oscillations and a big flash at extinction.",
-  "doubt": null
+  "doubt": null,
+  "action": "flow_reduced",
+  "setting": "pot 0.27"
  },
  {
   "accession": "PSI-26",

@@ -404,10 +404,10 @@ BOARD_SUMMARY = ("Team board: the same server carries a small public forum where
                  "leave bugs, recommendations, questions and news (board_read, board_post, board_reply). Read the open "
                  "threads when you start; post what another teammate should know.")
 MCP_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
-SUMMARY = ("Flame in Freefall: the 24 NASA PSI microgravity combustion investigations (2,177 tests, sensor traces, "
-           "document evidence, reviewed findings, fire-safety relevance, data-quality patches) as 11 read-only "
-           "functions. Every answer is {data, chart, sources, notes}: cite `sources`, and pass on `notes`, which "
-           "carry the caveats.")
+SUMMARY = ("Flame in Freefall: the 24 NASA PSI microgravity combustion investigations (2,177 table rows, 2,059 of them "
+           "single tests; sensor traces, document evidence, reviewed findings, fire-safety relevance, data-quality "
+           "patches) as 11 read-only functions. Every answer is {data, chart, sources, notes}: cite `sources`, and "
+           "pass on `notes`, which carry the caveats.")
 
 
 def query_arguments(function, params):

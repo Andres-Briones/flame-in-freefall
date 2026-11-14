@@ -56,7 +56,9 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `extinction_mode` | `self_extinguished`, `flow_terminated`, `extinction`, `disruption`, `completion` | - | 69, 159 |
 | `outcome` | PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See "Outcomes read from notes" below | - | 25, 26 |
 | `outcome_cause` | with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified` | - | 25, 26 |
-| `outcome_quote` | the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain | - | 25, 26 |
+| `outcome_action` | with `extinguished` only: what was done to the flow when the flame went out. `flow_reduced` (the flow was turned down and the flame went out at a finite setting: a quenching limit), `flow_shut_off` (the crew stopped the fan or the air to end the run: not a limit), `flow_raised` (blowoff, every `blowoff` row), `nitrogen` (every `nitrogen` row), `none` (went out by itself at constant flow). Null when the words do not say (2 runs) | - | 25, 26 |
+| `outcome_setting` | the setting at which the flame went out, when the source states it: `pot 0.31` (fan potentiometer), `fan 40` (fan display), `gn2 pot 6`. Text as logged, not a velocity: the fan calibration does not reach these settings and was not applied. `extra.outcome_setting_field` names the cell. 31 runs | as logged | 25, 26 |
+| `outcome_quote` | the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain, `extra.outcome_cause_inferred` marks a cause that rests on the fan and air cells and not on the quoted words (3 runs) | - | 25, 26 |
 | `t_ad_k` | computed adiabatic flame temperature | K | 10, 159 |
 | `peak_temp_c` | peak burner temperature | °C | 159 |
 | `d0_mm` | initial droplet diameter | mm | 39, 69 |
@@ -164,6 +166,8 @@ Corrections and flags:
   `fuel_inferred`. The two "4 cm spherical section" rows stay without a fuel name.
 - `flow_cm_s` is the air display when it holds one value (25 rows); when it lists several the row is flagged
   `ramped`. The display shows whole cm/s; the fan calibration was not applied.
+- On runs that went out, `flow_cm_s` is not the flow at extinction: the cell that says "ext" or "blowoff" lists
+  several values, so `flow_cm_s` is null on all 23. The setting at extinction, when stated, is `outcome_setting`.
 - O10: the source date (7/22/2014) is not the day its GMT column gives, so `date` is null (`date_conflict`).
 
 - The final-O2 artefacts for B2, P22a, P22b, T28a and T28b were removed from extra (kept as
@@ -178,6 +182,9 @@ by (as-run no., test no.). All 121 rows matched exactly one as-run row. From the
 - `x_o2_ambient` and `x_o2*` are the cabin O2.
 - `pressure_kpa` is the atm value × 101.325.
 - `flow_cm_s` is the air display when it holds one value. When it lists several, the row is flagged `ramped`.
+  It is the log's single "Air display" value, usually the flow at ignition, and not the flow at extinction: 13 of
+  the 51 extinguished runs carry one (10 cm/s on runs 111 and 112, ended by shutting the air off; 5 cm/s on run
+  103, which went out at pot 0.32). Use `outcome_action` and `outcome_setting` for how and where the flame went out.
 - `fuel`: the 30 rows labelled only "sphere" are PMMA spheres according to the science requirements and the
   results overview (`fuel_inferred`). Candle and wax-slab rows stay without a fuel name.
 - Nine rows have a source date that is unreadable or disagrees with the GMT day column; `date` is null and the
@@ -424,8 +431,39 @@ How to read it:
 - It is a reading of prose, done once by a language model and checked by hand, not a NASA column. Show the quote
   with the outcome.
 - One outcome per run: the final end of the flame. A partial blow-off that left a wake flame is not an extinction.
-- `low_flow` includes runs the crew ended by shutting the flow off: in microgravity the flame goes out without it.
-  It is a quench at (near) zero flow, not a measured limit; the flow at extinction is in the quote when given.
+- `low_flow` covers two different events, told apart by `outcome_action`: `flow_shut_off`, the crew stopped the
+  flow to end the run (in microgravity the flame goes out without it; not a limit), and `flow_reduced`, the flow
+  was turned down until the flame went out at a finite setting (a quenching limit).
 - Runs where the notes say the flame survived maximum flow or nitrogen but not how it ended are null, as are two
   runs whose igniter broke.
 - BASS-II has no notes column, so only the 25 runs whose flow cell carries a word are filled.
+
+What was done to the flow on the 74 extinguished runs (`outcome_action`), and how many state the setting
+(`outcome_setting`):
+
+| | flow_reduced | flow_shut_off | flow_raised | nitrogen | none | not stated | with a setting |
+|---|---|---|---|---|---|---|---|
+| PSI-26 BASS (51) | 19 | 22 | 0 | 2 | 6 | 2 | 18 |
+| PSI-25 BASS-II (23) | 14 | 2 | 7 | 0 | 0 | 0 | 13 |
+
+- `flow_raised` and `nitrogen` follow from the cause. For `low_flow` and `unspecified` the action is read per
+  run and stored as `action` in `tests_outcomes.json`; `build_tests` refuses a `low_flow` or `unspecified` entry
+  without one. Runs 87 ("Candle out at flow change", direction not given) and 32 are null.
+- `flow_reduced` means the words or the settings cell put the extinction at a finite setting, in one step or
+  many. Runs 31, 54, 82, 82a and 100 went out at fan 39 to 40, one or two counts above the stopped fan (38): a
+  limit only within the resolution of the fan. On runs 99, 105 and 118 the notes say "very low" or "finite" flow
+  without a setting.
+- `none` is a flame that went out with no flow change tied to it ("extinguished all by itself"). These six keep
+  the cause `unspecified`; run 78 names its setting (pot 0.4).
+- `outcome_setting` is the knob and the number as logged; `build_tests` refuses a setting whose number is not in
+  the named cell. In BASS-II the knob is the fan pot where the cell says "pot" or lists decimals below 1 in the
+  same series as cells that do. 25 of the 33 `flow_reduced` runs state it, 4 `flow_raised` runs (the pot or fan
+  value at blowoff), run 64 (GN2 pot) and run 78. It is not converted to cm/s: the fan calibration does not
+  reach these settings.
+- `flow_cm_s` on these rows is the log's single "Air display" value and is not the flow at extinction.
+- Readings where two cells disagree, each with the reason in `extra.outcome_doubt`: M17 (air display "0ext",
+  fan pot "0.3ext": read as a quench at pot 0.3), BASS 86a (notes "stepped to 0 flow", fan cell "0.31 (out)":
+  read as a quench at pot 0.31), P5 and P13a (air display "5 down to ext", fan pot "... 0 ext": shut off; the
+  quote is now the fan cell), 31 (notes "pot ~ 39", a fan-display value).
+- Three `low_flow` causes rest on the fan and air cells, not on the quoted words, and carry
+  `extra.outcome_cause_inferred`: 87, 118 (2013) and 89. The cause was left as it was.

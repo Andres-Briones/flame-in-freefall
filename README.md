@@ -19,8 +19,8 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 
 - **Knowledge records** (`data/digest/`): one per investigation: question, physics with equations, method,
   findings with quoted sources, limitations, open questions.
-- **Tables** (`data/processed/`): investigations, 2,177 tests on a common schema, sensor time-series summaries,
-  document text for search, and a column catalogue.
+- **Tables** (`data/processed/`): investigations, 2,177 test rows (2,059 single tests) on a common schema, sensor
+  time-series summaries, document text for search, and a column catalogue.
 - **Methods** (`fif/api.py`): 11 functions that each return data, a chart suggestion, sources and caveats.
   Tool specs for an AI assistant are in `data/processed/tools.json`.
 - **Static export** (`data/export/`): the same answers pre-computed as JSON, for a front end without a backend.

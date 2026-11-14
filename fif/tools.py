@@ -19,6 +19,13 @@ TEST_FILTERS = {
                 "description": "solid-fuel runs of BASS (PSI-26) and BASS-II (PSI-25) only: how the flame ended, read from "
                                "the crew's notes; each row quotes its source in outcome_quote and gives outcome_cause "
                                "(blowoff, low_flow, nitrogen, unspecified) when extinguished. Null on most rows: not stated"},
+    "outcome_action": {"type": "string", "enum": ["flow_shut_off", "flow_reduced", "flow_raised", "nitrogen", "none"],
+                       "description": "extinguished runs of BASS and BASS-II: what was done to the flow when the flame went "
+                                      "out. flow_reduced = it went out at a finite low setting (a quenching limit, the "
+                                      "setting in outcome_setting when stated); flow_shut_off = the crew stopped the flow to "
+                                      "end the run (not a limit); flow_raised = blowoff; none = it went out by itself at "
+                                      "constant flow. Null when the words do not say. flow_cm_s on these rows is the log's "
+                                      "single air-display value, not the flow at extinction"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
 }
@@ -39,8 +46,8 @@ TOOLS = [
               "accession": ACCESSION,
               "sections": {"type": "array", "items": {"type": "string"}, "description": "only these sections, e.g. [\"findings\", \"limitations\"]"}},
           ["accession"]),
-    _tool(api.filter_tests, "Rows of the per-test table (2,177 tests: fuel, O2, pressure, flow, outcomes). Use for any "
-          "question about what was tested and what happened.", {
+    _tool(api.filter_tests, "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, "
+          "pressure, flow, outcomes). Use for any question about what was tested and what happened.", {
               **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"}}),
     _tool(api.compare, "Side-by-side comparison of investigations: question, fuels, tested ranges, sensors, key findings, limitations.", {
         "accessions": {"type": "array", "items": ACCESSION}, "findings": {"type": "integer"}}, ["accessions"]),

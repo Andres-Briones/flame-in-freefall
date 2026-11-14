@@ -28,7 +28,8 @@ COLUMNS = [
     "accession", "acronym", "test_id", "row_kind", "date",
     "fuel", "fuel_raw", "fuel_phase", "fuel_fraction", "config", "geometry",
     "x_o2_ambient", "x_o2_burner", "x_o2_min", "x_o2_max", "x_o2", "diluent", "pressure_kpa", "flow_cm_s", "gravity",
-    "n_flames", "ignited", "burn_time_s", "extinction_mode", "outcome", "outcome_cause", "outcome_quote",
+    "n_flames", "ignited", "burn_time_s", "extinction_mode", "outcome", "outcome_cause", "outcome_action",
+    "outcome_setting", "outcome_quote",
     "t_ad_k", "peak_temp_c", "d0_mm", "ext_diameter_mm", "burn_rate_k_mm2_s", "n_reignitions", "cool_flame",
     "spread_rate_mm_s", "burn_length_cm", "flame_length_mm", "at_smoke_point", "smoke_point_reviewed", "measurement",
     "flags", "extra", "source_file", "source_row",
@@ -1169,6 +1170,11 @@ def apply_patches(groups, patches):
 OUTCOMES = psi.ROOT / "data" / "corrections" / "tests_outcomes.json"
 OUTCOME_VALUES = ("no_ignition", "extinguished", "burned_out")
 OUTCOME_CAUSES = ("blowoff", "low_flow", "nitrogen", "unspecified")
+# What was done to the flow when the flame went out. Two causes name it themselves; the other two need a reading of
+# the words, given per run as `action` (null when the words do not say).
+CAUSE_ACTION = {"blowoff": "flow_raised", "nitrogen": "nitrogen"}
+READ_ACTIONS = {"low_flow": ("flow_shut_off", "flow_reduced", None), "unspecified": ("none", None)}
+OUTCOME_ACTIONS = ("flow_shut_off", "flow_reduced", "flow_raised", "nitrogen", "none")
 
 
 def _squash(text):
@@ -1178,7 +1184,9 @@ def _squash(text):
 def apply_outcomes(groups, outcomes):
     """Fill `outcome` for solid-fuel runs whose tables have no outcome column, from a reading of the crew's own words
     (data/corrections/tests_outcomes.json). Each entry names the `extra` field it was read from and quotes it; an
-    entry whose quote is no longer in that field fails loudly, so a reading can never outlive its source."""
+    entry whose quote is no longer in that field fails loudly, so a reading can never outlive its source.
+    `outcome_action` follows from the cause where the cause names it and is read per run otherwise; `outcome_setting`
+    is the fan, pot or GN2 setting at which the flame went out, kept only while its number is in the source cell."""
     index = {}
     for acc, rows in groups.items():
         for row in rows:
@@ -1195,8 +1203,24 @@ def apply_outcomes(groups, outcomes):
             raise ValueError(f"outcome {key}: a cause goes with extinguished, and only with it")
         if _squash(item["quote"]) not in _squash(row["extra"].get(item["field"], "")):
             raise ValueError(f"outcome {key}: the quote is not in {item['field']!r}")
-        row["outcome"], row["outcome_cause"], row["outcome_quote"] = item["outcome"], item.get("cause"), item["quote"]
+        cause = item.get("cause")
+        if cause in READ_ACTIONS:
+            if "action" not in item or item["action"] not in READ_ACTIONS[cause]:
+                raise ValueError(f"outcome {key}: {cause} needs an action among {READ_ACTIONS[cause]}")
+        elif "action" in item:
+            raise ValueError(f"outcome {key}: an action is read only for {tuple(READ_ACTIONS)}")
+        row["outcome"], row["outcome_cause"], row["outcome_quote"] = item["outcome"], cause, item["quote"]
+        row["outcome_action"] = CAUSE_ACTION.get(cause, item.get("action"))
         row["extra"]["outcome_field"] = item["field"]
+        if item.get("setting"):
+            field = item.get("setting_field", item["field"])
+            number = item["setting"].split()[-1]
+            if item["outcome"] != "extinguished" or not {number, number.lstrip("0")} & set(
+                    re.findall(r"\d*\.?\d+", str(row["extra"].get(field, "")))):
+                raise ValueError(f"outcome {key}: the setting {item['setting']!r} is not in {field!r}")
+            row["outcome_setting"], row["extra"]["outcome_setting_field"] = item["setting"], field
+        if item.get("cause_inferred"):
+            row["extra"]["outcome_cause_inferred"] = True
         if item.get("doubt"):
             row["extra"]["outcome_doubt"] = item["doubt"]
 

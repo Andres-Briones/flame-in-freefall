@@ -213,3 +213,6 @@ def test_filter_tests_by_the_outcome_read_from_bass_notes():
     rows = api.filter_tests(accession="PSI-25", outcome="extinguished")["data"]["rows"]
     assert len(rows) == 23 and all(r["outcome_quote"] and r["outcome_cause"] for r in rows)
     assert {r["outcome_cause"] for r in rows} == {"blowoff", "low_flow"}
+    limits = api.filter_tests(accession=["PSI-25", "PSI-26"], outcome_action="flow_reduced")["data"]["rows"]
+    assert len(limits) == 33 and all(r["outcome_cause"] == "low_flow" for r in limits)
+    assert sum(r["outcome_setting"] is not None for r in limits) == 25

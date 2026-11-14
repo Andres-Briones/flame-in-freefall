@@ -848,10 +848,48 @@
      "nitrogen": 2
     }
    },
+   "outcome_action": {
+    "dtype": "str",
+    "non_null": 72,
+    "description": "with `extinguished` only: what was done to the flow when the flame went out. `flow_reduced` (the flow was turned down and the flame went out at a finite setting: a quenching limit), `flow_shut_off` (the crew stopped the fan or the air to end the run: not a limit), `flow_raised` (blowoff, every `blowoff` row), `nitrogen` (every `nitrogen` row), `none` (went out by itself at constant flow). Null when the words do not say (2 runs)",
+    "unit": null,
+    "values": {
+     "flow_reduced": 33,
+     "flow_shut_off": 24,
+     "flow_raised": 7,
+     "none": 6,
+     "nitrogen": 2
+    }
+   },
+   "outcome_setting": {
+    "dtype": "str",
+    "non_null": 31,
+    "description": "the setting at which the flame went out, when the source states it: `pot 0.31` (fan potentiometer), `fan 40` (fan display), `gn2 pot 6`. Text as logged, not a velocity: the fan calibration does not reach these settings and was not applied. `extra.outcome_setting_field` names the cell. 31 runs",
+    "unit": "as logged",
+    "values": {
+     "pot 0.32": 7,
+     "pot 0.31": 5,
+     "fan 40": 3,
+     "pot 6.0": 2,
+     "fan 39": 2,
+     "pot 0.3": 1,
+     "pot 0.36": 1,
+     "pot 4.0": 1,
+     "fan 87": 1,
+     "pot 0.28": 1,
+     "pot 0.30": 1,
+     "fan 40.5": 1,
+     "fan 41": 1,
+     "gn2 pot 6": 1,
+     "pot 0.4": 1,
+     "pot 0.29": 1,
+     "pot 0.27": 1
+    }
+   },
    "outcome_quote": {
     "dtype": "str",
     "non_null": 105,
-    "description": "the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain",
+    "description": "the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain, `extra.outcome_cause_inferred` marks a cause that rests on the fan and air cells and not on the quoted words (3 runs)",
     "unit": null
    },
    "t_ad_k": {
