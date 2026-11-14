@@ -134,13 +134,14 @@ def _card(acc):
         "accession": acc, "acronym": rec["identity"]["acronym"], "title": rec["identity"]["title"],
         "one_line": rec["one_line"], "pillars": rec["fire_safety"]["pillars"], "fuel_phases": _phases(acc),
         "flight": _is_flight(rec), "n_test_rows": int((t["accession"] == acc).sum()),
-        "n_findings": len(rec["findings"]), "page": f"docs/digest/{_page_name(acc)}",
+        "n_findings": len(rec["findings"]), "page": _page_name(acc) and f"docs/digest/{_page_name(acc)}",
         "doi": doi, "doi_url": f"https://doi.org/{doi}" if doi else None, "psi_url": psi_row["source_url"],
     }
 
 
 def _page_name(acc):
-    pages = sorted((psi.ROOT / "docs" / "digest").glob(f"{acc}-*.md"))
+    digest = psi.ROOT / "docs" / "digest"
+    pages = sorted(digest.glob(f"{acc}-*.md")) or sorted(digest.glob(f"{acc}.md"))  # no acronym: PSI-60.md
     return pages[0].name if pages else None
 
 
@@ -367,6 +368,7 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
             "x_min": round(ix * x_step, 6), "x_max": round((ix + 1) * x_step, 6),
             "y_min": round(iy * y_step, 6), "y_max": round((iy + 1) * y_step, 6), "n": len(g),
             "by_phase": g["fuel_phase"].value_counts().to_dict(), "accessions": sorted(g["accession"].unique()),
+            "n_from_stated_range": int((g["filled"] != "").sum()),
         })
     references = []
     if (x, y) == ("x_o2_ambient", "pressure_kpa"):
@@ -376,15 +378,24 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
             in_cell = grid[(grid["ix"] == _bin(ref["x_o2"], x_step)) & (grid["iy"] == _bin(ref["pressure_kpa"], y_step))]
             references.append({
                 "id": rid, **ref, "n_tests_in_cell": len(in_cell),
+                "n_tests_in_cell_by_phase": {p: int((in_cell["fuel_phase"] == p).sum()) for p in ("solid", "liquid", "gas")},
+                "n_from_stated_range": int((in_cell["filled"] != "").sum()),
                 "nearest_test": None if near is None else {
                     "accession": near["accession"], "test_id": near["test_id"], "fuel": near["fuel"],
                     "fuel_phase": near["fuel_phase"], x: near[x], y: near[y]},
             })
     notes = [f"{len(have)} of {len(df)} selected rows have both {x} and {y}; the rest are not on the map."]
+    if "row_kind" not in filters:
+        notes.append("Only rows of kind `test` are selected (one row per test); test-day summaries, condition sets "
+                     "and planned tests are left out. Pass row_kind to change that.")
     n_filled = int((have["filled"] != "").sum())
     if n_filled:
         notes.append(f"{n_filled} rows had no per-test value and use their investigation's (narrow) stated range, "
-                     "e.g. cabin pressure about 1 atm.")
+                     "e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell. filter_tests "
+                     "returns these cells empty, as in the source.")
+    if references and not (filters.get("fuel_phase") or filters.get("fuel")):
+        notes.append("`n_tests_in_cell` counts every fuel (gas flames, droplets, solids). Before saying a material was "
+                     "tested at a reference atmosphere, read `n_tests_in_cell_by_phase` or filter by fuel_phase or fuel.")
     chart = {"type": "heatmap", "x": x, "y": y, "value": "n", "facet": "by_phase", "overlay": "references"}
     return _result({"cells": cells, "references": references, "n_on_map": len(have)}, chart, _test_sources(have), notes)
 

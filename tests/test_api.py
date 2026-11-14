@@ -147,3 +147,21 @@ def test_predict_compact_list_is_small_and_enough_to_call_a_model():
         assert [i["name"] for i in m["inputs"]] == [f["name"] for f in card["features"]]
         assert m["use"] == card["use"] and m["accuracy"]["metric"] == card["cv_metric"]["name"]
     assert any(i["untested"] for m in short["data"]["models"] for i in m["inputs"])
+
+
+def test_coverage_references_split_the_cell_count_by_fuel_phase():
+    out = api.coverage()
+    moon = {r["id"]: r for r in out["data"]["references"]}["moon-habitat"]
+    assert moon["n_tests_in_cell"] > 0 and moon["n_tests_in_cell_by_phase"]["solid"] == 0
+    assert sum(moon["n_tests_in_cell_by_phase"].values()) <= moon["n_tests_in_cell"]
+    assert any("n_tests_in_cell_by_phase" in n for n in out["notes"]) and any("row_kind" in n for n in out["notes"])
+    assert sum(c["n_from_stated_range"] for c in out["data"]["cells"]) == 250
+    assert not any("n_tests_in_cell_by_phase" in n for n in api.coverage(fuel_phase="solid")["notes"])
+
+
+def test_every_investigation_card_links_an_existing_digest_page():
+    cards = api.search_investigations(limit=50)["data"]
+    cards = cards["investigations"] if isinstance(cards, dict) else cards
+    assert len(cards) == 24
+    for card in cards:
+        assert card["page"] and (psi.ROOT / card["page"]).is_file(), card["accession"]
