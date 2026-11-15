@@ -180,11 +180,12 @@ QUESTIONS = [
     {"theme": "Data quality", "question": "Where are the original PSI tables wrong or doubtful?",
      "function": "discrepancies", "arguments": {},
      "chart": "table grouped by investigation, with a badge for corrected / filled / flagged",
-     "answer": "41 cells conflict with the raw data: 7 were corrected (a mistyped test id, an ignition logged "
-               "as failed, two burn times, two dates, a fuel mixture), 5 empty cells were filled (Saffire pressures, "
-               "a date) and 29 are flagged with the value kept, among them a SAME-R row for a test that was never run "
-               "and CFI-G runs listed as failed ignitions although nothing flowed. 10 more cells are flagged from the "
-               "operators' hand-filled test sheets, which are an AI reading of scans that nobody checked. Ten notes "
+     "answer": "45 cells conflict with the raw data: 9 were corrected (a mistyped test id, an ignition logged "
+               "as failed, two burn times, two dates, a fuel mixture, two propane fractions of a day that began with "
+               "a diluted fuel line), 5 empty cells were filled (Saffire pressures, "
+               "a date) and 31 are flagged with the value kept, among them a SAME-R row for a test that was never run "
+               "and CFI-G runs listed as failed ignitions although nothing flowed. 6 more cells are flagged from the "
+               "operators' hand-filled test sheets, which are an AI reading of scans that nobody checked. Thirteen notes "
                "cover whole investigations, such as recorded test points missing from the tables and flames stopped "
                "by the burner temperature limit."},
     {"theme": "Data quality", "question": "What is wrong with the CFI-G table?",
@@ -192,7 +193,8 @@ QUESTIONS = [
      "chart": "table of test, column, table value, raw value, action",
      "answer": "Test 21106 F4 is logged as not ignited but burned for 20 s; 21112 A6 is given 259 s of burning where "
                "the flame lasted 147 s; 21270 H3 carries the previous test's 43 s where the flame lasted 94 s. Six "
-               "more burn times are 5-17 s short, ten recorded test points are not in the table, and the pressures of "
+               "more burn times are 5-17 s short, ten recorded test points are not in the table (nine failed ignitions of day 21106 and one "
+               "run aborted before gas flowed), and the pressures of "
                "normal flames are nominal fill levels about 3 kPa below the transducer reading. Six rows listed as not "
                "ignited were not ignition attempts (nothing flowed, or a no-flame test), two burner O2 values are "
                "contradicted by the flow controllers, and on day 21277 the oxidizer flow fell below its setpoint as "

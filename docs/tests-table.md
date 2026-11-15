@@ -122,10 +122,10 @@ Common `extra` keys:
 | `id_suspect` | test id looks mistyped | 1 (PSI-10) |
 | `pressure_zero_in_source` | source gives 0 mmHg; pressure left null | 1 (PSI-69) |
 | `label_fixed` | a label split across cells was repaired (original in extra) | 1 (PSI-106) |
-| `corrected_from_raw` | value replaced by the raw sensor data (table value kept as `<column>_original`; patch ids in extra `discrepancies`) | 7 (PSI-10 1, PSI-23 1, PSI-39 2, PSI-159 3) |
+| `corrected_from_raw` | value replaced by the raw sensor data (table value kept as `<column>_original`; patch ids in extra `discrepancies`) | 9 (PSI-10 3, PSI-23 1, PSI-39 2, PSI-159 3) |
 | `filled_from_raw` | empty table cell filled from the raw sensor data | 5 (PSI-10 1, PSI-98 2, PSI-100 2) |
-| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 26 (PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 14) |
-| `conflicts_with_test_sheet` | the operators' hand-filled test sheet contradicts the value or says the row was not what the table makes of it; the value is kept. The sheet is an AI reading of a scan, not checked by a human (patch ids in extra `discrepancies`) | 10 (PSI-10 5, PSI-159 5) |
+| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 28 (PSI-10 2, PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 14) |
+| `conflicts_with_test_sheet` | the operators' hand-filled test sheet contradicts the value or says the row was not what the table makes of it; the value is kept. The sheet is an AI reading of a scan, not checked by a human (patch ids in extra `discrepancies`) | 6 (PSI-10 1, PSI-159 5) |
 | `conflicts_with_table` | PSI-39 only: the spreadsheet and the old experimental table disagree (old value as `experimental_table_<column>`) | 0 |
 
 682 rows carry at least one flag.
@@ -146,9 +146,24 @@ Corrections and flags:
 - Inverse rows are flagged `o2_is_burner_stream`.
 - RAMP/RAMPED rows are flagged `ramped`.
 - The 20 propane-day rows (21301*) are flagged `placeholder_values`.
-- 21301A1 to A5 also carry `conflicts_with_test_sheet` on `fuel_fraction` (patches D51 to D55): the sheets say the
-  fuel line still held 30% propane when the 100% bottle was connected, so the fraction at the burner was
-  somewhere between 0.30 and 1.0.
+- Propane fraction of day 21301 (patches D51 to D55, note D62). The A1 sheet says the fuel line still held 30%
+  propane when the 100% bottle was connected. The recordings settle how far that reaches: per unit of
+  fuel-controller flow, 21301A1 and A2 radiate 0.42 times as much as 21301A7 at the same setpoint and show a
+  gas-line pressure drop 3.5 to 4 times larger, like the 30% propane day 21137 of PSI-159 and unlike its 100%
+  propane day 21112 (same burner, 40% O2).
+
+  | Rows | `fuel_fraction` | Flag | Why |
+  |---|---|---|---|
+  | 21301A1, A2 | 0.30 (table 1.0 in `fuel_fraction_original`) | `corrected_from_raw` | both sensors match the 30% day; 0.30 is the mixture the line held, not a measured composition |
+  | 21301A3 | 1.0 kept | `conflicts_with_raw` | the fraction rose from about 0.3 towards 1.0 during the burn |
+  | 21301A4 | 1.0 kept | `conflicts_with_raw` | 10 to 20% less radiation than pure propane: not decisive |
+  | 21301A5 | 1.0 kept | `conflicts_with_test_sheet` | the sheet repeats the doubt; the recording is within 5% of pure propane |
+  | 21301A6 to A9, H1 to H3 | 1.0 | none | indistinguishable from pure propane (about 5% spread); the diluted rows C, D, J3, J4 ran after A6 |
+
+  `mfuel (mg/s)` and `mN2 (mg/s)` in extra are NASA's values for pure propane on all rows. The sheets of 21301H2 and
+  H3 have their fuel flows swapped; the table, the as-run files and the recorded flows agree (0.082 and 0.092 slpm).
+- Nine recorded Flame Design test points have no row (notes D27, D63): all are ignition attempts without a lasting
+  flame (eight flashes or failed ignitions, one igniter burn-out). No rows were added.
 - The tables have no column for how a flame ended. The test sheets say 17 flames were stopped by the burner
   temperature limit (note D59), and they are the only record of 21 attempts with no row and no data file (note
   D60). See "Test sheets" below.
@@ -427,6 +442,10 @@ No match (most review frames fall before the first logged row of their burn, at 
 - 21291 A1 and C1: `burn_time_s` spans six hot flames with cool flames between, not one flame
   (`conflicts_with_test_sheet`, D56, D57).
 - For inverse rows `fuel_fraction` is the ambient fuel fraction.
+- Ten recorded test points have no row (notes D28, D64). Nine are failed ignitions of day 21106 that the table
+  leaves out (21106A1 to A3 at about 39% O2; G1 to G5 and G8 at about 21% O2): the recordings show fuel flowing for
+  13 to 15 s with no flame, at most flashes around the igniter. 21242F1 was aborted before any gas flowed. No rows
+  were added, so the table's count of failed ignitions, and the ignition models trained on it, miss these nine.
 
 ## Conflicts with the raw sensor data
 

@@ -324,11 +324,17 @@ def test_burner_oxygen_the_flows_contradict_is_flagged_and_kept():
     assert "conflicts_with_raw" in flags and extra["O2 flow rate (mg/s)"] == "8.946670681"
 
 
-def test_uncertain_propane_fraction_is_flagged_from_the_sheet_and_kept():
-    for n in range(1, 6):
+def test_propane_fraction_of_day_21301_follows_the_recordings_as_far_as_they_decide():
+    for n in (1, 2):  # the recordings match the 30 % day, not the 100 % day: the value changes
         r, flags, extra = table_row(f"21301A{n}", "PSI-10")
-        assert r["fuel_fraction"] == 1.0 and {"conflicts_with_test_sheet", "placeholder_values"} <= flags
-    assert "conflicts_with_test_sheet" not in table_row("21301A6", "PSI-10")[1]
+        assert r["fuel_fraction"] == pytest.approx(0.3) and extra["fuel_fraction_original"] == 1.0
+        assert {"corrected_from_raw", "placeholder_values"} <= flags and "conflicts_with_test_sheet" not in flags
+    for n, flag in ((3, "conflicts_with_raw"), (4, "conflicts_with_raw"), (5, "conflicts_with_test_sheet")):
+        r, flags, extra = table_row(f"21301A{n}", "PSI-10")
+        assert r["fuel_fraction"] == 1.0 and flag in flags and "fuel_fraction_original" not in extra
+    for test_id in ("21301A6", "21301A7", "21301H1", "21301H3"):  # indistinguishable from pure propane (note D62)
+        r, flags, _ = table_row(test_id, "PSI-10")
+        assert r["fuel_fraction"] == 1.0 and flags == {"placeholder_values"}
 
 
 # the link from filter_tests

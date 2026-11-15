@@ -1045,7 +1045,7 @@
  },
  "discrepancies": {
   "description": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
-  "rows": 61,
+  "rows": 64,
   "files": [
    "data/processed/discrepancies.parquet",
    "data/processed/discrepancies.csv"
@@ -1053,16 +1053,16 @@
   "columns": {
    "id": {
     "dtype": "str",
-    "non_null": 61,
+    "non_null": 64,
     "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`"
    },
    "accession": {
     "dtype": "str",
-    "non_null": 61,
+    "non_null": 64,
     "description": null,
     "values": {
-     "PSI-159": 28,
-     "PSI-10": 10,
+     "PSI-159": 29,
+     "PSI-10": 12,
      "PSI-39": 6,
      "PSI-98": 6,
      "PSI-23": 5,
@@ -1082,13 +1082,13 @@
    },
    "column": {
     "dtype": "str",
-    "non_null": 54,
+    "non_null": 56,
     "description": "`tests` column concerned, or a source column the table keeps only in `extra`",
     "values": {
      "pressure_kpa": 11,
      "burn_time_s": 10,
-     "fuel_fraction": 8,
-     "ignited": 7,
+     "fuel_fraction": 9,
+     "ignited": 8,
      "O2 flow rate (mg/s)": 4,
      "date": 3,
      "x_o2_ambient": 3,
@@ -1133,12 +1133,13 @@
    },
    "evidence_value": {
     "dtype": "str",
-    "non_null": 37,
+    "non_null": 39,
     "description": "value the raw data give",
     "values": {
      "H2/CH4/He 25/20/55": 2,
      "0.198": 2,
      "1.0": 2,
+     "0.3": 2,
      "22024M1": 1,
      "2022-01-24": 1,
      "True": 1,
@@ -1174,12 +1175,12 @@
    },
    "action": {
     "dtype": "str",
-    "non_null": 61,
+    "non_null": 64,
     "description": "replace / fill / flag / note",
     "values": {
-     "flag": 39,
-     "note": 10,
-     "replace": 7,
+     "flag": 37,
+     "note": 13,
+     "replace": 9,
      "fill": 5
     }
    },
@@ -1188,20 +1189,20 @@
     "non_null": 51,
     "description": "flag put on the row; conflicts_with_test_sheet when the only evidence is a hand-filled test sheet (an AI reading of a scan, not checked by a human)",
     "values": {
-     "conflicts_with_raw": 29,
-     "conflicts_with_test_sheet": 10,
-     "corrected_from_raw": 7,
+     "conflicts_with_raw": 31,
+     "corrected_from_raw": 9,
+     "conflicts_with_test_sheet": 6,
      "filled_from_raw": 5
     }
    },
    "evidence": {
     "dtype": "str",
-    "non_null": 61,
+    "non_null": 64,
     "description": "what the raw data or the test sheet show"
    },
    "evidence_source": {
     "dtype": "str",
-    "non_null": 61,
+    "non_null": 64,
     "description": "file and channel the evidence comes from"
    }
   }

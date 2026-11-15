@@ -917,7 +917,10 @@ days without a sheet PDF). Of the 41 that are not:
   G1, 19156A1, A2, B1, B3, 19171B2, 19175A1, B3, 19182G4, G5, 21349D1, 22018H1, J3, 22027A1, 22035D2; PSI-159:
   21088M1-M3). All are aborts or failed ignitions. No `tests` rows were added for them.
 - 17 have a data file but no table row: the recorded test points the experiment tables leave out (patches D27,
-  D28).
+  D28). Each sheet was compared with its recording (notes D63, D64): 16 are ignition attempts without a lasting
+  flame (PSI-10: 19115C1, D1, H1, P1, 19123H1, 19175B2, and 19123L8 where the igniter burned out; PSI-159:
+  21106A1-A3, G1-G5, G8) and 21242F1 was aborted before gas flowed. The sheets and the recordings agree, no sheet
+  carries a wrong id and none is a table row under another id. No `tests` rows were added for them.
 
 Eight sheets are a `tests` row without a data file (19137C1, 21102M6, 21125A4, 21125H3, 21130A9, 21209A2,
 21301J1, 21301J2).
