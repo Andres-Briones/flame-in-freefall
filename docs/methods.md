@@ -51,6 +51,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `find_evidence(query, accession)` | passages: reviewed findings and raw document text (keyword search) |
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
 | `timeseries(test_id, channels, test_point, accession)` | sensor traces of one test; reads `data/raw/` (or `$FIF_RAW_ROOT`); `demo/server.py` fetches the missing files from PSI on demand (`docs/formats.md`) |
+| `document_text(accession, file, page)` | our extracted text of one PSI file: no `page` lists the pages that have text, a `page` (3, `p3`, `sheet Results`) gives its passages in order with `transcribed`; for reading scanned PDFs. Same redaction as `find_evidence`; `demo/server.py` returns no text for the files it does not show inline |
 | `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files |
 | `predict(model_id, **conditions)` | small per-investigation models (`docs/models.md`); no `model_id` lists them, `compact=True` for the short list |
 

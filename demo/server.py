@@ -356,6 +356,13 @@ def call_function(name, kwargs):
     result = fn(**kwargs)
     if name == "find_evidence":
         result = _withhold_not_inline(result)
+    if name == "document_text" and (result["data"]["accession"], result["data"]["file"]) in NOT_INLINE:
+        data = result["data"]
+        data["pages"] = []
+        for key in ("passages", "transcribed_pages"):
+            if key in data:
+                data[key] = []
+        result["notes"] = [*result["notes"], "Text of PSI files that contain credentials or personal data is not returned."]
     return json.dumps(_plain(result), allow_nan=False, default=str, ensure_ascii=False)
 
 
@@ -552,10 +559,12 @@ def _example(tool):
 
 EXAMPLE_VALUES = {"accession": "PSI-25", "accessions": ["PSI-25", "PSI-26"], "scenario": "moon-habitat",
                   "fuel_phase": "solid", "query": "flame spread over PMMA", "question": "flammability limit of PMMA",
-                  "x_o2": [0.18, 0.21], "limit": 20, "k": 5, "model": "cfig_normal_self_extinction",
-                  "test_id": "22024M1", "compact": True}
+                  "x_o2": [0.18, 0.21], "limit": 20, "page": 1, "k": 5, "model": "cfig_normal_self_extinction",
+                  "test_id": "22024M1", "compact": True,
+                  "file": "PSI-25_Raw Data_GMT2014_045_BASS_S128_TPT1_ProofSheet.pdf"}
 EXAMPLE_OPTIONAL = {"predict": ("compact",), "search_investigations": ("query", "fuel_phase"), "filter_tests": ("accession", "x_o2", "limit"),
-                    "find_evidence": ("k",), "relevance": ("fuel_phase",)}
+                    "find_evidence": ("k",), "relevance": ("fuel_phase",),
+                    "document_text": ("page",)}
 
 
 def _describe(name, spec):

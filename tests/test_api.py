@@ -310,3 +310,24 @@ def test_find_evidence_marks_ai_transcribed_passages(monkeypatch):
     assert {s["file"]: s["transcribed"] for s in result["sources"] if "file" in s} == marks
     assert any("AI model's reading of a scanned page" in n for n in result["notes"])
     json.dumps(result, allow_nan=False)
+
+
+def test_document_text_pages_text_scan_and_empty_file():
+    report = "PSI-10_Engineering Documents_ACME Engineering Implementation Rpt..pdf"
+    listing = api.document_text("PSI-10", report)
+    assert listing["data"]["pages"][:3] == ["p1", "p2", "p3"] and listing["data"]["transcribed_pages"] == []
+    page = api.document_text("10", report, page=3)["data"]
+    assert page["page"] == "p3" and len(page["passages"]) == 3 and not any(p["transcribed"] for p in page["passages"])
+    assert api.document_text("PSI-10", report, page="p3")["data"]["passages"] == page["passages"]
+
+    scan = api.document_text("PSI-10", "PSI-10_Raw Data_19115 test sheets.pdf", page=1)
+    assert scan["data"]["passages"][0]["transcribed"] and "ACME test #" in scan["data"]["passages"][0]["text"]
+    assert any("AI model's reading of a scanned page" in n for n in scan["notes"])
+
+    empty = api.document_text("PSI-47", "PSI-47_Reports_DAFT_FinalReport.doc")
+    assert empty["data"]["pages"] == [] and any("no text" in n for n in empty["notes"])
+    assert api.document_text("PSI-10", report, page=9999)["data"]["passages"] == []
+    for bad in (("PSI-10", "nope.pdf"), ("PSI-999", report)):
+        with pytest.raises(ValueError):
+            api.document_text(*bad)
+    json.dumps(scan, allow_nan=False)

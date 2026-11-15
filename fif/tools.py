@@ -106,6 +106,14 @@ TOOLS = [
           "(table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, "
           "and statements resting on files PSI lists as removed. Use whenever the user asks about data quality or when "
           "showing a test whose row has flags.", {"accession": ACCESSION, "test_id": {"type": "string"}}),
+    _tool(api.document_text, "Our extracted text of one PSI file, so a scanned PDF without a text layer can be read and "
+          "copied. Without page: the pages (locators: p1, p2 for PDFs; sheet, slide or all for other files) that have "
+          "text. With page: that page's passages in order (text, locator, transcribed). transcribed=true is an AI "
+          "model's reading of a scan; check it in the original. A file with no text returns no pages. Use when a "
+          "user reads a document, or to quote a page that find_evidence pointed to.",
+          {"accession": ACCESSION, "file": {"type": "string", "description": "file name as listed in sources or the PSI catalogue"},
+           "page": {"type": ["integer", "string"], "description": "page number (3) or locator (p3, \"sheet Results\")"}},
+          ["accession", "file"]),
 ]
 
 

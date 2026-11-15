@@ -175,7 +175,7 @@ files a chart needs are fetched from PSI into a transient cache under `FIF_RAW_R
 past the cap (files already on disk are never deleted; single files over 100 MB are refused).
 
 Not shown inline (credentials or personal data; `/api/resolve` answers 403 and their text is withheld from
-`find_evidence`): `PSI-26_Science Documents_Planned_Test Matrix.xlsx`, the SAME operations manual
+`find_evidence` and `document_text`): `PSI-26_Science Documents_Planned_Test Matrix.xlsx`, the SAME operations manual
 (`PSI-101_` and its identical `PSI-102_Science Documents_SAME_Operations Manual_007.pdf`) and the PSI-142
 `1-Cover Page.docx`. They stay reachable at NASA PSI.
 

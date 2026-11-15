@@ -195,9 +195,52 @@ def find_evidence(query, accession=None, k=8, raw=True):
     notes = ["`digest` passages are reviewed claims with their own sources; `documents` are unreviewed extracts "
              "from PSI files and may contain extraction errors."]
     if any(d["transcribed"] for d in documents):
-        notes.append("Documents with `transcribed: true` are an AI model's reading of a scanned page that has no text "
-                     "layer, not the document's own text; numbers and names may be misread. Check them in the original file.")
+        notes.append(TRANSCRIBED_NOTE)
     return _result({"digest": digest, "documents": documents}, None, sources, notes)
+
+
+TRANSCRIBED_NOTE = ("Documents with `transcribed: true` are an AI model's reading of a scanned page that has no text "
+                    "layer, not the document's own text; numbers and names may be misread. Check them in the original file.")
+
+
+def _page_order(locator, first):
+    match = re.fullmatch(r"p(\d+)", locator)
+    return (0, int(match.group(1))) if match else (1, first)
+
+
+def document_text(accession, file, page=None):
+    """Our extracted text of one PSI file, page by page, so a scanned PDF can be read and copied: without `page`, the
+    pages (locators) that have text; with `page` (a number or a locator such as p3 or "sheet Results"), that page's
+    passages in order."""
+    try:
+        acc = _accession(accession)
+    except KeyError as e:
+        raise ValueError(e.args[0]) from None
+    files = table("evidence_files")
+    status = files.loc[(files["accession"] == acc) & (files["file_name"] == file), "status"]
+    if status.empty:
+        raise ValueError(f"{file!r} is not a file of {acc}")
+    ev = table("evidence")
+    ev = ev[(ev["accession"] == acc) & (ev["file_name"] == file)]
+    first = {loc: i for i, loc in reversed(list(enumerate(ev["locator"])))}
+    pages = sorted(first, key=lambda loc: _page_order(loc, first[loc]))
+    data = {"accession": acc, "file": file, "status": status.iloc[0], "pages": pages}
+    notes = ["The text is an unreviewed extract from the PSI file and may contain extraction errors."]
+    if page is None:
+        data["transcribed_pages"] = sorted(set(ev.loc[ev["transcribed"], "locator"]), key=lambda loc: _page_order(loc, first[loc]))
+        transcribed = bool(data["transcribed_pages"])
+    else:
+        locator = f"p{page}" if isinstance(page, int) or str(page).isdigit() else str(page)
+        rows = ev[ev["locator"] == locator].sort_values("chunk")
+        data["page"] = locator
+        data["passages"] = [{"text": r.text, "locator": r.locator, "transcribed": bool(r.transcribed)} for r in rows.itertuples()]
+        transcribed = any(p["transcribed"] for p in data["passages"])
+    if not pages:
+        notes.append(f"There is no text for this file (extraction status: {data['status']}).")
+    if transcribed:
+        notes.append(TRANSCRIBED_NOTE)
+    sources = [{"accession": acc, "file": file, "locator": data.get("page"), "transcribed": transcribed}]
+    return _result(data, None, sources, notes)
 
 
 def search_investigations(query=None, pillar=None, fuel_phase=None, flight=None, limit=24):
@@ -889,7 +932,7 @@ def discrepancies(accession=None, test_id=None):
 
 FUNCTIONS = {f.__name__: f for f in (
     search_investigations, get_investigation, filter_tests, compare, coverage, relevance, find_evidence,
-    insights, timeseries, predict, discrepancies,
+    insights, timeseries, predict, discrepancies, document_text,
 )}
 
 if __name__ == "__main__":

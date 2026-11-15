@@ -37,7 +37,7 @@ def fake_psi(monkeypatch):
 
 def test_health_lists_the_functions(client):
     body = client.get("/api/health").json()
-    assert body["ok"] is True and "relevance" in body["functions"] and len(body["functions"]) == 11
+    assert body["ok"] is True and "relevance" in body["functions"] and len(body["functions"]) == 12
     assert isinstance(body["raw_on_disk"], bool)
 
 
@@ -100,6 +100,17 @@ def test_resolve_refuses_decision_007_files(client, fake_psi):
         r = client.get("/api/resolve", params={"accession": acc, "file": name})
         assert r.status_code == 403 and r.json()["detail"] == server.NOT_INLINE_DETAIL
     assert fake_psi["calls"] == 0
+
+
+def test_document_text_returns_no_text_for_files_not_shown_inline(client):
+    for acc, name in server.NOT_INLINE:
+        for args in ({}, {"page": 1}):
+            r = client.post("/api/call/document_text", json={"accession": acc, "file": name, **args})
+            if r.status_code == 400:  # not an extracted file of its own (PSI-142's cover page sits inside an archive)
+                continue
+            assert r.json()["data"]["pages"] == [] and not r.json()["data"].get("passages"), name
+    r = client.post("/api/call/document_text", json={"accession": "PSI-10", "file": "nope.pdf"})
+    assert r.status_code == 400
 
 
 def test_resolve_returns_the_storage_address_and_caches_it(client, fake_psi):
