@@ -55,6 +55,19 @@ def _email_doubt(email):
     return None
 
 
+def _publications(pubs):
+    """The record's publication list in its order, as printed (whitespace collapsed); a missing DOI stays None."""
+    return [
+        {
+            "title": _clean(p.get("title")),
+            "authors": _clean(p.get("authorList")),
+            "doi": _clean(p.get("doi")),
+            "status": _clean((p.get("status") or {}).get("annotationValue")),
+        }
+        for p in pubs
+    ]
+
+
 def build():
     rows = []
     for rec in psi.load_records():
@@ -85,6 +98,7 @@ def build():
                 "license": _clean(rec.get("licenseIdentifier")),
                 "n_publications": len(pubs),
                 "publication_dois": "; ".join(p["doi"] for p in pubs if p.get("doi")) or None,
+                "publications": _publications(pubs),
                 "n_files": len(files),
                 "total_gb": round(sum(float(f.get("file_size") or 0) for f in files) / 1e9, 3),
                 "source_url": f"https://psi.nasa.gov/physci/repo/data/investigations/{rec['accession']}",

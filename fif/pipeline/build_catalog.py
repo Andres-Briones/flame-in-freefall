@@ -85,6 +85,7 @@ DESCRIPTIONS = {
         "author_contacts": "per-author name, affiliation, role and e-mail from the PSI record contact block",
         "objective": "objective text from the PSI record", "n_files": "files listed in the record",
         "total_gb": "size of all listed files", "publication_dois": "DOIs listed in the record, '; '-separated",
+        "publications": "the record's publication list in its order: title, authors, doi (None when missing), status",
         "source_url": "PSI page of the investigation",
     },
     "files": {

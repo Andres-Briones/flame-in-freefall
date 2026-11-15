@@ -48,6 +48,7 @@ INFORMATIONAL_FLAGS = {"o2_is_burner_stream", "ramped", "smoke_point_bracket", "
 WEIGHTS = {"conditions": 0.40, "material": 0.25, "pillar": 0.20, "evidence": 0.15}
 GRAVITY_WEIGHT = 0.10
 UNKNOWN_STEPS = 2.0  # a condition nobody recorded counts as two steps away
+HELD_TITLE_CHARS = 300  # a paper's title opens its first page (after a header such as "Title of Document:")
 ENVELOPE_DISCOUNT = 0.8  # inside a stated range is weaker than on a tested point
 # How far a result on one fuel phase carries to a hazard of another phase. A judgement, not a measurement:
 # gas-burner and droplet flames share the gas-phase physics of a burning solid but not its pyrolysis.
@@ -290,6 +291,40 @@ def search_investigations(query=None, pillar=None, fuel_phase=None, flight=None,
     return _result(out[:limit], None, [{"ref": f"[{c['accession']}]", "page": c["page"]} for c in out[:limit]])
 
 
+def _norm(text):
+    return re.sub(r"[^a-z0-9]+", " ", (text or "").lower()).strip()
+
+
+@lru_cache(maxsize=None)
+def _first_pages(acc):
+    """Normalised text of page 1 of each PDF we hold for the investigation. Slides of a talk are not the paper."""
+    ev = table("evidence")
+    ev = ev[(ev.accession == acc) & (ev.locator == "p1") & (ev.category != "Presentations")]
+    return {f: _norm(" ".join(g.sort_values("chunk")["text"])) for f, g in ev.groupby("file_name")}
+
+
+def _held_file(acc, pub, pubs):
+    """The PSI file that is this publication: its title opens page 1 and no other listed publication is named there.
+
+    A publication list or a report that cites the papers names several of them on page 1, so it never matches.
+    """
+    title = _norm(pub["title"])
+    if len(title.split()) < 4:
+        return None
+    others = [k for p in pubs if _norm(p["title"]) != title
+              for k in (_norm(p["title"]), _norm(p["doi"])) if k and len(k.split()) >= 2]
+    for name, page in sorted(_first_pages(acc).items()):
+        if title in page[:HELD_TITLE_CHARS] and not any(k in page for k in others):
+            return name
+    return None
+
+
+def _publications(acc, pubs):
+    pubs = [dict(p) for p in pubs]
+    return [{**p, "doi_url": f"https://doi.org/{p['doi']}" if p["doi"] else None, "held_file": _held_file(acc, p, pubs)}
+            for p in pubs]
+
+
 def get_investigation(accession, sections=None):
     """The full knowledge record of one investigation (or only the named sections)."""
     acc = _accession(accession)
@@ -300,6 +335,8 @@ def get_investigation(accession, sections=None):
     if sections is None or "publication_dois" in sections:
         dois = api["publication_dois"]
         data["publication_dois"] = [d.strip() for d in dois.split(";") if d.strip()] if isinstance(dois, str) else []
+    if sections is None or "publications" in sections:
+        data["publications"] = _publications(acc, api["publications"])
     return _result(data, None, [{"ref": f"[{acc}]", "page": data["card"]["page"], "url": api["source_url"], "doi": api["doi"]}])
 
 

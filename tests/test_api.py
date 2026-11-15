@@ -233,6 +233,17 @@ def test_every_investigation_card_carries_its_dataset_doi():
     assert one["card"]["doi"] == "10.60555/4qc4-de67" and len(one["publication_dois"]) > 0
 
 
+def test_get_investigation_lists_every_publication_of_the_record():
+    pubs = api.get_investigation("PSI-25")["data"]["publications"]
+    assert len(pubs) == 17 and all(p["title"] for p in pubs)
+    with_doi = [p for p in pubs if p["doi"]]
+    assert with_doi and all(p["doi_url"] == "https://doi.org/" + p["doi"] for p in with_doi)
+    assert all(p["doi_url"] is None for p in pubs if not p["doi"])
+    held = {p["held_file"] for p in api.get_investigation("PSI-107")["data"]["publications"]} - {None}
+    assert held == {"PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf"}
+    assert all(p["held_file"] is None for p in api.get_investigation("PSI-10")["data"]["publications"])
+
+
 def test_predict_compact_list_is_small_and_enough_to_call_a_model():
 
     full, short = api.predict()["data"], api.predict(compact=True)
