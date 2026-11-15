@@ -49,7 +49,7 @@ traces. Fetch them with `scripts/fetch_psi.py` and `scripts/fetch_psi_files.py`;
 - The whole database was re-verified against the raw files on 2026-11-14 by independent passes; what they found
   wrong was corrected, and every correction of NASA's data is a visible patch or flag, never a silent edit.
 - The four predictive models are small. Each headline score comes with the range it takes when the test days are
-  resampled (for example AUC 0.84, range 0.47-0.87): show the range, not only the number.
+  resampled (for example AUC 0.89, range 0.51-0.94): show the range, not only the number.
 - `test_id` is not unique in `tests` (12 rows share one); `source_file` + `source_row` is the row key.
 - AI was used to read the documents and write the digest. Quotes from PSI files are machine-checked against the
   extracted text; quotes from external publications are not independently checked.

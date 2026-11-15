@@ -189,7 +189,7 @@ answer as of the current tables. `tests/test_questions.py` runs every call. Sour
 
 - Call: `predict()`
 - Chart: table of models with sample size and cross-validated score
-- Answer today: Four models keep skill when whole test days are held out: self-extinction of normal and inverse CFI-G gas flames (AUC 0.84 and 0.83) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.47-0.87 and 0.57-0.95, R2 0.63-0.80 and 0.13-0.76. Four more models are descriptive only.
+- Answer today: Four models give a prediction, scored on whole held-out test days: self-extinction of normal and inverse CFI-G gas flames (AUC 0.69 and 0.89) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.36-0.80 and 0.51-0.94, R2 0.63-0.80 and 0.13-0.76, so the normal-flame model is not clearly better than chance. Four more models are descriptive only.
 
 **30. How fast would a heptane droplet burn in a Moon-habitat atmosphere?**
 

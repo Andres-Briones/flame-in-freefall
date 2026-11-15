@@ -157,10 +157,11 @@ QUESTIONS = [
                "20 cm/s flow. The experiment table has 21.5-21.7% O2 and no pressure."},
     {"theme": "Models", "question": "Which outcomes can be predicted from test conditions, and how well?",
      "function": "predict", "arguments": {}, "chart": "table of models with sample size and cross-validated score",
-     "answer": "Four models keep skill when whole test days are held out: self-extinction of normal and inverse CFI-G "
-               "gas flames (AUC 0.84 and 0.83) and FLEX droplet burning rate and methanol extinction diameter "
-               "(R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.47-0.87 and 0.57-0.95, "
-               "R2 0.63-0.80 and 0.13-0.76. Four more models are descriptive only."},
+     "answer": "Four models give a prediction, scored on whole held-out test days: self-extinction of normal and "
+               "inverse CFI-G gas flames (AUC 0.69 and 0.89) and FLEX droplet burning rate and methanol extinction "
+               "diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.36-0.80 and "
+               "0.51-0.94, R2 0.63-0.80 and 0.13-0.76, so the normal-flame model is not clearly better than chance. "
+               "Four more models are descriptive only."},
     {"theme": "Models", "question": "How fast would a heptane droplet burn in a Moon-habitat atmosphere?",
      "function": "predict", "arguments": {"model_id": "flex_burning_rate", "is_heptane": 1, "x_o2_ambient": 0.30,
                                            "x_co2": 0, "x_he": 0, "pressure_kpa": 70.3, "d0_mm": 3.0},

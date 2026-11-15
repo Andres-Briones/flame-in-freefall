@@ -414,10 +414,12 @@ No match (most review frames fall before the first logged row of their burn, at 
 - `extinction_mode` = `flow_terminated` covers two endings that the test sheets tell apart: 54 time-outs and 24
   stops by the burner temperature limit (note D58, `filter_tests(sheet_out="temp_limit")`). A temperature-limit
   stop is neither a self-extinction nor a flame that lasted the scripted time. No sheet contradicts the column.
+  The two self-extinction models leave the 24 out (`docs/models.md`).
 - Six rows listed as not ignited were not ignition attempts: nothing flowed, or it was a no-flame test of the
   igniter (21196 A1, 21130 A4, 21242 P2: `conflicts_with_raw`, patches D45 to D47; 21125 A4, 21125 H3, 21209 A2,
   which have no data file: `conflicts_with_test_sheet`, D48 to D50). `ignited` stays false; leave these rows out
-  of ignition statistics with `exclude_flags`, which also drops the other rows carrying those flags.
+  of ignition statistics with `exclude_flags`, which also drops the other rows carrying those flags. The two
+  ignition models leave out exactly these six, by patch id.
 - Burner O2 the flow controllers contradict (`conflicts_with_raw` on `x_o2_burner`): 21256 C2 (no nitrogen
   flowed: 85%, not 50%; D39) and 21277 P1 (oxidizer and nitrogen flows swapped: about 55%, not 30%; D40).
 - Day 21277, oxidizer bottle nearly empty: the measured oxidizer flow of C2, F2, M1 and N1 is 41 to 90% of the

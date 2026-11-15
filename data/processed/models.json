@@ -4,9 +4,9 @@
    "id": "cfig_normal_self_extinction",
    "accession": "PSI-159",
    "kind": "classifier",
-   "question": "Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own (radiative self-extinction) before the scripted flow cut-off?",
+   "question": "Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own (radiative self-extinction) before the scripted timeout?",
    "target": "self_extinguished",
-   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (flow cut by the script timeout or the burner temperature limit)",
+   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script timeout; flames stopped by the burner temperature limit (per the test sheets) are left out",
    "use": "predictive",
    "target_transform": null,
    "features": [
@@ -26,7 +26,7 @@
         0.25,
         0.35
        ],
-       "n_tests": 3
+       "n_tests": 2
       }
      ]
     },
@@ -94,18 +94,22 @@
      "why": "no recorded outcome"
     },
     {
+     "excluded": 12,
+     "why": "stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame was cut off early, so whether it would have gone out by itself is not known"
+    },
+    {
      "step": "training rows",
-     "rows": 133
+     "rows": 121
     }
    ],
-   "n": 133,
+   "n": 121,
    "n_groups": 11,
    "target_summary": {
     "class_counts": {
      "1": 102,
-     "0": 31
+     "0": 19
     },
-    "positive_fraction": 0.7669
+    "positive_fraction": 0.843
    },
    "estimator": {
     "pipeline": [
@@ -121,79 +125,79 @@
    },
    "coefficients": {
     "scale": "log-odds",
-    "intercept_per_unit": 9.958,
+    "intercept_per_unit": 8.72,
     "terms": [
      {
       "feature": "x_o2_ambient",
-      "per_sd": -1.965,
-      "per_unit": -24.51,
+      "per_sd": -1.583,
+      "per_unit": -19.23,
       "per_sd_ci95_cluster_bootstrap": [
-       -2.542,
-       -1.286
+       -2.162,
+       -0.975
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -31.72,
-       -16.05
+       -26.26,
+       -11.85
       ],
       "expected_sign": "-",
       "agreement": "agrees"
      },
      {
       "feature": "log10(pressure_kpa)",
-      "per_sd": 0.01849,
-      "per_unit": 0.08484,
+      "per_sd": -0.07403,
+      "per_unit": -0.3368,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.6827,
-       0.6235
+       -0.9024,
+       0.5733
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -3.133,
-       2.861
+       -4.105,
+       2.609
       ],
       "expected_sign": "+",
-      "agreement": "agrees in sign; CI includes 0"
+      "agreement": "opposite sign; CI includes 0"
      },
      {
       "feature": "log10(fuel_flow_mg_s)",
-      "per_sd": 1.34,
-      "per_unit": 5.535,
+      "per_sd": 0.8597,
+      "per_unit": 3.575,
       "per_sd_ci95_cluster_bootstrap": [
-       0.6348,
-       2.566
+       0.02165,
+       1.988
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       2.622,
-       10.6
+       0.09003,
+       8.268
       ],
       "expected_sign": "+",
       "agreement": "agrees"
      },
      {
       "feature": "fuel_fraction",
-      "per_sd": -0.2782,
-      "per_unit": -0.9847,
+      "per_sd": -0.1377,
+      "per_unit": -0.5066,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.376,
-       0.155
+       -1.176,
+       0.4091
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -4.871,
-       0.5487
+       -4.328,
+       1.505
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
      },
      {
       "feature": "n_carbon",
-      "per_sd": 0.02893,
-      "per_unit": 0.03484,
+      "per_sd": 0.1141,
+      "per_unit": 0.1376,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.479,
-       0.6397
+       -1.197,
+       0.8131
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.781,
-       0.7702
+       -1.443,
+       0.9807
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -201,9 +205,9 @@
     ]
    },
    "in_sample": {
-    "roc_auc": 0.876,
-    "brier": 0.1136,
-    "balanced_accuracy": 0.7434
+    "roc_auc": 0.8215,
+    "brier": 0.1106,
+    "balanced_accuracy": 0.4951
    },
    "cv_scheme": {
     "grouped_by_date": "GroupKFold(5) by test date",
@@ -212,78 +216,78 @@
    "cv": {
     "grouped_by_date": {
      "roc_auc": {
-      "mean": 0.8377,
-      "sd": 0.06757,
+      "mean": 0.6895,
+      "sd": 0.1534,
       "per_fold": [
-       0.7446,
-       0.9242,
-       0.8476,
-       0.8045,
-       0.8676
+       0.6421,
+       0.8654,
+       0.7444,
+       0.4545,
+       0.7412
       ],
-      "pooled": 0.8083
+      "pooled": 0.6992
      },
      "brier": {
-      "mean": 0.1362,
-      "sd": 0.02792,
+      "mean": 0.1315,
+      "sd": 0.03309,
       "per_fold": [
-       0.1593,
-       0.09387,
-       0.1277,
-       0.163,
-       0.1371
+       0.1519,
+       0.08724,
+       0.1564,
+       0.1048,
+       0.1575
       ],
-      "pooled": 0.1374
+      "pooled": 0.1294
      },
      "balanced_accuracy": {
-      "mean": 0.7249,
-      "sd": 0.09615,
+      "mean": 0.5068,
+      "sd": 0.04021,
       "per_fold": [
-       0.769,
-       0.7879,
-       0.8048,
-       0.5714,
-       0.6912
+       0.5,
+       0.4615,
+       0.5722,
+       0.5,
+       0.5
       ],
-      "pooled": 0.709
+      "pooled": 0.5116
      }
     },
     "ungrouped": {
      "roc_auc": {
-      "mean": 0.8464,
-      "sd": 0.1108,
+      "mean": 0.7453,
+      "sd": 0.1133,
       "per_fold": [
-       0.9683,
+       0.8452,
        0.7937,
-       0.8786,
-       0.9083,
-       0.6833
+       0.5625,
+       0.8125,
+       0.7125
       ],
-      "pooled": 0.8501
+      "pooled": 0.7704
      },
      "brier": {
-      "mean": 0.1245,
-      "sd": 0.03576,
+      "mean": 0.1205,
+      "sd": 0.02252,
       "per_fold": [
-       0.09164,
-       0.1231,
-       0.1172,
-       0.1059,
-       0.1848
+       0.1056,
+       0.09233,
+       0.1455,
+       0.1187,
+       0.1401
       ],
-      "pooled": 0.1242
+      "pooled": 0.1203
      },
      "balanced_accuracy": {
-      "mean": 0.6871,
-      "sd": 0.04092,
+      "mean": 0.49,
+      "sd": 0.01369,
       "per_fold": [
-       0.6667,
-       0.6667,
-       0.7357,
-       0.725,
-       0.6417
+       0.5,
+       0.5,
+       0.475,
+       0.5,
+       0.475
       ],
-      "pooled": 0.6901
+      "pooled": 0.4902
      }
     }
    },
@@ -300,19 +304,19 @@
         0.5,
         0.5
        ],
-       "pooled": 0.3966
+       "pooled": 0.3627
       },
       "brier": {
-       "mean": 0.1806,
-       "sd": 0.04009,
+       "mean": 0.1383,
+       "sd": 0.05183,
        "per_fold": [
-        0.1925,
-        0.125,
-        0.1579,
-        0.1988,
-        0.2291
+        0.169,
+        0.07873,
+        0.1757,
+        0.08484,
+        0.183
        ],
-       "pooled": 0.1811
+       "pooled": 0.1352
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -329,116 +333,116 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.5987,
-       "sd": 0.1042,
+       "mean": 0.6702,
+       "sd": 0.1688,
        "per_fold": [
-        0.587,
+        0.5789,
+        0.8654,
         0.75,
-        0.4905,
-        0.5188,
-        0.6471
+        0.7273,
+        0.4294
        ],
-       "pooled": 0.5493
+       "pooled": 0.6241
       },
       "brier": {
-       "mean": 0.1897,
-       "sd": 0.02215,
+       "mean": 0.1278,
+       "sd": 0.05792,
        "per_fold": [
-        0.1845,
-        0.1576,
-        0.1903,
-        0.2188,
-        0.1972
+        0.1587,
+        0.05565,
+        0.1526,
+        0.07911,
+        0.1932
        ],
-       "pooled": 0.1897
+       "pooled": 0.1242
       },
       "balanced_accuracy": {
-       "mean": 0.55,
-       "sd": 0.1118,
+       "mean": 0.5,
+       "sd": 0.0,
        "per_fold": [
         0.5,
-        0.75,
+        0.5,
         0.5,
         0.5,
         0.5
        ],
-       "pooled": 0.4945
+       "pooled": 0.5
       }
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.7391,
-       "sd": 0.1815,
+       "mean": 0.6366,
+       "sd": 0.2284,
        "per_fold": [
-        0.769,
-        1.0,
-        0.6095,
-        0.5301,
-        0.7868
+        0.6211,
+        0.9615,
+        0.75,
+        0.4091,
+        0.4412
        ],
-       "pooled": 0.7188
+       "pooled": 0.6427
       },
       "brier": {
-       "mean": 0.1445,
-       "sd": 0.07691,
+       "mean": 0.1603,
+       "sd": 0.07624,
        "per_fold": [
-        0.1704,
-        0.01948,
-        0.1741,
-        0.2244,
-        0.134
+        0.1872,
+        0.04674,
+        0.1962,
+        0.1262,
+        0.245
        ],
-       "pooled": 0.1465
+       "pooled": 0.1548
       },
       "balanced_accuracy": {
-       "mean": 0.7658,
-       "sd": 0.1604,
+       "mean": 0.5601,
+       "sd": 0.114,
        "per_fold": [
-        0.769,
-        1.0,
-        0.6762,
-        0.5714,
-        0.8125
+        0.6211,
+        0.7308,
+        0.5,
+        0.4545,
+        0.4941
        ],
-       "pooled": 0.7434
+       "pooled": 0.5679
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.8195,
-       "sd": 0.104,
+       "mean": 0.6103,
+       "sd": 0.2694,
        "per_fold": [
-        0.7418,
-        1.0,
-        0.7714,
-        0.812,
-        0.7721
+        0.6737,
+        0.7308,
+        0.95,
+        0.25,
+        0.4471
        ],
-       "pooled": 0.7687
+       "pooled": 0.558
       },
       "brier": {
-       "mean": 0.1601,
-       "sd": 0.08652,
+       "mean": 0.237,
+       "sd": 0.08066,
        "per_fold": [
-        0.2339,
-        0.01083,
-        0.1809,
-        0.1995,
-        0.1755
+        0.2006,
+        0.3465,
+        0.193,
+        0.1506,
+        0.2945
        ],
-       "pooled": 0.1639
+       "pooled": 0.2401
       },
       "balanced_accuracy": {
-       "mean": 0.7181,
-       "sd": 0.1669,
+       "mean": 0.5182,
+       "sd": 0.07882,
        "per_fold": [
-        0.6196,
-        1.0,
-        0.7048,
-        0.5714,
-        0.6949
+        0.6474,
+        0.5,
+        0.5,
+        0.4318,
+        0.5118
        ],
-       "pooled": 0.6894
+       "pooled": 0.5023
       }
      }
     },
@@ -454,19 +458,19 @@
         0.5,
         0.5
        ],
-       "pooled": 0.4813
+       "pooled": 0.4729
       },
       "brier": {
-       "mean": 0.1788,
-       "sd": 0.008293,
+       "mean": 0.1325,
+       "sd": 0.0122,
        "per_fold": [
-        0.173,
-        0.173,
-        0.1931,
-        0.1775,
-        0.1775
+        0.1344,
+        0.111,
+        0.139,
+        0.139,
+        0.139
        ],
-       "pooled": 0.1789
+       "pooled": 0.1325
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -483,28 +487,28 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.6031,
-       "sd": 0.153,
+       "mean": 0.676,
+       "sd": 0.09498,
        "per_fold": [
         0.7619,
         0.6429,
-        0.4607,
+        0.525,
         0.725,
-        0.425
+        0.725
        ],
-       "pooled": 0.5783
+       "pooled": 0.6316
       },
       "brier": {
-       "mean": 0.1802,
-       "sd": 0.04128,
+       "mean": 0.1242,
+       "sd": 0.01452,
        "per_fold": [
-        0.1401,
-        0.1622,
-        0.2281,
-        0.1496,
-        0.2209
+        0.1162,
+        0.1104,
+        0.1484,
+        0.123,
+        0.123
        ],
-       "pooled": 0.1801
+       "pooled": 0.1242
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -521,102 +525,102 @@
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.8448,
-       "sd": 0.08275,
+       "mean": 0.7726,
+       "sd": 0.1504,
        "per_fold": [
-        0.9444,
-        0.7817,
-        0.8143,
-        0.9208,
-        0.7625
+        0.9048,
+        0.8333,
+        0.5375,
+        0.875,
+        0.7125
        ],
-       "pooled": 0.8442
+       "pooled": 0.7523
       },
       "brier": {
-       "mean": 0.1202,
-       "sd": 0.04204,
+       "mean": 0.1177,
+       "sd": 0.03953,
        "per_fold": [
-        0.06437,
-        0.1523,
-        0.1403,
-        0.08654,
-        0.1574
+        0.08875,
+        0.1011,
+        0.1858,
+        0.09542,
+        0.1176
        ],
-       "pooled": 0.1202
+       "pooled": 0.1175
       },
       "balanced_accuracy": {
-       "mean": 0.7281,
-       "sd": 0.09005,
+       "mean": 0.6586,
+       "sd": 0.08052,
        "per_fold": [
-        0.8333,
+        0.625,
         0.6429,
-        0.7143,
-        0.8083,
-        0.6417
+        0.55,
+        0.725,
+        0.75
        ],
-       "pooled": 0.7272
+       "pooled": 0.6597
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.892,
-       "sd": 0.1049,
+       "mean": 0.7722,
+       "sd": 0.1724,
        "per_fold": [
-        0.9683,
-        0.8889,
-        0.9571,
-        0.9333,
-        0.7125
+        0.9405,
+        0.7143,
+        0.5125,
+        0.9125,
+        0.7812
        ],
-       "pooled": 0.8847
+       "pooled": 0.7588
       },
       "brier": {
-       "mean": 0.1062,
-       "sd": 0.04643,
+       "mean": 0.1296,
+       "sd": 0.02251,
        "per_fold": [
-        0.05854,
-        0.1158,
-        0.0771,
-        0.1,
-        0.1795
+        0.09978,
+        0.1457,
+        0.1461,
+        0.1109,
+        0.1456
        ],
-       "pooled": 0.1057
+       "pooled": 0.1294
       },
       "balanced_accuracy": {
-       "mean": 0.7719,
-       "sd": 0.1155,
+       "mean": 0.6057,
+       "sd": 0.1327,
        "per_fold": [
-        0.8333,
-        0.6429,
-        0.925,
-        0.7833,
+        0.5,
+        0.4286,
+        0.7,
+        0.725,
         0.675
        ],
-       "pooled": 0.7785
+       "pooled": 0.6138
       }
      }
     }
    },
    "cv_metric": {
     "name": "roc_auc",
-    "grouped_mean": 0.8377,
-    "grouped_sd": 0.06757,
-    "grouped_pooled": 0.8083,
-    "ungrouped_mean": 0.8464,
+    "grouped_mean": 0.6895,
+    "grouped_sd": 0.1534,
+    "grouped_pooled": 0.6992,
+    "ungrouped_mean": 0.7453,
     "folds_without_metric": 0,
     "grouped_pooled_ci95_days_resampled": [
-     0.4723,
-     0.8731
+     0.3558,
+     0.7968
     ],
-    "grouped_pooled_median_days_resampled": 0.7373,
-    "single_feature_grouped_mean": 0.5987,
-    "single_feature_grouped_pooled": 0.5493,
-    "brier_grouped_pooled": 0.1374,
-    "brier_baseline_grouped_pooled": 0.1811
+    "grouped_pooled_median_days_resampled": 0.5996,
+    "single_feature_grouped_mean": 0.6702,
+    "single_feature_grouped_pooled": 0.6241,
+    "brier_grouped_pooled": 0.1294,
+    "brier_baseline_grouped_pooled": 0.1352
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- class: 1\n",
-    "decision_tree_depth3": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- log10(fuel_flow_mg_s) <= -0.084\n|   |   |--- x_o2_ambient <= 0.389\n|   |   |   |--- class: 0\n|   |   |--- x_o2_ambient >  0.389\n|   |   |   |--- class: 0\n|   |--- log10(fuel_flow_mg_s) >  -0.084\n|   |   |--- x_o2_ambient <= 0.387\n|   |   |   |--- class: 1\n|   |   |--- x_o2_ambient >  0.387\n|   |   |   |--- class: 1\n"
+    "decision_tree_depth3": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- log10(fuel_flow_mg_s) <= -0.084\n|   |   |--- class: 0\n|   |--- log10(fuel_flow_mg_s) >  -0.084\n|   |   |--- x_o2_ambient <= 0.387\n|   |   |   |--- class: 1\n|   |   |--- x_o2_ambient >  0.387\n|   |   |   |--- class: 1\n"
    },
    "descriptive_table": [
     {
@@ -631,45 +635,46 @@
     },
     {
      "o2_band": "about 0.33",
-     "n": 3,
+     "n": 2,
      "positives": 1,
-     "fraction": 0.3333,
+     "fraction": 0.5,
      "wilson95": [
-      0.06149,
-      0.7923
+      0.09453,
+      0.9055
      ]
     },
     {
      "o2_band": "about 0.40",
-     "n": 89,
+     "n": 78,
      "positives": 60,
-     "fraction": 0.6742,
+     "fraction": 0.7692,
      "wilson95": [
-      0.5713,
-      0.7626
+      0.6644,
+      0.8487
      ]
     }
    ],
-   "interpretation": "Partly. Ambient O2 (-) and fuel flow (+, larger flame, more radiative loss) agree, with intervals excluding 0; these two carry the model. Pressure and carbon number are indistinguishable from 0: within these tests, radiative self-extinction does not measurably depend on pressure once O2 and flow are fixed. The depth-3 tree and gradient boosting do no better on held-out days, so the linear form leaves little on the table.",
+   "interpretation": "Partly, and weakly. Ambient O2 (-) agrees with an interval excluding 0 and carries the model. Fuel flow (+, larger flame, more radiative loss) agrees, but its interval only just excludes 0. Pressure and carbon number are indistinguishable from 0 (pressure has the opposite sign to the expectation). On held-out days the model is barely better than its single best feature (AUC 0.69 against 0.67) and than the base rate (Brier 0.129 against 0.135), and the range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 tree and gradient boosting do no better. With the 12 flames stopped by the burner temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score came from flames whose outcome is not known. Read the probabilities as a description of these tests (19 flames reached the timeout, 18 of them at about 40% O2).",
    "caveats": [
-    "'Flow-terminated' is not 'stable': flow was cut by scripted timeouts or burner over-temperature, so the target is 'self-extinguished before the cut-off', and the fractions depend on the chosen timeouts.",
-    "At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 3 tests sit at about 33% O2.",
+    "'Flow-terminated' is not 'stable': the negatives are flames still burning at the scripted timeout, so the target is 'self-extinguished before the timeout', and the fractions depend on the chosen timeouts.",
+    "The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether they would have gone out is not known. They are taken from the hand-filled test sheets (out = temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as flow_terminated like the timeouts. A misread tick would move a flame in or out of the fit. Leaving them out removes the hottest burns (11 of the 12 carry burner_over_limit), so the model says nothing about conditions that overheat the burner.",
+    "At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 2 tests sit at about 33% O2.",
     "Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.",
     "Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn."
    ],
    "must_not_be_used_for": [
     "material flammability, cabin fires or condensed fuels",
     "other burners or flow timeouts (the target is tied to this hardware's cut-off times)",
-    "O2 between 0.25 and 0.35 (3 tests) or any combination not near a listed nearest test"
+    "O2 between 0.25 and 0.35 (2 tests) or any combination not near a listed nearest test"
    ]
   },
   {
    "id": "cfig_inverse_self_extinction",
    "accession": "PSI-159",
    "kind": "classifier",
-   "question": "Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish before the flow cut-off, and how strongly does chamber pressure matter?",
+   "question": "Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish before the scripted timeout, and how strongly does chamber pressure matter?",
    "target": "self_extinguished",
-   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (usually the 66 s inverse timeout, sometimes the burner temperature limit)",
+   "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script timeout (usually 66 s for inverse flames); flames stopped by the burner temperature limit (per the test sheets) are left out",
    "use": "predictive",
    "target_transform": null,
    "features": [
@@ -741,18 +746,22 @@
      "why": "no recorded outcome"
     },
     {
+     "excluded": 12,
+     "why": "stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame was cut off early, so whether it would have gone out by itself is not known"
+    },
+    {
      "step": "training rows",
-     "rows": 131
+     "rows": 119
     }
    ],
-   "n": 131,
+   "n": 119,
    "n_groups": 12,
    "target_summary": {
     "class_counts": {
      "1": 73,
-     "0": 58
+     "0": 46
     },
-    "positive_fraction": 0.5573
+    "positive_fraction": 0.6134
    },
    "estimator": {
     "pipeline": [
@@ -768,64 +777,64 @@
    },
    "coefficients": {
     "scale": "log-odds",
-    "intercept_per_unit": -14.26,
+    "intercept_per_unit": -13.19,
     "terms": [
      {
       "feature": "log10(pressure_kpa)",
-      "per_sd": 1.948,
-      "per_unit": 6.728,
+      "per_sd": 1.687,
+      "per_unit": 6.11,
       "per_sd_ci95_cluster_bootstrap": [
-       1.103,
-       2.774
+       0.8595,
+       2.508
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       3.81,
-       9.578
+       3.113,
+       9.084
       ],
       "expected_sign": "+",
       "agreement": "agrees"
      },
      {
       "feature": "x_o2_burner",
-      "per_sd": 0.8747,
-      "per_unit": 3.338,
+      "per_sd": 1.012,
+      "per_unit": 3.818,
       "per_sd_ci95_cluster_bootstrap": [
-       0.4945,
-       1.388
+       0.6364,
+       1.483
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.887,
-       5.299
+       2.4,
+       5.591
       ],
       "expected_sign": "-",
       "agreement": "CONTRADICTS (CI excludes 0)"
      },
      {
       "feature": "log10(o2_flow_mg_s)",
-      "per_sd": -0.4876,
-      "per_unit": -2.05,
+      "per_sd": -0.6568,
+      "per_unit": -2.708,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.336,
-       0.4272
+       -1.619,
+       0.3487
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -5.619,
-       1.797
+       -6.674,
+       1.438
       ],
       "expected_sign": "+",
       "agreement": "opposite sign; CI includes 0"
      },
      {
       "feature": "n_carbon",
-      "per_sd": -0.224,
-      "per_unit": -0.2659,
+      "per_sd": -0.06021,
+      "per_unit": -0.07228,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.7885,
-       0.6922
+       -0.604,
+       0.8255
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.9364,
-       0.8219
+       -0.725,
+       0.9909
       ],
       "expected_sign": "+",
       "agreement": "opposite sign; CI includes 0"
@@ -833,9 +842,9 @@
     ]
    },
    "in_sample": {
-    "roc_auc": 0.9217,
-    "brier": 0.1041,
-    "balanced_accuracy": 0.8194
+    "roc_auc": 0.9159,
+    "brier": 0.1024,
+    "balanced_accuracy": 0.8325
    },
    "cv_scheme": {
     "grouped_by_date": "GroupKFold(5) by test date",
@@ -844,78 +853,78 @@
    "cv": {
     "grouped_by_date": {
      "roc_auc": {
-      "mean": 0.8313,
-      "sd": 0.1453,
+      "mean": 0.8901,
+      "sd": 0.1132,
       "per_fold": [
-       0.9444,
-       0.8696,
-       0.8929,
-       0.6184,
-       null
+       0.9352,
+       0.9286,
+       0.9861,
+       0.6944,
+       0.9061
       ],
-      "pooled": 0.8723
+      "pooled": 0.9016
      },
      "brier": {
-      "mean": 0.1445,
-      "sd": 0.07681,
+      "mean": 0.1148,
+      "sd": 0.02294,
       "per_fold": [
-       0.118,
-       0.1463,
-       0.2214,
-       0.2067,
-       0.03004
+       0.1047,
+       0.1303,
+       0.0798,
+       0.1225,
+       0.1367
       ],
-      "pooled": 0.1408
+      "pooled": 0.1149
      },
      "balanced_accuracy": {
-      "mean": 0.7533,
-      "sd": 0.1745,
+      "mean": 0.8134,
+      "sd": 0.07119,
       "per_fold": [
-       0.8301,
-       0.7464,
-       0.5455,
-       0.6447,
-       1.0
+       0.8056,
+       0.8373,
+       0.875,
+       0.6944,
+       0.8545
       ],
-      "pooled": 0.7936
+      "pooled": 0.8325
      }
     },
     "ungrouped": {
      "roc_auc": {
-      "mean": 0.9124,
-      "sd": 0.06432,
+      "mean": 0.9152,
+      "sd": 0.05603,
       "per_fold": [
-       0.9222,
-       0.9583,
-       0.8512,
-       0.8424,
-       0.9879
+       0.9714,
+       0.837,
+       0.9259,
+       0.8815,
+       0.9603
       ],
-      "pooled": 0.8984
+      "pooled": 0.9035
      },
      "brier": {
-      "mean": 0.1203,
-      "sd": 0.0438,
+      "mean": 0.1121,
+      "sd": 0.0275,
       "per_fold": [
-       0.1238,
-       0.09455,
-       0.1461,
-       0.1746,
-       0.06217
+       0.08267,
+       0.1519,
+       0.1272,
+       0.1032,
+       0.09569
       ],
-      "pooled": 0.1203
+      "pooled": 0.1123
      },
      "balanced_accuracy": {
-      "mean": 0.7984,
-      "sd": 0.07353,
+      "mean": 0.8303,
+      "sd": 0.05385,
       "per_fold": [
-       0.775,
-       0.8036,
-       0.7619,
-       0.7303,
-       0.9212
+       0.8786,
+       0.7667,
+       0.7778,
+       0.8556,
+       0.873
       ],
-      "pooled": 0.7971
+      "pooled": 0.8325
      }
     }
    },
@@ -930,175 +939,21 @@
         0.5,
         0.5,
         0.5,
-        null
-       ],
-       "pooled": 0.167
-      },
-      "brier": {
-       "mean": 0.3027,
-       "sd": 0.1176,
-       "per_fold": [
-        0.2409,
-        0.2689,
-        0.2464,
-        0.2452,
-        0.5122
-       ],
-       "pooled": 0.3084
-      },
-      "balanced_accuracy": {
-       "mean": 0.4,
-       "sd": 0.2236,
-       "per_fold": [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
-        0.0
-       ],
-       "pooled": 0.3683
-      }
-     },
-     "single_best_feature_rule": {
-      "roc_auc": {
-       "mean": 0.5599,
-       "sd": 0.05102,
-       "per_fold": [
-        0.6111,
-        0.5362,
-        0.5,
-        0.5921,
-        null
-       ],
-       "pooled": 0.7119
-      },
-      "brier": {
-       "mean": 0.2349,
-       "sd": 0.04822,
-       "per_fold": [
-        0.191,
-        0.2346,
-        0.2932,
-        0.2717,
-        0.1837
-       ],
-       "pooled": 0.233
-      },
-      "balanced_accuracy": {
-       "mean": 0.6479,
-       "sd": 0.2017,
-       "per_fold": [
-        0.6111,
-        0.5362,
-        0.5,
-        0.5921,
-        1.0
-       ],
-       "pooled": 0.7195
-      }
-     },
-     "decision_tree_depth3": {
-      "roc_auc": {
-       "mean": 0.6524,
-       "sd": 0.1038,
-       "per_fold": [
-        0.5359,
-        0.6159,
-        0.7825,
-        0.6754,
-        null
-       ],
-       "pooled": 0.6346
-      },
-      "brier": {
-       "mean": 0.297,
-       "sd": 0.1097,
-       "per_fold": [
-        0.272,
-        0.2228,
-        0.2699,
-        0.231,
-        0.4892
-       ],
-       "pooled": 0.3021
-      },
-      "balanced_accuracy": {
-       "mean": 0.586,
-       "sd": 0.1571,
-       "per_fold": [
-        0.719,
-        0.6812,
-        0.5097,
-        0.6754,
-        0.3448
-       ],
-       "pooled": 0.5801
-      }
-     },
-     "gradient_boosting": {
-      "roc_auc": {
-       "mean": 0.7013,
-       "sd": 0.1938,
-       "per_fold": [
-        0.4673,
-        0.7754,
-        0.9221,
-        0.6404,
-        null
-       ],
-       "pooled": 0.7853
-      },
-      "brier": {
-       "mean": 0.209,
-       "sd": 0.08675,
-       "per_fold": [
-        0.2198,
-        0.2706,
-        0.254,
-        0.2434,
-        0.05741
-       ],
-       "pooled": 0.205
-      },
-      "balanced_accuracy": {
-       "mean": 0.6774,
-       "sd": 0.1505,
-       "per_fold": [
-        0.6373,
-        0.6812,
-        0.5455,
-        0.5921,
-        0.931
-       ],
-       "pooled": 0.7145
-      }
-     }
-    },
-    "ungrouped": {
-     "majority_class": {
-      "roc_auc": {
-       "mean": 0.5,
-       "sd": 0.0,
-       "per_fold": [
-        0.5,
-        0.5,
-        0.5,
-        0.5,
         0.5
        ],
-       "pooled": 0.4813
+       "pooled": 0.3242
       },
       "brier": {
-       "mean": 0.2469,
-       "sd": 0.002193,
+       "mean": 0.2481,
+       "sd": 0.03854,
        "per_fold": [
-        0.2469,
-        0.2491,
-        0.2491,
-        0.2447,
-        0.2447
+        0.2168,
+        0.2382,
+        0.2702,
+        0.2118,
+        0.3034
        ],
-       "pooled": 0.2469
+       "pooled": 0.2497
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -1115,170 +970,324 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.787,
-       "sd": 0.07146,
+       "mean": 0.6699,
+       "sd": 0.1344,
        "per_fold": [
-        0.9,
-        0.8095,
-        0.7679,
-        0.7303,
-        0.7273
+        0.5,
+        0.6746,
+        0.875,
+        0.6667,
+        0.6333
        ],
-       "pooled": 0.7935
+       "pooled": 0.7056
       },
       "brier": {
-       "mean": 0.1619,
-       "sd": 0.03878,
+       "mean": 0.2066,
+       "sd": 0.05884,
        "per_fold": [
-        0.1019,
-        0.1541,
-        0.1829,
-        0.2056,
-        0.1649
+        0.1875,
+        0.2427,
+        0.1501,
+        0.1621,
+        0.2904
        ],
-       "pooled": 0.1614
+       "pooled": 0.2084
       },
       "balanced_accuracy": {
-       "mean": 0.787,
-       "sd": 0.07146,
+       "mean": 0.6699,
+       "sd": 0.1344,
        "per_fold": [
-        0.9,
-        0.8095,
-        0.7679,
-        0.7303,
-        0.7273
+        0.5,
+        0.6746,
+        0.875,
+        0.6667,
+        0.6333
        ],
-       "pooled": 0.7903
+       "pooled": 0.6775
       }
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.8684,
-       "sd": 0.05592,
+       "mean": 0.853,
+       "sd": 0.05639,
        "per_fold": [
-        0.9167,
-        0.9077,
-        0.875,
-        0.7758,
-        0.8667
+        0.9028,
+        0.8413,
+        0.8993,
+        0.7639,
+        0.8576
        ],
-       "pooled": 0.8395
+       "pooled": 0.8432
       },
       "brier": {
-       "mean": 0.1608,
-       "sd": 0.04341,
+       "mean": 0.1576,
+       "sd": 0.04637,
        "per_fold": [
-        0.1496,
-        0.1173,
-        0.1696,
-        0.2306,
-        0.1368
+        0.1426,
+        0.2175,
+        0.1015,
+        0.1351,
+        0.1913
        ],
-       "pooled": 0.1607
+       "pooled": 0.158
       },
       "balanced_accuracy": {
-       "mean": 0.7091,
-       "sd": 0.07358,
+       "mean": 0.7055,
+       "sd": 0.1155,
        "per_fold": [
-        0.7083,
-        0.8155,
-        0.631,
-        0.6515,
-        0.7394
+        0.5556,
+        0.7302,
+        0.875,
+        0.6667,
+        0.7
        ],
-       "pooled": 0.7094
+       "pooled": 0.7181
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.9017,
-       "sd": 0.05529,
+       "mean": 0.8777,
+       "sd": 0.08743,
        "per_fold": [
-        0.95,
-        0.9226,
-        0.869,
-        0.8212,
-        0.9455
+        0.9074,
+        0.8889,
+        1.0,
+        0.7708,
+        0.8212
        ],
-       "pooled": 0.8834
+       "pooled": 0.8553
       },
       "brier": {
-       "mean": 0.1345,
-       "sd": 0.04188,
+       "mean": 0.1547,
+       "sd": 0.08013,
        "per_fold": [
-        0.09628,
-        0.1096,
-        0.1565,
-        0.1975,
-        0.1126
+        0.1281,
+        0.2377,
+        0.04093,
+        0.1415,
+        0.2252
        ],
-       "pooled": 0.1342
+       "pooled": 0.1554
       },
       "balanced_accuracy": {
-       "mean": 0.7873,
-       "sd": 0.06917,
+       "mean": 0.7521,
+       "sd": 0.1304,
        "per_fold": [
-        0.8917,
-        0.8095,
-        0.7202,
-        0.7303,
-        0.7848
+        0.5556,
+        0.7302,
+        0.9167,
+        0.7917,
+        0.7667
        ],
-       "pooled": 0.7885
+       "pooled": 0.7576
+      }
+     }
+    },
+    "ungrouped": {
+     "majority_class": {
+      "roc_auc": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.4832
+      },
+      "brier": {
+       "mean": 0.2373,
+       "sd": 0.004316,
+       "per_fold": [
+        0.2445,
+        0.2346,
+        0.2346,
+        0.2346,
+        0.2382
+       ],
+       "pooled": 0.2373
+      },
+      "balanced_accuracy": {
+       "mean": 0.5,
+       "sd": 0.0,
+       "per_fold": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+       ],
+       "pooled": 0.5
+      }
+     },
+     "single_best_feature_rule": {
+      "roc_auc": {
+       "mean": 0.7159,
+       "sd": 0.09395,
+       "per_fold": [
+        0.8,
+        0.7556,
+        0.5556,
+        0.7222,
+        0.746
+       ],
+       "pooled": 0.7408
+      },
+      "brier": {
+       "mean": 0.1771,
+       "sd": 0.03684,
+       "per_fold": [
+        0.1308,
+        0.1811,
+        0.2292,
+        0.1563,
+        0.1883
+       ],
+       "pooled": 0.177
+      },
+      "balanced_accuracy": {
+       "mean": 0.7159,
+       "sd": 0.09395,
+       "per_fold": [
+        0.8,
+        0.7556,
+        0.5556,
+        0.7222,
+        0.746
+       ],
+       "pooled": 0.7169
+      }
+     },
+     "decision_tree_depth3": {
+      "roc_auc": {
+       "mean": 0.904,
+       "sd": 0.07268,
+       "per_fold": [
+        0.9857,
+        0.8296,
+        0.9667,
+        0.8333,
+        0.9048
+       ],
+       "pooled": 0.8788
+      },
+      "brier": {
+       "mean": 0.1246,
+       "sd": 0.03963,
+       "per_fold": [
+        0.06678,
+        0.1612,
+        0.1147,
+        0.1627,
+        0.1178
+       ],
+       "pooled": 0.1247
+      },
+      "balanced_accuracy": {
+       "mean": 0.7684,
+       "sd": 0.09152,
+       "per_fold": [
+        0.8,
+        0.7333,
+        0.6667,
+        0.7333,
+        0.9087
+       ],
+       "pooled": 0.7673
+      }
+     },
+     "gradient_boosting": {
+      "roc_auc": {
+       "mean": 0.8948,
+       "sd": 0.0699,
+       "per_fold": [
+        0.9857,
+        0.8222,
+        0.9,
+        0.8296,
+        0.9365
+       ],
+       "pooled": 0.8959
+      },
+      "brier": {
+       "mean": 0.1215,
+       "sd": 0.0427,
+       "per_fold": [
+        0.06232,
+        0.1753,
+        0.1202,
+        0.1459,
+        0.104
+       ],
+       "pooled": 0.1217
+      },
+      "balanced_accuracy": {
+       "mean": 0.8103,
+       "sd": 0.04654,
+       "per_fold": [
+        0.8786,
+        0.7667,
+        0.8222,
+        0.7667,
+        0.8175
+       ],
+       "pooled": 0.8119
       }
      }
     }
    },
    "cv_metric": {
     "name": "roc_auc",
-    "grouped_mean": 0.8313,
-    "grouped_sd": 0.1453,
-    "grouped_pooled": 0.8723,
-    "ungrouped_mean": 0.9124,
-    "folds_without_metric": 1,
+    "grouped_mean": 0.8901,
+    "grouped_sd": 0.1132,
+    "grouped_pooled": 0.9016,
+    "ungrouped_mean": 0.9152,
+    "folds_without_metric": 0,
     "grouped_pooled_ci95_days_resampled": [
-     0.5657,
-     0.9475
+     0.5125,
+     0.9438
     ],
-    "grouped_pooled_median_days_resampled": 0.8299,
-    "single_feature_grouped_mean": 0.5599,
-    "single_feature_grouped_pooled": 0.7119,
-    "brier_grouped_pooled": 0.1408,
-    "brier_baseline_grouped_pooled": 0.3084
+    "grouped_pooled_median_days_resampled": 0.8261,
+    "single_feature_grouped_mean": 0.6699,
+    "single_feature_grouped_pooled": 0.7056,
+    "brier_grouped_pooled": 0.1149,
+    "brier_baseline_grouped_pooled": 0.2497
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(pressure_kpa) <= 2.193\n|   |--- class: 0\n|--- log10(pressure_kpa) >  2.193\n|   |--- class: 1\n",
-    "decision_tree_depth3": "|--- log10(pressure_kpa) <= 2.193\n|   |--- log10(pressure_kpa) <= 2.042\n|   |   |--- class: 0\n|   |--- log10(pressure_kpa) >  2.042\n|   |   |--- n_carbon <= 3.500\n|   |   |   |--- class: 1\n|   |   |--- n_carbon >  3.500\n|   |   |   |--- class: 0\n|--- log10(pressure_kpa) >  2.193\n|   |--- x_o2_burner <= 0.425\n|   |   |--- class: 0\n|   |--- x_o2_burner >  0.425\n|   |   |--- log10(o2_flow_mg_s) <= 0.349\n|   |   |   |--- class: 1\n|   |   |--- log10(o2_flow_mg_s) >  0.349\n|   |   |   |--- class: 1\n"
+    "decision_tree_depth3": "|--- log10(pressure_kpa) <= 2.193\n|   |--- log10(pressure_kpa) <= 2.042\n|   |   |--- class: 0\n|   |--- log10(pressure_kpa) >  2.042\n|   |   |--- x_o2_burner <= 0.355\n|   |   |   |--- class: 0\n|   |   |--- x_o2_burner >  0.355\n|   |   |   |--- class: 1\n|--- log10(pressure_kpa) >  2.193\n|   |--- x_o2_burner <= 0.425\n|   |   |--- class: 0\n|   |--- x_o2_burner >  0.425\n|   |   |--- log10(o2_flow_mg_s) <= 0.349\n|   |   |   |--- class: 1\n|   |   |--- log10(o2_flow_mg_s) >  0.349\n|   |   |   |--- class: 1\n"
    },
    "descriptive_table": [
     {
      "pressure_level_kpa": "50",
-     "n": 3,
+     "n": 2,
      "positives": 0,
      "fraction": 0.0,
      "wilson95": [
       0.0,
-      0.5615
+      0.6576
      ]
     },
     {
      "pressure_level_kpa": "60",
-     "n": 26,
+     "n": 18,
      "positives": 0,
      "fraction": 0.0,
      "wilson95": [
       0.0,
-      0.1287
+      0.1759
      ]
     },
     {
      "pressure_level_kpa": "110",
-     "n": 35,
+     "n": 32,
      "positives": 15,
-     "fraction": 0.4286,
+     "fraction": 0.4688,
      "wilson95": [
-      0.2798,
-      0.5914
+      0.3087,
+      0.6355
      ]
     },
     {
@@ -1302,13 +1311,14 @@
      ]
     }
    ],
-   "interpretation": "Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.87 for the full model; gradient boosting does worse on held-out days), matching 0/29 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow is added, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.",
+   "interpretation": "Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.90 for the full model; gradient boosting does no better on held-out days), matching 0/20 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow replaces O2 flow, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.",
    "caveats": [
     "All inverse rows carry pressure_9pct_above_nominal: the table pressures are ~9% above the fill levels. Used as given: a uniform multiplicative offset only shifts the intercept of log10(pressure).",
     "Pressure and O2 flow are partly confounded with test day: pressure levels were run on separate days, so the grouped CV can only test pressure on held-out days with other pressures.",
     "79 of 154 inverse tests used 85% O2 in the burner stream; low burner-O2 cells are small.",
-    "Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.72 with pressure in the training rows), so the two cannot be separated and the fit would split the pressure effect between them.",
-    "As for normal flames, 'flow_terminated' is a timeout outcome, not a stability limit."
+    "Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.73 with pressure in the training rows), so the two cannot be separated and the fit would split the pressure effect between them.",
+    "As for normal flames, 'flow_terminated' is a timeout outcome, not a stability limit.",
+    "The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether they would have gone out is not known. They are taken from the hand-filled test sheets (out = temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as flow_terminated like the timeouts, and the sheet of 21270 A4 itself asks whether it timed out. Nine of the 12 were at 0.5-0.6 bar, where 20 flames remain, all of them reaching the timeout."
    ],
    "must_not_be_used_for": [
     "normal flames or real fires (an inverse flame has no fire-safety analogue in a cabin)",
@@ -1321,7 +1331,7 @@
    "kind": "classifier",
    "question": "Does a normal flame light (hot ignition) for a given chamber O2, pressure and fuel stream?",
    "target": "ignited",
-   "target_definition": "1 if the table's 'Hot ignition' is yes, 0 if no",
+   "target_definition": "1 if the table's 'Hot ignition' is yes, 0 if no (rows that were not ignition attempts, patches D45-D50, excluded)",
    "use": "descriptive",
    "target_transform": null,
    "features": [
@@ -1396,22 +1406,26 @@
      "why": "ignition outcome not recorded"
     },
     {
-     "excluded": 2,
-     "why": "zero fuel fraction and zero fuel flow (21125 A4, H3): no fuel was supplied"
+     "excluded": 3,
+     "why": "not an ignition attempt (patches D45-D50: no fuel or no oxidizer flowed, or the run was aborted before gas flow); the table lists the row as not ignited"
+    },
+    {
+     "excluded": 0,
+     "why": "zero fuel fraction or zero fuel flow: no fuel was supplied"
     },
     {
      "step": "training rows",
-     "rows": 177
+     "rows": 176
     }
    ],
-   "n": 177,
+   "n": 176,
    "n_groups": 11,
    "target_summary": {
     "class_counts": {
      "1": 133,
-     "0": 44
+     "0": 43
     },
-    "positive_fraction": 0.7514
+    "positive_fraction": 0.7557
    },
    "estimator": {
     "pipeline": [
@@ -1427,33 +1441,33 @@
    },
    "coefficients": {
     "scale": "log-odds",
-    "intercept_per_unit": 0.6625,
+    "intercept_per_unit": 0.6936,
     "terms": [
      {
       "feature": "x_o2_ambient",
-      "per_sd": 0.5866,
-      "per_unit": 7.102,
+      "per_sd": 0.5641,
+      "per_unit": 6.845,
       "per_sd_ci95_cluster_bootstrap": [
-       0.16,
-       1.362
+       0.1466,
+       1.338
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.937,
-       16.49
+       1.779,
+       16.24
       ],
       "expected_sign": "+",
       "agreement": "agrees"
      },
      {
       "feature": "log10(pressure_kpa)",
-      "per_sd": 0.223,
-      "per_unit": 1.053,
+      "per_sd": 0.2309,
+      "per_unit": 1.091,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.3696,
-       0.7833
+       -0.3737,
+       0.7824
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.744,
+       -1.766,
        3.697
       ],
       "expected_sign": "+",
@@ -1461,14 +1475,14 @@
      },
      {
       "feature": "log10(fuel_flow_mg_s)",
-      "per_sd": 0.3687,
-      "per_unit": 1.382,
+      "per_sd": 0.3811,
+      "per_unit": 1.424,
       "per_sd_ci95_cluster_bootstrap": [
        -0.3983,
-       1.568
+       1.573
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.493,
+       -1.488,
        5.878
       ],
       "expected_sign": "+",
@@ -1476,30 +1490,30 @@
      },
      {
       "feature": "log10(fuel_fraction)",
-      "per_sd": 0.5925,
-      "per_unit": 1.242,
+      "per_sd": 0.567,
+      "per_unit": 1.192,
       "per_sd_ci95_cluster_bootstrap": [
-       -2.305,
-       1.463
+       -2.297,
+       1.451
       ],
       "per_unit_ci95_cluster_bootstrap": [
        -4.829,
-       3.065
+       3.051
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
      },
      {
       "feature": "n_carbon",
-      "per_sd": -0.7098,
-      "per_unit": -0.8907,
+      "per_sd": -0.7216,
+      "per_unit": -0.9031,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.954,
-       0.05281
+       -1.959,
+       0.06153
       ],
       "per_unit_ci95_cluster_bootstrap": [
        -2.452,
-       0.06626
+       0.07701
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -1507,9 +1521,9 @@
     ]
    },
    "in_sample": {
-    "roc_auc": 0.8102,
-    "brier": 0.1452,
-    "balanced_accuracy": 0.6405
+    "roc_auc": 0.8082,
+    "brier": 0.1444,
+    "balanced_accuracy": 0.6447
    },
    "cv_scheme": {
     "grouped_by_date": "GroupKFold(5) by test date",
@@ -1518,78 +1532,78 @@
    "cv": {
     "grouped_by_date": {
      "roc_auc": {
-      "mean": 0.614,
-      "sd": 0.1758,
+      "mean": 0.6059,
+      "sd": 0.1967,
       "per_fold": [
-       0.3807,
-       0.6225,
-       0.8069,
+       0.3519,
+       0.5931,
+       0.828,
        null,
-       0.6459
+       0.6507
       ],
-      "pooled": 0.5652
+      "pooled": 0.5429
      },
      "brier": {
-      "mean": 0.2141,
-      "sd": 0.107,
+      "mean": 0.2156,
+      "sd": 0.1102,
       "per_fold": [
-       0.2754,
-       0.3212,
-       0.1867,
-       0.04382,
-       0.2433
+       0.2703,
+       0.3353,
+       0.1866,
+       0.04337,
+       0.2424
       ],
-      "pooled": 0.207
+      "pooled": 0.2081
      },
      "balanced_accuracy": {
-      "mean": 0.6044,
-      "sd": 0.2213,
+      "mean": 0.6071,
+      "sd": 0.22,
       "per_fold": [
-       0.5185,
+       0.5324,
        0.5033,
        0.5,
        1.0,
        0.5
       ],
-      "pooled": 0.5191
+      "pooled": 0.5202
      }
     },
     "ungrouped": {
      "roc_auc": {
-      "mean": 0.7836,
-      "sd": 0.0685,
+      "mean": 0.7774,
+      "sd": 0.07439,
       "per_fold": [
        0.8786,
-       0.7984,
-       0.7199,
-       0.8077,
-       0.7137
+       0.7824,
+       0.6875,
+       0.7265,
+       0.812
       ],
-      "pooled": 0.7809
+      "pooled": 0.7694
      },
      "brier": {
-      "mean": 0.1534,
-      "sd": 0.008783,
+      "mean": 0.1548,
+      "sd": 0.01929,
       "per_fold": [
-       0.1416,
-       0.1564,
-       0.1648,
-       0.1483,
-       0.1557
+       0.1351,
+       0.1539,
+       0.1748,
+       0.1738,
+       0.1364
       ],
-      "pooled": 0.1533
+      "pooled": 0.1547
      },
      "balanced_accuracy": {
-      "mean": 0.6272,
-      "sd": 0.0626,
+      "mean": 0.6363,
+      "sd": 0.07323,
       "per_fold": [
-       0.5741,
-       0.5556,
-       0.6944,
-       0.6282,
-       0.6838
+       0.6296,
+       0.5694,
+       0.6319,
+       0.5919,
+       0.7585
       ],
-      "pooled": 0.6253
+      "pooled": 0.6368
      }
     }
    },
@@ -1606,19 +1620,19 @@
         null,
         0.5
        ],
-       "pooled": 0.2482
+       "pooled": 0.2451
       },
       "brier": {
-       "mean": 0.2099,
-       "sd": 0.08826,
+       "mean": 0.208,
+       "sd": 0.0915,
        "per_fold": [
-        0.1875,
-        0.3372,
-        0.1663,
-        0.1062,
-        0.2524
+        0.1767,
+        0.3406,
+        0.1658,
+        0.103,
+        0.254
        ],
-       "pooled": 0.2047
+       "pooled": 0.2028
       },
       "balanced_accuracy": {
        "mean": 0.6,
@@ -1644,19 +1658,19 @@
         null,
         0.5
        ],
-       "pooled": 0.2996
+       "pooled": 0.2993
       },
       "brier": {
-       "mean": 0.2289,
-       "sd": 0.1328,
+       "mean": 0.2256,
+       "sd": 0.1348,
        "per_fold": [
-        0.1926,
-        0.4076,
-        0.1637,
-        0.06768,
+        0.1789,
+        0.4077,
+        0.1639,
+        0.06457,
         0.3129
        ],
-       "pooled": 0.2203
+       "pooled": 0.2171
       },
       "balanced_accuracy": {
        "mean": 0.6,
@@ -1673,78 +1687,78 @@
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.6301,
-       "sd": 0.1386,
+       "mean": 0.583,
+       "sd": 0.1395,
        "per_fold": [
-        0.8004,
+        0.7917,
         0.5278,
-        0.6852,
+        0.5053,
         null,
         0.5072
        ],
-       "pooled": 0.5076
+       "pooled": 0.4898
       },
       "brier": {
-       "mean": 0.2353,
-       "sd": 0.1543,
+       "mean": 0.2338,
+       "sd": 0.157,
        "per_fold": [
-        0.1622,
-        0.4402,
-        0.1645,
-        0.06167,
+        0.1522,
+        0.4434,
+        0.1656,
+        0.05955,
         0.3481
        ],
-       "pooled": 0.2253
+       "pooled": 0.224
       },
       "balanced_accuracy": {
-       "mean": 0.5815,
-       "sd": 0.1257,
+       "mean": 0.6,
+       "sd": 0.2236,
        "per_fold": [
         0.5,
         0.5,
-        0.6217,
-        0.7857,
+        0.5,
+        1.0,
         0.5
        ],
-       "pooled": 0.4815
+       "pooled": 0.5
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.7264,
-       "sd": 0.05703,
+       "mean": 0.7016,
+       "sd": 0.05108,
        "per_fold": [
-        0.7798,
-        0.7059,
-        0.7646,
+        0.7755,
+        0.6699,
+        0.6958,
         null,
-        0.6555
+        0.6651
        ],
-       "pooled": 0.6596
+       "pooled": 0.6337
       },
       "brier": {
-       "mean": 0.2138,
-       "sd": 0.1508,
+       "mean": 0.2217,
+       "sd": 0.1541,
        "per_fold": [
-        0.1792,
-        0.4006,
-        0.1613,
-        0.01042,
-        0.3175
+        0.1825,
+        0.409,
+        0.1678,
+        0.01473,
+        0.3343
        ],
-       "pooled": 0.2029
+       "pooled": 0.2106
       },
       "balanced_accuracy": {
-       "mean": 0.6429,
-       "sd": 0.2233,
+       "mean": 0.6388,
+       "sd": 0.2217,
        "per_fold": [
-        0.7222,
+        0.7014,
         0.5294,
         0.463,
         1.0,
         0.5
        ],
-       "pooled": 0.5495
+       "pooled": 0.5397
       }
      }
     },
@@ -1760,19 +1774,19 @@
         0.5,
         0.5
        ],
-       "pooled": 0.4863
+       "pooled": 0.4815
       },
       "brier": {
-       "mean": 0.1868,
-       "sd": 0.005822,
+       "mean": 0.1847,
+       "sd": 0.007454,
        "per_fold": [
-        0.1875,
-        0.1875,
-        0.1769,
-        0.1911,
-        0.1911
+        0.1876,
+        0.1767,
+        0.1767,
+        0.1913,
+        0.1913
        ],
-       "pooled": 0.1869
+       "pooled": 0.1847
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -1789,136 +1803,136 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.6568,
-       "sd": 0.05001,
+       "mean": 0.6332,
+       "sd": 0.08418,
        "per_fold": [
-        0.7222,
-        0.6111,
-        0.6944,
-        0.6453,
+        0.7778,
+        0.625,
+        0.5625,
+        0.5897,
         0.6111
        ],
-       "pooled": 0.6601
+       "pooled": 0.643
       },
       "brier": {
-       "mean": 0.1524,
-       "sd": 0.02255,
+       "mean": 0.1584,
+       "sd": 0.02659,
        "per_fold": [
-        0.1191,
-        0.1546,
-        0.148,
-        0.1819,
-        0.1581
+        0.1326,
+        0.1403,
+        0.1593,
+        0.2012,
+        0.1584
        ],
-       "pooled": 0.1522
+       "pooled": 0.1582
       },
       "balanced_accuracy": {
-       "mean": 0.6568,
-       "sd": 0.05001,
+       "mean": 0.6332,
+       "sd": 0.08418,
        "per_fold": [
-        0.7222,
-        0.6111,
-        0.6944,
-        0.6453,
+        0.7778,
+        0.625,
+        0.5625,
+        0.5897,
         0.6111
        ],
-       "pooled": 0.6555
+       "pooled": 0.6365
       }
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.8489,
-       "sd": 0.06795,
+       "mean": 0.8188,
+       "sd": 0.05186,
        "per_fold": [
-        0.8909,
-        0.856,
-        0.7477,
-        0.9252,
+        0.8683,
+        0.8611,
+        0.7407,
+        0.7991,
         0.8248
        ],
-       "pooled": 0.8425
+       "pooled": 0.8254
       },
       "brier": {
-       "mean": 0.1232,
-       "sd": 0.01908,
+       "mean": 0.1345,
+       "sd": 0.02761,
        "per_fold": [
-        0.1014,
-        0.1156,
-        0.1511,
-        0.1155,
-        0.1322
+        0.1078,
+        0.1077,
+        0.1604,
+        0.1652,
+        0.1316
        ],
-       "pooled": 0.123
+       "pooled": 0.1344
       },
       "balanced_accuracy": {
-       "mean": 0.6548,
-       "sd": 0.05301,
+       "mean": 0.6372,
+       "sd": 0.1026,
        "per_fold": [
-        0.7222,
-        0.6111,
-        0.7014,
-        0.6282,
+        0.8148,
+        0.625,
+        0.5625,
+        0.5726,
         0.6111
        ],
-       "pooled": 0.6517
+       "pooled": 0.6406
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.9167,
-       "sd": 0.05276,
+       "mean": 0.9123,
+       "sd": 0.06687,
        "per_fold": [
-        0.9177,
-        0.963,
-        0.831,
-        0.9573,
-        0.9145
+        0.9342,
+        0.9676,
+        0.7963,
+        0.9231,
+        0.9402
        ],
-       "pooled": 0.9174
+       "pooled": 0.9089
       },
       "brier": {
-       "mean": 0.1014,
-       "sd": 0.02695,
+       "mean": 0.1002,
+       "sd": 0.03371,
        "per_fold": [
-        0.1063,
-        0.0698,
-        0.1424,
-        0.0872,
-        0.1014
+        0.09705,
+        0.06259,
+        0.155,
+        0.09615,
+        0.09037
        ],
-       "pooled": 0.1013
+       "pooled": 0.1002
       },
       "balanced_accuracy": {
-       "mean": 0.7454,
-       "sd": 0.08102,
+       "mean": 0.7525,
+       "sd": 0.09039,
        "per_fold": [
-        0.7407,
         0.7963,
-        0.6944,
-        0.8504,
-        0.6453
+        0.875,
+        0.6319,
+        0.7201,
+        0.7393
        ],
-       "pooled": 0.7466
+       "pooled": 0.7531
       }
      }
     }
    },
    "cv_metric": {
     "name": "roc_auc",
-    "grouped_mean": 0.614,
-    "grouped_sd": 0.1758,
-    "grouped_pooled": 0.5652,
-    "ungrouped_mean": 0.7836,
+    "grouped_mean": 0.6059,
+    "grouped_sd": 0.1967,
+    "grouped_pooled": 0.5429,
+    "ungrouped_mean": 0.7774,
     "folds_without_metric": 1,
     "grouped_pooled_ci95_days_resampled": [
      0.1148,
      0.8213
     ],
-    "grouped_pooled_median_days_resampled": 0.4551,
+    "grouped_pooled_median_days_resampled": 0.4586,
     "single_feature_grouped_mean": 0.4743,
-    "single_feature_grouped_pooled": 0.2996,
-    "brier_grouped_pooled": 0.207,
-    "brier_baseline_grouped_pooled": 0.2047
+    "single_feature_grouped_pooled": 0.2993,
+    "brier_grouped_pooled": 0.2081,
+    "brier_baseline_grouped_pooled": 0.2028
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(fuel_fraction) <= -1.537\n|   |--- class: 0\n|--- log10(fuel_fraction) >  -1.537\n|   |--- class: 1\n",
@@ -1927,12 +1941,12 @@
    "descriptive_table": [
     {
      "fuel_fraction_band": "< 0.05",
-     "n": 38,
+     "n": 37,
      "positives": 14,
-     "fraction": 0.3684,
+     "fraction": 0.3784,
      "wilson95": [
-      0.2338,
-      0.5272
+      0.2406,
+      0.539
      ]
     },
     {
@@ -1946,11 +1960,11 @@
      ]
     }
    ],
-   "interpretation": "O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/38 ignitions below 0.05 fuel fraction against 118/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.",
+   "interpretation": "O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/37 ignitions below 0.05 fuel fraction against 119/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.",
    "caveats": [
     "Igniter energy was deliberately lowered in some tests to try direct cool-flame ignition (final report); igniter settings are not in the table, so some failures are by design and look like condition effects.",
     "Mass flow controllers are poor below 10% of full scale, which is where most diluted, low-flow failures sit.",
-    "Failures cluster by day: all 45 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 44 of them on 5, and the grouped CV (held-out days) is close to chance. Kept as a descriptive table, not a predictor."
+    "Failures cluster by day: all 43 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 42 of them on 5, and the grouped CV (held-out days) is close to chance. Kept as a descriptive table, not a predictor."
    ],
    "must_not_be_used_for": [
     "flammability limits of materials or of premixed gases",
@@ -1963,7 +1977,7 @@
    "kind": "classifier",
    "question": "Does an inverse flame light, given the burner-stream O2 and chamber pressure?",
    "target": "ignited",
-   "target_definition": "1 if 'Hot ignition' is yes, 0 if no ('flash' rows excluded)",
+   "target_definition": "1 if 'Hot ignition' is yes, 0 if no ('flash' rows and rows that were not ignition attempts, patches D45-D50, excluded)",
    "use": "descriptive",
    "target_transform": null,
    "features": [
@@ -2004,18 +2018,22 @@
      "why": "ignition outcome not recorded"
     },
     {
+     "excluded": 3,
+     "why": "not an ignition attempt (patches D45-D50: no fuel or no oxidizer flowed, or the run was aborted before gas flow); the table lists the row as not ignited"
+    },
+    {
      "step": "training rows",
-     "rows": 146
+     "rows": 143
     }
    ],
-   "n": 146,
+   "n": 143,
    "n_groups": 12,
    "target_summary": {
     "class_counts": {
      "1": 131,
-     "0": 15
+     "0": 12
     },
-    "positive_fraction": 0.8973
+    "positive_fraction": 0.9161
    },
    "estimator": {
     "pipeline": [
@@ -2031,34 +2049,34 @@
    },
    "coefficients": {
     "scale": "log-odds",
-    "intercept_per_unit": -2.333,
+    "intercept_per_unit": -1.144,
     "terms": [
      {
       "feature": "x_o2_burner",
-      "per_sd": 1.194,
-      "per_unit": 4.297,
+      "per_sd": 1.414,
+      "per_unit": 5.109,
       "per_sd_ci95_cluster_bootstrap": [
-       0.5654,
-       2.217
+       0.8893,
+       2.317
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       2.035,
-       7.979
+       3.212,
+       8.369
       ],
       "expected_sign": "+",
       "agreement": "agrees"
      },
      {
       "feature": "log10(pressure_kpa)",
-      "per_sd": 0.3529,
-      "per_unit": 1.189,
+      "per_sd": 0.1745,
+      "per_unit": 0.5901,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.3144,
-       1.062
+       -0.8461,
+       0.9954
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.059,
-       3.578
+       -2.861,
+       3.366
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -2066,8 +2084,8 @@
     ]
    },
    "in_sample": {
-    "roc_auc": 0.8344,
-    "brier": 0.07567,
+    "roc_auc": 0.848,
+    "brier": 0.06265,
     "balanced_accuracy": 0.5
    },
    "cv_scheme": {
@@ -2077,66 +2095,66 @@
    "cv": {
     "grouped_by_date": {
      "roc_auc": {
-      "mean": 0.8523,
-      "sd": 0.1453,
+      "mean": 0.8535,
+      "sd": 0.111,
       "per_fold": [
        0.96,
        0.9038,
        0.8654,
-       0.9323,
-       0.6
+       0.8715,
+       0.6667
       ],
-      "pooled": 0.7613
+      "pooled": 0.77
      },
      "brier": {
-      "mean": 0.09457,
-      "sd": 0.07368,
+      "mean": 0.07444,
+      "sd": 0.05886,
       "per_fold": [
-       0.06058,
-       0.03462,
-       0.03589,
-       0.2015,
-       0.1402
+       0.05857,
+       0.03387,
+       0.03319,
+       0.1757,
+       0.07088
       ],
-      "pooled": 0.1001
+      "pooled": 0.07644
      },
      "balanced_accuracy": {
-      "mean": 0.5167,
-      "sd": 0.03727,
+      "mean": 0.5,
+      "sd": 0.0,
       "per_fold": [
        0.5,
        0.5,
        0.5,
        0.5,
-       0.5833
+       0.5
       ],
-      "pooled": 0.5142
+      "pooled": 0.5
      }
     },
     "ungrouped": {
      "roc_auc": {
-      "mean": 0.8278,
-      "sd": 0.07395,
+      "mean": 0.8526,
+      "sd": 0.1531,
       "per_fold": [
-       0.8889,
-       0.8141,
-       0.7051,
-       0.859,
-       0.8718
+       1.0,
+       0.8654,
+       0.609,
+       0.9615,
+       0.8269
       ],
-      "pooled": 0.8079
+      "pooled": 0.8104
      },
      "brier": {
-      "mean": 0.07684,
-      "sd": 0.006096,
+      "mean": 0.06817,
+      "sd": 0.02738,
       "per_fold": [
-       0.06886,
-       0.07983,
-       0.08456,
-       0.07801,
-       0.07295
+       0.04285,
+       0.07777,
+       0.111,
+       0.0491,
+       0.06008
       ],
-      "pooled": 0.07679
+      "pooled": 0.06836
      },
      "balanced_accuracy": {
       "mean": 0.5,
@@ -2165,19 +2183,19 @@
         0.5,
         0.5
        ],
-       "pooled": 0.283
+       "pooled": 0.3073
       },
       "brier": {
-       "mean": 0.09202,
-       "sd": 0.07537,
+       "mean": 0.07754,
+       "sd": 0.05959,
        "per_fold": [
-        0.06982,
-        0.04216,
-        0.04216,
-        0.2231,
-        0.08288
+        0.06873,
+        0.03901,
+        0.03901,
+        0.1816,
+        0.05935
        ],
-       "pooled": 0.09613
+       "pooled": 0.07908
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -2194,28 +2212,28 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.7654,
-       "sd": 0.2,
+       "mean": 0.7774,
+       "sd": 0.2115,
        "per_fold": [
-        0.9,
+        0.96,
         0.9038,
         0.9231,
         0.5,
         0.6
        ],
-       "pooled": 0.7224
+       "pooled": 0.7592
       },
       "brier": {
-       "mean": 0.09641,
-       "sd": 0.08255,
+       "mean": 0.07565,
+       "sd": 0.06312,
        "per_fold": [
-        0.05339,
-        0.0382,
-        0.03339,
-        0.2263,
-        0.1308
+        0.04428,
+        0.03841,
+        0.03333,
+        0.1841,
+        0.07811
        ],
-       "pooled": 0.1023
+       "pooled": 0.07801
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -2232,78 +2250,78 @@
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.7162,
-       "sd": 0.2691,
+       "mean": 0.8455,
+       "sd": 0.1684,
        "per_fold": [
-        0.9,
+        0.96,
         0.9038,
-        0.9231,
-        0.3542,
-        0.5
+        0.9808,
+        0.816,
+        0.5667
        ],
-       "pooled": 0.5168
+       "pooled": 0.7532
       },
       "brier": {
-       "mean": 0.125,
-       "sd": 0.113,
+       "mean": 0.07255,
+       "sd": 0.06031,
        "per_fold": [
-        0.05675,
-        0.03197,
-        0.03963,
-        0.2428,
-        0.2537
+        0.05722,
+        0.03181,
+        0.02267,
+        0.1732,
+        0.07783
        ],
-       "pooled": 0.1343
+       "pooled": 0.07485
       },
       "balanced_accuracy": {
-       "mean": 0.4833,
-       "sd": 0.03727,
+       "mean": 0.4967,
+       "sd": 0.007454,
        "per_fold": [
         0.5,
         0.5,
         0.5,
         0.5,
-        0.4167
+        0.4833
        ],
-       "pooled": 0.4809
+       "pooled": 0.4962
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.7433,
-       "sd": 0.2539,
+       "mean": 0.8371,
+       "sd": 0.2239,
        "per_fold": [
         0.96,
-        0.8269,
+        0.9038,
         0.9808,
-        0.4375,
-        0.5111
+        0.8993,
+        0.4417
        ],
-       "pooled": 0.6056
+       "pooled": 0.6196
       },
       "brier": {
-       "mean": 0.1193,
-       "sd": 0.1126,
+       "mean": 0.07998,
+       "sd": 0.06821,
        "per_fold": [
-        0.04693,
-        0.0374,
-        0.0272,
-        0.2419,
-        0.243
+        0.04949,
+        0.03739,
+        0.02938,
+        0.195,
+        0.08859
        ],
-       "pooled": 0.1286
+       "pooled": 0.08269
       },
       "balanced_accuracy": {
-       "mean": 0.4833,
-       "sd": 0.03727,
+       "mean": 0.4967,
+       "sd": 0.007454,
        "per_fold": [
         0.5,
         0.5,
         0.5,
         0.5,
-        0.4167
+        0.4833
        ],
-       "pooled": 0.4809
+       "pooled": 0.4962
       }
      }
     },
@@ -2319,19 +2337,19 @@
         0.5,
         0.5
        ],
-       "pooled": 0.4969
+       "pooled": 0.4472
       },
       "brier": {
-       "mean": 0.0922,
-       "sd": 0.001223,
+       "mean": 0.07688,
+       "sd": 0.01506,
        "per_fold": [
-        0.09001,
-        0.09275,
-        0.09275,
-        0.09275,
-        0.09275
+        0.06456,
+        0.09335,
+        0.09335,
+        0.06657,
+        0.06657
        ],
-       "pooled": 0.09219
+       "pooled": 0.07702
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -2348,28 +2366,28 @@
      },
      "single_best_feature_rule": {
       "roc_auc": {
-       "mean": 0.7932,
-       "sd": 0.1404,
+       "mean": 0.8376,
+       "sd": 0.1186,
        "per_fold": [
-        0.8889,
-        0.8462,
-        0.5513,
-        0.7949,
-        0.8846
+        0.9444,
+        0.7372,
+        0.6987,
+        0.9615,
+        0.8462
        ],
-       "pooled": 0.7354
+       "pooled": 0.7646
       },
       "brier": {
-       "mean": 0.0795,
-       "sd": 0.01745,
+       "mean": 0.06426,
+       "sd": 0.02192,
        "per_fold": [
-        0.06719,
-        0.07696,
-        0.11,
-        0.07391,
-        0.06948
+        0.04367,
+        0.08335,
+        0.09,
+        0.04273,
+        0.06158
        ],
-       "pooled": 0.07942
+       "pooled": 0.06443
       },
       "balanced_accuracy": {
        "mean": 0.5,
@@ -2386,102 +2404,102 @@
      },
      "decision_tree_depth3": {
       "roc_auc": {
-       "mean": 0.8149,
-       "sd": 0.09592,
+       "mean": 0.7704,
+       "sd": 0.1673,
        "per_fold": [
-        0.9012,
-        0.8462,
-        0.6667,
-        0.7756,
-        0.8846
+        0.5926,
+        0.7179,
+        0.6474,
+        0.9519,
+        0.9423
        ],
-       "pooled": 0.7977
+       "pooled": 0.749
       },
       "brier": {
-       "mean": 0.08538,
-       "sd": 0.02443,
+       "mean": 0.07043,
+       "sd": 0.02894,
        "per_fold": [
-        0.07585,
-        0.09182,
-        0.1247,
-        0.06234,
-        0.07216
+        0.05312,
+        0.08475,
+        0.1149,
+        0.0508,
+        0.04855
        ],
-       "pooled": 0.08532
+       "pooled": 0.07072
       },
       "balanced_accuracy": {
-       "mean": 0.5697,
-       "sd": 0.1348,
+       "mean": 0.5474,
+       "sd": 0.1287,
        "per_fold": [
-        0.7778,
-        0.6282,
-        0.4423,
+        0.5,
+        0.7756,
+        0.4615,
         0.5,
         0.5
        ],
-       "pooled": 0.5695
+       "pooled": 0.5642
       }
      },
      "gradient_boosting": {
       "roc_auc": {
-       "mean": 0.7768,
-       "sd": 0.149,
+       "mean": 0.7929,
+       "sd": 0.1722,
        "per_fold": [
-        0.8519,
-        0.8013,
-        0.5385,
-        0.7564,
-        0.9359
+        0.5926,
+        0.75,
+        0.6795,
+        0.9808,
+        0.9615
        ],
-       "pooled": 0.7453
+       "pooled": 0.7796
       },
       "brier": {
-       "mean": 0.08995,
-       "sd": 0.03619,
+       "mean": 0.06572,
+       "sd": 0.02941,
        "per_fold": [
-        0.07508,
-        0.1252,
-        0.1324,
-        0.06021,
-        0.0569
+        0.05232,
+        0.1116,
+        0.0777,
+        0.04801,
+        0.03894
        ],
-       "pooled": 0.08985
+       "pooled": 0.06603
       },
       "balanced_accuracy": {
-       "mean": 0.6323,
-       "sd": 0.1296,
+       "mean": 0.7051,
+       "sd": 0.1152,
        "per_fold": [
-        0.7963,
-        0.5897,
-        0.4423,
-        0.6667,
-        0.6667
+        0.75,
+        0.7756,
+        0.5,
+        0.75,
+        0.75
        ],
-       "pooled": 0.6323
+       "pooled": 0.6969
       }
      }
     }
    },
    "cv_metric": {
     "name": "roc_auc",
-    "grouped_mean": 0.8523,
-    "grouped_sd": 0.1453,
-    "grouped_pooled": 0.7613,
-    "ungrouped_mean": 0.8278,
+    "grouped_mean": 0.8535,
+    "grouped_sd": 0.111,
+    "grouped_pooled": 0.77,
+    "ungrouped_mean": 0.8526,
     "folds_without_metric": 0,
     "grouped_pooled_ci95_days_resampled": [
-     0.3581,
-     0.883
+     0.4177,
+     0.9152
     ],
-    "grouped_pooled_median_days_resampled": 0.7469,
-    "single_feature_grouped_mean": 0.7654,
-    "single_feature_grouped_pooled": 0.7224,
-    "brier_grouped_pooled": 0.1001,
-    "brier_baseline_grouped_pooled": 0.09613
+    "grouped_pooled_median_days_resampled": 0.7714,
+    "single_feature_grouped_mean": 0.7774,
+    "single_feature_grouped_pooled": 0.7592,
+    "brier_grouped_pooled": 0.07644,
+    "brier_baseline_grouped_pooled": 0.07908
    },
    "tree_rules": {
-    "single_best_feature_rule": "|--- x_o2_burner <= 0.350\n|   |--- class: 1\n|--- x_o2_burner >  0.350\n|   |--- class: 1\n",
-    "decision_tree_depth3": "|--- x_o2_burner <= 0.350\n|   |--- log10(pressure_kpa) <= 2.042\n|   |   |--- x_o2_burner <= 0.255\n|   |   |   |--- class: 0\n|   |   |--- x_o2_burner >  0.255\n|   |   |   |--- class: 1\n|   |--- log10(pressure_kpa) >  2.042\n|   |   |--- log10(pressure_kpa) <= 2.432\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.432\n|   |   |   |--- class: 1\n|--- x_o2_burner >  0.350\n|   |--- log10(pressure_kpa) <= 1.892\n|   |   |--- class: 1\n|   |--- log10(pressure_kpa) >  1.892\n|   |   |--- log10(pressure_kpa) <= 2.432\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.432\n|   |   |   |--- class: 1\n"
+    "single_best_feature_rule": "|--- x_o2_burner <= 0.255\n|   |--- class: 1\n|--- x_o2_burner >  0.255\n|   |--- class: 1\n",
+    "decision_tree_depth3": "|--- x_o2_burner <= 0.255\n|   |--- log10(pressure_kpa) <= 1.892\n|   |   |--- class: 0\n|   |--- log10(pressure_kpa) >  1.892\n|   |   |--- log10(pressure_kpa) <= 2.432\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.432\n|   |   |   |--- class: 1\n|--- x_o2_burner >  0.255\n|   |--- x_o2_burner <= 0.350\n|   |   |--- class: 1\n|   |--- x_o2_burner >  0.350\n|   |   |--- log10(pressure_kpa) <= 2.193\n|   |   |   |--- class: 1\n|   |   |--- log10(pressure_kpa) >  2.193\n|   |   |   |--- class: 1\n"
    },
    "descriptive_table": [
     {
@@ -2526,22 +2544,22 @@
     },
     {
      "x_o2_burner_level": "0.21",
-     "n": 26,
+     "n": 25,
      "positives": 16,
-     "fraction": 0.6154,
+     "fraction": 0.64,
      "wilson95": [
-      0.4253,
-      0.7757
+      0.4452,
+      0.7975
      ]
     },
     {
      "x_o2_burner_level": "0.3",
-     "n": 8,
+     "n": 7,
      "positives": 6,
-     "fraction": 0.75,
+     "fraction": 0.8571,
      "wilson95": [
-      0.4093,
-      0.9285
+      0.4869,
+      0.9743
      ]
     },
     {
@@ -2586,20 +2604,20 @@
     },
     {
      "x_o2_burner_level": "0.85",
-     "n": 78,
+     "n": 77,
      "positives": 76,
-     "fraction": 0.9744,
+     "fraction": 0.987,
      "wilson95": [
-      0.9112,
-      0.9929
+      0.93,
+      0.9977
      ]
     }
    ],
    "interpretation": "Burner O2 agrees (+) on average, but the table shows the effect is not monotone: the failures concentrate at 0.21 burner O2, while the few lower-O2 tests mostly lit.",
    "caveats": [
-    "Only 15 non-ignitions, 10 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the descriptive table first.",
+    "Only 12 non-ignitions, 9 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the descriptive table first.",
     "Igniter settings varied and are not in the table.",
-    "Not monotone in burner O2: 6 of 7 tests at 0.15-0.19 ignited while 10 of 26 at 0.21 failed, so a logistic curve in O2 misdescribes the low end. Kept as a descriptive table."
+    "Not monotone in burner O2: 6 of 7 tests at 0.12-0.19 ignited while 9 of 25 at 0.21 failed, so a logistic curve in O2 misdescribes the low end. Kept as a descriptive table."
    ],
    "must_not_be_used_for": [
     "normal flames",

@@ -60,6 +60,25 @@ def has_flag(df, code):
     return df["flags"].fillna("").str.split(";").map(lambda codes: code in codes)
 
 
+def has_patch(df, ids):
+    def patched(raw):
+        e = json.loads(raw) if isinstance(raw, str) else {}
+        return bool(set(e.get("discrepancies", [])) & set(ids))
+    return df["extra"].map(patched)
+
+
+def load_sheets():
+    return pd.read_parquet(psi.PROCESSED / "test_sheets.parquet")
+
+
+def sheet_out(df):
+    """How each flame ended on its hand-filled test sheet (column `out` of test_sheets); None without a sheet."""
+    s = load_sheets()
+    s = s[s["in_tests"]]
+    out = dict(zip(zip(s["accession"], s["tests_test_id"]), s["out"]))
+    return pd.Series([out.get(key) for key in zip(df["accession"], df["test_id"])], index=df.index, dtype=object)
+
+
 def is_true(s):
     return s.astype("boolean").fillna(False).astype(bool)
 
@@ -90,11 +109,23 @@ def cfig(tests, config):
     return df
 
 
+# The table lists these rows as not ignited, but nothing was there to ignite: no fuel or no oxidizer flowed, or the
+# run was aborted before gas flow. The flags the patches set (conflicts_with_raw, conflicts_with_test_sheet) are
+# shared with patched rows that are real attempts, so the rows are picked by patch id.
+NOT_ATTEMPTS = ("D45", "D46", "D47", "D48", "D49", "D50")
+NOT_ATTEMPT_WHY = ("not an ignition attempt (patches D45-D50: no fuel or no oxidizer flowed, or the run was aborted "
+                   "before gas flow); the table lists the row as not ignited")
+TEMP_LIMIT_WHY = ("stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch "
+                  "D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame "
+                  "was cut off early, so whether it would have gone out by itself is not known")
+
+
 def load_cfig_normal_self_extinction(tests):
     rows = Rows(cfig(tests, "normal"), "PSI-159 normal-flame tests")
     rows.drop(~is_true(rows.df["ignited"]), "no established hot flame (ignited False): there is nothing to extinguish "
               "(21106 F4 is kept: the table logs it as not ignited, the raw data show a 20 s flame, patch D03)")
     rows.drop(rows.df["extinction_mode"].isna(), "no recorded outcome")
+    rows.drop(sheet_out(rows.df) == "temp_limit", TEMP_LIMIT_WHY)
     df = rows.df.assign(y=(rows.df["extinction_mode"] == "self_extinguished").astype(int))
     return df, rows.steps
 
@@ -105,6 +136,7 @@ def load_cfig_inverse_self_extinction(tests):
               "not a radiative extinction of an established flame")
     rows.drop(~is_true(rows.df["ignited"]), "no hot ignition")
     rows.drop(rows.df["extinction_mode"].isna(), "no recorded outcome")
+    rows.drop(sheet_out(rows.df) == "temp_limit", TEMP_LIMIT_WHY)
     df = rows.df.assign(y=(rows.df["extinction_mode"] == "self_extinguished").astype(int))
     return df, rows.steps
 
@@ -112,8 +144,9 @@ def load_cfig_inverse_self_extinction(tests):
 def load_cfig_normal_ignition(tests):
     rows = Rows(cfig(tests, "normal"), "PSI-159 normal-flame tests")
     rows.drop(rows.df["ignited"].isna(), "ignition outcome not recorded")
+    rows.drop(has_patch(rows.df, NOT_ATTEMPTS), NOT_ATTEMPT_WHY)
     rows.drop((rows.df["fuel_fraction"] <= 0) | (rows.df["fuel_flow_mg_s"] <= 0),
-              "zero fuel fraction and zero fuel flow (21125 A4, H3): no fuel was supplied")
+              "zero fuel fraction or zero fuel flow: no fuel was supplied")
     df = rows.df.assign(y=rows.df["ignited"].astype(int))
     return df, rows.steps
 
@@ -122,6 +155,7 @@ def load_cfig_inverse_ignition(tests):
     rows = Rows(cfig(tests, "inverse"), "PSI-159 inverse-flame tests")
     rows.drop(has_flag(rows.df, "flash_only"), "flash_only: momentary flame, neither a clean ignition nor a failure")
     rows.drop(rows.df["ignited"].isna(), "ignition outcome not recorded")
+    rows.drop(has_patch(rows.df, NOT_ATTEMPTS), NOT_ATTEMPT_WHY)
     df = rows.df.assign(y=rows.df["ignited"].astype(int))
     return df, rows.steps
 
@@ -200,10 +234,11 @@ SPECS = [
         "accession": "PSI-159",
         "kind": "classifier",
         "question": "Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own "
-                    "(radiative self-extinction) before the scripted flow cut-off?",
+                    "(radiative self-extinction) before the scripted timeout?",
         "target": "self_extinguished",
-        "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (flow cut by the "
-                             "script timeout or the burner temperature limit)",
+        "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script "
+                             "timeout; flames stopped by the burner temperature limit (per the test sheets) are "
+                             "left out",
         "load": load_cfig_normal_self_extinction,
         "features": [
             feature("x_o2_ambient", "mole fraction", "-", "more O2 raises T_f and heat release relative to radiation",
@@ -222,16 +257,27 @@ SPECS = [
         "scaling": RADIATIVE,
         "describe_by": ("o2_band", lambda d: np.where(d["x_o2_ambient"] < 0.25, "about 0.21",
                                                       np.where(d["x_o2_ambient"] < 0.35, "about 0.33", "about 0.40"))),
-        "interpretation": "Partly. Ambient O2 (-) and fuel flow (+, larger flame, more radiative loss) agree, with intervals "
-                          "excluding 0; these two carry the model. Pressure and carbon number are indistinguishable from 0: "
-                          "within these tests, radiative self-extinction does not measurably depend on pressure once O2 "
-                          "and flow are fixed. The depth-3 tree and gradient boosting do no better on held-out days, so "
-                          "the linear form leaves little on the table.",
+        "interpretation": "Partly, and weakly. Ambient O2 (-) agrees with an interval excluding 0 and carries the model. "
+                          "Fuel flow (+, larger flame, more radiative loss) agrees, but its interval only just excludes "
+                          "0. Pressure and carbon number are indistinguishable from 0 (pressure has the opposite sign "
+                          "to the expectation). On held-out days the model is barely better than its single best "
+                          "feature (AUC 0.69 against 0.67) and than the base rate (Brier 0.129 against 0.135), and the "
+                          "range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 "
+                          "tree and gradient boosting do no better. With the 12 flames stopped by the burner "
+                          "temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score "
+                          "came from flames whose outcome is not known. Read the probabilities as a description of "
+                          "these tests (19 flames reached the timeout, 18 of them at about 40% O2).",
         "caveats": [
-            "'Flow-terminated' is not 'stable': flow was cut by scripted timeouts or burner over-temperature, so the "
-            "target is 'self-extinguished before the cut-off', and the fractions depend on the chosen timeouts.",
+            "'Flow-terminated' is not 'stable': the negatives are flames still burning at the scripted timeout, so "
+            "the target is 'self-extinguished before the timeout', and the fractions depend on the chosen timeouts.",
+            "The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether "
+            "they would have gone out is not known. They are taken from the hand-filled test sheets (out = "
+            "temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as "
+            "flow_terminated like the timeouts. A misread tick would move a flame in or out of the fit. Leaving "
+            "them out removes the hottest burns (11 of the 12 carry burner_over_limit), so the model says nothing "
+            "about conditions that overheat the burner.",
             "At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients "
-            "mainly describe the about 40% O2 tests. Only 3 tests sit at about 33% O2.",
+            "mainly describe the about 40% O2 tests. Only 2 tests sit at about 33% O2.",
             "Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a "
             "gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.",
             "Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn.",
@@ -239,7 +285,7 @@ SPECS = [
         "must_not": [
             "material flammability, cabin fires or condensed fuels",
             "other burners or flow timeouts (the target is tied to this hardware's cut-off times)",
-            "O2 between 0.25 and 0.35 (3 tests) or any combination not near a listed nearest test",
+            "O2 between 0.25 and 0.35 (2 tests) or any combination not near a listed nearest test",
         ],
     },
     {
@@ -247,10 +293,11 @@ SPECS = [
         "accession": "PSI-159",
         "kind": "classifier",
         "question": "Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish "
-                    "before the flow cut-off, and how strongly does chamber pressure matter?",
+                    "before the scripted timeout, and how strongly does chamber pressure matter?",
         "target": "self_extinguished",
-        "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (usually the 66 s "
-                             "inverse timeout, sometimes the burner temperature limit)",
+        "target_definition": "1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script "
+                             "timeout (usually 66 s for inverse flames); flames stopped by the burner temperature "
+                             "limit (per the test sheets) are left out",
         "load": load_cfig_inverse_self_extinction,
         "features": [
             feature("pressure_kpa", "kPa (table values, ~9% above nominal fill)", "+",
@@ -268,14 +315,14 @@ SPECS = [
         "scaling": RADIATIVE,
         "describe_by": ("pressure_level_kpa", lambda d: d["pressure_kpa"].round(-1).astype(int).astype(str)),
         "interpretation": "Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled "
-                          "held-out AUC of 0.71 against 0.87 for the full model; gradient boosting does worse on held-out "
-                          "days), matching 0/29 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 "
+                          "held-out AUC of 0.71 against 0.90 for the full model; gradient boosting does no better on held-out "
+                          "days), matching 0/20 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 "
                           "has the opposite sign to the a-priori expectation (-): richer oxidiser streams "
                           "self-extinguished more often. This is a property of the test design, not a mechanism: the "
                           "O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner "
                           "flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). "
                           "The sign stays positive within each pressure level and with day fixed effects, and it "
-                          "becomes indistinguishable from 0 once total flow is added, so the data cannot separate "
+                          "becomes indistinguishable from 0 once total flow replaces O2 flow, so the data cannot separate "
                           "burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.",
         "caveats": [
             "All inverse rows carry pressure_9pct_above_nominal: the table pressures are ~9% above the fill levels. "
@@ -283,10 +330,15 @@ SPECS = [
             "Pressure and O2 flow are partly confounded with test day: pressure levels were run on separate days, so "
             "the grouped CV can only test pressure on held-out days with other pressures.",
             "79 of 154 inverse tests used 85% O2 in the burner stream; low burner-O2 cells are small.",
-            "Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.72 with pressure in "
+            "Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.73 with pressure in "
             "the training rows), so the two cannot be separated and the fit would split the pressure effect "
             "between them.",
             "As for normal flames, 'flow_terminated' is a timeout outcome, not a stability limit.",
+            "The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether "
+            "they would have gone out is not known. They are taken from the hand-filled test sheets (out = "
+            "temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as "
+            "flow_terminated like the timeouts, and the sheet of 21270 A4 itself asks whether it timed out. Nine of "
+            "the 12 were at 0.5-0.6 bar, where 20 flames remain, all of them reaching the timeout.",
         ],
         "must_not": [
             "normal flames or real fires (an inverse flame has no fire-safety analogue in a cabin)",
@@ -299,7 +351,8 @@ SPECS = [
         "kind": "classifier",
         "question": "Does a normal flame light (hot ignition) for a given chamber O2, pressure and fuel stream?",
         "target": "ignited",
-        "target_definition": "1 if the table's 'Hot ignition' is yes, 0 if no",
+        "target_definition": "1 if the table's 'Hot ignition' is yes, 0 if no (rows that were not ignition attempts, "
+                             "patches D45-D50, excluded)",
         "load": load_cfig_normal_ignition,
         "descriptive": True,
         "features": [
@@ -316,7 +369,7 @@ SPECS = [
         "scaling": r"\mathrm{Da}=\frac{\tau_{res}}{\tau_{chem}},\qquad \tau_{chem}^{-1}\propto p^{\,n-1}\exp\!\left(-\frac{E_a}{R T_f}\right)",
         "describe_by": ("fuel_fraction_band", lambda d: np.where(d["fuel_fraction"] < 0.05, "< 0.05", ">= 0.05")),
         "interpretation": "O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust "
-                          "statement is the dilution table: 14/38 ignitions below 0.05 fuel fraction against 118/139 "
+                          "statement is the dilution table: 14/37 ignitions below 0.05 fuel fraction against 119/139 "
                           "above. The fit does not generalise to held-out days (grouped AUC near chance), because the "
                           "failures cluster on a few days with modified igniter settings.",
         "caveats": [
@@ -324,7 +377,7 @@ SPECS = [
             "igniter settings are not in the table, so some failures are by design and look like condition effects.",
             "Mass flow controllers are poor below 10% of full scale, which is where most diluted, low-flow failures "
             "sit.",
-            "Failures cluster by day: all 45 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 44 of them on 5, and the grouped CV "
+            "Failures cluster by day: all 43 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 42 of them on 5, and the grouped CV "
             "(held-out days) is close to chance. Kept as a descriptive table, not a predictor.",
         ],
         "must_not": [
@@ -338,7 +391,8 @@ SPECS = [
         "kind": "classifier",
         "question": "Does an inverse flame light, given the burner-stream O2 and chamber pressure?",
         "target": "ignited",
-        "target_definition": "1 if 'Hot ignition' is yes, 0 if no ('flash' rows excluded)",
+        "target_definition": "1 if 'Hot ignition' is yes, 0 if no ('flash' rows and rows that were not ignition "
+                             "attempts, patches D45-D50, excluded)",
         "load": load_cfig_inverse_ignition,
         "descriptive": True,
         "features": [
@@ -352,10 +406,10 @@ SPECS = [
         "interpretation": "Burner O2 agrees (+) on average, but the table shows the effect is not monotone: the failures "
                           "concentrate at 0.21 burner O2, while the few lower-O2 tests mostly lit.",
         "caveats": [
-            "Only 15 non-ignitions, 10 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the "
+            "Only 12 non-ignitions, 9 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the "
             "descriptive table first.",
             "Igniter settings varied and are not in the table.",
-            "Not monotone in burner O2: 6 of 7 tests at 0.15-0.19 ignited while 10 of 26 at 0.21 failed, so a "
+            "Not monotone in burner O2: 6 of 7 tests at 0.12-0.19 ignited while 9 of 25 at 0.21 failed, so a "
             "logistic curve in O2 misdescribes the low end. Kept as a descriptive table.",
         ],
         "must_not": ["normal flames", "any fire-safety ignition criterion"],

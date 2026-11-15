@@ -166,6 +166,12 @@ $$
   flames at 25-35% O2), only the nearest measured tests; it raises on impossible inputs. Four of the eight
   models are descriptive only (`use` field). Each headline score comes with a range from resampling the test
   days (`cv_metric.grouped_pooled_ci95_days_resampled`); the ranges are wide, show them.
+- The CFI-G models leave out rows whose outcome is not what the target means; each card lists them in
+  `training_filter`. The ignition models drop the six rows that were not ignition attempts (patches D45 to D50).
+  The self-extinction models drop the 24 flames stopped by the burner temperature limit (12 normal, 12 inverse;
+  note D58): they were cut off early, so whether they would have gone out is not known. That set comes from the
+  test sheets, an AI reading of scans that nobody checked. Without them the normal-flame model is weak (AUC 0.69,
+  range 0.36-0.80): show its range and its nearest tests, not the probability alone.
 - A `predict` value for a quantity (the two FLEX models) comes with named fields: `prediction` and `interval`
   `[low, high]` in `unit`; `interval_nominal` (0.9, the target the range is built for); `interval_coverage`, the
   share actually reached on held-out test days as counts (`n_inside`, `n`, and the same per fuel under

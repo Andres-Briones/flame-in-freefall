@@ -44,10 +44,10 @@ Method, common to all models:
 
 | model | use | n | metric | grouped (mean ± SD) | 95% interval, days resampled (pooled) | ungrouped | baseline (grouped) | gradient boosting (grouped) |
 |---|---|---|---|---|---|---|---|---|
-| `cfig_normal_self_extinction` | predictive | 133 | roc_auc | 0.838 ± 0.0676 | 0.47 to 0.87 | 0.846 | 0.5 (single feature 0.599) | 0.82 |
-| `cfig_inverse_self_extinction` | predictive | 131 | roc_auc | 0.831 ± 0.145 | 0.57 to 0.95 | 0.912 | 0.5 (single feature 0.56) | 0.701 |
-| `cfig_normal_ignition` | descriptive | 177 | roc_auc | 0.614 ± 0.176 | 0.11 to 0.82 | 0.784 | 0.5 (single feature 0.474) | 0.726 |
-| `cfig_inverse_ignition` | descriptive | 146 | roc_auc | 0.852 ± 0.145 | 0.36 to 0.88 | 0.828 | 0.5 (single feature 0.765) | 0.743 |
+| `cfig_normal_self_extinction` | predictive | 121 | roc_auc | 0.69 ± 0.153 | 0.36 to 0.8 | 0.745 | 0.5 (single feature 0.67) | 0.61 |
+| `cfig_inverse_self_extinction` | predictive | 119 | roc_auc | 0.89 ± 0.113 | 0.51 to 0.94 | 0.915 | 0.5 (single feature 0.67) | 0.878 |
+| `cfig_normal_ignition` | descriptive | 176 | roc_auc | 0.606 ± 0.197 | 0.11 to 0.82 | 0.777 | 0.5 (single feature 0.474) | 0.702 |
+| `cfig_inverse_ignition` | descriptive | 143 | roc_auc | 0.854 ± 0.111 | 0.42 to 0.92 | 0.853 | 0.5 (single feature 0.777) | 0.837 |
 | `flex_burning_rate` | predictive | 251 | r2 | 0.686 ± 0.0934 | 0.63 to 0.8 | 0.766 | -0.212 (single feature -0.291) | 0.53 |
 | `flex_methanol_extinction_diameter` | predictive | 100 | r2 | 0.697 ± 0.113 | 0.13 to 0.76 | 0.705 | -0.0179 (single feature 0.353) | 0.735 |
 | `cfi_reignition` | descriptive | 62 | roc_auc | 0.51 ± 0.355 | 0.12 to 0.83 | 0.703 | 0.5 (single feature 0.294) | 0.392 |
@@ -55,9 +55,9 @@ Method, common to all models:
 
 ## `cfig_normal_self_extinction` (PSI-159, classifier)
 
-**Question.** Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own (radiative self-extinction) before the scripted flow cut-off?
+**Question.** Once a normal (fuel-from-burner) spherical gas flame is lit, does it go out on its own (radiative self-extinction) before the scripted timeout?
 
-**Target.** `self_extinguished`: 1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (flow cut by the script timeout or the burner temperature limit). n = 133 tests on 11 test days; 102 positive / 31 negative.
+**Target.** `self_extinguished`: 1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script timeout; flames stopped by the burner temperature limit (per the test sheets) are left out. n = 121 tests on 11 test days; 102 positive / 19 negative.
 
 **Physics expectation.** These flames die by radiative loss, not by a residence-time (Damköhler) limit: the flame grows slowly in quiescent microgravity, radiates from soot and gas, and goes out when the radiative loss fraction drives T_f to about 1100-1200 K.
 
@@ -75,31 +75,32 @@ $$
 
 - PSI-159 normal-flame tests: 179
 - excluded 46: no established hot flame (ignited False): there is nothing to extinguish (21106 F4 is kept: the table logs it as not ignited, the raw data show a 20 s flame, patch D03)
-- training rows: 133
+- excluded 12: stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame was cut off early, so whether it would have gone out by itself is not known
+- training rows: 121
 
 **Result.** Cross-validated metrics, mean ± SD across folds (pooled out-of-fold value in brackets). *Grouped* holds out whole test days; *ungrouped* shuffles tests, so the gap between the two is the optimism from same-day tests sharing conditions.
 
 | model | roc_auc grouped | brier grouped | balanced_accuracy grouped | roc_auc ungrouped | brier ungrouped | balanced_accuracy ungrouped |
 |---|---|---|---|---|---|---|
-| **logistic / linear (this model)** | 0.838 ± 0.0676 (pooled 0.808) | 0.136 ± 0.0279 (pooled 0.137) | 0.725 ± 0.0961 (pooled 0.709) | 0.846 ± 0.111 (pooled 0.85) | 0.124 ± 0.0358 (pooled 0.124) | 0.687 ± 0.0409 (pooled 0.69) |
-| majority_class | 0.5 ± 0 (pooled 0.397) | 0.181 ± 0.0401 (pooled 0.181) | 0.5 ± 0 (pooled 0.5) | 0.5 ± 0 (pooled 0.481) | 0.179 ± 0.00829 (pooled 0.179) | 0.5 ± 0 (pooled 0.5) |
-| single_best_feature_rule | 0.599 ± 0.104 (pooled 0.549) | 0.19 ± 0.0221 (pooled 0.19) | 0.55 ± 0.112 (pooled 0.494) | 0.603 ± 0.153 (pooled 0.578) | 0.18 ± 0.0413 (pooled 0.18) | 0.5 ± 0 (pooled 0.5) |
-| decision_tree_depth3 | 0.739 ± 0.181 (pooled 0.719) | 0.144 ± 0.0769 (pooled 0.146) | 0.766 ± 0.16 (pooled 0.743) | 0.845 ± 0.0828 (pooled 0.844) | 0.12 ± 0.042 (pooled 0.12) | 0.728 ± 0.0901 (pooled 0.727) |
-| gradient_boosting | 0.82 ± 0.104 (pooled 0.769) | 0.16 ± 0.0865 (pooled 0.164) | 0.718 ± 0.167 (pooled 0.689) | 0.892 ± 0.105 (pooled 0.885) | 0.106 ± 0.0464 (pooled 0.106) | 0.772 ± 0.116 (pooled 0.778) |
+| **logistic / linear (this model)** | 0.69 ± 0.153 (pooled 0.699) | 0.132 ± 0.0331 (pooled 0.129) | 0.507 ± 0.0402 (pooled 0.512) | 0.745 ± 0.113 (pooled 0.77) | 0.12 ± 0.0225 (pooled 0.12) | 0.49 ± 0.0137 (pooled 0.49) |
+| majority_class | 0.5 ± 0 (pooled 0.363) | 0.138 ± 0.0518 (pooled 0.135) | 0.5 ± 0 (pooled 0.5) | 0.5 ± 0 (pooled 0.473) | 0.133 ± 0.0122 (pooled 0.133) | 0.5 ± 0 (pooled 0.5) |
+| single_best_feature_rule | 0.67 ± 0.169 (pooled 0.624) | 0.128 ± 0.0579 (pooled 0.124) | 0.5 ± 0 (pooled 0.5) | 0.676 ± 0.095 (pooled 0.632) | 0.124 ± 0.0145 (pooled 0.124) | 0.5 ± 0 (pooled 0.5) |
+| decision_tree_depth3 | 0.637 ± 0.228 (pooled 0.643) | 0.16 ± 0.0762 (pooled 0.155) | 0.56 ± 0.114 (pooled 0.568) | 0.773 ± 0.15 (pooled 0.752) | 0.118 ± 0.0395 (pooled 0.117) | 0.659 ± 0.0805 (pooled 0.66) |
+| gradient_boosting | 0.61 ± 0.269 (pooled 0.558) | 0.237 ± 0.0807 (pooled 0.24) | 0.518 ± 0.0788 (pooled 0.502) | 0.772 ± 0.172 (pooled 0.759) | 0.13 ± 0.0225 (pooled 0.129) | 0.606 ± 0.133 (pooled 0.614) |
 
-**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.47 and 0.87 (95%, median 0.74). The single best feature alone reaches 0.6 (pooled 0.55). Brier score of the probabilities on held-out days (pooled, lower is better): 0.137, against 0.181 for always giving the training days' base rate.
+**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.36 and 0.8 (95%, median 0.6). The single best feature alone reaches 0.67 (pooled 0.62). Brier score of the probabilities on held-out days (pooled, lower is better): 0.129, against 0.135 for always giving the training days' base rate.
 
-Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 9.96.
+Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 8.72.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_ambient` | -1.97 | [-2.54, -1.29] | -24.5 | [-31.7, -16.1] | - | agrees |
-| `log10(pressure_kpa)` | 0.0185 | [-0.683, 0.624] | 0.0848 | [-3.13, 2.86] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_flow_mg_s)` | 1.34 | [0.635, 2.57] | 5.54 | [2.62, 10.6] | + | agrees |
-| `fuel_fraction` | -0.278 | [-1.38, 0.155] | -0.985 | [-4.87, 0.549] | ? | no prior expectation |
-| `n_carbon` | 0.0289 | [-1.48, 0.64] | 0.0348 | [-1.78, 0.77] | + | agrees in sign; CI includes 0 |
+| `x_o2_ambient` | -1.58 | [-2.16, -0.975] | -19.2 | [-26.3, -11.8] | - | agrees |
+| `log10(pressure_kpa)` | -0.074 | [-0.902, 0.573] | -0.337 | [-4.11, 2.61] | + | opposite sign; CI includes 0 |
+| `log10(fuel_flow_mg_s)` | 0.86 | [0.0216, 1.99] | 3.58 | [0.09, 8.27] | + | agrees |
+| `fuel_fraction` | -0.138 | [-1.18, 0.409] | -0.507 | [-4.33, 1.5] | ? | no prior expectation |
+| `n_carbon` | 0.114 | [-1.2, 0.813] | 0.138 | [-1.44, 0.981] | + | agrees in sign; CI includes 0 |
 
-**Does it match the physics?** Partly. Ambient O2 (-) and fuel flow (+, larger flame, more radiative loss) agree, with intervals excluding 0; these two carry the model. Pressure and carbon number are indistinguishable from 0: within these tests, radiative self-extinction does not measurably depend on pressure once O2 and flow are fixed. The depth-3 tree and gradient boosting do no better on held-out days, so the linear form leaves little on the table.
+**Does it match the physics?** Partly, and weakly. Ambient O2 (-) agrees with an interval excluding 0 and carries the model. Fuel flow (+, larger flame, more radiative loss) agrees, but its interval only just excludes 0. Pressure and carbon number are indistinguishable from 0 (pressure has the opposite sign to the expectation). On held-out days the model is barely better than its single best feature (AUC 0.69 against 0.67) and than the base rate (Brier 0.129 against 0.135), and the range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 tree and gradient boosting do no better. With the 12 flames stopped by the burner temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score came from flames whose outcome is not known. Read the probabilities as a description of these tests (19 flames reached the timeout, 18 of them at about 40% O2).
 
 Single-best-feature rule (depth-1 tree on all rows):
 
@@ -115,13 +116,14 @@ Observed fractions with Wilson 95% intervals:
 | o2_band | positives / n | fraction | Wilson 95% |
 |---|---|---|---|
 | about 0.21 | 41 / 41 | 1 | [0.91, 1] |
-| about 0.33 | 1 / 3 | 0.33 | [0.061, 0.79] |
-| about 0.40 | 60 / 89 | 0.67 | [0.57, 0.76] |
+| about 0.33 | 1 / 2 | 0.5 | [0.095, 0.91] |
+| about 0.40 | 60 / 78 | 0.77 | [0.66, 0.85] |
 
 **Caveats.**
 
-- 'Flow-terminated' is not 'stable': flow was cut by scripted timeouts or burner over-temperature, so the target is 'self-extinguished before the cut-off', and the fractions depend on the chosen timeouts.
-- At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 3 tests sit at about 33% O2.
+- 'Flow-terminated' is not 'stable': the negatives are flames still burning at the scripted timeout, so the target is 'self-extinguished before the timeout', and the fractions depend on the chosen timeouts.
+- The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether they would have gone out is not known. They are taken from the hand-filled test sheets (out = temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as flow_terminated like the timeouts. A misread tick would move a flame in or out of the fit. Leaving them out removes the hottest burns (11 of the 12 carry burner_over_limit), so the model says nothing about conditions that overheat the burner.
+- At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 2 tests sit at about 33% O2.
 - Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.
 - Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn.
 
@@ -129,13 +131,13 @@ Observed fractions with Wilson 95% intervals:
 
 - material flammability, cabin fires or condensed fuels
 - other burners or flow timeouts (the target is tied to this hardware's cut-off times)
-- O2 between 0.25 and 0.35 (3 tests) or any combination not near a listed nearest test
+- O2 between 0.25 and 0.35 (2 tests) or any combination not near a listed nearest test
 
 ## `cfig_inverse_self_extinction` (PSI-159, classifier)
 
-**Question.** Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish before the flow cut-off, and how strongly does chamber pressure matter?
+**Question.** Once an inverse (oxidiser-from-burner, fuel ambient) flame is lit, does it self-extinguish before the scripted timeout, and how strongly does chamber pressure matter?
 
-**Target.** `self_extinguished`: 1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' (usually the 66 s inverse timeout, sometimes the burner temperature limit). n = 131 tests on 12 test days; 73 positive / 58 negative.
+**Target.** `self_extinguished`: 1 if extinction_mode == 'self_extinguished', 0 if 'flow_terminated' at the script timeout (usually 66 s for inverse flames); flames stopped by the burner temperature limit (per the test sheets) are left out. n = 119 tests on 12 test days; 73 positive / 46 negative.
 
 **Physics expectation.** Same radiative-loss balance as normal flames, but the soot forms on the outside of the flame. Raising pressure increases soot and radiating-gas density, so radiative extinction should become more likely with pressure.
 
@@ -153,30 +155,31 @@ $$
 - PSI-159 inverse-flame tests: 154
 - excluded 8: flash_only: a ~1 s momentary flame is a failed ignition, not a radiative extinction of an established flame
 - excluded 15: no hot ignition
-- training rows: 131
+- excluded 12: stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame was cut off early, so whether it would have gone out by itself is not known
+- training rows: 119
 
 **Result.** Cross-validated metrics, mean ± SD across folds (pooled out-of-fold value in brackets). *Grouped* holds out whole test days; *ungrouped* shuffles tests, so the gap between the two is the optimism from same-day tests sharing conditions.
 
 | model | roc_auc grouped | brier grouped | balanced_accuracy grouped | roc_auc ungrouped | brier ungrouped | balanced_accuracy ungrouped |
 |---|---|---|---|---|---|---|
-| **logistic / linear (this model)** | 0.831 ± 0.145 (pooled 0.872) | 0.144 ± 0.0768 (pooled 0.141) | 0.753 ± 0.174 (pooled 0.794) | 0.912 ± 0.0643 (pooled 0.898) | 0.12 ± 0.0438 (pooled 0.12) | 0.798 ± 0.0735 (pooled 0.797) |
-| majority_class | 0.5 ± 0 (pooled 0.167) | 0.303 ± 0.118 (pooled 0.308) | 0.4 ± 0.224 (pooled 0.368) | 0.5 ± 0 (pooled 0.481) | 0.247 ± 0.00219 (pooled 0.247) | 0.5 ± 0 (pooled 0.5) |
-| single_best_feature_rule | 0.56 ± 0.051 (pooled 0.712) | 0.235 ± 0.0482 (pooled 0.233) | 0.648 ± 0.202 (pooled 0.72) | 0.787 ± 0.0715 (pooled 0.793) | 0.162 ± 0.0388 (pooled 0.161) | 0.787 ± 0.0715 (pooled 0.79) |
-| decision_tree_depth3 | 0.652 ± 0.104 (pooled 0.635) | 0.297 ± 0.11 (pooled 0.302) | 0.586 ± 0.157 (pooled 0.58) | 0.868 ± 0.0559 (pooled 0.84) | 0.161 ± 0.0434 (pooled 0.161) | 0.709 ± 0.0736 (pooled 0.709) |
-| gradient_boosting | 0.701 ± 0.194 (pooled 0.785) | 0.209 ± 0.0867 (pooled 0.205) | 0.677 ± 0.15 (pooled 0.715) | 0.902 ± 0.0553 (pooled 0.883) | 0.135 ± 0.0419 (pooled 0.134) | 0.787 ± 0.0692 (pooled 0.788) |
+| **logistic / linear (this model)** | 0.89 ± 0.113 (pooled 0.902) | 0.115 ± 0.0229 (pooled 0.115) | 0.813 ± 0.0712 (pooled 0.833) | 0.915 ± 0.056 (pooled 0.903) | 0.112 ± 0.0275 (pooled 0.112) | 0.83 ± 0.0539 (pooled 0.833) |
+| majority_class | 0.5 ± 0 (pooled 0.324) | 0.248 ± 0.0385 (pooled 0.25) | 0.5 ± 0 (pooled 0.5) | 0.5 ± 0 (pooled 0.483) | 0.237 ± 0.00432 (pooled 0.237) | 0.5 ± 0 (pooled 0.5) |
+| single_best_feature_rule | 0.67 ± 0.134 (pooled 0.706) | 0.207 ± 0.0588 (pooled 0.208) | 0.67 ± 0.134 (pooled 0.677) | 0.716 ± 0.094 (pooled 0.741) | 0.177 ± 0.0368 (pooled 0.177) | 0.716 ± 0.094 (pooled 0.717) |
+| decision_tree_depth3 | 0.853 ± 0.0564 (pooled 0.843) | 0.158 ± 0.0464 (pooled 0.158) | 0.706 ± 0.116 (pooled 0.718) | 0.904 ± 0.0727 (pooled 0.879) | 0.125 ± 0.0396 (pooled 0.125) | 0.768 ± 0.0915 (pooled 0.767) |
+| gradient_boosting | 0.878 ± 0.0874 (pooled 0.855) | 0.155 ± 0.0801 (pooled 0.155) | 0.752 ± 0.13 (pooled 0.758) | 0.895 ± 0.0699 (pooled 0.896) | 0.121 ± 0.0427 (pooled 0.122) | 0.81 ± 0.0465 (pooled 0.812) |
 
-**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.57 and 0.95 (95%, median 0.83). The single best feature alone reaches 0.56 (pooled 0.71). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number. Brier score of the probabilities on held-out days (pooled, lower is better): 0.141, against 0.308 for always giving the training days' base rate.
+**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.51 and 0.94 (95%, median 0.83). The single best feature alone reaches 0.67 (pooled 0.71). Brier score of the probabilities on held-out days (pooled, lower is better): 0.115, against 0.25 for always giving the training days' base rate.
 
-Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -14.3.
+Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -13.2.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `log10(pressure_kpa)` | 1.95 | [1.1, 2.77] | 6.73 | [3.81, 9.58] | + | agrees |
-| `x_o2_burner` | 0.875 | [0.494, 1.39] | 3.34 | [1.89, 5.3] | - | CONTRADICTS (CI excludes 0) |
-| `log10(o2_flow_mg_s)` | -0.488 | [-1.34, 0.427] | -2.05 | [-5.62, 1.8] | + | opposite sign; CI includes 0 |
-| `n_carbon` | -0.224 | [-0.788, 0.692] | -0.266 | [-0.936, 0.822] | + | opposite sign; CI includes 0 |
+| `log10(pressure_kpa)` | 1.69 | [0.86, 2.51] | 6.11 | [3.11, 9.08] | + | agrees |
+| `x_o2_burner` | 1.01 | [0.636, 1.48] | 3.82 | [2.4, 5.59] | - | CONTRADICTS (CI excludes 0) |
+| `log10(o2_flow_mg_s)` | -0.657 | [-1.62, 0.349] | -2.71 | [-6.67, 1.44] | + | opposite sign; CI includes 0 |
+| `n_carbon` | -0.0602 | [-0.604, 0.826] | -0.0723 | [-0.725, 0.991] | + | opposite sign; CI includes 0 |
 
-**Does it match the physics?** Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.87 for the full model; gradient boosting does worse on held-out days), matching 0/29 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow is added, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.
+**Does it match the physics?** Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.90 for the full model; gradient boosting does no better on held-out days), matching 0/20 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow replaces O2 flow, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.
 
 Single-best-feature rule (depth-1 tree on all rows):
 
@@ -191,9 +194,9 @@ Observed fractions with Wilson 95% intervals:
 
 | pressure_level_kpa | positives / n | fraction | Wilson 95% |
 |---|---|---|---|
-| 50 | 0 / 3 | 0 | [0, 0.56] |
-| 60 | 0 / 26 | 0 | [0, 0.13] |
-| 110 | 15 / 35 | 0.43 | [0.28, 0.59] |
+| 50 | 0 / 2 | 0 | [0, 0.66] |
+| 60 | 0 / 18 | 0 | [0, 0.18] |
+| 110 | 15 / 32 | 0.47 | [0.31, 0.64] |
 | 220 | 31 / 35 | 0.89 | [0.74, 0.95] |
 | 330 | 27 / 32 | 0.84 | [0.68, 0.93] |
 
@@ -202,8 +205,9 @@ Observed fractions with Wilson 95% intervals:
 - All inverse rows carry pressure_9pct_above_nominal: the table pressures are ~9% above the fill levels. Used as given: a uniform multiplicative offset only shifts the intercept of log10(pressure).
 - Pressure and O2 flow are partly confounded with test day: pressure levels were run on separate days, so the grouped CV can only test pressure on held-out days with other pressures.
 - 79 of 154 inverse tests used 85% O2 in the burner stream; low burner-O2 cells are small.
-- Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.72 with pressure in the training rows), so the two cannot be separated and the fit would split the pressure effect between them.
+- Ambient fuel fraction is left out: it was lowered as pressure was raised (r = -0.73 with pressure in the training rows), so the two cannot be separated and the fit would split the pressure effect between them.
 - As for normal flames, 'flow_terminated' is a timeout outcome, not a stability limit.
+- The 12 flames stopped by the burner temperature limit are left out: they were cut off early, so whether they would have gone out is not known. They are taken from the hand-filled test sheets (out = temp_limit, note patch D58), an AI reading of scans that nobody checked; the table logs them as flow_terminated like the timeouts, and the sheet of 21270 A4 itself asks whether it timed out. Nine of the 12 were at 0.5-0.6 bar, where 20 flames remain, all of them reaching the timeout.
 
 **Must not be used for.**
 
@@ -214,7 +218,7 @@ Observed fractions with Wilson 95% intervals:
 
 **Question.** Does a normal flame light (hot ignition) for a given chamber O2, pressure and fuel stream?
 
-**Target.** `ignited`: 1 if the table's 'Hot ignition' is yes, 0 if no. n = 177 tests on 11 test days; 133 positive / 44 negative.
+**Target.** `ignited`: 1 if the table's 'Hot ignition' is yes, 0 if no (rows that were not ignition attempts, patches D45-D50, excluded). n = 176 tests on 11 test days; 133 positive / 43 negative.
 
 **Physics expectation.** Ignition succeeds when chemistry is fast compared with transport away from the igniter: a Damköhler-number criterion. Dilution and low O2 lower the flame temperature and slow chemistry.
 
@@ -231,8 +235,8 @@ $$
 **Training rows.**
 
 - PSI-159 normal-flame tests: 179
-- excluded 2: zero fuel fraction and zero fuel flow (21125 A4, H3): no fuel was supplied
-- training rows: 177
+- excluded 3: not an ignition attempt (patches D45-D50: no fuel or no oxidizer flowed, or the run was aborted before gas flow); the table lists the row as not ignited
+- training rows: 176
 
 **Use: descriptive only.** `predict` returns no prediction for this model, only the nearest real tests. The cross-validation below is shown to justify that choice.
 
@@ -240,25 +244,25 @@ $$
 
 | model | roc_auc grouped | brier grouped | balanced_accuracy grouped | roc_auc ungrouped | brier ungrouped | balanced_accuracy ungrouped |
 |---|---|---|---|---|---|---|
-| **logistic / linear (this model)** | 0.614 ± 0.176 (pooled 0.565) | 0.214 ± 0.107 (pooled 0.207) | 0.604 ± 0.221 (pooled 0.519) | 0.784 ± 0.0685 (pooled 0.781) | 0.153 ± 0.00878 (pooled 0.153) | 0.627 ± 0.0626 (pooled 0.625) |
-| majority_class | 0.5 ± 0 (pooled 0.248) | 0.21 ± 0.0883 (pooled 0.205) | 0.6 ± 0.224 (pooled 0.5) | 0.5 ± 0 (pooled 0.486) | 0.187 ± 0.00582 (pooled 0.187) | 0.5 ± 0 (pooled 0.5) |
-| single_best_feature_rule | 0.474 ± 0.0515 (pooled 0.3) | 0.229 ± 0.133 (pooled 0.22) | 0.6 ± 0.224 (pooled 0.5) | 0.657 ± 0.05 (pooled 0.66) | 0.152 ± 0.0226 (pooled 0.152) | 0.657 ± 0.05 (pooled 0.655) |
-| decision_tree_depth3 | 0.63 ± 0.139 (pooled 0.508) | 0.235 ± 0.154 (pooled 0.225) | 0.582 ± 0.126 (pooled 0.481) | 0.849 ± 0.0679 (pooled 0.843) | 0.123 ± 0.0191 (pooled 0.123) | 0.655 ± 0.053 (pooled 0.652) |
-| gradient_boosting | 0.726 ± 0.057 (pooled 0.66) | 0.214 ± 0.151 (pooled 0.203) | 0.643 ± 0.223 (pooled 0.549) | 0.917 ± 0.0528 (pooled 0.917) | 0.101 ± 0.027 (pooled 0.101) | 0.745 ± 0.081 (pooled 0.747) |
+| **logistic / linear (this model)** | 0.606 ± 0.197 (pooled 0.543) | 0.216 ± 0.11 (pooled 0.208) | 0.607 ± 0.22 (pooled 0.52) | 0.777 ± 0.0744 (pooled 0.769) | 0.155 ± 0.0193 (pooled 0.155) | 0.636 ± 0.0732 (pooled 0.637) |
+| majority_class | 0.5 ± 0 (pooled 0.245) | 0.208 ± 0.0915 (pooled 0.203) | 0.6 ± 0.224 (pooled 0.5) | 0.5 ± 0 (pooled 0.481) | 0.185 ± 0.00745 (pooled 0.185) | 0.5 ± 0 (pooled 0.5) |
+| single_best_feature_rule | 0.474 ± 0.0515 (pooled 0.299) | 0.226 ± 0.135 (pooled 0.217) | 0.6 ± 0.224 (pooled 0.5) | 0.633 ± 0.0842 (pooled 0.643) | 0.158 ± 0.0266 (pooled 0.158) | 0.633 ± 0.0842 (pooled 0.636) |
+| decision_tree_depth3 | 0.583 ± 0.14 (pooled 0.49) | 0.234 ± 0.157 (pooled 0.224) | 0.6 ± 0.224 (pooled 0.5) | 0.819 ± 0.0519 (pooled 0.825) | 0.135 ± 0.0276 (pooled 0.134) | 0.637 ± 0.103 (pooled 0.641) |
+| gradient_boosting | 0.702 ± 0.0511 (pooled 0.634) | 0.222 ± 0.154 (pooled 0.211) | 0.639 ± 0.222 (pooled 0.54) | 0.912 ± 0.0669 (pooled 0.909) | 0.1 ± 0.0337 (pooled 0.1) | 0.752 ± 0.0904 (pooled 0.753) |
 
-**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.11 and 0.82 (95%, median 0.46). The single best feature alone reaches 0.47 (pooled 0.3). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number. Brier score of the probabilities on held-out days (pooled, lower is better): 0.207, against 0.205 for always giving the training days' base rate.
+**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.11 and 0.82 (95%, median 0.46). The single best feature alone reaches 0.47 (pooled 0.3). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number. Brier score of the probabilities on held-out days (pooled, lower is better): 0.208, against 0.203 for always giving the training days' base rate.
 
-Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 0.662.
+Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 0.694.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_ambient` | 0.587 | [0.16, 1.36] | 7.1 | [1.94, 16.5] | + | agrees |
-| `log10(pressure_kpa)` | 0.223 | [-0.37, 0.783] | 1.05 | [-1.74, 3.7] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_flow_mg_s)` | 0.369 | [-0.398, 1.57] | 1.38 | [-1.49, 5.88] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_fraction)` | 0.593 | [-2.31, 1.46] | 1.24 | [-4.83, 3.06] | + | agrees in sign; CI includes 0 |
-| `n_carbon` | -0.71 | [-1.95, 0.0528] | -0.891 | [-2.45, 0.0663] | ? | no prior expectation |
+| `x_o2_ambient` | 0.564 | [0.147, 1.34] | 6.84 | [1.78, 16.2] | + | agrees |
+| `log10(pressure_kpa)` | 0.231 | [-0.374, 0.782] | 1.09 | [-1.77, 3.7] | + | agrees in sign; CI includes 0 |
+| `log10(fuel_flow_mg_s)` | 0.381 | [-0.398, 1.57] | 1.42 | [-1.49, 5.88] | + | agrees in sign; CI includes 0 |
+| `log10(fuel_fraction)` | 0.567 | [-2.3, 1.45] | 1.19 | [-4.83, 3.05] | + | agrees in sign; CI includes 0 |
+| `n_carbon` | -0.722 | [-1.96, 0.0615] | -0.903 | [-2.45, 0.077] | ? | no prior expectation |
 
-**Does it match the physics?** O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/38 ignitions below 0.05 fuel fraction against 118/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.
+**Does it match the physics?** O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/37 ignitions below 0.05 fuel fraction against 119/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.
 
 Single-best-feature rule (depth-1 tree on all rows):
 
@@ -273,14 +277,14 @@ Observed fractions with Wilson 95% intervals:
 
 | fuel_fraction_band | positives / n | fraction | Wilson 95% |
 |---|---|---|---|
-| < 0.05 | 14 / 38 | 0.37 | [0.23, 0.53] |
+| < 0.05 | 14 / 37 | 0.38 | [0.24, 0.54] |
 | >= 0.05 | 119 / 139 | 0.86 | [0.79, 0.9] |
 
 **Caveats.**
 
 - Igniter energy was deliberately lowered in some tests to try direct cool-flame ignition (final report); igniter settings are not in the table, so some failures are by design and look like condition effects.
 - Mass flow controllers are poor below 10% of full scale, which is where most diluted, low-flow failures sit.
-- Failures cluster by day: all 45 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 44 of them on 5, and the grouped CV (held-out days) is close to chance. Kept as a descriptive table, not a predictor.
+- Failures cluster by day: all 43 fall on 6 of 11 test days (12 Apr - 11 Jun 2021), 42 of them on 5, and the grouped CV (held-out days) is close to chance. Kept as a descriptive table, not a predictor.
 
 **Must not be used for.**
 
@@ -291,7 +295,7 @@ Observed fractions with Wilson 95% intervals:
 
 **Question.** Does an inverse flame light, given the burner-stream O2 and chamber pressure?
 
-**Target.** `ignited`: 1 if 'Hot ignition' is yes, 0 if no ('flash' rows excluded). n = 146 tests on 12 test days; 131 positive / 15 negative.
+**Target.** `ignited`: 1 if 'Hot ignition' is yes, 0 if no ('flash' rows and rows that were not ignition attempts, patches D45-D50, excluded). n = 143 tests on 12 test days; 131 positive / 12 negative.
 
 **Physics expectation.** As for normal flames, a Damköhler-number criterion; here the burner O2 fraction sets T_ad.
 
@@ -306,7 +310,8 @@ $$
 
 - PSI-159 inverse-flame tests: 154
 - excluded 8: flash_only: momentary flame, neither a clean ignition nor a failure
-- training rows: 146
+- excluded 3: not an ignition attempt (patches D45-D50: no fuel or no oxidizer flowed, or the run was aborted before gas flow); the table lists the row as not ignited
+- training rows: 143
 
 **Use: descriptive only.** `predict` returns no prediction for this model, only the nearest real tests. The cross-validation below is shown to justify that choice.
 
@@ -314,29 +319,29 @@ $$
 
 | model | roc_auc grouped | brier grouped | balanced_accuracy grouped | roc_auc ungrouped | brier ungrouped | balanced_accuracy ungrouped |
 |---|---|---|---|---|---|---|
-| **logistic / linear (this model)** | 0.852 ± 0.145 (pooled 0.761) | 0.0946 ± 0.0737 (pooled 0.1) | 0.517 ± 0.0373 (pooled 0.514) | 0.828 ± 0.074 (pooled 0.808) | 0.0768 ± 0.0061 (pooled 0.0768) | 0.5 ± 0 (pooled 0.5) |
-| majority_class | 0.5 ± 0 (pooled 0.283) | 0.092 ± 0.0754 (pooled 0.0961) | 0.5 ± 0 (pooled 0.5) | 0.5 ± 0 (pooled 0.497) | 0.0922 ± 0.00122 (pooled 0.0922) | 0.5 ± 0 (pooled 0.5) |
-| single_best_feature_rule | 0.765 ± 0.2 (pooled 0.722) | 0.0964 ± 0.0825 (pooled 0.102) | 0.5 ± 0 (pooled 0.5) | 0.793 ± 0.14 (pooled 0.735) | 0.0795 ± 0.0175 (pooled 0.0794) | 0.5 ± 0 (pooled 0.5) |
-| decision_tree_depth3 | 0.716 ± 0.269 (pooled 0.517) | 0.125 ± 0.113 (pooled 0.134) | 0.483 ± 0.0373 (pooled 0.481) | 0.815 ± 0.0959 (pooled 0.798) | 0.0854 ± 0.0244 (pooled 0.0853) | 0.57 ± 0.135 (pooled 0.57) |
-| gradient_boosting | 0.743 ± 0.254 (pooled 0.606) | 0.119 ± 0.113 (pooled 0.129) | 0.483 ± 0.0373 (pooled 0.481) | 0.777 ± 0.149 (pooled 0.745) | 0.09 ± 0.0362 (pooled 0.0898) | 0.632 ± 0.13 (pooled 0.632) |
+| **logistic / linear (this model)** | 0.854 ± 0.111 (pooled 0.77) | 0.0744 ± 0.0589 (pooled 0.0764) | 0.5 ± 0 (pooled 0.5) | 0.853 ± 0.153 (pooled 0.81) | 0.0682 ± 0.0274 (pooled 0.0684) | 0.5 ± 0 (pooled 0.5) |
+| majority_class | 0.5 ± 0 (pooled 0.307) | 0.0775 ± 0.0596 (pooled 0.0791) | 0.5 ± 0 (pooled 0.5) | 0.5 ± 0 (pooled 0.447) | 0.0769 ± 0.0151 (pooled 0.077) | 0.5 ± 0 (pooled 0.5) |
+| single_best_feature_rule | 0.777 ± 0.211 (pooled 0.759) | 0.0756 ± 0.0631 (pooled 0.078) | 0.5 ± 0 (pooled 0.5) | 0.838 ± 0.119 (pooled 0.765) | 0.0643 ± 0.0219 (pooled 0.0644) | 0.5 ± 0 (pooled 0.5) |
+| decision_tree_depth3 | 0.846 ± 0.168 (pooled 0.753) | 0.0726 ± 0.0603 (pooled 0.0748) | 0.497 ± 0.00745 (pooled 0.496) | 0.77 ± 0.167 (pooled 0.749) | 0.0704 ± 0.0289 (pooled 0.0707) | 0.547 ± 0.129 (pooled 0.564) |
+| gradient_boosting | 0.837 ± 0.224 (pooled 0.62) | 0.08 ± 0.0682 (pooled 0.0827) | 0.497 ± 0.00745 (pooled 0.496) | 0.793 ± 0.172 (pooled 0.78) | 0.0657 ± 0.0294 (pooled 0.066) | 0.705 ± 0.115 (pooled 0.697) |
 
-**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.36 and 0.88 (95%, median 0.75). The single best feature alone reaches 0.77 (pooled 0.72). Brier score of the probabilities on held-out days (pooled, lower is better): 0.1, against 0.0961 for always giving the training days' base rate.
+**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.42 and 0.92 (95%, median 0.77). The single best feature alone reaches 0.78 (pooled 0.76). Brier score of the probabilities on held-out days (pooled, lower is better): 0.0764, against 0.0791 for always giving the training days' base rate.
 
-Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -2.33.
+Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -1.14.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_burner` | 1.19 | [0.565, 2.22] | 4.3 | [2.04, 7.98] | + | agrees |
-| `log10(pressure_kpa)` | 0.353 | [-0.314, 1.06] | 1.19 | [-1.06, 3.58] | + | agrees in sign; CI includes 0 |
+| `x_o2_burner` | 1.41 | [0.889, 2.32] | 5.11 | [3.21, 8.37] | + | agrees |
+| `log10(pressure_kpa)` | 0.174 | [-0.846, 0.995] | 0.59 | [-2.86, 3.37] | + | agrees in sign; CI includes 0 |
 
 **Does it match the physics?** Burner O2 agrees (+) on average, but the table shows the effect is not monotone: the failures concentrate at 0.21 burner O2, while the few lower-O2 tests mostly lit.
 
 Single-best-feature rule (depth-1 tree on all rows):
 
 ```
-|--- x_o2_burner <= 0.350
+|--- x_o2_burner <= 0.255
 |   |--- class: 1
-|--- x_o2_burner >  0.350
+|--- x_o2_burner >  0.255
 |   |--- class: 1
 ```
 
@@ -348,19 +353,19 @@ Observed fractions with Wilson 95% intervals:
 | 0.15 | 3 / 3 | 1 | [0.44, 1] |
 | 0.18 | 2 / 2 | 1 | [0.34, 1] |
 | 0.19 | 1 / 1 | 1 | [0.21, 1] |
-| 0.21 | 16 / 26 | 0.62 | [0.43, 0.78] |
-| 0.3 | 6 / 8 | 0.75 | [0.41, 0.93] |
+| 0.21 | 16 / 25 | 0.64 | [0.45, 0.8] |
+| 0.3 | 6 / 7 | 0.86 | [0.49, 0.97] |
 | 0.4 | 3 / 3 | 1 | [0.44, 1] |
 | 0.45 | 1 / 1 | 1 | [0.21, 1] |
 | 0.5 | 22 / 22 | 1 | [0.85, 1] |
 | 0.7 | 1 / 1 | 1 | [0.21, 1] |
-| 0.85 | 76 / 78 | 0.97 | [0.91, 0.99] |
+| 0.85 | 76 / 77 | 0.99 | [0.93, 1] |
 
 **Caveats.**
 
-- Only 15 non-ignitions, 10 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the descriptive table first.
+- Only 12 non-ignitions, 9 of them at 0.21 burner O2; the fit is close to a lookup of that cell. Read the descriptive table first.
 - Igniter settings varied and are not in the table.
-- Not monotone in burner O2: 6 of 7 tests at 0.15-0.19 ignited while 10 of 26 at 0.21 failed, so a logistic curve in O2 misdescribes the low end. Kept as a descriptive table.
+- Not monotone in burner O2: 6 of 7 tests at 0.12-0.19 ignited while 9 of 25 at 0.21 failed, so a logistic curve in O2 misdescribes the low end. Kept as a descriptive table.
 
 **Must not be used for.**
 

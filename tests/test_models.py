@@ -2,6 +2,7 @@ import copy
 import itertools
 import json
 
+import joblib
 import numpy as np
 import pandas as pd
 import pytest
@@ -144,7 +145,7 @@ def test_headline_metric_carries_its_interval(built):
     for c in built[0]["models"]:
         lo, hi = c["cv_metric"]["grouped_pooled_ci95_days_resampled"]
         assert lo < hi and "folds_without_metric" in c["cv_metric"]
-    assert card(built[0], "cfig_inverse_self_extinction")["cv_metric"]["folds_without_metric"] == 1
+    assert card(built[0], "cfig_normal_ignition")["cv_metric"]["folds_without_metric"] == 1
     s = card(built[0], "flex_burning_rate")["sensitivity"]
     assert s["excluded"] > 0 and abs(s["per_unit"]["log10(pressure_kpa)"]) < 0.05
 
@@ -166,6 +167,50 @@ def test_rows_records_every_exclusion():
     rows = bm.Rows(df, "start").drop(df["a"].isna(), "missing a")
     assert rows.steps == [{"step": "start", "rows": 4}, {"excluded": 1, "why": "missing a"}]
     assert len(rows.df) == 3
+
+
+def excluded(c, words):
+    return [s["excluded"] for s in c["training_filter"] if words in s.get("why", "")]
+
+
+def test_ignition_models_leave_out_the_rows_that_were_not_attempts(built, tests_table):
+    not_attempts = {"21196 A1", "21130 A4", "21242 P2", "21125 A4", "21125 H3", "21209 A2"}
+    cfig = tests_table[tests_table["accession"] == "PSI-159"]
+    assert set(cfig.loc[bm.has_patch(cfig, bm.NOT_ATTEMPTS), "test_id"]) == not_attempts
+    dropped = 0
+    for model_id in ("cfig_normal_ignition", "cfig_inverse_ignition"):
+        fitted = set(joblib.load(built[1] / "models" / f"{model_id}.joblib")["test_ids"])
+        assert fitted and not fitted & not_attempts
+        dropped += sum(excluded(card(built[0], model_id), "not an ignition attempt"))
+    assert dropped == 6
+    kept = set(joblib.load(built[1] / "models" / "cfig_inverse_ignition.joblib")["test_ids"])
+    assert {"21256 C2", "21277 P1"} <= kept  # patched rows (D39, D40) that were real attempts stay
+
+
+def test_self_extinction_models_leave_out_flames_stopped_by_the_temperature_limit(built, tests_table):
+    cfig = tests_table[tests_table["accession"] == "PSI-159"]
+    out = bm.sheet_out(cfig)
+    stopped = set(cfig.loc[out == "temp_limit", "test_id"])
+    timed_out = set(cfig.loc[out == "time_out", "test_id"])
+    assert len(stopped) == 24  # the 24 of note patch D58
+    dropped, fitted = 0, set()
+    for model_id in ("cfig_normal_self_extinction", "cfig_inverse_self_extinction"):
+        c = card(built[0], model_id)
+        ids = set(joblib.load(built[1] / "models" / f"{model_id}.joblib")["test_ids"])
+        assert ids and not ids & stopped
+        step = excluded(c, "burner temperature limit")
+        assert len(step) == 1 and "not checked by a human" in next(
+            s["why"] for s in c["training_filter"] if "burner temperature limit" in s.get("why", ""))
+        assert any("nobody checked" in caveat for caveat in c["caveats"])
+        dropped += step[0]
+        fitted |= ids
+    assert dropped == 24
+    assert timed_out <= fitted  # flames that lasted the scripted time stay, as negatives
+
+
+def test_sheet_out_is_empty_for_a_row_without_a_sheet(tests_table):
+    flex = tests_table[tests_table["accession"] == "PSI-69"].head(3)
+    assert bm.sheet_out(flex).isna().all()
 
 
 def toy(n_days=12, per_day=6, seed=0):
