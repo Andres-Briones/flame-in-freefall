@@ -19,6 +19,9 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 
 - **Knowledge records** (`data/digest/`): one per investigation: question, physics with equations, method,
   findings with quoted sources, limitations, open questions.
+- **Publication reviews** (`data/publications/`): for each of the 352 papers listed in the PSI records, whether it
+  could be read, what it adds, confirms or contradicts, with quotes (an AI reading of the papers). Served with
+  `get_investigation`; papers that disagree with the PSI data are listed by `discrepancies()`.
 - **Tables** (`data/processed/`): investigations, 2,177 test rows (2,059 single tests) on a common schema, the 39
   BASS-II spread rates by flow step (18 tests), the 637 hand-filled ACME test sheets (an AI reading of scans, not
   checked by a human), sensor time-series summaries, document text for search, and a column catalogue.
@@ -27,7 +30,7 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 - **Static export** (`data/export/`): the same answers pre-computed as JSON, for a front end without a backend.
 - **Errors in the original data**: where the raw sensor files contradict NASA's tables, the correction is recorded
   in `data/corrections/tests_patches.json` with its evidence and shown by `discrepancies()`. The original value is
-  always kept.
+  always kept. Where a published paper disagrees with PSI, `discrepancies()` shows it without changing the tables.
 
 ## Run
 
@@ -39,8 +42,8 @@ uv run pytest -q
 Raw NASA files (`data/raw/`, 7.5 GB, not in git) are needed only to rebuild the tables or to plot full sensor
 traces. Fetch them with `scripts/fetch_psi.py` and `scripts/fetch_psi_files.py`; rebuild with
 `uv run python -m fif.pipeline.<step>` in the order `build_files`, `build_investigations`, `build_tests`,
-`build_test_sheets`, `build_evidence`, `build_timeseries`, `build_models`, `check_digest`, `render_digest`,
-`build_catalog`.
+`build_test_sheets`, `build_evidence`, `build_timeseries`, `build_models`, `check_digest` (also checks
+`data/publications/`), `render_digest`, `build_catalog`.
 
 ## Limits to keep in mind
 

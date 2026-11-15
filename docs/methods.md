@@ -18,12 +18,13 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `investigations.json` | 24 cards: accession, acronym, title, one-line description, pillars, fuel phases, counts, dataset `doi`, `doi_url`, `psi_url` |
 | `records.json` | the 24 full knowledge records (question, physics with LaTeX equations, method, findings with quoted sources, limitations, open questions, dashboard hooks) |
 | `tests.json` | the per-test table, 2,177 rows (dictionary: `docs/tests-table.md`) |
+| `publications.json` | per accession: `publications` (the record's papers, each with its `review`) and `publication_review` (counts), as `get_investigation` returns them |
 | `coverage.json` | test counts on the O2-pressure grid, for all fuels and per phase, with the reference atmospheres |
 | `relevance.json` | scenario rankings for 5 scenarios x 3 fuel phases x 4 pillar choices, keyed `scenario|phase|pillar` |
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
 | `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
-| `discrepancies.json` | errors and doubts in the PSI tables: 69 conflicts and notes with evidence (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings |
+| `discrepancies.json` | errors and doubts in the PSI tables: 69 conflicts and notes with evidence (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings, and 11 published-paper disagreements (`source_disagreements`) |
 | `test_sheets.json` | `{notes, rows}`: the 637 hand-filled ACME test sheets of PSI-10 and PSI-159, one row per page (`docs/formats.md`). An AI reading of scans, not checked by a human: show the note with any value |
 | `questions.json` | the question bank: question, call, chart, answer |
 | `synthesis.json` | key messages, limits, microgravity-vs-1-g comparisons, ranked gaps, lineage, research questions |
@@ -43,7 +44,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | Function | Answers |
 |---|---|
 | `search_investigations(query, pillar, fuel_phase, flight)` | which investigations exist / match a topic |
-| `get_investigation(accession, sections)` | everything about one investigation |
+| `get_investigation(accession, sections)` | everything about one investigation; `publications` lists the record's papers in its order (`title`, `authors`, `doi`, `doi_url`, `status`, `held_file`, `review`), `publication_review` counts them, see below |
 | `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, sheet_out, sheets, ...)` | what was tested and what happened; `sheets=True` attaches the operators' test sheet to PSI-10 and PSI-159 rows |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
 | `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase; its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test |
@@ -52,8 +53,27 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
 | `timeseries(test_id, channels, test_point, accession)` | sensor traces of one test; reads `data/raw/` (or `$FIF_RAW_ROOT`); `demo/server.py` fetches the missing files from PSI on demand (`docs/formats.md`) |
 | `document_text(accession, file, page)` | our extracted text of one PSI file: no `page` lists the pages that have text, a `page` (3, `p3`, `sheet Results`) gives its passages in order with `transcribed`; for reading scanned PDFs. Same redaction as `find_evidence`; `demo/server.py` returns no text for the files it does not show inline |
-| `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files |
+| `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files, and published papers that disagree with PSI (`source_disagreements`) |
 | `predict(model_id, **conditions)` | small per-investigation models (`docs/models.md`); no `model_id` lists them, `compact=True` for the short list |
+
+Publications: `get_investigation(...)["data"]["publications"]` is the PSI record's publication list as printed
+(whitespace collapsed; `doi` and `doi_url` are null when the record gives no DOI; `publication_dois` stays as before).
+`held_file` names the PSI file of the same investigation that is that paper, or null: only when the normalised
+title opens page 1 of a non-presentation PDF (first 300 characters) and no other listed publication is named on
+that page, so publication lists and reports citing the papers never match. 3 of 352 publications match today.
+
+Publication reviews: each publication carries `review` (`access`, `read_url`, `classification`, `summary`, `items`,
+`notes`; format in `docs/formats.md`), or null when `data/publications/<accession>.json` has no entry naming it.
+All 352 are reviewed today: 71 read in full, 158 from the abstract only, 123 not reachable. `publication_review`
+gives `n_publications`, `n_reviewed` and counts `by_access` and `by_classification` (a paper can have several
+classifications). The reviews are an AI model's reading of the papers and their quotes were not checked by script;
+the result's `notes` say so. Show a review's `quote` with its `locator` and `read_url`.
+
+Paper against PSI: `discrepancies()` returns `source_disagreements`, one per review item of kind
+`contradicts_psi_data` (11 today): `accession`, `kind` (`published_paper_disagrees_with_psi`), `publication`,
+`read_url`, `locator`, `quote`, `claim`, `record_path`. They are shown, never applied: the PSI tables keep their
+values (decision 005). Label them as a published paper disagreeing with PSI, not as a correction. They concern a
+whole investigation, so a call with `test_id` returns none.
 
 For an AI assistant: pass `data/processed/tools.json` as the tool list and route calls through
 `fif.tools.call(name, arguments)`. Tell the model to cite the `sources` and repeat the `notes`.

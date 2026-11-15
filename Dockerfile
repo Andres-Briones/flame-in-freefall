@@ -15,6 +15,7 @@ COPY demo/ demo/
 COPY docs/ docs/
 COPY data/processed/ data/processed/
 COPY data/digest/ data/digest/
+COPY data/publications/ data/publications/
 COPY data/export/ data/export/
 RUN python demo/build_demo.py
 

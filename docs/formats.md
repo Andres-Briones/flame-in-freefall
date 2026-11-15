@@ -1097,3 +1097,25 @@ Against the `_TP.txt` script events (independent of the tuning):
   joining to `tests.fuel`; their compositions are unknown.
 - **CFI calibrations.** The CFI radiometers have no V→W calibration. The reduced `FLEX-<id>_RadiometerData`
   wide-band power reads about −5.4×10⁶ W, which is not physical.
+
+## Publication reviews: `data/publications/<accession>.json`
+
+One file per investigation: a JSON list with one entry per publication of the PSI record, in the record's order
+(the order of `get_investigation(...)["data"]["publications"]`). Written by AI agents that looked for each paper
+(2026-11-15); not produced by a pipeline step. `uv run python -m fif.pipeline.check_publications` (also run by
+`check_digest`) checks every file.
+
+| Key | Meaning |
+|---|---|
+| `title`, `doi` | the publication as the record gives it; used only to match the entry to the record. `doi` is the record's DOI or null; a DOI the reviewer found elsewhere is in `notes` |
+| `access` | `full_text`, `abstract` (only the abstract could be read) or `none` (nothing reachable) |
+| `read_url` | where the reviewer read it, or null; `psi:<file name>` for a PSI file of the investigation |
+| `classification` | one or more of `new_finding`, `confirms`, `contradicts_psi_data`, `contradicts_record`, `out_of_scope`, `unreadable` |
+| `summary` | a few sentences on the paper |
+| `items` | `{kind, claim, quote, locator, record_path}`: `kind` from the same list; `quote` is verbatim from the paper, `locator` where in it (section, page, slide); both are required unless `kind` is `out_of_scope` or `unreadable`. `record_path` is the part of the knowledge record it bears on (`findings[3]`, 0-based) |
+| `notes` | how the paper was found and read, and anything left open |
+
+`contradicts_psi_data` means the paper disagrees with PSI data or documents (a count, a condition, a run number);
+`discrepancies()` lists these as `source_disagreements` and never applies them to the tables. `contradicts_record`
+means the paper disagrees with our knowledge record; those statements were corrected in `data/digest/`, with the
+old wording kept in the record's `gaps`. The quotes were not checked against the papers by script.

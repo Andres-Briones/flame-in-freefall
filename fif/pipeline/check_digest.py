@@ -1,5 +1,5 @@
 """Check knowledge records in data/digest against the template, the evidence text and
-the PSI records.
+the PSI records, and the publication reviews in data/publications (check_publications).
 
 Run: uv run python -m fif.pipeline.check_digest [PSI-26 ...]
 """
@@ -13,6 +13,7 @@ from functools import cache
 import pandas as pd
 
 from fif import psi
+from fif.pipeline import check_publications
 
 TEMPLATE = psi.DIGEST / "_template.json"
 REFERENCE_MD = psi.ROOT / "docs" / "digest" / "reference.md"
@@ -284,6 +285,7 @@ def main(argv):
         result = check_record(path.stem, record, template, ctx)
         report(result)
         failed |= any(i["level"] == "error" for i in result["issues"])
+    failed |= bool(check_publications.main([p.stem for p in record_paths(argv)]))
     return 1 if failed else 0
 
 

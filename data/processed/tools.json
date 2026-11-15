@@ -38,7 +38,7 @@
  },
  {
   "name": "get_investigation",
-  "description": "Full knowledge record of one investigation: question, physics (with equations), method, test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions.",
+  "description": "Full knowledge record of one investigation: question, physics (with equations), method, test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions; `publications` (the record's papers in order, each with a `review`: access, read_url, classification, summary, quoted items; an AI reading of the paper, null when not reviewed) and `publication_review` (counts by access and classification).",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -510,7 +510,7 @@
  },
  {
   "name": "discrepancies",
-  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, and statements resting on files PSI lists as removed. Use whenever the user asks about data quality or when showing a test whose row has flags.",
+  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, statements resting on files PSI lists as removed, and `source_disagreements`: a published paper by the investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when showing a test whose row has flags.",
   "input_schema": {
    "type": "object",
    "properties": {

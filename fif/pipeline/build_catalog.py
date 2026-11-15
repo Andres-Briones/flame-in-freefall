@@ -233,6 +233,9 @@ def export():
     """Pre-computed answers, so a static front end needs no Python."""
     write(EXPORT / "investigations.json", api.search_investigations()["data"])
     write(EXPORT / "records.json", api.records())
+    write(EXPORT / "publications.json", {
+        acc: {k: v for k, v in api.get_investigation(acc, sections=["publications"])["data"].items()
+              if k in ("publications", "publication_review")} for acc in api.records()})
     write(EXPORT / "synthesis.json", api.synthesis())
     write(EXPORT / "tests.json", api.filter_tests(row_kind=None, limit=10**6)["data"]["rows"])
     write(EXPORT / "coverage.json", {phase or "all": api.coverage(fuel_phase=phase) for phase in (None, "solid", "liquid", "gas")})

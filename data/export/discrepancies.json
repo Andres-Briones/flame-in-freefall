@@ -1615,5 +1615,117 @@
    "where": "limitations[1][1]",
    "url": "https://psi.nasa.gov/geode-py/ws/studies/PSI-142/download?file=Quantitative%20Studies%20of%20Cool%20Flame%20Transitions%20at%20RadiationStretch%20Extinction%20Using%20Counterflow%20Flames%20DoD.docx"
   }
+ ],
+ "source_disagreements": [
+  {
+   "accession": "PSI-26",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment",
+   "read_url": "https://ntrs.nasa.gov/citations/20140011099",
+   "locator": "Hardware summary slide",
+   "quote": "41 samples, 115 burns completed",
+   "claim": "The paper counts 41 samples and 115 burns; the PSI-26 experimental table has 121 rows (n_tests in the record). The difference is probably non-burn rows (e.g. 'SOOT Cleaning') and reused as-run numbers noted in gaps[8], but the table does not say which rows are burns.",
+   "record_path": "test_matrix.n_tests"
+  },
+  {
+   "accession": "PSI-68",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Dynamic Differential Image Circle Diameter Measurement Precision Assessment: Application to Burning Droplets",
+   "read_url": "https://www.osti.gov/servlets/purl/1998037",
+   "locator": "Sec. 1.2, p2",
+   "quote": "The actual diameter of the droplet varies from 1.17 mm to 3.81 mm.",
+   "claim": "The PSI-68 experimental table lists 8 fuels (iso-octane, n-octane, n-heptane, n-decane, ethanol, propanol/glycerol 95/5 and 80/20, heptane/iso-octane 50/50) and droplets 1.5-5 mm, whereas the flown surrogate-fuel set includes toluene, propylbenzene, decane/propylbenzene and heptane/toluene (not in the table) and droplets of 1.17-3.81 mm.",
+   "record_path": "test_matrix"
+  },
+  {
+   "accession": "PSI-69",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Methanol Droplet Combustion in Oxygen-Inert Environments in Microgravity",
+   "read_url": "https://ntrs.nasa.gov/api/citations/20130014061/downloads/20130014061.pdf",
+   "locator": "Sec. 3.1, p5; Fig. 2 caption",
+   "quote": "Run #204 corresponds to a methanol droplet of initial diameter 2.75 mm burning in air (20% O2 and 79% N2) at one atmospheric pressure.",
+   "claim": "Run numbering: the paper's Run #204 (methanol, D0 2.75 mm, air at 1 atm, De 1.10 mm) matches PSI row 203 (N01M201: 2.75 mm, d_ext 1.11 mm) while PSI row 204 is a heptane test; Run #263 (2.67 mm, 21% O2/30% He/49% N2 at 0.7 atm, De 1.42 mm) matches PSI row 257 (H12M201), not PSI row 263. The paper also gives air as '20% O2 and 79% N2' where PSI row 203 lists 0.21/0.79.",
+   "record_path": "gaps"
+  },
+  {
+   "accession": "PSI-69",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Methanol Droplet Extinction in Oxygen/Carbon-dioxide/Nitrogen Mixtures in Microgravity: Results from the International Space Station Experiments",
+   "read_url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+   "locator": "Extinction Diameter, p4; Fig. 3 caption",
+   "quote": "In most mixtures there was more N2 than CO2, but one of the tests at 21% O2 had 70% CO2 and 9% N2.",
+   "claim": "Fig. 3 is captioned as 1 atm and the text says one 1 atm test at 21% O2 had 70% CO2 and 9% N2, but every PSI row with 0.21 O2/0.09 N2/0.70 CO2 (rows 10-18) is at 1546-2320 mmHg (2.0-3.05 atm); the only methanol one with an extinction diameter is row 16 (256F009, 2072 mmHg, d0 1.66, d_ext 1.0 mm).",
+   "record_path": "gaps"
+  },
+  {
+   "accession": "PSI-69",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Methanol Droplet Extinction in Oxygen/Carbon-dioxide/Nitrogen Mixtures in Microgravity: Results from the International Space Station Experiments",
+   "read_url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+   "locator": "Results and Discussion, p2",
+   "quote": "Out of these, there were 104 methanol tests of which 54 tests yielded extinction diameters where the droplet remained in the filed of view of the back-lit camera.",
+   "claim": "The paper counts 104 methanol tests by its writing (Oct 2011); the PSI table has 142 methanol rows dated before 9 Oct 2011 (157 in total). The cut-off date of the count is not stated, so this is a weak discrepancy.",
+   "record_path": "gaps"
+  },
+  {
+   "accession": "PSI-69",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Dynamics of Water Absorption and Evaporation During Methanol Droplet Combustion in Microgravity",
+   "read_url": "https://ntrs.nasa.gov/api/citations/20130010979/downloads/20130010979.pdf",
+   "locator": "Slide 9 (Test Point FLEX-145)",
+   "quote": "1.0 atm in 20% O2 / 75% CO2 / 5% N2",
+   "claim": "Slide 9 gives FLEX-145 as 20% O2/75% CO2/5% N2, D0 3.38 mm, Dext 1.66 mm, K 0.44; PSI row 145 (C01M201) lists 0.20 O2/0.75 N2/0.05 CO2, d0 3.33, d_ext 1.61, K 0.45. Slide 10 of the same deck gives O2 20%/N2 75%/CO2 5%, D0 = 3.3 mm, agreeing with PSI; slide 9 apparently swaps N2 and CO2. Burning-rate units are printed as m2/s (should be mm2/s).",
+   "record_path": "gaps"
+  },
+  {
+   "accession": "PSI-69",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Detailed results from the flame extinugishment experiment (FLEX) - March 2009 to December 2011",
+   "read_url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+   "locator": "Conclusions, p17",
+   "quote": "for methanol and n-heptane droplets with initial diameters between 2 and 5 mm.",
+   "claim": "The conclusions give initial diameters of 2-5 mm and atmospheres of O2 with N2, CO2 and mixtures, but the report's own Table IX (= PSI table) has d0 from 1.10 to 4.67 mm (26 tests below 2 mm) and 50 helium-diluted rows; Appendix A also says it covers March 2009 to December 2010 while the title and table run to December 2011.",
+   "record_path": "gaps"
+  },
+  {
+   "accession": "PSI-99",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status",
+   "read_url": "https://ntrs.nasa.gov/citations/20170001636",
+   "locator": "p3 Table 2",
+   "quote": "Flame radiation radiometers two viewing front of sample; two viewing back of sample",
+   "claim": "The diagnostics table lists four radiometers (two viewing the front, two the back of the sample); the PSI-99 record 'approach' field says two radiometers.",
+   "record_path": "gaps[4]"
+  },
+  {
+   "accession": "PSI-107",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Laminar smoke points of coflowing flames in microgravity",
+   "read_url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+   "locator": "abstract; Table 2",
+   "quote": "A total of 55 smoke points were found for ethylene, propane, propylene, and propylene/nitrogen mixtures.",
+   "claim": "Smoke-point count and split: the paper has 55 smoke points with 22 propylene and 14 for 75% propylene; the PSI final-report table has 52 (20 propylene, 13 for 75% propylene); ethylene 6, propane 6 and 50% propylene 7 agree.",
+   "record_path": "findings[0]"
+  },
+  {
+   "accession": "PSI-107",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Laminar smoke points of coflowing flames in microgravity",
+   "read_url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+   "locator": "sec. 3",
+   "quote": "Typical burn times were 60 s and after each burn the glovebox was flushed with cabin air. The oxygen mole fraction of ISS cabin air was maintained within an estimated range of 20-23%.",
+   "claim": "Cabin O2: the paper gives an estimated 20-23%; the PSI final report gives 19-24%. Glovebox flushing: the paper says after each burn; the record (from PSI documents) says after every two burns.",
+   "record_path": "test_matrix.held_constant[1]"
+  },
+  {
+   "accession": "PSI-159",
+   "kind": "published_paper_disagrees_with_psi",
+   "publication": "Spherical gas-fueled cool diffusion flames",
+   "read_url": "https://par.nsf.gov/servlets/purl/10426596",
+   "locator": "Table 1 (RE, FT and cool-flame columns, in row order ethane/propane/n-butane normal, then inverse)",
+   "quote": "30 34 46 25 24 30 10 6 17 22 13 23 0 0 15 0 0 0",
+   "claim": "Per-fuel outcome counts in Table 1 (radiatively extinguished RE / flow-terminated FT): normal ethane 30/10, propane 34/6, n-butane 46/17; inverse ethane 25/22, propane 24/13, n-butane 30/23. The PSI tables (tests.csv) give normal n-butane 38 SE / 15 FT and inverse ethane 27 SE / 22 FT; the other four groups match. The n-butane difference is consistent with the multi-flame hot-cool-hot tests (21291 A1, C1) counted as several hot flames in the paper; the inverse-ethane difference (2 more SE rows in PSI) is unexplained.",
+   "record_path": "findings[5]"
+  }
  ]
 }

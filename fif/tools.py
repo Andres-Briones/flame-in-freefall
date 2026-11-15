@@ -47,7 +47,10 @@ TOOLS = [
               "query": {"type": "string"}, "pillar": {"type": "string", "enum": [*api.PILLARS, "fundamental"]},
               "fuel_phase": PHASE, "flight": {"type": "boolean"}, "limit": {"type": "integer"}}),
     _tool(api.get_investigation, "Full knowledge record of one investigation: question, physics (with equations), method, "
-          "test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions.", {
+          "test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions; "
+          "`publications` (the record's papers in order, each with a `review`: access, read_url, classification, summary, "
+          "quoted items; an AI reading of the paper, null when not reviewed) and `publication_review` (counts by access "
+          "and classification).", {
               "accession": ACCESSION,
               "sections": {"type": "array", "items": {"type": "string"}, "description": "only these sections, e.g. [\"findings\", \"limitations\"]"}},
           ["accession"]),
@@ -104,7 +107,9 @@ TOOLS = [
                       "additionalProperties": {"type": "number"}}},
     _tool(api.discrepancies, "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data "
           "(table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, "
-          "and statements resting on files PSI lists as removed. Use whenever the user asks about data quality or when "
+          "statements resting on files PSI lists as removed, and `source_disagreements`: a published paper by the "
+          "investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied "
+          "to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when "
           "showing a test whose row has flags.", {"accession": ACCESSION, "test_id": {"type": "string"}}),
     _tool(api.document_text, "Our extracted text of one PSI file, so a scanned PDF without a text layer can be read and "
           "copied. Without page: the pages (locators: p1, p2 for PDFs; sheet, slide or all for other files) that have "

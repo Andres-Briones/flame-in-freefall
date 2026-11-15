@@ -9,6 +9,7 @@ Every function returns a JSON-serialisable dict:
 Command line: uv run python -m fif.api <function> '<json kwargs>'
 """
 import hashlib
+import html
 import json
 import math
 import re
@@ -319,10 +320,52 @@ def _held_file(acc, pub, pubs):
     return None
 
 
+PUBLICATIONS = psi.ROOT / "data" / "publications"
+PUBLICATION_ACCESS = ("full_text", "abstract", "none")
+PUBLICATION_KINDS = ("new_finding", "confirms", "contradicts_psi_data", "contradicts_record", "out_of_scope", "unreadable")
+REVIEW_FIELDS = ("access", "read_url", "classification", "summary", "items", "notes")
+REVIEW_NOTE = ("Each publication's `review` is an AI model's reading of the paper (full text, abstract or nothing "
+               "reachable, see `access`); its quotes were not checked against the papers by script.")
+PAPER_DISAGREEMENT_NOTE = (
+    "`source_disagreements` are places where a published paper by the investigators disagrees with the PSI data or "
+    "documents (a paper quote against PSI). They are shown, not applied: the PSI tables stay as they are. Read by an "
+    "AI model from the paper; open `read_url` and check the quote before relying on one.")
+
+
+def same_publication(pub, entry):
+    """True if a review entry names this publication of the record: same DOI, or the same title (the record's may
+    carry trailing text such as a year or an affiliation)."""
+    if pub.get("doi") and entry.get("doi") and pub["doi"].lower() == entry["doi"].lower():
+        return True
+    record, review = (_norm(html.unescape(p.get("title") or "")) for p in (pub, entry))
+    return bool(review) and (record == review or len(review.split()) >= 4 and record.startswith(review + " "))
+
+
+@lru_cache(maxsize=None)
+def publication_reviews(acc):
+    """The reviewed publication list of an investigation (data/publications/<acc>.json), or [] when there is none."""
+    path = PUBLICATIONS / f"{acc}.json"
+    return json.loads(path.read_text()) if path.exists() else []
+
+
+def _review(acc, i, pub):
+    reviews = publication_reviews(acc)
+    if i >= len(reviews) or not same_publication(pub, reviews[i]):
+        return None
+    return {k: reviews[i][k] for k in REVIEW_FIELDS}
+
+
 def _publications(acc, pubs):
     pubs = [dict(p) for p in pubs]
-    return [{**p, "doi_url": f"https://doi.org/{p['doi']}" if p["doi"] else None, "held_file": _held_file(acc, p, pubs)}
-            for p in pubs]
+    return [{**p, "doi_url": f"https://doi.org/{p['doi']}" if p["doi"] else None, "held_file": _held_file(acc, p, pubs),
+             "review": _review(acc, i, p)} for i, p in enumerate(pubs)]
+
+
+def _publication_review(pubs):
+    reviews = [p["review"] for p in pubs if p["review"]]
+    return {"n_publications": len(pubs), "n_reviewed": len(reviews),
+            "by_access": {a: sum(r["access"] == a for r in reviews) for a in PUBLICATION_ACCESS},
+            "by_classification": {k: sum(k in r["classification"] for r in reviews) for k in PUBLICATION_KINDS}}
 
 
 def get_investigation(accession, sections=None):
@@ -335,9 +378,14 @@ def get_investigation(accession, sections=None):
     if sections is None or "publication_dois" in sections:
         dois = api["publication_dois"]
         data["publication_dois"] = [d.strip() for d in dois.split(";") if d.strip()] if isinstance(dois, str) else []
+    notes = []
     if sections is None or "publications" in sections:
         data["publications"] = _publications(acc, api["publications"])
-    return _result(data, None, [{"ref": f"[{acc}]", "page": data["card"]["page"], "url": api["source_url"], "doi": api["doi"]}])
+        data["publication_review"] = _publication_review(data["publications"])
+        if data["publication_review"]["n_reviewed"]:
+            notes.append(REVIEW_NOTE)
+    return _result(data, None, [{"ref": f"[{acc}]", "page": data["card"]["page"], "url": api["source_url"], "doi": api["doi"]}],
+                   notes)
 
 
 # --- tests table --------------------------------------------------------------------------------------
@@ -950,10 +998,27 @@ def _removed_sources(accession=None):
     return found
 
 
+def _paper_disagreements(accession=None):
+    """`contradicts_psi_data` items of the publication reviews: a published paper that disagrees with PSI."""
+    out = []
+    for acc in records():
+        if accession not in (None, acc):
+            continue
+        for entry in publication_reviews(acc):
+            for item in entry["items"]:
+                if item["kind"] == "contradicts_psi_data":
+                    out.append({"accession": acc, "kind": "published_paper_disagrees_with_psi",
+                                "publication": entry["title"], "read_url": entry["read_url"],
+                                "locator": item["locator"], "quote": item["quote"], "claim": item["claim"],
+                                "record_path": item["record_path"]})
+    return out
+
+
 def discrepancies(accession=None, test_id=None):
     """Where the PSI experiment tables are wrong or doubtful: disagreements with the raw sensor data (each with
     the table value, the raw value, the evidence and what was done), every value this dataset changed, the meaning
-    and count of each flag, and digest statements that rest on files PSI lists as removed."""
+    and count of each flag, digest statements that rest on files PSI lists as removed, and places where a published
+    paper by the investigators disagrees with the PSI data (shown, never applied to the tables)."""
     acc = _accession(accession) if accession else None
     raw = table("discrepancies")
     tests = table("tests")
@@ -985,12 +1050,15 @@ def discrepancies(accession=None, test_id=None):
         "rows_flagged": int(tests["flags"].notna().sum()),
         "rows_total": len(tests),
         "removed_sources": _removed_sources(acc),
+        "source_disagreements": [] if test_id else _paper_disagreements(acc),
     }
     notes = ["`replace` and `fill` entries changed the table; the PSI value is always kept next to the new one.",
              "Raw-data conflicts were found only where raw sensor files exist (PSI-10, 23, 39, 159, 98, 100, 101); "
              "the other tables were checked against the reports only."]
     if data["removed_sources"]:
         notes.append("Some statements rest on files that PSI lists as removed but still serves; they are marked.")
+    if data["source_disagreements"]:
+        notes.append(PAPER_DISAGREEMENT_NOTE)
     if raw["evidence_source"].str.contains("test sheet").any():
         notes.append("Entries that cite a test sheet rest, in part or (flag conflicts_with_test_sheet) entirely, on an AI "
                      "model's reading of a hand-filled scanned form, not checked by a human; they never change a value.")

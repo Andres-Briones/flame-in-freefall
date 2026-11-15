@@ -387,6 +387,147 @@
           "index": 4
         }
       ]
+    },
+    {
+      "text": "Slow microgravity flames go out by radiative loss, not only at the diffusive (residence-time) limit known from 1 g. FLEX methanol droplets at 1 atm extinguished diffusively at 18% O2 or more and radiatively at 14% or less; at 15-16% O2 a critical initial diameter separated the two modes, and more CO2 pushed towards radiative extinction. Simulations of the BRE burner flames put extinction where the instantaneous radiative fraction reaches 60-70% of the heat release, a level reached because the slow flame has a long residence time. Computations of the SLICE coflow flames (CLD Flame record) show the mechanism: without buoyancy the peak centreline temperature is about 300 K lower and the residence time about 3.5 times longer.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-69",
+          "section": "findings",
+          "index": 13
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 12
+        },
+        {
+          "accession": "PSI-20",
+          "section": "findings",
+          "index": 8
+        },
+        {
+          "accession": "PSI-21",
+          "section": "findings",
+          "index": 10
+        }
+      ]
+    },
+    {
+      "text": "Cool-flame limits follow simple oxygen scalings that kinetic models miss, and pressure strengthens cool flames. FLEX-2 cool-flame extinction diameters of n-heptane, n-octane and n-decane droplets scale with the ambient O2 concentration to the power -3/4 in O2/N2; with CO2 or He and at 0.5-1 atm the residence time at extinction scales with the power -3/2. Counterflow cool flames (PSI-142, ground) give an oxygen exponent of 1.7 for cool-flame reactivity, against 1.5 from the droplets, which the authors judge consistent, and every kinetic model tested over-predicted n-heptane cool-flame extinction strain rates by at least a factor of two. At 0.3 MPa a decane/hexanol cool flame radiated almost half as much as the hot flame, and above about 2 atm CFI n-dodecane cool flames often re-ignited a hot flame.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-68",
+          "section": "findings",
+          "index": 9
+        },
+        {
+          "accession": "PSI-142",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-68",
+          "section": "findings",
+          "index": 11
+        },
+        {
+          "accession": "PSI-39",
+          "section": "findings",
+          "index": 4
+        }
+      ]
+    },
+    {
+      "text": "Higher pressure lowers the temperature at which flames go out radiatively and makes self-extinction more likely. In Flame Design inverse ethylene flames the extinction temperature was similar at 0.5 and 1 atm but about 50 K lower at 3 atm, below the 1-atm critical 1130 K and into the warm-flame regime. In CFI-G, inverse flames fed with 85% O2 self-extinguished in 41 of 43 tests at 2.2-3.3 bar against 0 of 14 at 0.55 bar; reading this as stronger radiative loss is an inference from outcome counts, not a measured radiation balance.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-10",
+          "section": "findings",
+          "index": 13
+        },
+        {
+          "accession": "PSI-159",
+          "section": "findings",
+          "index": 8
+        }
+      ]
+    },
+    {
+      "text": "For pre-fire smoke, ventilation matters and gravity does not. At 8.1 cm/s or more, SAME and SAME-R flight and ground diameters of average mass at matched flow, temperature and aging fall on a slope-1 line, and the investigators' 2018 Fire Safety Journal paper (Meyer et al.) finds low-gravity smoke not significantly different from smoke made under equivalent 1-g conditions; this supersedes the preliminary 2008 figure of about 50% larger particles in low gravity. At zero flow the diameter of average mass was on average about 1.7-2 times larger (1.3 for Teflon to 2.8 for Kapton): smoke trapped in a poorly ventilated enclosure will be larger than smoke released into ventilated cabin air.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 12
+        },
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 6
+        },
+        {
+          "accession": "PSI-102",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 4
+        },
+        {
+          "accession": "PSI-101",
+          "section": "findings",
+          "index": 3
+        }
+      ]
+    },
+    {
+      "text": "Ground tests can stand in for microgravity flammability only with a correction, and each correction has been checked on one material. For BASS-II PMMA rods the 1-g blowoff boundary runs parallel to the microgravity one and matches it when shifted by a buoyant stretch of about 78 1/s (about 16.5 cm/s of forced flow); the authors propose this as a ground estimate of microgravity limits, untested for other materials. For thick PMMA in Saffire-II, lowering the pressure in 1 g slowed concurrent spread towards the flight rate, but about 20 kPa would be needed to match it, where pressure also changes the chemistry. Models are not yet a substitute: the PSI-62 1-D model and thin-flame theory put the minimum O2 for PMMA rods at 11.1% (one-step chemistry) and 12.6% (detailed MMA mechanism), 2.4 and 0.9 points below the measured minimum of about 13.5%.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 14
+        },
+        {
+          "accession": "PSI-99",
+          "section": "findings",
+          "index": 10
+        },
+        {
+          "accession": "PSI-62",
+          "section": "findings",
+          "index": 7
+        },
+        {
+          "accession": "PSI-25",
+          "section": "findings",
+          "index": 6
+        }
+      ]
+    },
+    {
+      "text": "Sooting rankings measured in 1 g do not carry over to microgravity. Over all three SPICE burners the archival paper's smoke-point correlation ranks sooting propensity ethylene < propane < 50% propylene < 75% propylene < propylene: overall propane soots more than ethylene in microgravity, the reverse of 1 g, which the authors attribute to propane's longer residence time at equal flame length. The 1-g order holds only at the 1.6 mm burner. Propane's microgravity threshold soot index (1.39) is more than twice its 1-g value (0.6), while ethylene and propylene match.",
+      "confidence": "medium",
+      "citations": [
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 5
+        },
+        {
+          "accession": "PSI-107",
+          "section": "findings",
+          "index": 6
+        }
+      ]
     }
   ],
   "parameter_coverage": [
