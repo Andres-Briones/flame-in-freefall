@@ -483,7 +483,7 @@ def test_replaced_boolean_keeps_a_boolean_original(table):
 def test_bass_outcomes_are_read_from_the_crews_words_and_quote_them(table):
     solid = table[table["accession"].isin(["PSI-25", "PSI-26"])]
     assert table.loc[~table.index.isin(solid.index), "outcome"].isna().all()
-    assert solid.groupby("accession")["outcome"].count().to_dict() == {"PSI-25": 25, "PSI-26": 80}
+    assert solid.groupby("accession")["outcome"].count().to_dict() == {"PSI-25": 25, "PSI-26": 81}
     for r in solid[solid["outcome"].notna()].itertuples():
         assert " ".join(r.outcome_quote.split()) in " ".join(extra(r)[extra(r)["outcome_field"]].split())
         assert (r.outcome == "extinguished") == (r.outcome_cause in bt.OUTCOME_CAUSES)
@@ -493,6 +493,16 @@ def test_bass_outcomes_are_read_from_the_crews_words_and_quote_them(table):
     assert r.outcome == "burned_out" and pd.isna(r.outcome_cause) and "burnout" in r.outcome_quote
     assert row(table, "PSI-26", "95").outcome == "no_ignition"
     assert pd.isna(row(table, "PSI-26", "42").outcome)  # "2 minute burn": a duration, not an ending
+
+
+def test_the_nomex_iii_run_that_burned_is_not_left_blank(table):
+    # The notes say the flame spread to about 1 cm of the end but not how it ended; the BASS overview slide does.
+    r = row(table, "PSI-26", "14")
+    assert r.fuel_raw == "Nomex III Natural" and "Flame propagated to ~ 1 cm of end" in r.outcome_quote
+    assert (r.outcome, r.outcome_cause, r.outcome_action) == ("extinguished", "unspecified", "none")
+    assert "p31" in extra(r)["outcome_doubt"] and "extinguished within 1 cm of the end" in extra(r)["outcome_doubt"]
+    nomex = table[(table["accession"] == "PSI-26") & (table["fuel"] == "nomex")]
+    assert set(nomex.loc[nomex["test_id"] != "14", "outcome"]) == {"no_ignition"}
 
 
 def test_an_outcome_whose_quote_left_the_source_is_refused():
@@ -512,7 +522,7 @@ def test_bass_extinctions_say_what_was_done_to_the_flow(table):
     assert table.loc[table["outcome"] != "extinguished", ["outcome_action", "outcome_setting"]].isna().all().all()
     assert out.fillna({"outcome_action": "not stated"}).groupby("accession")["outcome_action"].value_counts().to_dict() == {
         ("PSI-25", "flow_reduced"): 14, ("PSI-25", "flow_raised"): 7, ("PSI-25", "flow_shut_off"): 2,
-        ("PSI-26", "flow_shut_off"): 22, ("PSI-26", "flow_reduced"): 19, ("PSI-26", "none"): 6,
+        ("PSI-26", "flow_shut_off"): 22, ("PSI-26", "flow_reduced"): 19, ("PSI-26", "none"): 7,
         ("PSI-26", "nitrogen"): 2, ("PSI-26", "not stated"): 2}
     assert set(out["outcome_action"].dropna()) == set(bt.OUTCOME_ACTIONS)
     assert out.groupby("accession")["outcome_setting"].count().to_dict() == {"PSI-25": 13, "PSI-26": 18}

@@ -842,37 +842,37 @@
    },
    "outcome": {
     "dtype": "str",
-    "non_null": 105,
-    "description": "PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See \"Outcomes read from notes\" below",
+    "non_null": 106,
+    "description": "PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 144 of the 250 runs. See \"Outcomes read from notes\" below",
     "unit": null,
     "values": {
-     "extinguished": 74,
+     "extinguished": 75,
      "no_ignition": 19,
      "burned_out": 12
     }
    },
    "outcome_cause": {
     "dtype": "str",
-    "non_null": 74,
+    "non_null": 75,
     "description": "with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified`",
     "unit": null,
     "values": {
      "low_flow": 58,
+     "unspecified": 8,
      "blowoff": 7,
-     "unspecified": 7,
      "nitrogen": 2
     }
    },
    "outcome_action": {
     "dtype": "str",
-    "non_null": 72,
+    "non_null": 73,
     "description": "with `extinguished` only: what was done to the flow when the flame went out. `flow_reduced` (the flow was turned down and the flame went out at a finite setting: a quenching limit), `flow_shut_off` (the crew stopped the fan or the air to end the run: not a limit), `flow_raised` (blowoff, every `blowoff` row), `nitrogen` (every `nitrogen` row), `none` (went out by itself at constant flow). Null when the words do not say (2 runs)",
     "unit": null,
     "values": {
      "flow_reduced": 33,
      "flow_shut_off": 24,
      "flow_raised": 7,
-     "none": 6,
+     "none": 7,
      "nitrogen": 2
     }
    },
@@ -903,7 +903,7 @@
    },
    "outcome_quote": {
     "dtype": "str",
-    "non_null": 105,
+    "non_null": 106,
     "description": "the words the outcome was read from, verbatim; `extra.outcome_field` names the cell, `extra.outcome_doubt` gives a caveat where the reading is uncertain, `extra.outcome_cause_inferred` marks a cause that rests on the fan and air cells and not on the quoted words (3 runs)",
     "unit": null
    },

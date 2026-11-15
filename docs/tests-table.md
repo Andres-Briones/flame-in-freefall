@@ -55,7 +55,7 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `ignited` | hot ignition yes/no (null for CFI-G "flash"). For PSI-25 only `False`, on the one row (O12) whose air-display cell says "no ign"; for BASS and BASS-II use `outcome` | bool | 25, 159 |
 | `burn_time_s` | burn time. For PSI-39 it is the hot-flame burn time. For PSI-25 (M series only) it is the summary report's burn time, given in minutes to 0.1 min | s | 25, 39, 69, 98, 99, 159 |
 | `extinction_mode` | `self_extinguished`, `flow_terminated`, `extinction`, `disruption`, `completion` | - | 69, 159 |
-| `outcome` | PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 145 of the 250 runs. See "Outcomes read from notes" below | - | 25, 26 |
+| `outcome` | PSI-25 and PSI-26 only, whose tables have no outcome column: how the flame ended, read from the crew's own words. `no_ignition` (never lit, or not sustained once the igniter was withdrawn), `extinguished` (a sustained flame went out with fuel left), `burned_out` (burned until the fuel was gone). Null when the words do not say: 144 of the 250 runs. See "Outcomes read from notes" below | - | 25, 26 |
 | `outcome_cause` | with `extinguished` only: `blowoff` (went out as flow was raised), `low_flow` (went out as flow was reduced or shut off), `nitrogen` (put out by the GN2 flow), `unspecified` | - | 25, 26 |
 | `outcome_action` | with `extinguished` only: what was done to the flow when the flame went out. `flow_reduced` (the flow was turned down and the flame went out at a finite setting: a quenching limit), `flow_shut_off` (the crew stopped the fan or the air to end the run: not a limit), `flow_raised` (blowoff, every `blowoff` row), `nitrogen` (every `nitrogen` row), `none` (went out by itself at constant flow). Null when the words do not say (2 runs) | - | 25, 26 |
 | `outcome_setting` | the setting at which the flame went out, when the source states it: `pot 0.31` (fan potentiometer), `fan 40` (fan display), `gn2 pot 6`. Text as logged, not a velocity: the fan calibration does not reach these settings and was not applied. `extra.outcome_setting_field` names the cell. 31 runs | as logged | 25, 26 |
@@ -505,7 +505,7 @@ cell and the quoted words. `build_tests` refuses an entry whose quote is no long
 
 | | no_ignition | extinguished: low_flow | blowoff | nitrogen | unspecified | burned_out | not stated |
 |---|---|---|---|---|---|---|---|
-| PSI-26 BASS (121) | 17 | 42 | 0 | 2 | 7 | 12 | 41 |
+| PSI-26 BASS (121) | 17 | 42 | 0 | 2 | 8 | 12 | 40 |
 | PSI-25 BASS-II (129) | 2 | 16 | 7 | 0 | 0 | 0 | 104 |
 
 How to read it:
@@ -518,14 +518,17 @@ How to read it:
   was turned down until the flame went out at a finite setting (a quenching limit).
 - Runs where the notes say the flame survived maximum flow or nitrogen but not how it ended are null, as are two
   runs whose igniter broke.
+- Run 14 (Nomex III, the only Nomex sample that burned) takes its ending from another PSI file: the notes say the
+  flame spread to about 1 cm of the sample end, and the BASS overview of ISS results (p31) that it went out there
+  as it narrowed. `extra.outcome_doubt` quotes the slide. Left null, the run read as no Nomex flame at all.
 - BASS-II has no notes column, so only the 25 runs whose flow cell carries a word are filled.
 
-What was done to the flow on the 74 extinguished runs (`outcome_action`), and how many state the setting
+What was done to the flow on the 75 extinguished runs (`outcome_action`), and how many state the setting
 (`outcome_setting`):
 
 | | flow_reduced | flow_shut_off | flow_raised | nitrogen | none | not stated | with a setting |
 |---|---|---|---|---|---|---|---|
-| PSI-26 BASS (51) | 19 | 22 | 0 | 2 | 6 | 2 | 18 |
+| PSI-26 BASS (52) | 19 | 22 | 0 | 2 | 7 | 2 | 18 |
 | PSI-25 BASS-II (23) | 14 | 2 | 7 | 0 | 0 | 0 | 13 |
 
 - `flow_raised` and `nitrogen` follow from the cause. For `low_flow` and `unspecified` the action is read per
@@ -535,7 +538,7 @@ What was done to the flow on the 74 extinguished runs (`outcome_action`), and ho
   many. Runs 31, 54, 82, 82a and 100 went out at fan 39 to 40, one or two counts above the stopped fan (38): a
   limit only within the resolution of the fan. On runs 99, 105 and 118 the notes say "very low" or "finite" flow
   without a setting.
-- `none` is a flame that went out with no flow change tied to it ("extinguished all by itself"). These six keep
+- `none` is a flame that went out with no flow change tied to it ("extinguished all by itself"). These seven keep
   the cause `unspecified`; run 78 names its setting (pot 0.4).
 - `outcome_setting` is the knob and the number as logged; `build_tests` refuses a setting whose number is not in
   the named cell. In BASS-II the knob is the fan pot where the cell says "pot" or lists decimals below 1 in the

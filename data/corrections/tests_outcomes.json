@@ -560,6 +560,17 @@
  },
  {
   "accession": "PSI-26",
+  "test_id": "14",
+  "source_row": 39,
+  "outcome": "extinguished",
+  "cause": "unspecified",
+  "field": "asrun_notes",
+  "quote": "ignited and left igniter on until flame spread away. Flame propagated to ~ 1 cm of end.",
+  "doubt": "The notes do not say how the flame ended. The BASS overview of ISS results (PSI-26_Presentations_BASS_Overview of Recent ISS Results.pdf, p31) does, for the Nomex III sample at 22% O2 and 14 cm/s: 'Flame was shrinking in width until it extinguished within 1 cm of the end of the sample, as its width became smaller than ~ 1 cm'. Read as going out at steady flow, as run 5b; digest finding [PSI-26 F9]. The pre-flight test matrix (PSI-26_Engineering Documents_BASS_SysAcceptanceReview.1.pdf, p41) planned test 14 as Nomex HT90-40; the experiment table and p31 say Nomex III.",
+  "action": "none"
+ },
+ {
+  "accession": "PSI-26",
   "test_id": "66",
   "source_row": 40,
   "outcome": "extinguished",
