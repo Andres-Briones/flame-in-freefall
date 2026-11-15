@@ -1411,6 +1411,7 @@
     "Documents contain staff work contact details (e-mail, phone) and the GC raw files contain an instrument user-name header field; these were not copied. The ACME-DOC-010 interface document defines FTP login parameter fields (no actual credentials seen). No text addressed to an AI was found.",
     "Raw-data notes were sampled, not read in full: the _Comments.txt files record only image-download completeness (e.g. missing frames on 19256), the as-run/test-point .txt files are script parameter lists, and the daily test-point log spreadsheets hold only image counts for 20164; none contains science observations.",
     "Three drawing/poster PDFs (s1101mfa0100_C, s1101mfa1800_B, PS-01374 ACME poster, PS-03403 ACME on the ISS) have no text layer and were not read; none is a report.",
-    "Most ACME presentations in PSI-23 (ASGSR 2012/2013, CSSCI 2014, AIAA 2012, IAC 2008, researcher's guide) predate the s-Flame flight and describe ACME generally; they were used only for hardware context."
+    "Most ACME presentations in PSI-23 (ASGSR 2012/2013, CSSCI 2014, AIAA 2012, IAC 2008, researcher's guide) predate the s-Flame flight and describe ACME generally; they were used only for hardware context.",
+    "Publications pass 2026-11-15: all 44 publications listed in the PSI record were checked (35 by abstract, 2 by full text, 7 not reachable; details in data/publications/PSI-23.json). All date from 1994-2019, before the 2019-2020 flight, and none reports s-Flame ISS results. Six confirm background already in the record (2.2 s too short for steady flames; oscillation before radiative extinction in theory and low-pressure tests; luminosity not tracking flame strength; the porous-sphere configuration)."
   ]
 }

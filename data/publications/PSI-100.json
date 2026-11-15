@@ -1,0 +1,60 @@
+[
+  {
+    "title": "Buoyant Effects on the Flammability of Silicone Samples Planned for the Spacecraft Fire Experiment (Saffire), 45th International Conference on Environmental Systems ICES-2015-[293] 12-16 July 2015, Bellevue, Washington",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150022421",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "ICES-2015 ground (1 g) study of the silicone sheets planned for Saffire-II (0.25, 0.36, 0.61, 1.00 mm; 5 x 30 cm Test 1 geometry): upward burn length fell with thickness and the thickest would not ignite; the two thinnest burned completely downward, unusually more flammable than upward; a deposited silica layer is blamed for upward self-extinction; with 2 m/s forced upward flow all ignited thicknesses burned completely.",
+    "items": [],
+    "notes": "Ground tests of the Saffire-II silicone samples; nothing about Saffire-III."
+  },
+  {
+    "title": "The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20170001636",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Pre-flight (May 2016) paper on the three Saffire units: objectives (growth of a large fire in low gravity; low-g flammability vs NASA-STD-6001 Test 1), identical flow-duct hardware (module about 53 x 90 x 133 cm), diagnostics (2 cameras, 4 radiometers, embedded and plume thermocouples, O2/CO2/pressure sensors, 2 anemometers, smoke wire), planned flows (Saffire-I 20 cm/s, Saffire-III 30 cm/s), the Saffire-II sample table, safety design (four latching relays for the igniter) and planned launch/operation dates.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Saffire-III was planned at 30 cm/s, the origin of the 30 cm/s in the PSI record, readme and table; the flight achieved about 25 cm/s (findings[4]).",
+        "quote": "Saffire-I will be conducted at an air flow velocity of 20 cm/s while Saffire-III will be run at a flow velocity of 30 cm/s",
+        "locator": "p2",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Identical hardware in all three units, so Saffire-I and -III differ only in conditions.",
+        "quote": "The premise for the design of the flight experiment was that practically all of the hardware would be identical in the three units except possibly for the sample material(s) to be burned.",
+        "locator": "p2",
+        "record_path": "method.apparatus"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Pre-flight schedule had Saffire-III launching on OA-7 on 30 Dec 2016 with operations on 3 Mar 2017; it actually burned on 4 June 2017.",
+        "quote": "Saffire‐III OA‐730‐Dec‐2016 3‐Mar‐2017",
+        "locator": "p4 Table 4",
+        "record_path": "gaps[2]"
+      }
+    ],
+    "notes": "Held file 'PSI-100_Science Documents_SAFFIRE Objectives, Development and Status.pdf'. Already used in the record's question, apparatus and limitations; now also cited in findings[4] for the planned 30 cm/s. Pre-flight: no Saffire-III results."
+  },
+  {
+    "title": "Operation and Development Status of the Spacecraft Fire Experiments (Saffire), 46th International Conference on Environmental Systems (ICES), July 2016",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20170000230",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "ICES-2016 paper (written May 2016, before the first burn): Saffire objectives, hardware and samples (0.4 x 0.94 m fabric; nine 5 x 29 cm Saffire-II samples chosen near their MOC at 21% O2), Saffire-I integration and launch on OA-6 (22 March 2016), operations plan, and the Saffire-IV to -VI gap list. No results.",
+    "items": [],
+    "notes": "Written in May 2016, a year before Saffire-III; gives no Saffire-III conditions beyond the shared hardware and sample card. NTRS 20170000230 (the link given in the PSI record's authors field)."
+  }
+]

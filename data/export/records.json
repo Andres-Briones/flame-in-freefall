@@ -1128,6 +1128,82 @@
       "quote": "The chamber’s free volume is approximately 83 liters depending on the installed hardware."
      }
     ]
+   },
+   {
+    "claim": "Raising pressure lowers the extinction temperature. In round-2 ISS inverse flames with an 85% O2 burner stream (3.41 mg/s O2) into about 10% C2H4 in N2, thin-filament pyrometry gave similar extinction temperatures at 0.5 and 1 atm but about 50 K lower at 3 atm (the dissertation abstract says almost 60 K). At 3 bar the flame passed below the 1-atm critical 1130 K into the warm-flame regime. Simulations at 50 bar show warm-flame chemistry extending the burn by over 500 s, followed by a cool flame.",
+    "kind": "trend",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://profiles.wustl.edu/en/publications/the-effects-of-elevated-pressure-on-the-kinetics-and-extinction-o/",
+      "quote": "Flame temperatures at extinction are shown to decrease with increasing pressure, and at a pressure of 3 bar the flame is shown to extend below the critical temperature of 1130 K and into the warm flame regime."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "Flame A and C extinguish at similar temperatures, but Flame B extinguishes roughly 50 K lower."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "Experimental results show that increasing the pressure from 1 atm to 3 atm decreased the ethylene extinction temperature by almost 60 K."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "At 50 atm the flame was able to extend its burn time by over 500 s due to the emergence of warm flame chemistry."
+     },
+     {
+      "type": "table",
+      "table": "tests",
+      "note": "Inverse rows with burner X_O2 0.85 and ambient C2H4 about 0.10 exist at about 1 atm (22018 G1-G3), 3 atm (22027 B and D series) and 0.5 atm (22035 J1-J7). The dissertation (Table 4.1) does not name the test ids, so the match is by conditions only."
+     }
+    ]
+   },
+   {
+    "claim": "The transient detailed-chemistry model reproduces the ISS extinction state. For 17 radiatively extinguished normal ethylene flames at 1 atm (ambient X_O2 0.20-0.38, burner X_C2H4 0.13-1, 0.66-4.88 mg/s), measured extinction temperatures were 1130 +/- 23 K against 1126 +/- 6 K simulated, and simulated extinction radii matched measured ones with R^2 = 0.98. Thin-filament pyrometry temperatures carry an estimated +/- 100 K uncertainty.",
+    "kind": "result",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "The means are similar, at 1130 ± 23 K for the experiments and 1126 ± 6 K for the simulations"
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "There is good agreement between the model and experiments, with an R2 value of 0.98."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "with an estimated uncertainty of ± 100 K"
+     }
+    ]
+   },
+   {
+    "claim": "The model matches measured porous-burner temperatures only if heat transfer from the sphere to the gas flowing through it is neglected at high flows, so the reactants appear to be heated elsewhere (supply tube or flame). Burner temperature matters mainly for small flames close to the burner: holding the burner at 298 K lowers the flame temperature at 30 s by 18 K for a 0.66 mg/s flame but by only 3 K for a 5.3 mg/s flame.",
+    "kind": "method",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "The numerical model was shown to be able to predict experimentally measured burner temperature with the assumption that the heating of the fuel gas was ignored."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "At 30 s, the case with constant burner temperature is 18 K lower than the case with experimental burner temperature for Flame A."
+     },
+     {
+      "type": "external",
+      "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+      "quote": "These results indicate that the temperature of the porous sphere has little effect on the overall flame properties, except in cases where the flame is small and close to the burner."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -1336,7 +1412,7 @@
     ]
    },
    {
-    "text": "Published ISS results (critical extinction point, steady flames) are for about 1 atm. The PSI documents contain no analysis of the round-2 reduced- and elevated-pressure tests, and the pressure paper could not be retrieved.",
+    "text": "Published ISS results (critical extinction point, steady flames) are for about 1 atm. The PSI documents contain no analysis of the round-2 reduced- and elevated-pressure tests, and the pressure paper could not be retrieved. [Publications pass 2026-11-15: the pressure results were since found in the paper's abstract and the Waddell 2023 dissertation, see findings[12]; they cover three inverse flames only.]",
     "sources": [
      {
       "type": "psi_file",
@@ -1440,7 +1516,7 @@
   ],
   "gaps": [
    "No per-test outcomes (ignited or not, burn time, extinction diameter or temperature, sooting yes/no) exist in the experimental tables or tests.csv. burn_time_s, extinction_mode and ignited are empty for all 327 rows. Outcomes would need the 125 Hz data CSVs (raw volts, no calibration in PSI) or the 2.1 TB of image zips and 75 GB of video, none of which were downloaded.",
-   "Results for the round-2 reduced- and elevated-pressure inverse flames (0.43-3 atm) are not in any PSI document. The relevant paper (Waddell et al., Proc. Combust. Inst. 40 (2024) 105400, doi:10.1016/j.proci.2024.105400) was unreachable: no abstract on Crossref, Semantic Scholar or OpenAlex, and ScienceDirect blocked access. The Waddell 2023 dissertation (University of Maryland) was not located.",
+   "Results for the round-2 reduced- and elevated-pressure inverse flames (0.43-3 atm) are not in any PSI document. The relevant paper (Waddell et al., Proc. Combust. Inst. 40 (2024) 105400, doi:10.1016/j.proci.2024.105400) was unreachable: no abstract on Crossref, Semantic Scholar or OpenAlex, and ScienceDirect blocked access. The Waddell 2023 dissertation (University of Maryland) was not located. [Publications pass 2026-11-15: the abstract of Waddell et al. 2024 is on the WUSTL research portal and the first author's 2023 UMD dissertation is open on DRUM (hdl.handle.net/1903/29996); the pressure results are now findings[12]. The paper's full text is still paywalled.]",
    "Full texts of Irace et al. 2021 (Combust. Flame 229, 111373) and the two 2023 Proc. Combust. Inst. papers were not retrieved. Their abstracts are reproduced in the Final Report, which was used instead. The 'simple equation' for extinction flame size is therefore reconstructed here from mass conservation, not quoted.",
    "Ambient (chamber) temperature is not given in the tables. The drop-tower SRD assumes 300 K burner temperature, but no ISS value was found.",
    "Final Report Table 1 counts 326 ignited flames (188 + 138). The tables have 327 rows (207 normal incl. 20 propane, 120 inverse), and some rows are ramped tests or possibly unsustained ignitions; the mapping is not stated.",
@@ -2360,6 +2436,23 @@
       "quote": "the BRE burner could emulate fuels with heat of gasification in the range of 0.4 – 4 kJ/g"
      }
     ]
+   },
+   {
+    "claim": "Simulations of the ISS test conditions in normal air (3-D, transient) reproduce the observed time to extinction; extinction happens when the instantaneous radiative fraction rises to 60-70% of the current heat release rate, a level reached because the low-momentum microgravity flame has a long residence time. After local extinction the flame edge takes a hook-like (bibrachial) form, and on re-ignition a triple flame runs along the stoichiometric surface.",
+    "kind": "result",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2020.06.110",
+      "quote": "Time to flame extinction predicted in this work agrees with the experimental observations. Extinction occurs due to the excessive radiative losses when the instantaneous radiative fraction grows up to 60–70% of the current heat release rate."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2020.06.110",
+      "quote": "The excessively high level of the radiative losses is facilitated by the long residence time in the low-momentum microgravity flame."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -2600,6 +2693,7 @@
    "No Science Documents, Reports, Presentations, Analyzed/Raw Data in PSI: only the experimental table CSV and a metadata zip. All results come from the PSI record text and external sources.",
    "Per-test pressure, flow rate, fuel mole fraction, burn duration and outcome are not in PSI (table notes say pressures are not identified). Pressure ranges are from the dissertation and Wright thesis.",
    "Abstracts of the 11 Elsevier papers in the record (Combustion and Flame, Proc. Combust. Inst., Fire Safety Journal) were not reachable: Crossref has no abstracts, Semantic Scholar elides them, ScienceDirect returned HTTP 403. Only the abstracts of 10.1002/fam.2896 and 10.1177/0734904113495650 (Crossref) and 10.1134/S0010508220040036 (reconstructed from OpenAlex's word index) were read. 10.3850/978-981-07-5936-0_03-01 was not tried.",
+   "Update (publication review, data/publications/PSI-20.json): the statement above is partly outdated. A Semantic Scholar batch query returned abstracts for 10.1016/j.combustflame.2021.01.035, 10.1016/j.proci.2020.06.110, 10.1016/j.combustflame.2019.09.030, 10.1016/j.proci.2018.05.006 and 10.1016/j.combustflame.2018.01.044, and the Lund University portal gave the abstract of 10.1016/j.firesaf.2019.02.003. The Dehghani 2021 abstract confirms the dissertation-based findings (59 tests, 21-40% O2, 0.56-1 bar, steady flames at nominal 26% O2 and above, end points above 94% of steady heat flux) and adds that the analysed mixtures had heats of combustion of 23.6 and 47.2 kJ/g. Still unread: 10.1016/j.combustflame.2023.112809, 10.1016/j.proci.2022.08.107, 10.1016/j.combustflame.2021.111572, 10.1016/j.firesaf.2016.11.003, 10.1016/j.combustflame.2015.05.005 and 10.3850/978-981-07-5936-0_03-01 (no abstract anywhere; ScienceDirect accepted manuscripts refuse automated access).",
    "NASA Glenn ACME page in the record (www1.grc.nasa.gov/.../acme/) now redirects to a generic NASA combustion-science page with no BRE content. Used instead: science.nasa.gov ACME and BRE pages, a 2021 NASA JASMAC-33 presentation (NTRS 20210022542), the 2015 Researcher's Guide to Combustion Science (pre-flight description only), NTRS 20160010073/20170009141 (drop-tower precursor), and UMD theses (Dehghani 2022, Wright 2021) not listed in the PSI record.",
    "Dissertation quotes come from the PDF's text layer, in which equations and symbols are garbled. The physics.equations taken from it (heat-of-gasification balance, effective B number, flame height, flame temperature, X_r fit) were reconstructed from that garbled text and checked for internal consistency; the full definition of the group Omega (Eq. 4.33) and the exponent of the later power-law X_r fit could not be read.",
    "Count mismatch: PSI table sums to 194 flames ignited; dissertation reports 149 successful ignitions (round 1 analysis used 59). Not resolved.",
@@ -3412,6 +3506,23 @@
       "quote": "ISS operations: Nov. 2017–Feb. 2018, May-Sept. 2018, Feb.-March 2021"
      }
     ]
+   },
+   {
+    "claim": "SLICE precursor computations (N2-diluted CH4 coflow flames, X_CH4 0.4-1.0, 23-90 cm/s): removing buoyancy lowers the peak centreline temperature by about 300 K and moves it downstream, more so for higher fuel concentration or inlet velocity, and raises the centreline residence time about 3.5-fold near the exit of the computational domain. This is the mechanism behind the cooler, sootier microgravity flames.",
+    "kind": "trend",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf",
+      "quote": "when buoyancy is eliminated, the peak temperature along the centerline drops by around 300 K and moves downstream, with larger changes occurring in flames with higher fuel concentration or higher inlet velocity"
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf",
+      "quote": "this difference will result in a 3.5-fold increase in residence time"
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -3637,7 +3748,8 @@
    "Metadata zip is named 'PSI-21_metadata_PSI-97_ACME CLD Flame.zip' (refers to PSI-97); files.csv marks it not downloaded although a 16,071-byte file (listed size 15,476) is on disk. Record totalFileSize (~2.0 TB) does not match the files listed.",
    "Investigation dates in PSI (2006-10-01 to 2022-05-31) span grant periods, not ISS operations (Nov 2017 to March 2021).",
    "Coflow burner fuel-tube inner diameter: 2.1 mm in the 2014 NASA paper, 2.2 mm in the 2023 E-FIELD modelling preprint.",
-   "No text addressed to an AI or unrelated instructions was found in the PSI files."
+   "No text addressed to an AI or unrelated instructions was found in the PSI files.",
+   "Publication review (data/publications/PSI-21.json): of the 18 listed publications (17 distinct), 3 were read in full via NTRS preprints (Cao 2015 counted twice, Ma 2015), 6 as abstracts, 9 not at all (Elsevier/Springer closed, no free abstract). Only Dobbins 2022 uses ACME CLD Flame ISS data; the rest are SLICE precursor or ground diagnostics and modelling work. No listed paper reports the CLD Flame dilution limits or lift-off heights; NASA cites the 2019 and 2021 US National Combustion Meeting papers (Tinajero et al.) for these, which remain unlocated."
   ]
  },
  "PSI-22": {
@@ -6159,7 +6271,8 @@
    "Documents contain staff work contact details (e-mail, phone) and the GC raw files contain an instrument user-name header field; these were not copied. The ACME-DOC-010 interface document defines FTP login parameter fields (no actual credentials seen). No text addressed to an AI was found.",
    "Raw-data notes were sampled, not read in full: the _Comments.txt files record only image-download completeness (e.g. missing frames on 19256), the as-run/test-point .txt files are script parameter lists, and the daily test-point log spreadsheets hold only image counts for 20164; none contains science observations.",
    "Three drawing/poster PDFs (s1101mfa0100_C, s1101mfa1800_B, PS-01374 ACME poster, PS-03403 ACME on the ISS) have no text layer and were not read; none is a report.",
-   "Most ACME presentations in PSI-23 (ASGSR 2012/2013, CSSCI 2014, AIAA 2012, IAC 2008, researcher's guide) predate the s-Flame flight and describe ACME generally; they were used only for hardware context."
+   "Most ACME presentations in PSI-23 (ASGSR 2012/2013, CSSCI 2014, AIAA 2012, IAC 2008, researcher's guide) predate the s-Flame flight and describe ACME generally; they were used only for hardware context.",
+   "Publications pass 2026-11-15: all 44 publications listed in the PSI record were checked (35 by abstract, 2 by full text, 7 not reachable; details in data/publications/PSI-23.json). All date from 1994-2019, before the 2019-2020 flight, and none reports s-Flame ISS results. Six confirm background already in the record (2.2 s too short for steady flames; oscillation before radiative extinction in theory and low-pressure tests; luminosity not tracking flame strength; the porous-sphere configuration)."
   ]
  },
  "PSI-25": {
@@ -7697,6 +7810,28 @@
       "type": "table",
       "table": "tests",
       "note": "'Final CO (ppm)' column of the experimental table CSV: 'OR', 'over' or '>500' entries for Olson O4, O12, O13b and Miller M5; highest numeric final CO 950 ppm (O13a); highest final CO2 3.22% (M5)."
+     }
+    ]
+   },
+   {
+    "claim": "Ground blowoff tests on the BASS-II rod geometry in 1 g (cast PMMA rods of 0.318-1.905 cm radius, 14-18% O2, upward axial stagnation flow in a 7.6 cm tube) gave a linear blowoff boundary that runs parallel to the BASS-II microgravity boundary but at lower forced stretch. Shifting the 1-g boundary by a buoyant stretch of about 78 1/s, equivalent to a forced flow of about 16.5 cm/s for the base rod and consistent with buoyant-velocity estimates, brings the two into agreement. The authors propose measuring the 1-g blowoff boundary, adding the buoyant stretch and extrapolating to zero stretch as a ground estimate of microgravity flammability limits. Whether the buoyant-stretch constant holds for other materials is untested.",
+    "kind": "method",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20160012691",
+      "quote": "The normal gravity blowoff boundary was parallel to the BASS-II boundary, but shifted to lower stretch rates."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20160012691",
+      "quote": "In order to account for the additional inherent buoyant stretch, the normal gravity boundary was empirically shifted to the right by a value ab =78 s-1, which for the base rod size corresponds to a forced flow velocity of 16.5 cm/s, in good agreement with buoyant flow velocity estimates."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20160012691",
+      "quote": "Further research is needed to determine the applicability of the buoyant stretch constant K for different materials."
      }
     ]
    }
@@ -11256,7 +11391,8 @@
    "The main CFI results paper (Dietrich et al. 2024, Microgravity Sci. Technol., doi 10.1007/s12217-024-10115-x) is closed access, and its abstract is not available from Springer, Crossref or Semantic Scholar. Its results are not included. The 2020 ASGSR abstract on NTRS and the Williams and Nayagam 2020 Combustion and Flame abstract were reachable and are cited.",
    "Raw image zips, .ts and .mp4 videos (about 718 GB) were not inspected. The per-test 'Comments.txt' raw files sampled (e.g. F068A03, F160A03, F180D04) contain only image-integrity logs, not science observations. Science observations are in the spreadsheet Comments sheet.",
    "The two presentations (2013, 2015) predate CFI flight and describe FLEX cool-flame results and theory (partial-burning regime, flame standoff ratio about 3.1, extinction correlated with oxygen concentration to the -3/2 power). They give no CFI data.",
-   "No 30-day operational accomplishments report exists (the Final Report appendix says 'Not available'). The Final Report gives the PSI data organisation as FLEX-1206 to 1284 (n-dodecane), 1285 to 1387 (blends) and 1388 to 1431 (farnesane)."
+   "No 30-day operational accomplishments report exists (the Final Report appendix says 'Not available'). The Final Report gives the PSI data organisation as FLEX-1206 to 1284 (n-dodecane), 1285 to 1387 (blends) and 1388 to 1431 (farnesane).",
+   "Publication review (Nov 2026; per-paper notes in data/publications/PSI-39.json): of the 7 listed publications, 1 was read in full (NTRS preprint of Nayagam et al. 2015), 3 by abstract and 3 not at all (Nayagam et al. 2012 Combustion and Flame, the 2024 CFI results paper, and the NASA blog post \"Science in Short: Cool Flames\", whose URL now redirects and whose archived copy refused automated access). The readable papers analyse FLEX/FLEX-2 n-heptane, n-octane and n-decane data from before CFI; none adds CFI-specific results to this record."
   ]
  },
  "PSI-47": {
@@ -11879,6 +12015,11 @@
       "type": "external",
       "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
       "quote": "A precursor experiment (DAFT: Dust Aerosol measurement Feasibility Test) flew recently on the ISS and provided the first measurement of the background smoke particulate levels on the ISS."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.4271/2005-01-2930",
+      "quote": "Early results from this effort have provided the first measurements of the ambient aerosol environment on the ISS (International Space Station) and suggest that the ISS has very low ambient particle levels."
      }
     ]
    },
@@ -12268,7 +12409,8 @@
    "The fact sheet lists the particle size range in '(mm)'; values 0.02 to >1.0 and 0.10 to 10 are micrometres.",
    "Investigator roles differ by source. PSI lists Urban (PI) and Fortenberry (Project Scientist); the fact sheet and final report list Urban and Ruff as PIs; the 30-day report lists Co-Is Mulholland, Yuan, Yang and Cleary. The record gives the acronym 'DAFT / DAFT-2', but DAFT-1 to -4 were hardware packages of one experiment.",
    "Personal data: the fact sheet, NTRS 20050215648 and the 2007 presentation contain phone numbers and e-mail addresses; the time-history workbook names the ground staff who transcribed data. These were not copied beyond the verbatim measurement-provenance quote. No text addressed to an AI was found.",
-   "External sources used: NTRS 20050215648 (2004 Research & Technology article), NTRS 20070031686 (2007 ISDC presentation). The two DOI publications (AIAA 2005-341, SAE 2005-01-2930) were not read; their content overlaps the PSI presentation 'SmokeDetectionfromMicrogravityFires.ppt'. The DAFT web page cited in the documents (microgravity.grc.nasa.gov/combustion/daft/) was not tried, as it is a defunct GRC address."
+   "External sources used: NTRS 20050215648 (2004 Research & Technology article), NTRS 20070031686 (2007 ISDC presentation). The two DOI publications (AIAA 2005-341, SAE 2005-01-2930) were not read; their content overlaps the PSI presentation 'SmokeDetectionfromMicrogravityFires.ppt'. The DAFT web page cited in the documents (microgravity.grc.nasa.gov/combustion/daft/) was not tried, as it is a defunct GRC address.",
+   "Update to gaps[10] (publication review, 2026-11-15): the abstracts of both DOI publications were read via OpenAlex. SAE 2005-01-2930 confirms findings[1] (first ISS ambient-aerosol measurement, very low levels); AIAA 2005-341 is a programmatic research plan that does not mention DAFT. Full texts are paywalled. Per-paper review: data/publications/PSI-47.json."
   ]
  },
  "PSI-60": {
@@ -12741,7 +12883,7 @@
    "project_type": "Ground Investigation"
   },
   "one_line": "University at Buffalo researchers built and tested fast computer models of flames spreading over solid fuels in weightlessness, checking them against Space Station burning tests, as a step toward predicting which spacecraft materials can burn at which oxygen levels and air speeds.",
-  "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, validated it against BASS data over a range of oxygen levels, and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data. The aim is to screen spacecraft materials' flammability limits numerically.",
+  "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, compared it with BASS spread rates at 20.6% oxygen (over-predicting them by up to 2.7 times), and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data, predicting a minimum of 11.1-12.6% oxygen, 0.9-2.4 points below experiment. The aim is numerical screening of spacecraft material flammability.",
   "question": {
    "text": "Can a reduced-chemistry approach, the (unsteady, radiative) flamelet generated manifold, reproduce flame spread over solid fuels in microgravity with enough fidelity to predict flammability limits of spacecraft materials? Concurrent and opposed flame spread over solids is hard to model because heat transfer, mass transport and chemistry are tightly coupled near the solid-gas interface, and conventional hybrid turbulence/chemistry models are inconsistent and miss intermediate reaction pathways. The hypothesis was that the unsteady FGM approach, coupling near-wall thermal, mass transport and chemical processes with the far-field flow, could reproduce microgravity flame spread including the 'Goldilocks' flammability zone (burning only within an intermediate range of flow speed) reported by Olson and Ferkul for BASS-II PMMA rods. The long-term aim was a tool to predict flammability limits and to serve as a subgrid model in large-eddy simulations of spacecraft fires.",
    "sources": [
@@ -12870,13 +13012,23 @@
    "varied": [
     {
      "parameter": "far-field oxygen level (2-D model vs BASS)",
-     "range": "range of BASS oxygen levels (values not available)",
-     "unit": "mole fraction",
+     "range": "0.206 in the BASS spread-rate comparison shown (2 cm wide, 100 um thick PMMA slab, opposed flow 3.75-40 cm/s); the abstract claims a range of oxygen levels",
+     "unit": "mole (volume) fraction",
      "sources": [
       {
        "type": "external",
        "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/",
        "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."
+      },
+      {
+       "type": "external",
+       "url": "https://www.osti.gov/servlets/purl/2576508",
+       "quote": "Figure 8 shows a comparison between the model predicted and the experimentally measured flame spread rates from the NASA BASS missions for a 2 cm wide, 100 μm thick slab of PMMA with a far field volumetric"
+      },
+      {
+       "type": "external",
+       "url": "https://www.osti.gov/servlets/purl/2576508",
+       "quote": "oxygen concentration of 20.6%. Also compared are model predictions made by Bhattacharjee et. al."
       }
      ]
     },
@@ -13007,14 +13159,29 @@
   },
   "findings": [
    {
-    "claim": "A detailed 2-D flame-spread model with multi-step chemistry and fully coupled radiation, validated against NASA BASS data, predicts reasonable flame spread rates over a range of far-field oxygen levels (spread-rate values and error not available in the abstracts read).",
+    "claim": "A detailed 2-D opposed-flow flame-spread model with multi-step chemistry and fully coupled radiation was compared with NASA BASS spread rates for a 2 cm wide, 100 um thick PMMA slab at 20.6% O2 over flow speeds spanning the radiative, thermal and kinetic regimes (3.75, 10 and 40 cm/s in the computed cases). It follows the measured trends but over-predicts spread rate by a factor of 1.5-2.7 in some regions, most in the kinetic (high-flow) regime; the authors blame the simplified transport model and not solving the full momentum equations. Each 2-D case takes 1-3 days to compute.",
     "kind": "method",
-    "confidence": "medium",
+    "confidence": "high",
     "sources": [
      {
       "type": "external",
       "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/",
       "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2576508",
+      "quote": "the predicted flame spread rates from the model over predict the experiments by a factor 1.5 − 2.7 in some regions."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2576508",
+      "quote": "The model over predicts the flame spread rate in almost all cases, especially in the kinetic regime."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2576508",
+      "quote": "oxygen concentration of 20.6%. Also compared are model predictions made by Bhattacharjee et. al."
      }
     ]
    },
@@ -13090,6 +13257,28 @@
       "type": "external",
       "url": "https://doi.org/10.1016/j.combustflame.2021.111395",
       "quote": "The developed diagnostic is used in upward flame spread experiments"
+     }
+    ]
+   },
+   {
+    "claim": "Predicted minimum oxygen for burning, compared with the Olson-Ferkul PMMA rod flammability map (drop tower and ISS BASS data, stretch rate converted to scalar dissipation rate): the 1-D numerical model and the thin-flame theory both give 11.1% O2 with one-step global chemistry (2.4 percentage points below the experimental minimum) and 12.6% with a 67-species detailed MMA mechanism (0.9 points below). Changing from planar to spherical geometry lowers these slightly, to 10.92% and 12.3%; the high-strain (blowoff) bound is insensitive to geometry, the radiative quenching bound is not.",
+    "kind": "limit",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2417649",
+      "quote": "For the global chemistry model, both of the minimum oxygen concentrations predicted by the numerical and thin flame theory are 11.1%. However the thin flame predicts this to occur at a larger χ. These are both 2.4% lower than the experimentally observed values."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2417649",
+      "quote": "both the minimum oxygen concentrations for the thin flame and numerical model occur at 12.6%, which is 0.9% lower than the experiments."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/2417649",
+      "quote": "decreasing from 11.1% to 10.92% for the global case and from 12.6% to 12.3% for the detailed case."
      }
     ]
    }
@@ -13214,7 +13403,9 @@
    "PI affiliation in PSI is 'New York University, Buffalo'; the publications are from the University at Buffalo (SUNY).",
    "The PSI record lists Olson and Ferkul (2017) as a publication, but it is a NASA BASS-II paper used as a benchmark, not a product of this grant. The Aphale and DesJardin (2021) diagnostic paper applies to upward (1 g) flame spread.",
    "Grant period ended 2021-04-30 while the main modelling papers appeared in 2023-2024; whether the 2023 papers were funded by this grant is assumed from their listing in the record.",
-   "The 'Goldilocks' flammability zone is attributed to Olson and Ferkul in the record; the term was not found in the abstracts read."
+   "The 'Goldilocks' flammability zone is attributed to Olson and Ferkul in the record; the term was not found in the abstracts read.",
+   "Publication review (data/publications/PSI-62.json): full texts of the two 2023 papers and the 2021 diagnostic paper were read as accepted manuscripts on OSTI (purls 2576508, 2417649, 1772898). This updates three statements above: (1) findings[0] previously read 'A detailed 2-D flame-spread model with multi-step chemistry and fully coupled radiation, validated against NASA BASS data, predicts reasonable flame spread rates over a range of far-field oxygen levels (spread-rate values and error not available in the abstracts read).' The full text shows the BASS comparison at a single O2 level (20.6%) with 1.5-2.7x over-prediction; the abstract's 'range of far-field oxygen levels' is not shown in the paper's BASS comparison. test_matrix.varied[0] previously read 'range of BASS oxygen levels (values not available)', and the summary said the model was 'validated it against BASS data over a range of oxygen levels'. (2) Spread-rate error and oxygen levels are now available (gap above partly superseded). (3) Both 2023 papers acknowledge NASA grant 80NSSC20K0426, the PSI-62 grant, so their funding by this investigation is confirmed, not assumed. (4) The 'Goldilocks flammability zone' wording appears in the introduction of 10.1016/j.combustflame.2023.112910 ('A particularly interesting aspect of their work is identifying a Goldilocks flammability zone, lying between quenching and blow-off limits').",
+   "Flow configuration: the PSI title says 'concurrent flame spread', but the 2-D model and its BASS comparison (10.1016/j.combustflame.2023.112939) are for opposed-flow spread over a thin PMMA slab, and the flammability maps (112910) compare with stagnation-flow PMMA rod data."
   ]
  },
  "PSI-68": {
@@ -13814,6 +14005,79 @@
       "quote": "indicates deterioration of the simplified chemistry with increasing pressure in predictions of droplet diameters at cool-flame extinction."
      }
     ]
+   },
+   {
+    "claim": "Cool-flame extinction scaling: in O2/N2 atmospheres the cool-flame extinction diameter of n-heptane, n-octane and n-decane droplets varies with ambient oxygen molar concentration to the power -3/4. With CO2 or He replacing N2 and at 0.5-1 atm this no longer holds, but the residence time at extinction D_ce^2/K_c (with the measured cool-flame burning-rate constant) correlates with oxygen concentration at the predicted slope of -3/2. The exponent comes from an NTC-crossover argument: activation energies of about 120 kJ/mol (crossover) and 180 kJ/mol (ketohydroperoxide branching).",
+    "kind": "trend",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+      "quote": "The cool flame extinction diameters vary as oxygen molar concentration to the power -3/4 for oxygen/nitrogen mixture."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+      "quote": "Remarkably the data are reasonably well correlated, considering the number of variables involved in the experiments, and, within the appreciable scatter, the results are in agreement with the theoretical slope of -3/2."
+     }
+    ]
+   },
+   {
+    "claim": "The FLEX-2 surrogate-fuel image set has 278 burns of 11 fuels: n-decane; decane/propylbenzene 25/75, 50/50 and 75/25; n-heptane; heptane/iso-octane 50/50; heptane/toluene 50/50; iso-octane; n-octane; propylbenzene; and toluene. 13 burns were tethered, 11 were fully hidden by soot, and droplets measured 1.17-3.81 mm. An automated circle-fitting algorithm (backlit 1024x1024 camera at 30 fps, field about 30 mm) measured 98% of free-droplet runs, with a precision of +/-0.2 pixel (about 6 um) when soot occlusion was limited, and gives a precision estimate for each diameter. Several of these fuels are not in the PSI experimental table.",
+    "kind": "method",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1998037",
+      "quote": "The FLEX-2 experiments on surrogate fuels comprised 278 individual experiments (Table 1) for 11 different fuel types."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1998037",
+      "quote": "The actual diameter of the droplet varies from 1.17 mm to 3.81 mm."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1998037",
+      "quote": "In cases of limited occlusion, a measurement precision of ±0.2 pixels for the FLEX-2 dataset was achieved."
+     }
+    ]
+   },
+   {
+    "claim": "Large 50/50 decane/hexanol droplets: as pressure rose from 0.05 to 0.3 MPa, the visible and OH* luminosity of the hot flame fell steadily while its broadband radiance stayed nearly constant. The cool flame that followed hot-flame extinction radiated more at higher pressure, reaching almost half the hot-flame radiance at 0.3 MPa. This prompted the idea that a cool flame and a hot flame coexist around the droplet. A Burke-Schumann analysis finds such a dual-flame structure possible only over a narrow range of conditions.",
+    "kind": "result",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20170000666/downloads/20170000666.pdf",
+      "quote": "It was also observed that the cool flames that formed immediately following hot-flame extinction had radiant outputs that increased with pressure, reaching almost one-half of the hot-flame radiance at 0.3MPa."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20170000666/downloads/20170000666.pdf",
+      "quote": "A Burke-Schumann analysis of this dual-structure seems to indicate such flame structures are possible over a narrow range of initial conditions."
+     }
+    ]
+   },
+   {
+    "claim": "The partial-burning model of cool-flame droplet combustion gives reasonable magnitudes for the measured cool-flame burning-rate constants but does not reproduce their apparent dependence on pressure or initial droplet diameter. The 0.30 MPa decane/hexanol cool flame also appears inconsistent with currently available cool-flame kinetics.",
+    "kind": "limit",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://doi.org/10.2514/1.J054437",
+      "quote": "The simplified predictions are found to produce reasonable agreement with the experimentally measured values of burning-rate constants but not with their apparent dependencies on pressure or on the initial droplet diameter."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1080/00102202.2016.1225730",
+      "quote": "This result does not appear to be consistent with expectations based on currently available cool-flame chemical kinetics and may suggest the need for a different chemical-kinetic mechanism."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -13979,7 +14243,10 @@
    "Not read: the Shaw and Vang (2015) propanol/glycerol diffusivity paper (10.1007/s12217-015-9455-8; Springer redirected to login, no abstract in OpenAlex/Semantic Scholar); 'Multistage oscillatory cool flame behavior ... elevated pressure' and several other record publications with no DOI; Elsevier full texts. No FLEX-2 per-test summary report (analogous to NASA/TP-2015-216046 for FLEX) was found on NTRS.",
    "Number of FLEX-2 tests is not stated in PSI; the 2012 plan targeted ~400 test points, and the 2014 preprint says over three hundred droplet tests were completed across the FLEX series to that date.",
    "Shaw's affiliation is blank in the PSI contacts; contact details were not copied.",
-   "No text addressed to an AI or unrelated instructions was found in the PSI files."
+   "No text addressed to an AI or unrelated instructions was found in the PSI files.",
+   "Publication review (Nov 2026; per-paper notes in data/publications/PSI-68.json): of 48 listed publications, 5 were read in full, 21 by abstract and 22 not at all (closed journals without an open copy or indexed abstract). About 19 are ground-based or modelling studies.",
+   "Fuel list conflict: the PSI experimental table lists 8 fuels (iso-octane, n-octane, n-heptane, n-decane, ethanol, propanol/glycerol 95/5 and 80/20, heptane/iso-octane 50/50) and droplets of 1.5-5 mm. Rasul et al. 2022 (IEEE TPAMI; OSTI 1998037) report that the flown surrogate-fuel set had 278 burns of 11 fuels, including toluene, propylbenzene, decane/propylbenzene and heptane/toluene, which are absent from the table, and droplets of 1.17-3.81 mm. The table appears to be a planning envelope, not a test list. The 278 covers only the surrogate-fuel part of FLEX-2 (not the decane/hexanol, CO2/Xe or array tests), so n_tests stays null.",
+   "Analysis of the 2014 preprint (NTRS 20140006750) gives the decane test R383 as 14% O2 and 96% N2, which sums to 110% (probably 86%)."
   ]
  },
  "PSI-69": {
@@ -14766,6 +15033,74 @@
       "quote": "The predictions from the model for the droplet history capture the two stage combustion behavior"
      }
     ]
+   },
+   {
+    "claim": "Methanol extinction mode versus oxygen at 1 atm (O2/N2/CO2, D0 about 2-4 mm): at 18% O2 or more every droplet extinguished diffusively, at 14% O2 or less every droplet extinguished radiatively, and at 15% and 16% O2 a critical initial diameter separated the two modes, larger droplets switching to radiative extinction (the switch happening at a larger D0 at 16% than at 15%). Tests with more CO2 lay closer to the radiative (no-burn) line, which the authors attribute to CO2's higher infrared emissivity; CO2 affected diffusive extinction about as N2 does.",
+    "kind": "trend",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+      "quote": "In 18 % or more O2 all droplets exhibit diffusive extinction, and in 14 % or less O2 all exhibit radiative extinction, there being critical initial diameters separating the two limiting behaviors at the two intermediate O2 concentrations."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+      "quote": "had more CO2 in the atmosphere, suggesting that this diluent promotes radiative extinction, as expected from its much greater infrared emissivity."
+     }
+    ]
+   },
+   {
+    "claim": "Interpreting methanol extinction with the Zhang-Card-Williams water-absorption theory, diffusive extinction at 1 atm occurs when the infinite-rate (ideal) flame temperature falls to about 1800 K in 21% O2 (calculated lines for 1800 K and 1750 K bracket the data) and below 1650 K at 18% O2. Radiative extinctions occurred so close to the initial diameter that burning was transient and depended on ignition energy; the authors suggest such atmospheres are effectively outside the LOI and that water absorption can be neglected for them.",
+    "kind": "result",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+      "quote": "It may thus be concluded that diffusive extinction occurs when the infinite-rate ideal flame temperature decreases to a value not far from 1800 K in atmospheres having O2 contents of 21 %. That value decreases with dilution and is less than 1650 K at 18%."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+      "quote": "In a sense, then, one might wish to consider these atmospheric conditions to lie outside the LOI."
+     }
+    ]
+   },
+   {
+    "claim": "Methanol flame-standoff ratio (quasi-steady average of flame/droplet diameter) rises as ambient oxygen falls, at both 0.7 and 1 atm. A simplified quasi-steady model that includes water absorption predicts it reasonably, but measured ratios in O2/N2/He mixtures are consistently above the prediction while O2/N2/CO2 data agree better; the authors leave the cause open.",
+    "kind": "trend",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+      "quote": "As one would expect, df/d increases with decreasing ambient oxygen mole fraction since the flame needs to move father away to meet the stoichiometric requirement."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20130014061/downloads/20130014061.pdf",
+      "quote": "The measured FSRs for O2 − N2 − He mixtures are consistently higher than the predicted values compared to the O2 − N2 − CO2 mixture data points."
+     }
+    ]
+   },
+   {
+    "claim": "The first nine rows of the PSI table (identifiers 20CAL08 to 30CAL07, 5 March to 10 April 2009, 6 methanol and 3 heptane) are engineering tests in cabin air (0.21 O2/0.79 N2 at about 760 mmHg); the planned science matrix starts with row 10 on 22 May 2009. Analyses of suppressant effects should treat these rows as air baselines from the commissioning period.",
+    "kind": "method",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "table",
+      "table": "tests",
+      "note": "PSI-69 rows 1-9: FLEX identifiers containing 'CAL', dates 2009-03-05 to 2009-04-10, O 0.21 / N 0.79, pressure 757.7-764.2 mmHg; row 10 (256F002) dated 2009-05-22."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20120015928/downloads/20120015928.pdf",
+      "quote": "The first nine “engineering” tests used cabin air rather than specified diluent gasses."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -14981,7 +15316,12 @@
    "Abstracts of the key Elsevier papers (Nayagam et al. 2012 'Can cool flames support quasi-steady alkane droplet burning?', Hicks et al. 2011 tethered methanol/CO2, Nayagam 2013 AEA, Farouk and Dryer cool-flame 2014) were not available via OpenAlex or Semantic Scholar; their content is cited only through the NASA summaries. Most other publication DOIs in the record are ground-based precursor or modelling studies and were not read in full.",
    "The xenon tests mentioned in NASA documents and Shaw and Vang (2015) are not in the PSI table (it ends Dec 2011); SF6 named in the PSI objective does not appear in any test.",
    "Investigator affiliations in PSI (Dryer at South Carolina, Choi at Missouri) differ from those in the 2015 NASA report (Princeton, Connecticut). One contact email in the PSI record has a malformed domain; contact details were not copied.",
-   "No text addressed to an AI or unrelated instructions was found in the PSI files."
+   "No text addressed to an AI or unrelated instructions was found in the PSI files.",
+   "Publication review (Nov 2026; per-paper notes in data/publications/PSI-69.json): of the 51 listed publications, 8 were read in full (NTRS preprints/reports, open-access journals), 18 by abstract only and 25 not at all (closed Elsevier/Springer/Taylor & Francis papers with no open copy or indexed abstract, including Nayagam et al. 2012 \"Can cool flames support quasi-steady alkane droplet burning?\" and Nayagam 2013 AEA). About 20 are ground-based or modelling studies outside the ISS data. The open-access Dietrich et al. 2014 PDF was blocked by a bot check this time; the record's earlier quotes from it were not re-verified.",
+   "Run numbers in papers do not always equal PSI row numbers: Nayagam et al. 2013 (NTRS 20130014061) 'Run #204' (methanol, 2.75 mm, air, De 1.10 mm) is PSI row 203 (N01M201), and 'Run #263' (2.67 mm, 21% O2/30% He at 0.7 atm, De 1.42 mm) is PSI row 257 (H12M201); Run #110 equals PSI row 110. That paper also writes air as '20% O2 and 79% N2' where the table has 0.21/0.79.",
+   "Hicks et al. 2012 ASGSR slides (NTRS 20130010979) give FLEX-145 as '20% O2 / 75% CO2 / 5% N2', D0 3.38 mm, Dext 1.66 mm, K 0.44 on one slide but 'O2 20% / N2 75% / CO2 5%', D0 3.3 mm on the next; PSI row 145 (C01M201) has 0.20 O2/0.75 N2/0.05 CO2, 3.33 mm, 1.61 mm, 0.45 mm2/s. The first slide appears to swap N2 and CO2.",
+   "Nayagam et al. 2011 (NTRS 20120016855) describe a 1 atm methanol extinction test 'at 21% O2 had 70% CO2 and 9% N2' (Fig. 3, captioned 1 atm), but every 0.21/0.09/0.70 row in the PSI table (rows 10-18) is at 1546-2320 mmHg (2.0-3.05 atm); the only methanol one with an extinction diameter is row 16 (256F009, 2072 mmHg). The same paper counts 104 methanol tests by October 2011, against 142 methanol rows dated before then in the table (cut-off not stated).",
+   "The conclusions of NASA/TP-2015-216046 give initial diameters 'between 2 and 5 mm' and atmospheres of O2 with N2, CO2 and mixtures, but its Table IX (the PSI table) has d0 down to 1.10 mm (26 tests below 2 mm) and 50 helium-diluted tests; its Appendix A says it covers March 2009 to December 2010 although the table runs to December 2011."
   ]
  },
  "PSI-98": {
@@ -15872,6 +16212,37 @@
       "type": "external",
       "url": "https://ntrs.nasa.gov/citations/20170000230",
       "quote": "Two flow anemometers, one on each side of the sample will quantify the flow velocity in the duct and serve as input to the fan flow control algorithm."
+     }
+    ]
+   },
+   {
+    "claim": "Plan versus flight. The pre-flight paper held in PSI (written by 30 April 2016) planned Saffire-I as a burn of a SIBAL sheet about 0.94 m long and 0.4 m wide at 20 cm/s (Saffire-III at 30 cm/s), in hardware identical across the three units, a few hours after Cygnus unberthed on 2 June 2016. The flight followed the plan in sample and flow (94 x 40.6 cm, about 20 cm/s) but burned on 14 June 2016. The same paper warned that only two large samples and nine small ones would be burned, too few for a thorough evaluation, and that the results would likely raise new questions.",
+    "kind": "method",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "psi_file",
+      "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+      "locator": "p2",
+      "quote": "Saffire-I will be conducted at an air flow velocity of 20 cm/s while Saffire-III will be run at a flow velocity of 30 cm/s"
+     },
+     {
+      "type": "psi_file",
+      "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+      "locator": "p2",
+      "quote": "This sample material is approximately 0.94 meters long and 0.4 meters wide."
+     },
+     {
+      "type": "psi_file",
+      "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+      "locator": "p4",
+      "quote": "As of the writing of this paper, the un- berthing of the Cygnus is scheduled for June 2, 2016 and Saffire-I is scheduled to operate a few hours afterwards."
+     },
+     {
+      "type": "psi_file",
+      "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+      "locator": "p5",
+      "quote": "A thorough evaluation of these phenomena would require many more samples and range of materials. Also, if they are typical of most low-g combustion experiments, the findings will raise additional significant questions for material flammability in spacecraft."
      }
     ]
    }
@@ -16806,7 +17177,7 @@
     ]
    },
    {
-    "claim": "Cotton-fibreglass fabric burned completely at a steady rate. The 5 cm wide SIBAL strips burned their full 29 cm in microgravity at steady concurrent spread rates of 2.1 mm/s (20 cm/s air, 145 s burn) and 2.6 mm/s (115 s). For the second strip (2-6) the published paper (NTRS 20170008805) gives 25 cm/s flow, but the PSI table lists 20 cm/s. In 1 g the same strips burned completely with accelerating spread. The 2.1 mm/s is marginally faster than the 1.8 mm/s of the 40.6 cm wide Saffire-I sheet at 20 cm/s. The investigators attribute this partly to the higher starting O2 (22.1% vs 21.7%) and possibly to side entrainment on the narrow strip.",
+    "claim": "Cotton-fibreglass fabric burned completely at a steady rate. The 5 cm wide SIBAL strips burned their full 29 cm in microgravity at steady concurrent spread rates of 2.1 mm/s (20 cm/s air, 145 s burn) and 2.6 mm/s (115 s). For the second strip (2-6) the published paper (NTRS 20170008805) gives 25 cm/s flow, but the PSI table lists 20 cm/s. In 1 g the same strips burned completely with accelerating spread. The 2.1 mm/s is marginally faster than the 1.8 mm/s of the 40.6 cm wide Saffire-I sheet at 20 cm/s. The investigators attribute this partly to the higher starting O2 (22.1% vs 21.7%) and possibly to side entrainment on the narrow strip. A 3-D transient model (Li et al. 2019) attributes the narrow strip's faster spread and shorter burnout to more effective oxygen transport across its width, which gives a stronger flame, a smaller standoff distance and larger heat feedback to the fabric.",
     "kind": "result",
     "confidence": "high",
     "sources": [
@@ -16832,6 +17203,11 @@
       "type": "external",
       "url": "https://ntrs.nasa.gov/api/citations/20170008805/downloads/20170008805.pdf",
       "quote": "This is partly due to the slightly higher starting oxygen percentage (22.1% vs. 21.7%)."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2018.05.168",
+      "quote": "Compared to a wide sample, a narrow sample has more effective oxygen transport across the width of the sample. This results in a stronger flame, a shorter flame standoff distance from the sample surface, and larger heat feedback to the sample."
      }
     ]
    },
@@ -16948,6 +17324,33 @@
       "type": "table",
       "table": "tests",
       "note": "extra '1-g Spread Rate' = 'Acceleratory' for samples 2-1, 2-5, 2-6, 2-8, 2-9"
+     }
+    ]
+   },
+   {
+    "claim": "Planned versus flown conditions. The pre-flight sample table (2016) assigned 20 cm/s to seven samples and 30 cm/s to sample 6 (SIBAL fabric) and sample 9 (flat 10 mm PMMA). The published flight values are 25 cm/s for sample 2-6 and 20 cm/s (200 mm/s) for the flat PMMA sample 2-9, so the '20 or 30 cm/s' in the PSI approach text describes the plan, not the flight. Planned thicknesses (silicone 0.25, 0.61, 1.02 and 0.36 mm; fabric 0.33 mm) also differ slightly from the published values (0.27, 0.61, 1.03 and 0.37 mm; fabric 0.37 mm).",
+    "kind": "method",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "quote": "S5 SIBAL fabric 0.33 mm 20 Upstream S6 SIBAL fabric 0.33 mm 30 Upstream"
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "quote": "S9 Flat PMMA 10 mm (with tapered edge for ignition) 30 Upstream"
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/citations/20170001636",
+      "quote": "S1 Silicone 0.25 mm 20 Upstream S2 Silicone 0.61 mm 20 Upstream S3 Silicone 1.02 mm 20 Upstream S4 Silicone 0.36 mm 20 Downs tream"
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.combustflame.2018.10.016",
+      "quote": "Microgravity experiments were conducted during NASA's Spacecraft Fire Experiment (Saffire II), on board the Cygnus spacecraft at 100 kPa with an air flow velocity of 200 mm/s."
      }
     ]
    }
@@ -17182,7 +17585,10 @@
    "Two of the seven record publications are not Saffire-II results: Li et al. 2019 (Saffire-I fabric modelling) and Wang et al. 2020 (ground sensor evaluation for Saffire). The record lists 7 publications and the metadata says 7, but only 5 have DOIs.",
    "Full texts of Urban et al. 2019 (Combust. Flame 199) and Olson et al. 2019 (Fire Technol.) were not reachable. The Elsevier abstract was read via the Semantic Scholar API, and the Olson abstract from the University of Edinburgh repository page; the accepted-manuscript PDF there returned HTTP 403 / Cloudflare challenge. Quantitative flame lengths and thick-PMMA spread rates in those papers were therefore not extracted. The ICES 2015 silicone paper (Niehaus et al.) was read via NTRS 20150022421.",
    "The 'average flame power' figures (200 +/- 50 W fabric; 460 W PMMA) are from conference slides. Their derivation is not documented, and the PMMA value is printed as '460 + 50 W', probably '+/-'.",
-   "No personal data copied. The metadata contains investigator e-mail addresses, which were not reproduced. No text addressed to an AI was found."
+   "No personal data copied. The metadata contains investigator e-mail addresses, which were not reproduced. No text addressed to an AI was found.",
+   "Correction to gaps[7] (publication review, 2026-11-15): Li et al. 2019 is not only Saffire-I modelling. Its abstract states that both the 5 x 29 cm (Saffire-II) and the 41 x 94 cm (Saffire-I) fabric samples were analysed, and its model explanation of the narrow strip is now in findings[4]. gaps[7] is kept as written.",
+   "gaps[4] attributes the 30 cm/s flow to Saffire-III plans only. The 2016 pre-flight paper (NTRS 20170001636, the 'Objectives, Development and Status' paper held in PSI-98 and PSI-100) also planned 30 cm/s for Saffire-II samples 6 and 9 (findings[11]), and lists four radiometers (two front, two back), against the two in the PSI approach text.",
+   "Source difference on 1-g silicone: the 2015 ground study of the silicone samples (NTRS 20150022421; 0.25-1.00 mm) says that in upward Test 1-style burns 'the flame generally did not burn the entire sample', with burn length falling with thickness. findings[1], from the 2017 results paper (NTRS 20170008805), says the 0.27 mm sheet burned completely with accelerating upward spread in 1 g. The papers used different sample batches (0.25 vs 0.27 mm); both statements are kept. Per-paper review: data/publications/PSI-99.json."
   ]
  },
  "PSI-100": {
@@ -17853,6 +18259,12 @@
       "type": "external",
       "url": "https://ntrs.nasa.gov/citations/20180005168",
       "quote": "Saffire-III (25 cm/s)Saffire-I (20 cm/s)"
+     },
+     {
+      "type": "psi_file",
+      "file": "PSI-100_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+      "locator": "p2",
+      "quote": "Saffire-I will be conducted at an air flow velocity of 20 cm/s while Saffire-III will be run at a flow velocity of 30 cm/s"
      }
     ]
    },
@@ -18193,7 +18605,8 @@
    "Data quality: in the Saffire-III sensor workbooks the igniter current and voltage peak at only ~0.94 A and ~4.4 V (about 4 W), against 182 W in the investigators' table; the igniter channels appear to use a different calibration from Saffire-I's (4.1 A, 45.8 V). The radiometer columns lack the upstream/downstream labels given for Saffire-I.",
    "The '1 Hz Telemetry Data.xlsx' and 'Saffire_Data_Table2017.161...-EU.csv' cover 5 June 2017 (19:35-21:30 UTC), the day after the burns, so they do not contain the fires.",
    "Sensor-derived values in findings (pressure, CO2, radiometer and thermocouple peaks, run order) are our computations from the PSI workbooks, not published numbers.",
-   "No text addressed to an AI or unrelated instructions were found in the PSI-100 documents."
+   "No text addressed to an AI or unrelated instructions were found in the PSI-100 documents.",
+   "The held pre-flight paper ('SAFFIRE Objectives, Development and Status', NTRS 20170001636) planned Saffire-III for launch on OA-7 on 30 Dec 2016 with operations on 3 Mar 2017 (its Table 4, as of 30 Apr 2016); the burns took place on 4 June 2017. It is now cited in findings[4] for the planned 30 cm/s. Per-paper review: data/publications/PSI-100.json."
   ]
  },
  "PSI-101": {
@@ -19129,7 +19542,7 @@
     ]
    },
    {
-    "claim": "In the 11 zero-flow runs (smoke moved only by diffusion and thermal expansion, at about 0.5-1.5 cm/s seen on video), D_avm was larger than at 8.1 cm/s. The sources quantify this differently: 30-40% larger for all materials (final report text); 2-3 times larger (conclusions of the appended 2012 paper); and on average a factor of 1.7, ranging from 1.3 for Teflon to 2.8 for Kapton (2018 journal paper). Example: silicone run 104 at 0 cm/s had D_avm 1.22 um vs 0.42-0.47 um in the 8.1 cm/s baseline runs.",
+    "claim": "In the 11 zero-flow runs (smoke moved only by diffusion and thermal expansion, at about 0.5-1.5 cm/s seen on video), D_avm was larger than at 8.1 cm/s. The sources quantify this differently: 30-40% larger for all materials (final report text); 2-3 times larger (conclusions of the appended 2012 paper); and on average a factor of 1.7, ranging from 1.3 for Teflon to 2.8 for Kapton (2018 journal paper). Example: silicone run 104 at 0 cm/s had D_avm 1.22 um vs 0.42-0.47 um in the 8.1 cm/s baseline runs. Two more values exist: the 2018 paper's own conclusions round the increase to 'on average, double', and Mulholland et al. (Aerosol Sci. Technol. 2015) give an average factor of 1.9.",
     "kind": "result",
     "confidence": "medium",
     "sources": [
@@ -19161,6 +19574,16 @@
       "sheet": "Reduced Data with STS Det",
       "row": "SAME # 104 (Flight=2)",
       "value": "No flow run w/ aging; Inlet Velocity 0; Diameter of Average mass 1.216880 micro-m"
+     },
+     {
+      "type": "external",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+      "quote": "The zero-flow conditions produced smoke particles that were, on average, double the size of those produced at the nominal 8.1 cm/s flow rate."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1080/02786826.2015.1025125",
+      "quote": "The diameter of average mass increased on average by a factor of 1.9 and the morphology of the smoke changed from agglomerate with flow to spherical at no flow for one material."
      }
     ]
    },
@@ -19744,7 +20167,8 @@
    "The PSI record's experimentHardware field says 'Comparitive Soot Diagnostic Hardware' with a 1996 NTRS link. That describes the earlier CSD experiment, not the SAME hardware actually used.",
    "The SAME Operations Manual contains laptop FTP instructions with an internal IP address and anonymous login. They were not copied; no real credentials were seen.",
    "Sample dimensions (about 0.5 cm x 1.3 cm) come only from the 2018 journal paper; the PSI documents read do not state them.",
-   "Most raw data (zips, MP4 downlink video, housekeeping CSVs) are not downloaded and were not inspected."
+   "Most raw data (zips, MP4 downlink video, housekeeping CSVs) are not downloaded and were not inspected.",
+   "Zero-flow size increase, two further values (publication review, 2026-11-15): 'on average, double' in the conclusions of the 2018 Fire Safety Journal paper, whose body gives 1.7, and 'a factor of 1.9' in the abstract of Mulholland et al., Aerosol Sci. Technol. 49 (2015), listed under PSI-102. With gaps[4] that makes five figures for one quantity; the per-material 2018 values (1.3-2.8) remain the most specific."
   ]
  },
  "PSI-102": {
@@ -19771,7 +20195,7 @@
    "project_type": "Microgravity Investigation"
   },
   "one_line": "On the Space Station, small pieces of common spacecraft materials (Teflon, Kapton, silicone rubber, cotton lamp wick) were overheated without burning, and the size of the smoke particles was measured to find out what kind of smoke detector would reliably catch an early spacecraft fire.",
-  "summary": "SAME characterised pre-fire smoke in microgravity to guide spacecraft smoke-detector design. In the ISS Microgravity Science Glovebox during Expedition 15 (2007), wire-wrapped samples of Teflon, Kapton, silicone rubber, cellulose lamp wick and a reference liquid (dibutyl phthalate on a wick) were heated below ignition in a 2-8 cm/s air flow; the smoke was held in an aging chamber for 10-1800 s, then measured by three compact instruments giving the zeroth, first and third moments of the size distribution, from which a lognormal geometric mean diameter and spread were derived. Fresh smoke had geometric mean diameters of 80-189 nm and mass-mean diameters of 179-472 nm (geometric standard deviation 1.84-2.18); 720 s of aging, by coagulation, raised these to 155-352 nm and 267-606 nm. Silicone and lamp-wick smoke carried roughly half their mass above 1 um; Teflon and Kapton very little. An early analysis put low-gravity count mean diameters about 50% above 1-g values. The Shuttle ionization detector responded to every test, the ISS light-scattering detector poorly to Teflon. The investigators concluded single-moment detectors are risky and recommended multi-moment or size-classifying detection.",
+  "summary": "SAME characterised pre-fire smoke in microgravity to guide spacecraft smoke-detector design. In the ISS Microgravity Science Glovebox during Expedition 15 (2007), wire-wrapped samples of Teflon, Kapton, silicone rubber, cellulose lamp wick and a reference liquid (dibutyl phthalate on a wick) were heated below ignition in a 2-8 cm/s air flow; the smoke was held in an aging chamber for 10-1800 s, then measured by three compact instruments giving the zeroth, first and third moments of the size distribution, from which a lognormal geometric mean diameter and spread were derived. Fresh smoke had geometric mean diameters of 80-189 nm and mass-mean diameters of 179-472 nm (geometric standard deviation 1.84-2.18); 720 s of aging, by coagulation, raised these to 155-352 nm and 267-606 nm. Silicone and lamp-wick smoke carried roughly half their mass above 1 um; Teflon and Kapton very little. At matched 8 cm/s flow, sizes matched 1-g tests. The Shuttle ionization detector responded to every test, the ISS light-scattering detector poorly to Teflon. The investigators concluded single-moment detectors are risky and recommended multi-moment or size-classifying detection.",
   "question": {
    "text": "Spacecraft smoke detectors (ionization on the Space Shuttle, near-infrared forward light scattering on the US ISS modules) were designed from 1-g data, and the two designs respond to non-overlapping particle sizes. Without buoyancy, smoke from an overheated material stays longer in the hot, vapour-rich zone near the source and takes longer to reach a detector, so particles might grow by nucleation, condensation and coagulation. The earlier Shuttle-glovebox Comparative Soot Diagnostics (CSD) experiment had found larger solid smoke particles in low gravity and a Shuttle detector that was blind to visible silicone-rubber and paper smoke, but could not size the liquid droplets. SAME set out to quantify the particle size distribution of smoke from overheated (not flaming) spacecraft materials in microgravity, including the effect of sample temperature, air flow and aging time, to compare it with 1 g, to test the hypothesis that liquid smokes form substantially larger droplets in microgravity, and to evaluate how the two existing US spacecraft detectors respond.",
    "sources": [
@@ -20549,9 +20973,9 @@
     ]
    },
    {
-    "claim": "The later flight-versus-ground comparison (SAME-2 presentation, 2013) reached a weaker conclusion than the 2008 analysis. At 8 cm/s, ground tests gave particle dimensions very close to the flight results, and particle size grew substantially as air flow was reduced. Imposed flow and residence time, rather than gravity as such, appear to control the size. The two statements are not reconciled in the PSI documents, and the 2013 deck may include SAME-R flight data.",
+    "claim": "The later flight-versus-ground comparison (SAME-2 presentation, 2013) reached a weaker conclusion than the 2008 analysis. At 8 cm/s, ground tests gave particle dimensions very close to the flight results, and particle size grew substantially as air flow was reduced. Imposed flow and residence time, rather than gravity as such, appear to control the size. The PSI documents do not reconcile the two statements, and the 2013 deck may include SAME-R flight data. The investigators' 2018 Fire Safety Journal paper, which covers both flights (2007 and 2010), settles it in favour of the weaker conclusion: low-gravity smoke was not significantly different from smoke made under equivalent 1-g conditions, and flight and ground diameters of average mass at matched flow, temperature and aging fall on a slope-1 line at 8.1 cm/s. Lower flow could raise the diameter of average mass by up to about a factor of 2. The preliminary 50% figure in findings[4] is therefore superseded.",
     "kind": "null_result",
-    "confidence": "medium",
+    "confidence": "high",
     "sources": [
      {
       "type": "psi_file",
@@ -20564,6 +20988,21 @@
       "file": "PSI-102_Presentations_SAME2_FlightVSGroundTestResults.pptx",
       "locator": "slide 27",
       "quote": "Particle dimensions increase substantially as air flow was decreased"
+     },
+     {
+      "type": "external",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+      "quote": "Results from the ISS experiment show that smoke particles vary in morphology and average diameter, however, they are not significantly different from smoke particles generated in equivalent experiments performed in normal gravity."
+     },
+     {
+      "type": "external",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+      "quote": "The diameter of average mass from low-gravity is plotted versus the results from corresponding normal gravity tests under the same flow, temperature, and aging conditions and shown in Figure 8 . Overall the results correlate strongly with a slope of 1."
+     },
+     {
+      "type": "external",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+      "quote": "The potential error of this analogy can be estimated using Figure 6 which suggests that lower flow rates could increase the diameter of average mass by as much as a factor of 2."
      }
     ]
    },
@@ -20998,7 +21437,8 @@
    "The PSI record field experimentHardware ('Comparitive Soot Diagnostic Hardware') and its NTRS link (19960008413, 'Smoke detection in low-G fires') describe the earlier CSD experiment, not SAME hardware. The metadata zip is named PSI-102_metadata_PSI-170_SAME.zip.",
    "Final report text says aged silicone diameter of average mass exceeded 1 um, contradicting its own table (606 nm). Count mean diameters for the same materials differ between the 2008 ICES, 2008 AIAA, 2009 AIAA and final-report tables.",
    "Four Analyzed Data .xml files (16904, 16912, 16937, 16942) are listed in files.csv with zero size and were not downloaded. The PSI record lists 52 removed files (legacy duplicates of the analyzed data).",
-   "Investigator affiliations: the PSI record lists Mulholland at University of Maryland and Claire Fortenberry as Project Scientist; the 2005 concept document lists Mulholland at NIST and Gary Ruff as Project Scientist (the role at the time of flight). Contact e-mail addresses in the record were not copied."
+   "Investigator affiliations: the PSI record lists Mulholland at University of Maryland and Claire Fortenberry as Project Scientist; the 2005 concept document lists Mulholland at NIST and Gary Ruff as Project Scientist (the role at the time of flight). Contact e-mail addresses in the record were not copied.",
+   "Changed in the publication review (2026-11-15): findings[5] used to end 'The two statements are not reconciled in the PSI documents, and the 2013 deck may include SAME-R flight data.' with confidence medium. Meyer et al., Fire Safety Journal 98 (2018), which covers both SAME flights (NIST author manuscript PMC7918997), reconciles them: no significant gravity effect at matched conditions of at least 8.1 cm/s. findings[4] (the preliminary 2008 claim of about 50% larger low-g count mean diameters) is kept as the historical result but is superseded. The summary sentence 'An early analysis put low-gravity count mean diameters about 50% above 1-g values.' was replaced accordingly. Per-paper review: data/publications/PSI-102.json."
   ]
  },
  "PSI-106": {
@@ -21022,7 +21462,7 @@
    "project_type": "Microgravity Investigation"
   },
   "one_line": "Astronauts on the Space Station photographed small gas flames burning from a tube into a gentle stream of air, to see how flames lift off, hold on and make soot without gravity and to provide test cases for computer models of flames.",
-  "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction about eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
+  "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction four- to eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
   "question": {
    "text": "SLICE aimed to understand the structure and stability of laminar non-premixed (diffusion) flames without buoyancy. Specific aims were: what stabilises the flame base, particularly when it lifts off the nozzle; the lift-off velocity limits for different fuels and nozzle diameters; how nitrogen dilution of the fuel affects soot and stability; and how microgravity changes flame length and radiative loss compared with 1 g. It also aimed to provide a microgravity data set for validating numerical models of flame structure, soot and radiation. The hypothesis was that burner diameter, coflow velocity and fuel composition strongly influence flame structure and stability in microgravity, and that these flames differ fundamentally from 1-g flames. Before SLICE, no direct experiment-computation comparison existed for such microgravity flames. SLICE was also a precursor to refine the test matrix of ACME's CLD Flame experiment.",
    "sources": [
@@ -21440,7 +21880,7 @@
   },
   "findings": [
    {
-    "claim": "Microgravity made a sooting methane flame larger, sootier and cooler. For a 100% CH4 flame on the 3.23 mm nozzle (mean fuel velocity 46 cm/s, nominal coflow 18 cm/s), the microgravity flame was taller and wider than its 1-g counterpart. Its peak soot volume fraction was about 8 times higher, and its peak soot temperature about 200 K lower because of the larger radiative loss.",
+    "claim": "Microgravity made a sooting methane flame larger, sootier and cooler. For a 100% CH4 flame on the 3.23 mm nozzle (mean fuel velocity 46 cm/s, nominal coflow 18 cm/s), the microgravity flame was taller and wider than its 1-g counterpart. Its peak soot volume fraction was about 4 to 8 times higher (about 8 at nominal values), and its peak soot temperature about 200 K lower because of the larger radiative loss.",
     "kind": "result",
     "confidence": "high",
     "sources": [
@@ -21458,6 +21898,11 @@
       "type": "external",
       "url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
       "quote": "A 100% CH 4 flame using 3.23 mm ID nozzle with average fuel velocity of 46 cm/s and nominal air coflow of 18 cm/s was measured at 1 g and μ g."
+     },
+     {
+      "type": "external",
+      "url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
+      "quote": "the microgravity flames were found to be sootier than normal gravity flames by a factor of approximately 4 to 8 in terms of the peak soot volume fraction"
      }
     ]
    },
@@ -21759,7 +22204,8 @@
    "Objective 2 (lift-off velocity limits) and objective 4 (radiative heat loss) have no quantitative results in the sources reached.",
    "Full texts of the Elsevier papers (Proc. Combust. Inst. 35, Combust. Flame 2016) were not read. NTRS preprints/abstracts were used instead (20140017780, 20150002322, 20150011070, 20160012298/20160010264, 20140009169). Semantic Scholar has no abstracts for three of the DOIs. The Dobbins et al. 2022 abstract covers ethylene flames on 'Yale and ACME' burners; it is unclear whether its microgravity data are from SLICE, so it was not used.",
    "Record totalFileSize (72,914,598,688 bytes, about 72.9 GB) does not match the two files listed (about 9.5 kB). The metadata zip is named after PSI-174.",
-   "Metadata contains investigator e-mail addresses; not copied. No text addressed to an AI was found."
+   "Metadata contains investigator e-mail addresses; not copied. No text addressed to an AI was found.",
+   "Correction (Publications pass 2026-11-15): findings[0] previously read \"Its peak soot volume fraction was about 8 times higher\" and the summary \"about eightfold\". The same paper's conclusions bound the increase at about 4 to 8 times, allowing for uncertainty in the soot dispersion exponent and temperature (NTRS 20140017780, Conclusions); 8 is the upper value."
   ]
  },
  "PSI-107": {
@@ -22680,7 +23126,7 @@
   },
   "findings": [
    {
-    "claim": "Laminar smoke points exist for non-buoyant co-flowing jet flames, contrary to Glassman's 1988 prediction. On the ISS, 52 smoke points (final-report table: 6 ethylene, 6 propane, 20 propylene, 13 for 75% and 7 for 50% propylene; the same report's closing remarks say 55) were found at 0.41-1.6 mm burners and 5.4-65 cm/s co-flow. All smoke-point flames were attached, with Re 36-788.",
+    "claim": "Laminar smoke points exist for non-buoyant co-flowing jet flames, contrary to Glassman's 1988 prediction. On the ISS, 52 smoke points (final-report table: 6 ethylene, 6 propane, 20 propylene, 13 for 75% and 7 for 50% propylene; the same report's closing remarks say 55) were found at 0.41-1.6 mm burners and 5.4-65 cm/s co-flow. All smoke-point flames were attached, with Re 36-788. The archival paper (Dotson et al. 2011) reports 55: 6 ethylene, 6 propane, 22 propylene, 14 for 75% and 7 for 50% propylene.",
     "kind": "result",
     "confidence": "high",
     "sources": [
@@ -22713,6 +23159,11 @@
       "file": "PSI-107_Reports_SPICE_30-DayPostFlightReport.pdf",
       "locator": "p3",
       "quote": "Glassman predicted that smoke points would not occur in nonbuoyant gas- jet flames."
+     },
+     {
+      "type": "external",
+      "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+      "quote": "A total of 55 smoke points were found for ethylene, propane, propylene, and propylene/nitrogen mixtures."
      }
     ]
    },
@@ -22794,7 +23245,7 @@
     ]
    },
    {
-    "claim": "Sooting-propensity ranking at fixed burner and co-flow (1.6 mm burner): propane < ethylene < 50% propylene < 75% propylene < propylene, the same order as in 1 g. With the 0.76 mm burner ethylene had the longer smoke point than propane. Example: ethylene reached L_SP of about 105 mm at 17.6 cm/s, a length propane reached only at 33.6 cm/s. The final report's closing remarks print the order with ethylene and propane swapped (see limitations).",
+    "claim": "Sooting-propensity ranking at fixed burner and co-flow (1.6 mm burner): propane < ethylene < 50% propylene < 75% propylene < propylene, the same order as in 1 g. With the 0.76 mm burner ethylene had the longer smoke point than propane. Example: ethylene reached L_SP of about 105 mm at 17.6 cm/s, a length propane reached only at 33.6 cm/s. The final report's closing remarks print the order with ethylene and propane swapped (see limitations). Across all three burners, the archival paper's fuel constants A_f of the d^-0.91 u^0.41 correlation (21.2 mm ethylene, 18.5 propane, 13.9 for 50% propylene, 7.65 for 75%, 6.05 propylene) rank ethylene < propane < 50% < 75% propylene < propylene: overall, propane soots more than ethylene in microgravity, the reverse of 1 g, which the authors attribute to propane's lower jet velocity (longer residence time) at equal flame length. The 1-g order holds only at the 1.6 mm burner.",
     "kind": "result",
     "confidence": "medium",
     "sources": [
@@ -22816,6 +23267,21 @@
       "sheet": "Smoke Point Datasheet",
       "row": "rows 10 and 14 (E7-1, P7-1)",
       "value": "Ethylene 0.762 mm: uair 17.59, smk pt 105.22 mm; Propane 0.762 mm: uair 33.57, smk pt 105.45 mm"
+     },
+     {
+      "type": "external",
+      "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+      "quote": "The only surprise of this ranking is that propane soots more than ethylene, which has not been observed in previous normal-gravity [7,30] or microgravity tests [21,24]."
+     },
+     {
+      "type": "external",
+      "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+      "quote": "The microgravity smoke points for propane are shorter than for ethylene for the 0.76 mm burner, leading to propane's lower value of Af. Note that this is not the case for the 1.6 mm burner."
+     },
+     {
+      "type": "external",
+      "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+      "quote": "0.0637 2367 69.6–735 1.63–3.89 127–636 6 21.2 106 0.0603 2264 48.9–460 1.80–3.84 176–788 6 18.5 162"
      }
     ]
    },
@@ -23133,7 +23599,7 @@
     ]
    },
    {
-    "text": "The documents disagree on several basics. Duct size: 76 x 76 x 170 mm vs 172 x 43 x 43 mm. Fuel bottles: 150 cc vs 75 cc. Mass flow controller: MKS vs Sierra. Number of smoke points: 52 vs 55, with 20 vs 23 for propylene. Number of tests: 526 / 263 / 200. The fuel ranking in the final report's conclusion 4 (ethylene < propane) contradicts its own discussion and the other papers (propane < ethylene). The final report is an unpolished draft whose appendices B-F are empty.",
+    "text": "The documents disagree on several basics. Duct size: 76 x 76 x 170 mm vs 172 x 43 x 43 mm. Fuel bottles: 150 cc vs 75 cc. Mass flow controller: MKS vs Sierra. Number of smoke points: 52 vs 55, with 20 vs 23 for propylene. Number of tests: 526 / 263 / 200. The fuel ranking in the final report's conclusion 4 (ethylene < propane) contradicts its own discussion and the other papers (propane < ethylene). The final report is an unpolished draft whose appendices B-F are empty. [Correction, Publications pass 2026-11-15: the ranking ethylene < propane is not an error. It is the conclusion of the peer-reviewed paper (Dotson et al., Fire Saf. J. 46 (2011) 550-555), derived from the fuel constants fitted over all burners; propane < ethylene holds only at the 1.6 mm burner and is the 1-g order (see findings[4]). The paper also gives a third smoke-point split: 55 in all, 22 propylene and 14 for 75% propylene.]",
     "sources": [
      {
       "type": "psi_file",
@@ -23164,6 +23630,11 @@
       "file": "PSI-107_Presentations_Laminar Smoke Points in Coflow Measured Aboard ISS.pdf",
       "locator": "p24",
       "quote": "# SP 6 6 23 13 7"
+     },
+     {
+      "type": "external",
+      "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+      "quote": "This is the same as in normal gravity except for the exchanged positions of ethylene and propane."
      }
     ]
    },
@@ -23261,10 +23732,12 @@
    "Other table issues: 25 rows have blank air rate ('Ku LOS', 'no data', or Nikon rows where the formula was not filled); 10 rows have zero hydrocarbon fuel rate (LOS rows and a 'ran out of fuel' row); the 75% propylene label is spelled two ways ('75 % Propylene' 119 rows, '75% Propylene' 16); GMT ignition times use mixed formats (14:37:08, 14.43.58, 1744, 'no ku', 'Ku LOS'); in tests.csv the date column is empty because GMT day-of-year was not converted (all 2009); and fuel_fraction is null for pure fuels and methane.",
    "Max air rate in the table (85.28 cm/s, GMT 052) is above the 65 cm/s maximum at smoke points and the 5-50 cm/s design requirement; it is a single reading during a fan sweep and was not checked further.",
    "Not readable: SPICE SRD (.doc), 'SPICE Overview.ppt', 'SPICE-1 Ops Overview and Smoke Point Cue Card.ppt' (legacy formats, unsupported by the extractor); the assembly drawing PDF has no text layer. The 2011 crew training gives the cue-card text, so the ops procedure is covered. Imagery, picture books and videos (about 6.9 GB) were not downloaded.",
-   "The final report's Appendices B-F (the 2009 ESSCI, 2010 AIAA, 33rd Symposium, Leeds and Fire Safety Journal papers) are empty placeholders in PSI. The Fire Safety Journal paper (doi 10.1016/j.firesaf.2011.08.002, listed in the metadata) was not fetched because sections 1-4 already covered the results. The figures (L_SP vs u_a, L_SP vs \\dot m_f/Z_st, TSI plot) are images, so per-point values were taken from SmokePointReview-0g-3.xlsx and cited as psi_table.",
+   "The final report's Appendices B-F (the 2009 ESSCI, 2010 AIAA, 33rd Symposium, Leeds and Fire Safety Journal papers) are empty placeholders in PSI. The Fire Safety Journal paper (doi 10.1016/j.firesaf.2011.08.002, listed in the metadata) was not fetched because sections 1-4 already covered the results. The figures (L_SP vs u_a, L_SP vs \\dot m_f/Z_st, TSI plot) are images, so per-point values were taken from SmokePointReview-0g-3.xlsx and cited as psi_table. [Publications pass 2026-11-15: the paper was read from the author copy at terpconnect.umd.edu/~pbs; it changed findings[0], findings[4] and limitations[4].]",
    "Personal contact details (emails, phone numbers) appear in the PSI record contacts and the crew-training decks; they were not copied.",
    "Metadata oddities: the ISA metadata zip is named 'PSI-176_SPICE', and its study design descriptors include 'butane-lighter flame', which does not match SPICE. The PSI record has no start/end dates; dates here come from the final report (12 sessions, 14 Feb - 23 Jun 2009).",
-   "Per-run O2, pressure and temperature were not logged in PSI for SPICE; only the 19-24% O2 cabin range is stated."
+   "Per-run O2, pressure and temperature were not logged in PSI for SPICE; only the 19-24% O2 cabin range is stated.",
+   "Publications pass 2026-11-15: the archival paper (Dotson et al. 2011, sec. 3) gives cabin O2 as an estimated 20-23% (PSI final report: 19-24%) and says the glovebox was flushed with cabin air after each burn (PSI documents: after every two burns). Not reconciled.",
+   "Publications pass 2026-11-15: a later UMD MS thesis (DeBold 2012, hdl.handle.net/1903/13569, not listed in the PSI record) reports a 2012 SPICE extension aboard the ISS with 57 more smoke points (methane, ethane, ethylene, propane; burners 0.76-3.2 mm; coflow 3.0-47 cm/s), including the first methane smoke point at atmospheric pressure. Those tests are not in the PSI tables; it was not used for findings."
   ]
  },
  "PSI-115": {
@@ -25067,6 +25540,28 @@
       "quote": "for DME diffusion cool flame with and without buoyancy for identical conditions (XDME= 0.587, UF = 62.3 cm/s, UO = 50.9 cm/s, a ~ 90 s-1, P = 1 atm)"
      }
     ]
+   },
+   {
+    "claim": "Beyond single-component fuels, the group simulated isolated droplets of three Jet-A surrogate mixtures with the same global (fully pre-vaporised) combustion behaviour but very different distillation curves (n-decane/iso-octane/toluene; n-dodecane/iso-octane/1,3,5-trimethylbenzene; n-hexadecane/iso-octane/1,3,5-trimethylbenzene), with UNIFAC liquid-phase activity coefficients. For the first mixture, predictions agree with published drop-tower data for 550 um droplets in air once near-full internal mixing and sooting are included. Preferential vaporization depends strongly and non-linearly on initial droplet diameter and pressure: at low pressure and combustor-sized drops it is close to the frozen limit, while at practical pressures batch distillation dominates and chemical-property differences matter as much as physical ones. This is a ground (drop-tower) validation, not FLEX data.",
+    "kind": "result",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+      "quote": "The predictions using Mixture-1 are found to be in good agreement with previously published drop-tower experiments for 550 µm droplet combustion in air."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+      "quote": "By comparing predictions for the three mixtures, preferential vaporization effects exhibit strong non-linear dependences on initial droplet diameter and ambient pressure."
+     },
+     {
+      "type": "external",
+      "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+      "quote": "However, at pressures typical of those found in applications, batch distillation dominates and preferential vaporization chemical property differences are found to become as significant as physical property effects in influencing combustion behaviors."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -25902,6 +26397,28 @@
       "quote": "near extinction where the flame temperature is low, the multistage flame dynamics are controlled by the first oxidation stage, governed by peroxy chemistry"
      }
     ]
+   },
+   {
+    "claim": "Link to the ISS droplet cool flames (FLEX): counterflow cool-flame extinction of n-heptane to n-dodecane (atmospheric pressure, fuel side 550 K, oxidiser 300 or 550 K) gives an oxygen exponent n = 1.7 for cool-flame reactivity, somewhat above the n = 1.5 derived from the ISS n-alkane droplet extinctions; the authors judge the two consistent and attribute the difference to the droplet model's assumed NTC crossover temperature being above the computed peak cool-flame temperature. All kinetic models tested over-predicted n-heptane cool-flame extinction strain rates by at least a factor of two.",
+    "kind": "result",
+    "confidence": "high",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1865795",
+      "quote": "In this study, we measured n = 1.7, which is greater than n = 1.5 derived from the microgravity droplet experiment."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1865795",
+      "quote": "The results are consistent with the measurements of extinction conditions in microgravity n-alkane-droplet experiments [27,29]."
+     },
+     {
+      "type": "external",
+      "url": "https://www.osti.gov/servlets/purl/1865795",
+      "quote": "all of the employed kinetic models over-predict the cool flame extinction strain rates for n-heptane by at least a factor of two"
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -26054,7 +26571,8 @@
    "The metadata zip ('PSI-142_metadata_PSI-164_Quantitative Studies.zip') is named after PSI-164 and was not downloaded.",
    "Journal abstracts were read for Combust. Flame 179 (2017), 195 (2018), 196 (2018), 231 (2021), Proc. Combust. Inst. 37 (three papers) and the two reviews, via Princeton's research portal and Semantic Scholar; full texts (ScienceDirect) returned HTTP 403, so figure-level details (oxidiser O2 fractions, ozone levels for IDs 1-2, uncertainties) were not available. Abstracts for Combust. Flame 178 (2017) and 166 (2016) were not found.",
    "No microgravity tests were done in this investigation; the number of laboratory runs is not reported, so n_tests is null.",
-   "The record's 'approach' mentions spark-assisted n-heptane/air propagation computations; no deposited data or abstract read here reports their results."
+   "The record's 'approach' mentions spark-assisted n-heptane/air propagation computations; no deposited data or abstract read here reports their results.",
+   "Publication review (data/publications/PSI-142.json): full text read for Combust. Flame 231 (2021) 111471 (OSTI accepted manuscript, purl 1865795) and the ICDERS 2017 extended abstract; abstracts for 7 others; not read: Combust. Flame 178 (2017) 10.1016/j.combustflame.2017.01.006, Proc. Combust. Inst. 35 (2015) 10.1016/j.proci.2014.05.120, and the separately listed supplementary material of the 2021 paper."
   ]
  },
  "PSI-159": {
@@ -27170,6 +27688,28 @@
       "quote": "Based on the output from the photomultipliers, radiometers, and intensified camera images we do not believe any self-sustained cool flames were created."
      }
     ]
+   },
+   {
+    "claim": "A Spalding-type droplet-burning model extended to burner flames and the partial-burning regime predicts both hot and cool flame radii with one fitted property: assuming peak temperatures of 1400 K (hot) and 750 K (cool), rhoD = 0.0334 g/m/s at 300 K gives R^2 = 0.92 against the measured radii of the cool flames and of quasi-steady normal n-butane hot flames (X_O2 0.37-0.40, 0.5-2 bar). This is about 35% above the 0.0248 g/m/s measured for O2/N2 at 298 K.",
+    "kind": "method",
+    "confidence": "medium",
+    "sources": [
+     {
+      "type": "external",
+      "url": "https://par.nsf.gov/servlets/purl/10426596",
+      "quote": "ρD was optimized to a value of 0.0334 g/m-s at 300 K"
+     },
+     {
+      "type": "external",
+      "url": "https://par.nsf.gov/servlets/purl/10426596",
+      "quote": "The data has a coefficient of determination of R2 = 0.92 with respect to the line shown with unity slope."
+     },
+     {
+      "type": "external",
+      "url": "https://par.nsf.gov/servlets/purl/10426596",
+      "quote": "Wang et al. [36] found ρD = 0.0248 g/ms for an equimolar mixture of O2 and N2 at 1.01 bar and 298 K."
+     }
+    ]
    }
   ],
   "fire_safety": {
@@ -27447,7 +27987,8 @@
    "Data check: 30 tests show peak burner temperatures above 450 °C (723 K), the stated termination limit (max 651.5 °C in 21242 A1). This is presumably overshoot after flow cut-off or lag, but it is not explained in the documents.",
    "The Engineering Implementation report (dated 19 May 2022) still states inverse-flame tests 'have yet to be conducted'. This is stale text carried over from an earlier version.",
    "Raw 125 Hz data files are in instrument voltages. The calibration document (ACME-DOC-010 Rev. D) is not in PSI. SAMS acceleration data are not archived with the experiment.",
-   "The final report and engineering report contain a NASA staff phone number and e-mail; these were not copied. No credentials and no text addressed to an AI were found in the sampled raw notes (as-run parameter files, TP timelines, image comments, flow-trace PDFs)."
+   "The final report and engineering report contain a NASA staff phone number and e-mail; these were not copied. No credentials and no text addressed to an AI were found in the sampled raw notes (as-run parameter files, TP timelines, image comments, flow-trace PDFs).",
+   "Publications pass 2026-11-15: per-fuel outcome counts in the paper (Kim et al. 2023, Table 1; radiatively extinguished / flow-terminated) are normal ethane 30/10, propane 34/6, n-butane 46/17 and inverse ethane 25/22, propane 24/13, n-butane 30/23. tests.csv agrees for four groups but has normal n-butane 38 SE / 15 FT and inverse ethane 27 SE / 22 FT. The n-butane excess in the paper fits the hot-cool-hot tests 21291 A1 and C1 being counted as several hot flames; the 2 extra inverse-ethane SE rows in PSI are unexplained. The paper also states that normal propane flames above 1 bar were limited to X_O2 = 0.21."
   ]
  }
 }

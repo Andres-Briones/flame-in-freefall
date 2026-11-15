@@ -1,0 +1,697 @@
+[
+  {
+    "title": "The kinetics and warm flame chemistry associated with radiative extinction of spherical diffusion flames",
+    "doi": "10.1080/13647830.2024.2326830",
+    "access": "full_text",
+    "read_url": "https://drum.lib.umd.edu/items/1d83d9b4-fe61-441b-ba38-df8b7a815e0f",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Detailed-chemistry transient modelling (UCSD mechanism, 57 species, 270 reactions) of the ISS ethylene spherical flames: as peak temperature falls toward the ~1130 K extinction point, reactant leakage and HO2 chemistry grow; warm-flame chemistry delays but does not prevent extinction. The dissertation version also validates the model against 17 radiatively extinguished ISS normal flames (measured extinction temperature 1130 +/- 23 K vs predicted 1126 +/- 6 K; extinction radius R^2 = 0.98).",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Warm-flame chemistry delays but does not prevent extinction near 1130 K.",
+        "quote": "At atmospheric pressure, warm flame chemistry is not strong enough to sustain the flame below its extinction point of 1130 K.",
+        "locator": "Waddell 2023 UMD dissertation, sec. 6.1.1",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "For 17 normal ISS flames at 1 atm that extinguished radiatively (X_O2 0.20-0.38), thin-filament-pyrometry extinction temperatures averaged 1130 +/- 23 K, against 1126 +/- 6 K from the transient detailed-chemistry model.",
+        "quote": "The means are similar, at 1130 ± 23 K for the experiments and 1126 ± 6 K for the simulations",
+        "locator": "Waddell 2023 UMD dissertation, sec. 2.5.1, Table 2.1",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The model predicts the measured flame radius just before radiative extinction for the same 17 flames with R^2 = 0.98.",
+        "quote": "There is good agreement between the model and experiments, with an R2 value of 0.98.",
+        "locator": "Waddell 2023 UMD dissertation, sec. 2.5.1, Fig. 2.13",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Measured burner temperatures are reproduced only if heating of the reactant gas inside the porous sphere is neglected at high flows; burner temperature matters for small flames close to the burner, little for large ones.",
+        "quote": "These results indicate that the temperature of the porous sphere has little effect on the overall flame properties, except in cases where the flame is small and close to the burner.",
+        "locator": "Waddell 2023 UMD dissertation, sec. 2.6",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "The journal paper (Combust. Theory Model. 2024) is paywalled; its abstract (WUSTL portal) matches record findings[9]. The open UMD dissertation of the first author (DRUM handle 1903/29996, chapters 2-3) was read instead; it is the dissertation version, so wording may differ from the paper."
+  },
+  {
+    "title": "Soot Formation in Spherical Diffusion Flames",
+    "doi": "10.3390/math11020261",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/soot-formation-in-spherical-diffusion-flames/",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Russian partner team (Frolov et al.) 1-D transient modelling with a soot sub-model of the Flame Design/Adamant normal and inverse ethylene flames at 0.5-2 atm: soot forms where 0.32 < C/O < 0.44 and T > 1300-1500 K.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Soot formation window in C/O and temperature, already record findings[10].",
+        "quote": "The results indicate that soot formation in normal and inverse SDFs is concentrated in the region where the local C/O atomic ratio and local temperature satisfy the conditions 0.32 < C/O < 0.44 and T > 1300–1500 K.",
+        "locator": "abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "MDPI open-access PDF returned HTTP 403 to scripted download; abstract read via OpenAlex/WUSTL. Modelling paper; the record already cites it."
+  },
+  {
+    "title": "On the existence of steady-state gaseous microgravity spherical diffusion flames in the presence of radiation heat loss",
+    "doi": "10.1016/j.proci.2022.07.049",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/on-the-existence-of-steady-state-gaseous-microgravity-spherical-d/",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "ISS experiments and transient modelling show steady spherical flames can exist with radiative loss if the steady size is below the radiative-extinction size and the flame develops before cooling below 1130 K; steady flames were observed for up to 870 s.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Conditions for steady flames and 870 s burns.",
+        "quote": "Despite a narrow range of attainable conditions, flames that exhibit steady-state behavior are observed aboard the ISS for up to 870 s, even with the constraint of a finite boundary.",
+        "locator": "abstract",
+        "record_path": "findings[2]"
+      }
+    ],
+    "notes": "Elsevier accepted manuscript blocked (HTTP 403); NTRS lists it with no download. Abstract from the WUSTL research portal; identical to the text in the PSI final report."
+  },
+  {
+    "title": "Critical temperature and reactant mass flux for radiative extinction of ethylene microgravity spherical diffusion flames at 1 bar",
+    "doi": "10.1016/j.proci.2022.07.043",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/critical-temperature-and-reactant-mass-flux-for-radiative-extinct/",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "ISS normal and inverse ethylene flames at 1 bar all extinguish at a critical 1130 K and a critical reactant flux (0.2 g/m^2/s fuel, 0.68 g/m^2/s O2); a simple equation gives flame size at extinction from the reactant flow.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Critical extinction temperature and fluxes.",
+        "quote": "Despite this broad range of conditions, all flames extinguish at a critical extinction temperature of 1130 K, and a fuel-based mass flux of 0.2 g/m 2 -s for normal flames, and an oxygen-based mass flux of 0.68 g/m 2 -s for inverse flames.",
+        "locator": "abstract",
+        "record_path": "findings[0]"
+      }
+    ],
+    "notes": "Full text blocked (Elsevier, HTTP 403; NTRS record has no download). Abstract from WUSTL portal. The extinction-size equation itself is still not quoted (see record gaps)."
+  },
+  {
+    "title": "An investigation of thermal radiation from laminar diffusion flames in a tri-coflow burner with central oxygen",
+    "doi": "10.1016/j.combustflame.2022.112158",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/an-investigation-of-thermal-radiation-from-laminar-diffusion-flam/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground tri-coflow (triple-port) burner study of oxygen-enriched methane/ethylene flame radiation. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "a triple-port burner is employed to investigate the effect of oxygen enrichment on thermal radiation when introducing oxygen into the center of a normal coflow diffusion flame",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "SPHERICAL DIFFUSION FLAME IN MICROGRAVITY CONDITIONS: FIRST RESULTS OF JOINT RUSSIAN-AMERICAN SPACE EXPERIMENT FLAME DESIGN - ADAMANT",
+    "doi": "10.30826/NEPCAP9B-13",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.30826/NEPCAP9B-13",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Conference paper (Frolov et al.) introducing the joint NASA-Roscosmos Flame Design (Adamant) experiment and some early results; the abstract gives objectives only, no numbers.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Objectives: radiative extinction and soot inception of normal and inverse ethylene spherical flames.",
+        "quote": "The experiment is focused on revealing the conditions of flame extinction caused by radiative heat loss and the onset (inception) of soot.",
+        "locator": "abstract",
+        "record_path": "question"
+      }
+    ],
+    "notes": "Russian conference proceedings (Torus Press); only the abstract was found (OpenAlex)."
+  },
+  {
+    "title": "Observations of long duration microgravity spherical diffusion flames aboard the International Space Station",
+    "doi": "10.1016/j.combustflame.2021.02.019",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/observations-of-long-duration-microgravity-spherical-diffusion-fl/",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "First ISS Flame Design results: normal ethylene flames at 1 atm grew monotonically, burned 28-336 s, cooled and extinguished radiatively, sometimes after oscillating partial extinction; small flames were quasi-steady until the burner temperature limit.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Burn times, growth and radiative extinction.",
+        "quote": "Burn times range from 28 – 336 s. All flames grow monotonically after ignition.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Small flames quasi-steady, limited by burner heating.",
+        "quote": "Sufficiently small flames with low radiation losses exhibit quasi-steady behavior, but burner heating is significant, and the experimental duration is dictated by the temperature limit of the porous sphere.",
+        "locator": "abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Elsevier accepted manuscript blocked (HTTP 403). Abstract from WUSTL portal."
+  },
+  {
+    "title": "Double blue zones in inverse and normal laminar jet diffusion flames",
+    "doi": "10.1016/j.combustflame.2019.09.014",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/double-blue-zones-in-inverse-and-normal-laminar-jet-diffusion-fla/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of double blue zones in normal and inverse laminar jet flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "This study examines these zones in inverse (IDF) and normal (NDF) laminar gas jet diffusion flames.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Dilution effects on laminar jet diffusion flame lengths",
+    "doi": "10.1016/j.proci.2018.06.085",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/dilution-effects-on-laminar-jet-diffusion-flame-lengths/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground measurements of stoichiometric lengths of 287 diluted normal and inverse gas-jet flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Thus, the stoichiometric lengths of 287 normal and inverse gas jet flames are measured for a broad range of nitrogen dilution.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A new method of flame temperature measurement utilizing the acoustic emissions from laser-induced plasmas",
+    "doi": "10.1016/j.proci.2018.07.096",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/a-new-method-of-flame-temperature-measurement-utilizing-the-acous/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Laboratory method: flame temperature from acoustic emission of laser-induced plasmas. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "we investigated the influence of flame temperature and composition on the acoustic emissions from laser-induced plasmas in an ethylene-air premixed flame",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Structure and extinction of spherical burner-stabilized diffusion flames that are attached to the burner surface",
+    "doi": "10.1016/j.combustflame.2017.08.024",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/structure-and-extinction-of-spherical-burner-stabilized-diffusion/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Activation-energy asymptotics of burner-attached spherical diffusion flames and their extinction. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The structure and extinction of a diffusion flame stabilized by a spherical porous burner, and attached to the burner, was analyzed by activation energy asymptotics.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Effects of Inert Placement (Z st) on Soot and Radiative Heat Flux in Turbulent Diffusion Flames",
+    "doi": "10.1021/acs.energyfuels.7b01092",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1021/acs.energyfuels.7b01092",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of inert placement (Z_st) on soot and radiation in turbulent oxy-fuel flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Oxy-fuel combustion is one of the major strategies for reducing carbon dioxide emissions from combustion sources",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Observation of water–gas shift equilibrium in diffusion flames",
+    "doi": "10.1016/j.combustflame.2016.07.025",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Ground/computational study of water-gas shift equilibrium in diffusion flames (Combust. Flame 2016); out of scope by title.",
+    "items": [],
+    "notes": "No abstract on Crossref, OpenAlex, Semantic Scholar or the WUSTL portal; Elsevier paywall."
+  },
+  {
+    "title": "An Approach to Thermocouple Measurements That Reduces Uncertainties in High-Temperature Environments",
+    "doi": "10.1021/acs.energyfuels.5b00071",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/an-approach-to-thermocouple-measurements-that-reduces-uncertainti/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Laboratory thermocouple-measurement method for high-temperature flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "In this work, a new experimental methodology is presented",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Modeled quenching limits of spherical hydrogen diffusion flames",
+    "doi": "10.1016/j.proci.2012.07.029",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2013%20Lecoustre%20et%20al.%20PCI.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Modelling of quenching limits of small spherical hydrogen-air diffusion flames on porous burners (normal and inverse); weakest normal flame 0.25 W, weakest inverse 1.4 W. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Hydrogen modelling, not the ISS ethylene data.",
+        "quote": "Hydrogen–air diffusion flames were modeled with an emphasis on kinetic extinction.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page."
+  },
+  {
+    "title": "Simplifying the complexity of diffusion flames through interpretation in C/O ratio space",
+    "doi": "10.1016/j.camwa.2013.01.008",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/simplifying-the-complexity-of-diffusion-flames-through-interpreta/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Computational interpretation of counterflow flame and soot structure in C/O-ratio space. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "the local carbon-to-oxygen atom ratio (C/O ratio) is applied as a variable to interpret the flame and soot zone structures of counterflow diffusion flames",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Numerical study of flame structure and soot inception interpreted in carbon-to-oxygen atom ratio space",
+    "doi": "10.1016/j.proci.2012.06.043",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/numerical-study-of-flame-structure-and-soot-inception-interpreted/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Computational study of counterflow ethylene and propane flames in C/O-ratio space. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Flame and soot zone structures of counterflow diffusion flames have been studied for C 2 H 4 and C 3 H 8 and interpreted in C/O ratio space",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Stability of spray combustion for water/alcohols mixtures in oxygen-enriched air",
+    "doi": "10.1016/j.proci.2012.05.088",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Spray combustion of water/alcohol mixtures in oxygen-enriched air (Proc. Combust. Inst. 2013); ground work, out of scope by title.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar, WUSTL); Elsevier paywall."
+  },
+  {
+    "title": "Numerical investigation of spherical diffusion flames at their sooting limits",
+    "doi": "10.1016/j.combustflame.2011.05.022",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2012%20Lecoustre%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Detailed simulations of ten drop-tower (2.2 s) ethylene normal and inverse spherical flames at their sooting limits: soot coincides with C/O > 0.53 and T > 1305 K. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower flames, modelling; not ISS data. Its critical C/O (0.53, 1305 K) differs from the 0.32-0.44 window of the ISS modelling in record findings[10].",
+        "quote": "For ethylene flames with sufficiently long flow times it was found that soot formation coincides with regions where the C/O atom ratio and temperature exceed critical values, specifically 0.53 and 1305 K, respectively.",
+        "locator": "abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page."
+  },
+  {
+    "title": "Kinetic and radiative extinctions of spherical burner-stabilized diffusion flames",
+    "doi": "10.1016/j.combustflame.2010.12.007",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Modelling of kinetic and radiative extinction of spherical burner-stabilized diffusion flames (Combust. Flame 2011); precursor modelling, out of scope by title.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar, WUSTL); Elsevier paywall."
+  },
+  {
+    "title": "Extremely weak hydrogen flames",
+    "doi": "10.1016/j.combustflame.2010.07.024",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2010%20Lecoustre%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Normal-gravity hydrogen jet flames on a 0.15 mm tube near quenching (3.9 ug/s in air, 2.1 ug/s in O2), the weakest steady flames reported. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground hydrogen micro-flames.",
+        "quote": "To the authors’ knowledge, these are the weakest self-sustaining steady flames ever observed.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page."
+  },
+  {
+    "title": "Characteristics of non-premixed oxygen-enhanced combustion: II. Flame structure effects on soot precursor kinetics resulting in soot-free flames",
+    "doi": "10.1016/j.combustflame.2010.04.013",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/characteristics-of-non-premixed-oxygen-enhanced-combustion-ii-fla/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Computational study of soot-precursor kinetics versus flame structure (Z_st) in ethylene flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A detailed computational study was performed to understand the effects of the flame structure on the formation and destruction of soot precursors during ethylene combustion.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Characteristics of non-premixed oxygen-enhanced combustion: I. The presence of appreciable oxygen at the location of maximum temperature",
+    "doi": "10.1016/j.combustflame.2009.07.009",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Computational study of oxygen at the peak-temperature location in oxygen-enhanced flames (Combust. Flame 2009); out of scope by title.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar, WUSTL); Elsevier paywall."
+  },
+  {
+    "title": "Soot inception limits in laminar diffusion flames with application to oxy–fuel combustion",
+    "doi": "10.1016/j.combustflame.2008.03.008",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/soot-inception-limits-in-laminar-diffusion-flames-with-applicatio/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground and computational soot inception limits versus Z_st for oxy-fuel flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Increasing Z st has been shown to result in the reduction or even elimination of soot.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Radiative extinction of gaseous spherical diffusion flames in microgravity",
+    "doi": "10.1016/j.combustflame.2007.08.009",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2007%20Santa%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "2.2 s drop-tower experiments and transient modelling of radiatively extinguishing ethylene and propane spherical flames at 0.98 bar: extinction onset near 1100 K, radiative loss from products scaling with flame area. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor.",
+        "quote": "Flame conditions were chosen to ensure that the flames extinguished within the 2.2 s of available test time",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "About 1100 K at extinction onset, already record findings[6].",
+        "quote": "Peak temperatures at extinction onset were about 1100 K, which is significantly lower than for kinetic extinction.",
+        "locator": "abstract",
+        "record_path": "findings[6]"
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page (also NTRS 20070017909)."
+  },
+  {
+    "title": "Numerical and experimental observations of spherical diffusion flames",
+    "doi": "10.1080/13647830601161567",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2007%20Santa%20et%20al.%20CTM.pdf",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Drop-tower (2.2 s and 5.2 s) spherical flames compared with a transient Chemkin-based model: measured temperatures up to 700 K below adiabatic; flame sizes matched only with diffusivities raised 30% or flow lowered 25%. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor.",
+        "quote": "Experiments were performed in 2.2 s and 5.2 s microgravity facilities.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Diffusivity adjustment needed to match flame size, already record findings[8].",
+        "quote": "Close agreement could not be obtained without either increasing the model's thermal and mass diffusion properties by 30% or reducing mass flowrate by 25%.",
+        "locator": "abstract",
+        "record_path": "findings[8]"
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page."
+  },
+  {
+    "title": "The effects of elevated pressure on the kinetics and extinction of hot, warm, and cool gaseous ethylene spherical diffusion flames",
+    "doi": "10.1016/j.proci.2024.105400",
+    "access": "full_text",
+    "read_url": "https://drum.lib.umd.edu/items/1d83d9b4-fe61-441b-ba38-df8b7a815e0f",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "ISS round-2 tests at 0.5-3 bar with TFP: extinction temperature falls with pressure; at 3 bar the flame passes below 1130 K into the warm-flame regime. In the dissertation, three inverse flames (85% O2 burner stream into 10% C2H4, 3.41 mg/s O2) at 0.5, 1 and 3 atm: 0.5 and 1 atm extinguish at similar temperatures, 3 atm about 50 K lower (the abstract says almost 60 K). Simulations at 50 bar give a long warm flame and then a cool flame.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Extinction temperature of ISS ethylene flames decreases with pressure; at 3 bar it falls below 1130 K into the warm-flame regime.",
+        "quote": "Experimental results show that increasing the pressure from 1 atm to 3 atm decreased the ethylene extinction temperature by almost 60 K.",
+        "locator": "Waddell 2023 UMD dissertation, abstract",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Test conditions and size of the pressure effect: three inverse flames identical except pressure; 0.5 and 1 atm extinguish at similar temperature, 3 atm roughly 50 K lower.",
+        "quote": "Flame A and C extinguish at similar temperatures, but Flame B extinguishes roughly 50 K lower.",
+        "locator": "Waddell 2023 UMD dissertation, sec. 4.3.1, Table 4.1, Fig. 4.1",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Simulation at 50 atm: warm-flame chemistry extends the burn by over 500 s, then the flame settles as a cool flame.",
+        "quote": "At 50 atm the flame was able to extend its burn time by over 500 s due to the emergence of warm flame chemistry.",
+        "locator": "Waddell 2023 UMD dissertation, sec. 6.1.1",
+        "record_path": null
+      }
+    ],
+    "notes": "Journal paper (Proc. Combust. Inst. 40, 2024) blocked (Elsevier HTTP 403; NTRS accepted manuscript has no download). Its abstract is on the WUSTL portal; the experimental detail was read in the first author's open UMD dissertation (chapter 4). The dissertation gives two values for the 1-3 atm drop (almost 60 K in the abstract, roughly 50 K in sec. 4.3.1)."
+  },
+  {
+    "title": "On Soot Inception in Nonpremixed Flames and the Effects of Flame Structure",
+    "doi": "10.1080/00102209808952065",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/00102209808952065",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Asymptotic three-step model of soot inception in counterflow flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A simplified three-step model of soot inception has been employed with high activation energy asymptotics to study soot inception in nonpremixed counterflow systems",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Measurement and analysis of soot inception limits of oxygen-enriched coflow flames",
+    "doi": "10.1016/j.combustflame.2006.08.004",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/measurement-and-analysis-of-soot-inception-limits-of-oxygen-enric/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground measurements of soot inception limits of oxygen-enriched coflow flames. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "This study explores the criteria for soot inception in oxygen-enriched laminar coflow flames.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Scalar dissipation rate at extinction and the effects of oxygen-enriched combustion",
+    "doi": "10.1016/j.combustflame.2005.02.008",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/scalar-dissipation-rate-at-extinction-and-the-effects-of-oxygen-e/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Counterflow extinction strain and scalar dissipation rate versus Z_st (ground and computation). It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The strain rate at extinction was measured in the counterflow flame configuration for methane, propane, and ethane flames as a function of stoichiometric mixture fraction.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A theoretical study on soot inception in spherical burner-stabilized diffusion flames",
+    "doi": "10.1016/j.combustflame.2004.08.016",
+    "access": "abstract",
+    "read_url": "https://profiles.wustl.edu/en/publications/a-theoretical-study-on-soot-inception-in-spherical-burner-stabili/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Asymptotic theory of soot inception in spherical burner-stabilized flames (structure and flow direction). It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A simplified three-step model with high activation energies is employed to describe the fuel oxidation, soot/precursor formation, and soot/precursor consumption reactions",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "SOOTING LIMITS OF MICROGRAVITY SPHERICAL DIFFUSION FLAMES IN OXYGEN-ENRICHED AIR AND DILUTED FUEL",
+    "doi": "10.1080/00102200490514994",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2004%20Sunderland%20et%20al.%20CST.pdf",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "2.2 s drop-tower sooting limits of 17 normal and inverse ethylene spherical flames at 0.98 bar: soot-free conditions favoured at high Z_st, no effect of convection direction, limits on a line of T_ad versus Z_st. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor.",
+        "quote": "Limiting conditions for soot-particle inception were observed in microgravity spherical diffusion flames burning ethylene at 0.98 bar.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "17 sooting limits on a linear T_ad-Z_st relation, already record findings[7].",
+        "quote": "Seventeen sooting limits have been identified as summarized in Table 1.",
+        "locator": "sec. Results",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page (also NTRS 20040053539)."
+  },
+  {
+    "title": "Effects of structure and hydrodynamics on the sooting behavior of spherical microgravity diffusion flames",
+    "doi": "10.1016/S0010-2180(02)00424-8",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2003%20Sunderland%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "2.2 s drop-tower study of sooting of normal and inverse ethylene spherical flames: structure (Z_st) controls soot, convection direction matters less; no flame reached steady state. It contains no ISS data from this investigation.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor.",
+        "quote": "This study is an examination of the sooting behavior of spherical microgravity diffusion flames burning ethylene at atmospheric pressure in a 2.2-s drop tower.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page (also NTRS 20000057049 preprint)."
+  }
+]

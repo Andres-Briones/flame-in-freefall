@@ -282,6 +282,42 @@
         {"type": "external", "url": "https://doi.org/10.2514/6.2012-1252", "quote": "The transition from diffusive to radiative extinction is strongly influenced by ambient carbon dioxide concentration. Results for helium as the diluent show an increased burning rate and a dominance of extinction due to diffusive heat loss."},
         {"type": "external", "url": "https://doi.org/10.1007/s12217-014-9372-2", "quote": "The predictions from the model for the droplet history capture the two stage combustion behavior"}
       ]
+    },
+    {
+      "claim": "Methanol extinction mode versus oxygen at 1 atm (O2/N2/CO2, D0 about 2-4 mm): at 18% O2 or more every droplet extinguished diffusively, at 14% O2 or less every droplet extinguished radiatively, and at 15% and 16% O2 a critical initial diameter separated the two modes, larger droplets switching to radiative extinction (the switch happening at a larger D0 at 16% than at 15%). Tests with more CO2 lay closer to the radiative (no-burn) line, which the authors attribute to CO2's higher infrared emissivity; CO2 affected diffusive extinction about as N2 does.",
+      "kind": "trend",
+      "confidence": "high",
+      "sources": [
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf", "quote": "In 18 % or more O2 all droplets exhibit diffusive extinction, and in 14 % or less O2 all exhibit radiative extinction, there being critical initial diameters separating the two limiting behaviors at the two intermediate O2 concentrations."},
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf", "quote": "had more CO2 in the atmosphere, suggesting that this diluent promotes radiative extinction, as expected from its much greater infrared emissivity."}
+      ]
+    },
+    {
+      "claim": "Interpreting methanol extinction with the Zhang-Card-Williams water-absorption theory, diffusive extinction at 1 atm occurs when the infinite-rate (ideal) flame temperature falls to about 1800 K in 21% O2 (calculated lines for 1800 K and 1750 K bracket the data) and below 1650 K at 18% O2. Radiative extinctions occurred so close to the initial diameter that burning was transient and depended on ignition energy; the authors suggest such atmospheres are effectively outside the LOI and that water absorption can be neglected for them.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf", "quote": "It may thus be concluded that diffusive extinction occurs when the infinite-rate ideal flame temperature decreases to a value not far from 1800 K in atmospheres having O2 contents of 21 %. That value decreases with dilution and is less than 1650 K at 18%."},
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf", "quote": "In a sense, then, one might wish to consider these atmospheric conditions to lie outside the LOI."}
+      ]
+    },
+    {
+      "claim": "Methanol flame-standoff ratio (quasi-steady average of flame/droplet diameter) rises as ambient oxygen falls, at both 0.7 and 1 atm. A simplified quasi-steady model that includes water absorption predicts it reasonably, but measured ratios in O2/N2/He mixtures are consistently above the prediction while O2/N2/CO2 data agree better; the authors leave the cause open.",
+      "kind": "trend",
+      "confidence": "medium",
+      "sources": [
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf", "quote": "As one would expect, df/d increases with decreasing ambient oxygen mole fraction since the flame needs to move father away to meet the stoichiometric requirement."},
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20130014061/downloads/20130014061.pdf", "quote": "The measured FSRs for O2 − N2 − He mixtures are consistently higher than the predicted values compared to the O2 − N2 − CO2 mixture data points."}
+      ]
+    },
+    {
+      "claim": "The first nine rows of the PSI table (identifiers 20CAL08 to 30CAL07, 5 March to 10 April 2009, 6 methanol and 3 heptane) are engineering tests in cabin air (0.21 O2/0.79 N2 at about 760 mmHg); the planned science matrix starts with row 10 on 22 May 2009. Analyses of suppressant effects should treat these rows as air baselines from the commissioning period.",
+      "kind": "method",
+      "confidence": "high",
+      "sources": [
+        {"type": "table", "table": "tests", "note": "PSI-69 rows 1-9: FLEX identifiers containing 'CAL', dates 2009-03-05 to 2009-04-10, O 0.21 / N 0.79, pressure 757.7-764.2 mmHg; row 10 (256F002) dated 2009-05-22."},
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20120015928/downloads/20120015928.pdf", "quote": "The first nine “engineering” tests used cabin air rather than specified diluent gasses."}
+      ]
     }
   ],
   "fire_safety": {
@@ -351,6 +387,11 @@
     "Abstracts of the key Elsevier papers (Nayagam et al. 2012 'Can cool flames support quasi-steady alkane droplet burning?', Hicks et al. 2011 tethered methanol/CO2, Nayagam 2013 AEA, Farouk and Dryer cool-flame 2014) were not available via OpenAlex or Semantic Scholar; their content is cited only through the NASA summaries. Most other publication DOIs in the record are ground-based precursor or modelling studies and were not read in full.",
     "The xenon tests mentioned in NASA documents and Shaw and Vang (2015) are not in the PSI table (it ends Dec 2011); SF6 named in the PSI objective does not appear in any test.",
     "Investigator affiliations in PSI (Dryer at South Carolina, Choi at Missouri) differ from those in the 2015 NASA report (Princeton, Connecticut). One contact email in the PSI record has a malformed domain; contact details were not copied.",
-    "No text addressed to an AI or unrelated instructions was found in the PSI files."
+    "No text addressed to an AI or unrelated instructions was found in the PSI files.",
+    "Publication review (Nov 2026; per-paper notes in data/publications/PSI-69.json): of the 51 listed publications, 8 were read in full (NTRS preprints/reports, open-access journals), 18 by abstract only and 25 not at all (closed Elsevier/Springer/Taylor & Francis papers with no open copy or indexed abstract, including Nayagam et al. 2012 \"Can cool flames support quasi-steady alkane droplet burning?\" and Nayagam 2013 AEA). About 20 are ground-based or modelling studies outside the ISS data. The open-access Dietrich et al. 2014 PDF was blocked by a bot check this time; the record's earlier quotes from it were not re-verified.",
+    "Run numbers in papers do not always equal PSI row numbers: Nayagam et al. 2013 (NTRS 20130014061) 'Run #204' (methanol, 2.75 mm, air, De 1.10 mm) is PSI row 203 (N01M201), and 'Run #263' (2.67 mm, 21% O2/30% He at 0.7 atm, De 1.42 mm) is PSI row 257 (H12M201); Run #110 equals PSI row 110. That paper also writes air as '20% O2 and 79% N2' where the table has 0.21/0.79.",
+    "Hicks et al. 2012 ASGSR slides (NTRS 20130010979) give FLEX-145 as '20% O2 / 75% CO2 / 5% N2', D0 3.38 mm, Dext 1.66 mm, K 0.44 on one slide but 'O2 20% / N2 75% / CO2 5%', D0 3.3 mm on the next; PSI row 145 (C01M201) has 0.20 O2/0.75 N2/0.05 CO2, 3.33 mm, 1.61 mm, 0.45 mm2/s. The first slide appears to swap N2 and CO2.",
+    "Nayagam et al. 2011 (NTRS 20120016855) describe a 1 atm methanol extinction test 'at 21% O2 had 70% CO2 and 9% N2' (Fig. 3, captioned 1 atm), but every 0.21/0.09/0.70 row in the PSI table (rows 10-18) is at 1546-2320 mmHg (2.0-3.05 atm); the only methanol one with an extinction diameter is row 16 (256F009, 2072 mmHg). The same paper counts 104 methanol tests by October 2011, against 142 methanol rows dated before then in the table (cut-off not stated).",
+    "The conclusions of NASA/TP-2015-216046 give initial diameters 'between 2 and 5 mm' and atmospheres of O2 with N2, CO2 and mixtures, but its Table IX (the PSI table) has d0 down to 1.10 mm (26 tests below 2 mm) and 50 helium-diluted tests; its Appendix A says it covers March 2009 to December 2010 although the table runs to December 2011."
   ]
 }

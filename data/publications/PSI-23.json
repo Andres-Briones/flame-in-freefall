@@ -1,0 +1,881 @@
+[
+  {
+    "title": "Opportunities and challenges of combustion in microgravity",
+    "doi": "10.1016/0360-1285(94)90006-X",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/opportunities-and-challenges-of-combustion-in-microgravity/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a review of opportunities and fire-safety challenges of microgravity combustion. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "This review considers the opportunities for enhanced fundamental combustion understanding from experiments where effects of buoyancy are eliminated, and the new challenges of fire safety considerations in nonbuoyant (spacecraft) environments.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On burner-stabilized cylindrical premixed flames in microgravity",
+    "doi": "10.1016/S0082-0784(06)80819-2",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/19960008450/downloads/19960008450.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); theory, computation and 2.2 s drop-tower tests of premixed flames on a porous cylindrical burner, an early relative of the porous-sphere configuration. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Premixed cylindrical burner flames, drop tower; not the s-Flame spherical diffusion flames.",
+        "quote": "A class of one-dimensional premixed flames that has the potential of e \"hminatingheat loss and slretch effects is the burner-generated cylindrical and spherical flames",
+        "locator": "p1, Introduction (NTRS 19960008450, conference version)",
+        "record_path": null
+      }
+    ],
+    "notes": "Read the NTRS conference version (19960008450), not the Proc. Combust. Inst. 25 paper; OCR text has errors, the quote is copied as extracted."
+  },
+  {
+    "title": "On the structure, stabilization, and dual response of flat-burner flames",
+    "doi": "10.1016/0010-2180(94)00102-X",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-the-structure-stabilization-and-dual-response-of-flat-burner-f/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); computation and experiment on flat porous-burner premixed flames (dual response). It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A comprehensive computational and experimental study has been conducted on the structure and stabilization dynamics of the classical planar flame over a flat, porous burner.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Extinction mechanisms of near-limit premixed flames and extended limits of flammability",
+    "doi": "10.1016/S0082-0784(96)80296-7",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); premixed-flame extinction and flammability-limit study (Proc. Combust. Inst. 26, 1996), by title not about s-Flame.",
+    "items": [],
+    "notes": "No abstract on Crossref, OpenAlex, Semantic Scholar or the Princeton research portal; full text paywalled (Elsevier). Title and date (1996) indicate pre-flight premixed-flame work, out of scope."
+  },
+  {
+    "title": "On the spreading of unsteady cylindrical diffusion flames",
+    "doi": "10.1016/S0010-2180(97)00069-2",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-the-spreading-of-unsteady-cylindrical-diffusion-flames/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); asymptotic theory of unsteady outward spreading of cylindrical diffusion flames from a porous burner. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The unsteady outwardly spreading motion of a diffusion flame supported by fuel injected from a cylindrical porous burner is theoretically analyzed.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On the response of spherical premixed flames under rotation",
+    "doi": "10.1016/S0010-2180(97)00051-5",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-the-response-of-spherical-premixed-flames-under-rotation/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); asymptotic theory of burner-stabilized spherical premixed flames under rotation. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "We investigate the influence of flow rate and rotation on the structure and response of burner-stabilized spherical premixed flames.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Role of flamefront motion and criterion for global quasi-steadiness in droplet burning",
+    "doi": "10.1016/S0082-0784(98)80038-6",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/role-of-flamefront-motion-and-criterion-for-global-quasi-steadine/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); theory of flame-front motion and quasi-steadiness in droplet burning. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A theoretical study has been conducted on the role of the flamefront motion in droplet burning",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On micro-buoyancy spherical diffusion flames and a double luminous zone structure of the hydrogen/methane flame",
+    "doi": "10.1016/S0082-0784(98)80108-2",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-micro-buoyancy-spherical-diffusion-flames-and-a-double-luminou/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); normal-gravity micro-buoyancy spherical diffusion flames at sub-atmospheric pressure, with a double luminous zone in H2/CH4 flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Almost spherically symmetry diffusion flames of substantial dimension (diameter ∼ several centimeters) were established in earth gravity by ejecting an O 2 /N 2 mixture from a porous sphere into a subatmospheric pressure environment",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Structure, aerodynamics, and geometry of premixed flamelets",
+    "doi": "10.1016/S0360-1285(00)00018-6",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/structure-aerodynamics-and-geometry-of-premixed-flamelets/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a review of premixed flamelet structure, stretch and geometry. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Recent advances in the understanding of the structure, dynamics, and geometry of laminar premixed flames under the influence of stretch",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Microgravity burner-generated spherical diffusion flames: experiment and computation",
+    "doi": "10.1016/S0010-2180(01)00247-4",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/microgravity-burner-generated-spherical-diffusion-flames-experime/",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); 2.2 s drop-tower tests of H2/CH4/inert flames on a 1.27 cm bronze porous sphere, with transient detailed-chemistry simulation. Steady state could not be reached in 2.2 s; radiative reabsorption was needed to predict extinction time; visible luminosity did not track flame strength. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor, not ISS s-Flame data.",
+        "quote": "Microgravity experiments were conducted in the 2.2-s drop-tower facility at the NASA Glenn Research Center",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Steady spherical diffusion flames cannot be reached in a 2.2 s drop tower, which is why orbit was needed.",
+        "quote": "although steady-state behavior should exist for such flames, the experimental and computational results indicated that it cannot be reached within the 2.2-s microgravity duration for the fuels and mass-flow rates tested",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Visible luminosity is not a reliable measure of flame strength.",
+        "quote": "the lack of correspondence between the visible flame luminosity and flame strength, as related to flame temperature and heat release rate, was noted",
+        "locator": "abstract",
+        "record_path": "findings[11]"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Chemiluminescent OH* and CH* flame structure and aerodynamic scaling of weakly buoyant, nearly spherical diffusion flames",
+    "doi": "10.1016/S1540-7489(02)80204-8",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/chemiluminescent-oh-and-ch-flame-structure-and-aerodynamic-scalin/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); normal-gravity low-pressure inverse spherical flames (H2/CH4 fuel) with OH* and CH* chemiluminescence. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Normal-gravity experiments were conducted with \"inverse\" diffusion flames of small density difference with their surrounding ambient",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Oscillatory extinction of spherical diffusion flames: Micro-buoyancy experiment and computation",
+    "doi": "10.1016/S1540-7489(02)80008-6",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/oscillatory-extinction-of-spherical-diffusion-flames-micro-buoyan/",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); normal-gravity, 0.096 atm micro-buoyancy inverse flames (O2/inert into H2) driven to extinction; at the radiation-induced limit, luminosity oscillations (~2 Hz) grew before extinction, reproduced computationally. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Low-pressure normal-gravity precursor, not ISS data.",
+        "quote": "An inverse flame configuration was employed with the oxidizer being ejected from a porous sphere burner into a fuel (H 2 ) environment in a low-pressure (0.096 atm) chamber to effectively minimize buoyancy.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Oscillation preceding radiative extinction is the behaviour the record says theory predicted and s-Flame looked for.",
+        "quote": "However at the radiation-induced limit extinction is preceded by oscillations in the flame luminosity that grows in amplitude before extinction.",
+        "locator": "abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Development of Comprehensive Detailed and Reduced Reaction Mechanisms for Combustion Modeling",
+    "doi": "10.2514/2.7289",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/development-of-comprehensive-detailed-and-reduced-reaction-mechan/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a review advocating comprehensive detailed and reduced kinetic mechanisms. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The state of the reaction mechanisms used in the simulation of combustion phenomena and processes are reviewed",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Response of spherical diffusion flames under rotation with general Lewis numbers",
+    "doi": "10.1080/13647830500098423",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/response-of-spherical-diffusion-flames-under-rotation-with-genera/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); perturbation theory of rotating spherical diffusion flames with general Lewis numbers. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The structure and extinction of diffusion flames generated by a porous spherical burner or a fuel droplet in response to rotational motion were investigated through perturbation analysis",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Porous spherical burner for combustion experimentation",
+    "doi": "10.1063/1.2212399",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/porous-spherical-burner-for-combustion-experimentation/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a method paper on sintered bronze porous spherical burners (the flight burner was a 6.35 mm stainless-steel sphere). It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The design and fabrication of porous spherical burners for the production of spherically symmetric flows are reported.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On intrinsic oscillation in radiation-affected diffusion flames",
+    "doi": "10.1016/j.proci.2006.07.183",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-intrinsic-oscillation-in-radiation-affected-diffusion-flames/",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); linear stability theory showing an oscillatory instability near the radiation-induced extinction limit as well as near the kinetic limit. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Theory only.",
+        "quote": "A linear stability analysis is conducted to study the onset of near-limit flame oscillation with radiative heat loss in 1-D chambered planar flames",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Theory predicts oscillation near both extinction limits, as the record states.",
+        "quote": "The oscillatory instability near the radiation-induced extinction limit at large Damköhler numbers is identified, in additional to the one near the kinetic limit at small Damköhler numbers.",
+        "locator": "abstract",
+        "record_path": "physics.text"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Effects of variable density on response of spherical diffusion flames under rotation",
+    "doi": "10.1016/j.ijheatmasstransfer.2006.12.014",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/effects-of-variable-density-on-response-of-spherical-diffusion-fl/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); perturbation theory of variable-density effects on rotating spherical diffusion flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The spherical diffusion flame generated by either a porous burner or a fuel droplet in response to rotational motion was investigated through perturbation analysis",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A mechanistic study of Soret diffusion in hydrogen–air flames",
+    "doi": "10.1016/j.combustflame.2009.09.018",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/a-mechanistic-study-of-soret-diffusion-in-hydrogen-air-flames/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); computation of Soret diffusion in hydrogen-air premixed and counterflow flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "were computationally studied for hydrogen-air mixtures using a detailed reaction mechanism and transport properties",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Self-similar accelerative propagation of expanding wrinkled flames and explosion triggering",
+    "doi": "10.1103/PhysRevE.83.026305",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/self-similar-accelerative-propagation-of-expanding-wrinkled-flame/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); theory of self-similar accelerating wrinkled premixed flames and explosion triggering. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The formulation of Taylor on the self-similar propagation of an expanding spherical piston with constant velocity was extended to an instability-wrinkled deflagration front",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Response of spherical diffusion flames subjected to rotation: Microgravity experimentation and computational simulation",
+    "doi": "10.1016/j.combustflame.2011.07.013",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/response-of-spherical-diffusion-flames-subjected-to-rotation-micr/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); 2.2 s drop-tower and zero-gravity-facility experiments on spinning spherical diffusion flames, with simulation. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Microgravity experiments were conducted in the 2.2-s drop tower and zero-gravity facility at NASA-GRC to gain fundamental understanding of the effects of spinning on an otherwise spherical diffusion flame.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Fuel Options for Next-Generation Chemical Propulsion",
+    "doi": "10.2514/1.J051328",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/fuel-options-for-next-generation-chemical-propulsion/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a review of fuel options for chemical propulsion. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The state of research on developing fuel options for next-generation chemical propulsion is reviewed for aviation fuels and energetic fuels.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A mechanistic evaluation of Soret diffusion in heptane/air flames",
+    "doi": "10.1016/j.combustflame.2012.03.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); computation of Soret diffusion in heptane/air flames (Combust. Flame 2012); by title not about s-Flame.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar, Princeton portal); Elsevier paywall. The conference version [37] has an abstract: numerical Soret study, out of scope."
+  },
+  {
+    "title": "An experimental investigation on self-acceleration of cellular spherical flames",
+    "doi": "10.1016/j.proci.2012.05.068",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/an-experimental-investigation-on-self-acceleration-of-cellular-sp/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); elevated-pressure experiments on self-acceleration of cellular hydrogen/air spherical premixed flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Extensive experiments at elevated pressures and thereby reduced laminar flame thicknesses and enhanced propensity to exhibit Darrieus-Landau instability were conducted for hydrogen/air mixtures",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Initiation and propagation of laminar premixed cool flames",
+    "doi": "10.1016/j.fuel.2015.11.025",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/initiation-and-propagation-of-laminar-premixed-cool-flames/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); computation and counterflow experiment on premixed DME cool flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "In this work, the coupling of cool flame chemistry and convective-diffusive transport is computationally and experimentally investigated.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On colliding spherical flames: Morphology, corner dynamics, and flame-generated vorticity",
+    "doi": "10.1016/j.combustflame.2015.10.029",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-colliding-spherical-flames-morphology-corner-dynamics-and-flam/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); experiment and computation of two colliding spherical premixed flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The collision of two identical spherical flames was studied for its relevance in flame interactions in various practical situations including those within turbulent flames.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Extended flammability limits of n-heptane/air mixtures with cool flames",
+    "doi": "10.1016/j.combustflame.2017.06.015",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); computational study of cool-flame flammability limits of n-heptane/air (Combust. Flame 2017); by title not about s-Flame.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar, Princeton portal); Elsevier paywall. Premixed n-heptane cool flames, out of scope by title."
+  },
+  {
+    "title": "Theory of first-stage ignition delay in hydrocarbon NTC chemistry",
+    "doi": "10.1016/j.combustflame.2017.10.003",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/theory-of-first-stage-ignition-delay-in-hydrocarbon-ntc-chemistry/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); theory of first-stage ignition delay in n-heptane NTC chemistry. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The first-stage ignition delay of n-heptane/air mixtures is computationally studied using detailed mechanism and theoretically studied using eigenvalue analysis of simplified systems.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Direct Numerical Simulation of turbulent nonpremixed “cool” flames: Applicability of flamelet models",
+    "doi": "10.1016/j.proci.2018.06.191",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.06.191?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); two-dimensional DNS of turbulent nonpremixed n-heptane cool flames. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "a skeletal n-heptane chemical mechanism including low-temperature chemistry is used to conduct two-dimensional Direct Numerical Simulations (DNS) of nonpremixed \"cool\" flames",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On Radical-Induced Ignition in Combustion Systems",
+    "doi": "10.1146/annurev-chembioeng-060718-030141",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/on-radical-induced-ignition-in-combustion-systems/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a review of radical-induced ignition theory. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "This article reviews recent theoretical developments on incipient ignition induced by radical runaway in systems described by detailed chemistry.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Binary collision of a burning droplet and a non-burning droplet of xylene: Outcome regimes and flame dynamics",
+    "doi": "10.1016/j.proci.2018.06.198",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.06.198?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); normal-gravity experiments on collisions of burning and non-burning xylene droplets. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The binary collisions of a burning droplet and a non-burning droplet of xylene are experimentally investigated.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Stabilization mechanisms and burning rates of cylindrical burner flames",
+    "doi": "10.2514/6.1994-571",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.2514/6.1994-571",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); AIAA conference version of the cylindrical-burner premixed flame study [1]. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A study is conducted of the structure and response of curved (but unstretched), cylindrically-symmetric 1D premixed flames from a cylindrical porous burner.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On burner-supported, spherical diffusion flames under micro-buoyancy conditions",
+    "doi": "10.2514/6.1998-563",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); AIAA 1998 paper on burner-supported spherical diffusion flames under micro-buoyancy; by title a normal-gravity precursor.",
+    "items": [],
+    "notes": "No abstract or free text found (AIAA paywall; not on NTRS; Princeton portal has no entry). Same topic as [7] and [10], out of scope by title."
+  },
+  {
+    "title": "Microgravity burner-generated spherical diffusion flames - Experiment and computation",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/microgravity-burner-generated-spherical-diffusion-flames-experime/",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); AIAA conference version of the drop-tower spherical diffusion flame study [9]. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Microgravity experiments were conducted in the 2.2-s drop-tower facility at the NASA Glenn Research Center to study the transient response of the burner-generated spherical diffusion flame",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Steady state not reachable in 2.2 s (same result as [9]).",
+        "quote": "it cannot be reached within the 2.2-s microgravity duration for the fuels and mass-flow rates tested",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      }
+    ],
+    "notes": "Same work as [9]; no DOI in the PSI record. Abstract from the Princeton research portal."
+  },
+  {
+    "title": "Thin-Flame Theory for Droplet Combustion at Low Grashof Numbers",
+    "doi": "10.2514/6.2005-1140",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.2514/6.2005-1140",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); thin-flame theory of weakly buoyant droplet combustion at low Grashof number. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The weakly-buoyant, quasi-steady burning of a spherical droplet (of radius a) in an infinite medium is studied theoretically",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Nonlinear Analysis of Pulsating Instabilities in Diffusion Flames",
+    "doi": "10.2514/6.2005-544",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/nonlinear-analysis-of-pulsating-instabilities-in-diffusion-flames/",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); nonlinear (bifurcation) analysis of pulsating instabilities of planar diffusion flames with Le > 1. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Theory only.",
+        "quote": "In this work, we carry out a systematic analysis of pulsating instabilities in diffusion flames.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Pulsating instabilities for Le > 1 near extinction, the behaviour the record says s-Flame looked for.",
+        "quote": "Lewis numbers are assumed greater than unity in order to focus on pulsating instabilities.",
+        "locator": "abstract",
+        "record_path": "physics.text"
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "An Experimental Study on the Response of Spherical Diffusion Flames Subjected to Rotation and Nonequidiffusion",
+    "doi": "10.2514/6.2005-1141",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/an-experimental-study-on-the-response-of-spherical-diffusion-flam/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); 2.2 s drop-tower experiments on rotating spherical diffusion flames with varied Lewis numbers. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The experiments were conducted using the 2.2 second drop tower at GRC.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A Mechanistic Study of Soret Diffusion in Hydrogen-Air Flames",
+    "doi": "10.2514/6.2009-988",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/a-mechanistic-study-of-soret-diffusion-in-hydrogen-air-flames/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); AIAA conference version of the hydrogen-air Soret study [17]. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "were computationally studied for hydrogen-air mixtures using a detailed reaction mechanism and transport properties",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "A comprehensive evaluation of soret diffusion in heptane-air flames",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/a-comprehensive-evaluation-of-soret-diffusion-in-heptane-air-flam/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); conference version of the heptane/air Soret study [21]. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "The influence of Soret diffusion on the structure and response of n-heptane/air flames is investigated numerically with detailed reaction mechanism and transport.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Dynamics and morphology of spherical diffusion flames under rotation",
+    "doi": "10.2514/6.2012-1251",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/dynamics-and-morphology-of-spherical-diffusion-flames-under-rotat/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); AIAA conference version of the rotating-flame drop-tower study [19]. It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "Microgravity experiments were conducted in the 2.2-second drop tower and zero-gravity facility at NASA-GRC",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "Dynamics and morphology of colliding spherical flames",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/dynamics-and-morphology-of-colliding-spherical-flames/",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); preliminary experiment and computation of colliding spherical premixed flames (conference version of [24]). It predates the 2019-2020 s-Flame ISS runs and contains no s-Flame data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Not about this investigation's ISS data (ground, drop-tower, theory or review work).",
+        "quote": "A preliminary experimental and computational study was conducted on the dynamics and flame morphology of two identical colliding spherical flames.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  },
+  {
+    "title": "On the structure and dynamics of stationary and rotating spherical diffusion flames",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Pre-flight work of the PI group (Law, Princeton); a thesis-type report by S.W. Yoo on stationary and rotating spherical diffusion flames; by title a pre-flight study.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, Semantic Scholar, OpenAlex or the Princeton portal. Same topic as [13], [16], [19]."
+  },
+  {
+    "title": "Weakly Buoyant Spherical Diffusion Flames: Properties of Hydrogen-CO Ethylene Flames",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Report by L. Paxton on weakly buoyant H2/CO/ethylene spherical diffusion flames; by title a ground (micro-buoyancy) study.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, Semantic Scholar or OpenAlex."
+  },
+  {
+    "title": "Computational Simulation of Spherical Diffusion Flame Dynamics and Extinction in Microgravity",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Report by T. Xia on computational simulation of spherical diffusion flame dynamics and extinction in microgravity; modelling.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, Semantic Scholar or OpenAlex. Modelling only by title."
+  },
+  {
+    "title": "Combustion Science: A Researcher's Guide to International Space Station",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "psi:PSI-23_Presentations_ISS Researchers Guide - Combustion In Reduced Gravity.pdf",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "NASA ISS Program Science Office guide (Gokoglu, Dietrich, Stocker, Ferkul, Olson et al.) describing combustion research on the ISS; it introduces the planned ACME experiments including s-Flame. Written before ACME operated, so it holds no s-Flame results.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Pre-flight overview, no s-Flame results.",
+        "quote": "The ACME are expected to begin operating in 2016.",
+        "locator": "PSI file, p14",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Two ACME experiments (s-Flame and Flame Design) use the porous-sphere spherical flame, as the record describes.",
+        "quote": "Two experiments take advantage of the microgravity environment by using a one-dimensional, spherical flame enveloping a porous spherical burner.",
+        "locator": "PSI file, p44",
+        "record_path": "method.apparatus"
+      }
+    ],
+    "notes": "Already in PSI as a presentation file (evidence.parquet) although held_file is not set; read there. The record already used it for hardware context."
+  }
+]

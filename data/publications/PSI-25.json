@@ -1,0 +1,290 @@
+[
+  {
+    "title": "Microgravity flammability boundary for PMMA rods in axial stagnation flow: Experimental results and energy balance analyses",
+    "doi": "10.1016/j.combustflame.2017.03.001",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Journal version of the BASS-II concurrent-flow PMMA-rod flammability boundary (Olson and Ferkul). Not read: Elsevier paywall, and no abstract is exposed by Crossref, OpenAlex or Semantic Scholar.",
+    "items": [],
+    "notes": "Its BASS-II content is reproduced in the BASS-II summary report (NASA/TM-20210011385, in PSI evidence) and in the 2015 USNCM conference paper 'Microgravity Flammability of PMMA Rods in Concurrent Flow' (NTRS 20150008961, read; entry 14), which confirm findings[5]-[7]."
+  },
+  {
+    "title": "Temperature and CO2 fields of a downward spreading flame over thin cellulose: A comparison of experimental and computational results",
+    "doi": "10.1016/j.proci.2014.05.093",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates measured and computed temperature and CO2 fields of a downward (1 g) flame over thin cellulose.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Probably ground experiments and computation, not BASS-II flight data."
+  },
+  {
+    "title": "Opposed-flow flame spread: A comparison of microgravity and normal gravity experiments to establish the thermal regime",
+    "doi": "10.1016/j.firesaf.2015.11.011",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates a comparison of BASS-II microgravity and 1-g opposed-flow spread over thin PMMA to establish the thermal regime.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Its BASS-II comparison (2.2 mm/s in microgravity vs 2.0 mm/s downward in 1 g) is reproduced in the BASS-II summary report and already in findings[2] of PSI-25."
+  },
+  {
+    "title": "The critical flow velocity for radiative extinction in opposed-flow flame spread in a microgravity environment: A comparison of experimental, computational, and theoretical results",
+    "doi": "10.1016/j.combustflame.2015.10.023",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates the critical flow velocity for radiative extinction of opposed-flow spread in microgravity (experiment, computation, theory).",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. The BASS-II radiative-extinction velocities (about 1 cm/s in air, 2.6-4 cm/s near 16% O2) are reproduced in the BASS-II summary report and already in findings[0]-[1] of PSI-25."
+  },
+  {
+    "title": "Experimental validation of a correlation capturing the boundary layer effect on spread rate in the kinetic regime of opposed-flow flame spread",
+    "doi": "10.1016/j.proci.2014.06.125",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates an experimental check of a boundary-layer correlation for opposed-flow spread in the kinetic regime.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Likely ground (1 g) experiments; the related correlation paper (Combust. Sci. Technol. 2014, PSI-26 entry 3) is computational."
+  },
+  {
+    "title": "Results from on-board CSA-CP and CDM Sensor Readings during the Burning and Suppression of Solids - II (BASS-II) Experiment in the Microgravity Science Glovebox (MSG)",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150019858",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "ICES-2015 paper on combustion-product readings (CSA-CP, CDM) during BASS-II: a CSTR model of the nitrogen dilution verified against the sensors, near-stoichiometric O2-to-CO2 conversion, geometry-dependent CO, CO/CO2 ratios an order of magnitude above efficient combustion, heat release mostly well below 100 W, global equivalence ratio about 1.3, and window damage from a leak during the one ~100 W test.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "O2 converted nearly stoichiometrically to CO2; CO depends on geometry; global equivalence ratio about 1.3 (fuel rich).",
+        "quote": "Sensor data from the tests showed that the oxygen was burning nearly stoichiometrically to CO2, and that CO levels appear to be a function of geometry and, in some cases, the flow velocity/geometry combination.",
+        "locator": "Conclusions",
+        "record_path": "findings[12]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Most flames released well below 100 W; equivalence ratio about 1.3.",
+        "quote": "Using the mass loss data and oxygen consumption data, the global equivalence ratio for the tests is estimated to be 1.3 on average, which indicates the flames were burning fuel rich under the low velocity forced flow conditions.",
+        "locator": "Conclusions",
+        "record_path": "findings[12]"
+      }
+    ],
+    "notes": "Everything in it is already in the PSI-25 record via the BASS-II summary report (CSTR model, window damage, CO per CO2 values)."
+  },
+  {
+    "title": "Modeling and Analysis of Intermediate Thickness PMMA Sheets Burning in Microgravity Opposed Flow",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates modelling of intermediate-thickness PMMA sheets in microgravity opposed flow (Miller/Wichman BASS-II slab tests).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS (title and keyword searches), OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Concurrent flame growth, spread and extinction over composite fabric samples in low speed purely forced flow in microgravity",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150008962",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "9th US National Combustion Meeting paper on concurrent spread over SIBAL fabric (1.2 and 2.2 cm wide, 10 cm long) in BASS and BASS-II: O2 21% down to 16%, flow 40 down to 1 cm/s. Quenching speeds were 1-5 cm/s, higher at lower O2, the first clean determination of the low-speed concurrent quenching boundary; near quenching the flame shrank in length and width and went out three-dimensionally.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Quenching speeds of 1-5 cm/s for SIBAL fabric in concurrent flow, higher at lower O2; first clean concurrent quenching boundary.",
+        "quote": "The quenching speeds were found to be between 1 and 5 cm/s with higher speed in lower oxygen atmosphere.",
+        "locator": "Abstract",
+        "record_path": "findings[10]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Flame shrinks in length and width and extinguishes three-dimensionally at quenching.",
+        "quote": "The flame image sequence at quenching shows the flame shrinks both in length and width and the flame goes out in a three-dimensional manner.",
+        "locator": "Conclusions",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Conference precursor of the Proc. Combust. Inst. 36 journal paper (entry 9). Samples 10 cm long here vs 8.5 cm exposed length in BASS documents (already noted in PSI-25 gaps[8])."
+  },
+  {
+    "title": "Radiative, thermal, and kinetic regimes of opposed-flow flame spread: A comparison between experiment and theory",
+    "doi": "10.1016/j.proci.2016.06.025",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates a comparison of BASS-II opposed-flow spread data with theory across radiative, thermal and kinetic regimes.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. PSI-25 gaps[2] already lists this paper as missing."
+  },
+  {
+    "title": "Concurrent flame growth, spread, and quenching over composite fabric samples in low speed purely forced flow in microgravity",
+    "doi": "10.1016/j.proci.2016.06.028",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Journal version of the concurrent-flow SIBAL fabric growth, spread and quenching study (BASS and BASS-II).",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. The conference version (9th USNCM 2015, NTRS 20150008962, entry 7) was read and confirms findings[10]."
+  },
+  {
+    "title": "A Study of the Effectiveness of a Narrow Channel Apparatus in Simulating Microgravity Flame Spread over Thin Fuels",
+    "doi": "10.2514/6.2012-3493",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2012-3493",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of the San Diego State University Narrow Channel Apparatus (NCA) as a 1-g simulator of microgravity flame spread over thin fuels, compared with NASA 5.18 s drop-tower tests along a normoxic (pressure-oxygen) curve. No ISS or BASS-II data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Compares NCA ground tests with drop-tower microgravity, not with BASS-II.",
+        "quote": "This paper extends that work by comparing flame spread results from flammability tests conducted on Kimwipes ® in the SDSU NCA and in true microgravity in NASA’s Zero-Gravity Research Facility at several points along the normoxic curve.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA full text paywalled."
+  },
+  {
+    "title": "BASS-II Summary Report",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20210011385",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "NASA/TM-20210011385, the BASS-II summary report: all 129 runs, per-PI results (thin and thick PMMA in opposed flow, PMMA rods in opposed and concurrent flow, SIBAL fabric), combustion-product analysis and appendix test matrices. It is the main source of the PSI-25 knowledge record.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "126 tests in 2014 (the record's 129 adds three 2016 Olson runs, gaps[7]); the record was written from this report.",
+        "quote": "A total of 126 tests were conducted as part of BASS–II.",
+        "locator": "p11 (PSI evidence copy)",
+        "record_path": "test_matrix.n_tests"
+      }
+    ],
+    "notes": "Already in PSI evidence as 'PSI-25_Reports_BASS-II Summary Report.pdf' (held_file is not set in the PSI record). The NTRS PDF link returned a 64-byte stub, so the evidence copy was used."
+  },
+  {
+    "title": "Correlation of normal gravity mixed convection blowoff limits with microgravity forced flow blowoff limits",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20160012691",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Ground (1 g) blowoff limits for cast PMMA rods (radii 0.318-1.905 cm, 14-18% O2) in upward axial stagnation flow, compared with the BASS-II concurrent-rod flammability boundary. The 1-g blowoff boundary is linear and parallel to the BASS-II boundary, offset by a buoyant stretch of about 78 1/s (about 16.5 cm/s for the base rod), and the authors propose extrapolating it to zero stretch as a ground test for microgravity flammability.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "1-g blowoff boundary is linear (O2 proportional to flow), supporting the zero-stretch extrapolation proposal in findings[5].",
+        "quote": "From these results, the normal gravity blowoff boundary for this axisymmetric rod geometry is determined to be linear, with oxygen concentration directly proportional to flow speed.",
+        "locator": "Abstract",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The 1-g blowoff boundary is parallel to the BASS-II boundary but shifted to lower stretch; adding a buoyant stretch of 78 1/s (16.5 cm/s forced-flow equivalent for the base rod) brings them together.",
+        "quote": "The normal gravity blowoff boundary was parallel to the BASS-II boundary, but shifted to lower stretch rates. In order to account for the additional inherent buoyant stretch, the normal gravity boundary was empirically shifted to the right by a value ab =78 s-1, which for the base rod size corresponds to a forced flow velocity of 16.5 cm/s, in good agreement with buoyant flow velocity estimates.",
+        "locator": "Conclusions",
+        "record_path": "findings[13]"
+      }
+    ],
+    "notes": "Ground tests interpreted against BASS-II flight data. The NTRS abstract was already cited in findings[5]."
+  },
+  {
+    "title": "Fire in Microgravity",
+    "doi": "10.1511/2016.118.44",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Popular article (American Scientist 104(1), 2016) on fire in microgravity by the Miller/Wichman BASS-II team.",
+    "items": [],
+    "notes": "americanscientist.org returned HTTP 503 / a bot page to automated requests; no other copy found."
+  },
+  {
+    "title": "Microgravity Flammability of PMMA Rods in Concurrent Flow",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150008961",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "9th USNCM 2015 paper on 24 BASS-II concurrent (axial stagnation) tests on cast PMMA rods of three diameters, O2 from about 21% to about 14%. A U-shaped O2-stretch flammability boundary correlates with a critical Damkohler number: a linear blowoff branch (near-constant blowoff temperature) and an exponential quenching branch where surface radiation exceeds conduction into the rod; 5.18 s drop tests gave comparable blowoff limits.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "24 concurrent-flow rod tests (the experimental table has 24 Olson rows dated 2014, O1-O19 with a/b splits; three more were run in 2016).",
+        "quote": "Twenty-four concurrent axial flow flammability tests with three diameters of cast PMMA cylindrical rods were performed in the MSG on the ISS.",
+        "locator": "Conclusions",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Linear blowoff branch and exponential quenching branch of a critical-Damkohler flammability boundary.",
+        "quote": "The blowoff branch exhibits a linear (Yox ~ a), trend that indicates there is a relatively constant critical temperature at blowoff. The quenching branch exhibits an exponential (Yox versus a) curve which reflects importance of heat losses to drop the flame temperature",
+        "locator": "Conclusions",
+        "record_path": "findings[7]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Near the limit, surface radiative loss exceeds conductive loss into the rod.",
+        "quote": "A surface energy balance is presented that shows the surface radiative loss exceeds the conductive loss into the rod near the limit.",
+        "locator": "Abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Conference precursor of the Combust. Flame 2017 paper (entry 0)."
+  },
+  {
+    "title": "Using a Narrow Channel Apparatus to Study Thermally-Intermediate Fuel Combustion in a Simulated 0g Environment",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates Narrow Channel Apparatus ground tests on thermally intermediate fuels (1-g simulation of microgravity).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar. Likely ground-only (out of scope) by its title."
+  },
+  {
+    "title": "Burning and Suppression of Solids – II Fire Safety Investigation for the Microgravity Science Glovebox",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2013 ASGSR presentation introducing the BASS-II investigation before the 2014 runs.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS (cited as ref. 1 of NTRS 20150019858). Pre-flight, so unlikely to hold results."
+  }
+]

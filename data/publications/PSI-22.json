@@ -1,0 +1,432 @@
+[
+  {
+    "title": "Ion Current and Flame Changes with Electric Fields in Microgravity",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. By its title and authors (Chien, Tinajero, Stocker, Hegde, Dunn-Rankin) this is a conference paper on the ISS E-FIELD ion-current measurements, presumably overlapping the 2022 Combustion and Flame foundation paper.",
+    "items": [],
+    "notes": "No DOI. Not found on NTRS, OpenAlex or Semantic Scholar by title (searches returned only the 2001 Proc. R. Soc. A microbuoyancy paper and the 2003 NTRS drop-tower abstract 20040053587, which are different works)."
+  },
+  {
+    "title": "Electric Field Induced Changes of a Diffusion Flame and Heat Transfer near an Impinging Surface",
+    "doi": "10.3390/en11051235",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.3390/en11051235?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground (1 g) study of a small diffusion flame impinging on a plate under an applied electric field, using an IR camera and schlieren imaging. The ion-driven wind substantially changes the heat-flux distribution on the plate, most when the plate is just above the flame tip. No microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground impinging-flame heat-transfer study; no ISS or microgravity data.",
+        "quote": "The results show that electric fields affect substantially the heat flux distribution through the ion-driven wind, particularly when the plate location is just above the flame tip.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Open access (MDPI, CC BY) but mdpi.com refused automated download (HTTP 403); abstract read via Semantic Scholar."
+  },
+  {
+    "title": "Electrical Aspects of Impinging Flames",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works?search=Electrical%20Aspects%20of%20Impinging%20Flames",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Y.-C. Chien's UC Irvine dissertation on electric-field control of flames impinging on surfaces (CO release and heat transfer), ground experiments only. CO escapes along the cold boundary layer on the fuel side; plate distance matters more than field strength.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground dissertation on impinging flames; plate proximity dominates CO emission over field strength.",
+        "quote": "In addition, the plate proximity to the flame has a stronger influence on the emission of toxic carbon monoxide than does the electric field strength.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "No DOI. Abstract from OpenAlex (eScholarship item 0ms7b11c); escholarship.org served a bot challenge, so the PDF was not read."
+  },
+  {
+    "title": "The Influence of Electric Field Power Systems on Flame Behavior",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of how high-voltage power-supply characteristics affect flame response (the Chien dissertation abstract describes characterising supply response times for real-time actuation).",
+    "items": [],
+    "notes": "No DOI; no abstract or text found on OpenAlex, Semantic Scholar or NTRS."
+  },
+  {
+    "title": "Ionization and chemiluminescence during the progressive aeration of methane flames",
+    "doi": "10.1016/j.combustflame.2009.08.008",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground laboratory study of ionisation and chemiluminescence in partially premixed methane flames; background to ion-current diagnostics.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Modelling electric field driven convection in small combustion plasmas and surrounding gases",
+    "doi": "10.1080/13647830701383814",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/13647830701383814",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Numerical model of the ion-wind (electric body force) flow around a small gaseous flame, treated as a unipolar two-fluid system; a toroidal vortex dominates the flow and space charge dominates the discharge. Background modelling, no microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Modelling of ion-driven convection around a small flame in 1 g; background to the E-FIELD physics.",
+        "quote": "The results indicate a complex interaction between the combustion and current discharge environments where the flow field is dominated by the presence of a toroidal vortex structure and the discharge is dominated by space charge effects.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "Canceling buoyancy of gaseous fuel flames in a gravitational environment using an ion-driven wind.",
+    "doi": "10.1196/annals.1362.038",
+    "access": "abstract",
+    "read_url": "https://api.crossref.org/works/10.1196/annals.1362.038",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "Ground study using ion wind to cancel buoyancy locally around a capillary flame ('microbuoyant' condition). For methane the microbuoyant condition coincides with ion-current saturation; sooting fuels show hysteresis in the voltage-current characteristic. Precursor to E-FIELD.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Microbuoyant condition for methane coincides with ion-current saturation (record finding on the gravity-mimicking basis).",
+        "quote": "Furthermore, in this geometry, the microbuoyant condition for methane is found to coincide with ion current saturation when the capillary-to-plane distance is varied.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Sooting fuels (C2Hx, propane) show hysteresis in the voltage-current characteristic: more soot, lower ion current at the same flow and potential; methane shows none.",
+        "quote": "Soot generated in the C 2 H X and propane flames lead to a hysteresis in the VCC curve whereby increased sooting leads to lower ion currents at constant flow rates and applied potentials.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from Crossref/OpenAlex. Ground (1 g) work; the hysteresis result is relevant to interpreting ISS ethylene ion currents but is not an ISS result, so it was not added to the record."
+  },
+  {
+    "title": "Detailed characterization of DC electric field effects on small non-premixed flames",
+    "doi": "10.1016/j.combustflame.2015.03.019",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground characterisation of DC electric-field effects on small non-premixed flames (Karnani and Dunn-Rankin).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Microgravity burner-generated spherical diffusion flames: experiment and computation",
+    "doi": "10.1016/S0010-2180(01)00247-4",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a drop-tower/computational study of burner-generated spherical diffusion flames (Tse, Law et al.), unrelated to electric fields; background only.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. The PSI record lists this paper although it is not E-FIELD work (already noted in the record's gaps)."
+  },
+  {
+    "title": "PLIF and chemiluminescence in a small laminar coflow methane-air diffusion flame at elevated pressures",
+    "doi": "10.1016/j.combustflame.2022.112067",
+    "access": "full_text",
+    "read_url": "https://upcommons.upc.edu/handle/2117/407269",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of OH PLIF and OH*/CH* chemiluminescence in a small laminar coflow methane-air flame up to 11.4 atm. With rising pressure the reaction zone thins at constant flame height and soot increases near the tip. No electric field and no microgravity; the only ACME link is that the same camera model flies on ACME.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "High-pressure 1 g diagnostics study; no E-FIELD or ISS data.",
+        "quote": "The overall imaging results show that as the pressure rises there is a consistent thinning of the reaction zone while maintaining the same flame height, and there is an increasing concentration of soot near the flame tip.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "Link to ACME is only shared camera hardware.",
+        "quote": "this camera model is also used on the International Space Station for imaging non-premixed flames as part of the ACME suite of microgravity experiments",
+        "locator": "Sec. 2 (experimental), CH* imaging",
+        "record_path": null
+      }
+    ],
+    "notes": "Author's final draft from the UPC repository (UPCommons). Funded by NSF and Keck; acknowledges the NASA ACME programme only for the loan of the camera."
+  },
+  {
+    "title": "Ion current and carbon monoxide release from an impinging methane/air coflow flame in an electric field",
+    "doi": "10.1016/j.combustflame.2019.03.022",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2019.03.022?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of ion current and CO release from a methane coflow flame impinging on a plate under DC fields. Burner-to-plate distance dominates CO emission; ion current monitoring is proposed as a sensor of flame behaviour and CO release.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground impinging-flame study; ion current proposed as an index of CO emission.",
+        "quote": "The detailed findings indicate that a continuous monitor of ion current from the flame to the impinging surface can be an effective sensing index of flame behavior and CO emission.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Green OA copy listed on eScholarship (qt0cp2j93g) but escholarship.org served a bot challenge (HTTP 202, empty); abstract read via Semantic Scholar."
+  },
+  {
+    "title": "Non-premixed axisymmetric flames driven by ion currents",
+    "doi": "10.1016/j.combustflame.2018.10.036",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2018.10.036?fields=title,abstract",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "Ground coflow-burner study of positive DC fields: flame-base changes depend on burner geometry, CH* and chemi-ion production rise, a Roper-type model with an ion-wind term predicts the shape change, and the derived body force is 200-400 'N/m2'. Basis of the record's force-size comparison.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Derived electrical body force 200-400 (stated N/m2), used in the record's force comparison.",
+        "quote": "The calculated body force (200–400 N/m2) agreed well with the theoretical model.",
+        "locator": "abstract",
+        "record_path": "findings[8]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "In the plane-to-plane (coflow-mesh) configuration the peak ion current density sits 2.5 mm off axis, unlike point-to-plane configurations where it stays on the centreline.",
+        "quote": "The probe measurements also revealed that for the coflow geometry the peak current density develops 2.5 mm from the center axis.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from Semantic Scholar. Ground work; the off-axis current density is background for ISS geometry, not added to the record."
+  },
+  {
+    "title": "Impinging nonpremixed coflow methane–air flames with unity Lewis number",
+    "doi": "10.1016/j.proci.2016.06.193",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of impinging coflow methane-air flames with unity Lewis number.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Characterizing I-V Curves for Non-Premixed Methane Flames Stabilized on Different Burner Configurations",
+    "doi": "10.1080/00102202.2017.1331218",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/00102202.2017.1331218",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of current-voltage (I-V) curves for non-premixed methane flames on different burners; burner configuration strongly affects the curve above saturation, where current rises and instabilities appear.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "1 g I-V curves depend on burner configuration above saturation; contrast with the ISS parabolic decline after saturation is the record's finding.",
+        "quote": "The results show that the burner configuration has a significant effect, particularly with field strengths above the saturation point.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "CO emission from an impinging non-premixed flame",
+    "doi": "10.1016/j.combustflame.2016.09.004",
+    "access": "abstract",
+    "read_url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pmc&id=5628611&rettype=xml",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study (NASA author manuscript, PMC5628611) of CO release from a small methane-air flame impinging on a surface, with OH and CO PLIF and OH thermometry; CO release correlates with the stagnation-driven shift of the OH region. No electric field results in the abstract and no microgravity.",
+    "items": [],
+    "notes": "PMC lists it as a NASA author manuscript, but the PMC page is behind a reCAPTCHA and the efetch XML carries only the abstract (publisher does not allow download). Abstract read; no quote recorded."
+  },
+  {
+    "title": "Electrical aspects of flame quenching",
+    "doi": "10.1016/j.proci.2012.07.007",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of electrical aspects of flame quenching (Weinberg, Dunn-Rankin et al.).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Behavior of a small diffusion flame as an electrically active component in a high-voltage circuit",
+    "doi": "10.1016/j.combustflame.2011.06.002",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of a small diffusion flame as an element of a high-voltage circuit.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Numerical prediction of ion current from a small methane jet flame",
+    "doi": "10.1016/j.combustflame.2009.02.002",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a numerical prediction of ion current from a small methane jet flame (modelling).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Electric field-controlled mesoscale burners",
+    "doi": "10.1016/j.combustflame.2007.07.007",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of electric-field-controlled mesoscale burners.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Numerical simulation of a tubular ion-driven wind generator",
+    "doi": "10.1016/j.elstat.2007.04.003",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a numerical simulation of a tubular ion-driven wind generator (corona, not flames).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Using large electric fields to control transport in microgravity.",
+    "doi": "10.1196/annals.1362.037",
+    "access": "abstract",
+    "read_url": "https://api.crossref.org/works/10.1196/annals.1362.037",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Review of the group's work on using large electric fields (flame ions, corona ions, charged particles) to control transport; argues this is especially effective without Earth's gravity. No ISS data.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Ion-driven convection control is especially effective in microgravity (motivation of E-FIELD).",
+        "quote": "Using electric fields to induce and direct convection through the drag exercised on neutral gas by ions and to manipulate dispersions and trajectories of electrically charged droplets and particles is especially effective in the absence of Earth's gravity.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Abstract from Crossref/OpenAlex. Review (2006), predates the ISS tests."
+  },
+  {
+    "title": "Maximizing ion-driven gas flows",
+    "doi": "10.1016/j.elstat.2005.09.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of maximising corona-driven (ion wind) gas flows.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Inducing gas flow and swirl in tubes using ionic wind from corona discharges",
+    "doi": "10.1007/s00348-005-0062-0",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of corona-driven flow and swirl in tubes.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Modeling of Elevated Pressure Diffusion Flames with Water Addition",
+    "doi": "10.1080/00102202.2023.2182205",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/00102202.2023.2182205?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "PeleLM simulation of high-pressure (to 11.1 bar) methane coflow flames with 0-60% water vapour in the fuel; pressure dominates over water addition. No electric field, no microgravity.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "High-pressure water-addition modelling unrelated to E-FIELD ISS data.",
+        "quote": "The general conclusion is that the pressure influence dominates over the water addition.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from Semantic Scholar/OpenAlex."
+  },
+  {
+    "title": "Electric-field effects on methane coflow flames aboard the international space station (ISS): ACME E-FIELD flames",
+    "doi": "10.1016/j.combustflame.2022.112443",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1016/j.combustflame.2022.112443",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "The E-FIELD foundation paper: methods, ACME insert capabilities, procedures and first results for methane coflow flames in a ramping field on the ISS (tests March-November 2018). The flame is most compact at saturation and the voltage-current curve is parabolic after saturation, unlike 1 g.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Most compact flame at saturation; parabolic VCC after saturation, unlike 1 g.",
+        "quote": "The results show that the flame is most compact at saturation while the measured voltage-current characteristic (VCC) curve demonstrates parabolic behavior after saturation which differs from observations in 1 g on Earth.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "On-orbit tests ran March-November 2018, matching the PSI table dates.",
+        "quote": "The on-orbit tests began in March 2018 using the modular ACME hardware within the ISS’ Combustion Integrated Rack (CIR) and were completed in the same year November.",
+        "locator": "abstract",
+        "record_path": "findings[0]"
+      }
+    ],
+    "notes": "Open access (CC BY-NC-ND) but ScienceDirect refused automated access (HTTP 403, also via WebFetch) and the Wayback copy holds only the abstract (body loaded by script); no repository copy found. Full text still unread, as already noted in the record's gaps."
+  }
+]

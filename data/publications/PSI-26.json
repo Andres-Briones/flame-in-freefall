@@ -1,0 +1,177 @@
+[
+  {
+    "title": "The Microgravity Science Glovebox as a Platform for Exploration Research on the International Space Station",
+    "doi": "10.2514/6.2006-941",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2006-941",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Description of the Microgravity Science Glovebox facility (255 L work volume, power, cooling, video, nitrogen supply) and its use for exploration research. Written in 2006, before BASS; no BASS data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Facility description only.",
+        "quote": "Research investigations operating inside the MSG are provided a large 255 liter work volume, 1000 watts of dc power via a versatile supply interface",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA full text paywalled. A 2007 version (AIAA 2007-546, NTRS 20070013892) was read for PSI-102 and has no BASS content either."
+  },
+  {
+    "title": "Opposed-flow flame spread: A comparison of microgravity and normal gravity experiments to establish the thermal regime",
+    "doi": "10.1016/j.firesaf.2015.11.011",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates a comparison of BASS-II microgravity and 1-g opposed-flow spread over thin PMMA to establish the thermal regime.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Its BASS-II comparison (2.2 mm/s in microgravity vs 2.0 mm/s downward in 1 g) is reproduced in the BASS-II summary report and already in findings[2] of PSI-25."
+  },
+  {
+    "title": "Simplified model for predicting difference between flammability limits of a thin material in normal gravity and microgravity environments",
+    "doi": "10.1016/j.proci.2014.07.017",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates a simplified model for the difference between 1-g and microgravity flammability limits of a thin material.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Likely modelling (possibly compared with BASS fabric data)."
+  },
+  {
+    "title": "A Correlation for an Effective Flow Velocity for Capturing the Boundary Layer Effect in Opposed-Flow Flame Spread over Thin Fuels",
+    "doi": "10.1080/00102202.2014.900056",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102202.2014.900056",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Computational and scale-modelling work proposing an effective-velocity correlation for the boundary-layer effect in opposed-flow spread over thin fuels. No BASS flight data in the abstract.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Computational correlation, not BASS results.",
+        "quote": "In this work, computational evidence to establish the importance of the developing boundary layer in the kinetic and microgravity regimes is presented.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; full text paywalled."
+  },
+  {
+    "title": "Radiation signature in opposed-flow flame spread",
+    "doi": "10.1504/PCFD.2012.048249",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1504/PCFD.2012.048249",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Radiation calculation (RADCAL vs TTNH models) for opposed-flow flame spread, to choose infrared imaging bands for quiescent microgravity experiments. Modelling only.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Radiation modelling to plan IR imaging; no flight data.",
+        "quote": "The results confirm the importance of radiative heat transfer in the microgravity regime, where the opposed-flow velocity can be mild or even absent",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; full text paywalled."
+  },
+  {
+    "title": "OS24-1 The Effect of Boundary Layer on Blow-Off Extinction in Opposed-Flow Flame Spread: Results of Experiments and Simplified Analysis(invited,Scale modeling on solid combustion,OS24 Scale modeling,FLUID AND THERMODYNAMICS)",
+    "doi": "10.1299/jsmeatem.2015.14.289",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Invited JSME ATEM 2015 talk on the boundary-layer effect on blow-off extinction in opposed-flow spread (experiments and simplified analysis).",
+    "items": [],
+    "notes": "OpenAlex lists it as open access on J-STAGE, but J-STAGE returned a bot-check HTML page to automated requests; no abstract in Crossref, OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Role of Gas Radiation in the Mechanism of Opposed-Flow Flame Spread in a Microgravity Environment",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates gas-radiation effects in microgravity opposed-flow spread (SDSU computation).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20140011099",
+    "classification": [
+      "confirms",
+      "contradicts_psi_data"
+    ],
+    "summary": "ASGSR 2013 BASS results poster/presentation: 41 samples in 115 burns in the SPICE duct, flows up to 40 cm/s, O2 17-21.5%. Opposed spread over SIBAL fabric peaked at intermediate flow; concurrent spread rose linearly with flow and quenched near 1 cm/s; 2.55 vs 1.21 mm/s at about 10 cm/s; Ultem and Nomex HT90-40 did not burn at 21-22% O2 while Nomex III did; PMSA sphere model comparison.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Concurrent vs opposed spread at about 10 cm/s: 2.55 vs 1.21 mm/s.",
+        "quote": "Concurrent and Opposed Spread at ~ 10 cm/s 2.55 mm/s versus 1.21 mm/s",
+        "locator": "Results slides",
+        "record_path": "findings[6]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Ultem and Nomex HT90-40 did not burn at 21-22% O2 and about 15 cm/s; Nomex III did.",
+        "quote": "Ultem and Nomex HT90-40 samples did not burn on ISS atmosphere 21% to 22% O2 Flow speeds around 15 cm/s Similar to 1-g",
+        "locator": "Material flammability slide",
+        "record_path": "findings[8]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "The paper counts 41 samples and 115 burns; the PSI-26 experimental table has 121 rows (n_tests in the record). The difference is probably non-burn rows (e.g. 'SOOT Cleaning') and reused as-run numbers noted in gaps[8], but the table does not say which rows are burns.",
+        "quote": "41 samples, 115 burns completed",
+        "locator": "Hardware summary slide",
+        "record_path": "test_matrix.n_tests"
+      }
+    ],
+    "notes": "Already cited in the PSI-26 record (findings[9], [14]); it adds nothing new to the findings."
+  },
+  {
+    "title": "A novel apparatus for flame spread study",
+    "doi": "10.1016/j.proci.2012.05.076",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Title indicates a new ground apparatus (narrow channel) for flame-spread studies.",
+    "items": [],
+    "notes": "Elsevier paywall; Crossref, OpenAlex and Semantic Scholar expose no abstract; no NTRS, PMC or repository copy found. Ground apparatus, so out of scope by its title."
+  },
+  {
+    "title": "Opposed-Flow Flame Spread in a Narrow Channel Apparatus over Thin PMMA Sheets",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20140004923",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "8th USNCM 2013 paper: SDSU Narrow Channel Apparatus tests of opposed-flow spread over thin PMMA in 1 g, compared with drop-tower microgravity; 18 mm and 6 mm gaps were unsuitable. No BASS data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground NCA compared with drop tower, not with BASS.",
+        "quote": "Tests completed in the SDSU NCA closely compare to actual microgravity conditions seen in drop tower experiments under otherwise the same conditions.",
+        "locator": "Conclusions",
+        "record_path": null
+      }
+    ],
+    "notes": ""
+  }
+]

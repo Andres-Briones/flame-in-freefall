@@ -1,0 +1,323 @@
+[
+  {
+    "title": "Burning on flat wicks at various orientations",
+    "doi": "10.1177/0734904113495650",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1177/0734904113495650?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of burning on methanol/ethanol-soaked flat wicks at various orientations to gravity; transition at Grashof numbers 10^6-10^7. Background to the BRE concept, no microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "1 g wick burning study.",
+        "quote": "Burning on flat plates was studied at various orientations with respect to gravity.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from Crossref/Semantic Scholar."
+  },
+  {
+    "title": "A Gas Burner to Emulate Condensed-Phase Burning",
+    "doi": "10.3850/978-981-07-5936-0_03-01",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title an early conference paper introducing the gas burner that emulates condensed-phase burning (ground).",
+    "items": [],
+    "notes": "Conference proceedings (Research Publishing); no abstract in Crossref/OpenAlex, Semantic Scholar elided; no repository copy found."
+  },
+  {
+    "title": "Experimental Investigation of Liquid and Gas Fueled Flames Towards the Development of a Burning Rate Emulator (BRE) for Microgravity Applications",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works?search=Experimental%20investigation%20of%20liquid%20and%20gas%20fueled%20flames%20towards%20the%20development%20of%20a%20burning%20rate%20emulator%20%28BRE%29%20for%20microgravity%20applications",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Bustamante's UMD master's thesis (2012): ground wick and gas-burner flames at various orientations, with some 0 g ethanol wick flames from drop-tower and aircraft tests. Precursor work.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground/precursor thesis; mentions 0 g wick flames from drop tower and aircraft.",
+        "quote": "0g ethanol wick flames from drop tower testing and airplane testing are shown.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "No DOI. Abstract from OpenAlex search; the DRUM full text was not located."
+  },
+  {
+    "title": "Burning in microgravity: Experimental results and analysis",
+    "doi": "10.1016/j.combustflame.2021.01.035",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2021.01.035?fields=title,abstract",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "Main ISS BRE results paper: 59 successfully ignited 25 mm tests with ethylene/N2 (23.6 and 47.2 kJ/g), 21-40% O2 and 0.56-1 bar, including NASA habitat atmospheres. Over half burned at least 2 and up to 5 minutes; nominal O2 of 26% and above allowed steady flames; shut-down flames were above 94% of steady heat flux; radiative fraction correlated with flame height.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "59 tests, over half burned 2-5 min.",
+        "quote": "More than half of the tests resulted in long burns of at least 2 and as long as 5 min.",
+        "locator": "abstract",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Nominal O2 of 26% and above allows steady flames.",
+        "quote": "Generally, it has been found that nominal oxygen mole fractions of 26% and above can allow steady flames.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Test end points above 94% of steady-state heat flux.",
+        "quote": "Theoretical analyses show the shutdown flames were steady in growth, and all of the test endpoints were more than 94% of steady state in flame heat flux.",
+        "locator": "abstract",
+        "record_path": "findings[2]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The analysed tests used two ethylene/N2 mixtures with heats of combustion 23.6 and 47.2 kJ/g (LHV), i.e. 50% and 100% ethylene, at 21-40% O2 and 1 to about 0.56 bar, including NASA habitat atmospheres.",
+        "quote": "Mixtures of ethylene and nitrogen allow for 23.6 and 47.2 kJ/g heats of combustion (LHV). Nominal ambient conditions range from 40% to 21% oxygen and pressures of 1 to about 0.56 bar. NASA human habitat atmospheres have been used.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Accepted manuscript listed as free on ScienceDirect but refused automated access (HTTP 403); abstract via Semantic Scholar. The 59 tests are the analysed round-1 subset; the PSI table lists 194 flames over all rounds (count difference already in the record's gaps, not a contradiction). The new detail is a test-matrix refinement, not added as a finding."
+  },
+  {
+    "title": "Transient dynamics of radiative extinction in low-momentum microgravity diffusion flames",
+    "doi": "10.1016/j.proci.2020.06.110",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2020.06.110?fields=title,abstract",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "3-D simulations of BRE flames in 0 g and 1 g for the orbital test conditions in normal atmosphere (air). Simulated time to extinction agrees with the ISS observations; extinction occurs when the instantaneous radiative fraction reaches 60-70% of the heat release rate, favoured by the long residence time of low-momentum microgravity flames; edge-flame (hook/triple flame) dynamics follow local extinction.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Simulated extinction time agrees with ISS observations; extinction occurs when the instantaneous radiative fraction reaches 60-70% of heat release, because of long residence time.",
+        "quote": "Time to flame extinction predicted in this work agrees with the experimental observations. Extinction occurs due to the excessive radiative losses when the instantaneous radiative fraction grows up to 60–70% of the current heat release rate.",
+        "locator": "abstract",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "ISS flames show local extinction, oscillation and complete quenching.",
+        "quote": "The experimental observations have shown that these flames are prone to the local extinction followed by fluctuating instability and complete quenching.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Accepted manuscript listed as free on ScienceDirect but refused automated access; abstract via Semantic Scholar. New finding added to the record."
+  },
+  {
+    "title": "Emulation of condensed fuel flames with gaseous fuels supplied through a porous copper calorimeter",
+    "doi": "10.1002/fam.2896",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1002/fam.2896?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground BRE development: emulation of seven condensed fuels (acetone, alcohols, PE, PMMA, PP, PS) with N2-diluted methane, ethylene or propylene, matching heat of combustion, heat of gasification, smoke point and surface temperature; calorimeter accuracy within 5%.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "1 g emulation method.",
+        "quote": "Seven condensed fuels were emulated: acetone, ethanol, methanol, polyethylene, polymethylmethacrylate, polypropylene, and polystyrene.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Wiley accepted-manuscript PDF link refused automated access (HTTP 403); abstract via Crossref/Semantic Scholar."
+  },
+  {
+    "title": "Radiative Extinction of Laminar Diffusion Flame above the Flat Porous Burner in Microgravity: A Computational Study",
+    "doi": "10.1134/S0010508220040036",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1134/S0010508220040036",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "3-D unsteady simulations replicating BRE (ACME) conditions for methane and ethylene: flames cool by radiation to local extinction, oscillation and extinguishment despite constant fuel supply; microgravity radiative fraction is an order of magnitude higher than at 1 g.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Radiative fraction an order of magnitude higher in microgravity; radiative loss causes extinction.",
+        "quote": "The radiative fraction in the microgravity flames is found to be by an order of magnitude higher than that in the normal gravity flames produced by the same burner.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Abstract reconstructed from OpenAlex's word index (as in the record)."
+  },
+  {
+    "title": "Transient ellipsoidal combustion model for a porous burner in microgravity",
+    "doi": "10.1016/j.combustflame.2019.09.030",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2019.09.030?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Transient ellipsoidal combustion model of the BRE burner, compared with 5.18 s drop-tower tests where the flame grew ellipsoidally and did not reach steady state.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower precursor and model; steady state not reached in 5 s.",
+        "quote": "Microgravity BRE experiments conducted at NASA Glenn's 5.18-s Zero Gravity Research Facility indicated the evolution of an approximately ellipsoidal flame moving away from the burner with steady state not achieved during the 5-second test period.",
+        "locator": "abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar. Drop tower, not ISS data."
+  },
+  {
+    "title": "Measuring heat flux to a porous burner in microgravity",
+    "doi": "10.1016/j.proci.2018.05.006",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.05.006?fields=title,abstract",
+    "classification": [
+      "new_finding",
+      "out_of_scope"
+    ],
+    "summary": "Calibration of the BRE copper slug calorimeter and comparison with local heat-flux gauges in 5.18 s drop-tower flames; fluxes 5-20 kW/m2 with higher flux at the edge.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Drop-tower BRE flames gave burner heat fluxes of 5-20 kW/m2, higher at the burner edge (precursor value, not ISS).",
+        "quote": "The results show that the average slug calorimeter heat flux and the two local heat flux measurements are in harmony over a wide range of microgravity flame fluxes ranging from 5–20 kW/m2, with the edge heat flux much higher.",
+        "locator": "abstract",
+        "record_path": null
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop tower, not ISS.",
+        "quote": "Microgravity diffusion flames were observed in NASA Glenn's 5.18-s Zero Gravity Research Facility",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar. Not added to the record (drop-tower instrument calibration)."
+  },
+  {
+    "title": "Analysis of extinction and sustained ignition",
+    "doi": "10.1016/j.firesaf.2019.02.003",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.firesaf.2019.02.003?fields=title,abstract",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground (1 g) burner study of sustained ignition and extinction limits with 25-100 mm burners and N2-diluted fuels; critical mass flux ranges about 1-50 g/(m2 s) and no burning below a heat of combustion of 3-4 kJ/g.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "1 g limits; no burning below 3-4 kJ/g heat of combustion.",
+        "quote": "The results show that no burning is possible below a heat of combustion of 3–4 kJ/g.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Full abstract from the Lund University research portal (Semantic Scholar's copy is truncated)."
+  },
+  {
+    "title": "A Burning Rate Emulator (BRE) for study of condensed fuel burning in microgravity",
+    "doi": "10.1016/j.combustflame.2018.01.044",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2018.01.044?fields=title,abstract",
+    "classification": [
+      "confirms",
+      "out_of_scope"
+    ],
+    "summary": "49 BRE drop-tower tests (25 and 50 mm; methane, ethylene, diluted ethylene): flames nearly hemispherical within 5 s and still growing; larger burner lacks correlation, attributed to gas radiation; quasi-steady microgravity flames need much longer than 5 s.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Quasi-steady microgravity BRE flames need much longer than 5 s (why ISS tests were needed).",
+        "quote": "The analysis predicts that quasi-steady microgravity BRE flames will require much longer than 5 s.",
+        "locator": "abstract",
+        "record_path": "findings[10]"
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "Drop-tower tests.",
+        "quote": "This paper presents 49 BRE tests at NASA Glenn's 5.18-s Zero Gravity Research Facility for two burner diameters (25 mm and 50 mm) with methane, ethylene and nitrogen-diluted ethylene as fuels.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar."
+  },
+  {
+    "title": "Study of ignition and extinction of small-scale fires in experiments with an emulating gas burner",
+    "doi": "10.1016/j.firesaf.2016.11.003",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of ignition and extinction of small fires with an emulating gas burner (Lund).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Emulation of condensed fuel flames with gases in microgravity",
+    "doi": "10.1016/j.combustflame.2015.05.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the first BRE microgravity (drop-tower) emulation paper; precursor.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. NTRS 20170009141 (Markan et al., used in the record) is a related but different paper."
+  },
+  {
+    "title": "Flammability maps for microgravity burning of a small flat material in a quiescent ambient",
+    "doi": "10.1016/j.combustflame.2023.112809",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the flammability-map paper derived from the ISS BRE data (Dehghani and Quintiere); its content appears to correspond to the Dehghani 2022 UMD dissertation already used in the record (material flammability map).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. Accepted manuscript listed as free on ScienceDirect but refused automated access (HTTP 403)."
+  },
+  {
+    "title": "Demonstrating steady burning for small flat materials in microgravity in a quiescent ambient",
+    "doi": "10.1016/j.proci.2022.08.107",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the paper demonstrating steady burning of small flat materials in quiescent microgravity from the ISS BRE data; content appears to overlap the Dehghani 2022 dissertation used in the record.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. Accepted manuscript listed as free on ScienceDirect but refused automated access (HTTP 403)."
+  },
+  {
+    "title": "Theoretical analysis and predictions of burning in microgravity using a burning emulator",
+    "doi": "10.1016/j.combustflame.2021.111572",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the theoretical analysis of BRE burning in microgravity (extinction criterion, burning-rate predictions); content appears to overlap the Dehghani 2022 dissertation used in the record.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. Accepted manuscript listed as free on ScienceDirect but refused automated access (HTTP 403)."
+  }
+]

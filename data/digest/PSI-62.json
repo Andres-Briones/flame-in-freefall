@@ -17,7 +17,7 @@
     "project_type": "Ground Investigation"
   },
   "one_line": "University at Buffalo researchers built and tested fast computer models of flames spreading over solid fuels in weightlessness, checking them against Space Station burning tests, as a step toward predicting which spacecraft materials can burn at which oxygen levels and air speeds.",
-  "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, validated it against BASS data over a range of oxygen levels, and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data. The aim is to screen spacecraft materials' flammability limits numerically.",
+  "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, compared it with BASS spread rates at 20.6% oxygen (over-predicting them by up to 2.7 times), and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data, predicting a minimum of 11.1-12.6% oxygen, 0.9-2.4 points below experiment. The aim is numerical screening of spacecraft material flammability.",
   "question": {
     "text": "Can a reduced-chemistry approach, the (unsteady, radiative) flamelet generated manifold, reproduce flame spread over solid fuels in microgravity with enough fidelity to predict flammability limits of spacecraft materials? Concurrent and opposed flame spread over solids is hard to model because heat transfer, mass transport and chemistry are tightly coupled near the solid-gas interface, and conventional hybrid turbulence/chemistry models are inconsistent and miss intermediate reaction pathways. The hypothesis was that the unsteady FGM approach, coupling near-wall thermal, mass transport and chemical processes with the far-field flow, could reproduce microgravity flame spread including the 'Goldilocks' flammability zone (burning only within an intermediate range of flow speed) reported by Olson and Ferkul for BASS-II PMMA rods. The long-term aim was a tool to predict flammability limits and to serve as a subgrid model in large-eddy simulations of spacecraft fires.",
     "sources": [
@@ -70,8 +70,10 @@
   },
   "test_matrix": {
     "varied": [
-      {"parameter": "far-field oxygen level (2-D model vs BASS)", "range": "range of BASS oxygen levels (values not available)", "unit": "mole fraction", "sources": [
-        {"type": "external", "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/", "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."}
+      {"parameter": "far-field oxygen level (2-D model vs BASS)", "range": "0.206 in the BASS spread-rate comparison shown (2 cm wide, 100 um thick PMMA slab, opposed flow 3.75-40 cm/s); the abstract claims a range of oxygen levels", "unit": "mole (volume) fraction", "sources": [
+        {"type": "external", "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/", "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2576508", "quote": "Figure 8 shows a comparison between the model predicted and the experimentally measured flame spread rates from the NASA BASS missions for a 2 cm wide, 100 μm thick slab of PMMA with a far field volumetric"},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2576508", "quote": "oxygen concentration of 20.6%. Also compared are model predictions made by Bhattacharjee et. al."}
       ]},
       {"parameter": "flame strain (stretch) rate (flammability maps)", "range": "low-strain radiative extinction to high-strain blowoff (values not available)", "unit": "1/s", "sources": [
         {"type": "external", "url": "https://researchconnect.buffalo.edu/en/publications/theoretical-estimates-of-flammability-bounds-for-thin-condensed-f/", "quote": "To estimate low strain extinction, in this study an analytical theory is developed based on thin flame theory coupled with a heat and mass transfer model for solid fuels."}
@@ -114,11 +116,14 @@
   },
   "findings": [
     {
-      "claim": "A detailed 2-D flame-spread model with multi-step chemistry and fully coupled radiation, validated against NASA BASS data, predicts reasonable flame spread rates over a range of far-field oxygen levels (spread-rate values and error not available in the abstracts read).",
+      "claim": "A detailed 2-D opposed-flow flame-spread model with multi-step chemistry and fully coupled radiation was compared with NASA BASS spread rates for a 2 cm wide, 100 um thick PMMA slab at 20.6% O2 over flow speeds spanning the radiative, thermal and kinetic regimes (3.75, 10 and 40 cm/s in the computed cases). It follows the measured trends but over-predicts spread rate by a factor of 1.5-2.7 in some regions, most in the kinetic (high-flow) regime; the authors blame the simplified transport model and not solving the full momentum equations. Each 2-D case takes 1-3 days to compute.",
       "kind": "method",
-      "confidence": "medium",
+      "confidence": "high",
       "sources": [
-        {"type": "external", "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/", "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."}
+        {"type": "external", "url": "https://researchconnect.buffalo.edu/en/publications/radiative-flamelet-generated-manifolds-for-solid-fuel-flame-sprea/", "quote": "The model is validated against measurements using the NASA BASS data and is shown to predict reasonable flame spread rates over a range of far-field oxygen levels."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2576508", "quote": "the predicted flame spread rates from the model over predict the experiments by a factor 1.5 − 2.7 in some regions."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2576508", "quote": "The model over predicts the flame spread rate in almost all cases, especially in the kinetic regime."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2576508", "quote": "oxygen concentration of 20.6%. Also compared are model predictions made by Bhattacharjee et. al."}
       ]
     },
     {
@@ -162,6 +167,16 @@
       "sources": [
         {"type": "external", "url": "https://doi.org/10.1016/j.combustflame.2021.111395", "quote": "Accounting for self-absorption effects provide improved soot volume fraction estimates. The radiative heat flux estimates are found to be in very good agreement with literature and improved results are obtained near the flame base."},
         {"type": "external", "url": "https://doi.org/10.1016/j.combustflame.2021.111395", "quote": "The developed diagnostic is used in upward flame spread experiments"}
+      ]
+    },
+    {
+      "claim": "Predicted minimum oxygen for burning, compared with the Olson-Ferkul PMMA rod flammability map (drop tower and ISS BASS data, stretch rate converted to scalar dissipation rate): the 1-D numerical model and the thin-flame theory both give 11.1% O2 with one-step global chemistry (2.4 percentage points below the experimental minimum) and 12.6% with a 67-species detailed MMA mechanism (0.9 points below). Changing from planar to spherical geometry lowers these slightly, to 10.92% and 12.3%; the high-strain (blowoff) bound is insensitive to geometry, the radiative quenching bound is not.",
+      "kind": "limit",
+      "confidence": "medium",
+      "sources": [
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2417649", "quote": "For the global chemistry model, both of the minimum oxygen concentrations predicted by the numerical and thin flame theory are 11.1%. However the thin flame predicts this to occur at a larger χ. These are both 2.4% lower than the experimentally observed values."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2417649", "quote": "both the minimum oxygen concentrations for the thin flame and numerical model occur at 12.6%, which is 0.9% lower than the experiments."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/2417649", "quote": "decreasing from 11.1% to 10.92% for the global case and from 12.6% to 12.3% for the detailed case."}
       ]
     }
   ],
@@ -220,6 +235,8 @@
     "PI affiliation in PSI is 'New York University, Buffalo'; the publications are from the University at Buffalo (SUNY).",
     "The PSI record lists Olson and Ferkul (2017) as a publication, but it is a NASA BASS-II paper used as a benchmark, not a product of this grant. The Aphale and DesJardin (2021) diagnostic paper applies to upward (1 g) flame spread.",
     "Grant period ended 2021-04-30 while the main modelling papers appeared in 2023-2024; whether the 2023 papers were funded by this grant is assumed from their listing in the record.",
-    "The 'Goldilocks' flammability zone is attributed to Olson and Ferkul in the record; the term was not found in the abstracts read."
+    "The 'Goldilocks' flammability zone is attributed to Olson and Ferkul in the record; the term was not found in the abstracts read.",
+    "Publication review (data/publications/PSI-62.json): full texts of the two 2023 papers and the 2021 diagnostic paper were read as accepted manuscripts on OSTI (purls 2576508, 2417649, 1772898). This updates three statements above: (1) findings[0] previously read 'A detailed 2-D flame-spread model with multi-step chemistry and fully coupled radiation, validated against NASA BASS data, predicts reasonable flame spread rates over a range of far-field oxygen levels (spread-rate values and error not available in the abstracts read).' The full text shows the BASS comparison at a single O2 level (20.6%) with 1.5-2.7x over-prediction; the abstract's 'range of far-field oxygen levels' is not shown in the paper's BASS comparison. test_matrix.varied[0] previously read 'range of BASS oxygen levels (values not available)', and the summary said the model was 'validated it against BASS data over a range of oxygen levels'. (2) Spread-rate error and oxygen levels are now available (gap above partly superseded). (3) Both 2023 papers acknowledge NASA grant 80NSSC20K0426, the PSI-62 grant, so their funding by this investigation is confirmed, not assumed. (4) The 'Goldilocks flammability zone' wording appears in the introduction of 10.1016/j.combustflame.2023.112910 ('A particularly interesting aspect of their work is identifying a Goldilocks flammability zone, lying between quenching and blow-off limits').",
+    "Flow configuration: the PSI title says 'concurrent flame spread', but the 2-D model and its BASS comparison (10.1016/j.combustflame.2023.112939) are for opposed-flow spread over a thin PMMA slab, and the flammability maps (112910) compare with stagnation-flow PMMA rod data."
   ]
 }

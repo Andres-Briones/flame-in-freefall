@@ -1,0 +1,86 @@
+[
+  {
+    "title": "Spherical gas-fueled cool diffusion flames",
+    "doi": "10.1016/j.proci.2022.07.015",
+    "access": "full_text",
+    "read_url": "https://par.nsf.gov/servlets/purl/10426596",
+    "classification": [
+      "confirms",
+      "new_finding",
+      "contradicts_psi_data"
+    ],
+    "summary": "The CFI-G results paper: 280 hot flames of ethane, propane and n-butane (normal and inverse, 0.46-3.04 bar), 189 radiatively extinguished; 15 spherical cool diffusion flames, only for 30% n-butane at 0.75-1.5 mg/s into 0.39 O2 at 2 bar with burner above 515 K; hot/cool radius ratio 2.6; a Spalding-type model with one fitted rhoD reproduces hot and cool flame radii.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "First gas-fuelled spherical cool diffusion flames, 15 in all, after radiative extinction.",
+        "quote": "Spherical cool diffusion flames burning gases were observed for the first time. Fifteen such flames were observed.",
+        "locator": "sec. 5, conclusion 1",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Narrow cool-flame window (normal n-butane, 2 bar, 0.75-1.5 mg/s, burner > 515 K).",
+        "quote": "They were only observed for normal n-butane flames at 2 bar, and only for butane flow rates of 0.75 – 1.5 mg/s. In addition, these cool flames were only observed for burner temperatures above 515 K.",
+        "locator": "sec. 5, conclusion 2",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Hot/cool radius ratio 2.6 (model 3.2), cool flame at Z = 0.53.",
+        "quote": "The mean measured r hf / r cf is 2.6 and the mean predicted by Eq. (12) is 3.2.",
+        "locator": "sec. 4",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "With peak temperatures assumed at 1400 K (hot) and 750 K (cool), one value rhoD = 0.0334 g/m-s (at 300 K) fitted all hot and cool flame radii (cool flames of Table 2 and quasi-steady normal n-butane hot flames at X_O2 0.37-0.40, 0.5-2 bar), with R^2 = 0.92 against measured radii.",
+        "quote": "ρD was optimized to a value of 0.0334 g/m-s at 300 K",
+        "locator": "sec. 4, Fig. 7",
+        "record_path": "physics.equations"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Model-vs-measurement agreement for radii.",
+        "quote": "The data has a coefficient of determination of R2 = 0.92 with respect to the line shown with unity slope.",
+        "locator": "Fig. 7 caption",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Normal propane flames above 1 bar were limited to X_O2 = 0.21 (a safety constraint on the matrix).",
+        "quote": "For propane normal flames at pressures above 1 bar, X O2 was limited to 0.21.",
+        "locator": "Table 1, note d",
+        "record_path": "test_matrix.varied[2]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Per-fuel outcome counts in Table 1 (radiatively extinguished RE / flow-terminated FT): normal ethane 30/10, propane 34/6, n-butane 46/17; inverse ethane 25/22, propane 24/13, n-butane 30/23. The PSI tables (tests.csv) give normal n-butane 38 SE / 15 FT and inverse ethane 27 SE / 22 FT; the other four groups match. The n-butane difference is consistent with the multi-flame hot-cool-hot tests (21291 A1, C1) counted as several hot flames in the paper; the inverse-ethane difference (2 more SE rows in PSI) is unexplained.",
+        "quote": "30 34 46 25 24 30 10 6 17 22 13 23 0 0 15 0 0 0",
+        "locator": "Table 1 (RE, FT and cool-flame columns, in row order ethane/propane/n-butane normal, then inverse)",
+        "record_path": "findings[5]"
+      }
+    ],
+    "notes": "NSF Public Access Repository copy of the accepted manuscript (PAR 10426596); the record already used it. Kim's 2022 UMD MS thesis (DRUM 1903/29540) covers the same work and was downloaded but not needed."
+  },
+  {
+    "title": "Cool diffusion flames in a stably stratified stagnation flow",
+    "doi": "10.1016/j.combustflame.2023.112852",
+    "access": "full_text",
+    "read_url": "https://par.nsf.gov/servlets/purl/10426594",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Normal-gravity laboratory method for cool diffusion flames over an n-heptane pool between heated parallel plates (stably stratified stagnation flow): peak 705-760 K, autoignition at 550 K. No ISS data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Ground n-heptane pool cool flames, not CFI-G gaseous ISS flames.",
+        "quote": "A method is presented here for observing cool diffusion flames inexpensively using a pool of liquid n-heptane and parallel plates heated so as to produce a stably stratified stagnation flow.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "NSF PAR copy (10426594). The record gap already says this paper has no ISS data."
+  }
+]

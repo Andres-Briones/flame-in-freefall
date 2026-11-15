@@ -819,6 +819,28 @@
           "quote": "for DME diffusion cool flame with and without buoyancy for identical conditions (XDME= 0.587, UF = 62.3 cm/s, UO = 50.9 cm/s, a ~ 90 s-1, P = 1 atm)"
         }
       ]
+    },
+    {
+      "claim": "Beyond single-component fuels, the group simulated isolated droplets of three Jet-A surrogate mixtures with the same global (fully pre-vaporised) combustion behaviour but very different distillation curves (n-decane/iso-octane/toluene; n-dodecane/iso-octane/1,3,5-trimethylbenzene; n-hexadecane/iso-octane/1,3,5-trimethylbenzene), with UNIFAC liquid-phase activity coefficients. For the first mixture, predictions agree with published drop-tower data for 550 um droplets in air once near-full internal mixing and sooting are included. Preferential vaporization depends strongly and non-linearly on initial droplet diameter and pressure: at low pressure and combustor-sized drops it is close to the frozen limit, while at practical pressures batch distillation dominates and chemical-property differences matter as much as physical ones. This is a ground (drop-tower) validation, not FLEX data.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+          "quote": "The predictions using Mixture-1 are found to be in good agreement with previously published drop-tower experiments for 550 µm droplet combustion in air."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+          "quote": "By comparing predictions for the three mixtures, preferential vaporization effects exhibit strong non-linear dependences on initial droplet diameter and ambient pressure."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.1016/j.proci.2020.06.200",
+          "quote": "However, at pressures typical of those found in applications, batch distillation dominates and preferential vaporization chemical property differences are found to become as significant as physical property effects in influencing combustion behaviors."
+        }
+      ]
     }
   ],
   "fire_safety": {

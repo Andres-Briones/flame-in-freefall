@@ -1127,6 +1127,82 @@
           "quote": "The chamber’s free volume is approximately 83 liters depending on the installed hardware."
         }
       ]
+    },
+    {
+      "claim": "Raising pressure lowers the extinction temperature. In round-2 ISS inverse flames with an 85% O2 burner stream (3.41 mg/s O2) into about 10% C2H4 in N2, thin-filament pyrometry gave similar extinction temperatures at 0.5 and 1 atm but about 50 K lower at 3 atm (the dissertation abstract says almost 60 K). At 3 bar the flame passed below the 1-atm critical 1130 K into the warm-flame regime. Simulations at 50 bar show warm-flame chemistry extending the burn by over 500 s, followed by a cool flame.",
+      "kind": "trend",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://profiles.wustl.edu/en/publications/the-effects-of-elevated-pressure-on-the-kinetics-and-extinction-o/",
+          "quote": "Flame temperatures at extinction are shown to decrease with increasing pressure, and at a pressure of 3 bar the flame is shown to extend below the critical temperature of 1130 K and into the warm flame regime."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "Flame A and C extinguish at similar temperatures, but Flame B extinguishes roughly 50 K lower."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "Experimental results show that increasing the pressure from 1 atm to 3 atm decreased the ethylene extinction temperature by almost 60 K."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "At 50 atm the flame was able to extend its burn time by over 500 s due to the emergence of warm flame chemistry."
+        },
+        {
+          "type": "table",
+          "table": "tests",
+          "note": "Inverse rows with burner X_O2 0.85 and ambient C2H4 about 0.10 exist at about 1 atm (22018 G1-G3), 3 atm (22027 B and D series) and 0.5 atm (22035 J1-J7). The dissertation (Table 4.1) does not name the test ids, so the match is by conditions only."
+        }
+      ]
+    },
+    {
+      "claim": "The transient detailed-chemistry model reproduces the ISS extinction state. For 17 radiatively extinguished normal ethylene flames at 1 atm (ambient X_O2 0.20-0.38, burner X_C2H4 0.13-1, 0.66-4.88 mg/s), measured extinction temperatures were 1130 +/- 23 K against 1126 +/- 6 K simulated, and simulated extinction radii matched measured ones with R^2 = 0.98. Thin-filament pyrometry temperatures carry an estimated +/- 100 K uncertainty.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "The means are similar, at 1130 ± 23 K for the experiments and 1126 ± 6 K for the simulations"
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "There is good agreement between the model and experiments, with an R2 value of 0.98."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "with an estimated uncertainty of ± 100 K"
+        }
+      ]
+    },
+    {
+      "claim": "The model matches measured porous-burner temperatures only if heat transfer from the sphere to the gas flowing through it is neglected at high flows, so the reactants appear to be heated elsewhere (supply tube or flame). Burner temperature matters mainly for small flames close to the burner: holding the burner at 298 K lowers the flame temperature at 30 s by 18 K for a 0.66 mg/s flame but by only 3 K for a 5.3 mg/s flame.",
+      "kind": "method",
+      "confidence": "medium",
+      "sources": [
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "The numerical model was shown to be able to predict experimentally measured burner temperature with the assumption that the heating of the fuel gas was ignored."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "At 30 s, the case with constant burner temperature is 18 K lower than the case with experimental burner temperature for Flame A."
+        },
+        {
+          "type": "external",
+          "url": "https://api.drum.lib.umd.edu/server/api/core/bitstreams/5523b6f6-11fe-4493-9183-626127ec4e12/content",
+          "quote": "These results indicate that the temperature of the porous sphere has little effect on the overall flame properties, except in cases where the flame is small and close to the burner."
+        }
+      ]
     }
   ],
   "fire_safety": {
@@ -1335,7 +1411,7 @@
       ]
     },
     {
-      "text": "Published ISS results (critical extinction point, steady flames) are for about 1 atm. The PSI documents contain no analysis of the round-2 reduced- and elevated-pressure tests, and the pressure paper could not be retrieved.",
+      "text": "Published ISS results (critical extinction point, steady flames) are for about 1 atm. The PSI documents contain no analysis of the round-2 reduced- and elevated-pressure tests, and the pressure paper could not be retrieved. [Publications pass 2026-11-15: the pressure results were since found in the paper's abstract and the Waddell 2023 dissertation, see findings[12]; they cover three inverse flames only.]",
       "sources": [
         {
           "type": "psi_file",
@@ -1439,7 +1515,7 @@
   ],
   "gaps": [
     "No per-test outcomes (ignited or not, burn time, extinction diameter or temperature, sooting yes/no) exist in the experimental tables or tests.csv. burn_time_s, extinction_mode and ignited are empty for all 327 rows. Outcomes would need the 125 Hz data CSVs (raw volts, no calibration in PSI) or the 2.1 TB of image zips and 75 GB of video, none of which were downloaded.",
-    "Results for the round-2 reduced- and elevated-pressure inverse flames (0.43-3 atm) are not in any PSI document. The relevant paper (Waddell et al., Proc. Combust. Inst. 40 (2024) 105400, doi:10.1016/j.proci.2024.105400) was unreachable: no abstract on Crossref, Semantic Scholar or OpenAlex, and ScienceDirect blocked access. The Waddell 2023 dissertation (University of Maryland) was not located.",
+    "Results for the round-2 reduced- and elevated-pressure inverse flames (0.43-3 atm) are not in any PSI document. The relevant paper (Waddell et al., Proc. Combust. Inst. 40 (2024) 105400, doi:10.1016/j.proci.2024.105400) was unreachable: no abstract on Crossref, Semantic Scholar or OpenAlex, and ScienceDirect blocked access. The Waddell 2023 dissertation (University of Maryland) was not located. [Publications pass 2026-11-15: the abstract of Waddell et al. 2024 is on the WUSTL research portal and the first author's 2023 UMD dissertation is open on DRUM (hdl.handle.net/1903/29996); the pressure results are now findings[12]. The paper's full text is still paywalled.]",
     "Full texts of Irace et al. 2021 (Combust. Flame 229, 111373) and the two 2023 Proc. Combust. Inst. papers were not retrieved. Their abstracts are reproduced in the Final Report, which was used instead. The 'simple equation' for extinction flame size is therefore reconstructed here from mass conservation, not quoted.",
     "Ambient (chamber) temperature is not given in the tables. The drop-tower SRD assumes 300 K burner temperature, but no ISS value was found.",
     "Final Report Table 1 counts 326 ignited flames (188 + 138). The tables have 327 rows (207 normal incl. 20 propane, 120 inverse), and some rows are ramped tests or possibly unsustained ignitions; the mapping is not stated.",

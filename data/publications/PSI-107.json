@@ -1,0 +1,248 @@
+[
+  {
+    "title": "Laminar Smoke Points in Coflow Measured Aboard the International Space Station",
+    "doi": "10.2514/6.2010-1105",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.2514/6.2010-1105",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "AIAA 2010 conference report of the SPICE smoke points: ethylene, propane, propylene and 50%/75% propylene, burners 0.41-1.6 mm, coflow 5.4-65 cm/s; more coflow shortens flames but lengthens smoke points; smaller burners lengthen smoke points; lengths scale with fuel mass flow over Z_st.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Coflow and burner-size trends.",
+        "quote": "Increasing coflow velocity decreases luminous flame lengths, but yields longer smoke points. Smaller burners also yield longer smoke points.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Length correlation with m_f/Z_st.",
+        "quote": "The luminous flame lengths generally correlate with fuel mass flow rate divided by stoichiometric mixture fraction",
+        "locator": "abstract",
+        "record_path": "findings[6]"
+      }
+    ],
+    "notes": "AIAA paywall; abstract via OpenAlex/Semantic Scholar. The PSI presentation of the same title is already in the record."
+  },
+  {
+    "title": "Scaling of Gas-Jet Flame Lengths in Elevated Gravity",
+    "doi": "10.1007/978-1-4020-8682-3_22",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Book chapter (Sunderland, Urban, Nayagam, 2009) on gas-jet flame lengths in elevated gravity; by title an aircraft/centrifuge study, not SPICE ISS data.",
+    "items": [],
+    "notes": "Springer paywall; no abstract on Crossref, OpenAlex or Semantic Scholar; not on NTRS."
+  },
+  {
+    "title": "The Microgravity Science Glovebox (MSG), a Resource for Gravity-Dependent Phenomena Research on the International Space Station (ISS)",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20070013892/downloads/20070013892.pdf",
+    "classification": [
+      "out_of_scope",
+      "confirms"
+    ],
+    "summary": "AIAA overview of the Microgravity Science Glovebox facility (work volume, power, containment) with a pre-flight description of SPICE objectives. No SPICE results.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Facility overview written before SPICE flew.",
+        "quote": "The Smoke Point in Coflow Experiment (SPICE) will observe nonbuoyant round laminar jet diffusion flames in air coflow",
+        "locator": "p12-13",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "SPICE objectives: effects of fuel, burner diameter and coflow on smoke points.",
+        "quote": "Determine the effects of fuel type, burner diameter and coflow velocity on smoke point properties.",
+        "locator": "p12",
+        "record_path": "question"
+      }
+    ],
+    "notes": "NTRS conference paper 20070013892 (no DOI in the PSI record)."
+  },
+  {
+    "title": "The Microgravity Science Glovebox as a Platform for Exploration Research on the International Space Station",
+    "doi": "10.2514/6.2006-941",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.2514/6.2006-941",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "AIAA 2006 overview of the Microgravity Science Glovebox as a platform for exploration research; no SPICE results.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Facility overview.",
+        "quote": "The Microgravity Science Glovebox (MSG) is a double rack facility aboard the International Space Station (ISS) designed for microgravity investigation handling.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "AIAA paywall; abstract via OpenAlex."
+  },
+  {
+    "title": "A Combined Experimental and Computational Study of Soot Formation in Normal and Microgravity Conditions",
+    "doi": "10.1080/00102202.2022.2041621",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/00102202.2022.2041621",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "Combined experiment/computation of sooting ethylene-air coflow flames in 1 g and on the ISS with two burner configurations (Yale and ACME). Simulations show 0-g flames longer, broader, cooler and sootier, an effect much smaller for the small ACME flame; the authors suspect the model mispredicts the thermal field and burner-lip heat transfer.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Gravity effects on ethylene coflow flames are much weaker for the small ACME burner than for the Yale burner, in simulation; model likely mispredicts temperature (attribution of the ISS data to this investigation unconfirmed).",
+        "quote": "However, in the case of the smaller ACME flame, these effects are significantly diminished.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Taylor & Francis paywall; NTRS accepted manuscript (27530189361808) has no download. Abstract via OpenAlex. The abstract does not say which ISS experiment supplied the microgravity data; the \"Yale\" burner may be the SLICE hardware but this is not confirmed, so nothing was added to the record. Listed under both PSI-106 and PSI-107; read once."
+  },
+  {
+    "title": "Shapes of nonbuoyant round hydrocarbon-fueled laminar-jet diffusion flames in still air",
+    "doi": "10.1016/j.combustflame.2004.12.009",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2005%20Aalburg%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Soot-luminosity boundaries of nonbuoyant round ethylene and propane jet flames in still air from Space Shuttle flights STS-83, -94 and -107 (35-130 kPa), plus drop-tower flame-sheet shapes; the predecessor (LSP) data, not SPICE.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Space Shuttle LSP experiment in still air, not SPICE coflow data.",
+        "quote": "were found from color video images obtained on orbit during three flights of the Space Shuttle Columbia (flights STS-83, STS-94, and STS-107)",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page."
+  },
+  {
+    "title": "Shapes of nonbuoyant round luminous hydrocarbon/air laminar jet diffusion flames",
+    "doi": "10.1016/S0010-2180(98)00100-X",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/1999%20Lin%20et%20al.%20CNF.pdf",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shapes of nonbuoyant round luminous hydrocarbon/air laminar jet flames in still air from Space Shuttle (LSP) and drop-tower tests; predecessor work, not SPICE.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Still-air nonbuoyant flames from earlier facilities.",
+        "quote": "Past measurements of the shapes of nonbuoyant laminar jet diffusion flames have been carried out using either drop towers",
+        "locator": "sec. 1, Introduction",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page (NTRS preprint 20000030674 also available)."
+  },
+  {
+    "title": "Smoke Points of Microgravity and Normal Gravity Coflow Diffusion",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "psi:PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Dotson's 2009 UMD MS thesis: SPICE microgravity smoke points (longer with more coflow and smaller burners), a simplified centreline-velocity residence-time model that did not collapse the data, and 1-g tests including a 13.7 mm unconfined burner.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Trends and failure of residence-time model, already in the record (built from this thesis).",
+        "quote": "A simplified prediction of centerline jet velocity did not yield residence-time-based criticalities or data collapse.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "held_file: already in data/processed/evidence.parquet and used throughout the record."
+  },
+  {
+    "title": "Laminar smoke points of coflowing flames in microgravity",
+    "doi": "10.1016/j.firesaf.2011.08.002",
+    "access": "full_text",
+    "read_url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+    "classification": [
+      "confirms",
+      "new_finding",
+      "contradicts_record",
+      "contradicts_psi_data"
+    ],
+    "summary": "The archival SPICE paper: 55 smoke points (ethylene 6, propane 6, propylene 22, 75% propylene 14, 50% propylene 7) on 0.41-1.6 mm burners at 5.4-65 cm/s coflow; L_SP = A_f d^-0.91 u_air^0.41 (R^2 0.90); sooting propensity from A_f is ethylene < propane < 50% < 75% propylene < propylene, which swaps ethylene and propane relative to 1 g; residence time does not correlate the smoke points.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Smoke-point scaling d^-0.91 u^0.41.",
+        "quote": "The present smoke-point lengths scale with d",
+        "locator": "sec. 5, conclusion 1",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Residence time does not correlate smoke points.",
+        "quote": "Although residence time is helpful in understanding the present smoke points, it does not yield quantitative correlations.",
+        "locator": "sec. 5, conclusion 3",
+        "record_path": "findings[7]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Two smoke-point modes: gradual tip dimming (propane, ethylene) vs abrupt open tip (propylene fuels).",
+        "quote": "Smoke points for these flames were identified by the rapid transition to open-tipped flames.",
+        "locator": "sec. 4",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Fuel constants of the correlation (nominal smoke-point length at fixed d and u_air): A_f = 21.2 mm ethylene, 18.5 propane, 13.9 50% propylene, 7.65 75% propylene, 6.05 propylene. Over all burners propane soots more than ethylene in microgravity, the reverse of 1 g; at the 1.6 mm burner alone the 1-g order holds. The authors attribute this to propane's lower jet velocity at equal flame length, which lengthens residence time in microgravity.",
+        "quote": "The only surprise of this ranking is that propane soots more than ethylene, which has not been observed in previous normal-gravity [7,30] or microgravity tests [21,24].",
+        "locator": "sec. 4, Table 2, Eq. (8)",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "contradicts_record",
+        "claim": "Record limitations[4] calls the final report's ranking \"ethylene < propane\" a contradiction of the other papers (propane < ethylene). The peer-reviewed paper gives exactly ethylene < propane as its conclusion for microgravity (from A_f across burners); propane < ethylene holds only at the 1.6 mm burner, and is the 1-g order. Record findings[4] (\"the same order as in 1 g\") is true only for the 1.6 mm burner.",
+        "quote": "This is the same as in normal gravity except for the exchanged positions of ethylene and propane.",
+        "locator": "sec. 5, conclusion 2",
+        "record_path": "limitations[4]"
+      },
+      {
+        "kind": "contradicts_record",
+        "claim": "Burner-specific reversal that reconciles the two rankings.",
+        "quote": "The microgravity smoke points for propane are shorter than for ethylene for the 0.76 mm burner, leading to propane's lower value of Af. Note that this is not the case for the 1.6 mm burner.",
+        "locator": "sec. 4",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Smoke-point count and split: the paper has 55 smoke points with 22 propylene and 14 for 75% propylene; the PSI final-report table has 52 (20 propylene, 13 for 75% propylene); ethylene 6, propane 6 and 50% propylene 7 agree.",
+        "quote": "A total of 55 smoke points were found for ethylene, propane, propylene, and propylene/nitrogen mixtures.",
+        "locator": "abstract; Table 2",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Cabin O2: the paper gives an estimated 20-23%; the PSI final report gives 19-24%. Glovebox flushing: the paper says after each burn; the record (from PSI documents) says after every two burns.",
+        "quote": "Typical burn times were 60 s and after each burn the glovebox was flushed with cabin air. The oxygen mole fraction of ISS cabin air was maintained within an estimated range of 20-23%.",
+        "locator": "sec. 3",
+        "record_path": "test_matrix.held_constant[1]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The coflow residence-time model (Eq. 6) predicts that at high coflow residence time falls with fuel flow, so \"inverse smoke points\" (soot at low but not high fuel flow) could exist; none were seen.",
+        "quote": "Inverse smoke points were not observed here even though many tests involved large coflow velocities.",
+        "locator": "sec. 2",
+        "record_path": null
+      }
+    ],
+    "notes": "Author copy on P.B. Sunderland's UMD page. Not fetched when the record was written (record gap). A related UMD MS thesis (DeBold 2012, DRUM 1903/13569) reports a 2012 SPICE extension with 57 more smoke points, including the first methane smoke point; it is not a listed publication."
+  }
+]

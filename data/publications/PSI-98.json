@@ -1,0 +1,128 @@
+[
+  {
+    "title": "The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20170001636",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Pre-flight (May 2016) paper on the three Saffire units: objectives (growth of a large fire in low gravity; low-g flammability vs NASA-STD-6001 Test 1), identical flow-duct hardware (module about 53 x 90 x 133 cm), diagnostics (2 cameras, 4 radiometers, embedded and plume thermocouples, O2/CO2/pressure sensors, 2 anemometers, smoke wire), planned flows (Saffire-I 20 cm/s, Saffire-III 30 cm/s), the Saffire-II sample table, safety design (four latching relays for the igniter) and planned launch/operation dates.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Objectives: rate of growth of a large fire in low gravity, and low-g flammability vs the 1-g screening test.",
+        "quote": "The objectives of these experiments are to (1) determine how rapidly a large scale fire grows in low-gravity and (2) investigate the low-g flammability limits compared to those obtained in NASA’s normal gravity material flammability screening test.",
+        "locator": "p1",
+        "record_path": "question"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "As planned, Saffire-I was to burn a ~0.94 x 0.4 m fabric at 20 cm/s a few hours after unberthing on 2 June 2016; as flown, the burn used a 94 x 40.6 cm sheet at about 20 cm/s on 14 June 2016, so the flight matched the plan except for the date.",
+        "quote": "Saffire-I will be conducted at an air flow velocity of 20 cm/s while Saffire-III will be run at a flow velocity of 30 cm/s",
+        "locator": "p2",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Planned operation date for Saffire-I (2 June 2016), 12 days before the actual burn.",
+        "quote": "As of the writing of this paper, the un- berthing of the Cygnus is scheduled for June 2, 2016 and Saffire-I is scheduled to operate a few hours afterwards.",
+        "locator": "p4",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Prior microgravity flame-spread samples were no larger than 10 cm.",
+        "quote": "Prior experiments have been limited to samples no larger than 10 cm in length and width whereas a serious spacecraft fire would likely be much larger and consume much more material.",
+        "locator": "p1",
+        "record_path": "question"
+      }
+    ],
+    "notes": "Held file 'PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf' (evidence.parquet). The record already used it for question, apparatus, measurements and limitations but not in findings; a method finding (findings[11]) now cites it for the planned-vs-flown conditions. Pre-flight paper: no results."
+  },
+  {
+    "title": "Buoyant Effects on the Flammability of Silicone Samples Planned for the Spacecraft Fire Experiment (Saffire)",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150022421",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "ICES-2015 ground (1 g) study of the silicone sheets planned for Saffire-II (0.25, 0.36, 0.61, 1.00 mm; 5 x 30 cm Test 1 geometry): upward burn length fell with thickness and the thickest would not ignite; the two thinnest burned completely downward, unusually more flammable than upward; a deposited silica layer is blamed for upward self-extinction; with 2 m/s forced upward flow all ignited thicknesses burned completely.",
+    "items": [],
+    "notes": "Ground tests of the Saffire-II silicone samples; nothing about Saffire-I."
+  },
+  {
+    "title": "Flame spread: Effects of microgravity and scale",
+    "doi": "10.1016/j.combustflame.2018.10.012",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.combustflame.2018.10.012",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Combustion and Flame 2019 overview of Saffire-I to -III: 94 x 40.6 cm SIBAL fabric (Saffire-I, III) and nine 29 x 5 cm samples (Saffire-II), forced flow 20-25 cm/s in Cygnus. Concurrent spread over thin fabric reached a steady rate and limiting length; thick PMMA approached a non-growing steady state with a limiting pyrolysis length within 15 min; upward 1-g spread accelerates.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Concurrent spread over thin fabric reaches a steady rate and limiting length.",
+        "quote": "The downloaded test data show that a concurrent (downstream) spreading flame over thin fabrics in microgravity reaches a steady spread rate and a limiting length.",
+        "locator": "Abstract",
+        "record_path": "findings[0]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar/OpenAlex; Elsevier full text paywalled (no NTRS or PMC copy found)."
+  },
+  {
+    "title": "Transient flame growth and spread processes over a large solid fabric in concurrent low-speed flows in microgravity – Model versus experiment",
+    "doi": "10.1016/j.proci.2018.05.168",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.proci.2018.05.168",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Proc. Combust. Inst. 37 (2019) model-vs-experiment study of concurrent spread over SIBAL fabric at 20 cm/s for the 41 x 94 cm Saffire-I sheet and the 5 x 29 cm Saffire-II strip. Both reached quasi-steady flame length; the large sample's pyrolysis length overshot first (explained by flow reduction in the growing boundary layer); the narrow strip spread about 13% faster with shorter burnout because of better lateral oxygen transport.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Large sample: pyrolysis-length overshoot explained by boundary-layer flow reduction; 5 cm strip ~13% faster.",
+        "quote": "While steady state pyrolysis lengths were similar, the 5 cm wide sample had a slightly larger spread rate (by ∼13%) and a shorter burnout time (pyrolysis length over spread rate) compared to the 41 cm wide sample.",
+        "locator": "Abstract",
+        "record_path": "findings[6]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; full text paywalled."
+  },
+  {
+    "title": "Fire safety in space – beyond flammability testing of small samples",
+    "doi": "10.1016/j.actaastro.2014.11.025",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Acta Astronautica 2015 review by the Fire Safety in Space topical team on the case for large-scale spacecraft fire tests (the rationale for Saffire), written before the flights.",
+    "items": [],
+    "notes": "The open HAL copy (hal-01524495) returned an anti-bot challenge page to automated requests; no abstract in Crossref, OpenAlex or Semantic Scholar. Pre-flight, so no Saffire results."
+  },
+  {
+    "title": "Operation and Development Status of the Spacecraft Fire Experiments (Saffire)",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20170000230",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "ICES-2016 paper (written May 2016, before the first burn): Saffire objectives, hardware and samples (0.4 x 0.94 m fabric; nine 5 x 29 cm Saffire-II samples chosen near their MOC at 21% O2), Saffire-I integration and launch on OA-6 (22 March 2016), operations plan, and the Saffire-IV to -VI gap list. No results.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Rationale: earlier samples no larger than 10 cm.",
+        "quote": "Prior experiments have been limited to samples no larger than 10 cm in length and width whereas a serious spacecraft fire could consume as much as an order of magnitude more material.",
+        "locator": "Introduction",
+        "record_path": "question"
+      }
+    ],
+    "notes": "Pre-flight; the PSI-100 publication list gives its NTRS link (20170000230) in the authors field."
+  }
+]

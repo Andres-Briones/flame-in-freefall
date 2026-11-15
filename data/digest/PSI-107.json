@@ -916,7 +916,7 @@
   },
   "findings": [
     {
-      "claim": "Laminar smoke points exist for non-buoyant co-flowing jet flames, contrary to Glassman's 1988 prediction. On the ISS, 52 smoke points (final-report table: 6 ethylene, 6 propane, 20 propylene, 13 for 75% and 7 for 50% propylene; the same report's closing remarks say 55) were found at 0.41-1.6 mm burners and 5.4-65 cm/s co-flow. All smoke-point flames were attached, with Re 36-788.",
+      "claim": "Laminar smoke points exist for non-buoyant co-flowing jet flames, contrary to Glassman's 1988 prediction. On the ISS, 52 smoke points (final-report table: 6 ethylene, 6 propane, 20 propylene, 13 for 75% and 7 for 50% propylene; the same report's closing remarks say 55) were found at 0.41-1.6 mm burners and 5.4-65 cm/s co-flow. All smoke-point flames were attached, with Re 36-788. The archival paper (Dotson et al. 2011) reports 55: 6 ethylene, 6 propane, 22 propylene, 14 for 75% and 7 for 50% propylene.",
       "kind": "result",
       "confidence": "high",
       "sources": [
@@ -949,6 +949,11 @@
           "file": "PSI-107_Reports_SPICE_30-DayPostFlightReport.pdf",
           "locator": "p3",
           "quote": "Glassman predicted that smoke points would not occur in nonbuoyant gas- jet flames."
+        },
+        {
+          "type": "external",
+          "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+          "quote": "A total of 55 smoke points were found for ethylene, propane, propylene, and propylene/nitrogen mixtures."
         }
       ]
     },
@@ -1030,7 +1035,7 @@
       ]
     },
     {
-      "claim": "Sooting-propensity ranking at fixed burner and co-flow (1.6 mm burner): propane < ethylene < 50% propylene < 75% propylene < propylene, the same order as in 1 g. With the 0.76 mm burner ethylene had the longer smoke point than propane. Example: ethylene reached L_SP of about 105 mm at 17.6 cm/s, a length propane reached only at 33.6 cm/s. The final report's closing remarks print the order with ethylene and propane swapped (see limitations).",
+      "claim": "Sooting-propensity ranking at fixed burner and co-flow (1.6 mm burner): propane < ethylene < 50% propylene < 75% propylene < propylene, the same order as in 1 g. With the 0.76 mm burner ethylene had the longer smoke point than propane. Example: ethylene reached L_SP of about 105 mm at 17.6 cm/s, a length propane reached only at 33.6 cm/s. The final report's closing remarks print the order with ethylene and propane swapped (see limitations). Across all three burners, the archival paper's fuel constants A_f of the d^-0.91 u^0.41 correlation (21.2 mm ethylene, 18.5 propane, 13.9 for 50% propylene, 7.65 for 75%, 6.05 propylene) rank ethylene < propane < 50% < 75% propylene < propylene: overall, propane soots more than ethylene in microgravity, the reverse of 1 g, which the authors attribute to propane's lower jet velocity (longer residence time) at equal flame length. The 1-g order holds only at the 1.6 mm burner.",
       "kind": "result",
       "confidence": "medium",
       "sources": [
@@ -1052,6 +1057,21 @@
           "sheet": "Smoke Point Datasheet",
           "row": "rows 10 and 14 (E7-1, P7-1)",
           "value": "Ethylene 0.762 mm: uair 17.59, smk pt 105.22 mm; Propane 0.762 mm: uair 33.57, smk pt 105.45 mm"
+        },
+        {
+          "type": "external",
+          "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+          "quote": "The only surprise of this ranking is that propane soots more than ethylene, which has not been observed in previous normal-gravity [7,30] or microgravity tests [21,24]."
+        },
+        {
+          "type": "external",
+          "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+          "quote": "The microgravity smoke points for propane are shorter than for ethylene for the 0.76 mm burner, leading to propane's lower value of Af. Note that this is not the case for the 1.6 mm burner."
+        },
+        {
+          "type": "external",
+          "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+          "quote": "0.0637 2367 69.6–735 1.63–3.89 127–636 6 21.2 106 0.0603 2264 48.9–460 1.80–3.84 176–788 6 18.5 162"
         }
       ]
     },
@@ -1369,7 +1389,7 @@
       ]
     },
     {
-      "text": "The documents disagree on several basics. Duct size: 76 x 76 x 170 mm vs 172 x 43 x 43 mm. Fuel bottles: 150 cc vs 75 cc. Mass flow controller: MKS vs Sierra. Number of smoke points: 52 vs 55, with 20 vs 23 for propylene. Number of tests: 526 / 263 / 200. The fuel ranking in the final report's conclusion 4 (ethylene < propane) contradicts its own discussion and the other papers (propane < ethylene). The final report is an unpolished draft whose appendices B-F are empty.",
+      "text": "The documents disagree on several basics. Duct size: 76 x 76 x 170 mm vs 172 x 43 x 43 mm. Fuel bottles: 150 cc vs 75 cc. Mass flow controller: MKS vs Sierra. Number of smoke points: 52 vs 55, with 20 vs 23 for propylene. Number of tests: 526 / 263 / 200. The fuel ranking in the final report's conclusion 4 (ethylene < propane) contradicts its own discussion and the other papers (propane < ethylene). The final report is an unpolished draft whose appendices B-F are empty. [Correction, Publications pass 2026-11-15: the ranking ethylene < propane is not an error. It is the conclusion of the peer-reviewed paper (Dotson et al., Fire Saf. J. 46 (2011) 550-555), derived from the fuel constants fitted over all burners; propane < ethylene holds only at the 1.6 mm burner and is the 1-g order (see findings[4]). The paper also gives a third smoke-point split: 55 in all, 22 propylene and 14 for 75% propylene.]",
       "sources": [
         {
           "type": "psi_file",
@@ -1400,6 +1420,11 @@
           "file": "PSI-107_Presentations_Laminar Smoke Points in Coflow Measured Aboard ISS.pdf",
           "locator": "p24",
           "quote": "# SP 6 6 23 13 7"
+        },
+        {
+          "type": "external",
+          "url": "https://terpconnect.umd.edu/~pbs/2011%20Dotson%20et%20al.%20FSJ.pdf",
+          "quote": "This is the same as in normal gravity except for the exchanged positions of ethylene and propane."
         }
       ]
     },
@@ -1497,9 +1522,11 @@
     "Other table issues: 25 rows have blank air rate ('Ku LOS', 'no data', or Nikon rows where the formula was not filled); 10 rows have zero hydrocarbon fuel rate (LOS rows and a 'ran out of fuel' row); the 75% propylene label is spelled two ways ('75 % Propylene' 119 rows, '75% Propylene' 16); GMT ignition times use mixed formats (14:37:08, 14.43.58, 1744, 'no ku', 'Ku LOS'); in tests.csv the date column is empty because GMT day-of-year was not converted (all 2009); and fuel_fraction is null for pure fuels and methane.",
     "Max air rate in the table (85.28 cm/s, GMT 052) is above the 65 cm/s maximum at smoke points and the 5-50 cm/s design requirement; it is a single reading during a fan sweep and was not checked further.",
     "Not readable: SPICE SRD (.doc), 'SPICE Overview.ppt', 'SPICE-1 Ops Overview and Smoke Point Cue Card.ppt' (legacy formats, unsupported by the extractor); the assembly drawing PDF has no text layer. The 2011 crew training gives the cue-card text, so the ops procedure is covered. Imagery, picture books and videos (about 6.9 GB) were not downloaded.",
-    "The final report's Appendices B-F (the 2009 ESSCI, 2010 AIAA, 33rd Symposium, Leeds and Fire Safety Journal papers) are empty placeholders in PSI. The Fire Safety Journal paper (doi 10.1016/j.firesaf.2011.08.002, listed in the metadata) was not fetched because sections 1-4 already covered the results. The figures (L_SP vs u_a, L_SP vs \\dot m_f/Z_st, TSI plot) are images, so per-point values were taken from SmokePointReview-0g-3.xlsx and cited as psi_table.",
+    "The final report's Appendices B-F (the 2009 ESSCI, 2010 AIAA, 33rd Symposium, Leeds and Fire Safety Journal papers) are empty placeholders in PSI. The Fire Safety Journal paper (doi 10.1016/j.firesaf.2011.08.002, listed in the metadata) was not fetched because sections 1-4 already covered the results. The figures (L_SP vs u_a, L_SP vs \\dot m_f/Z_st, TSI plot) are images, so per-point values were taken from SmokePointReview-0g-3.xlsx and cited as psi_table. [Publications pass 2026-11-15: the paper was read from the author copy at terpconnect.umd.edu/~pbs; it changed findings[0], findings[4] and limitations[4].]",
     "Personal contact details (emails, phone numbers) appear in the PSI record contacts and the crew-training decks; they were not copied.",
     "Metadata oddities: the ISA metadata zip is named 'PSI-176_SPICE', and its study design descriptors include 'butane-lighter flame', which does not match SPICE. The PSI record has no start/end dates; dates here come from the final report (12 sessions, 14 Feb - 23 Jun 2009).",
-    "Per-run O2, pressure and temperature were not logged in PSI for SPICE; only the 19-24% O2 cabin range is stated."
+    "Per-run O2, pressure and temperature were not logged in PSI for SPICE; only the 19-24% O2 cabin range is stated.",
+    "Publications pass 2026-11-15: the archival paper (Dotson et al. 2011, sec. 3) gives cabin O2 as an estimated 20-23% (PSI final report: 19-24%) and says the glovebox was flushed with cabin air after each burn (PSI documents: after every two burns). Not reconciled.",
+    "Publications pass 2026-11-15: a later UMD MS thesis (DeBold 2012, hdl.handle.net/1903/13569, not listed in the PSI record) reports a 2012 SPICE extension aboard the ISS with 57 more smoke points (methane, ethane, ethylene, propane; burners 0.76-3.2 mm; coflow 3.0-47 cm/s), including the first methane smoke point at atmospheric pressure. Those tests are not in the PSI tables; it was not used for findings."
   ]
 }

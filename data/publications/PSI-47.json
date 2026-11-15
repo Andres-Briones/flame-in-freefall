@@ -1,0 +1,34 @@
+[
+  {
+    "title": "A Research Plan for Fire Prevention, Detection and Suppression in Crewed Exploration Systems",
+    "doi": "10.2514/6.2005-341",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2005-341",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "AIAA 2005-341 research plan for fire prevention, detection and suppression in crewed exploration systems (material flammability, detection with few false alarms, suppression, post-fire cleanup). Programmatic; no experiment data.",
+    "items": [],
+    "notes": "Abstract via OpenAlex; AIAA full text paywalled. Programmatic plan; the abstract does not mention DAFT."
+  },
+  {
+    "title": "Detection of Smoke from Microgravity Fires",
+    "doi": "10.4271/2005-01-2930",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.4271/2005-01-2930",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "2005 ICES/SAE paper: history of spacecraft smoke detection, the 1997 Comparative Soot Diagnostics (CSD) results (solid-particulate smoke much larger in microgravity), the planned SAME follow-on, and early DAFT results giving the first ISS ambient-aerosol measurement, which was very low.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "DAFT's early results gave the first ISS ambient-aerosol measurement, with very low particle levels.",
+        "quote": "Early results from this effort have provided the first measurements of the ambient aerosol environment on the ISS (International Space Station) and suggest that the ISS has very low ambient particle levels.",
+        "locator": "Abstract",
+        "record_path": "findings[1]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; SAE full text paywalled. The 'follow on experiment' and its early results are DAFT (risk reduction for SAME)."
+  }
+]

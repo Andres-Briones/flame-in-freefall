@@ -909,6 +909,15 @@
           "quote": "the BRE burner could emulate fuels with heat of gasification in the range of 0.4 – 4 kJ/g"
         }
       ]
+    },
+    {
+      "claim": "Simulations of the ISS test conditions in normal air (3-D, transient) reproduce the observed time to extinction; extinction happens when the instantaneous radiative fraction rises to 60-70% of the current heat release rate, a level reached because the low-momentum microgravity flame has a long residence time. After local extinction the flame edge takes a hook-like (bibrachial) form, and on re-ignition a triple flame runs along the stoichiometric surface.",
+      "kind": "result",
+      "confidence": "medium",
+      "sources": [
+        {"type": "external", "url": "https://doi.org/10.1016/j.proci.2020.06.110", "quote": "Time to flame extinction predicted in this work agrees with the experimental observations. Extinction occurs due to the excessive radiative losses when the instantaneous radiative fraction grows up to 60–70% of the current heat release rate."},
+        {"type": "external", "url": "https://doi.org/10.1016/j.proci.2020.06.110", "quote": "The excessively high level of the radiative losses is facilitated by the long residence time in the low-momentum microgravity flame."}
+      ]
     }
   ],
   "fire_safety": {
@@ -1149,6 +1158,7 @@
     "No Science Documents, Reports, Presentations, Analyzed/Raw Data in PSI: only the experimental table CSV and a metadata zip. All results come from the PSI record text and external sources.",
     "Per-test pressure, flow rate, fuel mole fraction, burn duration and outcome are not in PSI (table notes say pressures are not identified). Pressure ranges are from the dissertation and Wright thesis.",
     "Abstracts of the 11 Elsevier papers in the record (Combustion and Flame, Proc. Combust. Inst., Fire Safety Journal) were not reachable: Crossref has no abstracts, Semantic Scholar elides them, ScienceDirect returned HTTP 403. Only the abstracts of 10.1002/fam.2896 and 10.1177/0734904113495650 (Crossref) and 10.1134/S0010508220040036 (reconstructed from OpenAlex's word index) were read. 10.3850/978-981-07-5936-0_03-01 was not tried.",
+    "Update (publication review, data/publications/PSI-20.json): the statement above is partly outdated. A Semantic Scholar batch query returned abstracts for 10.1016/j.combustflame.2021.01.035, 10.1016/j.proci.2020.06.110, 10.1016/j.combustflame.2019.09.030, 10.1016/j.proci.2018.05.006 and 10.1016/j.combustflame.2018.01.044, and the Lund University portal gave the abstract of 10.1016/j.firesaf.2019.02.003. The Dehghani 2021 abstract confirms the dissertation-based findings (59 tests, 21-40% O2, 0.56-1 bar, steady flames at nominal 26% O2 and above, end points above 94% of steady heat flux) and adds that the analysed mixtures had heats of combustion of 23.6 and 47.2 kJ/g. Still unread: 10.1016/j.combustflame.2023.112809, 10.1016/j.proci.2022.08.107, 10.1016/j.combustflame.2021.111572, 10.1016/j.firesaf.2016.11.003, 10.1016/j.combustflame.2015.05.005 and 10.3850/978-981-07-5936-0_03-01 (no abstract anywhere; ScienceDirect accepted manuscripts refuse automated access).",
     "NASA Glenn ACME page in the record (www1.grc.nasa.gov/.../acme/) now redirects to a generic NASA combustion-science page with no BRE content. Used instead: science.nasa.gov ACME and BRE pages, a 2021 NASA JASMAC-33 presentation (NTRS 20210022542), the 2015 Researcher's Guide to Combustion Science (pre-flight description only), NTRS 20160010073/20170009141 (drop-tower precursor), and UMD theses (Dehghani 2022, Wright 2021) not listed in the PSI record.",
     "Dissertation quotes come from the PDF's text layer, in which equations and symbols are garbled. The physics.equations taken from it (heat-of-gasification balance, effective B number, flame height, flame temperature, X_r fit) were reconstructed from that garbled text and checked for internal consistency; the full definition of the group Omega (Eq. 4.33) and the exponent of the later power-law X_r fit could not be read.",
     "Count mismatch: PSI table sums to 194 flames ignited; dissertation reports 149 successful ignitions (round 1 analysis used 59). Not resolved.",

@@ -1,0 +1,156 @@
+[
+  {
+    "title": "Can cool flames support quasi-steady alkane droplet burning?",
+    "doi": "10.1016/j.combustflame.2012.07.012",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Nayagam et al. (2012): the paper that first reported quasi-steady cool-flame burning of large heptane droplets on the ISS. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Its findings enter the records through Dietrich et al. 2014, NTRS 20120015928 and 20140006750. Also listed under PSI-68, PSI-69; read once."
+  },
+  {
+    "title": "Cool-flame extinction during n-alkane droplet combustion in microgravity",
+    "doi": "10.1016/j.combustflame.2015.01.012",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+    "classification": [
+      "confirms",
+      "out_of_scope"
+    ],
+    "summary": "Preprint (CSSCI 2014) of the 2015 Combustion and Flame paper: n-heptane, n-octane and n-decane droplets in O2/N2/CO2 and O2/He/N2 at 0.5-1 atm, 14-25% O2. All three alkanes show hot-flame radiative extinction followed by quasi-steady cool-flame burning, with cool-flame K slightly below hot-flame K. In O2/N2 the cool-flame extinction diameter scales as [O2]^(-3/4); across diluents and pressures D_ce^2/K_c correlates with [O2]^(-3/2), as an NTC-crossover argument predicts.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Hot/cool K for n-decane and n-octane with He substitution as in the record.",
+        "quote": "The burning rate constants K (=dD2/dt) corresponding to the first and second stage combustion were found to be 0.41 and 0.33 mm2/s respectively.",
+        "locator": "Sec. 3.1, p4",
+        "record_path": null
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "In O2/N2, cool-flame extinction diameters of heptane, octane and decane scale with ambient O2 molar concentration to the power -3/4.",
+        "quote": "The cool flame extinction diameters vary as oxygen molar concentration to the power -3/4 for oxygen/nitrogen mixture.",
+        "locator": "Concluding Remarks, p8",
+        "record_path": null
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "With CO2 or He replacing N2 and at different pressures, the residence time at extinction D_ce^2/K_c correlates with [O2] at the theoretical slope -3/2.",
+        "quote": "Remarkably the data are reasonably well correlated, considering the number of variables involved in the experiments, and, within the appreciable scatter, the results are in agreement with the theoretical slope of -3/2.",
+        "locator": "Sec. 3.4, Fig. 4b, p7",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Cool-flame burning rates are slightly lower than hot-flame rates.",
+        "quote": "The cool flame burning rates are slightly lower compared to the hot flame rates.",
+        "locator": "Concluding Remarks, p8",
+        "record_path": null
+      }
+    ],
+    "notes": "Read the NTRS preprint, not the paywalled journal version. Typo in the paper: R383 is given as '14%O2 and 96%N2' (sums to 110%). The three heptane cases quoted (D0 3.91, 3.48, 2.49 mm at 1 atm) do not appear in the PSI-69 table by initial diameter, so they are probably later (FLEX-2 era) tests. For PSI-39 (CFI) this is precursor work: the -3/2 correlation is the one cited in the CFI presentations. Also listed under PSI-68, PSI-69; read once. Predates or does not use CFI (2017) data unless stated."
+  },
+  {
+    "title": "Partial-Burning Regime for Quasi-Steady Droplet Combustion Supported by Cool Flames",
+    "doi": "10.2514/1.J054437",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/1.J054437",
+    "classification": [
+      "confirms",
+      "out_of_scope"
+    ],
+    "summary": "Nayagam, Dietrich and Williams (AIAA J. 2016): partial-burning (fuel and oxygen leakage) model for cool-flame-supported quasi-steady droplet burning applied to ISS n-alkane data; matches K magnitudes and flame-standoff ratios, but not the observed dependence of K on pressure and initial diameter.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "The partial-burning model reproduces measured cool-flame K values but not their apparent dependence on pressure or initial diameter.",
+        "quote": "The simplified predictions are found to produce reasonable agreement with the experimentally measured values of burning-rate constants but not with their apparent dependencies on pressure or on the initial droplet diameter.",
+        "locator": "Abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Good agreement with measured and computed cool-flame standoff ratios.",
+        "quote": "Good agreement is found, however, with newly measured and numerically calculated flame standoff ratios in this droplet combustion supported by cool flames.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA paywalled. Theory applied to FLEX/FLEX-2 n-alkane data; predates CFI flight (no CFI data). Also listed under PSI-69; read once. Predates or does not use CFI (2017) data unless stated."
+  },
+  {
+    "title": "The role of cool-flame chemistry in quasi-steady combustion and extinction of n-heptane droplets",
+    "doi": "10.1080/13647830.2014.934296",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/13647830.2014.934296",
+    "classification": [
+      "confirms",
+      "out_of_scope"
+    ],
+    "summary": "Paczko, Peters, Seshadri and Williams (2014): 770-step reduced and 62-step skeletal mechanisms applied to the quasi-steady cool-flame stage of large ISS heptane droplets; products H2O, CO, H2O2, CH2O, C2H4; strong heptane and O2 leakage, little CO2, no soot; fuel leakage proposed as the source of the vapour cloud. The 770-step mechanism matches measured extinction diameters, the skeletal one over-predicts them.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "In the cool-flame stage the principal products are H2O, CO, H2O2, CH2O and C2H4, with substantial n-heptane and O2 leakage through the flame and very little CO2; fuel leakage is suggested as the source of the vapour cloud.",
+        "quote": "during this stage, there is substantial leakage of n-heptane and O2 through the flame, and very little production of CO2 with no soot in the mechanism. The fuel leakage has been suggested to be the source of the observed vapour cloud that forms after flame extinction.",
+        "locator": "Abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Second stage of quasi-steady burning supported by low-temperature chemistry after radiative extinction.",
+        "quote": "revealed a second stage of continued quasi-steady burning, supported by low-temperature chemistry, that follows radiative extinction of the first stage of burning",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; RWTH repository record returned a bot-check page. Modelling of FLEX heptane data; for CFI background only. Also listed under PSI-68, PSI-69; read once. Predates or does not use CFI (2017) data unless stated."
+  },
+  {
+    "title": "Asymptotic analysis of quasi-steady n-heptane droplet combustion supported by cool-flame chemistry",
+    "doi": "10.1080/13647830.2016.1248494",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/13647830.2016.1248494",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Seshadri, Peters and Williams (2016): maximally reduced n-heptane cool-flame chemistry with activation-energy asymptotics predicts cool-flame extinction diameters versus O2; qualitative trends right, quantitative differences remain.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Reduced-chemistry asymptotics captures trends of cool-flame extinction diameter with O2 but not the values.",
+        "quote": "While the results are encouraging concerning qualitative predictions of dependences of extinction diameters on atmospheric conditions, there are noticeable quantitative differences that point to deficiencies in the analysis",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex. Theory for FLEX heptane data; for CFI (PSI-39) it is background theory only. Also listed under PSI-69; read once. Predates or does not use CFI (2017) data unless stated."
+  },
+  {
+    "title": "Science in Short: Cool Flames",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "NASA ISS Science Blog post (April 2017) explaining cool flames for a general audience. Not read.",
+    "items": [],
+    "notes": "The blog URL now redirects to nasa.gov/blogs; the Wayback Machine refused automated access. A web-search snippet describes it as a popular explainer (vapour lingering around the droplet, engine relevance) with no new data."
+  },
+  {
+    "title": "Low Temperature n-Dodecane Droplet Combustion Experiments Aboard the International Space Station",
+    "doi": "10.1007/s12217-024-10115-x",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Dietrich et al. (2024): the main CFI results paper (low-temperature n-dodecane droplet combustion on the ISS). Not read.",
+    "items": [],
+    "notes": "Springer, closed access; abstract elided from Semantic Scholar, absent from OpenAlex and Crossref; no NTRS copy found. CFI results in the record come from the PSI files."
+  }
+]

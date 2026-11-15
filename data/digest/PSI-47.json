@@ -618,6 +618,11 @@
           "type": "external",
           "url": "https://ntrs.nasa.gov/api/citations/20070031686/downloads/20070031686.pdf",
           "quote": "A precursor experiment (DAFT: Dust Aerosol measurement Feasibility Test) flew recently on the ISS and provided the first measurement of the background smoke particulate levels on the ISS."
+        },
+        {
+          "type": "external",
+          "url": "https://doi.org/10.4271/2005-01-2930",
+          "quote": "Early results from this effort have provided the first measurements of the ambient aerosol environment on the ISS (International Space Station) and suggest that the ISS has very low ambient particle levels."
         }
       ]
     },
@@ -1007,6 +1012,7 @@
     "The fact sheet lists the particle size range in '(mm)'; values 0.02 to >1.0 and 0.10 to 10 are micrometres.",
     "Investigator roles differ by source. PSI lists Urban (PI) and Fortenberry (Project Scientist); the fact sheet and final report list Urban and Ruff as PIs; the 30-day report lists Co-Is Mulholland, Yuan, Yang and Cleary. The record gives the acronym 'DAFT / DAFT-2', but DAFT-1 to -4 were hardware packages of one experiment.",
     "Personal data: the fact sheet, NTRS 20050215648 and the 2007 presentation contain phone numbers and e-mail addresses; the time-history workbook names the ground staff who transcribed data. These were not copied beyond the verbatim measurement-provenance quote. No text addressed to an AI was found.",
-    "External sources used: NTRS 20050215648 (2004 Research & Technology article), NTRS 20070031686 (2007 ISDC presentation). The two DOI publications (AIAA 2005-341, SAE 2005-01-2930) were not read; their content overlaps the PSI presentation 'SmokeDetectionfromMicrogravityFires.ppt'. The DAFT web page cited in the documents (microgravity.grc.nasa.gov/combustion/daft/) was not tried, as it is a defunct GRC address."
+    "External sources used: NTRS 20050215648 (2004 Research & Technology article), NTRS 20070031686 (2007 ISDC presentation). The two DOI publications (AIAA 2005-341, SAE 2005-01-2930) were not read; their content overlaps the PSI presentation 'SmokeDetectionfromMicrogravityFires.ppt'. The DAFT web page cited in the documents (microgravity.grc.nasa.gov/combustion/daft/) was not tried, as it is a defunct GRC address.",
+    "Update to gaps[10] (publication review, 2026-11-15): the abstracts of both DOI publications were read via OpenAlex. SAE 2005-01-2930 confirms findings[1] (first ISS ambient-aerosol measurement, very low levels); AIAA 2005-341 is a programmatic research plan that does not mention DAFT. Full texts are paywalled. Per-paper review: data/publications/PSI-47.json."
   ]
 }

@@ -1,0 +1,152 @@
+[
+  {
+    "title": "Extinction characteristics of isolated n-alkane fuel droplets during low temperature cool flame burning in air (2023)",
+    "doi": "10.1016/j.proci.2022.07.094",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Proc. Combust. Inst. 39 (2023) on extinction of isolated n-alkane droplets during cool-flame burning in air.",
+    "items": [],
+    "notes": "ScienceDirect accepted-manuscript page returned HTTP 403; no abstract in Crossref, OpenAlex or Semantic Scholar. The PSI presentation 'PSI-117_Presentations_Extinction_Characteristics_TFarouk.pdf' covers it and findings[0]-[3] are drawn from it."
+  },
+  {
+    "title": "Sub-millimeter sized multi-component jet fuel surrogate droplet combustion: Physicochemical preferential vaporization effects (2021)",
+    "doi": "10.1016/j.proci.2020.06.200",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.proci.2020.06.200",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "Proc. Combust. Inst. 38 (2021): 1-D spherically symmetric simulations of droplets of three Jet-A surrogate mixtures with very different distillation curves. Mixture-1 predictions agree with drop-tower data for 550 um droplets in air when near-full internal mixing and sooting are included. Preferential vaporization depends non-linearly on droplet size and pressure: frozen-limit vaporization at low pressure and small sizes, batch distillation at practical pressures.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Preferential vaporization of multicomponent jet-fuel surrogate droplets depends strongly and non-linearly on initial diameter and pressure; frozen-limit vaporization at low pressure/small drops, batch distillation at application pressures.",
+        "quote": "By comparing predictions for the three mixtures, preferential vaporization effects exhibit strong non-linear dependences on initial droplet diameter and ambient pressure.",
+        "locator": "Abstract",
+        "record_path": "findings[12]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Model validated against drop-tower 550 um droplet data (not ISS).",
+        "quote": "The predictions using Mixture-1 are found to be in good agreement with previously published drop-tower experiments for 550 µm droplet combustion in air.",
+        "locator": "Abstract",
+        "record_path": "findings[12]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; ScienceDirect accepted manuscript returned HTTP 403. Validation is against drop-tower, not FLEX, data."
+  },
+  {
+    "title": "Initial diameter effects on combustion of unsupported equi-volume n-heptane/iso-octane mixture droplets and the transition to cool flame behavior: Experimental observations and detailed numerical modeling (2020)",
+    "doi": "10.1016/j.combustflame.2020.06.012",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.combustflame.2020.06.012",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "Combustion and Flame 2020: experiments and detailed modelling of unsupported equi-volume n-heptane/iso-octane mixture droplets over a range of initial diameters from 0.8 mm upward, and the transition to cool-flame behaviour. The available abstract is truncated after the diameter range, so no results could be extracted.",
+    "items": [],
+    "notes": "Abstract truncated at the source (OpenAlex and Semantic Scholar stop at '0.8 mm ≤ Do'); Elsevier full text paywalled. Topic (mixture droplets, diameter effect on cool-flame transition) is not covered by the PSI-117 record; not added for lack of results."
+  },
+  {
+    "title": "Oscillatory cool flame combustion behavior of submillimeter sized n-alkane droplet under near limit conditions (2019)",
+    "doi": "10.1016/j.proci.2018.05.151",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.proci.2018.05.151",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Proc. Combust. Inst. 37 (2019): simulated oscillatory cool-flame burning of sub-millimetre n-heptane droplets with ozone seeding at 1 atm. At 21% O2 a quasi-steady cool flame forms directly; at low O2 with 5% O3 a cool flame forms then oscillates with growing amplitude until burnout, driven by fuel-vapour depletion and re-establishment and by fuel and oxygen leakage through the flame.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Direct cool-flame burning with O3 seeding at 21% O2.",
+        "quote": "For XO2= 21% and a range of selective ozone seeding, near-quasi-steady cool flame burning is achieved directly (without requiring hot flame initiation and radiative extinction).",
+        "locator": "Abstract",
+        "record_path": "findings[8]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Oscillating cool flame at low O2 with 5% O3, growing amplitude, fuel/oxygen leakage.",
+        "quote": "Under low oxygen index conditions, but with significant O3 seeding (XO3 = 5%), a nearly quasi-steady cool flame is initially established that then transitions to a dynamically oscillating cool flame burning mode which continues until the droplet is completely consumed.",
+        "locator": "Abstract",
+        "record_path": "findings[9]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; accepted manuscript returned HTTP 403. The PSI presentation 'PSI-117_Presentations_Oscillatory_Cool Flame_TFarouk.pdf' covers the same work."
+  },
+  {
+    "title": "Investigating the role of preferential vaporization during submillimeter sized multicomponent jet fuel surrogate droplet combustion (2019)",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2019 conference paper on preferential vaporization in sub-millimetre jet-fuel surrogate droplets (precursor of entry 1).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Multi-component jet fuel surrogate droplet combustion: Preferential vaporization behaviors under spray relevant conditions and effects on combustion behaviors (2019)",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2019 conference paper on multicomponent jet-fuel surrogate droplets under spray-relevant conditions (related to entry 1).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Cool Flame Combustion of Sub-Millimeter Sized Higher n-Alkane Droplets at Atmospheric Condition (2017)",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2017 conference paper on cool-flame burning of sub-millimetre higher n-alkane droplets at atmospheric conditions.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar. The 2018 dissertation in PSI ('PSI-117_Reports_Dissertation_...') covers this work."
+  },
+  {
+    "title": "Non-Premixed - Partially Premixed to Diffusive Burning: Initial Transient of Direct Cool Flame Burn (2017)",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2017 conference paper on the initial transient of direct cool-flame burning (non-premixed to partially premixed to diffusive).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS, OpenAlex or Semantic Scholar. Probably covered by the 2018 dissertation in PSI."
+  },
+  {
+    "title": "Oscillatory Cool Flame Combustion Behavior of Submillimeter Sized n-Alkane Droplet under Near Limit Conditions (2018)",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. 2018 conference version of the oscillatory cool-flame paper (entry 3).",
+    "items": [],
+    "notes": "No DOI; not found. Same work as entry 3 (abstract read) and the PSI presentation."
+  },
+  {
+    "title": "Dynamics of cool flames (2019)",
+    "doi": "10.1016/j.pecs.2019.100787",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.pecs.2019.100787",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Progress in Energy and Combustion Science 2019 review of cool-flame dynamics (microchannels, microgravity droplets, counterflow, turbulent flames, knock). A review, not a report of this investigation's results.",
+    "items": [],
+    "notes": "Abstract via OpenAlex; accepted manuscript returned HTTP 403."
+  }
+]

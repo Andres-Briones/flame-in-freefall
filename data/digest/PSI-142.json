@@ -612,6 +612,16 @@
           "quote": "near extinction where the flame temperature is low, the multistage flame dynamics are controlled by the first oxidation stage, governed by peroxy chemistry"
         }
       ]
+    },
+    {
+      "claim": "Link to the ISS droplet cool flames (FLEX): counterflow cool-flame extinction of n-heptane to n-dodecane (atmospheric pressure, fuel side 550 K, oxidiser 300 or 550 K) gives an oxygen exponent n = 1.7 for cool-flame reactivity, somewhat above the n = 1.5 derived from the ISS n-alkane droplet extinctions; the authors judge the two consistent and attribute the difference to the droplet model's assumed NTC crossover temperature being above the computed peak cool-flame temperature. All kinetic models tested over-predicted n-heptane cool-flame extinction strain rates by at least a factor of two.",
+      "kind": "result",
+      "confidence": "high",
+      "sources": [
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/1865795", "quote": "In this study, we measured n = 1.7, which is greater than n = 1.5 derived from the microgravity droplet experiment."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/1865795", "quote": "The results are consistent with the measurements of extinction conditions in microgravity n-alkane-droplet experiments [27,29]."},
+        {"type": "external", "url": "https://www.osti.gov/servlets/purl/1865795", "quote": "all of the employed kinetic models over-predict the cool flame extinction strain rates for n-heptane by at least a factor of two"}
+      ]
     }
   ],
   "fire_safety": {
@@ -764,6 +774,7 @@
     "The metadata zip ('PSI-142_metadata_PSI-164_Quantitative Studies.zip') is named after PSI-164 and was not downloaded.",
     "Journal abstracts were read for Combust. Flame 179 (2017), 195 (2018), 196 (2018), 231 (2021), Proc. Combust. Inst. 37 (three papers) and the two reviews, via Princeton's research portal and Semantic Scholar; full texts (ScienceDirect) returned HTTP 403, so figure-level details (oxidiser O2 fractions, ozone levels for IDs 1-2, uncertainties) were not available. Abstracts for Combust. Flame 178 (2017) and 166 (2016) were not found.",
     "No microgravity tests were done in this investigation; the number of laboratory runs is not reported, so n_tests is null.",
-    "The record's 'approach' mentions spark-assisted n-heptane/air propagation computations; no deposited data or abstract read here reports their results."
+    "The record's 'approach' mentions spark-assisted n-heptane/air propagation computations; no deposited data or abstract read here reports their results.",
+    "Publication review (data/publications/PSI-142.json): full text read for Combust. Flame 231 (2021) 111471 (OSTI accepted manuscript, purl 1865795) and the ICDERS 2017 extended abstract; abstracts for 7 others; not read: Combust. Flame 178 (2017) 10.1016/j.combustflame.2017.01.006, Proc. Combust. Inst. 35 (2015) 10.1016/j.proci.2014.05.120, and the separately listed supplementary material of the 2021 paper."
   ]
 }

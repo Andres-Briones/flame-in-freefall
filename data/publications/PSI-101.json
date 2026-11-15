@@ -1,0 +1,128 @@
+[
+  {
+    "title": "Smoke Aerosol Measurement Experiment-2: Comparison of Flight Experiment Results with Ground Test Results",
+    "doi": "10.2514/6.2013-3433",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2013-3433",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "ICES/AIAA 2013-3433: SAME-2 (Expedition 24, July-September 2010) flight results compared with ground tests using returned flight instruments and an SMPS to test the lognormal assumption; ISS and Shuttle detector results.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "SMPS ground tests used to check the lognormal assumption of the moment method.",
+        "quote": "A Scanning Mobility Particle Sizer Spectrometer (SMPS) is too large and complex to include in a flight experiment, but its use in ground-based testing determined whether the lognormal assumptions were valid, and provided high-resolution particle size distributions of the smoke from each material.",
+        "locator": "Abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex (AIAA full text paywalled). The matching presentation is in PSI evidence ('PSI-101_Presentations_SAME-2_Comparison of Flight and Ground Test Results.pptx') and the record already uses it."
+  },
+  {
+    "title": "Evaluation of Low-Gravity Smoke Particulate for Spacecraft Fire Detection",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20140006585",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Slides 'Evaluation of Low-Gravity Smoke Particulate for Spacecraft Fire Detection' (8th USNCM 2013): SAME-2 TEM morphologies, 10 um vs 1 um impactor mass ratios, effects of air flow and aging on D_avm, and flight-vs-ground D_avm at 8 cm/s. Conclusions: sizes 100-600 nm, lognormal, larger with aging and lower flow, about 40% of lampwick and silicone mass above 1 um aerodynamic diameter, ground tests at 8 cm/s close to flight.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "About 40% of lampwick and silicone smoke mass above 1 um.",
+        "quote": "For lampwick and silicone approximately 40% of the aerosol mass had aerodynamic diameters greater than 1 μm",
+        "locator": "Conclusions slide",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Ground tests at 8 cm/s match flight sizes.",
+        "quote": "Ground based testing at 8 cm/s showed particle dimensions very close to the flight results.",
+        "locator": "Conclusions slide",
+        "record_path": "findings[11]"
+      }
+    ],
+    "notes": "NTRS holds the slide deck (the PDF header also names the 49th AIAA ASM 2011)."
+  },
+  {
+    "title": "Particle Morphology and Size Results from the Smoke Aerosol Measurement Experiment-2",
+    "doi": "10.2514/6.2012-3536",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20130000422",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "AIAA 2012-3536 (ICES 2012): SAME-2 on Expedition 24 with five materials, flow from quiescent to 8 cm/s, aging 11-1800 s, TEM grids and a prototype two-moment detector. Most average particle sizes were 200-400 nm, with some quiescent cases much larger.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Average sizes mostly 200-400 nm; quiescent cases sometimes much larger.",
+        "quote": "Overall the majority of the average smoke particle sizes were found to be in the 200 nm to 400 nm range with the quiescent cases producing some cases with substantially larger particles.",
+        "locator": "Abstract",
+        "record_path": "findings[3]"
+      }
+    ],
+    "notes": "Also Appendix F of the SAME-R final report in PSI evidence. The abstract's aging range '11 to 1800 s' differs from the net aging times in the experimental table (about 21-62 s unaged, 218-1923 s aged), which include transfer time; not treated as a contradiction."
+  },
+  {
+    "title": "Preliminary Results from the Smoke Aerosol Measurement Experiment - Reflight",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Early SAME-R results paper (about 2011-2012).",
+    "items": [],
+    "notes": "No DOI; not found on NTRS (NTRS 20150010172, 'Particle Morphology Results from the Smoke Aerosol Measurement Experiment-Reflight', is a different, later slide deck), OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Detection of Smoke from Microgravity Fires",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://doi.org/10.4271/2005-01-2930",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "2005 ICES/SAE paper: history of spacecraft smoke detection, the 1997 Comparative Soot Diagnostics (CSD) results (solid-particulate smoke much larger in microgravity), the planned SAME follow-on, and early DAFT results giving the first ISS ambient-aerosol measurement, which was very low.",
+    "items": [],
+    "notes": "2005 paper written before SAME and SAME-R flew; CSD and DAFT content only."
+  },
+  {
+    "title": "Evaluation of spacecraft smoke detector performance in the low-gravity environment",
+    "doi": "10.1016/j.firesaf.2018.04.004",
+    "access": "full_text",
+    "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Fire Safety Journal 2018 (NIST author manuscript, PMC7918997) covering both SAME flights (2007, 2010) and ground tests with identical hardware: particle sizes 100-600 nm, larger with aging and at low flow (zero flow on average double the 8.1 cm/s size), Pyrell and lampwick forming spheres at zero flow, flight and ground D_avm on a slope-1 line at 8.1 cm/s, the ISS light-scattering detector weak for Kapton and Teflon, the Shuttle ionization detector slightly better for Teflon, and single-moment detectors judged unable to cover all smokes.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Flight vs ground D_avm on a slope-1 line at 8.1 cm/s.",
+        "quote": "Overall the results correlate strongly with a slope of 1.",
+        "locator": "Section 3 (Figure 8)",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The paper's own conclusions round the zero-flow size increase to 'on average, double' the 8.1 cm/s size, whereas findings[3] quotes the body value (factor 1.7, 1.3-2.8); Mulholland et al. (Aerosol Sci. Technol. 2015, listed under PSI-102) give a factor of 1.9. A fourth value for the same quantity.",
+        "quote": "The zero-flow conditions produced smoke particles that were, on average, double the size of those produced at the nominal 8.1 cm/s flow rate.",
+        "locator": "Conclusions",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Pyrell and lampwick formed large spheres at zero flow.",
+        "quote": "In zero-flow conditions,Pyrell and lamp wick particles coalesced into large individual spheres rather than forming agglomerates, as they did at higher air flows.",
+        "locator": "Conclusions",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Already cited by the PSI-101 record (findings[2], [3], [5]-[7], [11])."
+  }
+]

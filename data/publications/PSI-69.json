@@ -1,0 +1,891 @@
+[
+  {
+    "title": "Methanol Droplet Combustion in Oxygen-Inert Environments in Microgravity",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20130014061/downloads/20130014061.pdf",
+    "classification": [
+      "confirms",
+      "contradicts_psi_data",
+      "new_finding"
+    ],
+    "summary": "8th US National Combustion Meeting paper (2013) on more than 100 FLEX methanol tests in O2/N2, O2/N2/CO2 and O2/N2/He at 0.7 and 1 atm (O2 30% down to 12%, CO2 or He up to 70%, D0 1.5-4.5 mm). Quasi-steady theory correlates K (small droplets burn faster than predicted because of water condensation); a water-absorption model predicts flame-standoff ratios, but He mixtures sit consistently above it. Diffusive extinction diameters fall on one line versus D0 regardless of diluent; a priori activation-energy asymptotics under-predicts them unless the flame temperature is lowered to about 1700 K. LOI for methanol is about 12-13% O2.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "LOI of methanol in these diluent gases is about 12-13% O2 by volume.",
+        "quote": "The experiments also show that the limiting oxygen index for methanol in these diluent gases is around 12% to 13% oxygen by volume.",
+        "locator": "Abstract, p1",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Diffusive-extinction diameters of methanol fall on one straight line versus initial diameter irrespective of diluent; large droplets at low O2 extinguish radiatively close to the 45-degree line.",
+        "quote": "At smaller droplet sizes, the data fall approximately along a straight line, irrespective of the diluent concentrations.",
+        "locator": "Sec. 3.3, Fig. 5, p9",
+        "record_path": "findings[7]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Measured methanol flame-standoff ratios in O2/N2/He mixtures are systematically higher than the simplified water-absorption model predicts, while O2/N2/CO2 data agree better.",
+        "quote": "The measured FSRs for O2 − N2 − He mixtures are consistently higher than the predicted values compared to the O2 − N2 − CO2 mixture data points.",
+        "locator": "Sec. 3.2, Fig. 4, p8",
+        "record_path": "findings[14]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Run numbering: the paper's Run #204 (methanol, D0 2.75 mm, air at 1 atm, De 1.10 mm) matches PSI row 203 (N01M201: 2.75 mm, d_ext 1.11 mm) while PSI row 204 is a heptane test; Run #263 (2.67 mm, 21% O2/30% He/49% N2 at 0.7 atm, De 1.42 mm) matches PSI row 257 (H12M201), not PSI row 263. The paper also gives air as '20% O2 and 79% N2' where PSI row 203 lists 0.21/0.79.",
+        "quote": "Run #204 corresponds to a methanol droplet of initial diameter 2.75 mm burning in air (20% O2 and 79% N2) at one atmospheric pressure.",
+        "locator": "Sec. 3.1, p5; Fig. 2 caption",
+        "record_path": "gaps"
+      }
+    ],
+    "notes": "NTRS preprint read in full (11 pp). Run #110 matches PSI row 110 exactly; other run numbers are offset from PSI row numbers."
+  },
+  {
+    "title": "Methanol Droplet Extinction in Oxygen/Carbon-dioxide/Nitrogen Mixtures in Microgravity: Results from the International Space Station Experiments",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf",
+    "classification": [
+      "confirms",
+      "contradicts_psi_data",
+      "new_finding"
+    ],
+    "summary": "Eastern States Section paper (Oct 2011) on 54 of 104 FLEX methanol tests with in-view extinction, in O2/N2/CO2 at 0.7 and 1 atm, D0 2-4 mm. Ignition and some burning occurred at 13% O2 in N2 at 1 atm. Burning-rate constants fall with O2 and deviate strongly from quasi-steady theory at low O2; flame-standoff ratio rises as O2 falls. Extinction diameters split into a diffusive band (>=18% O2) and a radiative band near the no-burn line (<=14% O2), with critical initial diameters at 15-16% O2; CO2 favours radiative extinction. Diffusive extinction corresponds to an infinite-rate flame temperature near 1800 K in 21% O2.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "At 1 atm, all methanol droplets in >=18% O2 extinguished diffusively and all in <=14% O2 radiatively; at 15% and 16% O2 a critical initial diameter separates the two modes.",
+        "quote": "In 18 % or more O2 all droplets exhibit diffusive extinction, and in 14 % or less O2 all exhibit radiative extinction, there being critical initial diameters separating the two limiting behaviors at the two intermediate O2 concentrations.",
+        "locator": "Extinction Diameter, Fig. 3, p4",
+        "record_path": "findings[12]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Added CO2 promotes radiative extinction (higher infrared emissivity); its influence on diffusive extinction resembles that of N2.",
+        "quote": "had more CO2 in the atmosphere, suggesting that this diluent promotes radiative extinction, as expected from its much greater infrared emissivity.",
+        "locator": "Extinction Diameter, p4",
+        "record_path": "findings[12]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Diffusive extinction occurs when the infinite-rate flame temperature falls to about 1800 K in 21% O2 (bounded by 1750-1800 K calculations) and below 1650 K at 18% O2.",
+        "quote": "It may thus be concluded that diffusive extinction occurs when the infinite-rate ideal flame temperature decreases to a value not far from 1800 K in atmospheres having O2 contents of 21 %. That value decreases with dilution and is less than 1650 K at 18%.",
+        "locator": "p5",
+        "record_path": "findings[13]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Radiative extinctions happen so close to the initial diameter that burning was transient and ignition-energy dependent; the authors suggest such conditions lie outside the LOI, and that water absorption can be neglected for them.",
+        "quote": "In a sense, then, one might wish to consider these atmospheric conditions to lie outside the LOI.",
+        "locator": "p6",
+        "record_path": "findings[13]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Average flame-standoff ratio of methanol increases with decreasing ambient O2 at both 0.7 and 1 atm.",
+        "quote": "As one would expect, df/d increases with decreasing ambient oxygen mole fraction since the flame needs to move father away to meet the stoichiometric requirement.",
+        "locator": "Flame Stand-off Ratio, Fig. 2a, p3",
+        "record_path": "findings[14]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Ignition and some burning occurred at 13% O2 in N2 at 1 atm.",
+        "quote": "At one atmosphere pressure, ignition and some burning were observed for an oxygen concentration of 13% with the rest being nitrogen.",
+        "locator": "Abstract, p1",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Fig. 3 is captioned as 1 atm and the text says one 1 atm test at 21% O2 had 70% CO2 and 9% N2, but every PSI row with 0.21 O2/0.09 N2/0.70 CO2 (rows 10-18) is at 1546-2320 mmHg (2.0-3.05 atm); the only methanol one with an extinction diameter is row 16 (256F009, 2072 mmHg, d0 1.66, d_ext 1.0 mm).",
+        "quote": "In most mixtures there was more N2 than CO2, but one of the tests at 21% O2 had 70% CO2 and 9% N2.",
+        "locator": "Extinction Diameter, p4; Fig. 3 caption",
+        "record_path": "gaps"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "The paper counts 104 methanol tests by its writing (Oct 2011); the PSI table has 142 methanol rows dated before 9 Oct 2011 (157 in total). The cut-off date of the count is not stated, so this is a weak discrepancy.",
+        "quote": "Out of these, there were 104 methanol tests of which 54 tests yielded extinction diameters where the droplet remained in the filed of view of the back-lit camera.",
+        "locator": "Results and Discussion, p2",
+        "record_path": "gaps"
+      }
+    ],
+    "notes": "NTRS PDF has a garbled text layer (font encoding); pages were read as images. Quotes transcribed from the page images."
+  },
+  {
+    "title": "A Numerical Study On The Extinction Characteristics Of Droplet Combustion Under Microgravity Conditions",
+    "doi": "10.2514/6.2012-1252",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2012-1252",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Numerical study (AIAA 2012) of methanol droplet extinction under FLEX-like CO2, He and O2 dilution: distinct diffusive and radiative extinction regimes, transition controlled by CO2, helium favouring diffusive extinction with higher burning rate.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Model shows CO2 strongly controls the diffusive-to-radiative transition and He gives higher burning rate with diffusive extinction.",
+        "quote": "The transition from diffusive to radiative extinction is strongly influenced by ambient carbon dioxide concentration.",
+        "locator": "Abstract",
+        "record_path": "findings[11]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA full text paywalled. Modelling only."
+  },
+  {
+    "title": "Tethered methanol droplet combustion in carbon-dioxide enriched environment under microgravity conditions",
+    "doi": "10.1016/j.combustflame.2011.06.014",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Hicks, Nayagam and Williams (2011): tethered methanol droplet combustion in CO2-enriched atmospheres (precursor drop-tower work; critical-Damkohler extinction correlation). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. The NTRS abstract 20110020695 (already cited in the PSI-69 record) covers related content."
+  },
+  {
+    "title": "FLEX: A Decisive Step Forward in NASA's Combustion Research Program",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20120015928/downloads/20120015928.pdf",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "2012 AAS preprint overview of the CIR combustion programme and early FLEX results: 276 tests in 225 conditions, LOI determined for methanol and heptane, radiative extinction below about 14% O2, flames sustained at lower O2 than in normal gravity, the cool-flame discovery and its fire-safety implication; FLEX-2 plans.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Below about 14% O2 methanol extinguishes radiatively rather than by water absorption.",
+        "quote": "For oxygen concentrations approximately below 14 percent, radiative extinction was found to occur rather than extinction caused by water absorption.",
+        "locator": "p12",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "The first nine FLEX tests were engineering tests in cabin air (PSI rows 1-9, identifiers ending CAL, March-April 2009, 0.21 O2/0.79 N2 at ~760 mmHg); science test points began in May 2009 (PSI row 10 is 22 May 2009). The paper misprints the year as 2099.",
+        "quote": "The first nine “engineering” tests used cabin air rather than specified diluent gasses.",
+        "locator": "Test Matrix, p10",
+        "record_path": "findings[15]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Cool flames may re-ignite in the hot mode; hot-flame-only safety procedures may be inadequate.",
+        "quote": "Safety procedures based only on considerations of hot flames may be inadequate for assuring safety under all conditions.",
+        "locator": "p13",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "The MDCA radiometers did not provide useful data in early FLEX tests and were redesigned.",
+        "quote": "The MDCA radiometer, while operating to design specification, did not provide useful data",
+        "locator": "Table 2, p12",
+        "record_path": "method.apparatus"
+      }
+    ],
+    "notes": "Image-only PDF (44 pp); pages 1-13 read as images. Already a source of the PSI-69 and PSI-68 records."
+  },
+  {
+    "title": "Dynamics of Water Absorption and Evaporation During Methanol Droplet Combustion in Microgravity",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20130010979/downloads/20130010979.pdf",
+    "classification": [
+      "contradicts_psi_data",
+      "new_finding"
+    ],
+    "summary": "ASGSR 2012 slides (Hicks et al.): OH* chemiluminescence images from the FLEX LLUV camera mark the transition from water absorption to water evaporation in methanol droplets; compared with Zero Gravity Facility drop tests in Ar/N2. Shows FLEX extinction diameter versus D0 at 13-21% O2 in CO2/N2 at 1 atm.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "The transition from water absorption to water evaporation during methanol burning can be identified from OH* (310 nm) flame-intensity profiles in FLEX LLUV images.",
+        "quote": "Flame intensity measurements using OH* chemiluminescence images from the FLEX LLUV camera provide information of the water flux transition point in MeOH droplet combustion studies",
+        "locator": "Slide 15 (Summary)",
+        "record_path": null
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "Slide 9 gives FLEX-145 as 20% O2/75% CO2/5% N2, D0 3.38 mm, Dext 1.66 mm, K 0.44; PSI row 145 (C01M201) lists 0.20 O2/0.75 N2/0.05 CO2, d0 3.33, d_ext 1.61, K 0.45. Slide 10 of the same deck gives O2 20%/N2 75%/CO2 5%, D0 = 3.3 mm, agreeing with PSI; slide 9 apparently swaps N2 and CO2. Burning-rate units are printed as m2/s (should be mm2/s).",
+        "quote": "1.0 atm in 20% O2 / 75% CO2 / 5% N2",
+        "locator": "Slide 9 (Test Point FLEX-145)",
+        "record_path": "gaps"
+      }
+    ],
+    "notes": "Presentation slides, text layer readable. Ground ZGF results (Ar/N2) are out of scope for PSI-69."
+  },
+  {
+    "title": "Activation energy asymptotics for methanol droplet extinction in microgravity",
+    "doi": "10.1016/j.combustflame.2013.05.011",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Nayagam (2013): activation-energy asymptotics for methanol droplet extinction in microgravity, applied to FLEX data (via the 2013 USNCM paper, which uses this theory). Not read directly.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Its use on FLEX data is covered by the 2013 USNCM preprint (NTRS 20130014061)."
+  },
+  {
+    "title": "Experimental Study of Initial Diameter Effects on Convection-free Droplet Combustion in the Standard Atmosphere for n-Heptane, n-Octane, and n-Decane: International Space Station and Ground-based Experiments",
+    "doi": "10.2514/6.2014-1019",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2014-1019",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Liu, Avedisian et al. (AIAA 2014): ISS and drop-tower n-heptane, n-octane and n-decane droplets in 1 atm air, D0 0.5-5 mm; burning rate falls monotonically with D0; three-stage burning for D0 > 3 mm with an oscillating flame before extinction.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Three-stage burning (radiative extinction, continued evaporation, cool-flame extinction) for D0 > 3 mm; burning rate decreases with D0.",
+        "quote": "A three-staged burning process was found for Do > 3 mm suggesting several extinction modes.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA paywalled. Data are FLEX-2-era n-alkane tests (octane, decane) plus FLEX heptane. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Isolated n-heptane droplet combustion in microgravity: “Cool Flames” – Two-stage combustion",
+    "doi": "10.1016/j.combustflame.2013.09.011",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Farouk and Dryer (2014): detailed-chemistry simulation of two-stage (hot then cool flame) n-heptane droplet burning compared with ISS data. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Its result is summarised in the record via Dietrich et al. 2014. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Theory of the propagation dynamics of spiral edges of diffusion flames in von Kármán swirling flows",
+    "doi": "10.1016/j.combustflame.2010.08.015",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Urzay, Nayagam and Williams (2010): theory of spiral flame edges in von Karman swirling flows over spinning fuel discs; unrelated to droplet tests.",
+    "items": [],
+    "notes": "Not droplet combustion; listed in the PSI record presumably as a team publication. OpenAlex points to a UNL repository copy (digitalcommons.unl.edu/nasapub/94) but the PDF link returned a bot-check page, not the paper."
+  },
+  {
+    "title": "Analysis of the melt phase of a rotating polymer disc supporting a diffusion flame",
+    "doi": "10.1017/jfm.2011.349",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1017/jfm.2011.349",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Nayagam and Williams (2011): analysis of the melt layer of a spinning PMMA disc supporting a diffusion flame. Not about FLEX droplets.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Solid-fuel theory; no FLEX content."
+  },
+  {
+    "title": "Partial-Burning Regime for Quasi-Steady Droplet Combustion Supported by Cool Flames",
+    "doi": "10.2514/1.J054437",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/1.J054437",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Nayagam, Dietrich and Williams (AIAA J. 2016): partial-burning (fuel and oxygen leakage) model for cool-flame-supported quasi-steady droplet burning applied to ISS n-alkane data; matches K magnitudes and flame-standoff ratios, but not the observed dependence of K on pressure and initial diameter.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "The partial-burning model reproduces measured cool-flame K values but not their apparent dependence on pressure or initial diameter.",
+        "quote": "The simplified predictions are found to produce reasonable agreement with the experimentally measured values of burning-rate constants but not with their apparent dependencies on pressure or on the initial droplet diameter.",
+        "locator": "Abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Good agreement with measured and computed cool-flame standoff ratios.",
+        "quote": "Good agreement is found, however, with newly measured and numerically calculated flame standoff ratios in this droplet combustion supported by cool flames.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; AIAA paywalled. Theory applied to FLEX/FLEX-2 n-alkane data; predates CFI flight (no CFI data). Also listed under PSI-39; read once."
+  },
+  {
+    "title": "Asymptotic analysis of quasi-steady n-heptane droplet combustion supported by cool-flame chemistry",
+    "doi": "10.1080/13647830.2016.1248494",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/13647830.2016.1248494",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Seshadri, Peters and Williams (2016): maximally reduced n-heptane cool-flame chemistry with activation-energy asymptotics predicts cool-flame extinction diameters versus O2; qualitative trends right, quantitative differences remain.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Reduced-chemistry asymptotics captures trends of cool-flame extinction diameter with O2 but not the values.",
+        "quote": "While the results are encouraging concerning qualitative predictions of dependences of extinction diameters on atmospheric conditions, there are noticeable quantitative differences that point to deficiencies in the analysis",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex. Theory for FLEX heptane data; for CFI (PSI-39) it is background theory only. Also listed under PSI-39; read once."
+  },
+  {
+    "title": "n-Butanol droplet combustion: Numerical modeling and reduced gravity experiments",
+    "doi": "10.1016/j.proci.2014.06.043",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Alam, Liu, Avedisian, Dryer, Farouk (2015): n-butanol droplet combustion, modelling and reduced-gravity (drop-tower) experiments. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Likely ground-based. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Droplet Combustion Experiments Aboard the International Space Station",
+    "doi": "10.1007/s12217-014-9372-2",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1007/s12217-014-9372-2",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Dietrich et al. (2014), first ISS droplet-combustion results: methanol and heptane, D0 1.5-5 mm, O2 0.1-0.4, 0.7-3 atm, CO2 and He dilution. LOI 0.12/0.15 (methanol/heptane) in O2/N2, 0.14/0.17 with CO2 dispersed into air, 0.14/0.15 with He; ~1 Hz pre-extinction oscillations; cool-flame burning of large heptane droplets.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "LOI values in O2/N2, with CO2 and with He.",
+        "quote": "For oxygen/nitrogen mixtures, the LOI is 0.12 and 0.15 for methanol and heptane, respectively.",
+        "locator": "Abstract",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Cool-flame burning of large heptane droplets after radiative extinction, invisible to the cameras.",
+        "quote": "After the visible hot flame radiatively extinguished around a large heptane droplet, the droplet continued to burn with a cool flame.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Open access, but the Springer PDF and article page returned a bot-check page in this session; the abstract (Semantic Scholar) was read. The PSI-69 record already cites the full text extensively from an earlier read; nothing here contradicts it. The abstract gives D0 1.5-5.0 mm and O2 0.1-0.4, wider than the PSI table (d0 1.10-4.67 mm; O2 0.12-0.34; no 0.40 row), consistent with the record gap on Table III (0.400 O2). Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Computational modeling of the effects of support fibers on evaporation of fiber-supported droplets in reduced gravity",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ghata and Shaw (2014): computational modelling of support-fibre effects on evaporation of fibre-supported droplets in reduced gravity.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Modelling only (DOI resolved through OpenAlex title search; none in the PSI record). Also listed under PSI-68; read once. DOI found by the reviewer, not given in the PSI record: 10.1016/j.ijheatmasstransfer.2014.04.074."
+  },
+  {
+    "title": "Oxygen Lewis Number Effects on Reduced Gravity Combustion of Methanol and n-Heptane Droplets",
+    "doi": "10.1080/00102202.2015.1072176",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102202.2015.1072176",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Shaw and Vang (2015): ISS methanol and heptane droplets (1.2-5.0 mm) in air with helium or xenon added at 0.1 and 0.07 MPa; transport properties of the inert matter for LOI, burning rates and radiant output; initial diameter seems not to matter for LOI.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Ambient-gas transport properties (He vs Xe, same molar thermodynamics) affect LOI, burning rate and radiant output.",
+        "quote": "The results indicate that ambient gas transport properties play an important role in determining limiting oxygen indices as well as burning rates and radiant heat output histories of flames.",
+        "locator": "Abstract",
+        "record_path": "findings[2]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Comparison with drop-tower data suggests initial droplet diameter may not significantly affect the LOI.",
+        "quote": "However, comparison with drop tower data suggests that initial droplet diameters may not play a significant role in determining limiting oxygen index values.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex. Xenon tests are not in the PSI-69 table (it ends Dec 2011); they are presumably later FLEX/FLEX-2 tests. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "ISS Droplet Combustion Experiments - Uncertainties in Droplet Sizes and Burning Rates",
+    "doi": "10.1007/s12217-014-9377-x",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Shaw (2014): uncertainties in droplet sizes and burning rates from ISS droplet-combustion images. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Related method paper Yu and Shaw 2014 (Gravitational and Space Research) was read. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Combustion of n-Butanol, Gasoline, and n-Butanol/Gasoline Mixture Droplets",
+    "doi": "10.1021/acs.energyfuels.5b00158",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1021/acs.energyfuels.5b00158",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Xu and Avedisian (2015): sub-millimetre (0.52-0.63 mm) n-butanol, gasoline and B10 droplets in 1 atm air under low-convection conditions; similar burning rates, different sooting and flame position.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Sub-millimetre drop-tower scale; not ISS data."
+  },
+  {
+    "title": "Computational Modeling of Unsupported and Fiber-Supported n-Heptane Droplet Combustion in Reduced Gravity: A Study of Fiber Effects",
+    "doi": "10.1080/00102202.2014.971950",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102202.2014.971950",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ghata and Shaw (2014): VOF simulations of unsupported vs fibre-supported n-heptane droplets; fibres can significantly change burning rate and flame structure. Validated against older ground data.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Modelling; relevant background for FLEX fibre-supported tests but no ISS data. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "The effect of support fibers on micro-convection in droplet combustion experiments",
+    "doi": "10.1016/j.proci.2014.07.022",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Liu, Xu, Avedisian, Hicks (2015): effect of support fibres on micro-convection in droplet combustion experiments. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Cool-flame extinction during n-alkane droplet combustion in microgravity",
+    "doi": "10.1016/j.combustflame.2015.01.012",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20140006750/downloads/20140006750.pdf",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Preprint (CSSCI 2014) of the 2015 Combustion and Flame paper: n-heptane, n-octane and n-decane droplets in O2/N2/CO2 and O2/He/N2 at 0.5-1 atm, 14-25% O2. All three alkanes show hot-flame radiative extinction followed by quasi-steady cool-flame burning, with cool-flame K slightly below hot-flame K. In O2/N2 the cool-flame extinction diameter scales as [O2]^(-3/4); across diluents and pressures D_ce^2/K_c correlates with [O2]^(-3/2), as an NTC-crossover argument predicts.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Hot/cool K for n-decane and n-octane with He substitution as in the record.",
+        "quote": "The burning rate constants K (=dD2/dt) corresponding to the first and second stage combustion were found to be 0.41 and 0.33 mm2/s respectively.",
+        "locator": "Sec. 3.1, p4",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "In O2/N2, cool-flame extinction diameters of heptane, octane and decane scale with ambient O2 molar concentration to the power -3/4.",
+        "quote": "The cool flame extinction diameters vary as oxygen molar concentration to the power -3/4 for oxygen/nitrogen mixture.",
+        "locator": "Concluding Remarks, p8",
+        "record_path": null
+      },
+      {
+        "kind": "new_finding",
+        "claim": "With CO2 or He replacing N2 and at different pressures, the residence time at extinction D_ce^2/K_c correlates with [O2] at the theoretical slope -3/2.",
+        "quote": "Remarkably the data are reasonably well correlated, considering the number of variables involved in the experiments, and, within the appreciable scatter, the results are in agreement with the theoretical slope of -3/2.",
+        "locator": "Sec. 3.4, Fig. 4b, p7",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Cool-flame burning rates are slightly lower than hot-flame rates.",
+        "quote": "The cool flame burning rates are slightly lower compared to the hot flame rates.",
+        "locator": "Concluding Remarks, p8",
+        "record_path": null
+      }
+    ],
+    "notes": "Read the NTRS preprint, not the paywalled journal version. Typo in the paper: R383 is given as '14%O2 and 96%N2' (sums to 110%). The three heptane cases quoted (D0 3.91, 3.48, 2.49 mm at 1 atm) do not appear in the PSI-69 table by initial diameter, so they are probably later (FLEX-2 era) tests. For PSI-39 (CFI) this is precursor work: the -3/2 correlation is the one cited in the CFI presentations. Also listed under PSI-39, PSI-68; read once."
+  },
+  {
+    "title": "A short mechanism for the low-temperature ignition of n-heptane at high pressures",
+    "doi": "10.1016/j.fuel.2014.08.063",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Prince, Williams and Ovando (2015): short mechanism for low-temperature n-heptane ignition at high pressure. Chemistry only.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Kinetics paper; no ISS data. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "The role of cool-flame chemistry in quasi-steady combustion and extinction of n-heptane droplets",
+    "doi": "10.1080/13647830.2014.934296",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/13647830.2014.934296",
+    "classification": [
+      "confirms",
+      "new_finding"
+    ],
+    "summary": "Paczko, Peters, Seshadri and Williams (2014): 770-step reduced and 62-step skeletal mechanisms applied to the quasi-steady cool-flame stage of large ISS heptane droplets; products H2O, CO, H2O2, CH2O, C2H4; strong heptane and O2 leakage, little CO2, no soot; fuel leakage proposed as the source of the vapour cloud. The 770-step mechanism matches measured extinction diameters, the skeletal one over-predicts them.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "In the cool-flame stage the principal products are H2O, CO, H2O2, CH2O and C2H4, with substantial n-heptane and O2 leakage through the flame and very little CO2; fuel leakage is suggested as the source of the vapour cloud.",
+        "quote": "during this stage, there is substantial leakage of n-heptane and O2 through the flame, and very little production of CO2 with no soot in the mechanism. The fuel leakage has been suggested to be the source of the observed vapour cloud that forms after flame extinction.",
+        "locator": "Abstract",
+        "record_path": null
+      },
+      {
+        "kind": "confirms",
+        "claim": "Second stage of quasi-steady burning supported by low-temperature chemistry after radiative extinction.",
+        "quote": "revealed a second stage of continued quasi-steady burning, supported by low-temperature chemistry, that follows radiative extinction of the first stage of burning",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; RWTH repository record returned a bot-check page. Modelling of FLEX heptane data; for CFI background only. Also listed under PSI-39, PSI-68; read once."
+  },
+  {
+    "title": "Combustion of Submillimeter Heptane/Methanol and Heptane/Ethanol Droplets in Reduced Gravity",
+    "doi": "10.1155/2013/154202",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1155/2013/154202",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Aharon, Tam and Shaw (2013): drop-tower combustion of 0.67-0.92 mm heptane droplets with 5% methanol or ethanol in air or O2/He at 0.1 MPa.",
+    "items": [],
+    "notes": "Open access (Hindawi/Wiley) but the PDF hosts returned bot-check pages; abstract via Semantic Scholar. Ground-based. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Sub-millimeter sized methyl butanoate droplet combustion: Microgravity experiments and detailed numerical modeling",
+    "doi": "10.1016/j.proci.2012.07.074",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Farouk et al. (2013): sub-millimetre methyl butanoate droplets, microgravity (drop tower) experiments and detailed modelling. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "On the spherically symmetrical combustion of methyl decanoate droplets and comparisons with detailed numerical modeling",
+    "doi": "10.1016/j.combustflame.2012.11.006",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Liu et al. (2013): spherically symmetric methyl decanoate droplet combustion vs detailed modelling (drop tower). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "The spherically symmetric droplet burning characteristics of Jet-A and biofuels derived from camelina and tallow",
+    "doi": "10.1016/j.fuel.2013.02.025",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Liu, Savas, Avedisian (2013): Jet-A and camelina/tallow biofuel droplets, spherically symmetric burning (drop tower). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Spherically symmetric droplet combustion of three and four component miscible mixtures as surrogates for Jet-A",
+    "doi": "10.1016/j.proci.2012.05.065",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Liu, Savas, Avedisian (2013): three- and four-component Jet-A surrogate droplets (drop tower). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "AUTOMATED DATA ANALYSIS FOR CONSECUTIVE IMAGES FROM DROPLET COMBUSTION EXPERIMENTS",
+    "doi": "10.5566/ias.v31.p137-148",
+    "access": "full_text",
+    "read_url": "https://doi.org/10.5566/ias.v31.p137-148",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Dembia, Liu, Avedisian (2012): automated edge-detection and circle/ellipse fitting of drop-tower droplet images (heptane, toluene) with soot noise; circle fits are more robust than ellipse fits when soot hides part of the edge.",
+    "items": [],
+    "notes": "Open access (ias-iss.org) read in full. Image-analysis method developed on ground drop-tower images, not on ISS data. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "On the extinction characteristics of alcohol droplet combustion under microgravity conditions – A numerical study",
+    "doi": "10.1016/j.combustflame.2012.04.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Farouk and Dryer (2012): numerical study of alcohol droplet extinction in microgravity. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "A comparison of the spherical flame characteristics of sub-millimeter droplets of binary mixtures of n-heptane/iso-octane and n-heptane/toluene with a commercial unleaded gasoline",
+    "doi": "10.1016/j.combustflame.2011.08.015",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Liu and Avedisian (2011): sub-millimetre n-heptane/iso-octane and n-heptane/toluene droplets vs gasoline (drop tower). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Comparison of the Burning Characteristics of Indolene and Commercial Grade Gasoline Droplets without Convection",
+    "doi": "10.1021/ef3007849",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1021/ef3007849",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Liu, Savas, Avedisian (2012): indolene vs gasoline 0.47-0.59 mm droplets in 1 atm air; similar evaporation rates, different sooting.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Ground-based sub-millimetre experiments. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Can cool flames support quasi-steady alkane droplet burning?",
+    "doi": "10.1016/j.combustflame.2012.07.012",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Nayagam et al. (2012): the paper that first reported quasi-steady cool-flame burning of large heptane droplets on the ISS. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Its findings enter the records through Dietrich et al. 2014, NTRS 20120015928 and 20140006750. Also listed under PSI-39, PSI-68; read once."
+  },
+  {
+    "title": "Experiments on Submillimeter Free Droplet Flame Extinction",
+    "doi": "10.1080/00102202.2012.759946",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102202.2012.759946",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shaw and Wang (2013): flame extinction of free-falling 270-285 um heptane, decane and hexadecane droplets in hot burner gases; convection at Re 0.01-0.1 does not change extinction diameters.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Laboratory experiment. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Influences of support fibers on vaporizing fuel droplets",
+    "doi": "10.1016/j.compfluid.2013.02.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shringi, Dwyer, Shaw (2013): numerical study of support-fibre effects on vaporising droplets. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Numerical studies of flows over liquid droplets on cylindrical fibers",
+    "doi": "10.1016/j.compfluid.2013.02.011",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shringi, Dwyer, Shaw (2013): numerical flows over droplets on cylindrical fibres. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected."
+  },
+  {
+    "title": "Interpretation of Backlit Droplet Images from ISS Droplet Combustion Experiments",
+    "doi": "10.2478/gsr-2014-0007",
+    "access": "full_text",
+    "read_url": "https://doi.org/10.2478/gsr-2014-0007",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "Yu and Shaw (2014): Fourier-optics analysis of FLEX/FLEX-2 backlit droplet images for non- or lightly-sooting droplets; diffraction at the droplet edge, partial coherence and background variation bias diameter measurements; an iterative edge-finding algorithm is proposed.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Diffraction at the droplet edge can cause significant errors in droplet sizes measured from the ISS backlit images; partial coherence and background variations add further error.",
+        "quote": "It was found that light diffraction at the droplet edge can contribute significantly to errors in droplet size measurements.",
+        "locator": "Conclusions, p90",
+        "record_path": null
+      }
+    ],
+    "notes": "Open access (Sciendo) read in full. Method paper; no new combustion results. Not added to the records (the record already gives the ±50 um droplet-size uncertainty from the NASA report). Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Combustion of Methanol Droplets in Air-Diluent Environments with Reduced and Normal Gravity",
+    "doi": "10.1155/2012/587987",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1155/2012/587987",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shaw and Wei (2012): drop-tower and normal-gravity methanol droplets (~1 mm) with CO2, He or Xe added to air; droplets burn with much more Xe than He or CO2; burning rates 40-70% higher in normal gravity.",
+    "items": [],
+    "notes": "Open access (Hindawi/Wiley), PDF host returned a bot-check page; abstract via Semantic Scholar. FLEX ground precursor. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Microgravity droplet combustion: effect of tethering fiber on burning rate and flame structure",
+    "doi": "10.1080/13647830.2010.547601",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/13647830.2010.547601",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Farouk and Dryer (2011): 1-D simulations show tethering fibres significantly change burning rate, standoff ratio and extinction of n-decane droplets (compared with JAMIC and GRC drop-tower data).",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Modelling; relevant to interpreting FLEX tethered tests. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Influence of Gravity and Ambient Pressure on Combustion and Flammability of n-Heptane and 1-Propanol Droplets in Air-Diluent Environments",
+    "doi": "10.1080/00102202.2010.498798",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102202.2010.498798",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shaw and Wei (2011): ~1 mm fibre-supported heptane and propanol droplets at 0.1 and 0.3 MPa with He, CO2 or Xe; more inert needed to suppress in reduced than normal gravity; He best suppressant on a mass basis; droplets more sensitive to transport properties than cup burners.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Drop-tower precursor; consistent with the FLEX finding that microgravity LOIs are lower than terrestrial ones. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Ignition and combustion of n-heptane droplets in carbon dioxide enriched environments",
+    "doi": "10.1016/j.icheatmasstransfer.2009.10.006",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Dzik, Nayagam, Williams (2010): ignition and combustion of n-heptane droplets in CO2-enriched atmospheres (drop tower/theory, FLEX precursor). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Computational modeling of n-heptane droplet combustion in air–diluent environments under reduced-gravity",
+    "doi": "10.1016/j.ijheatmasstransfer.2010.08.005",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Jin and Shaw (2010): computational n-heptane droplet combustion in air-diluent environments in reduced gravity. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Numerical Simulation of Unsteady Flows and Shape Oscillations in Liquid Droplets Induced by Deployment Needle Retraction",
+    "doi": "10.1007/s12217-008-9096-2",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Jin and Shaw (2008): simulation of droplet shape oscillations caused by deployment-needle retraction. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Nonane droplet combustion with and without buoyant convection: Flame structure, burning rate and extinction in air and helium",
+    "doi": "10.1016/j.proci.2008.06.221",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Bae and Avedisian (2009): nonane droplets with and without buoyancy in air and helium (drop tower). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Temperature and fiber optic spectroscopy composition measurements of heated propanol–acetone droplets",
+    "doi": "10.1016/j.optlaseng.2009.05.004",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Xiao et al. (2009): temperature and fibre-optic spectroscopy of heated propanol-acetone droplets (laboratory). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Laser-induced fluorescence imaging of acetone inside evaporating and burning fuel droplets",
+    "doi": "10.1016/j.optlaseng.2008.08.002",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shringi, Shaw, Dwyer (2009): laser-induced fluorescence of acetone inside evaporating and burning droplets (laboratory). Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Reduced Gravity Combustion of Propanol Droplets in Oxygen-Inert Environments",
+    "doi": "10.1080/00102200903190851",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102200903190851",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Wei and Shaw (2009): ~1 mm propanol droplets in 21% O2 with He, Ar, Xe, N2 or CO2 at 0.03-0.3 MPa in a 2.2 s drop tower; helium caused extinction at 0.03 and 0.1 MPa.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Drop-tower precursor. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "PROPANOL DROPLET FLAMMABILITY AND COMBUSTION IN AIR-DILUENT ENVIRONMENTS UNDER NORMAL AND REDUCED GRAVITY",
+    "doi": "10.1080/00102200601057394",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/00102200601057394",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Shaw and Wei (2007): propanol droplet ignitability in air with He, CO2 or Xe at 0.1 MPa; more inert needed for suppression in reduced gravity than normal gravity.",
+    "items": [],
+    "notes": "Abstract via OpenAlex. Drop-tower precursor. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Developing Surrogates for Liquid Transportation Fuels: The Role of Spherically Symmetric Droplet Combustion",
+    "doi": "10.1007/978-81-322-2211-8_16",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Avedisian (2015): book chapter on surrogate fuels and spherically symmetric droplet combustion. Not read.",
+    "items": [],
+    "notes": "Publisher full text is paywalled; no open copy found via OpenAlex, Semantic Scholar, Europe PMC or an NTRS title search, and the publisher withholds the abstract from these indexes. Ground-based or modelling by its title; no ISS data expected. Also listed under PSI-68; read once."
+  },
+  {
+    "title": "Detailed results from the flame extinugishment experiment (FLEX) - March 2009 to December 2011",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20150023456/downloads/20150023456.pdf",
+    "classification": [
+      "confirms",
+      "contradicts_psi_data"
+    ],
+    "summary": "NASA/TP-2015-216046: the catalogue of FLEX tests from March 2009 to December 2011 (methods, data processing, Table IX of per-test results) on which the PSI-69 table is based. No interpretation is given.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Report catalogues burning-rate constants and extinction diameters; it is the source of the PSI table.",
+        "quote": "Burning rate—average burning rate constant from a linear fit of the droplet diameter squared versus time from shortly after ignition to extinction",
+        "locator": "Appendix A, p19",
+        "record_path": "measurements[3]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "The conclusions give initial diameters of 2-5 mm and atmospheres of O2 with N2, CO2 and mixtures, but the report's own Table IX (= PSI table) has d0 from 1.10 to 4.67 mm (26 tests below 2 mm) and 50 helium-diluted rows; Appendix A also says it covers March 2009 to December 2010 while the title and table run to December 2011.",
+        "quote": "for methanol and n-heptane droplets with initial diameters between 2 and 5 mm.",
+        "locator": "Conclusions, p17",
+        "record_path": "gaps"
+      }
+    ],
+    "notes": "Read in full previously for the record (Table IX, method sections); conclusions and appendix headings re-read here. PSI-69 numbering vs FLEX numbering and the 284-vs-274 count are already recorded in gaps."
+  }
+]

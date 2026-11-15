@@ -1,0 +1,350 @@
+[
+  {
+    "title": "Analysis of CH* concentration and flame heat release rate in laminar coflow diffusion flames under microgravity and normal gravity",
+    "doi": "10.1016/j.combustflame.2016.02.012",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the journal version of the SLICE CH* analysis (microgravity vs normal gravity coflow flames). The record's CH* finding rests on the related NTRS poster 20160012298.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. Related NASA items with free PDFs: NTRS 20160012298 (poster, used in the record) and 20160010264 (2015 slides), whose conclusions add that measured peak CH* 'was generally higher in normal gravity flames'; not the journal paper, so not added."
+  },
+  {
+    "title": "Signal-to-noise ratio improvements in laser flow diagnostics using time-resolved image averaging and high dynamic range imaging",
+    "doi": "10.1007/s00348-016-2218-5",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a diagnostics method paper (image averaging and HDR imaging for laser diagnostics), ground work.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "A computational and experimental study of coflow laminar methane/air diffusion flames: Effects of fuel dilution, inlet velocity, and gravity",
+    "doi": "10.1016/j.proci.2014.05.138",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "SLICE precursor (ISS glovebox, N2-diluted CH4, X_CH4 0.4-1.0, 23-90 cm/s): computed and measured flame shapes agree; luminous length scales with fuel mass flow in both gravities, microgravity flames are longer, and buoyancy narrows 1 g flames. Computations show the centreline peak temperature drops by about 300 K without buoyancy and centreline residence time rises 3.5-fold near the domain exit.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Flame length proportional to fuel mixture mass flow; microgravity flames noticeably longer; dilution effect negligible after normalisation.",
+        "quote": "Buoyant and nonbuoyant luminous flame lengths are proportional to the mass flow rate of the fuel mixture; computed and measured nonbuoyant flames are noticeably longer than their 1g counterparts",
+        "locator": "abstract",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Computed: removing buoyancy lowers the centreline peak temperature by about 300 K and moves it downstream, more so at higher fuel concentration or inlet velocity; centreline residence time rises about 3.5-fold near the domain exit.",
+        "quote": "when buoyancy is eliminated, the peak temperature along the centerline drops by around 300 K and moves downstream, with larger changes occurring in flames with higher fuel concentration or higher inlet velocity",
+        "locator": "Sec. 4 (results), discussion of Fig. 9",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Residence time increase near domain exit.",
+        "quote": "this difference will result in a 3.5-fold increase in residence time",
+        "locator": "Sec. 4, discussion of Fig. 9",
+        "record_path": "findings[9]"
+      }
+    ],
+    "notes": "Read from the NASA NTRS preprint 20150002322, same title and authors as the Proc. Combust. Inst. 35 paper. The PSI record lists this DOI twice (positions 3 and 8); both entries refer to the same reading. SLICE (PSI-106) data, not ACME CLD Flame."
+  },
+  {
+    "title": "A Combined Experimental and Computational Study of Soot Formation in Normal and Microgravity Conditions",
+    "doi": "10.1080/00102202.2022.2041621",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/00102202.2022.2041621?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Combined experiment and modelling of sooting ethylene-air coflow flames at 1 g and 0 g on the Yale and ACME burners (microgravity tests on the ISS). 0 g flames are longer, broader, cooler and sootier, but much less so for the smaller ACME flame; the model probably mispredicts the thermal field, and heat transfer to the burner lip may change the boundary conditions.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "0 g trends and weaker gravity effect for the smaller ACME flame.",
+        "quote": "However, in the case of the smaller ACME flame, these effects are significantly diminished.",
+        "locator": "abstract",
+        "record_path": "findings[2]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Model likely mispredicts the thermal field; imposing measured temperatures and burner-lip heat transfer are the proposed fixes.",
+        "quote": "The results of the study indicate that it is likely that the model inadequately predicts the thermal field",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      }
+    ],
+    "notes": "Taylor & Francis, closed; abstract from OpenAlex. Same paper listed under PSI-60."
+  },
+  {
+    "title": "Constrained-temperature solutions of coflow laminar diffusion flames",
+    "doi": "10.1016/j.proci.2020.06.034",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2020.06.034?fields=title,abstract",
+    "classification": [
+      "confirms",
+      "out_of_scope"
+    ],
+    "summary": "Ground (Yale burner, 40% ethylene) study imposing a measured 2-D temperature field on the flame solution: the computed soot peak moves from the wings to the centreline, matching experiment. Not ISS data.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Imposed measured temperature moves predicted soot peak to the centreline, matching experiment.",
+        "quote": "Similarly, the location of peak soot volume fraction migrates from along the flame wings in the unconstrained calculation, where soot surface growth processes dominate, to the centerline in the constrained case, where soot inception is the dominant condensed-phase formation mechanism.",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "out_of_scope",
+        "claim": "1 g Yale-burner study.",
+        "quote": "Results are presented for a 40% ethylene-air flame on the Yale Coflow Burner.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Accepted manuscript listed as free on ScienceDirect but refused automated access (HTTP 403); abstract via Semantic Scholar."
+  },
+  {
+    "title": "Effects of pressure and fuel dilution on coflow laminar methane–air diffusion flames: A computational and experimental study",
+    "doi": "10.1080/13647830.2017.1403051",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/13647830.2017.1403051",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Ground study of pressure (1.0-2.7 atm) and dilution (X_CH4 0.50-0.65) on coflow methane flames: maximum temperature rises with pressure or CH4, lift-off height falls with pressure, flame radius scales roughly as P^-1/2. No microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Elevated-pressure 1 g study.",
+        "quote": "lift-off height decreases significantly with increasing pressure, modified flame length is roughly independent of pressure, and flame radius decreases with pressure approximately as P−1/2",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "Effect of soot self-absorption on color-ratio pyrometry in laminar coflow diffusion flames",
+    "doi": "10.1364/OL.43.001103",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1364/OL.43.001103",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Ground diagnostics letter: soot self-absorption biases colour-ratio pyrometry by up to 22 K (optical depth 0.31), and 42/75 K for 2x/5x soot. Already used in the record.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Self-absorption correction of 22 K, 42 and 75 K for 2x and 5x soot.",
+        "quote": "The change in calculated temperature varies spatially within each flame, with the maximum correction quantified to be 22 K for a flame with a maximum optical depth of 0.31.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "A computational and experimental study of coflow laminar methane/air diffusion flames: Effects of fuel dilution, inlet velocity, and gravity",
+    "doi": "10.1016/j.proci.2014.05.138",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "SLICE precursor (ISS glovebox, N2-diluted CH4, X_CH4 0.4-1.0, 23-90 cm/s): computed and measured flame shapes agree; luminous length scales with fuel mass flow in both gravities, microgravity flames are longer, and buoyancy narrows 1 g flames. Computations show the centreline peak temperature drops by about 300 K without buoyancy and centreline residence time rises 3.5-fold near the domain exit.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Flame length proportional to fuel mixture mass flow; microgravity flames noticeably longer; dilution effect negligible after normalisation.",
+        "quote": "Buoyant and nonbuoyant luminous flame lengths are proportional to the mass flow rate of the fuel mixture; computed and measured nonbuoyant flames are noticeably longer than their 1g counterparts",
+        "locator": "abstract",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Computed: removing buoyancy lowers the centreline peak temperature by about 300 K and moves it downstream, more so at higher fuel concentration or inlet velocity; centreline residence time rises about 3.5-fold near the domain exit.",
+        "quote": "when buoyancy is eliminated, the peak temperature along the centerline drops by around 300 K and moves downstream, with larger changes occurring in flames with higher fuel concentration or higher inlet velocity",
+        "locator": "Sec. 4 (results), discussion of Fig. 9",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Residence time increase near domain exit.",
+        "quote": "this difference will result in a 3.5-fold increase in residence time",
+        "locator": "Sec. 4, discussion of Fig. 9",
+        "record_path": "findings[9]"
+      }
+    ],
+    "notes": "Read from the NASA NTRS preprint 20150002322, same title and authors as the Proc. Combust. Inst. 35 paper. The PSI record lists this DOI twice (positions 3 and 8); both entries refer to the same reading. SLICE (PSI-106) data, not ACME CLD Flame."
+  },
+  {
+    "title": "An experimental and computational study of soot formation in a coflow jet flame under microgravity and normal gravity",
+    "doi": "10.1016/j.proci.2014.05.064",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "SLICE precursor (ISS glovebox, pure CH4 coflow jet flames): microgravity flames are about 4-8 times sootier (peak soot volume fraction), peak soot moves from the centreline at 1 g to the wings in microgravity, and the microgravity flame is cooler; the model captures shape and soot migration but underestimates soot, especially in microgravity.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "4-8x sootier in microgravity.",
+        "quote": "the microgravity flames were found to be sootier than normal gravity flames by a factor of approximately 4 to 8 in terms of the peak soot volume fraction",
+        "locator": "Sec. 6 Conclusions",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Model underestimates soot volume fraction, especially in microgravity.",
+        "quote": "However, the soot volume fraction is underestimated, especially in microgravity.",
+        "locator": "Sec. 6 Conclusions",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Read from NASA NTRS preprint 20140017780 (same title/authors as the Proc. Combust. Inst. 35 paper); already the record's source. SLICE (PSI-106) data."
+  },
+  {
+    "title": "Absolute light calibration using S-type thermocouples",
+    "doi": "10.1016/j.proci.2012.05.030",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground calibration method (absolute light calibration with S-type thermocouples) used for soot volume fraction.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "A comparison of Raman signatures and laser-induced incandescence with direct numerical simulation of soot growth in non-premixed ethylene/air flames",
+    "doi": "10.1016/j.carbon.2011.07.050",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground comparison of Raman and LII soot signatures with simulation in ethylene flames.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Soot and thin-filament pyrometry using a color digital camera",
+    "doi": "10.1016/j.proci.2010.05.006",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title the ground method paper for soot and thin-filament pyrometry with a colour digital camera.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "IMAGING FLAMES: FROM ADVANCED LASER DIAGNOSTICS TO SNAPSHOTS",
+    "doi": "10.1142/9789814295789_0004",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1142/9789814295789_0004",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Book chapter reviewing laser imaging and consumer-camera soot measurements for model validation. No microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Diagnostics review.",
+        "quote": "Data from both types of measurements are valuable for quantitative comparisons with model predictions.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "A paradigm shift in the interaction of experiments and computations in combustion research",
+    "doi": "10.1016/j.proci.2008.05.066",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title an essay on experiment-computation interaction in combustion research (ground).",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Computational and experimental investigation of the interaction of soot and NO in coflow diffusion flames",
+    "doi": "10.1016/j.proci.2008.06.182",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of soot-NO interaction in coflow flames.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Distributed-memory parallel computation of a forced, time-dependent, sooting, ethylene/air coflow diffusion flame",
+    "doi": "10.1080/13647830903159293",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/13647830903159293",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Parallel computation of a 20 Hz forced, time-dependent sooting ethylene coflow flame; ground modelling with qualitative experimental comparison. No microgravity data.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Forced-flame modelling, 1 g.",
+        "quote": "The experimental results are qualitatively consistent with the model predictions.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract from OpenAlex."
+  },
+  {
+    "title": "Measurements and calculations of formaldehyde concentrations in a methane/N2/air, non-premixed flame: Implications for heat release rate",
+    "doi": "10.1016/j.proci.2008.05.083",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of formaldehyde as a heat-release marker in a methane/N2/air flame.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "Computational and experimental study of a forced, time-dependent, methane–air coflow diffusion flame",
+    "doi": "10.1016/j.proci.2006.08.109",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground study of a forced, time-dependent methane-air coflow flame.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  }
+]

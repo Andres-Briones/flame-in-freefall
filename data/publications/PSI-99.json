@@ -1,0 +1,193 @@
+[
+  {
+    "title": "Buoyant Effects on the Flammability of Silicone Samples Planned for the Spacecraft Fire Experiment (Saffire), Conference: 45th International Conference on Environmental Systems ICES-2015-[293] 12-16 July 2015, Bellevue, Washington",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20150022421",
+    "classification": [
+      "confirms",
+      "contradicts_record"
+    ],
+    "summary": "ICES-2015 ground (1 g) study of the silicone sheets planned for Saffire-II (0.25, 0.36, 0.61, 1.00 mm; 5 x 30 cm Test 1 geometry): upward burn length fell with thickness and the thickest would not ignite; the two thinnest burned completely downward, unusually more flammable than upward; a deposited silica layer is blamed for upward self-extinction; with 2 m/s forced upward flow all ignited thicknesses burned completely.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "A deposited silica layer is the proposed cause of upward self-extinction; strong forced flow removes it.",
+        "quote": "The reason for the increased flammability in the downward direction compared to upward is attributed to the deposition of a silica layer onto the fresh fuel in the upward case.",
+        "locator": "Conclusions",
+        "record_path": "findings[2]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "With 2 m/s forced upward flow, all ignited thicknesses burned completely upward.",
+        "quote": "When a forced upward flow of air (2 m/s) was imposed, all thicknesses that were ignited burned to completion in the upward configuration but were extinguished in the downward configuration.",
+        "locator": "Conclusions",
+        "record_path": "findings[2]"
+      },
+      {
+        "kind": "contradicts_record",
+        "claim": "In these 2015 Test-1-style upward tests in air the flame 'generally did not burn the entire sample', with burn length falling as thickness rose; findings[1] (from the 2017 results paper) says the 0.27 mm sample burned completely with accelerating upward spread in 1 g. The two papers used different sample batches (0.25 vs 0.27 mm) and possibly sample lengths, so the record keeps the 2017 value and notes the difference in gaps.",
+        "quote": "In the upward buoyant flame spread tests, the flame generally did not burn the entire sample. As thickness was increased, the flame spread distance decreased before flame extinguishment.",
+        "locator": "Abstract",
+        "record_path": "findings[1]"
+      }
+    ],
+    "notes": "Ground (1 g) study made for Saffire-II; already cited in findings[1]-[2]."
+  },
+  {
+    "title": "The Spacecraft Fire Experiment (Saffire) - Objectives, Development and Status",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20170001636",
+    "classification": [
+      "new_finding",
+      "contradicts_psi_data"
+    ],
+    "summary": "Pre-flight (May 2016) paper on the three Saffire units: objectives (growth of a large fire in low gravity; low-g flammability vs NASA-STD-6001 Test 1), identical flow-duct hardware (module about 53 x 90 x 133 cm), diagnostics (2 cameras, 4 radiometers, embedded and plume thermocouples, O2/CO2/pressure sensors, 2 anemometers, smoke wire), planned flows (Saffire-I 20 cm/s, Saffire-III 30 cm/s), the Saffire-II sample table, safety design (four latching relays for the igniter) and planned launch/operation dates.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "The pre-flight sample table planned 30 cm/s for sample 6 (SIBAL fabric) and sample 9 (flat 10 mm PMMA) and 20 cm/s for the others; the published flight values are 25 cm/s for 2-6 and 20 cm/s for 2-9. The 'approach' field's '20 or 30 cm/s' is therefore the plan, not the flight.",
+        "quote": "S5 SIBAL fabric 0.33 mm 20 Upstream S6 SIBAL fabric 0.33 mm 30 Upstream",
+        "locator": "p3 Table 1",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Flat PMMA sample planned at 30 cm/s (flown at 20 cm/s per Thomsen et al. 2019).",
+        "quote": "S9 Flat PMMA 10 mm (with tapered edge for ignition) 30 Upstream",
+        "locator": "p3 Table 1",
+        "record_path": "findings[11]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Planned thicknesses differ slightly from the flown/published ones: silicone 0.25/0.61/1.02/0.36 mm and fabric and PMMA-to-Nomex 0.33 mm, against 0.27/0.61/1.03/0.37 mm and 0.37 mm in the published Table I.",
+        "quote": "S1 Silicone 0.25 mm 20 Upstream S2 Silicone 0.61 mm 20 Upstream S3 Silicone 1.02 mm 20 Upstream S4 Silicone 0.36 mm 20 Downs tream",
+        "locator": "p3 Table 1",
+        "record_path": "test_matrix.varied[1]"
+      },
+      {
+        "kind": "contradicts_psi_data",
+        "claim": "The diagnostics table lists four radiometers (two viewing the front, two the back of the sample); the PSI-99 record 'approach' field says two radiometers.",
+        "quote": "Flame radiation radiometers two viewing front of sample; two viewing back of sample",
+        "locator": "p3 Table 2",
+        "record_path": "gaps[4]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Saffire-II objective: quantify the low-g vs 1-g MOC difference with NASA-STD-6001 Test 1 sized samples chosen to burn in 1 g just above and below 21% O2.",
+        "quote": "These materials were selected because they have normal gravity Maximum Oxygen Concentration (MOC) flammability limits that indicate they will burn in normal gravity just above and below 21% O 2 by volume",
+        "locator": "p2",
+        "record_path": "question"
+      }
+    ],
+    "notes": "NTRS 20170001636; identical to the file held in PSI-98 and PSI-100 (quotes taken from that evidence text, whose layout is cleaner than the NTRS text layer). PSI-99 itself holds no copy. Pre-flight paper."
+  },
+  {
+    "title": "Flame spread: Effects of microgravity and scale",
+    "doi": "10.1016/j.combustflame.2018.10.012",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.combustflame.2018.10.012",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Combustion and Flame 2019 overview of Saffire-I to -III: 94 x 40.6 cm SIBAL fabric (Saffire-I, III) and nine 29 x 5 cm samples (Saffire-II), forced flow 20-25 cm/s in Cygnus. Concurrent spread over thin fabric reached a steady rate and limiting length; thick PMMA approached a non-growing steady state with a limiting pyrolysis length within 15 min; upward 1-g spread accelerates.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Thick PMMA approached a non-growing steady state with a limiting pyrolysis length within 15 min.",
+        "quote": "The flame over the thick PMMA sample approaches a non-growing, steady state in the 15 min burning duration and has a limiting pyrolysis length.",
+        "locator": "Abstract",
+        "record_path": "findings[6]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Forced airflow 20-25 cm/s.",
+        "quote": "The forced airflow was 20–25 cm/s, which is typical of air circulation speeds in a spacecraft.",
+        "locator": "Abstract",
+        "record_path": "test_matrix.varied[3]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar/OpenAlex; Elsevier full text paywalled (no NTRS or PMC copy found)."
+  },
+  {
+    "title": "Buoyancy effects on concurrent flame spread over thick PMMA",
+    "doi": "10.1016/j.combustflame.2018.10.016",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20200000557",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Combustion and Flame 2019 (accepted manuscript on NTRS; also NASA PMC8862122): 1-g concurrent spread over 10 mm PMMA at 100-40 kPa and 20 cm/s compared with the Saffire-II flat PMMA sample (100 kPa, 20 cm/s). Lower pressure slows 1-g spread toward the microgravity value; a mixed-convection correlation extrapolated to low pressure predicts the Saffire-II rate well.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Low pressure slows 1-g concurrent spread over 10 mm PMMA toward the Saffire-II microgravity rate; the extrapolated correlation predicts the flight value well.",
+        "quote": "The extrapolation of the correlation to low pressures predicts well the flame spread rate obtained in microgravity in the Saffire II experiments.",
+        "locator": "Abstract",
+        "record_path": "findings[9]"
+      }
+    ],
+    "notes": "Already cited in PSI-99 findings[9]."
+  },
+  {
+    "title": "Concurrent Flame Spread Over Two-Sided Thick PMMA Slabs in Microgravity",
+    "doi": "10.1007/s10694-019-00863-3",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read here. Fire Technology 2019 paper on the two-sided thick PMMA slabs of Saffire-II (flat and grooved), including flame anchoring and limiting size.",
+    "items": [],
+    "notes": "SpringerLink is paywalled; the University of Edinburgh accepted-manuscript PDF returned HTTP 403 / bot challenge to curl and WebFetch. The PSI-99 record already cites this paper's abstract from the Edinburgh repository page (findings[6]-[8])."
+  },
+  {
+    "title": "Transient flame growth and spread processes over a large solid fabric in concurrent low-speed flows in microgravity – Model versus experiment",
+    "doi": "10.1016/j.proci.2018.05.168",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.proci.2018.05.168",
+    "classification": [
+      "new_finding",
+      "contradicts_record"
+    ],
+    "summary": "Proc. Combust. Inst. 37 (2019) model-vs-experiment study of concurrent spread over SIBAL fabric at 20 cm/s for the 41 x 94 cm Saffire-I sheet and the 5 x 29 cm Saffire-II strip. Both reached quasi-steady flame length; the large sample's pyrolysis length overshot first (explained by flow reduction in the growing boundary layer); the narrow strip spread about 13% faster with shorter burnout because of better lateral oxygen transport.",
+    "items": [
+      {
+        "kind": "contradicts_record",
+        "claim": "gaps[7] calls this paper Saffire-I fabric modelling; its abstract shows it also analyses the 5 x 29 cm Saffire-II SIBAL strip at 20 cm/s.",
+        "quote": "Two sample sizes were used: 5 cm by 29 cm and 41 cm by 94 cm, the largest ever samples burned in controlled experiments in microgravity.",
+        "locator": "Abstract",
+        "record_path": "gaps[7]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Model explanation of the narrow Saffire-II strip's faster spread and shorter burnout: more effective oxygen transport across its width gives a stronger flame, smaller standoff and larger heat feedback.",
+        "quote": "Compared to a wide sample, a narrow sample has more effective oxygen transport across the width of the sample. This results in a stronger flame, a shorter flame standoff distance from the sample surface, and larger heat feedback to the sample.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; full text paywalled."
+  },
+  {
+    "title": "Evaluation of gas and particle sensors for detecting spacecraft-relevant fire emissions",
+    "doi": "10.1016/j.firesaf.2020.102977",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1016/j.firesaf.2020.102977",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Fire Safety Journal 2020 laboratory evaluation of low-cost and research-grade gas and particle sensors (CO, VOC, optical particle sensors, DustTrak DRX) on smouldering and flaming spacecraft materials, in support of the Saffire smoke measurements. Ground tests only.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Laboratory sensor evaluation in support of Saffire; no Saffire-II flight data.",
+        "quote": "In support of the ongoing Spacecraft Fire Safety Experiments (Saffire), the DustTrak DRX aerosol monitor was evaluated for smoke measurement.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; the ScienceDirect accepted-manuscript page returned HTTP 403. Already listed as not Saffire-II results in PSI-99 gaps[7]."
+  }
+]

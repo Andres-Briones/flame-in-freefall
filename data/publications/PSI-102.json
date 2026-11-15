@@ -1,0 +1,281 @@
+[
+  {
+    "title": "Measurement of Smoke Particle Size under Low-Gravity Conditions",
+    "doi": "10.4271/2008-01-2089",
+    "access": "full_text",
+    "read_url": "https://doi.org/10.4271/2008-01-2089",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "2008 ICES/SAE paper with the preliminary SAME (Expedition 15) results: five materials overheated below ignition with controlled surface temperature and flow; moment instruments combined into count mean diameters. Reports low-gravity count mean diameters larger than in comparable 1-g tests.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Preliminary SAME particle-size analysis from moment instruments.",
+        "quote": "Smoke detection experiments were conducted in the Microgravity Science Glovebox (MSG) on the International Space Station (ISS) during Expedition 15 in an experiment entitled Smoke Aerosol Measurement Experiment (SAME). The preliminary results from these experiments are presented.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "Full text is Appendix D of the SAME final report held in PSI ('PSI-102_Reports_SAME_Final Science Report.pdf'); the PSI-102 record was written from it."
+  },
+  {
+    "title": "Properties of Smoke from Overheated Spacecraft Materials in Low-Gravity",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20120012884",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "AIAA 2009-956 'Properties of Smoke from Overheated Materials in Low-Gravity' (the listed title says 'Spacecraft Materials'): SAME moment measurements and instrument calibrations combined into geometric mean diameters and standard deviations; a substantial portion of the particles is below 500 nm.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "A substantial portion of SAME smoke particles is below 500 nm.",
+        "quote": "The experimental results show that, for the materials tested, a substantial portion of the smoke particles are below 500 nm in diameter.",
+        "locator": "Abstract",
+        "record_path": "findings[0]"
+      }
+    ],
+    "notes": "Also Appendix C of the SAME final report in PSI evidence."
+  },
+  {
+    "title": "Smoke Particle Sizes in Low-Gravity and Implications for Spacecraft Smoke Detector Design",
+    "doi": "10.4271/2009-01-2468",
+    "access": "full_text",
+    "read_url": "https://doi.org/10.4271/2009-01-2468",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "2009 ICES/SAE paper: SAME smoke from Teflon, Kapton, cellulose, silicone rubber and dibutyl phthalate, aged 10-1800 s, with number, diameter and mass moments combined into D_avm, CMD, D_g and sigma_g, and implications for spacecraft smoke-detector design.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Aging 10-1800 s and three moment diagnostics, used to set detector design requirements.",
+        "quote": "The transport time from the smoke source to the detector was simulated by holding the smoke in an aging chamber for times ranging from 10 to1800 seconds.",
+        "locator": "Abstract",
+        "record_path": "test_matrix.varied[2]"
+      }
+    ],
+    "notes": "Full text is Appendix B of the SAME final report in PSI evidence."
+  },
+  {
+    "title": "Spacecraft Fire Detection: Smoke Properties and Transport in Low-Gravity",
+    "doi": "10.2514/6.2008-806",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20080012612",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "AIAA 2008-806: first SAME particle-size results (a substantial portion below 500 nm) plus an FDS model of smoke transport in the ISS Destiny lab showing mixing-dominated transport and longer detection times than in 1 g.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Smoke transport model: mixing dominates and detection is slower than in 1 g.",
+        "quote": "The smoke transport model demonstrated that mixing dominates the smoke transport and that consequently detection times are longer than in normal gravity.",
+        "locator": "Abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Also Appendix E of the SAME final report in PSI evidence."
+  },
+  {
+    "title": "ISS Destiny Laboratory Smoke Detection Model",
+    "doi": "10.4271/2007-01-3076",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.4271/2007-01-3076",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "FDS model of smoke transport and detection in the ISS Destiny module with real airflows and rack obstructions; a 0.152 m square source emitting 1.46-8.47 mg/s; detection times dominated by circumferential and inter-module flow and source strength.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Source strength 1.46-8.47 mg/s; detection time depends on ventilation and source strength.",
+        "quote": "The smoke source was modeled as a 0.152 by 0.152 m region that emitted smoke particulate ranging from 1.46 to 8.47 mg/s.",
+        "locator": "Abstract",
+        "record_path": "findings[10]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; NTRS 20070021776 has no PDF. Modelling companion to SAME, not SAME data."
+  },
+  {
+    "title": "Smoke: Characterization of Smoke Particulate for Spacecraft Fire Detection, Seventh International Microgravity Combustion Workshop",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20040053578",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "7th International Microgravity Combustion Workshop (2003) paper on the 'Smoke' flight-definition investigation that became SAME: goals (pre-ignition smoke size distributions for detector design), the STS ionization vs ISS light-scattering detectors, and the earlier CSD finding that low-g smoke particulate was generally larger. Pre-flight; no SAME data.",
+    "items": [],
+    "notes": "NTRS 20040053578."
+  },
+  {
+    "title": "Smoke: Characterization of Smoke Particulate for Spacecraft Fire Detection",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20010074094",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "6th International Microgravity Combustion Workshop (2001) paper on the 'Smoke' flight-definition investigation: history of spacecraft detectors and the 1997 CSD result that the Shuttle detector was blind to some easily visible smoke, hypothesised to be due to enhanced droplet growth in low g. Pre-flight; no SAME data.",
+    "items": [],
+    "notes": "NTRS 20010074094. The PSI record lists two entries with this title; the 'Seventh Workshop' one is matched to the 2003 paper (NTRS 20040053578)."
+  },
+  {
+    "title": "Characterization of Nuisance Particulates in the ISS: Space Smoke Aerosols and Lunar Dust Abatement",
+    "doi": "10.1017/S1431927610060563",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Microscopy and Microanalysis 2010 extended abstract on TEM of ISS nuisance particulates (SAME smoke aerosols) and lunar dust.",
+    "items": [],
+    "notes": "Cambridge PDF returned a bot page; OpenAlex gives only the line 'Extended abstract of a paper presented at Microscopy and Microanalysis 2010'."
+  },
+  {
+    "title": "Combustion Research on the International Space Station",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Not read. Overview of combustion research on the ISS.",
+    "items": [],
+    "notes": "No DOI; not found on NTRS (title search returns other ISS combustion overviews), OpenAlex or Semantic Scholar."
+  },
+  {
+    "title": "Detection of Smoke from Microgravity Fires",
+    "doi": null,
+    "access": "abstract",
+    "read_url": "https://doi.org/10.4271/2005-01-2930",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "2005 ICES/SAE paper: history of spacecraft smoke detection, the 1997 Comparative Soot Diagnostics (CSD) results (solid-particulate smoke much larger in microgravity), the planned SAME follow-on, and early DAFT results giving the first ISS ambient-aerosol measurement, which was very low.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Pre-SAME paper: CSD (1997) smoke sizes and early DAFT background-aerosol results; findings[9] already uses DAFT's background counts.",
+        "quote": "The results from a spacecraft experiment (Comparative Soot Diagnostics (CSD)) which measured microgravity smoke particle sizes are presented.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; SAE full text paywalled. The PSI-102 file set has an unreadable .doc of this paper."
+  },
+  {
+    "title": "A Research Plan for Fire Prevention, Detection and Suppression in Crewed Exploration Systems",
+    "doi": "10.2514/6.2005-341",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.2514/6.2005-341",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "AIAA 2005-341 research plan for fire prevention, detection and suppression in crewed exploration systems (material flammability, detection with few false alarms, suppression, post-fire cleanup). Programmatic; no experiment data.",
+    "items": [],
+    "notes": "Abstract via OpenAlex; AIAA full text paywalled. NTRS 20040142387 ('Research Plan for Fire Signatures and Detection') is a related but different paper."
+  },
+  {
+    "title": "Pyrolysis Smoke Generated Under Low-Gravity Conditions",
+    "doi": "10.1080/02786826.2015.1025125",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/02786826.2015.1025125",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Aerosol Science and Technology 2015: effects of flow and heating temperature in low gravity on pyrolysis rate, plume structure, smoke yield, particle size and structure for five spacecraft materials. At zero external flow the diameter of average mass increased on average by a factor of 1.9, and one material's smoke changed from agglomerates (with flow) to spheres (no flow); TEM showed both agglomerate and spherical smokes.",
+    "items": [
+      {
+        "kind": "out_of_scope",
+        "claim": "Zero-flow and Pyrell results come from the SAME-R reflight (PSI-101); SAME (2007) had no zero-flow runs and no Pyrell.",
+        "quote": "The diameter of average mass increased on average by a factor of 1.9 and the morphology of the smoke changed from agglomerate with flow to spherical at no flow for one material.",
+        "locator": "Abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via OpenAlex; Taylor & Francis PDF returned a bot page. Relevant to PSI-101 findings[3]-[4] (zero-flow size increase); reported there as a cross-investigation note."
+  },
+  {
+    "title": "Smoke Characterization and Feasibility of the Moment Method for Spacecraft Fire Detection",
+    "doi": "10.1080/02786826.2015.1025124",
+    "access": "abstract",
+    "read_url": "https://doi.org/10.1080/02786826.2015.1025124",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Aerosol Science and Technology 2015: SAME and SAME-2 flight data compared with ground tests using the returned flight instruments and an electrical-mobility (SMPS) reference, to test the lognormal assumption behind the moment method and to compare moment statistics with TEM sizes.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Moment method (zeroth, first, third moments plus lognormal assumption) checked against SMPS and TEM, covering both SAME flights.",
+        "quote": "The Smoke Aerosol Measurement Experiment (SAME) has been conducted twice by the National Aeronautics and Space Administration and provided real-time aerosol data in a spacecraft micro-gravity environment.",
+        "locator": "Abstract",
+        "record_path": "findings[11]"
+      }
+    ],
+    "notes": "Abstract via OpenAlex; the Taylor & Francis PDF returned a bot page."
+  },
+  {
+    "title": "Evaluation of spacecraft smoke detector performance in the low-gravity environment",
+    "doi": "10.1016/j.firesaf.2018.04.004",
+    "access": "full_text",
+    "read_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7918997/",
+    "classification": [
+      "contradicts_record",
+      "new_finding"
+    ],
+    "summary": "Fire Safety Journal 2018 (NIST author manuscript, PMC7918997) covering both SAME flights (2007, 2010) and ground tests with identical hardware: particle sizes 100-600 nm, larger with aging and at low flow (zero flow on average double the 8.1 cm/s size), Pyrell and lampwick forming spheres at zero flow, flight and ground D_avm on a slope-1 line at 8.1 cm/s, the ISS light-scattering detector weak for Kapton and Teflon, the Shuttle ionization detector slightly better for Teflon, and single-moment detectors judged unable to cover all smokes.",
+    "items": [
+      {
+        "kind": "contradicts_record",
+        "claim": "The investigators' final, peer-reviewed conclusion covering both flights (2007 and 2010) is that low-gravity smoke is not significantly different from 1-g smoke under equivalent conditions; this supersedes the preliminary 2008 claim in findings[4] that low-g count mean diameters were about 50% larger. findings[4] is kept as the historical preliminary result and findings[5] now cites this paper.",
+        "quote": "Results from the ISS experiment show that smoke particles vary in morphology and average diameter, however, they are not significantly different from smoke particles generated in equivalent experiments performed in normal gravity.",
+        "locator": "Abstract",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Flight and 1-g diameters of average mass at matched flow, temperature and aging fall on a slope-1 line, so smoke made at flows of at least 8.1 cm/s is predicted by ground tests; lower flow could raise D_avm by up to about a factor of 2.",
+        "quote": "The diameter of average mass from low-gravity is plotted versus the results from corresponding normal gravity tests under the same flow, temperature, and aging conditions and shown in Figure 8 . Overall the results correlate strongly with a slope of 1.",
+        "locator": "Section 3 (Figure 8)",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "ISS light-scattering detector weak for Kapton and Teflon; Shuttle ionization detector slightly better for Teflon.",
+        "quote": "The ISS Detector, which is based on light scattering, showed reduced performance for Kapton and Teflon smoke particles, which are smaller than smoke from the other materials tested. The Space Shuttle detector, which is based on ionization detection, fared slightly better for Teflon smoke.",
+        "locator": "Conclusions",
+        "record_path": "findings[6]"
+      }
+    ],
+    "notes": "NIST author manuscript PMC7918997 (full text via NCBI E-utilities). The SAME-1 TEM grids were contaminated (confirms findings[12]). Most quantitative content is SAME-2 (PSI-101), but the flight-vs-ground conclusion is stated for the experiment flown 'twice'."
+  },
+  {
+    "title": "The Microgravity Science Glovebox (MSG), a Resource for Gravity-Dependent Phenomena Research on the International Space Station (ISS)",
+    "doi": "10.2514/6.2007-546",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20070013892",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "AIAA 2007-546 description of the Microgravity Science Glovebox and its investigations; SAME appears only as a planned investigation (purpose: particle size distributions of overheated-material smokes and detector performance).",
+    "items": [],
+    "notes": "Facility paper; no SAME data."
+  },
+  {
+    "title": "AN OVERVIEW OF THE MICROGRAVITY SCIENCE GLOVEBOX (MSG) FACILITY, AND THE GRAVITY-DEPENDENT PHENOMENARESEARCH PERFORMED IN THE MSG ON THE INTERNATIONAL SPACE STATION (ISS)",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/citations/20080013594",
+    "classification": [
+      "out_of_scope"
+    ],
+    "summary": "Overview of the MSG facility and research performed in it (about 2008); SAME is described by its goals (sizes of smoke from Teflon, Kapton, cellulose and silicone; performance of Shuttle ionization and ISS photoelectric detectors). No results.",
+    "items": [],
+    "notes": "Facility paper; no SAME data."
+  }
+]

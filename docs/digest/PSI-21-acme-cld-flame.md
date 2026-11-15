@@ -146,6 +146,9 @@ Number of tests: 344
    - Table `tests`: counts and sums of n_flames by Test Type; min 2, max 18 per day
    - `PSI-21_Experimental table_CLD Flame.csv` (all): *Flames ignited is the number ignited on that test day.*
    - <https://www1.grc.nasa.gov/wp-content/uploads/ACME-publications-20230830.pdf>: *ISS operations: Nov. 2017–Feb. 2018, May-Sept. 2018, Feb.-March 2021*
+10. SLICE precursor computations (N2-diluted CH4 coflow flames, X_CH4 0.4-1.0, 23-90 cm/s): removing buoyancy lowers the peak centreline temperature by about 300 K and moves it downstream, more so for higher fuel concentration or inlet velocity, and raises the centreline residence time about 3.5-fold near the exit of the computational domain. This is the mechanism behind the cooler, sootier microgravity flames. *(trend, medium)*
+   - <https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf>: *when buoyancy is eliminated, the peak temperature along the centerline drops by around 300 K and moves downstream, with larger changes occurring in flames with higher fuel concentration or higher inlet velocity*
+   - <https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf>: *this difference will result in a 3.5-fold increase in residence time*
 
 ## Fire-safety relevance
 
@@ -214,3 +217,4 @@ Rows in the unified `tests` table: 32
 - Investigation dates in PSI (2006-10-01 to 2022-05-31) span grant periods, not ISS operations (Nov 2017 to March 2021).
 - Coflow burner fuel-tube inner diameter: 2.1 mm in the 2014 NASA paper, 2.2 mm in the 2023 E-FIELD modelling preprint.
 - No text addressed to an AI or unrelated instructions was found in the PSI files.
+- Publication review (data/publications/PSI-21.json): of the 18 listed publications (17 distinct), 3 were read in full via NTRS preprints (Cao 2015 counted twice, Ma 2015), 6 as abstracts, 9 not at all (Elsevier/Springer closed, no free abstract). Only Dobbins 2022 uses ACME CLD Flame ISS data; the rest are SLICE precursor or ground diagnostics and modelling work. No listed paper reports the CLD Flame dilution limits or lift-off heights; NASA cites the 2019 and 2021 US National Combustion Meeting papers (Tinajero et al.) for these, which remain unlocated.

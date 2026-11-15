@@ -1,0 +1,29 @@
+[
+  {
+    "title": "A Combined Experimental and Computational Study of Soot Formation in Normal and Microgravity Conditions",
+    "doi": "10.1080/00102202.2022.2041621",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1080/00102202.2022.2041621?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Combined experiment and modelling of sooting ethylene-air coflow flames at 1 g and 0 g on the Yale and ACME burners (microgravity tests on the ISS). 0 g flames are longer, broader, cooler and sootier, but much less so for the smaller ACME flame; the model probably mispredicts the thermal field, and heat transfer to the burner lip may change the boundary conditions.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "0 g trends and weaker gravity effect for the smaller ACME flame.",
+        "quote": "However, in the case of the smaller ACME flame, these effects are significantly diminished.",
+        "locator": "abstract",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Model likely mispredicts the thermal field; imposing measured temperatures and burner-lip heat transfer are the proposed fixes.",
+        "quote": "The results of the study indicate that it is likely that the model inadequately predicts the thermal field",
+        "locator": "abstract",
+        "record_path": "findings[2]"
+      }
+    ],
+    "notes": "Taylor & Francis, closed; abstract from OpenAlex (NTRS 27530189361808 has no file). Same paper listed under PSI-21; the abstract names the ACME burner and ISS experiments, consistent with the record's note that the microgravity data are ACME (CLD Flame), not SPICE."
+  }
+]

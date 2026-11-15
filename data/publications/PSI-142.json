@@ -1,0 +1,272 @@
+[
+  {
+    "title": "Dynamics of cool flames",
+    "doi": "10.1016/j.pecs.2019.100787",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.pecs.2019.100787?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Review of cool-flame dynamics: low-temperature chemistry, cool flames in microchannels, microgravity droplet combustion, counterflow and turbulent flames, flammability diagrams of low-temperature flames.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Review covering microgravity droplet cool flames and counterflow cool flames (the PSI-142 motivation).",
+        "quote": "Next, the recent experimental and computational findings of cool flames in microchannels, microgravity droplet combustion, counterflow flames, and turbulent combustion environments are reviewed.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar; accepted manuscript on ScienceDirect refused automated access."
+  },
+  {
+    "title": "The radical index and the effect of oxygen concentration on non-premixed cool flame extinction of large n-alkanes",
+    "doi": "10.1016/j.combustflame.2021.111471",
+    "access": "full_text",
+    "read_url": "https://www.osti.gov/servlets/purl/1865795",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "Counterflow cool-flame extinction of n-heptane to n-dodecane at several fuel and O2 fractions (fuel side 550 K, oxidiser 300 or 550 K, atmospheric). Cool-flame reactivity scales as [O2]^n; the measured n = 1.7 is above the n = 1.5 derived from the ISS droplet experiments, and the authors call the results consistent with those droplet extinction data. Kinetic models over-predict n-heptane cool-flame extinction strain rates by at least a factor of two. A cool-flame radical index rises with chain length.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Measured oxygen exponent n = 1.7 for cool-flame reactivity, larger than n = 1.5 derived from the ISS (FLEX) n-alkane droplet extinctions; results judged consistent with the droplet measurements.",
+        "quote": "In this study, we measured n = 1.7, which is greater than n = 1.5 derived from the microgravity droplet experiment.",
+        "locator": "Sec. 4 Conclusion",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Consistency with microgravity droplet extinction data.",
+        "quote": "The results are consistent with the measurements of extinction conditions in microgravity n-alkane-droplet experiments [27,29].",
+        "locator": "Sec. 4 Conclusion",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "n = 1.5-2 scaling (record finding).",
+        "quote": "the cool flame low temperature reactivity of n-alkanes is proportional to nth power of oxygen mole fraction, [O2]n, with n = 1.5-2.",
+        "locator": "abstract",
+        "record_path": "findings[4]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "All kinetic models used over-predict n-heptane cool-flame extinction strain rates by at least a factor of two.",
+        "quote": "all of the employed kinetic models over-predict the cool flame extinction strain rates for n-heptane by at least a factor of two",
+        "locator": "Sec. 3, discussion of Fig. 2",
+        "record_path": "findings[9]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Test conditions: fuel-side burner 550 K, oxidiser side 550 or 300 K, atmospheric counterflow, 22.5 mm nozzle separation.",
+        "quote": "The upper/fuel-side burner temperature (Tf) is maintained at 550 ± 5 K, and the bottom/oxidizer-side burner temperature is maintained at 550 ± 5 K or 300 ± 5 K.",
+        "locator": "Sec. 2.1 Experiments",
+        "record_path": null
+      }
+    ],
+    "notes": "Accepted manuscript on OSTI (purl 1865795, Elsevier user licence). Acknowledges NASA grant NNX16AK07G. The n = 1.7 vs 1.5 link to FLEX was added to the record."
+  },
+  {
+    "title": "On the propagation limits and speeds of premixed cool flames at elevated pressures",
+    "doi": "10.1016/j.combustflame.2017.01.006",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a (computational) study of premixed cool-flame propagation limits and speeds at elevated pressure (Ju); background.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found. Princeton research portal page not found by title."
+  },
+  {
+    "title": "Study of the low-temperature reactivity of large n-alkanes through cool diffusion flame extinction",
+    "doi": "10.1016/j.combustflame.2017.01.028",
+    "access": "abstract",
+    "read_url": "https://collaborate.princeton.edu/en/publications/study-of-the-low-temperature-reactivity-of-large-n-alkanes-throug/",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Hot and cool counterflow diffusion-flame extinction of n-heptane to n-tetradecane: similar hot flames, larger n-alkanes far more reactive as cool flames, ozone nearly suppresses the difference, and models over-predict cool-flame extinction limits. Already in the record.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Larger n-alkanes more reactive in the cool-flame regime; ozone suppresses differences.",
+        "quote": "It is observed that while these fuels behave similarly for hot flames, the larger n-alkanes are substantially more reactive in the low-temperature cool flame regime.",
+        "locator": "abstract",
+        "record_path": "findings[0]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Models over-predict cool-flame extinction limits.",
+        "quote": "a general overprediction of the measured cool flame extinction limit is observed for all of the fuels studied",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      }
+    ],
+    "notes": "Abstract from the Princeton research portal (as in the record); ScienceDirect accepted manuscript refused automated access."
+  },
+  {
+    "title": "Counterflow flame experiments and chemical kinetic modeling of dimethyl ether/methane mixtures",
+    "doi": "10.1016/j.combustflame.2018.06.004",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2018.06.004?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Counterflow hot, cool and ozone-assisted cool flames of DME/methane blends: methane raises hot-flame but lowers cool-flame extinction limits; the original model over-predicts cool-flame extinction, fixed by updating DME + OH and other reactions.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Model over-prediction fixed by updating DME + OH H-abstraction.",
+        "quote": "The measurements indicate that the original kinetic model significantly overpredicts the cool flame extinction limits.",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar."
+  },
+  {
+    "title": "Low-temperature multistage warm diffusion flames",
+    "doi": "10.1016/j.combustflame.2018.03.013",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.combustflame.2018.03.013?fields=title,abstract",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "Experimental evidence of self-sustaining multistage warm diffusion flames (dibutyl ether) between cool and hot flames at 1 atm; ozone strengthens the second stage; hot flames can extinguish into warm or cool flames. Authors note relevance to microgravity because of long residence times.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Warm flame as bridge between cool and hot flames.",
+        "quote": "Hence, the results suggest that the multistage warm flame can act as a critical bridge between cool flames and hot flames",
+        "locator": "abstract",
+        "record_path": "findings[5]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "Authors flag warm flames as particularly relevant to microgravity (long residence times).",
+        "quote": "The multistage warm diffusion flame is particularly relevant to combustion in highly turbulent flow fields and in microgravity environments, owing to the possibility of long residence times.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar. The fuel is dibutyl ether (abstract), resolving the record's gap on data ID 5's fuel only if ID 5 is this paper's data."
+  },
+  {
+    "title": "Dynamics and burning limits of near-limit hot, warm, and cool diffusion flames of dimethyl ether at elevated pressures",
+    "doi": "10.1016/j.proci.2018.05.082",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.05.082?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Computed DME counterflow flame regimes at elevated pressure and temperature with and without radiation: hot, warm and cool flames, epsilon-shaped flammability diagram, cool flames by radiative or stretch extinction. Already in the record.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Cool flame formed by radiative or stretch extinction; epsilon-shaped diagram.",
+        "quote": "It is also shown that the cool flame can be formed in several different ways: by either radiative extinction or stretch extinction of a hot flame or by stretch extinction of a warm flame.",
+        "locator": "abstract",
+        "record_path": "findings[6]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar."
+  },
+  {
+    "title": "On the chemical characteristics and dynamics of n-alkane low-temperature multistage diffusion flames",
+    "doi": "10.1016/j.proci.2018.06.161",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.06.161?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "First experimental demonstration of n-alkane (n-heptane, n-decane, n-dodecane) multistage diffusion flames at 1 atm; near extinction dynamics controlled by the first (peroxy) stage; ozone doping reveals a separate low-temperature ozone-assisted mode.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Near extinction, multistage dynamics controlled by the first (peroxy) stage.",
+        "quote": "Moreover, near extinction where the flame temperature is low, the multistage flame dynamics are controlled by the first oxidation stage, governed by peroxy chemistry",
+        "locator": "abstract",
+        "record_path": "findings[8]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar."
+  },
+  {
+    "title": "Quantitative measurements of HO 2 /H 2 O 2 and intermediate species in low and intermediate temperature oxidation of dimethyl ether",
+    "doi": "10.1016/j.proci.2014.05.120",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "out_of_scope",
+      "unreadable"
+    ],
+    "summary": "Not read. By its title a ground flow-reactor study of HO2/H2O2 and intermediates in DME low-temperature oxidation (laser absorption); kinetics background.",
+    "items": [],
+    "notes": "No free full text or abstract found: OpenAlex and Crossref carry no abstract, Semantic Scholar reports it elided by the publisher, the publisher page (ScienceDirect/Wiley/Springer/T&F) refuses automated access, and no NTRS, OSTI, PMC or repository copy was found."
+  },
+  {
+    "title": "SUPPLEMENTARY MATERIAL The radical index and the effect of oxygen concentration on non-premixed cool flame extinction of large n-alkanes",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Supplementary material of the 2021 radical-index paper (listed separately in the PSI record). Not read; the main paper was read in full (OSTI accepted manuscript).",
+    "items": [],
+    "notes": "No DOI; not in OSTI or OpenAlex as a separate item and not among the PSI-142 files in evidence.parquet. ScienceDirect supplementary files refuse automated access."
+  },
+  {
+    "title": "Pressure and Radiation Effects on the Dynamics of Hot and Cool Diffusion Flames",
+    "doi": null,
+    "access": "full_text",
+    "read_url": "http://www.icders.org/ICDERS2017/abstracts/ICDERS2017-1073.pdf",
+    "classification": [
+      "new_finding",
+      "confirms"
+    ],
+    "summary": "ICDERS 2017 extended abstract (computations, DME): pressure-weighted strain scaling holds for hot but not cool flames; at elevated pressure N2 dilution of the oxidiser shifts hot-flame extinction strongly and enables a steady 'mild flame' branch, made more stable by radiation. Motivated by ISS droplet cool flames.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Cool flames do not scale with pressure-weighted strain.",
+        "quote": "It is seen that the similarities in hot flames at constant pressure-weighted strain rate do not extend to cool flames due to changes in the nature of low-temperature chemistry across different pressures.",
+        "locator": "Conclusion",
+        "record_path": "findings[6]"
+      },
+      {
+        "kind": "new_finding",
+        "claim": "At elevated pressure, N2 dilution of the oxidiser enables a steady 'mild flame' branch sustained by intermediate-temperature chemistry; radiation stabilises it further (computational).",
+        "quote": "At elevated pressures, N2 diluent addition to the oxidizer is shown to shift the extinction limits of the hot flame dramatically and enables the formation of a steady “mild flame” branch",
+        "locator": "Conclusion",
+        "record_path": null
+      }
+    ],
+    "notes": "No DOI. Free PDF on icders.org (link given by Semantic Scholar). Computational conference paper; the 'mild flame' result is a precursor of the warm-flame work and was not added as a separate record finding."
+  },
+  {
+    "title": "Transient interactions between a premixed double flame and a vortex",
+    "doi": "10.1016/j.proci.2018.07.050",
+    "access": "abstract",
+    "read_url": "https://api.semanticscholar.org/graph/v1/paper/DOI:10.1016/j.proci.2018.07.050?fields=title,abstract",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "Premixed DME/O2/O3 double flames near the hot-flame extinction limit interacting with a vortex: local extinction leaves a lone cool flame; extinguished hole, cool flame and double flame can coexist; curvature matters.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Vortex extinguishes near-limit hot flame leaving a lone cool flame.",
+        "quote": "It is seen that the vortex can extinguish the near-limit hot flame locally, resulting in a lone cool flame.",
+        "locator": "abstract",
+        "record_path": "findings[7]"
+      }
+    ],
+    "notes": "Abstract via Semantic Scholar."
+  }
+]

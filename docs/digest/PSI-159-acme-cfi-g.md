@@ -173,6 +173,10 @@ Number of tests: 333
    - `PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf` (p15): *Tests intended to directly ignite cool flames sometimes unintentionally resulted in hot flames.*
    - `PSI-159_Raw Data_21102 flow traces etc.pdf` (p22): *Test 21102C6 (test 8 of 16) – no apparent ignition*
    - `PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf` (p34): *Based on the output from the photomultipliers, radiometers, and intensified camera images we do not believe any self-sustained cool flames were created.*
+14. A Spalding-type droplet-burning model extended to burner flames and the partial-burning regime predicts both hot and cool flame radii with one fitted property: assuming peak temperatures of 1400 K (hot) and 750 K (cool), rhoD = 0.0334 g/m/s at 300 K gives R^2 = 0.92 against the measured radii of the cool flames and of quasi-steady normal n-butane hot flames (X_O2 0.37-0.40, 0.5-2 bar). This is about 35% above the 0.0248 g/m/s measured for O2/N2 at 298 K. *(method, medium)*
+   - <https://par.nsf.gov/servlets/purl/10426596>: *ρD was optimized to a value of 0.0334 g/m-s at 300 K*
+   - <https://par.nsf.gov/servlets/purl/10426596>: *The data has a coefficient of determination of R2 = 0.92 with respect to the line shown with unity slope.*
+   - <https://par.nsf.gov/servlets/purl/10426596>: *Wang et al. [36] found ρD = 0.0248 g/ms for an equimolar mixture of O2 and N2 at 1.01 bar and 298 K.*
 
 ## Fire-safety relevance
 
@@ -256,3 +260,4 @@ Rows in the unified `tests` table: 333
 - The Engineering Implementation report (dated 19 May 2022) still states inverse-flame tests 'have yet to be conducted'. This is stale text carried over from an earlier version.
 - Raw 125 Hz data files are in instrument voltages. The calibration document (ACME-DOC-010 Rev. D) is not in PSI. SAMS acceleration data are not archived with the experiment.
 - The final report and engineering report contain a NASA staff phone number and e-mail; these were not copied. No credentials and no text addressed to an AI were found in the sampled raw notes (as-run parameter files, TP timelines, image comments, flow-trace PDFs).
+- Publications pass 2026-11-15: per-fuel outcome counts in the paper (Kim et al. 2023, Table 1; radiatively extinguished / flow-terminated) are normal ethane 30/10, propane 34/6, n-butane 46/17 and inverse ethane 25/22, propane 24/13, n-butane 30/23. tests.csv agrees for four groups but has normal n-butane 38 SE / 15 FT and inverse ethane 27 SE / 22 FT. The n-butane excess in the paper fits the hot-cool-hot tests 21291 A1 and C1 being counted as several hot flames; the 2 extra inverse-ethane SE rows in PSI are unexplained. The paper also states that normal propane flames above 1 bar were limited to X_O2 = 0.21.

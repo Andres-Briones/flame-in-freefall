@@ -1,0 +1,101 @@
+[
+  {
+    "title": "A computational and experimental study of coflow laminar methane/air diffusion flames: Effects of fuel dilution, inlet velocity, and gravity",
+    "doi": "10.1016/j.proci.2014.05.138",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20150002322/downloads/20150002322.pdf",
+    "classification": [
+      "confirms"
+    ],
+    "summary": "SLICE nitrogen-diluted methane flames (CH4 0.4-1.0, mean fuel velocity 23-90 cm/s) in microgravity and 1 g, modelled with a vorticity-velocity code and sectional soot model: luminous length proportional to fuel-mixture mass flow, microgravity flames longer; shape set by methane flow, dilution secondary.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Flame length proportional to fuel-mixture mass flow, longer in microgravity.",
+        "quote": "Buoyant and nonbuoyant luminous flame lengths are proportional to the mass flow rate of the fuel mixture; computed and measured nonbuoyant flames are noticeably longer than their 1g counterparts",
+        "locator": "abstract",
+        "record_path": "findings[3]"
+      },
+      {
+        "kind": "confirms",
+        "claim": "Dilution negligible once shape is normalised by methane flow.",
+        "quote": "the effect of fuel dilution on flame shape (i.e., flame length and flame radius) is negligible when the flame shape is normalized by the methane flow rate",
+        "locator": "abstract",
+        "record_path": "findings[4]"
+      }
+    ],
+    "notes": "NTRS conference/preprint version (20150002322) of the Proc. Combust. Inst. 35 paper; the record already used it."
+  },
+  {
+    "title": "A Combined Experimental and Computational Study of Soot Formation in Normal and Microgravity Conditions",
+    "doi": "10.1080/00102202.2022.2041621",
+    "access": "abstract",
+    "read_url": "https://api.openalex.org/works/doi:10.1080/00102202.2022.2041621",
+    "classification": [
+      "new_finding"
+    ],
+    "summary": "Combined experiment/computation of sooting ethylene-air coflow flames in 1 g and on the ISS with two burner configurations (Yale and ACME). Simulations show 0-g flames longer, broader, cooler and sootier, an effect much smaller for the small ACME flame; the authors suspect the model mispredicts the thermal field and burner-lip heat transfer.",
+    "items": [
+      {
+        "kind": "new_finding",
+        "claim": "Gravity effects on ethylene coflow flames are much weaker for the small ACME burner than for the Yale burner, in simulation; model likely mispredicts temperature (attribution of the ISS data to this investigation unconfirmed).",
+        "quote": "However, in the case of the smaller ACME flame, these effects are significantly diminished.",
+        "locator": "abstract",
+        "record_path": null
+      }
+    ],
+    "notes": "Taylor & Francis paywall; NTRS accepted manuscript (27530189361808) has no download. Abstract via OpenAlex. The abstract does not say which ISS experiment supplied the microgravity data; the \"Yale\" burner may be the SLICE hardware but this is not confirmed, so nothing was added to the record. Listed under both PSI-106 and PSI-107; read once."
+  },
+  {
+    "title": "Effects of Fuel Dilution and Gravity on Laminar Coflow Methane-Air Diffusion Flames: A Computational and Experimental Investigation",
+    "doi": null,
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Conference version (Cao, Bennett, Ma, Giassi, Stocker, Takahashi, Long, Smooke) of the SLICE fuel-dilution study [0]; same authors and topic.",
+    "items": [],
+    "notes": "No DOI; not on NTRS under this title, nor on Semantic Scholar/OpenAlex with text. Its content is assumed to match [0], which was read."
+  },
+  {
+    "title": "An experimental and computational study of soot formation in a coflow jet flame under microgravity and normal gravity",
+    "doi": "10.1016/j.proci.2014.05.064",
+    "access": "full_text",
+    "read_url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
+    "classification": [
+      "confirms",
+      "contradicts_record"
+    ],
+    "summary": "SLICE 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow) in microgravity vs 1 g: microgravity flame taller, wider, cooler (~200 K) and sootier; soot moves from centreline to wings; model captures shape and soot location but underestimates soot, especially in microgravity.",
+    "items": [
+      {
+        "kind": "confirms",
+        "claim": "Soot shifts from centreline (1 g) to wings (microgravity); model captures shape, underpredicts soot.",
+        "quote": "The distribution of peak soot was also found to shift from the centerline of the flame at 1 g to the wings at μ g.",
+        "locator": "sec. 7, Conclusions",
+        "record_path": "findings[1]"
+      },
+      {
+        "kind": "contradicts_record",
+        "claim": "The record says peak soot volume fraction was \"about 8 times higher\" in microgravity. The paper's conclusion, allowing for uncertainty in the soot dispersion exponent and temperature, bounds the increase at about 4 to 8 times; ~8 is the upper value.",
+        "quote": "the microgravity flames were found to be sootier than normal gravity flames by a factor of approximately 4 to 8 in terms of the peak soot volume fraction",
+        "locator": "sec. 7, Conclusions",
+        "record_path": "findings[0]"
+      }
+    ],
+    "notes": "NTRS preprint (20140017780) of the Proc. Combust. Inst. 35 paper; the record already used its results section."
+  },
+  {
+    "title": "Analysis of CH* concentration and flame heat release rate in laminar coflow diffusion flames under microgravity and normal gravity",
+    "doi": "10.1016/j.combustflame.2016.02.012",
+    "access": "none",
+    "read_url": null,
+    "classification": [
+      "unreadable"
+    ],
+    "summary": "Journal paper (Giassi et al., Combust. Flame 2016) on CH* chemiluminescence and heat release in SLICE coflow flames.",
+    "items": [],
+    "notes": "No abstract found (Crossref, OpenAlex, Semantic Scholar; NTRS has no copy under this title); Elsevier paywall. The record already uses the same authors' NTRS presentations 20160012298 and 20160010264 on the same results (findings[6])."
+  }
+]

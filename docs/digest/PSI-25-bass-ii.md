@@ -232,6 +232,10 @@ Number of tests: 129
    - `PSI-25_Reports_BASS-II Summary Report.pdf` (p87): *At higher O2 concentrations, the flames are nearly stoichiometric. At lower O2 concentrations, the global equivalence ratio increases.*
    - `PSI-25_Reports_BASS-II Summary Report.pdf` (p16): *the CO levels in the lab would only be 1.5 ppm, well below spacecraft maximum allowable concentration (SMAC) values for even long-term exposure (10 ppm), let alone the 1 hour SMAC of 55 ppm (Ref. 12).*
    - Table `tests`: 'Final CO (ppm)' column of the experimental table CSV: 'OR', 'over' or '>500' entries for Olson O4, O12, O13b and Miller M5; highest numeric final CO 950 ppm (O13a); highest final CO2 3.22% (M5).
+14. Ground blowoff tests on the BASS-II rod geometry in 1 g (cast PMMA rods of 0.318-1.905 cm radius, 14-18% O2, upward axial stagnation flow in a 7.6 cm tube) gave a linear blowoff boundary that runs parallel to the BASS-II microgravity boundary but at lower forced stretch. Shifting the 1-g boundary by a buoyant stretch of about 78 1/s, equivalent to a forced flow of about 16.5 cm/s for the base rod and consistent with buoyant-velocity estimates, brings the two into agreement. The authors propose measuring the 1-g blowoff boundary, adding the buoyant stretch and extrapolating to zero stretch as a ground estimate of microgravity flammability limits. Whether the buoyant-stretch constant holds for other materials is untested. *(method, medium)*
+   - <https://ntrs.nasa.gov/citations/20160012691>: *The normal gravity blowoff boundary was parallel to the BASS-II boundary, but shifted to lower stretch rates.*
+   - <https://ntrs.nasa.gov/citations/20160012691>: *In order to account for the additional inherent buoyant stretch, the normal gravity boundary was empirically shifted to the right by a value ab =78 s-1, which for the base rod size corresponds to a forced flow velocity of 16.5 cm/s, in good agreement with buoyant flow velocity estimates.*
+   - <https://ntrs.nasa.gov/citations/20160012691>: *Further research is needed to determine the applicability of the buoyant stretch constant K for different materials.*
 
 ## Fire-safety relevance
 

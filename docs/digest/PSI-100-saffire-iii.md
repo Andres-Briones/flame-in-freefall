@@ -119,6 +119,7 @@ Number of tests: 2
    - `PSI-100_Experimental table_SAFFIRE-3.csv` (all): *S1 | SIBAL Fabric | .33 cm | 94 cm | 40.6 cm | 30 cm/s | Concurrent | S1C1 | S1C2*
    - <https://ntrs.nasa.gov/citations/20170002628>: *Flow will be close to 30 cm/sec as opposed to 20 cm/sec for Saffire-I*
    - <https://ntrs.nasa.gov/citations/20180005168>: *Saffire-III (25 cm/s)Saffire-I (20 cm/s)*
+   - `PSI-100_Science Documents_SAFFIRE Objectives, Development and Status.pdf` (p2): *Saffire-I will be conducted at an air flow velocity of 20 cm/s while Saffire-III will be run at a flow velocity of 30 cm/s*
 6. Run order and termination (our reading of the sensor files). Unlike Saffire-I, the opposed burn came first. S2 recording started at 21:10:16 UTC on 4 June 2017, with ignition at t = 60 s. Its two responding radiometers rose by at most 12-14 mW/cm2 (a small flame) and dropped back at t = 131 s, the same time the fan was switched off (anemometers ~0.15 cm/s by t = 145 s). The opposed flame was therefore ended by stopping the flow, not by running out of fuel. The concurrent burn followed at 21:13:31 UTC (ignition at t = 60 s) with the fan running throughout. *(method, medium)*
    - `PSI-100_Raw Data_Saffire III Sample 2 Sensors.xlsx`, sheet Calibrated Data, row row 3921 (t = 129.3 s) and row 4397 (t = 145.0 s): *t = 129.3 s: Radiometer 2 -5.18 (baseline -17.9), Anemometer 1 24.44; t = 145.0 s: Radiometer 2 -17.82, Anemometer 1 0.150 cm/sec*
    - `PSI-100_Raw Data_Saffire III Sample 1 Sensors.xlsx`, sheet Calibrated Data, row row 3 (Elapsed Time 0): *6-4-2017 5:13:31.148 PM*
@@ -207,3 +208,4 @@ Rows in the unified `tests` table: 2
 - The '1 Hz Telemetry Data.xlsx' and 'Saffire_Data_Table2017.161...-EU.csv' cover 5 June 2017 (19:35-21:30 UTC), the day after the burns, so they do not contain the fires.
 - Sensor-derived values in findings (pressure, CO2, radiometer and thermocouple peaks, run order) are our computations from the PSI workbooks, not published numbers.
 - No text addressed to an AI or unrelated instructions were found in the PSI-100 documents.
+- The held pre-flight paper ('SAFFIRE Objectives, Development and Status', NTRS 20170001636) planned Saffire-III for launch on OA-7 on 30 Dec 2016 with operations on 3 Mar 2017 (its Table 4, as of 30 Apr 2016); the burns took place on 4 June 2017. It is now cited in findings[4] for the planned 30 cm/s. Per-paper review: data/publications/PSI-100.json.

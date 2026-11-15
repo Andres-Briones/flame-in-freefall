@@ -19,7 +19,7 @@
     "project_type": "Microgravity Investigation"
   },
   "one_line": "Astronauts on the Space Station photographed small gas flames burning from a tube into a gentle stream of air, to see how flames lift off, hold on and make soot without gravity and to provide test cases for computer models of flames.",
-  "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction about eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
+  "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction four- to eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
   "question": {
     "text": "SLICE aimed to understand the structure and stability of laminar non-premixed (diffusion) flames without buoyancy. Specific aims were: what stabilises the flame base, particularly when it lifts off the nozzle; the lift-off velocity limits for different fuels and nozzle diameters; how nitrogen dilution of the fuel affects soot and stability; and how microgravity changes flame length and radiative loss compared with 1 g. It also aimed to provide a microgravity data set for validating numerical models of flame structure, soot and radiation. The hypothesis was that burner diameter, coflow velocity and fuel composition strongly influence flame structure and stability in microgravity, and that these flames differ fundamentally from 1-g flames. Before SLICE, no direct experiment-computation comparison existed for such microgravity flames. SLICE was also a precursor to refine the test matrix of ACME's CLD Flame experiment.",
     "sources": [
@@ -437,7 +437,7 @@
   },
   "findings": [
     {
-      "claim": "Microgravity made a sooting methane flame larger, sootier and cooler. For a 100% CH4 flame on the 3.23 mm nozzle (mean fuel velocity 46 cm/s, nominal coflow 18 cm/s), the microgravity flame was taller and wider than its 1-g counterpart. Its peak soot volume fraction was about 8 times higher, and its peak soot temperature about 200 K lower because of the larger radiative loss.",
+      "claim": "Microgravity made a sooting methane flame larger, sootier and cooler. For a 100% CH4 flame on the 3.23 mm nozzle (mean fuel velocity 46 cm/s, nominal coflow 18 cm/s), the microgravity flame was taller and wider than its 1-g counterpart. Its peak soot volume fraction was about 4 to 8 times higher (about 8 at nominal values), and its peak soot temperature about 200 K lower because of the larger radiative loss.",
       "kind": "result",
       "confidence": "high",
       "sources": [
@@ -455,6 +455,11 @@
           "type": "external",
           "url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
           "quote": "A 100% CH 4 flame using 3.23 mm ID nozzle with average fuel velocity of 46 cm/s and nominal air coflow of 18 cm/s was measured at 1 g and μ g."
+        },
+        {
+          "type": "external",
+          "url": "https://ntrs.nasa.gov/api/citations/20140017780/downloads/20140017780.pdf",
+          "quote": "the microgravity flames were found to be sootier than normal gravity flames by a factor of approximately 4 to 8 in terms of the peak soot volume fraction"
         }
       ]
     },
@@ -756,6 +761,7 @@
     "Objective 2 (lift-off velocity limits) and objective 4 (radiative heat loss) have no quantitative results in the sources reached.",
     "Full texts of the Elsevier papers (Proc. Combust. Inst. 35, Combust. Flame 2016) were not read. NTRS preprints/abstracts were used instead (20140017780, 20150002322, 20150011070, 20160012298/20160010264, 20140009169). Semantic Scholar has no abstracts for three of the DOIs. The Dobbins et al. 2022 abstract covers ethylene flames on 'Yale and ACME' burners; it is unclear whether its microgravity data are from SLICE, so it was not used.",
     "Record totalFileSize (72,914,598,688 bytes, about 72.9 GB) does not match the two files listed (about 9.5 kB). The metadata zip is named after PSI-174.",
-    "Metadata contains investigator e-mail addresses; not copied. No text addressed to an AI was found."
+    "Metadata contains investigator e-mail addresses; not copied. No text addressed to an AI was found.",
+    "Correction (Publications pass 2026-11-15): findings[0] previously read \"Its peak soot volume fraction was about 8 times higher\" and the summary \"about eightfold\". The same paper's conclusions bound the increase at about 4 to 8 times, allowing for uncertainty in the soot dispersion exponent and temperature (NTRS 20140017780, Conclusions); 8 is the upper value."
   ]
 }
