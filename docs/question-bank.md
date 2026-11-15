@@ -47,7 +47,7 @@ answer as of the current tables. `tests/test_questions.py` runs every call. Sour
 
 - Call: `filter_tests(fuel_phase="solid", x_o2=[null, 0.16])`
 - Chart: strip plot of O2 per fuel
-- Answer today: PMMA rods burned down to 14.2% O2 in the table (BASS-II test O5b); the attempt at 13.6% (O12) did not ignite at any flow. The BASS-II report puts the limit for rods at 13.5%, read from the final O2 of a flame started higher, against 15.4% burning upward on Earth. Cotton-fibreglass fabric to 16.4%. The table has no ignition column for these rows: read the air-display and crew cells in extra.
+- Answer today: PMMA rods burned down to 14.2% O2 in the table (BASS-II test O5b); the attempt at 13.6% (O12) did not ignite at any flow. The BASS-II report puts the minimum of the fitted limit for rods at about 13.5%; its lowest final O2 reading with a flame, started higher, was 13.6%. The limit burning upward on Earth was 15.4%. Cotton-fibreglass fabric to 16.4%. The table has no ignition column for these rows: read the air-display and crew cells in extra.
 
 **8. Is the normal-gravity flammability test conservative?**
 

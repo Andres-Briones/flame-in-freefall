@@ -43,8 +43,9 @@ QUESTIONS = [
      "function": "filter_tests", "arguments": {"fuel_phase": "solid", "x_o2": [None, 0.16]},
      "chart": "strip plot of O2 per fuel",
      "answer": "PMMA rods burned down to 14.2% O2 in the table (BASS-II test O5b); the attempt at 13.6% (O12) did "
-               "not ignite at any flow. The BASS-II report puts the limit for rods at 13.5%, read from the final O2 of "
-               "a flame started higher, against 15.4% burning upward on Earth. Cotton-fibreglass fabric to 16.4%. "
+               "not ignite at any flow. The BASS-II report puts the minimum of the fitted limit for rods at about 13.5%; "
+               "its lowest final O2 reading with a flame, started higher, was 13.6%. The limit burning upward on "
+               "Earth was 15.4%. Cotton-fibreglass fabric to 16.4%. "
                "The table has no ignition column for these rows: read the air-display and crew cells in extra."},
     {"theme": "Prevention", "question": "Is the normal-gravity flammability test conservative?",
      "function": "insights", "arguments": {"topic": "micro_vs_1g"},

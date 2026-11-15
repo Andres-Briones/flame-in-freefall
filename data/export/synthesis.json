@@ -2,7 +2,7 @@
  "_about": "Machine-readable twin of docs/digest/synthesis.md. Derived only from data/digest/PSI-*.json. Citation index for section findings is the 1-based position in the record findings list; for limitations/gaps/open_questions it is the 1-based list position; null means the whole section.",
  "key_messages": [
   {
-   "text": "Without buoyancy the flammability of a solid depends on ventilation speed: the boundary in O2 against flow is U-shaped, with a minimum at flows of about 1-10 cm/s. At that minimum PMMA rods burned down to 13.5% O2, against 15.4% for upward burning in 1 g with an extra 4 cm/s of forced flow. The boundary was mapped on one rod geometry and one fabric.",
+   "text": "Without buoyancy the flammability of a solid depends on ventilation speed: the boundary in O2 against flow is U-shaped, with a minimum at flows of about 1-10 cm/s. For PMMA rods the fitted boundary has its minimum at about 13.5% O2, and the lowest O2 at which a flame was recorded was 13.6%, against 15.4% for upward burning in 1 g with an extra 4 cm/s of forced flow. The boundary was mapped on one rod geometry and one fabric.",
    "confidence": "high",
    "citations": [
     {
