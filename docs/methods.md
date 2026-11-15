@@ -61,6 +61,13 @@ For an AI assistant: pass `data/processed/tools.json` as the tool list and route
 Citation ids: `[PSI-26 F3]` is finding 3 of the PSI-26 record (`L` = limitation, `Q` = open question). Each
 finding carries its own sources: a PSI file with page and a verbatim quote, or an external URL/DOI.
 
+Spanish for quotes: `data/translations/quotes_es.json` holds machine translations of digest quotes
+(`{"note", "lang", "quotes": {key: {"en", "es"}}}`, key = first 16 hex digits of the SHA-1 of the quote's UTF-8
+bytes, `fif.api.quote_key`). `get_investigation`, the `digest` part of `find_evidence` and `insights` add
+`quote_es` next to every `quote` that has a translation. The translations are made by an AI model and not
+reviewed: show `quote_es` labelled as a machine translation, with the English `quote` (the source) beside it.
+The file is read once per process; a missing or unreadable file, or a quote without a key, means no `quote_es`.
+
 ## Scenario relevance score
 
 `relevance()` ranks the investigations for a scenario (atmosphere, gravity, kind of fuel, fire-safety pillar).
