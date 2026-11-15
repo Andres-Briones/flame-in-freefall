@@ -488,6 +488,11 @@
      "10.1016/j.proci.2022.07.015; 10.1016/j.combustflame.2023.112852": 1
     }
    },
+   "publications": {
+    "dtype": "object",
+    "non_null": 24,
+    "description": "the record's publication list in its order: title, authors, doi (None when missing), status"
+   },
    "n_files": {
     "dtype": "int64",
     "non_null": 24,
@@ -994,7 +999,7 @@
    },
    "flags": {
     "dtype": "str",
-    "non_null": 682,
+    "non_null": 687,
     "description": "semicolon-separated codes (below); null when none",
     "unit": null
    },
@@ -1045,7 +1050,7 @@
  },
  "discrepancies": {
   "description": "Curated conflicts between the PSI experiment tables and the raw sensor data, with the action taken. Source: data/corrections/tests_patches.json. See docs/tests-table.md.",
-  "rows": 64,
+  "rows": 69,
   "files": [
    "data/processed/discrepancies.parquet",
    "data/processed/discrepancies.csv"
@@ -1053,15 +1058,15 @@
   "columns": {
    "id": {
     "dtype": "str",
-    "non_null": 64,
+    "non_null": 69,
     "description": "patch id (D01, ...), as listed in tests.extra `discrepancies`"
    },
    "accession": {
     "dtype": "str",
-    "non_null": 64,
+    "non_null": 69,
     "description": null,
     "values": {
-     "PSI-159": 29,
+     "PSI-159": 34,
      "PSI-10": 12,
      "PSI-39": 6,
      "PSI-98": 6,
@@ -1072,23 +1077,24 @@
    },
    "test_id": {
     "dtype": "str",
-    "non_null": 51,
+    "non_null": 56,
     "description": "test id as in the PSI table (null for a note on a whole investigation)"
    },
    "test_id_now": {
     "dtype": "str",
-    "non_null": 51,
+    "non_null": 56,
     "description": "test id in `tests` after a test_id correction"
    },
    "column": {
     "dtype": "str",
-    "non_null": 56,
+    "non_null": 61,
     "description": "`tests` column concerned, or a source column the table keeps only in `extra`",
     "values": {
      "pressure_kpa": 11,
      "burn_time_s": 10,
      "fuel_fraction": 9,
      "ignited": 8,
+     "mHC (mg/s)": 5,
      "O2 flow rate (mg/s)": 4,
      "date": 3,
      "x_o2_ambient": 3,
@@ -1102,11 +1108,12 @@
    },
    "table_value": {
     "dtype": "str",
-    "non_null": 42,
+    "non_null": 47,
     "description": "value in the PSI table",
     "values": {
      "False": 7,
      "1.0": 7,
+     "0.8": 5,
      "303.975": 3,
      "8.946670681": 3,
      "43.0": 2,
@@ -1133,13 +1140,15 @@
    },
    "evidence_value": {
     "dtype": "str",
-    "non_null": 39,
+    "non_null": 44,
     "description": "value the raw data give",
     "values": {
+     "0.48": 3,
      "H2/CH4/He 25/20/55": 2,
      "0.198": 2,
      "1.0": 2,
      "0.3": 2,
+     "0.65": 2,
      "22024M1": 1,
      "2022-01-24": 1,
      "True": 1,
@@ -1175,10 +1184,10 @@
    },
    "action": {
     "dtype": "str",
-    "non_null": 64,
+    "non_null": 69,
     "description": "replace / fill / flag / note",
     "values": {
-     "flag": 37,
+     "flag": 42,
      "note": 13,
      "replace": 9,
      "fill": 5
@@ -1186,10 +1195,10 @@
    },
    "flag": {
     "dtype": "str",
-    "non_null": 51,
+    "non_null": 56,
     "description": "flag put on the row; conflicts_with_test_sheet when the only evidence is a hand-filled test sheet (an AI reading of a scan, not checked by a human)",
     "values": {
-     "conflicts_with_raw": 31,
+     "conflicts_with_raw": 36,
      "corrected_from_raw": 9,
      "conflicts_with_test_sheet": 6,
      "filled_from_raw": 5
@@ -1197,12 +1206,12 @@
    },
    "evidence": {
     "dtype": "str",
-    "non_null": 64,
+    "non_null": 69,
     "description": "what the raw data or the test sheet show"
    },
    "evidence_source": {
     "dtype": "str",
-    "non_null": 64,
+    "non_null": 69,
     "description": "file and channel the evidence comes from"
    }
   }

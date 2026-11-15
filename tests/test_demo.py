@@ -29,7 +29,7 @@ def test_demo_build_keeps_every_record(tmp_path, monkeypatch):
     assert len(data["records"]) == 24
     assert len(data["tsfeatures"]) == len(json.loads((EXPORT / "timeseries_features.json").read_text()))
     assert len(data["models"]["models"]) == 8
-    assert sum(sizes.values()) < 8.1e6
+    assert sum(sizes.values()) < 8.2e6
 
     # Trimming drops empty cells only: a test keeps its conditions, flags and original columns.
     source = {(r["accession"], r["test_id"], r["source_row"]): r for r in json.loads((EXPORT / "tests.json").read_text())}

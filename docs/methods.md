@@ -23,7 +23,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
 | `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
-| `discrepancies.json` | errors and doubts in the PSI tables: 64 conflicts and notes with evidence (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings |
+| `discrepancies.json` | errors and doubts in the PSI tables: 69 conflicts and notes with evidence (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings |
 | `test_sheets.json` | `{notes, rows}`: the 637 hand-filled ACME test sheets of PSI-10 and PSI-159, one row per page (`docs/formats.md`). An AI reading of scans, not checked by a human: show the note with any value |
 | `questions.json` | the question bank: question, call, chart, answer |
 | `synthesis.json` | key messages, limits, microgravity-vs-1-g comparisons, ranked gaps, lineage, research questions |

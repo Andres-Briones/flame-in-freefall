@@ -180,10 +180,10 @@ QUESTIONS = [
     {"theme": "Data quality", "question": "Where are the original PSI tables wrong or doubtful?",
      "function": "discrepancies", "arguments": {},
      "chart": "table grouped by investigation, with a badge for corrected / filled / flagged",
-     "answer": "45 cells conflict with the raw data: 9 were corrected (a mistyped test id, an ignition logged "
+     "answer": "50 cells conflict with the raw data: 9 were corrected (a mistyped test id, an ignition logged "
                "as failed, two burn times, two dates, a fuel mixture, two propane fractions of a day that began with "
                "a diluted fuel line), 5 empty cells were filled (Saffire pressures, "
-               "a date) and 31 are flagged with the value kept, among them a SAME-R row for a test that was never run "
+               "a date) and 36 are flagged with the value kept, among them a SAME-R row for a test that was never run "
                "and CFI-G runs listed as failed ignitions although nothing flowed. 6 more cells are flagged from the "
                "operators' hand-filled test sheets, which are an AI reading of scans that nobody checked. Thirteen notes "
                "cover whole investigations, such as recorded test points missing from the tables and flames stopped "
@@ -198,6 +198,8 @@ QUESTIONS = [
                "normal flames are nominal fill levels about 3 kPa below the transducer reading. Six rows listed as not "
                "ignited were not ignition attempts (nothing flowed, or a no-flame test), two burner O2 values are "
                "contradicted by the flow controllers, and on day 21277 the oxidizer flow fell below its setpoint as "
-               "the bottle emptied. 24 flames logged as flow-terminated were stopped by the burner temperature limit "
+               "the bottle emptied. On day 21106 five rows give 0.8 mg/s of fuel where the recorded flow is about "
+               "0.5 or 0.65 mg/s (flagged, not changed). 24 flames logged as flow-terminated were stopped by the "
+               "burner temperature limit "
                "(from the test sheets, an AI reading of scans that nobody checked)."},
 ]

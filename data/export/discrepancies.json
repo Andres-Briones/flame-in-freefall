@@ -831,6 +831,71 @@
    "flag": null,
    "evidence": "The ten recorded test points missing from the experiment table (note D28) were compared with their recordings and their test sheets (AI reading of the hand-filled scan, not checked by a human). None is a table row under another id, and no sheet carries a wrong id. Nine are failed ignitions of day 21106 (butane, 0.5 atm) that the table does not list, although it lists other failures as 'Failed to ignite': 21106A1, A2 and A3 (fuel 0.193 slpm with 0.06 to 0.07 slpm of nitrogen for 13 to 15 s, before 21106A4, about 39% O2; no light on either photomultiplier, no heating), 21106G1 to G5 (after the chamber was refilled to about 21% O2; fuel 0.193 or 0.095 slpm for 14 s, light for 0.1 to 1.8 s around the igniter, burner heating of at most 6 C) and 21106G8 (0.038 slpm; flashes for 1 to 2 s, burner heating of 21 C). The sheets say 'no flame apparent', 'no hot flame apparent' and 'flashes only'. The sheets speak of a 'hot' flame only; whether a cool flame existed cannot be told from these channels. The tenth, 21242F1, is not a test: the recording is 40 s long, no gas flowed and the photomultipliers were never switched on; the sheet says 'IPSU abort before gas flows'. No rows were added. The CFI-G counts of failed ignitions, and the ignition models trained on the table, therefore miss nine failed attempts of day 21106: three at about 39% O2 and six at about 21% O2.",
    "evidence_source": "PSI-159 Raw Data _data.csv and _TP.txt of the ten test points (fuel_flow_slpm, inert_flow_slpm, pmt1_310nm_v, pmt3_430nm_v, burner_temp_c); test sheets 'PSI-159_Raw Data_21106 test sheets.pdf' p1-3, 13-17, 20 and 'PSI-159_Raw Data_21242 test sheets.pdf' p3 (data/transcriptions/PSI-159/)"
+  },
+  {
+   "id": "D65",
+   "accession": "PSI-159",
+   "test_id": "21106 G6",
+   "test_id_now": "21106 G6",
+   "column": "mHC (mg/s)",
+   "table_value": "0.8",
+   "evidence_value": "0.48",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table gives 0.8 mg/s of fuel, which is the rate it lists for 0.097 slpm (21106F1, F2). The as-run file sets 0.060 slpm (N2 basis) of the 50% n-butane bottle gas, the same flow as 21106F3 to F5, which the table lists at 0.5 mg/s, and the fuel flow controller reads 0.0587 slpm (median while fuel flowed): 0.48 mg/s at the table's own ratio for this day (8.22 to 8.25 mg/s per slpm on rows A4 to F2, 8.3 on F3 to F5 where 0.5 is rounded; 8.25 used), against 0.49 mg/s for the setpoint. The controller delivered the setpoint; it is the setpoint that differs from the table. The test parameter notes (p7) and the test sheet (p18) give 0.060 slpm too (AI reading of the hand-filled scans, not checked by a human). This may not be an error: NASA may have changed the setpoint or the way it reports the rate on purpose, so the cell is signalled, not corrected; the table value is kept.",
+   "evidence_source": "PSI-159 Raw Data 21106G6_data.csv (MFCA3FuelFlow, volts / 5 x 0.2 slpm full scale), 'as run21106G6.txt' (fuelTestFlow1Slpm); rows 21106A4 to F5 of the experiment table for the ratio; 'PSI-159_Raw Data_21106 test parameter notes.pdf' p7 and 'PSI-159_Raw Data_21106 test sheets.pdf' p18 (data/transcriptions/PSI-159/)"
+  },
+  {
+   "id": "D66",
+   "accession": "PSI-159",
+   "test_id": "21106 G7",
+   "test_id_now": "21106 G7",
+   "column": "mHC (mg/s)",
+   "table_value": "0.8",
+   "evidence_value": "0.48",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table gives 0.8 mg/s of fuel, which is the rate it lists for 0.097 slpm (21106F1, F2). The as-run file sets 0.060 slpm (N2 basis) of the 50% n-butane bottle gas, the same flow as 21106F3 to F5, which the table lists at 0.5 mg/s, and the fuel flow controller reads 0.0587 slpm (median while fuel flowed): 0.48 mg/s at the table's own ratio for this day (8.22 to 8.25 mg/s per slpm on rows A4 to F2, 8.3 on F3 to F5 where 0.5 is rounded; 8.25 used), against 0.49 mg/s for the setpoint. The controller delivered the setpoint; it is the setpoint that differs from the table. The test parameter notes (p7) and the test sheet (p19) give 0.060 slpm too (AI reading of the hand-filled scans, not checked by a human). This may not be an error: NASA may have changed the setpoint or the way it reports the rate on purpose, so the cell is signalled, not corrected; the table value is kept.",
+   "evidence_source": "PSI-159 Raw Data 21106G7_data.csv (MFCA3FuelFlow, volts / 5 x 0.2 slpm full scale), 'as run21106G7.txt' (fuelTestFlow1Slpm); rows 21106A4 to F5 of the experiment table for the ratio; 'PSI-159_Raw Data_21106 test parameter notes.pdf' p7 and 'PSI-159_Raw Data_21106 test sheets.pdf' p19 (data/transcriptions/PSI-159/)"
+  },
+  {
+   "id": "D67",
+   "accession": "PSI-159",
+   "test_id": "21106 G9",
+   "test_id_now": "21106 G9",
+   "column": "mHC (mg/s)",
+   "table_value": "0.8",
+   "evidence_value": "0.65",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table gives 0.8 mg/s of fuel, which is the rate it lists for 0.097 slpm (21106F1, F2). The as-run file sets 0.080 slpm (N2 basis) of the 50% n-butane bottle gas, between the flows the table lists at 0.5 mg/s (0.060 slpm, F3 to F5) and 0.8 mg/s (0.097 slpm, F1, F2), and the fuel flow controller reads 0.0786 slpm (median while fuel flowed): 0.65 mg/s at the table's own ratio for this day (8.22 to 8.25 mg/s per slpm on rows A4 to F2, 8.3 on F3 to F5 where 0.5 is rounded; 8.25 used), against 0.66 mg/s for the setpoint. The controller delivered the setpoint; it is the setpoint that differs from the table. The test parameter notes (p7) and the test sheet (p21) give 0.080 slpm too (AI reading of the hand-filled scans, not checked by a human). This may not be an error: NASA may have changed the setpoint or the way it reports the rate on purpose, so the cell is signalled, not corrected; the table value is kept.",
+   "evidence_source": "PSI-159 Raw Data 21106G9_data.csv (MFCA3FuelFlow, volts / 5 x 0.2 slpm full scale), 'as run21106G9.txt' (fuelTestFlow1Slpm); rows 21106A4 to F5 of the experiment table for the ratio; 'PSI-159_Raw Data_21106 test parameter notes.pdf' p7 and 'PSI-159_Raw Data_21106 test sheets.pdf' p21 (data/transcriptions/PSI-159/)"
+  },
+  {
+   "id": "D68",
+   "accession": "PSI-159",
+   "test_id": "21106 H1",
+   "test_id_now": "21106 H1",
+   "column": "mHC (mg/s)",
+   "table_value": "0.8",
+   "evidence_value": "0.48",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table gives 0.8 mg/s of fuel, which is the rate it lists for 0.097 slpm (21106F1, F2). The as-run file sets 0.060 slpm (N2 basis) of the 50% n-butane bottle gas, the same flow as 21106F3 to F5, which the table lists at 0.5 mg/s, and the fuel flow controller reads 0.0585 slpm (median while fuel flowed): 0.48 mg/s at the table's own ratio for this day (8.22 to 8.25 mg/s per slpm on rows A4 to F2, 8.3 on F3 to F5 where 0.5 is rounded; 8.25 used), against 0.49 mg/s for the setpoint. The controller delivered the setpoint; it is the setpoint that differs from the table. The test parameter notes (p8) and the test sheet (p22) give 0.060 slpm too (AI reading of the hand-filled scans, not checked by a human); on the parameter page for H1 and H2 the printed value is 0.097 slpm, changed by hand. This may not be an error: NASA may have changed the setpoint or the way it reports the rate on purpose, so the cell is signalled, not corrected; the table value is kept.",
+   "evidence_source": "PSI-159 Raw Data 21106H1_data.csv (MFCA3FuelFlow, volts / 5 x 0.2 slpm full scale), 'as run21106H1.txt' (fuelTestFlow1Slpm); rows 21106A4 to F5 of the experiment table for the ratio; 'PSI-159_Raw Data_21106 test parameter notes.pdf' p8 and 'PSI-159_Raw Data_21106 test sheets.pdf' p22 (data/transcriptions/PSI-159/)"
+  },
+  {
+   "id": "D69",
+   "accession": "PSI-159",
+   "test_id": "21106 H2",
+   "test_id_now": "21106 H2",
+   "column": "mHC (mg/s)",
+   "table_value": "0.8",
+   "evidence_value": "0.65",
+   "action": "flag",
+   "flag": "conflicts_with_raw",
+   "evidence": "The table gives 0.8 mg/s of fuel, which is the rate it lists for 0.097 slpm (21106F1, F2). The as-run file sets 0.080 slpm (N2 basis) of the 50% n-butane bottle gas, between the flows the table lists at 0.5 mg/s (0.060 slpm, F3 to F5) and 0.8 mg/s (0.097 slpm, F1, F2), and the fuel flow controller reads 0.0785 slpm (median while fuel flowed): 0.65 mg/s at the table's own ratio for this day (8.22 to 8.25 mg/s per slpm on rows A4 to F2, 8.3 on F3 to F5 where 0.5 is rounded; 8.25 used), against 0.66 mg/s for the setpoint. The controller delivered the setpoint; it is the setpoint that differs from the table. The test parameter notes (p8) and the test sheet (p23) give 0.080 slpm too (AI reading of the hand-filled scans, not checked by a human); on the parameter page for H1 and H2 the printed value is 0.097 slpm, changed by hand. This may not be an error: NASA may have changed the setpoint or the way it reports the rate on purpose, so the cell is signalled, not corrected; the table value is kept.",
+   "evidence_source": "PSI-159 Raw Data 21106H2_data.csv (MFCA3FuelFlow, volts / 5 x 0.2 slpm full scale), 'as run21106H2.txt' (fuelTestFlow1Slpm); rows 21106A4 to F5 of the experiment table for the ratio; 'PSI-159_Raw Data_21106 test parameter notes.pdf' p8 and 'PSI-159_Raw Data_21106 test sheets.pdf' p23 (data/transcriptions/PSI-159/)"
   }
  ],
  "actions": {
@@ -1382,14 +1447,14 @@
    "meaning": "the sample label names only a shape (rod, film, sphere); `fuel` = pmma follows the investigators' documents (`fuel_source` in extra)"
   },
   {
+   "flag": "conflicts_with_raw",
+   "rows": 33,
+   "meaning": "raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`)"
+  },
+  {
    "flag": "burner_over_limit",
    "rows": 30,
    "meaning": "peak burner temperature above the stated 450 °C (723 K) termination limit"
-  },
-  {
-   "flag": "conflicts_with_raw",
-   "rows": 28,
-   "meaning": "raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`)"
   },
   {
    "flag": "smoke_point_bracket",
@@ -1527,7 +1592,7 @@
    "meaning": "source gives 0 mmHg; pressure left null"
   }
  ],
- "rows_flagged": 682,
+ "rows_flagged": 687,
  "rows_total": 2177,
  "removed_sources": [
   {

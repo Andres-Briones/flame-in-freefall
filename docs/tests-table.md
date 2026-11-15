@@ -124,7 +124,7 @@ Common `extra` keys:
 | `label_fixed` | a label split across cells was repaired (original in extra) | 1 (PSI-106) |
 | `corrected_from_raw` | value replaced by the raw sensor data (table value kept as `<column>_original`; patch ids in extra `discrepancies`) | 9 (PSI-10 3, PSI-23 1, PSI-39 2, PSI-159 3) |
 | `filled_from_raw` | empty table cell filled from the raw sensor data | 5 (PSI-10 1, PSI-98 2, PSI-100 2) |
-| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 28 (PSI-10 2, PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 14) |
+| `conflicts_with_raw` | raw data disagree with the table, or with the value this dataset gives; the value is kept (patch ids in extra `discrepancies`) | 33 (PSI-10 2, PSI-23 4, PSI-39 3, PSI-98 2, PSI-100 2, PSI-101 1, PSI-159 19) |
 | `conflicts_with_test_sheet` | the operators' hand-filled test sheet contradicts the value or says the row was not what the table makes of it; the value is kept. The sheet is an AI reading of a scan, not checked by a human (patch ids in extra `discrepancies`) | 6 (PSI-10 1, PSI-159 5) |
 | `conflicts_with_table` | PSI-39 only: the spreadsheet and the old experimental table disagree (old value as `experimental_table_<column>`) | 0 |
 
@@ -439,6 +439,11 @@ No match (most review frames fall before the first logged row of their burn, at 
   flowed: 85%, not 50%; D39) and 21277 P1 (oxidizer and nitrogen flows swapped: about 55%, not 30%; D40).
 - Day 21277, oxidizer bottle nearly empty: the measured oxidizer flow of C2, F2, M1 and N1 is 41 to 90% of the
   table's `O2 flow rate (mg/s)` (in extra), which is the setpoint (`conflicts_with_raw`, D41 to D44).
+- Day 21106, fuel rate of the rows at about 21% O2: `mHC (mg/s)` (in extra) is 0.8 for G6, G7, G9, H1 and H2,
+  the rate the table gives for 0.097 slpm (F1, F2). The as-run files set, and the fuel controller delivered,
+  0.060 slpm for G6, G7, H1 (about 0.48 mg/s, like F3 to F5, listed at 0.5) and 0.080 slpm for G9, H2 (about
+  0.65 mg/s), at the table's own 8.25 mg/s per slpm. The value is kept: NASA may have reported these rates
+  differently on purpose (`conflicts_with_raw`, D65 to D69).
 - 21291 A1 and C1: `burn_time_s` spans six hot flames with cool flames between, not one flame
   (`conflicts_with_test_sheet`, D56, D57).
 - For inverse rows `fuel_fraction` is the ambient fuel fraction.
@@ -463,8 +468,8 @@ patch no longer matches the table. The same list is the `discrepancies` table an
 A patched row lists its patch ids in extra `discrepancies`. Raw files exist only for PSI-10, 23, 39, 159, 98, 100
 and 101, so the other tables could be checked against the reports only.
 
-`column` is a `tests` column, or a source column the table keeps only in `extra` (`O2 flow rate (mg/s)`); a value
-in extra can be flagged but not changed.
+`column` is a `tests` column, or a source column the table keeps only in `extra` (`O2 flow rate (mg/s)`,
+`mHC (mg/s)`); a value in extra can be flagged but not changed.
 
 ### Test sheets
 
