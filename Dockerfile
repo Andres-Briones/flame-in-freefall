@@ -16,6 +16,7 @@ COPY docs/ docs/
 COPY data/processed/ data/processed/
 COPY data/digest/ data/digest/
 COPY data/publications/ data/publications/
+COPY data/translations/quotes_es.json data/translations/quotes_es.json
 COPY data/export/ data/export/
 RUN python demo/build_demo.py
 
