@@ -123,7 +123,9 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
     `interval_nominal` (0.9); `interval_coverage` is what it reached on held-out test days (`n_inside` of `n`,
     and the same under `by.levels` per fuel where the model spans fuels). `interval_clipped` is True when the
     lower end was cut at the value the target cannot go below; `interval_low_unclipped` keeps the value before
-    the cut, and `prediction_below_floor` is True when the estimate itself is impossible (an untested combination
+    the cut (`interval_unclipped` the whole range before it). When even the upper end is below that value,
+    `interval` is None, `interval_clipped` is False (nothing was cut, there is no range) and
+    `interval_unavailable` gives the reason (None otherwise). `prediction_below_floor` is True when the estimate itself is impossible (an untested combination
     of inputs; it is returned as computed, not hidden). `interval_method` is one line on how the range is made; `accession` is the source investigation.
     """
     card = cards()[model_id]
@@ -166,10 +168,18 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
         out["interval"] = [y + lo, y + hi]
         floor = pi.get("floor")
         if floor is not None:
-            out["interval_clipped"] = out["interval"][0] < floor
-            out["interval_low_unclipped"] = out["interval"][0]
-            out["interval"][0] = max(floor, out["interval"][0])
+            low, high = out["interval"]
+            out["interval_unclipped"] = [low, high]
+            out["interval_low_unclipped"] = low
             out["prediction_below_floor"] = y < floor
+            if high < floor:
+                out["interval"] = None
+                out["interval_clipped"] = False
+                out["interval_unavailable"] = f"the whole range is below {floor:g}, which is impossible"
+            else:
+                out["interval"] = [max(floor, low), high]
+                out["interval_clipped"] = low < floor
+                out["interval_unavailable"] = None
         out["interval_nominal"] = pi.get("nominal")
         out["interval_coverage"] = pi.get("held_out_coverage")
         out["interval_method"] = pi.get("method_plain")

@@ -1018,7 +1018,9 @@ def range_text(card):
             text += f" It is wider than needed{who} (share above {cov['nominal']:.0%})."
     if "floor" in pi:
         text += (f" The target cannot be below {fmt(pi['floor'])}, so `predict` cuts the range there and says so "
-                 f"(`interval_clipped`): {cov['n_clipped_at_floor']} of the {cov['n']} held-out ranges were cut.")
+                 f"(`interval_clipped`): {cov['n_clipped_at_floor']} of the {cov['n']} held-out ranges were cut. "
+                 f"When even the upper end is below {fmt(pi['floor'])}, `predict` returns no range (`interval` null, "
+                 f"`interval_clipped` false, the reason in `interval_unavailable`).")
     return text
 
 

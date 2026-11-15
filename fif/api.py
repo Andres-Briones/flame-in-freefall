@@ -774,6 +774,9 @@ def predict(model_id=None, compact=False, **conditions):
                      + (f" It is too narrow for {' and '.join(low)}." if low else ""))
     if out.get("interval_clipped"):
         notes.append("The lower end of `interval` was cut at 0: the quantity cannot be negative.")
+    if out.get("interval_unavailable"):
+        notes.append("No range is available (`interval` is null): the whole range came out below 0 "
+                     "(`interval_unclipped`), which is impossible for this quantity.")
     if out.get("prediction_below_floor"):
         notes.append("The estimate itself is below 0, which is impossible: each input is inside its fitted range but "
                      "the combination was not tested. Do not use this value; see `nearest_tests`.")

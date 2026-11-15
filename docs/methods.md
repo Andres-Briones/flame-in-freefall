@@ -168,7 +168,9 @@ $$
   `[low, high]` in `unit`; `interval_nominal` (0.9, the target the range is built for); `interval_coverage`, the
   share actually reached on held-out test days as counts (`n_inside`, `n`, and the same per fuel under
   `by.levels`, each with a `verdict`); `interval_clipped` (true when the lower end was cut at 0 because the
-  quantity cannot be negative) with `interval_low_unclipped` (the value before the cut) and `prediction_below_floor` (true when the estimate itself is
+  quantity cannot be negative) with `interval_low_unclipped` (the value before the cut) and `interval_unclipped`
+  (the whole range before it). When even the upper end is below 0, `interval` is null, `interval_clipped` is
+  false (nothing was cut: there is no range) and `interval_unavailable` says why (null otherwise). `prediction_below_floor` (true when the estimate itself is
   negative: an untested combination of inputs, returned as computed and not to be used); `interval_method` (one
   line) and `accession` (the source). The burning-rate range held 81 of 103 n-heptane tests, clearly under 90%:
   say so when showing a heptane range. For the probability models `cv_metric` carries `brier_grouped_pooled`

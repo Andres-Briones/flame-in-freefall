@@ -1,9 +1,12 @@
+import copy
+import itertools
 import json
 
+import numpy as np
 import pandas as pd
 import pytest
 
-from fif import models
+from fif import api, models
 from fif.pipeline import build_models as bm
 
 CARD_KEYS = {
@@ -244,16 +247,63 @@ def test_regressor_cards_report_measured_coverage_apart_from_the_target(built):
 
 def test_predict_never_gives_a_negative_diameter_range_and_says_when_it_cut(from_build):
     c = card(from_build, "flex_methanol_extinction_diameter")
-    low = {**middle(c), "d0_mm": c["features"][0]["domain"][0], "x_o2_ambient": c["features"][1]["domain"][1],
-           "x_co2": 0.0, "x_he": 0.0}
+    low = {**middle(c), "d0_mm": c["features"][0]["domain"][0], "x_o2_ambient": 0.21, "x_co2": 0.0, "x_he": 0.0}
     out = models.predict(c["id"], **low)
-    assert out["interval_clipped"] is True and out["interval"][0] == 0 and out["interval_low_unclipped"] < 0
+    lo, hi = out["interval_unclipped"]
+    assert lo < 0 < hi and out["interval"] == [0, hi] and out["interval_low_unclipped"] == lo
+    assert out["interval_clipped"] is True and out["interval_unavailable"] is None
     assert out["prediction_below_floor"] == (out["prediction"] < 0)
     mid = models.predict(c["id"], **{**middle(c), "x_co2": 0.0, "x_he": 0.0})
     assert mid["prediction_below_floor"] is False
     assert mid["interval_clipped"] is False and mid["interval_low_unclipped"] == mid["interval"][0] > 0
     assert mid["unit"] == "mm" and mid["interval_nominal"] == 0.9 and mid["interval_method"]
     assert mid["interval_coverage"] == c["prediction_interval"]["held_out_coverage"]
+
+
+TEAM_CASE = {"d0_mm": 1.61, "x_o2_ambient": 0.30, "x_co2": 0.0, "x_he": 0.0, "pressure_kpa": 101.3}
+
+
+def test_predict_gives_no_range_when_the_whole_range_is_below_zero(from_build):
+    out = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)
+    low, high = out["interval_unclipped"]
+    assert out["in_domain"] and high < 0  # the case a teammate reported: [0, -0.02] before the fix
+    assert out["interval"] is None and out["interval_clipped"] is False
+    assert out["interval_unavailable"] == "the whole range is below 0, which is impossible"
+    assert out["interval_low_unclipped"] == low < high
+    assert out["prediction_below_floor"] is True and low < out["prediction"] < high
+    notes = api.predict(model_id="flex_methanol_extinction_diameter", **TEAM_CASE)["notes"]
+    assert not any("was cut at 0" in n for n in notes)
+    assert any("No range is available" in n for n in notes)
+
+
+def test_predict_keeps_a_range_whose_upper_end_is_exactly_zero(from_build, monkeypatch):
+    y = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)["prediction"]
+    doc = copy.deepcopy(models.cards())
+    doc["flex_methanol_extinction_diameter"]["prediction_interval"]["residual_quantiles"] = [-1.0, -y]
+    monkeypatch.setattr(models, "cards", lambda: doc)
+    out = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)
+    assert out["interval"] == [0, 0] and out["interval_clipped"] is True and out["interval_unavailable"] is None
+
+
+def test_every_returned_range_is_ordered_and_above_the_floor(from_build):
+    for c in from_build["models"]:
+        if c["kind"] != "regressor":
+            continue
+        floor = c["prediction_interval"].get("floor")
+        axes = [f["allowed"] if f.get("allowed") else np.linspace(*f["domain"], 4) for f in c["features"]]
+        names = [f["name"] for f in c["features"]]
+        for values in itertools.product(*axes):
+            x = dict(zip(names, map(float, values)))
+            if sum(x.get(n, 0) for n in (c.get("constraints") or {}).get("sum_at_most_one", [])) > 1:
+                continue
+            out = models.predict(c["id"], **x)
+            if out["prediction"] is None:
+                continue
+            if out["interval"] is None:
+                assert floor is not None and out["interval_unclipped"][1] < floor and out["interval_unavailable"]
+                continue
+            low, high = out["interval"]
+            assert (floor if floor is not None else -np.inf) <= low <= high, (c["id"], x, out["interval"])
 
 
 def test_classifier_headline_carries_brier_next_to_auc(from_build):

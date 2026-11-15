@@ -70,10 +70,19 @@ function modelPredict(model, inputs, opts) {
     if (Array.isArray(q) && q.length === 2) {
       out.interval = [eta + q[0], eta + q[1]];
       if (typeof pi.floor === 'number') {
-        out.interval_clipped = out.interval[0] < pi.floor;
-        out.interval_low_unclipped = out.interval[0];
-        out.interval[0] = Math.max(pi.floor, out.interval[0]);
+        const [low, high] = out.interval;
+        out.interval_unclipped = [low, high];
+        out.interval_low_unclipped = low;
         out.prediction_below_floor = eta < pi.floor;
+        if (high < pi.floor) {
+          out.interval = null;
+          out.interval_clipped = false;
+          out.interval_unavailable = `the whole range is below ${pi.floor}, which is impossible`;
+        } else {
+          out.interval = [Math.max(pi.floor, low), high];
+          out.interval_clipped = low < pi.floor;
+          out.interval_unavailable = null;
+        }
       }
       out.interval_nominal = pi.nominal;
       out.interval_coverage = pi.held_out_coverage;
@@ -275,6 +284,7 @@ App.view({
           h('span', { text: `${m.target}${iv ? `; range ${App.fmt(iv[0], 3)} to ${App.fmt(iv[1], 3)} ${unit} (target ${nominal} of held-out errors)` : ''}` })),
           cov ? h('p', { class: 'small', text: `Measured on held-out test days the range held ${share(cov)} tests${lv.length ? ' (' + lv.map(([k, o]) => `${k} ${share(o)}`).join(', ') + ')' : ''}; ${nominal} is the target, not the result.${low.length ? ` It is too narrow for ${low.join(' and ')}.` : ''}` }) : null,
           r.interval_clipped ? h('p', { class: 'small', text: `The lower end was cut at 0 (it came out at ${App.fmt(r.interval_low_unclipped, 3)} ${unit}): the quantity cannot be negative.` }) : null,
+          r.interval_unavailable ? h('p', { class: 'small', text: `Range not available: the whole range came out below 0 (${App.fmt(r.interval_unclipped[0], 3)} to ${App.fmt(r.interval_unclipped[1], 3)} ${unit}), which is impossible.` }) : null,
           r.prediction_below_floor ? h('div', { class: 'callout gap' }, h('b', { text: 'Do not use this value. ' }), 'The estimate itself is below 0, which is impossible: each input is inside its fitted range, but this combination was not tested.') : null);
       }
       return App.panel('Try it',

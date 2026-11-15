@@ -490,7 +490,7 @@
  },
  {
   "name": "predict",
-  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests. For a quantity: prediction and interval [low, high] in `unit`, interval_nominal (0.9, the target), interval_coverage (n_inside of n on held-out test days, per fuel under by.levels), interval_clipped and interval_low_unclipped (lower end cut at 0), prediction_below_floor (the estimate itself is impossible), interval_method, accession (source). The full list is about 75 kB: pass compact=true to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
+  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests. For a quantity: prediction and interval [low, high] in `unit`, interval_nominal (0.9, the target), interval_coverage (n_inside of n on held-out test days, per fuel under by.levels), interval_clipped and interval_low_unclipped (lower end cut at 0), interval_unclipped, interval_unavailable (why interval is null: the whole range is below 0), prediction_below_floor (the estimate itself is impossible), interval_method, accession (source). The full list is about 75 kB: pass compact=true to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
   "input_schema": {
    "type": "object",
    "properties": {
