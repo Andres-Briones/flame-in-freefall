@@ -9,6 +9,7 @@ Investigators: Sandra L. Olson (PI per the 2010 SRD; NASA Glenn Research Center)
 | | |
 |---|---|
 | Setting | ISS · Destiny · MSG |
+| Module note | Destiny per the 2021 summary report (tests Feb 2014 to Feb 2016). The pre-flight BASS-II requirements (dated 14 Apr 2010) instead planned O2 calibration checks against 'the Columbus and Node 3 O2 and CO2 readings' and named the 'Columbus Module concentration'. |
 | Platform | International Space Station (ISS), Destiny Lab |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2010-01-01 to 2022-12-31 |

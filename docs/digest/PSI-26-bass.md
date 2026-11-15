@@ -9,6 +9,7 @@ Investigators: Paul V. Ferkul (PI; NASA GRC / National Center for Space Explorat
 | | |
 |---|---|
 | Setting | ISS · MSG |
+| Module note | No BASS document states the module of the MSG during the tests (Mar 2012 to May 2013). The February 2010 science requirements and the 2010 acceptance review planned cabin O2 readings from 'the Columbus module'; the BASS-II summary report (2021) places the MSG in the Destiny Lab for the 2014-2016 BASS-II tests. |
 | Platform | International Space Station (ISS) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2009-10-01 to 2013-06-30 |

@@ -22,6 +22,7 @@
     "kind": "cygnus_free_flight",
     "vehicle": "Cygnus OA-7",
     "module": "Pressurized Cargo Module",
+    "module_note": null,
     "facility": [
       "Saffire enclosure"
     ],

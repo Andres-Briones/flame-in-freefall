@@ -23,6 +23,7 @@
   "kind": "iss",
   "vehicle": "ISS",
   "module": "Destiny",
+  "module_note": "From the November 2014 science requirements document; no CFI flight report in hand names the module.",
   "facility": [
    "CIR",
    "MDCA"

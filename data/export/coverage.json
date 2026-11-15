@@ -685,6 +685,7 @@
       "gas": 91
      },
      "n_from_stated_range": 111,
+     "n_not_fire_tests_in_cell": 109,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21162 C4",
@@ -692,7 +693,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.20892942,
       "pressure_kpa": 101.33000000000001,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -707,6 +709,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-69",
       "test_id": "219F001",
@@ -714,7 +717,8 @@
       "fuel_phase": "liquid",
       "x_o2_ambient": 0.3,
       "pressure_kpa": 71.23414144736842,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -729,6 +733,7 @@
       "gas": 7
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21153 F1",
@@ -736,7 +741,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.34080788,
       "pressure_kpa": 50.665000000000006,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -751,6 +757,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21106A4",
@@ -758,7 +765,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.3926,
       "pressure_kpa": 50.665000000000006,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     }
    ],
@@ -828,6 +836,7 @@
    "1254 of 2059 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map.",
    "Only rows of kind `test` are selected (one row per test); test-day summaries, condition sets and planned tests are left out. Pass row_kind to change that.",
    "250 rows had no per-test value and use their investigation's (narrow) stated range, e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell and `not_measured` names the columns of a reference's `nearest_test` filled that way (the value is the middle of the range, not a reading of that test). filter_tests returns these cells empty, as in the source.",
+   "Not every test is a fire: PSI-101, PSI-102, PSI-47 heated samples to make smoke or sampled aerosol, and nothing burned. `n_not_fire_tests_in_cell` counts their rows in a reference's cell, and a reference's `nearest_test` has `fire_test` false when it is one.",
    "`n_tests_in_cell` counts every fuel (gas flames, droplets, solids). Before saying a material was tested at a reference atmosphere, read `n_tests_in_cell_by_phase` or filter by fuel_phase or fuel."
   ]
  },
@@ -983,6 +992,7 @@
       "gas": 0
      },
      "n_from_stated_range": 111,
+     "n_not_fire_tests_in_cell": 109,
      "nearest_test": {
       "accession": "PSI-101",
       "test_id": "51",
@@ -993,7 +1003,9 @@
       "not_measured": [
        "x_o2_ambient",
        "pressure_kpa"
-      ]
+      ],
+      "fire_test": false,
+      "test_kind": "heated below ignition to make smoke; nothing burned"
      }
     },
     {
@@ -1008,6 +1020,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-26",
       "test_id": "2",
@@ -1015,7 +1028,8 @@
       "fuel_phase": "solid",
       "x_o2_ambient": 0.22721982701616103,
       "pressure_kpa": 100.81037565789474,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1030,6 +1044,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-26",
       "test_id": "2",
@@ -1037,7 +1052,8 @@
       "fuel_phase": "solid",
       "x_o2_ambient": 0.22721982701616103,
       "pressure_kpa": 100.81037565789474,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1052,6 +1068,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-26",
       "test_id": "2",
@@ -1059,7 +1076,8 @@
       "fuel_phase": "solid",
       "x_o2_ambient": 0.22721982701616103,
       "pressure_kpa": 100.81037565789474,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     }
    ],
@@ -1108,7 +1126,8 @@
   "notes": [
    "368 of 372 selected rows have both x_o2_ambient and pressure_kpa; the rest are not on the map.",
    "Only rows of kind `test` are selected (one row per test); test-day summaries, condition sets and planned tests are left out. Pass row_kind to change that.",
-   "250 rows had no per-test value and use their investigation's (narrow) stated range, e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell and `not_measured` names the columns of a reference's `nearest_test` filled that way (the value is the middle of the range, not a reading of that test). filter_tests returns these cells empty, as in the source."
+   "250 rows had no per-test value and use their investigation's (narrow) stated range, e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell and `not_measured` names the columns of a reference's `nearest_test` filled that way (the value is the middle of the range, not a reading of that test). filter_tests returns these cells empty, as in the source.",
+   "Not every test is a fire: PSI-101, PSI-102, PSI-47 heated samples to make smoke or sampled aerosol, and nothing burned. `n_not_fire_tests_in_cell` counts their rows in a reference's cell, and a reference's `nearest_test` has `fire_test` false when it is one."
   ]
  },
  "liquid": {
@@ -1441,6 +1460,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-39",
       "test_id": "1206",
@@ -1448,7 +1468,8 @@
       "fuel_phase": "liquid",
       "x_o2_ambient": 0.21,
       "pressure_kpa": 101.325,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1463,6 +1484,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-69",
       "test_id": "219F001",
@@ -1470,7 +1492,8 @@
       "fuel_phase": "liquid",
       "x_o2_ambient": 0.3,
       "pressure_kpa": 71.23414144736842,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1485,6 +1508,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-69",
       "test_id": "220R001",
@@ -1492,7 +1516,8 @@
       "fuel_phase": "liquid",
       "x_o2_ambient": 0.34,
       "pressure_kpa": 71.23414144736842,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1507,6 +1532,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-69",
       "test_id": "220R001",
@@ -1514,7 +1540,8 @@
       "fuel_phase": "liquid",
       "x_o2_ambient": 0.34,
       "pressure_kpa": 71.23414144736842,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     }
    ],
@@ -1903,6 +1930,7 @@
       "gas": 91
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21162 C4",
@@ -1910,7 +1938,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.20892942,
       "pressure_kpa": 101.33000000000001,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1925,6 +1954,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21153 A5",
@@ -1932,7 +1962,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.332446428,
       "pressure_kpa": 50.665000000000006,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1947,6 +1978,7 @@
       "gas": 7
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21153 F1",
@@ -1954,7 +1986,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.34080788,
       "pressure_kpa": 50.665000000000006,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     },
     {
@@ -1969,6 +2002,7 @@
       "gas": 0
      },
      "n_from_stated_range": 0,
+     "n_not_fire_tests_in_cell": 0,
      "nearest_test": {
       "accession": "PSI-159",
       "test_id": "21106A4",
@@ -1976,7 +2010,8 @@
       "fuel_phase": "gas",
       "x_o2_ambient": 0.3926,
       "pressure_kpa": 50.665000000000006,
-      "not_measured": []
+      "not_measured": [],
+      "fire_test": true
      }
     }
    ],

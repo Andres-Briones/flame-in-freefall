@@ -8,7 +8,8 @@ Investigators: Forman A. Williams (University of California, San Diego) - Princi
 
 | | |
 |---|---|
-| Setting | ISS · CIR (FCF) · MDCA |
+| Setting | ISS · Destiny · CIR (FCF) · MDCA |
+| Module note | From two documents filed under PSI-23, not FLEX's own files: a 2012 FLEX paper shows the CIR in the Destiny laboratory on 26 Sept 2009 (FLEX tests Mar 2009 to Dec 2011), and the ISS researcher's guide says it was installed in the U.S. Laboratory on delivery (Nov 2008). |
 | Platform | International Space Station (ISS), Destiny module |
 | Facility | Combustion Integrated Rack (CIR) of the Fluids and Combustion Facility (FCF) |
 | Dates | 2007-08-01 to 2016-07-31 |

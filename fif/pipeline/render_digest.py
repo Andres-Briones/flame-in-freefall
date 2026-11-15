@@ -109,6 +109,7 @@ def glance(record):
     span = " to ".join(d for d in (dates.get("start"), dates.get("end")) if d)
     rows = [
         ("Setting", (record.get("location") or {}).get("label")),
+        ("Module note", (record.get("location") or {}).get("module_note")),
         ("Platform", ident.get("platform")),
         ("Facility", ident.get("facility")),
         ("Dates", span),

@@ -9,6 +9,7 @@ Investigators: Forman A. Williams (PI; University of California, San Diego); Fre
 | | |
 |---|---|
 | Setting | ISS · Destiny · CIR · MDCA |
+| Module note | From the November 2014 science requirements document; no CFI flight report in hand names the module. |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2017-03-09 to 2017-09-15 |

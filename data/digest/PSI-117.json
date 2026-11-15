@@ -20,6 +20,7 @@
     "kind": "computation",
     "vehicle": null,
     "module": null,
+    "module_note": null,
     "facility": [],
     "crewed": null,
     "expedition": null,

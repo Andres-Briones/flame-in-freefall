@@ -23,6 +23,7 @@
     "kind": "iss",
     "vehicle": "ISS",
     "module": "Destiny",
+    "module_note": null,
     "facility": [
       "CIR",
       "ACME"
@@ -47,12 +48,6 @@
       },
       {
         "type": "psi_file",
-        "file": "PSI-23_Presentations_20120015928.pdf",
-        "locator": "p5",
-        "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station"
-      },
-      {
-        "type": "psi_file",
         "file": "PSI-23_Reports_s-Flame 30-day report Inc 63 20201216.pdf",
         "locator": "p3",
         "quote": "A total of 276 flames were ignited for the s-Flame experiment, with 29, 116, and 131 respectively ignited during Increments 60, 61, and 63."
@@ -62,6 +57,18 @@
         "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
         "locator": "p5",
         "quote": "Although experimental data of good quality were obtained on the transient response of spherical diffusion flames in the 2.2-s drop tower facility, the duration was insufficient to observe radiative extinction."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+        "locator": "p25",
+        "quote": "The s-Flame experiment uses the Combustion Integrated Rack (CIR) and the ACME hardware in the Destiny module of the ISS."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+        "locator": "p99",
+        "quote": "Ivanishin was inside the U.S. Destiny laboratory swapping fuel bottles inside the Combustion Integrated Rack"
       }
     ]
   },

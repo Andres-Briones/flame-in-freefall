@@ -21,6 +21,7 @@
     "kind": "ground_lab",
     "vehicle": null,
     "module": null,
+    "module_note": null,
     "facility": [
       "Counterflow burner"
     ],

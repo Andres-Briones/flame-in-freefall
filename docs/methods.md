@@ -47,7 +47,7 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `get_investigation(accession, sections)` | everything about one investigation; `location` with `facility_notes` (see below); `publications` lists the record's papers in its order (`title`, `authors`, `doi`, `doi_url`, `status`, `held_file`, `review`), `publication_review` counts them, see below |
 | `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, sheet_out, platform_kind, sheets, ...)` | what was tested and what happened; `sheets=True` attaches the operators' test sheet to PSI-10 and PSI-159 rows |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
-| `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase; its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test |
+| `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase, and `n_not_fire_tests_in_cell` (SAME-R rows: heated, never burned); its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test, and has `fire_test` false when it is a smoke-only test |
 | `relevance(scenario, fuel_phase, pillar)` | which investigations matter for a scenario, and how far the data are from it |
 | `find_evidence(query, accession)` | passages: reviewed findings and raw document text (keyword search) |
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
@@ -62,14 +62,15 @@ checked by `check_digest`), returned on each `search_investigations` card and by
 | Field | Meaning |
 |---|---|
 | `kind` | `iss` (16), `cygnus_free_flight` (Saffire-I, II, III), `ground_lab` (PSI-142), `computation` (PSI-60, 62, 115, 117); `drop_tower` exists for completeness, no investigation is mainly a drop-tower one |
-| `vehicle`, `module` | `ISS`, `Cygnus OA-6`; `Destiny`, `Pressurized Cargo Module`. Null when no source says |
+| `vehicle`, `module` | `ISS`, `Cygnus OA-6`; `Destiny`, `Columbus`, `Pressurized Cargo Module`. Null when no source says |
+| `module_note` | when the module rests on a pre-flight document only, comes from another investigation's file, or the sources disagree: which document says what, for which dates (null otherwise). The glovebox (MSG) experiments disagree: SPICE's 2008 safety data package puts the MSG in Columbus for SPICE (2009); the 2010 BASS, BASS-II and SLICE requirements read cabin O2 or pressure "in the Columbus module"; the 2021 BASS-II report puts the MSG in Destiny (2014-2016). SLICE and BASS therefore have no module |
 | `facility` | short names (`CIR`, `ACME`, `MDCA`, `FCF`, `MSG`, `SAME hardware`, `Saffire enclosure`, `P-Trak`, `DustTrak`, `Counterflow burner`) |
 | `crewed` | true for the ISS (a crewed station; the source quotes crew work where the documents mention it), false for Saffire in Cygnus, null on the ground |
 | `expedition` | ISS increments or expedition, as the documents state them, or null |
 | `uses_data_from` | the flight investigations a ground or computation study reanalysed or took its conditions from |
 | `also` | other settings of the investigation's own work: `drop_tower` for the precursor tests of PSI-10, 22 and 23, `computation` for PSI-142. 1-g comparison tests on the ground are not listed |
 | `label` | a short label for a chip or a table cell (`ISS · Destiny · CIR · MDCA`) |
-| `source` | where each fact comes from: `psi_record` (`field` of NASA's catalogue record and `quote`), `psi_file` (`file`, `locator`, `quote`) or `external` (`url`, `quote`) |
+| `source` | where each fact comes from: `psi_record` (`field` of NASA's catalogue record and `quote`), `psi_file` (`file`, `locator`, `quote`, and `accession` when the file is filed under another investigation, e.g. a FLEX paper stored with PSI-23) or `external` (`url`, `quote`) |
 
 `get_investigation` adds `location.facility_notes`: one plain sentence per facility name (and `Cygnus` for
 Saffire), from `data/digest/facilities.json`, whose entries carry their own quoted sources and, under `unsourced`,
@@ -147,8 +148,16 @@ $$
   gives the nearest test of the requested phase over all investigations, with its distance: use it, not the top
   row, to answer "what is the nearest real test for this material". A `Phase:` note is added when the top of
   the ranking has no test of the requested phase.
+- Not every test row is a fire. SAME and SAME-R (PSI-102, PSI-101) heated samples below their ignition point to
+  make smoke, and DAFT (PSI-47) sampled aerosol; their rows are typed like burns in `tests` (`row_kind` test, no
+  `ignited` or `outcome`). `NOT_A_FIRE` in `fif/api.py` lists them: their test dicts have `fire_test` false and a
+  `test_kind`, a `Not fire tests:` note names them, and `closest_same_phase_test` and `gap` only consider tests
+  where ignition was attempted. They keep their rank (they matter for detection). A test dict has `result` when the table says what the burn did:
+  the columns that say what the burn did (`ignited`, `outcome`, `extinction_mode`, `burn_time_s`,
+  `burn_length_cm`, `spread_rate_mm_s`; only those with a value). When the closest test ignited but no flame spread
+  (burn length 0, `no_ignition`), a `Result of the closest` note says so.
 - `data.gap` holds the content of the `Gap:` note as fields (accession, acronym, test_id, fuel, fuel_phase,
-  x_o2_ambient, pressure_kpa, distance_to_scenario, not_measured, condition_ranges), or null when the nearest
+  x_o2_ambient, pressure_kpa, distance_to_scenario, not_measured, result, condition_ranges), or null when the nearest
   same-phase test is within one scale step. Read it instead of parsing the note text.
 - Each ranking row has `platform_kind`. `closest_same_phase_test` and `gap` carry `setting` (`platform_kind`,
   `label`, `note`), and a `Setting:` note repeats it: an ISS rack (CIR) test burned in a sealed chamber of about
@@ -169,7 +178,10 @@ $$
   99.2-99.5 kPa the summary report states for the thin-film tests.
 - The output always states the gap: the nearest test of the requested fuel phase and its distance. For a Moon
   habitat and solid fuels that is Saffire-II sample 2-2 (silicone, 22.1% O2, cabin pressure assumed 100 kPa),
-  3.2 steps away. A BASS-II PMMA test at 22.2% O2 follows, with a pressure (99 kPa) that is the middle of the
+  3.2 steps away; the silicone was ignited but no flame spread (burn length about 0). For the ISS cabin it is
+  Saffire-II sample 2-1 (silicone, 21.5% O2, 20 cm/s), 1.0 step away, also without spread; SAME-R Kapton run 51
+  is nearer (0.19) but was heated, not burned. With a flow in the scenario (ISS cabin, spacecraft transit) no
+  liquid or gas test qualifies: their flow (or O2) is unrecorded or known only as a wide range. A BASS-II PMMA test at 22.2% O2 follows, with a pressure (99 kPa) that is the middle of the
   campaign range, not a reading of that test. The nearest solid-fuel tests with both values in the tests table
   are from BASS: test 2 (SIBAL fabric, 22.7% O2, 100.8 kPa, airflow ramped during the test) at 3.17 steps and
   PMMA tests at 22.4% O2 and 100.1 kPa at 3.22. `closest_same_phase_test` does not return them, because the BASS

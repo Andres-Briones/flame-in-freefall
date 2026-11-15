@@ -22,6 +22,7 @@
     "kind": "iss",
     "vehicle": "ISS",
     "module": "Destiny and Node 1",
+    "module_note": null,
     "facility": [
       "P-Trak",
       "DustTrak"

@@ -8,8 +8,9 @@ Investigators: David L. Urban (PI; NASA Glenn Research Center; succeeded the ori
 
 | | |
 |---|---|
-| Setting | ISS · MSG |
-| Platform | International Space Station (ISS) |
+| Setting | ISS · Columbus · MSG |
+| Module note | From the May 2008 flight safety data package, written before the tests (Feb to Jun 2009); no post-flight SPICE document in hand names the module. |
+| Platform | International Space Station (ISS), Columbus module (per the May 2008 flight safety data package) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2009-02-14 to 2009-06-23 |
 | Fuels and samples | ethylene; propane; propylene; 75% propylene / 25% nitrogen; 50% propylene / 50% nitrogen; methane |

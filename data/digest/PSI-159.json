@@ -19,6 +19,7 @@
     "kind": "iss",
     "vehicle": "ISS",
     "module": null,
+    "module_note": null,
     "facility": [
       "CIR",
       "ACME"

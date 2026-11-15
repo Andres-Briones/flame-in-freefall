@@ -12,7 +12,7 @@ pytestmark = pytest.mark.skipif(not (psi.PROCESSED / "tests.parquet").exists(), 
 SAFFIRE = {"PSI-98", "PSI-99", "PSI-100"}
 GROUND = {"PSI-60": "computation", "PSI-62": "computation", "PSI-115": "computation", "PSI-117": "computation",
           "PSI-142": "ground_lab"}
-FIELDS = {"kind", "vehicle", "module", "facility", "crewed", "expedition", "uses_data_from", "also", "label", "source"}
+FIELDS = {"kind", "vehicle", "module", "module_note", "facility", "crewed", "expedition", "uses_data_from", "also", "label", "source"}
 
 
 def test_every_investigation_has_a_sourced_location():
@@ -120,3 +120,33 @@ def test_check_digest_rejects_bad_locations_and_record_quotes():
     bad = {**good, "quote": "International Space Station"}
     assert not [i for i in cd.typed_source_issues("psi_record", "s", good, "PSI-99", Raw()) if i]
     assert [i["level"] for i in cd.typed_source_issues("psi_record", "s", bad, "PSI-99", Raw()) if i] == ["error"]
+
+
+def test_iss_module_is_only_what_a_source_states():
+    records = api.records()
+    module = {acc: rec["location"]["module"] for acc, rec in records.items()}
+    assert module["PSI-107"] == "Columbus"
+    assert module["PSI-106"] is None and module["PSI-26"] is None
+    assert all(module[acc] == "Destiny" for acc in ("PSI-23", "PSI-25", "PSI-39", "PSI-69"))
+    for acc, rec in records.items():
+        loc = rec["location"]
+        if loc["kind"] == "iss" and loc["module"]:
+            quotes = " ".join(s.get("quote", "") for s in loc["source"])
+            assert all(m in quotes for m in loc["module"].split(" and ")), acc
+    # glovebox experiments whose documents name another module than the one recorded keep a visible note
+    for acc in ("PSI-25", "PSI-26", "PSI-106"):
+        assert "Columbus" in records[acc]["location"]["module_note"] and "Destiny" in records[acc]["location"]["module_note"]
+    assert "Pettit" not in json.dumps(records["PSI-106"]) and "Destiny" not in records["PSI-106"]["identity"]["platform"]
+
+
+def test_check_digest_reads_a_quote_from_the_file_of_another_investigation():
+    class Files(cd.Context):
+        def evidence(self, acc):
+            return {"paper.pdf": {"p5": ["the CIR in the Destiny laboratory"]}} if acc == "PSI-23" else {}
+
+        def files(self, acc):
+            return {"paper.pdf"} if acc == "PSI-23" else set()
+
+    src = {"type": "psi_file", "file": "paper.pdf", "locator": "p5", "quote": "the CIR in the Destiny laboratory"}
+    assert [i for i in cd.typed_source_issues("psi_file", "s", {**src, "accession": "PSI-23"}, "PSI-69", Files()) if i] == []
+    assert [i["level"] for i in cd.typed_source_issues("psi_file", "s", src, "PSI-69", Files()) if i] == ["error"]

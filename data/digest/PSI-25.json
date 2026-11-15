@@ -24,6 +24,7 @@
     "kind": "iss",
     "vehicle": "ISS",
     "module": "Destiny",
+    "module_note": "Destiny per the 2021 summary report (tests Feb 2014 to Feb 2016). The pre-flight BASS-II requirements (dated 14 Apr 2010) instead planned O2 calibration checks against 'the Columbus and Node 3 O2 and CO2 readings' and named the 'Columbus Module concentration'.",
     "facility": [
       "MSG"
     ],
@@ -53,6 +54,24 @@
         "type": "psi_record",
         "field": "approach",
         "quote": "Active crew support for real-time “lab partner” operations."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+        "locator": "p55",
+        "quote": "The tests were conducted in the BASS–II hardware placed inside the Microgravity Science Glovebox (MSG) in the Destiny Lab of the ISS."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-25_Science Documents_BASS-II_SRD.pdf",
+        "locator": "p2",
+        "quote": "Calibration checks will utilize the Columbus and Node 3 O2 and CO2 readings."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-25_Engineering Documents_BASS-II_Engineering Requirements.pptx",
+        "locator": "slide 2",
+        "quote": "There is also a Major Constituent Analyzer available to measure the Columbus Module concentration."
       }
     ]
   },

@@ -24,6 +24,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"
@@ -1600,6 +1601,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"
@@ -2812,6 +2814,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"
@@ -3889,6 +3892,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"
@@ -5034,6 +5038,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": "Destiny",
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"
@@ -5058,12 +5063,6 @@
     },
     {
      "type": "psi_file",
-     "file": "PSI-23_Presentations_20120015928.pdf",
-     "locator": "p5",
-     "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station"
-    },
-    {
-     "type": "psi_file",
      "file": "PSI-23_Reports_s-Flame 30-day report Inc 63 20201216.pdf",
      "locator": "p3",
      "quote": "A total of 276 flames were ignited for the s-Flame experiment, with 29, 116, and 131 respectively ignited during Increments 60, 61, and 63."
@@ -5073,6 +5072,18 @@
      "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
      "locator": "p5",
      "quote": "Although experimental data of good quality were obtained on the transient response of spherical diffusion flames in the 2.2-s drop tower facility, the duration was insufficient to observe radiative extinction."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+     "locator": "p25",
+     "quote": "The s-Flame experiment uses the Combustion Integrated Rack (CIR) and the ACME hardware in the Destiny module of the ISS."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+     "locator": "p99",
+     "quote": "Ivanishin was inside the U.S. Destiny laboratory swapping fuel bottles inside the Combustion Integrated Rack"
     }
    ]
   },
@@ -6498,6 +6509,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": "Destiny",
+   "module_note": "Destiny per the 2021 summary report (tests Feb 2014 to Feb 2016). The pre-flight BASS-II requirements (dated 14 Apr 2010) instead planned O2 calibration checks against 'the Columbus and Node 3 O2 and CO2 readings' and named the 'Columbus Module concentration'.",
    "facility": [
     "MSG"
    ],
@@ -6527,6 +6539,24 @@
      "type": "psi_record",
      "field": "approach",
      "quote": "Active crew support for real-time “lab partner” operations."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+     "locator": "p55",
+     "quote": "The tests were conducted in the BASS–II hardware placed inside the Microgravity Science Glovebox (MSG) in the Destiny Lab of the ISS."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-25_Science Documents_BASS-II_SRD.pdf",
+     "locator": "p2",
+     "quote": "Calibration checks will utilize the Columbus and Node 3 O2 and CO2 readings."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-25_Engineering Documents_BASS-II_Engineering Requirements.pptx",
+     "locator": "slide 2",
+     "quote": "There is also a Major Constituent Analyzer available to measure the Columbus Module concentration."
     }
    ]
   },
@@ -8456,6 +8486,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": "No BASS document states the module of the MSG during the tests (Mar 2012 to May 2013). The February 2010 science requirements and the 2010 acceptance review planned cabin O2 readings from 'the Columbus module'; the BASS-II summary report (2021) places the MSG in the Destiny Lab for the 2014-2016 BASS-II tests.",
    "facility": [
     "MSG"
    ],
@@ -8480,6 +8511,25 @@
      "file": "PSI-26_Presentations_Crew Training 2010.pdf",
      "locator": "p26",
      "quote": "After every 2 burns the MSG Work Volume must be purged for 3 minutes"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-26_Science Documents_SRD_BASS.pdf",
+     "locator": "p8",
+     "quote": "The oxygen concentration can be measured by the MCA (Major Constituent Analyzer) or oxygen sensors in the Columbus module or Service Module"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-26_Engineering Documents_BASS_SysAcceptanceReview.1.pdf",
+     "locator": "p13",
+     "quote": "There is also a Major Constituent Analyzer available to measure the Columbus Module concentration."
+    },
+    {
+     "type": "psi_file",
+     "accession": "PSI-25",
+     "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+     "locator": "p74",
+     "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."
     }
    ]
   },
@@ -10213,6 +10263,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": "Destiny",
+   "module_note": "From the November 2014 science requirements document; no CFI flight report in hand names the module.",
    "facility": [
     "CIR",
     "MDCA"
@@ -11721,6 +11772,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": "Destiny and Node 1",
+   "module_note": null,
    "facility": [
     "P-Trak",
     "DustTrak"
@@ -12793,6 +12845,7 @@
    "kind": "computation",
    "vehicle": null,
    "module": null,
+   "module_note": null,
    "facility": [],
    "crewed": null,
    "expedition": null,
@@ -13263,6 +13316,7 @@
    "kind": "computation",
    "vehicle": null,
    "module": null,
+   "module_note": null,
    "facility": [],
    "crewed": null,
    "expedition": null,
@@ -13839,6 +13893,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "MDCA"
@@ -14704,7 +14759,8 @@
   "location": {
    "kind": "iss",
    "vehicle": "ISS",
-   "module": null,
+   "module": "Destiny",
+   "module_note": "From two documents filed under PSI-23, not FLEX's own files: a 2012 FLEX paper shows the CIR in the Destiny laboratory on 26 Sept 2009 (FLEX tests Mar 2009 to Dec 2011), and the ISS researcher's guide says it was installed in the U.S. Laboratory on delivery (Nov 2008).",
    "facility": [
     "CIR",
     "FCF",
@@ -14714,7 +14770,7 @@
    "expedition": null,
    "uses_data_from": [],
    "also": [],
-   "label": "ISS · CIR (FCF) · MDCA",
+   "label": "ISS · Destiny · CIR (FCF) · MDCA",
    "source": [
     {
      "type": "psi_record",
@@ -14725,6 +14781,20 @@
      "type": "psi_record",
      "field": "experimentHardware",
      "quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)"
+    },
+    {
+     "type": "psi_file",
+     "accession": "PSI-23",
+     "file": "PSI-23_Presentations_20120015928.pdf",
+     "locator": "p5",
+     "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station. ISS020-E-042203, 26 Sept 200"
+    },
+    {
+     "type": "psi_file",
+     "accession": "PSI-23",
+     "file": "PSI-23_Presentations_ISS Researchers Guide - Combustion In Reduced Gravity.pdf",
+     "locator": "p43",
+     "quote": "The hardware was delivered on STS-126 (November 2008) to the ISS and installed in the U.S. Laboratory."
     }
    ]
   },
@@ -15804,6 +15874,7 @@
    "kind": "cygnus_free_flight",
    "vehicle": "Cygnus OA-6",
    "module": "Pressurized Cargo Module",
+   "module_note": null,
    "facility": [
     "Saffire enclosure"
    ],
@@ -17004,6 +17075,7 @@
    "kind": "cygnus_free_flight",
    "vehicle": "Cygnus OA-5",
    "module": "Pressurized Cargo Module",
+   "module_note": null,
    "facility": [
     "Saffire enclosure"
    ],
@@ -18157,6 +18229,7 @@
    "kind": "cygnus_free_flight",
    "vehicle": "Cygnus OA-7",
    "module": "Pressurized Cargo Module",
+   "module_note": null,
    "facility": [
     "Saffire enclosure"
    ],
@@ -19231,6 +19304,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "MSG",
     "SAME hardware"
@@ -20836,6 +20910,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "MSG",
     "SAME hardware"
@@ -22131,7 +22206,7 @@
     "start": "2012-02-09",
     "end": "2012-03-23"
    },
-   "platform": "International Space Station (ISS), US Destiny laboratory; operated by astronaut Donald R. Pettit (Expedition 30)",
+   "platform": "International Space Station (ISS), Microgravity Science Glovebox; tests 9 Feb to 23 Mar 2012 (module not stated by the sources in hand: see location.module_note)",
    "facility": "Microgravity Science Glovebox (MSG)",
    "hardware": "Shared SPICE/SLICE coflow burner hardware (derived from the STS-87 ELF experiment): 76 mm square, 174 mm tall fan-driven flow duct with honeycomb and wire-mesh flow straightener, hot-sphere anemometer, interchangeable fuel nozzles of 0.41-3.23 mm inner diameter, mass flow controller, Nikon D300s DSLR still camera with BG-7 filter, analog video with data overlay, thermopile radiometer",
    "project_type": "Microgravity Investigation"
@@ -22140,6 +22215,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": "No SLICE flight document in hand names the ISS module (tests 9 Feb to 23 Mar 2012). The April 2010 SLICE/BASS design review planned to measure cabin pressure 'in the Columbus module'; the BASS-II summary report (2021) places the MSG in the Destiny Lab for the 2014-2016 BASS-II tests.",
    "facility": [
     "MSG"
    ],
@@ -22163,6 +22239,20 @@
      "type": "external",
      "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
      "quote": "where the ISS crew controlled the flow with a potentiometer"
+    },
+    {
+     "type": "psi_file",
+     "accession": "PSI-26",
+     "file": "PSI-26_Engineering Documents_SLICE_SysReqDesignReview.pdf",
+     "locator": "p9",
+     "quote": "Cabin pressure will be measured by 4 pressure transducers in the Columbus module and the differential pressure between the cabin and MSG WV measured by 2 MSG transducers."
+    },
+    {
+     "type": "psi_file",
+     "accession": "PSI-25",
+     "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+     "locator": "p74",
+     "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."
     }
    ]
   },
@@ -22345,7 +22435,7 @@
     }
    ],
    "procedure": {
-    "text": "The crew (Don Pettit) installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.",
+    "text": "The crew installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.",
     "sources": [
      {
       "type": "psi_record",
@@ -22927,7 +23017,7 @@
     "start": "2009-02-14",
     "end": "2009-06-23"
    },
-   "platform": "International Space Station (ISS)",
+   "platform": "International Space Station (ISS), Columbus module (per the May 2008 flight safety data package)",
    "facility": "Microgravity Science Glovebox (MSG)",
    "hardware": "SPICE module, built from the Enclosed Laminar Flames (ELF, STS-87) hardware: a fan-driven flow duct (nominally 76 x 76 mm, about 170 mm long) with honeycomb flow straightener, onboard hot-wire anemometer, interchangeable 0.41/0.76/1.6 mm ID burner tubes on the duct axis, 0-500 sccm (N2-equivalent) mass flow controller fed from 12 fuel bottles, hot-wire igniter, retractable ruler, thermopile radiometer, Nikon D100 still camera (top view), colour video camera (front view via mirror) with a data-overlay titler, and a crew control box. The same duct was later reused by BASS, BASS-II and SLICE.",
    "project_type": "Microgravity Investigation"
@@ -22935,7 +23025,8 @@
   "location": {
    "kind": "iss",
    "vehicle": "ISS",
-   "module": null,
+   "module": "Columbus",
+   "module_note": "From the May 2008 flight safety data package, written before the tests (Feb to Jun 2009); no post-flight SPICE document in hand names the module.",
    "facility": [
     "MSG"
    ],
@@ -22943,7 +23034,7 @@
    "expedition": "Increments 18 and 19/20",
    "uses_data_from": [],
    "also": [],
-   "label": "ISS · MSG",
+   "label": "ISS · Columbus · MSG",
    "source": [
     {
      "type": "psi_record",
@@ -22966,6 +23057,12 @@
      "file": "PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
      "locator": "p5",
      "quote": "the ISS crew members that conducted the tests Michael Barratt, E. Michael Fincke, Sandra H. Magnus, and Koichi Wakata"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-107_Engineering Documents_SPICE_Phase III Flight Safety Data Package.pdf",
+     "locator": "p49",
+     "quote": "The MSG will be in the Columbus module at the time SPICE is run. This module has a smaller volume than the US Lab."
     }
    ]
   },
@@ -24504,6 +24601,7 @@
    "kind": "computation",
    "vehicle": null,
    "module": null,
+   "module_note": null,
    "facility": [],
    "crewed": null,
    "expedition": null,
@@ -25509,6 +25607,7 @@
    "kind": "computation",
    "vehicle": null,
    "module": null,
+   "module_note": null,
    "facility": [],
    "crewed": null,
    "expedition": null,
@@ -26594,6 +26693,7 @@
    "kind": "ground_lab",
    "vehicle": null,
    "module": null,
+   "module_note": null,
    "facility": [
     "Counterflow burner"
    ],
@@ -27421,6 +27521,7 @@
    "kind": "iss",
    "vehicle": "ISS",
    "module": null,
+   "module_note": null,
    "facility": [
     "CIR",
     "ACME"

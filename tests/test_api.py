@@ -373,3 +373,38 @@ def test_quotes_carry_their_spanish_translation_where_one_exists(monkeypatch, tm
         assert "quote_es" not in json.dumps(api.get_investigation("PSI-10"))
     finally:
         api._quotes_es.cache_clear()
+
+
+def test_relevance_never_offers_a_smoke_only_test_as_the_closest_fire_test():
+    t = api.table("tests")
+    smoke = t[t["accession"].isin(["PSI-101", "PSI-102"])]
+    # typed like burns in the table: nothing there says the samples were never ignited
+    assert smoke["ignited"].isna().all() and smoke["outcome"].isna().all()
+    for acc in ("PSI-101", "PSI-102"):
+        assert "below the ignition point" in json.dumps(api.records()[acc])
+    for scenario in api.SCENARIOS:
+        for phase in ("solid", "liquid", "gas"):
+            data = api.relevance(scenario, fuel_phase=phase)["data"]
+            closest = data["closest_same_phase_test"]
+            if closest:
+                assert closest["fire_test"] and closest["accession"] not in api.NOT_A_FIRE, (scenario, phase)
+            if data["gap"]:
+                assert data["gap"]["accession"] not in api.NOT_A_FIRE
+
+    out = api.relevance("iss-cabin", fuel_phase="solid")
+    same_r = next(r for r in out["data"]["ranking"] if r["accession"] == "PSI-101")
+    assert same_r["nearest_test"]["fire_test"] is False and "nothing burned" in same_r["nearest_test"]["test_kind"]
+    closest = out["data"]["closest_same_phase_test"]
+    assert closest["accession"] == "PSI-99" and closest["result"] == {"burn_length_cm": 0.0}
+    assert any(n.startswith("Not fire tests: PSI-101") for n in out["notes"])
+    assert any(n.startswith("Result of the closest solid-fuel test (PSI-99") and "no flame spread" in n
+               for n in out["notes"])
+    bass = next(r for r in out["data"]["ranking"] if r["accession"] == "PSI-26")
+    assert bass["nearest_test"]["fire_test"] is True
+
+
+def test_coverage_labels_smoke_only_tests():
+    sea = api.coverage(fuel_phase="solid")["data"]["references"][0]
+    assert sea["id"] == "earth-sea-level"
+    assert sea["nearest_test"]["accession"] == "PSI-101" and sea["nearest_test"]["fire_test"] is False
+    assert 0 < sea["n_not_fire_tests_in_cell"] < sea["n_tests_in_cell"]

@@ -33,6 +33,9 @@ RANK_DROP = ("one_line", "pillars", "fuel_phases", "acronym", "platform_kind")
 # Where-it-ran fields (location, platform_kind, setting) are for the API and the AI assistant; the demo views do not
 # show them, so they are left out to keep the page under its size budget.
 TEST_DROP = ("platform_kind",)
+# A ranking row's test labels (`fire_test`, `test_kind`, `result`: whether and how it burned) are likewise for the
+# API; the closest test and the notes keep them.
+RANK_TEST_DROP = ("fire_test", "test_kind", "result")
 
 
 def load(name):
@@ -62,6 +65,10 @@ def trimmed():
         # empty lists and dicts (no assumption to show) are left out: the view reads them as absent
         entry["data"]["ranking"] = [{k: slim(v) for k, v in r.items() if k not in RANK_DROP and v not in ([], {})}
                                     for r in entry["data"]["ranking"]]
+        for r in entry["data"]["ranking"]:
+            for key in ("nearest_test", "nearest_test_other_phase"):
+                if isinstance(r.get(key), dict):
+                    r[key] = {k: v for k, v in r[key].items() if k not in RANK_TEST_DROP}
         for key in ("gap", "closest_same_phase_test"):
             if entry["data"].get(key):
                 entry["data"][key].pop("setting", None)

@@ -13,7 +13,7 @@
       "start": "2012-02-09",
       "end": "2012-03-23"
     },
-    "platform": "International Space Station (ISS), US Destiny laboratory; operated by astronaut Donald R. Pettit (Expedition 30)",
+    "platform": "International Space Station (ISS), Microgravity Science Glovebox; tests 9 Feb to 23 Mar 2012 (module not stated by the sources in hand: see location.module_note)",
     "facility": "Microgravity Science Glovebox (MSG)",
     "hardware": "Shared SPICE/SLICE coflow burner hardware (derived from the STS-87 ELF experiment): 76 mm square, 174 mm tall fan-driven flow duct with honeycomb and wire-mesh flow straightener, hot-sphere anemometer, interchangeable fuel nozzles of 0.41-3.23 mm inner diameter, mass flow controller, Nikon D300s DSLR still camera with BG-7 filter, analog video with data overlay, thermopile radiometer",
     "project_type": "Microgravity Investigation"
@@ -22,6 +22,7 @@
     "kind": "iss",
     "vehicle": "ISS",
     "module": null,
+    "module_note": "No SLICE flight document in hand names the ISS module (tests 9 Feb to 23 Mar 2012). The April 2010 SLICE/BASS design review planned to measure cabin pressure 'in the Columbus module'; the BASS-II summary report (2021) places the MSG in the Destiny Lab for the 2014-2016 BASS-II tests.",
     "facility": [
       "MSG"
     ],
@@ -45,6 +46,20 @@
         "type": "external",
         "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
         "quote": "where the ISS crew controlled the flow with a potentiometer"
+      },
+      {
+        "type": "psi_file",
+        "accession": "PSI-26",
+        "file": "PSI-26_Engineering Documents_SLICE_SysReqDesignReview.pdf",
+        "locator": "p9",
+        "quote": "Cabin pressure will be measured by 4 pressure transducers in the Columbus module and the differential pressure between the cabin and MSG WV measured by 2 MSG transducers."
+      },
+      {
+        "type": "psi_file",
+        "accession": "PSI-25",
+        "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+        "locator": "p74",
+        "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."
       }
     ]
   },
@@ -227,7 +242,7 @@
       }
     ],
     "procedure": {
-      "text": "The crew (Don Pettit) installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.",
+      "text": "The crew installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.",
       "sources": [
         {
           "type": "psi_record",

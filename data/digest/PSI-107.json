@@ -12,7 +12,7 @@
       "start": "2009-02-14",
       "end": "2009-06-23"
     },
-    "platform": "International Space Station (ISS)",
+    "platform": "International Space Station (ISS), Columbus module (per the May 2008 flight safety data package)",
     "facility": "Microgravity Science Glovebox (MSG)",
     "hardware": "SPICE module, built from the Enclosed Laminar Flames (ELF, STS-87) hardware: a fan-driven flow duct (nominally 76 x 76 mm, about 170 mm long) with honeycomb flow straightener, onboard hot-wire anemometer, interchangeable 0.41/0.76/1.6 mm ID burner tubes on the duct axis, 0-500 sccm (N2-equivalent) mass flow controller fed from 12 fuel bottles, hot-wire igniter, retractable ruler, thermopile radiometer, Nikon D100 still camera (top view), colour video camera (front view via mirror) with a data-overlay titler, and a crew control box. The same duct was later reused by BASS, BASS-II and SLICE.",
     "project_type": "Microgravity Investigation"
@@ -20,7 +20,8 @@
   "location": {
     "kind": "iss",
     "vehicle": "ISS",
-    "module": null,
+    "module": "Columbus",
+    "module_note": "From the May 2008 flight safety data package, written before the tests (Feb to Jun 2009); no post-flight SPICE document in hand names the module.",
     "facility": [
       "MSG"
     ],
@@ -28,7 +29,7 @@
     "expedition": "Increments 18 and 19/20",
     "uses_data_from": [],
     "also": [],
-    "label": "ISS · MSG",
+    "label": "ISS · Columbus · MSG",
     "source": [
       {
         "type": "psi_record",
@@ -51,6 +52,12 @@
         "file": "PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
         "locator": "p5",
         "quote": "the ISS crew members that conducted the tests Michael Barratt, E. Michael Fincke, Sandra H. Magnus, and Koichi Wakata"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-107_Engineering Documents_SPICE_Phase III Flight Safety Data Package.pdf",
+        "locator": "p49",
+        "quote": "The MSG will be in the Columbus module at the time SPICE is run. This module has a smaller volume than the US Lab."
       }
     ]
   },

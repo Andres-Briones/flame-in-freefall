@@ -217,7 +217,8 @@ def typed_source_issues(kind, path, src, acc, ctx):
     if src.get("quote") and len(src["quote"]) > MAX_QUOTE_CHARS:
         yield issue("warning", path, f"quote is {len(src['quote'])} chars (keep under ~300)")
     if kind == "psi_file":
-        yield psi_file_issue(path, src, acc, ctx)
+        # a file filed under another investigation (`accession`), e.g. a FLEX paper stored with PSI-23
+        yield psi_file_issue(path, src, src.get("accession") or acc, ctx)
     elif kind == "psi_record":
         raw = ctx.raw_record(acc)
         field = re.split(r"[.\[]", src["field"])[0]

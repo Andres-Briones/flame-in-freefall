@@ -9,7 +9,8 @@ Investigators: Marshall B. Long (Yale University) - Principal Investigator; Mitc
 | | |
 |---|---|
 | Setting | ISS · MSG |
-| Platform | International Space Station (ISS), US Destiny laboratory; operated by astronaut Donald R. Pettit (Expedition 30) |
+| Module note | No SLICE flight document in hand names the ISS module (tests 9 Feb to 23 Mar 2012). The April 2010 SLICE/BASS design review planned to measure cabin pressure 'in the Columbus module'; the BASS-II summary report (2021) places the MSG in the Destiny Lab for the 2014-2016 BASS-II tests. |
+| Platform | International Space Station (ISS), Microgravity Science Glovebox; tests 9 Feb to 23 Mar 2012 (module not stated by the sources in hand: see location.module_note) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2012-02-09 to 2012-03-23 |
 | Fuels and samples | methane; ethylene; ethane; propane |
@@ -62,7 +63,7 @@ The hardware, shared with SPICE and later used for BASS, was based on the ELF ex
 
 ### Procedure
 
-The crew (Don Pettit) installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.
+The crew installed a nozzle, ignited the flame manually, and set fuel flow (mass flow controller) and coflow (fan voltage) by hand. They then took still images in bracketed exposures so that at least one was unsaturated. The flow conditions for each still were recovered by matching the image EXIF time to the video, whose data overlay was read automatically by optical character recognition. Calibration runs included coflow/fan calibrations and pyrometry calibrations; an S-type thermocouple heated in the flame served as an absolute light source for soot volume fraction. Testing ran on 12 days from 9 Feb to 23 Mar 2012, one fuel bottle per day; on most days the bottle was emptied. Over the campaign more than 4,000 high-resolution images were taken. The same conditions were repeated in 1 g at Yale on the replica hardware, and flames were simulated with a vorticity-velocity (MC-Smooth) code with sectional soot model.
 
 ## Test matrix
 

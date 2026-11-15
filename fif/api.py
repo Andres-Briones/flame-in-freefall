@@ -62,6 +62,17 @@ TRANSFER = {
 # dimensions are filled, with the nominal cabin atmosphere.
 CABIN_AIR = {"PSI-47", "PSI-98", "PSI-99", "PSI-100", "PSI-101", "PSI-102", "PSI-106", "PSI-107"}
 CABIN_RANGE = {"x_o2": (0.205, 0.215), "pressure_kpa": (98.0, 103.0)}
+# Investigations whose test rows are not fires: nothing was ignited or meant to be. Their rows are typed like burns
+# in `tests` (row_kind "test", no ignited/outcome value), so relevance labels them and never offers one as the
+# closest test to a fire scenario. Sources: the PSI-101 and PSI-102 records ("heated to temperatures below the
+# ignition point") and PSI-47 (aerosol sampling).
+NOT_A_FIRE = {
+    "PSI-101": "heated below ignition to make smoke; nothing burned",
+    "PSI-102": "heated below ignition to make smoke; nothing burned",
+    "PSI-47": "aerosol sampling; nothing burned",
+}
+# Test columns that say what a burn did, copied into relevance's test dicts when they have a value.
+RESULT_COLUMNS = ("ignited", "outcome", "extinction_mode", "burn_time_s", "burn_length_cm", "spread_rate_mm_s")
 PHASE_WITHOUT_TESTS = {"PSI-60": "gas", "PSI-62": "solid", "PSI-115": "aerosol", "PSI-117": "liquid", "PSI-142": "liquid"}
 PLATFORM_KINDS = ("iss", "cygnus_free_flight", "drop_tower", "ground_lab", "computation")
 # How far a result from each setting carries to a fire in a real cabin, for `relevance`. Only what the records and
@@ -633,10 +644,13 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
                 "id": rid, **ref, "n_tests_in_cell": len(in_cell),
                 "n_tests_in_cell_by_phase": {p: int((in_cell["fuel_phase"] == p).sum()) for p in ("solid", "liquid", "gas")},
                 "n_from_stated_range": int((in_cell["filled"] != "").sum()),
+                "n_not_fire_tests_in_cell": int(in_cell["accession"].isin(NOT_A_FIRE).sum()),
                 "nearest_test": None if near is None else {
                     "accession": near["accession"], "test_id": near["test_id"], "fuel": near["fuel"],
                     "fuel_phase": near["fuel_phase"], x: near[x], y: near[y],
-                    "not_measured": [c for c in near["filled"].split(";") if c]},
+                    "not_measured": [c for c in near["filled"].split(";") if c],
+                    "fire_test": near["accession"] not in NOT_A_FIRE,
+                    **({"test_kind": NOT_A_FIRE[near["accession"]]} if near["accession"] in NOT_A_FIRE else {})},
             })
     notes = [f"{len(have)} of {len(df)} selected rows have both {x} and {y}; the rest are not on the map."]
     if "row_kind" not in filters:
@@ -648,6 +662,11 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
                      "e.g. cabin pressure about 1 atm; `n_from_stated_range` counts them in each cell and `not_measured` "
                      "names the columns of a reference's `nearest_test` filled that way (the value is the middle of "
                      "the range, not a reading of that test). filter_tests returns these cells empty, as in the source.")
+    if any(r["n_not_fire_tests_in_cell"] or (r["nearest_test"] and not r["nearest_test"]["fire_test"])
+           for r in references):
+        notes.append(f"Not every test is a fire: {', '.join(sorted(NOT_A_FIRE))} heated samples to make smoke or "
+                     "sampled aerosol, and nothing burned. `n_not_fire_tests_in_cell` counts their rows in a "
+                     "reference's cell, and a reference's `nearest_test` has `fire_test` false when it is one.")
     if references and not (filters.get("fuel_phase") or filters.get("fuel")):
         notes.append("`n_tests_in_cell` counts every fuel (gas flames, droplets, solids). Before saying a material was "
                      "tested at a reference atmosphere, read `n_tests_in_cell_by_phase` or filter by fuel_phase or fuel.")
@@ -693,6 +712,12 @@ def _conditions(acc, scenario, fuel_phase, unknown_steps=None):
     if row is not None:
         nearest = {k: row[k] for k in ("test_id", "fuel", "fuel_phase", "x_o2_ambient", "pressure_kpa", "flow_cm_s")}
         nearest["not_measured"] = [c for c in TEST_COLUMN.values() if pd.isna(nearest[c])]
+        nearest["fire_test"] = acc not in NOT_A_FIRE
+        if acc in NOT_A_FIRE:
+            nearest["test_kind"] = NOT_A_FIRE[acc]
+        result = {c: _clean(row[c]) for c in RESULT_COLUMNS if not pd.isna(row[c])}
+        if result:
+            nearest["result"] = result
         for key in ("x_o2", "pressure_kpa"):
             if pd.isna(nearest[TEST_COLUMN[key]]) and key in env and _narrow(*env[key][:2]):
                 nearest[TEST_COLUMN[key]] = round((env[key][0] + env[key][1]) / 2, 3)
@@ -791,7 +816,8 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         })
     ranked.sort(key=lambda r: -r["score"])
     same_phase = [r for r in ranked if fuel_phase in r["fuel_phases"] and r["nearest_test"]
-                  and not r["conditions_unknown"] and not any(c["wide"] for c in r["condition_ranges"].values())]
+                  and r["nearest_test"]["fire_test"] and not r["conditions_unknown"]
+                  and not any(c["wide"] for c in r["condition_ranges"].values())]
     closest = min(same_phase, key=lambda r: r["distance_to_scenario"], default=None)
     notes = [
         "Score = weighted mean of four components in [0, 1]: conditions (closeness of the nearest test to the "
@@ -813,6 +839,11 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
                  f"its place with a lower material component and `phase_match` false. `nearest_test` is always a "
                  f"{fuel_phase}-fuel test (null when the investigation ran none); the test of another phase that its "
                  f"conditions score and distance come from is in `nearest_test_other_phase`.")
+    not_fire = [f"{r['accession']} ({r['nearest_test']['test_kind']})" for r in ranked
+                if r["nearest_test"] and not r["nearest_test"]["fire_test"]]
+    if not_fire:
+        notes.append(f"Not fire tests: {'; '.join(not_fire)} (`fire_test` false). They keep their rank, but "
+                     f"`closest_same_phase_test` and `gap` only use tests where ignition was attempted.")
     first = next((i for i, r in enumerate(ranked) if r["nearest_test"]), None)
     if first:
         r = ranked[first]
@@ -829,8 +860,8 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         gap = {"accession": closest["accession"], "acronym": closest["acronym"], "test_id": n["test_id"],
                "fuel": n["fuel"], "fuel_phase": fuel_phase, "x_o2_ambient": n["x_o2_ambient"],
                "pressure_kpa": n["pressure_kpa"], "distance_to_scenario": closest["distance_to_scenario"],
-               "not_measured": n["not_measured"], "condition_ranges": closest["condition_ranges"],
-               "setting": _setting(closest["accession"])}
+               "not_measured": n["not_measured"], "result": n.get("result", {}),
+               "condition_ranges": closest["condition_ranges"], "setting": _setting(closest["accession"])}
 
         def origin(key):
             c = closest["condition_ranges"].get(key)
@@ -841,6 +872,11 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
                      f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}{origin('x_o2')}, {n['pressure_kpa']:.0f} kPa{origin('pressure_kpa')}), "
                      f"{closest['distance_to_scenario']} scale steps away. Conclusions for this scenario are extrapolations.")
     if closest:
+        n, res = closest["nearest_test"], closest["nearest_test"].get("result", {})
+        if res.get("burn_length_cm") == 0 or res.get("outcome") == "no_ignition" or res.get("ignited") is False:
+            notes.append(f"Result of the closest {fuel_phase}-fuel test ({closest['accession']} {n['test_id']}, "
+                         f"{n['fuel']}): ignited, but no flame spread. The material resisted fire there; it does not "
+                         f"show how a fire grows.")
         setting = _setting(closest["accession"])
         if setting["note"]:
             notes.append(f"Setting of the closest {fuel_phase}-fuel test ({closest['accession']}, {setting['label']}): "

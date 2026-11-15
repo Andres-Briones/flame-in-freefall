@@ -61,7 +61,11 @@ it must be precise and every fact traceable.
 - **Location.** `location` says where the investigation's own tests ran (`kind`, `vehicle`, `module`,
   `facility`, `crewed`, `expedition`, `uses_data_from`, `also`, `label`), each fact quoted in `location.source`
   (a `psi_record` source with a `quote` is checked against that field of the PSI record). Leave a field null when
-  no source states it. Every `facility` name needs an entry in `data/digest/facilities.json`.
+  no source states it. Every `facility` name needs an entry in `data/digest/facilities.json`. `module_note` says
+  which document gives the module and for which dates when it is only a pre-flight document, a file of another
+  investigation (give that `psi_file` source an `accession`), or when sources disagree (the MSG is placed in
+  Columbus by 2008-2010 documents and in Destiny by the 2021 BASS-II report); otherwise null. A photo caption or
+  a plan for cabin readings in a module does not on its own place an experiment there.
 - **Findings are specific.** State conditions and numbers ("at 21% O2 and
   10 cm/s opposed flow …"), one finding per item, with `confidence` reflecting
   how directly the source supports it. Aim for 5–12 findings when the

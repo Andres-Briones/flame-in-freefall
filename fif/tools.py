@@ -74,7 +74,8 @@ TOOLS = [
     _tool(api.coverage, "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference "
           "atmospheres (ISS cabin, Moon habitat, exploration, spacesuit) have no data. Use for gap questions. "
           "A reference's `nearest_test` lists in `not_measured` the columns filled from the investigation's stated "
-          "range, not measured for that test.", {
+          "range, not measured for that test, and `fire_test` false when that test heated a sample to make smoke "
+          "without burning it (`n_not_fire_tests_in_cell` counts those rows).", {
               "x": {"type": "string"}, "y": {"type": "string"}, "x_step": {"type": "number"}, "y_step": {"type": "number"}, **TEST_FILTERS}),
     _tool(api.relevance, "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real "
           "test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; "
@@ -83,7 +84,10 @@ TOOLS = [
           "test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the "
           "investigation's range in `condition_ranges` (stated range or assumed cabin air), so say so when quoting it. "
           "`closest_same_phase_test.setting` (and a `Setting` note) says where that test ran and how far a result from "
-          "there carries to a real cabin: repeat it. Scenario names: " + ", ".join(api.SCENARIOS) + ".", {
+          "there carries to a real cabin: repeat it. A test dict with `fire_test` false (SAME, SAME-R: samples heated "
+          "to make smoke) is not a burn: never present it as a fire test; `closest_same_phase_test` is always one "
+          "where ignition was attempted, and its `result` says what the burn did (burn length 0 = no flame spread). "
+          "Scenario names: " + ", ".join(api.SCENARIOS) + ".", {
               "scenario": {"type": ["string", "object"], "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g}"},
               "fuel_phase": {"type": "string", "enum": ["solid", "liquid", "gas"]}, "pillar": PILLAR, "top": {"type": "integer"}}),
     _tool(api.find_evidence, "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI "

@@ -24,7 +24,8 @@
   "location": {
     "kind": "iss",
     "vehicle": "ISS",
-    "module": null,
+    "module": "Destiny",
+    "module_note": "From two documents filed under PSI-23, not FLEX's own files: a 2012 FLEX paper shows the CIR in the Destiny laboratory on 26 Sept 2009 (FLEX tests Mar 2009 to Dec 2011), and the ISS researcher's guide says it was installed in the U.S. Laboratory on delivery (Nov 2008).",
     "facility": [
       "CIR",
       "FCF",
@@ -34,7 +35,7 @@
     "expedition": null,
     "uses_data_from": [],
     "also": [],
-    "label": "ISS · CIR (FCF) · MDCA",
+    "label": "ISS · Destiny · CIR (FCF) · MDCA",
     "source": [
       {
         "type": "psi_record",
@@ -45,6 +46,20 @@
         "type": "psi_record",
         "field": "experimentHardware",
         "quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)"
+      },
+      {
+        "type": "psi_file",
+        "accession": "PSI-23",
+        "file": "PSI-23_Presentations_20120015928.pdf",
+        "locator": "p5",
+        "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station. ISS020-E-042203, 26 Sept 200"
+      },
+      {
+        "type": "psi_file",
+        "accession": "PSI-23",
+        "file": "PSI-23_Presentations_ISS Researchers Guide - Combustion In Reduced Gravity.pdf",
+        "locator": "p43",
+        "quote": "The hardware was delivered on STS-126 (November 2008) to the ISS and installed in the U.S. Laboratory."
       }
     ]
   },
