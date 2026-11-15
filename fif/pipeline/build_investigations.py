@@ -87,7 +87,7 @@ def build():
                 "publication_dois": "; ".join(p["doi"] for p in pubs if p.get("doi")) or None,
                 "n_files": len(files),
                 "total_gb": round(sum(float(f.get("file_size") or 0) for f in files) / 1e9, 3),
-                "source_url": f"https://psi.nasa.gov/physci/repo/data/studies/{rec['accession']}",
+                "source_url": f"https://psi.nasa.gov/physci/repo/data/investigations/{rec['accession']}",
             }
         )
     return pd.DataFrame(rows)
