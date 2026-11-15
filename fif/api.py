@@ -612,8 +612,14 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
                      f"{r['distance_to_scenario']} scale steps from the scenario.")
     elif first is None:
         notes.append(f"Phase: no investigation has a {fuel_phase}-fuel test in the table.")
+    gap = None
     if closest and closest["distance_to_scenario"] > 1:
         n = closest["nearest_test"]
+        # The same statement as the "Gap:" note below, as fields, so a client does not have to parse the sentence.
+        gap = {"accession": closest["accession"], "acronym": closest["acronym"], "test_id": n["test_id"],
+               "fuel": n["fuel"], "fuel_phase": fuel_phase, "x_o2_ambient": n["x_o2_ambient"],
+               "pressure_kpa": n["pressure_kpa"], "distance_to_scenario": closest["distance_to_scenario"],
+               "not_measured": n["not_measured"], "condition_ranges": closest["condition_ranges"]}
 
         def origin(key):
             c = closest["condition_ranges"].get(key)
@@ -624,7 +630,7 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
                      f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}{origin('x_o2')}, {n['pressure_kpa']:.0f} kPa{origin('pressure_kpa')}), "
                      f"{closest['distance_to_scenario']} scale steps away. Conclusions for this scenario are extrapolations.")
     data = {"scenario": {"name": name, **sc, "fuel_phase": fuel_phase, "pillar": pillar}, "weights": weights,
-            "ranking": ranked[:top], "closest_same_phase": closest and closest["accession"],
+            "ranking": ranked[:top], "gap": gap, "closest_same_phase": closest and closest["accession"],
             "closest_same_phase_test": closest and {"accession": closest["accession"], **closest["nearest_test"],
                                                     "condition_ranges": closest["condition_ranges"],
                                                     "distance_to_scenario": closest["distance_to_scenario"]}}

@@ -49,6 +49,19 @@ def test_relevance_scores_and_gap_statement():
     assert by_acc["PSI-25"]["distance_to_scenario"] > 3
 
 
+def test_relevance_gap_is_given_as_fields_that_match_the_note():
+    moon = api.relevance("moon-habitat")
+    gap, note = moon["data"]["gap"], next(n for n in moon["notes"] if n.startswith("Gap:"))
+    assert gap["fuel_phase"] == "solid" and gap["distance_to_scenario"] > 1
+    assert f"is {gap['accession']} {gap['test_id']} ({gap['fuel']}, O2 {gap['x_o2_ambient']:.3f}" in note
+    assert f"{gap['pressure_kpa']:.0f} kPa" in note and f"{gap['distance_to_scenario']} scale steps away" in note
+    assert gap["accession"] == moon["data"]["closest_same_phase"]
+    for scenario in api.SCENARIOS:
+        for phase in api.TRANSFER:
+            out = api.relevance(scenario, fuel_phase=phase)
+            assert (out["data"]["gap"] is None) == (not any(n.startswith("Gap:") for n in out["notes"]))
+
+
 def test_relevance_custom_scenario_and_pillar():
     out = api.relevance({"x_o2": 0.21, "pressure_kpa": 101.3}, pillar="detection")["data"]["ranking"]
     assert {"PSI-101", "PSI-102"} & {r["accession"] for r in out[:5]}

@@ -97,6 +97,9 @@ $$
   gives the nearest test of the requested phase over all investigations, with its distance: use it, not the top
   row, to answer "what is the nearest real test for this material". A `Phase:` note is added when the top of
   the ranking has no test of the requested phase.
+- `data.gap` holds the content of the `Gap:` note as fields (accession, acronym, test_id, fuel, fuel_phase,
+  x_o2_ambient, pressure_kpa, distance_to_scenario, not_measured, condition_ranges), or null when the nearest
+  same-phase test is within one scale step. Read it instead of parsing the note text.
 - `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`.
 - Eight cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere
   (20.5-21.5% O2, 98-103 kPa). Each result lists them in `conditions_assumed_cabin_air`.
