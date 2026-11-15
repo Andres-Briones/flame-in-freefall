@@ -1,5 +1,6 @@
 import json
 import math
+import re
 
 import pytest
 
@@ -230,6 +231,42 @@ def test_relevance_rejects_unknown_choices():
     for kwargs in ({"pillar": "foo"}, {"fuel_phase": "aerosol"}, {"fuel_phase": None}, {"scenario": "venus"}):
         with pytest.raises(ValueError, match="must be one of"):
             api.relevance(**kwargs)
+
+
+def test_relevance_refuses_unknown_conditions_and_wrong_units():
+    for scenario, message in (
+            ({"x_o2": 34, "pressure_kpa": 57}, "x_o2 is a mole fraction between 0 and 1: 0.34, not 34"),
+            ({"foo": 1}, "unknown scenario condition 'foo'; accepted: x_o2, pressure_kpa, flow_cm_s, gravity_g"),
+            ({"x_o2": 0.3, "pressure_kpa": -5}, "pressure_kpa is in kPa"),
+            ({"x_o2": 0.3, "pressure_kpa": 70300}, "70.3, not 70300 (that is Pa)"),
+            ({"x_o2": 0.3, "flow_cm_s": -1}, "flow_cm_s is a speed in cm/s"),
+            ({"x_o2": 0.3, "gravity_g": -0.2}, "gravity_g is in Earth gravities"),
+            ({"x_o2": "0.3"}, "x_o2 must be a number"),
+            ({"gravity_g": 0.165}, "needs at least one of x_o2, pressure_kpa, flow_cm_s")):
+        with pytest.raises(ValueError, match=re.escape(message)):
+            api.relevance(scenario)
+    with pytest.raises(ValueError, match="accepted"):
+        api.relevance("iss-cabin", fuelphase="solid")
+    with pytest.raises(ValueError, match="x_o2 is a mole fraction"):
+        api.relevance("iss-cabin", x_o2=21)
+    # limits are inclusive and valid calls are unchanged
+    assert api.relevance({"x_o2": 1.0, "pressure_kpa": 29.6, "gravity_g": 0})["data"]["ranking"]
+    named = api.relevance("moon-habitat")["data"]["ranking"]
+    same = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3, "gravity_g": 0.165, "label": "x"})["data"]["ranking"]
+    assert [(r["accession"], r["score"]) for r in named] == [(r["accession"], r["score"]) for r in same]
+
+
+def test_filter_tests_refuses_oxygen_in_percent():
+    for bounds in ([30, 40], [None, 21], 21, [-0.1, 0.2]):
+        with pytest.raises(ValueError, match="x_o2 is a mole fraction between 0 and 1"):
+            api.filter_tests(x_o2=bounds)
+    with pytest.raises(ValueError, match="0.3, not 30"):
+        api.coverage(x_o2=[30, None])
+    assert api.filter_tests(x_o2=[0.30, 0.40])["data"]["n_matching"] > 0
+    assert api.filter_tests(x_o2=[0, 1])["data"]["n_matching"] == api.filter_tests()["data"]["n_matching"] - int(
+        api.table("tests").query("row_kind == 'test'")["x_o2_ambient"].isna().sum())
+    # pressure and flow keep any bound: a wrong unit there can still be a real value
+    assert api.filter_tests(pressure_kpa=[-10, 50])["data"]["n_matching"] > 0
 
 
 def test_values_changed_lists_originals_kept_under_a_source_column_name():

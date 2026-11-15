@@ -35,6 +35,15 @@ SCENARIOS = {
     "spacecraft-transit": {**REFERENCE_ATMOSPHERES["exploration-8psi"], "gravity_g": 0.0, "flow_cm_s": 10.0},
 }
 PILLARS = ("prevention", "detection", "suppression")
+SCENARIO_KEYS = ("x_o2", "pressure_kpa", "flow_cm_s", "gravity_g", "label")
+# Physically possible values of a condition. A value outside is a wrong unit (x_o2 in percent, pressure in Pa)
+# and would otherwise give a confident answer: a ranking "1125 steps away", or no test found.
+CONDITION_LIMITS = {
+    "x_o2": (0.0, 1.0, "a mole fraction between 0 and 1"),
+    "pressure_kpa": (0.0, 10000.0, "in kPa, 0 to 10,000 (101.3 is sea level)"),
+    "flow_cm_s": (0.0, None, "a speed in cm/s, 0 or more"),
+    "gravity_g": (0.0, None, "in Earth gravities, 0 or more (Moon 0.165, Mars 0.38)"),
+}
 
 # One scale unit per dimension: a difference this large counts as "one step away" from a tested condition.
 SCALES = {"x_o2": 0.03, "pressure_kpa": 15.0, "flow_cm_s": 10.0}
@@ -499,6 +508,20 @@ def get_investigation(accession, sections=None):
 
 # --- tests table --------------------------------------------------------------------------------------
 
+def _check_condition(key, value):
+    """Raise ValueError, naming the unit, for a value of a condition that cannot be physical."""
+    lo, hi, unit = CONDITION_LIMITS[key]
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
+        raise ValueError(f"{key} must be a number, {unit}; not {value!r}")
+    if value < lo or (hi is not None and value > hi):
+        hint = ""
+        if key == "x_o2" and 1 < value <= 100:
+            hint = f": {value / 100:g}, not {value:g}"
+        elif key == "pressure_kpa" and value > hi:
+            hint = f": {value / 1000:g}, not {value:g} (that is Pa)"
+        raise ValueError(f"{key} is {unit}{hint or f'; not {value:g}'}")
+
+
 def _between(series, bounds):
     lo, hi = bounds if isinstance(bounds, (list, tuple)) else (bounds, bounds)
     mask = series.notna()
@@ -550,6 +573,12 @@ def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=
         mask &= t["fuel"].fillna("").str.contains(rf"(?<![a-z]){re.escape(fuel.strip())}(?![a-z])", case=False, regex=True)
     if config:
         mask &= t["config"].fillna("").str.contains(config, case=False, regex=False)
+    if x_o2 is not None:
+        # Only O2 has a range where a wrong unit is unmistakable: percent gives every bound above 1. A pressure or
+        # flow bound in the wrong unit can still be a real value, and flows below 0 exist (sensor offsets).
+        for bound in x_o2 if isinstance(x_o2, (list, tuple)) else [x_o2]:
+            if bound is not None:
+                _check_condition("x_o2", bound)
     for key, bounds in (("x_o2", x_o2), ("pressure_kpa", pressure_kpa), ("flow_cm_s", flow_cm_s)):
         if bounds is not None:
             mask &= _between(t[TEST_COLUMN[key]], bounds)
@@ -810,7 +839,8 @@ def _gravity_comparisons():
 def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, **overrides):
     """Rank the investigations by how much they tell us about a fire-safety scenario.
 
-    scenario: a name in SCENARIOS or a dict with x_o2, pressure_kpa and optionally flow_cm_s, gravity_g.
+    scenario: a name in SCENARIOS or a dict with x_o2, pressure_kpa and optionally flow_cm_s, gravity_g. Other
+        keys and values outside CONDITION_LIMITS (x_o2 in percent, say) raise ValueError.
     fuel_phase: phase of the hazard ("solid" for cables, fabrics and plastics; "liquid"; "gas"). It orders the
         ranking and does not filter it: the investigations with that phase (`phase_match`) come first, the others
         after them, and `nearest_test` is always a test of that phase or None.
@@ -821,9 +851,18 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         raise ValueError(f"fuel_phase must be one of {sorted(TRANSFER)}, not {fuel_phase!r}")
     if pillar is not None and pillar not in PILLARS:
         raise ValueError(f"pillar must be one of {list(PILLARS)} or None, not {pillar!r}")
-    if isinstance(scenario, str) and scenario not in SCENARIOS:
+    if (isinstance(scenario, str) and scenario not in SCENARIOS) or not isinstance(scenario, (str, dict)):
         raise ValueError(f"scenario must be one of {sorted(SCENARIOS)} or a dict of conditions, not {scenario!r}")
     name = scenario if isinstance(scenario, str) else "custom"
+    custom = {**({} if isinstance(scenario, str) else scenario), **overrides}
+    unknown = sorted(set(custom) - set(SCENARIO_KEYS))
+    if unknown:
+        raise ValueError(f"unknown scenario condition {', '.join(map(repr, unknown))}; accepted: {', '.join(SCENARIO_KEYS)}")
+    if isinstance(scenario, dict) and not set(custom) & set(SCALES):
+        raise ValueError(f"a custom scenario needs at least one of {', '.join(SCALES)}")
+    for key, value in custom.items():
+        if key != "label":
+            _check_condition(key, value)
     sc = {**(SCENARIOS[scenario] if isinstance(scenario, str) else scenario), **overrides}
     partial_g = 0 < (sc.get("gravity_g") or 0) < 1
     weights = {**WEIGHTS, **({"gravity": GRAVITY_WEIGHT} if partial_g else {})}

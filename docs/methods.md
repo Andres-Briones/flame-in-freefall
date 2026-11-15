@@ -187,7 +187,16 @@ $$
   90 L with a controlled atmosphere; a glovebox (MSG) test burned a centimetre-sized sample in a 250 L work volume;
   Saffire burned in the cabin air of a Cygnus cargo module, the only burns in a real spacecraft cabin volume.
   Say how far the result carries with it.
-- `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`.
+- `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`. A
+  custom scenario (or extra keyword conditions) may only set `x_o2`, `pressure_kpa`, `flow_cm_s`, `gravity_g`
+  and `label`, needs at least one of the first three, and each value must be physically possible:
+  `x_o2` a mole fraction from 0 to 1, pressure 0 to 10,000 kPa, flow and gravity 0 or more (`CONDITION_LIMITS` in
+  `fif/api.py`). Anything else raises `ValueError` naming the accepted keys or the unit
+  (`x_o2 is a mole fraction between 0 and 1: 0.34, not 34`), because a percent or a pascal value would otherwise
+  rank every investigation hundreds of steps away without a warning. The server returns it as a 400 with that
+  `detail`. `filter_tests` and `coverage` refuse an `x_o2` bound outside 0-1 the same way (a range in percent
+  matched no row before, which read as "never tested"); pressure and flow bounds are not checked, because a value
+  in the wrong unit there can still be a real one.
 - Eight cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere
   (20.5-21.5% O2, 98-103 kPa). Each result lists them in `conditions_assumed_cabin_air`.
 - A condition with no per-test value is never shown as measured. `conditions_from_range` lists every condition

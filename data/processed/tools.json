@@ -113,7 +113,7 @@
      },
      "minItems": 2,
      "maxItems": 2,
-     "description": "ambient O2 mole fraction [min, max]"
+     "description": "ambient O2 mole fraction [min, max], between 0 and 1 (30% O2 is 0.30, not 30; a bound above 1 is refused)"
     },
     "pressure_kpa": {
      "type": "array",
@@ -303,7 +303,7 @@
      },
      "minItems": 2,
      "maxItems": 2,
-     "description": "ambient O2 mole fraction [min, max]"
+     "description": "ambient O2 mole fraction [min, max], between 0 and 1 (30% O2 is 0.30, not 30; a bound above 1 is refused)"
     },
     "pressure_kpa": {
      "type": "array",
@@ -414,7 +414,7 @@
       "string",
       "object"
      ],
-     "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g}"
+     "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g} with at least one of the first three: x_o2 a mole fraction (0.34, not 34), pressure in kPa, flow in cm/s, gravity in g. Other keys and impossible values are refused with an error that names the unit"
     },
     "fuel_phase": {
      "type": "string",

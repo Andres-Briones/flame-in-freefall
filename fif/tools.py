@@ -14,7 +14,8 @@ TEST_FILTERS = {
     "fuel": {"type": "string", "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane"},
     "fuel_phase": PHASE,
     "config": {"type": "string", "description": "substring: normal, inverse, coflow, droplet, opposed flow, concurrent flow"},
-    "x_o2": {**RANGE, "description": "ambient O2 mole fraction [min, max]"},
+    "x_o2": {**RANGE, "description": "ambient O2 mole fraction [min, max], between 0 and 1 (30% O2 is 0.30, not 30; "
+                                     "a bound above 1 is refused)"},
     "pressure_kpa": RANGE,
     "flow_cm_s": RANGE,
     "extinction_mode": {"type": "string", "enum": ["self_extinguished", "flow_terminated", "extinction", "disruption", "completion"]},
@@ -93,7 +94,10 @@ TOOLS = [
           "to make smoke) is not a burn: never present it as a fire test; `closest_same_phase_test` is always one "
           "where ignition was attempted, and its `result` says what the burn did (burn length 0 = no flame spread). "
           "Scenario names: " + ", ".join(api.SCENARIOS) + ".", {
-              "scenario": {"type": ["string", "object"], "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g}"},
+              "scenario": {"type": ["string", "object"], "description": "scenario name, or {x_o2, pressure_kpa, "
+                           "flow_cm_s, gravity_g} with at least one of the first three: x_o2 a mole fraction (0.34, "
+                           "not 34), pressure in kPa, flow in cm/s, gravity in g. Other keys and impossible values "
+                           "are refused with an error that names the unit"},
               "fuel_phase": {"type": "string", "enum": ["solid", "liquid", "gas"]}, "pillar": PILLAR, "top": {"type": "integer"}}),
     _tool(api.find_evidence, "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI "
           "documents (file and page; `transcribed` marks an AI model's reading of a scanned page). Keyword-based: use the "

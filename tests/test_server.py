@@ -84,6 +84,15 @@ def test_unknown_function_is_404_and_bad_argument_is_400(client):
     assert client.post("/api/call/relevance", json=[1, 2]).status_code == 400
 
 
+def test_a_wrong_unit_is_400_with_the_unit_in_the_detail(client):
+    r = client.post("/api/call/relevance", json={"scenario": {"x_o2": 34, "pressure_kpa": 57}})
+    assert r.status_code == 400 and "mole fraction between 0 and 1: 0.34, not 34" in r.json()["detail"]
+    r = client.post("/api/call/relevance", json={"scenario": {"foo": 1}})
+    assert r.status_code == 400 and "accepted: x_o2, pressure_kpa" in r.json()["detail"]
+    r = client.post("/api/call/filter_tests", json={"x_o2": [30, 40]})
+    assert r.status_code == 400 and "0.3, not 30" in r.json()["detail"]
+
+
 def test_limits_are_capped(client):
     r = client.post("/api/call/filter_tests", json={"limit": 10**9, "row_kind": None})
     assert r.status_code == 200 and len(r.json()["data"]["rows"]) <= 3000
