@@ -1,6 +1,11 @@
 services:
   demo:
-    build: .
+    build:
+      context: .
+      # the image has no .git; run.sh passes the commit so /api/health can report it
+      args:
+        FIF_COMMIT: ${FIF_COMMIT:-unknown}
+        FIF_COMMIT_DATE: ${FIF_COMMIT_DATE:-unknown}
     ports:
       # run.sh sets these; plain `docker compose up` keeps the old 8000 on all interfaces
       - "${FIF_BIND:-0.0.0.0}:${FIF_PORT:-8000}:8000"

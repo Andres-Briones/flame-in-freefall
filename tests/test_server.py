@@ -41,6 +41,30 @@ def test_health_lists_the_functions(client):
     assert isinstance(body["raw_on_disk"], bool)
 
 
+def test_health_reports_the_data_version(client):
+    version = client.get("/api/health").json()["data_version"]
+    assert version["commit"] and version["commit_date"]
+    assert version["rows"]["investigations"] == len(server.api.table("investigations"))
+    assert version["rows"]["evidence_passages"] == len(server.api.table("evidence")) > 0
+    assert version["rows"]["tests"] > 0
+
+
+def test_data_version_prefers_the_build_args_and_survives_a_missing_git(monkeypatch):
+    monkeypatch.setenv("FIF_COMMIT", "abc1234")
+    monkeypatch.setenv("FIF_COMMIT_DATE", "2026-11-15T10:00:00+00:00")
+    assert server._data_version()["commit"] == "abc1234"
+
+    monkeypatch.delenv("FIF_COMMIT")
+    monkeypatch.delenv("FIF_COMMIT_DATE")
+
+    def no_git(*args, **kwargs):
+        raise FileNotFoundError("git")
+
+    monkeypatch.setattr(server.subprocess, "run", no_git)
+    assert server._data_version()["commit"] == "unknown"
+    assert server._data_version()["commit_date"] == "unknown"
+
+
 @pytest.mark.parametrize("args", [
     {"scenario": "moon-habitat"},
     {"scenario": {"x_o2": 0.3, "pressure_kpa": 70, "flow_cm_s": 5, "gravity_g": 0.165}},

@@ -24,4 +24,8 @@ USER app
 
 ENV HOST=0.0.0.0 PORT=8000 FIF_RAW_ROOT=/app/data/raw FIF_RAW_CACHE_MB=300 FIF_BOARD_DB=/app/data/board/board.db
 EXPOSE 8000
+# Last, so a new commit does not invalidate the cached layers above. /api/health reports them (run.sh sets them).
+ARG FIF_COMMIT=unknown
+ARG FIF_COMMIT_DATE=unknown
+ENV FIF_COMMIT=$FIF_COMMIT FIF_COMMIT_DATE=$FIF_COMMIT_DATE
 CMD ["python", "demo/server.py"]

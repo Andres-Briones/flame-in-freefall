@@ -17,6 +17,7 @@ import csv
 import json
 import math
 import os
+import subprocess
 import sys
 import threading
 import time
@@ -30,6 +31,7 @@ ROOT = Path(__file__).resolve().parent.parent
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+import pyarrow.parquet as pq  # noqa: E402
 from fastapi import FastAPI, HTTPException, Request  # noqa: E402
 from fastapi.concurrency import run_in_threadpool  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
@@ -86,6 +88,32 @@ def _load_catalogue():
 
 CATALOGUE = _load_catalogue()
 BY_LOCAL_PATH = {v["local_path"]: k for k, v in CATALOGUE.items()}
+
+
+def _data_version():
+    """Commit and row counts of the data this process serves, so a copy of the server shows which release it runs.
+
+    The Docker image has no .git (.dockerignore): run.sh passes the commit in as build args, which the Dockerfile
+    turns into FIF_COMMIT / FIF_COMMIT_DATE. Outside Docker the checkout's git answers.
+    """
+    commit, date = os.environ.get("FIF_COMMIT", "").strip(), os.environ.get("FIF_COMMIT_DATE", "").strip()
+    if not commit or commit == "unknown":
+        try:
+            out = subprocess.run(["git", "-C", str(ROOT), "log", "-1", "--format=%h %cI"], capture_output=True,
+                                 text=True, timeout=5, check=True).stdout.split()
+            commit, date = out[0], out[1]
+        except (OSError, subprocess.SubprocessError, IndexError):
+            commit, date = "unknown", ""
+    rows = {}
+    for key, name in (("investigations", "investigations"), ("tests", "tests"), ("evidence_passages", "evidence")):
+        try:
+            rows[key] = pq.ParquetFile(psi.PROCESSED / f"{name}.parquet").metadata.num_rows
+        except (OSError, ValueError):
+            rows[key] = None
+    return {"commit": commit, "commit_date": date or "unknown", "rows": rows}
+
+
+DATA_VERSION = _data_version()
 
 
 # --- resolving PSI addresses ------------------------------------------------------------------------------
@@ -352,7 +380,8 @@ async def cache_headers(request: Request, call_next):
 
 @app.get("/api/health")
 def health():
-    return {"ok": True, "functions": list(api.FUNCTIONS), "raw_on_disk": (psi.RAW / "investigations").is_dir()}
+    return {"ok": True, "functions": list(api.FUNCTIONS), "raw_on_disk": (psi.RAW / "investigations").is_dir(),
+            "data_version": DATA_VERSION}
 
 
 @app.get("/api/resolve")

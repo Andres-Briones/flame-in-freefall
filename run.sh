@@ -13,6 +13,9 @@ cd "$(dirname "$0")"
 
 export FIF_PORT="${FIF_PORT:-5187}"
 export FIF_BIND="${FIF_BIND:-0.0.0.0}"
+# Baked into the image (no .git inside it) and reported by /api/health.
+export FIF_COMMIT="${FIF_COMMIT:-$(git log -1 --format=%h 2>/dev/null || echo unknown)}"
+export FIF_COMMIT_DATE="${FIF_COMMIT_DATE:-$(git log -1 --format=%cI 2>/dev/null || echo unknown)}"
 # Host networking by default (see demo/compose.host.yml); FIF_NETWORK=bridge uses published ports instead.
 files=(-f docker-compose.yml)
 if [ "${FIF_NETWORK:-host}" = host ]; then

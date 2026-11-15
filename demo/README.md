@@ -24,6 +24,9 @@ open demo/dist/index.html             # works from disk; charts and fonts need i
 
 `demo/server.py` serves the page plus the `fif.api` functions (`POST /api/call/<function>`), short-lived links
 to PSI originals (`GET /api/resolve`) and `GET /api/health`. It also carries the team board (below). No login, no secrets.
+`/api/health` also reports `data_version`: the commit it was built from (`commit`, `commit_date`; from git,
+or in Docker from the `FIF_COMMIT` / `FIF_COMMIT_DATE` build args that `run.sh` passes, else `"unknown"`) and the
+row counts of `investigations`, `tests` and `evidence_passages`, so a copy of this server shows which release it runs.
 
 ### For AI agents
 
