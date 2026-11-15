@@ -9,7 +9,7 @@ answer as of the current tables. `tests/test_questions.py` runs every call. Sour
 
 - Call: `relevance(scenario="moon-habitat", fuel_phase="solid")`
 - Chart: stacked bar of score components per investigation
-- Answer today: FLEX leads: its droplet tests sit at that atmosphere (30% O2, 71 kPa). BRE and FLEX-2 also show a distance of 0, but only because their rows give O2 and pressure as ranges that contain the point. The solid-material experiments (BASS-II, Saffire-II, BASS) follow, all more than 3 steps away in O2 and pressure. No test was run at partial gravity.
+- Answer today: The solid-material experiments lead (BASS-II, Saffire-II, BASS), all more than 3 steps away in O2 and pressure. FLEX, first by score, follows them as another fuel phase: its droplet tests sit at that atmosphere (30% O2, 71 kPa). BRE and FLEX-2 also show a distance of 0, but only because their rows give O2 and pressure as ranges that contain the point. No test was run at partial gravity.
 
 **2. Has any solid material been burned in an exploration atmosphere?**
 

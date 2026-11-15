@@ -153,21 +153,29 @@ $$
   least 2 steps: an unknown never ranks above a measured value. A condition known only as a wide range (no
   per-test value) uses the distance to that range and lowers the conditions score by 20%. A distance of 0 can
   therefore mean "the stated range contains the point" (BRE, FLEX-2), not "a test was run there".
-- The weights are a judgement. Jittering them by 20% keeps FLEX first for a Moon habitat every time, but the
-  set of the top five changes in about half the draws: read the ranking as tiers, not as an order.
-- `fuel_phase` weights the ranking through the material component; it does not filter it. A droplet or gas-flame
-  investigation run at the scenario's atmosphere can therefore rank above every solid-fuel one (FLEX for a Moon
-  habitat). Each row says so: `phase_match` is false when the investigation has no fuel of that phase, and
+- The weights are a judgement. Jittering them by 20% keeps FLEX the highest score for a Moon habitat every time,
+  but the set of the five highest scores changes in about half the draws: read the scores as tiers, not as an order.
+- The ranking is sorted in three tiers, by score within each: investigations with a fuel of the requested phase
+  (`phase_match` true), then those on other phases, then the investigations where nothing burned (below). The
+  score itself is unchanged, so a row lower in the list can have a higher score. `fuel_phase` enters the score
+  through the material component and orders the list; it does not filter it. A droplet or gas-flame investigation
+  run at the scenario's atmosphere (FLEX for a Moon habitat, the highest score there) is listed after every
+  solid-fuel one, and an `Other phases:` note names the investigations of another phase whose tests are nearer to
+  the scenario than any test of the requested phase. Each row says so: `phase_match` is false when the
+  investigation has no fuel of that phase, and
   `nearest_test` is always a test of the requested phase, or null. For an investigation without such a test, the
   test its conditions score and distance come from is in `nearest_test_other_phase`. `closest_same_phase_test`
   gives the nearest test of the requested phase over all investigations, with its distance: use it, not the top
   row, to answer "what is the nearest real test for this material". A `Phase:` note is added when the top of
-  the ranking has no test of the requested phase.
+  the ranking has no test of the requested phase (a computation, such as PSI-62 for solids, can lead its tier).
 - Not every test row is a fire. SAME and SAME-R (PSI-102, PSI-101) heated samples below their ignition point to
   make smoke, and DAFT (PSI-47) sampled aerosol; their rows are typed like burns in `tests` (`row_kind` test, no
-  `ignited` or `outcome`). `NOT_A_FIRE` in `fif/api.py` lists them: their test dicts have `fire_test` false and a
-  `test_kind`, a `Not fire tests:` note names them, and `closest_same_phase_test` and `gap` only consider tests
-  where ignition was attempted. They keep their rank (they matter for detection). A test dict has `result` when the table says what the burn did:
+  `ignited` or `outcome`). `NOT_A_FIRE` in `fif/api.py` lists them: their ranking rows and test dicts have
+  `fire_test` false and test dicts a `test_kind`, a `Not fire tests:` note names them, and
+  `closest_same_phase_test` and `gap` only consider tests where ignition was attempted. They rank below every
+  investigation that burned something (SAME-R had the highest score for the ISS cabin, 96.4, from assumed cabin air
+  and no fire), except for `pillar="detection"`, where they keep their place by score: smoke from overheated
+  material is what they measured. A test dict has `result` when the table says what the burn did:
   the columns that say what the burn did (`ignited`, `outcome`, `extinction_mode`, `burn_time_s`,
   `burn_length_cm`, `spread_rate_mm_s`; only those with a value). When the closest test ignited but no flame spread
   (burn length 0, `no_ignition`), a `Result of the closest` note says so.

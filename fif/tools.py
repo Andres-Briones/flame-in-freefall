@@ -81,7 +81,9 @@ TOOLS = [
           "without burning it (`n_not_fire_tests_in_cell` counts those rows).", {
               "x": {"type": "string"}, "y": {"type": "string"}, "x_step": {"type": "number"}, "y_step": {"type": "number"}, **TEST_FILTERS}),
     _tool(api.relevance, "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real "
-          "test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; "
+          "test is from it. fuel_phase orders the ranking and does not filter it: investigations of that phase "
+          "(`phase_match` true) come first, then the other phases, then the ones where nothing burned (`fire_test` "
+          "false; not for pillar detection), each group by score, so a lower row can have a higher score; "
           "`nearest_test` is always a test of that phase (null if none), and `closest_same_phase_test` is the nearest "
           "one overall. Never present `nearest_test_other_phase` as a test of the requested material. A condition a "
           "test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the "

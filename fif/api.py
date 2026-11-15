@@ -811,10 +811,11 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
     """Rank the investigations by how much they tell us about a fire-safety scenario.
 
     scenario: a name in SCENARIOS or a dict with x_o2, pressure_kpa and optionally flow_cm_s, gravity_g.
-    fuel_phase: phase of the hazard ("solid" for cables, fabrics and plastics; "liquid"; "gas"). It weights the
-        ranking (the material component) and does not filter it: `phase_match` marks the investigations that tested
-        that phase, and `nearest_test` is always a test of that phase or None.
-    pillar: "prevention", "detection" or "suppression" (None = any).
+    fuel_phase: phase of the hazard ("solid" for cables, fabrics and plastics; "liquid"; "gas"). It orders the
+        ranking and does not filter it: the investigations with that phase (`phase_match`) come first, the others
+        after them, and `nearest_test` is always a test of that phase or None.
+    pillar: "prevention", "detection" or "suppression" (None = any). Except for detection, investigations where
+        nothing burned (`fire_test` false, NOT_A_FIRE) rank below all the others.
     """
     if fuel_phase not in TRANSFER:
         raise ValueError(f"fuel_phase must be one of {sorted(TRANSFER)}, not {fuel_phase!r}")
@@ -856,7 +857,7 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
             "accession": acc, "acronym": rec["identity"]["acronym"], "score": round(score, 1),
             "components": {k: round(v, 2) for k, v in comp.items()},
             "distance_to_scenario": cond["distance"], "distance_per_dimension": {k: round(v, 2) for k, v in cond["per_dimension"].items()},
-            "platform_kind": rec["location"]["kind"],
+            "platform_kind": rec["location"]["kind"], "fire_test": acc not in NOT_A_FIRE,
             "phase_match": fuel_phase in _phases(acc), "nearest_test": nearest if same else None,
             "nearest_test_other_phase": None if same else nearest, "conditions_unknown": cond["unknown"],
             "conditions_from_range": cond["from_range"], "conditions_assumed_cabin_air": cond["assumed"],
@@ -864,7 +865,11 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
             "pillars": rec["fire_safety"]["pillars"], "fuel_phases": _phases(acc), "one_line": rec["one_line"],
             "key_findings": [{"ref": _finding_ref(acc, i), "claim": f["claim"]} for i, f in findings],
         })
-    ranked.sort(key=lambda r: -r["score"])
+    # Score alone let a smoke-only test lead a fire ranking (SAME-R for the ISS cabin) and droplet or gas flames lead
+    # a solid-fuel one: the order is by tier first, the score only within a tier. Smoke-only tests keep their score
+    # order for detection, the question they were run for.
+    demote = pillar != "detection"
+    ranked.sort(key=lambda r: (demote and not r["fire_test"], not r["phase_match"], -r["score"]))
     same_phase = [r for r in ranked if fuel_phase in r["fuel_phases"] and r["nearest_test"]
                   and r["nearest_test"]["fire_test"] and not r["conditions_unknown"]
                   and not any(c["wide"] for c in r["condition_ranges"].values())]
@@ -885,15 +890,24 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
     if partial_g:
         notes.append(f"No PSI combustion test was run at partial gravity ({sc['gravity_g']} g). The gravity component "
                      "only rewards investigations that compare microgravity with 1 g, which brackets partial gravity.")
-    notes.append(f"fuel_phase weights the ranking, it does not filter it: an investigation on another fuel phase keeps "
-                 f"its place with a lower material component and `phase_match` false. `nearest_test` is always a "
+    notes.append(f"fuel_phase orders the ranking, it does not filter it: the investigations with {fuel_phase} fuel "
+                 f"(`phase_match` true) come first, then those on another fuel phase, each group by score; their "
+                 f"material component is lower. `nearest_test` is always a "
                  f"{fuel_phase}-fuel test (null when the investigation ran none); the test of another phase that its "
                  f"conditions score and distance come from is in `nearest_test_other_phase`.")
-    not_fire = [f"{r['accession']} ({r['nearest_test']['test_kind']})" for r in ranked
-                if r["nearest_test"] and not r["nearest_test"]["fire_test"]]
+    not_fire = [f"{r['accession']} ({NOT_A_FIRE[r['accession']]})" for r in ranked if not r["fire_test"]]
     if not_fire:
-        notes.append(f"Not fire tests: {'; '.join(not_fire)} (`fire_test` false). They keep their rank, but "
+        place = ("They keep their place by score for a detection question, the one they were run for"
+                 if not demote else "They rank below every investigation that burned something, whatever their score")
+        notes.append(f"Not fire tests: {'; '.join(not_fire)} (`fire_test` false). {place}; "
                      f"`closest_same_phase_test` and `gap` only use tests where ignition was attempted.")
+    nearer = [r for r in ranked if not r["phase_match"] and r["fire_test"] and r["nearest_test_other_phase"]
+              and not r["conditions_unknown"] and closest
+              and r["distance_to_scenario"] < closest["distance_to_scenario"]]
+    if nearer:
+        notes.append(f"Other phases: {', '.join(r['accession'] for r in nearer)} ran tests nearer to this scenario's "
+                     f"conditions than any {fuel_phase}-fuel test, with another fuel phase; they are listed after the "
+                     f"{fuel_phase}-fuel investigations. What they show for a {fuel_phase} fuel is an extrapolation.")
     first = next((i for i, r in enumerate(ranked) if r["nearest_test"]), None)
     if first:
         r = ranked[first]

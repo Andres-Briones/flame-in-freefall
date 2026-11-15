@@ -152,12 +152,14 @@ def test_relevance_nearest_test_is_of_the_requested_phase():
             assert row["phase_match"] == (phase in row["fuel_phases"])
 
 
-def test_relevance_says_when_the_top_rows_did_not_test_the_requested_phase():
+def test_relevance_lists_other_phases_after_the_requested_one():
     out = api.relevance({"x_o2": 0.30, "pressure_kpa": 70.3}, fuel_phase="solid")
-    top = out["data"]["ranking"][0]
-    assert top["accession"] == "PSI-69" and not top["phase_match"] and top["nearest_test"] is None
-    assert top["nearest_test_other_phase"]["fuel_phase"] == "liquid"
-    assert any(n.startswith("Phase:") and "PSI-69" in n for n in out["notes"])
+    ranking = out["data"]["ranking"]
+    assert ranking[0]["phase_match"] and ranking[0]["nearest_test"]["fuel_phase"] == "solid"
+    flex = next(r for r in ranking if r["accession"] == "PSI-69")
+    assert not flex["phase_match"] and flex["nearest_test"] is None and flex["score"] == max(r["score"] for r in ranking)
+    assert flex["nearest_test_other_phase"]["fuel_phase"] == "liquid"
+    assert any(n.startswith("Other phases:") and "PSI-69" in n for n in out["notes"])
     closest = out["data"]["closest_same_phase_test"]
     assert closest["fuel_phase"] == "solid" and closest["x_o2_ambient"] < 0.23 and closest["distance_to_scenario"] > 3
     assert closest["accession"] == out["data"]["closest_same_phase"]
@@ -413,11 +415,37 @@ def test_relevance_never_offers_a_smoke_only_test_as_the_closest_fire_test():
     assert same_r["nearest_test"]["fire_test"] is False and "nothing burned" in same_r["nearest_test"]["test_kind"]
     closest = out["data"]["closest_same_phase_test"]
     assert closest["accession"] == "PSI-99" and closest["result"] == {"burn_length_cm": 0.0}
-    assert any(n.startswith("Not fire tests: PSI-101") for n in out["notes"])
+    assert any(n.startswith("Not fire tests: PSI-101") and "below every investigation that burned" in n
+               for n in out["notes"])
     assert any(n.startswith("Result of the closest solid-fuel test (PSI-99") and "no flame spread" in n
                for n in out["notes"])
     bass = next(r for r in out["data"]["ranking"] if r["accession"] == "PSI-26")
     assert bass["nearest_test"]["fire_test"] is True
+
+
+def test_relevance_ranks_the_requested_phase_first_and_tests_that_burned_nothing_last():
+    custom = {"x_o2": 0.34, "pressure_kpa": 57}
+    for scenario in [*api.SCENARIOS, custom]:
+        for phase in api.TRANSFER:
+            ranking = api.relevance(scenario, fuel_phase=phase)["data"]["ranking"]
+            tiers = [(not r["fire_test"], not r["phase_match"]) for r in ranking]
+            assert tiers == sorted(tiers), (scenario, phase)
+            for tier in set(tiers):
+                scores = [r["score"] for r, t in zip(ranking, tiers) if t == tier]
+                assert scores == sorted(scores, reverse=True)
+            assert {r["accession"] for r in ranking if not r["fire_test"]} == set(api.NOT_A_FIRE)
+
+    cabin = api.relevance("iss-cabin", fuel_phase="solid")["data"]["ranking"]
+    same_r = next(r for r in cabin if r["accession"] == "PSI-101")
+    assert same_r["score"] == max(r["score"] for r in cabin)  # the score is unchanged, only the order
+    assert [r["accession"] for r in cabin[:2]] == ["PSI-25", "PSI-26"]
+    for scenario in ("moon-habitat", custom):
+        top = api.relevance(scenario, fuel_phase="solid")["data"]["ranking"][0]
+        assert top["phase_match"] and top["nearest_test"]["fuel_phase"] == "solid", scenario
+
+    detection = api.relevance("iss-cabin", fuel_phase="solid", pillar="detection")
+    assert detection["data"]["ranking"][0]["accession"] == "PSI-101"
+    assert any(n.startswith("Not fire tests:") and "detection question" in n for n in detection["notes"])
 
 
 def test_coverage_labels_smoke_only_tests():
