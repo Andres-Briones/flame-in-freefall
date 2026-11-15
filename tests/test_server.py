@@ -176,6 +176,13 @@ def test_guide_tools_and_openapi_cover_every_function(client):
     assert "http://testserver/api/call/" in text
 
 
+def test_discrepancies_compact_fits_under_the_mcp_result_limit(client):
+    short = client.get("/api/call/discrepancies", params={"compact": "true"}).json()
+    full = client.post("/api/call/discrepancies", json={}).json()
+    assert len(json.dumps(short)) < 40000 and len(json.dumps(full)) > 60000
+    assert len(short["data"]["raw_data_conflicts"]) == len(full["data"]["raw_data_conflicts"])
+
+
 def test_every_guide_example_runs(client):
     for tool in server.TOOLS:
         if tool["name"] == "timeseries":  # needs raw files

@@ -563,7 +563,7 @@ EXAMPLE_VALUES = {"accession": "PSI-25", "accessions": ["PSI-25", "PSI-26"], "sc
                   "x_o2": [0.18, 0.21], "limit": 20, "page": 1, "k": 5, "model": "cfig_normal_self_extinction",
                   "test_id": "22024M1", "compact": True,
                   "file": "PSI-25_Raw Data_GMT2014_045_BASS_S128_TPT1_ProofSheet.pdf"}
-EXAMPLE_OPTIONAL = {"predict": ("compact",), "search_investigations": ("query", "fuel_phase"), "filter_tests": ("accession", "x_o2", "limit"),
+EXAMPLE_OPTIONAL = {"predict": ("compact",), "discrepancies": ("compact",), "search_investigations": ("query", "fuel_phase"), "filter_tests": ("accession", "x_o2", "limit"),
                     "find_evidence": ("k",), "relevance": ("fuel_phase",),
                     "document_text": ("page",)}
 

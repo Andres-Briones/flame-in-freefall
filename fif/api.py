@@ -1177,11 +1177,28 @@ def _paper_disagreements(accession=None):
     return out
 
 
-def discrepancies(accession=None, test_id=None):
+def _compact_discrepancies(data):
+    conflicts = []
+    for c in data["raw_data_conflicts"]:
+        row = {k: c[k] for k in ("id", "accession", "test_id", "column", "action", "flag")}
+        if c["test_id_now"] != c["test_id"]:
+            row["test_id_now"] = c["test_id_now"]
+        conflicts.append({**row, "table_value": c["table_value"], "evidence_value": c["evidence_value"]})
+    return {
+        **data,
+        "raw_data_conflicts": conflicts,
+        "values_changed": [{k: v for k, v in c.items() if k != "flags"} for c in data["values_changed"]],
+        "source_disagreements": [{"accession": d["accession"], "publication": d["publication"],
+                                  "record_path": d["record_path"]} for d in data["source_disagreements"]],
+    }
+
+
+def discrepancies(accession=None, test_id=None, compact=False):
     """Where the PSI experiment tables are wrong or doubtful: disagreements with the raw sensor data (each with
     the table value, the raw value, the evidence and what was done), every value this dataset changed, the meaning
     and count of each flag, digest statements that rest on files PSI lists as removed, and places where a published
-    paper by the investigators disagrees with the PSI data (shown, never applied to the tables)."""
+    paper by the investigators disagrees with the PSI data (shown, never applied to the tables). `compact` lists
+    every entry with its identifying fields only, without the evidence, quotes and claims."""
     acc = _accession(accession) if accession else None
     raw = table("discrepancies")
     tests = table("tests")
@@ -1229,6 +1246,12 @@ def discrepancies(accession=None, test_id=None):
     if raw["evidence_source"].str.contains("test sheet").any():
         notes.append("Entries that cite a test sheet rest, in part or (flag conflicts_with_test_sheet) entirely, on an AI "
                      "model's reading of a hand-filled scanned form, not checked by a human; they never change a value.")
+    if compact:
+        data = _compact_discrepancies(data)
+        notes.append("Compact form: every entry is listed with its identifying fields only (`test_id_now` only where "
+                     "the test id was corrected); the evidence, its source, the row flags, paper quotes and claims are "
+                     "left out. Call discrepancies with `accession` and/or `test_id`, or without `compact`, for the "
+                     "full evidence of an entry.")
     sources = [{"file": "data/corrections/tests_patches.json", "section": acc},
                {"page": "docs/tests-table.md", "section": notes_section("tests-table", r"^Flags$")},
                {"page": "docs/formats.md", "section": notes_section("formats", r"^Raw data that contradict")}]

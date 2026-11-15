@@ -94,6 +94,23 @@ def test_discrepancies_lists_raw_conflicts_changed_values_and_removed_files():
     assert {v["column"] for v in one["values_changed"]} == {"test_id", "date"}
 
 
+def test_discrepancies_compact_lists_every_entry_in_a_short_result():
+    full, short = api.discrepancies(), api.discrepancies(compact=True)
+    assert full == api.discrepancies(compact=False) and "evidence" in full["data"]["raw_data_conflicts"][0]
+    for section in ("raw_data_conflicts", "values_changed", "removed_sources", "source_disagreements"):
+        assert len(short["data"][section]) == len(full["data"][section]) > 0, section
+    assert [c["id"] for c in short["data"]["raw_data_conflicts"]] == [c["id"] for c in full["data"]["raw_data_conflicts"]]
+    for key in ("flags", "rows_flagged", "rows_total", "actions"):
+        assert short["data"][key] == full["data"][key]
+    assert not any("evidence" in c for c in short["data"]["raw_data_conflicts"])
+    assert not any("quote" in d or "claim" in d for d in short["data"]["source_disagreements"])
+    assert len(json.dumps(short)) < 40000 < len(json.dumps(full))
+    assert any("Compact form" in n for n in short["notes"]) and not any("Compact form" in n for n in full["notes"])
+    one = api.discrepancies("PSI-69", compact=True)["data"]
+    assert one["source_disagreements"] and {d["accession"] for d in one["source_disagreements"]} == {"PSI-69"}
+    assert len(one["raw_data_conflicts"]) == len(api.discrepancies("PSI-69")["data"]["raw_data_conflicts"])
+
+
 
 def test_insights_accession_is_an_exact_match():
     for topic in ("key_messages", "lineage", "gaps"):

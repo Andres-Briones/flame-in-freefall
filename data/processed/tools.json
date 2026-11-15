@@ -543,7 +543,7 @@
  },
  {
   "name": "discrepancies",
-  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, statements resting on files PSI lists as removed, notes on errors in NASA's catalogue records (e.g. Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when showing a test whose row has flags. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
+  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, statements resting on files PSI lists as removed, notes on errors in NASA's catalogue records (e.g. Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when showing a test whose row has flags. The full list is about 90 kB: pass compact=true to list every entry with its identifying fields only, then call again with accession or test_id for the evidence. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -553,6 +553,10 @@
     },
     "test_id": {
      "type": "string"
+    },
+    "compact": {
+     "type": "boolean",
+     "description": "every entry without evidence, quotes and claims (about 31 kB)"
     }
    },
    "required": []

@@ -128,7 +128,10 @@ TOOLS = [
           "Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the "
           "investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied "
           "to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when "
-          "showing a test whose row has flags.", {"accession": ACCESSION, "test_id": {"type": "string"}}),
+          "showing a test whose row has flags. The full list is about 90 kB: pass compact=true to list every entry "
+          "with its identifying fields only, then call again with accession or test_id for the evidence.", {
+              "accession": ACCESSION, "test_id": {"type": "string"},
+              "compact": {"type": "boolean", "description": "every entry without evidence, quotes and claims (about 31 kB)"}}),
     _tool(api.document_text, "Our extracted text of one PSI file, so a scanned PDF without a text layer can be read and "
           "copied. Without page: the pages (locators: p1, p2 for PDFs; sheet, slide or all for other files) that have "
           "text. With page: that page's passages in order (text, locator, transcribed). transcribed=true is an AI "
