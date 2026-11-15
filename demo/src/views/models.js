@@ -73,11 +73,18 @@ function modelPredict(model, inputs, opts) {
         const [low, high] = out.interval;
         out.interval_unclipped = [low, high];
         out.interval_low_unclipped = low;
+        out.prediction_raw = eta;
         out.prediction_below_floor = eta < pi.floor;
-        if (high < pi.floor) {
+        out.prediction_unavailable = null;
+        if (eta < pi.floor) {
+          out.prediction = null;
+          out.prediction_unavailable = `the estimate is below ${pi.floor}, which is impossible`;
+        }
+        if (high < pi.floor || eta < pi.floor) {
           out.interval = null;
           out.interval_clipped = false;
-          out.interval_unavailable = `the whole range is below ${pi.floor}, which is impossible`;
+          out.interval_unavailable = high < pi.floor ? `the whole range is below ${pi.floor}, which is impossible`
+            : `no estimate is given (it is below ${pi.floor}), so no range either`;
         } else {
           out.interval = [Math.max(pi.floor, low), high];
           out.interval_clipped = low < pi.floor;
@@ -88,7 +95,7 @@ function modelPredict(model, inputs, opts) {
       out.interval_coverage = pi.held_out_coverage;
     }
     // predict() leaves a transformed target on its fitted scale; the page shows both.
-    if (m.target_transform === 'log10') {
+    if (m.target_transform === 'log10' && out.prediction != null) {
       out.target_scale = 'log10';
       out.back_transformed = Math.pow(10, eta);
       if (out.interval) out.back_transformed_interval = out.interval.map(v => Math.pow(10, v));
@@ -274,6 +281,9 @@ App.view({
       } else if (m.kind === 'classifier') {
         result = h('div', { class: 'tile' }, h('b', { text: App.pct(r.probability, 0) }),
           h('span', { text: `probability that ${m.target} = 1 (${r.prediction ? 'more likely yes' : 'more likely no'})` }));
+      } else if (r.prediction == null) {
+        result = h('div', { class: 'callout gap' }, h('b', { text: 'No estimate: ' }),
+          `${r.prediction_unavailable || 'the model gives no value here'}. Each input is inside its fitted range, but this combination was not tested; the backend returns the nearest real tests instead.`);
       } else {
         const y = r.back_transformed != null ? r.back_transformed : r.prediction, iv = r.back_transformed_interval || r.interval;
         const cov = r.interval_coverage, lv = cov && cov.by ? Object.entries(cov.by.levels || {}) : [];
@@ -284,8 +294,7 @@ App.view({
           h('span', { text: `${m.target}${iv ? `; range ${App.fmt(iv[0], 3)} to ${App.fmt(iv[1], 3)} ${unit} (target ${nominal} of held-out errors)` : ''}` })),
           cov ? h('p', { class: 'small', text: `Measured on held-out test days the range held ${share(cov)} tests${lv.length ? ' (' + lv.map(([k, o]) => `${k} ${share(o)}`).join(', ') + ')' : ''}; ${nominal} is the target, not the result.${low.length ? ` It is too narrow for ${low.join(' and ')}.` : ''}` }) : null,
           r.interval_clipped ? h('p', { class: 'small', text: `The lower end was cut at 0 (it came out at ${App.fmt(r.interval_low_unclipped, 3)} ${unit}): the quantity cannot be negative.` }) : null,
-          r.interval_unavailable ? h('p', { class: 'small', text: `Range not available: the whole range came out below 0 (${App.fmt(r.interval_unclipped[0], 3)} to ${App.fmt(r.interval_unclipped[1], 3)} ${unit}), which is impossible.` }) : null,
-          r.prediction_below_floor ? h('div', { class: 'callout gap' }, h('b', { text: 'Do not use this value. ' }), 'The estimate itself is below 0, which is impossible: each input is inside its fitted range, but this combination was not tested.') : null);
+          r.interval_unavailable ? h('p', { class: 'small', text: `Range not available: the whole range came out below 0 (${App.fmt(r.interval_unclipped[0], 3)} to ${App.fmt(r.interval_unclipped[1], 3)} ${unit}), which is impossible.` }) : null);
       }
       return App.panel('Try it',
         h('div', { class: 'row' }, ctl),

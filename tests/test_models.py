@@ -252,7 +252,8 @@ def test_predict_never_gives_a_negative_diameter_range_and_says_when_it_cut(from
     lo, hi = out["interval_unclipped"]
     assert lo < 0 < hi and out["interval"] == [0, hi] and out["interval_low_unclipped"] == lo
     assert out["interval_clipped"] is True and out["interval_unavailable"] is None
-    assert out["prediction_below_floor"] == (out["prediction"] < 0)
+    assert out["prediction_below_floor"] is False and out["prediction_unavailable"] is None
+    assert out["prediction"] == out["prediction_raw"] and 0 <= out["prediction"] <= hi
     mid = models.predict(c["id"], **{**middle(c), "x_co2": 0.0, "x_he": 0.0})
     assert mid["prediction_below_floor"] is False
     assert mid["interval_clipped"] is False and mid["interval_low_unclipped"] == mid["interval"][0] > 0
@@ -270,22 +271,41 @@ def test_predict_gives_no_range_when_the_whole_range_is_below_zero(from_build):
     assert out["interval"] is None and out["interval_clipped"] is False
     assert out["interval_unavailable"] == "the whole range is below 0, which is impossible"
     assert out["interval_low_unclipped"] == low < high
-    assert out["prediction_below_floor"] is True and low < out["prediction"] < high
+    assert out["prediction"] is None and out["prediction_below_floor"] is True and low < out["prediction_raw"] < high
     notes = api.predict(model_id="flex_methanol_extinction_diameter", **TEAM_CASE)["notes"]
     assert not any("was cut at 0" in n for n in notes)
-    assert any("No range is available" in n for n in notes)
+    assert any("No estimate is given" in n for n in notes)
 
 
-def test_predict_keeps_a_range_whose_upper_end_is_exactly_zero(from_build, monkeypatch):
-    y = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)["prediction"]
+NEGATIVE_CASE = {**TEAM_CASE, "d0_mm": 1.7}  # estimate about -0.68 mm, range [-1.32, 0.05] before any cut
+
+
+def test_predict_withholds_an_estimate_below_zero(from_build):
+    out = models.predict("flex_methanol_extinction_diameter", **NEGATIVE_CASE)
+    low, high = out["interval_unclipped"]
+    assert out["in_domain"] and out["prediction_raw"] < 0 < high
+    assert out["prediction"] is None and out["prediction_below_floor"] is True
+    assert out["prediction_unavailable"] == "the estimate is below 0, which is impossible"
+    assert out["interval"] is None and out["interval_clipped"] is False
+    assert out["interval_unavailable"] == "no estimate is given (it is below 0), so no range either"
+    assert low < out["prediction_raw"] < high and out["interval_low_unclipped"] == low
+    notes = api.predict(model_id="flex_methanol_extinction_diameter", **NEGATIVE_CASE)["notes"]
+    assert any("No estimate is given" in n and "nearest_tests" in n for n in notes)
+    assert not any("Do not use this value" in n or "No range is available" in n or "targets 90%" in n for n in notes)
+
+
+def test_predict_withholds_the_range_even_when_its_upper_end_is_exactly_zero(from_build, monkeypatch):
+    y = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)["prediction_raw"]
     doc = copy.deepcopy(models.cards())
     doc["flex_methanol_extinction_diameter"]["prediction_interval"]["residual_quantiles"] = [-1.0, -y]
     monkeypatch.setattr(models, "cards", lambda: doc)
     out = models.predict("flex_methanol_extinction_diameter", **TEAM_CASE)
-    assert out["interval"] == [0, 0] and out["interval_clipped"] is True and out["interval_unavailable"] is None
+    assert out["interval_unclipped"][1] == 0 and out["prediction"] is None
+    assert out["interval"] is None and out["interval_unavailable"].startswith("no estimate is given")
 
 
 def test_every_returned_range_is_ordered_and_above_the_floor(from_build):
+    withheld = {}
     for c in from_build["models"]:
         if c["kind"] != "regressor":
             continue
@@ -297,13 +317,18 @@ def test_every_returned_range_is_ordered_and_above_the_floor(from_build):
             if sum(x.get(n, 0) for n in (c.get("constraints") or {}).get("sum_at_most_one", [])) > 1:
                 continue
             out = models.predict(c["id"], **x)
+            if out.get("prediction_below_floor"):
+                withheld[c["id"]] = withheld.get(c["id"], 0) + 1
+                assert out["prediction"] is None and out["interval"] is None and out["prediction_raw"] < floor
+                assert out["prediction_unavailable"] and out["interval_unavailable"]
+                continue
             if out["prediction"] is None:
                 continue
-            if out["interval"] is None:
-                assert floor is not None and out["interval_unclipped"][1] < floor and out["interval_unavailable"]
-                continue
+            assert floor is None or (out["prediction"] >= floor and out["prediction_unavailable"] is None)
+            assert out["interval"] is not None, (c["id"], x)
             low, high = out["interval"]
-            assert (floor if floor is not None else -np.inf) <= low <= high, (c["id"], x, out["interval"])
+            assert (floor if floor is not None else -np.inf) <= low <= out["prediction"] <= high, (c["id"], x, out)
+    assert set(withheld) == {"flex_methanol_extinction_diameter"}  # 41 of its 752 grid points
 
 
 def test_classifier_headline_carries_brier_next_to_auc(from_build):

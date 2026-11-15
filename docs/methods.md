@@ -172,9 +172,12 @@ $$
   `by.levels`, each with a `verdict`); `interval_clipped` (true when the lower end was cut at 0 because the
   quantity cannot be negative) with `interval_low_unclipped` (the value before the cut) and `interval_unclipped`
   (the whole range before it). When even the upper end is below 0, `interval` is null, `interval_clipped` is
-  false (nothing was cut: there is no range) and `interval_unavailable` says why (null otherwise). `prediction_below_floor` (true when the estimate itself is
-  negative: an untested combination of inputs, returned as computed and not to be used); `interval_method` (one
-  line) and `accession` (the source). The burning-rate range held 81 of 103 n-heptane tests, clearly under 90%:
+  false (nothing was cut: there is no range) and `interval_unavailable` says why (null otherwise). When the
+  estimate itself is negative (an untested combination of inputs) it is withheld: `prediction` and `interval` are
+  null, `prediction_below_floor` is true, `prediction_unavailable` says why (null otherwise) and `prediction_raw`
+  keeps the number as computed, a diagnostic only, never to be shown as a result. A non-null `prediction` is
+  never below 0 and lies inside any non-null `interval`. `interval_method` (one line) and `accession` (the
+  source). The burning-rate range held 81 of 103 n-heptane tests, clearly under 90%:
   say so when showing a heptane range. For the probability models `cv_metric` carries `brier_grouped_pooled`
   and `brier_baseline_grouped_pooled` next to the AUC.
 - Solid-fuel tests cover 13.6-22.7% O2 at about 1 atm only (the lowest that burned is 14.2%). Anything about solids in exploration atmospheres

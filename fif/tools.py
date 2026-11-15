@@ -92,8 +92,9 @@ TOOLS = [
              "outside the fitted domain) and the nearest real tests. For a quantity: prediction and interval [low, high] in "
              "`unit`, interval_nominal (0.9, the target), interval_coverage (n_inside of n on held-out test days, "
              "per fuel under by.levels), interval_clipped and interval_low_unclipped (lower end cut at 0), interval_unclipped, "
-             "interval_unavailable (why interval is null: the whole range is below 0), prediction_below_floor (the estimate "
-             "itself is impossible), "
+             "interval_unavailable (why interval is null), prediction_below_floor (the estimate itself is below 0, so "
+             "prediction and interval are null), prediction_unavailable (why prediction is null), prediction_raw (the "
+             "estimate as computed, a diagnostic only), "
              "interval_method, accession (source). The full list is about 75 kB: pass compact=true "
              "to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
              {"model_id": {"type": "string"}}),

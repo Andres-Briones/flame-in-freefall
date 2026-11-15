@@ -763,7 +763,7 @@ def predict(model_id=None, compact=False, **conditions):
         notes.append(f"Brier score of the probability on held-out days is {m['brier_grouped_pooled']:.3f} (lower is "
                      f"better; always giving the base rate scores {m['brier_baseline_grouped_pooled']:.3f}).")
     cov = out.get("interval_coverage")
-    if cov:
+    if cov and out.get("prediction") is not None:
         levels = (cov.get("by") or {}).get("levels") or {}
         counts = "".join(f"; {k} {c['n_inside']} of {c['n']}" for k, c in levels.items())
         low = [k for k, c in levels.items() if c["verdict"] == "below nominal"]
@@ -774,12 +774,13 @@ def predict(model_id=None, compact=False, **conditions):
                      + (f" It is too narrow for {' and '.join(low)}." if low else ""))
     if out.get("interval_clipped"):
         notes.append("The lower end of `interval` was cut at 0: the quantity cannot be negative.")
-    if out.get("interval_unavailable"):
+    if out.get("prediction_unavailable"):
+        notes.append("No estimate is given (`prediction` and `interval` are null): it came out below 0, which is "
+                     "impossible for this quantity. Each input is inside its fitted range but the combination was not "
+                     "tested; see `nearest_tests` for the closest measured tests.")
+    elif out.get("interval_unavailable"):
         notes.append("No range is available (`interval` is null): the whole range came out below 0 "
                      "(`interval_unclipped`), which is impossible for this quantity.")
-    if out.get("prediction_below_floor"):
-        notes.append("The estimate itself is below 0, which is impossible: each input is inside its fitted range but "
-                     "the combination was not tested. Do not use this value; see `nearest_tests`.")
     if out.get("use") != "predictive":
         notes.append("This model is descriptive only: it summarises the tests and did not hold up in cross-validation.")
     return _result(out, None, [{"page": "docs/models.md", "model": model_id}], notes)

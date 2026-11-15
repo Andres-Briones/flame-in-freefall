@@ -125,8 +125,11 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
     lower end was cut at the value the target cannot go below; `interval_low_unclipped` keeps the value before
     the cut (`interval_unclipped` the whole range before it). When even the upper end is below that value,
     `interval` is None, `interval_clipped` is False (nothing was cut, there is no range) and
-    `interval_unavailable` gives the reason (None otherwise). `prediction_below_floor` is True when the estimate itself is impossible (an untested combination
-    of inputs; it is returned as computed, not hidden). `interval_method` is one line on how the range is made; `accession` is the source investigation.
+    `interval_unavailable` gives the reason (None otherwise). When the estimate itself is below that value (an
+    untested combination of inputs) it is withheld: `prediction` and `interval` are None, `prediction_below_floor` is
+    True, `prediction_unavailable` gives the reason (None otherwise) and `prediction_raw` keeps the number as computed,
+    as a diagnostic only. A returned `prediction` is never below the floor and lies inside any returned `interval`.
+    `interval_method` is one line on how the range is made; `accession` is the source investigation.
     """
     card = cards()[model_id]
     x = _inputs(card, conditions)
@@ -171,11 +174,17 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
             low, high = out["interval"]
             out["interval_unclipped"] = [low, high]
             out["interval_low_unclipped"] = low
+            out["prediction_raw"] = y
             out["prediction_below_floor"] = y < floor
-            if high < floor:
+            out["prediction_unavailable"] = None
+            if y < floor:
+                out["prediction"] = None
+                out["prediction_unavailable"] = f"the estimate is below {floor:g}, which is impossible"
+            if high < floor or y < floor:
                 out["interval"] = None
                 out["interval_clipped"] = False
-                out["interval_unavailable"] = f"the whole range is below {floor:g}, which is impossible"
+                out["interval_unavailable"] = (f"the whole range is below {floor:g}, which is impossible" if high < floor
+                                               else f"no estimate is given (it is below {floor:g}), so no range either")
             else:
                 out["interval"] = [max(floor, low), high]
                 out["interval_clipped"] = low < floor

@@ -1020,7 +1020,9 @@ def range_text(card):
         text += (f" The target cannot be below {fmt(pi['floor'])}, so `predict` cuts the range there and says so "
                  f"(`interval_clipped`): {cov['n_clipped_at_floor']} of the {cov['n']} held-out ranges were cut. "
                  f"When even the upper end is below {fmt(pi['floor'])}, `predict` returns no range (`interval` null, "
-                 f"`interval_clipped` false, the reason in `interval_unavailable`).")
+                 f"`interval_clipped` false, the reason in `interval_unavailable`). When the estimate itself is below "
+                 f"{fmt(pi['floor'])}, `predict` withholds it: `prediction` and `interval` null, the reason in "
+                 f"`prediction_unavailable`, the computed number in `prediction_raw` as a diagnostic only.")
     return text
 
 
