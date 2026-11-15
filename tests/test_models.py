@@ -163,3 +163,106 @@ def test_rows_records_every_exclusion():
     rows = bm.Rows(df, "start").drop(df["a"].isna(), "missing a")
     assert rows.steps == [{"step": "start", "rows": 4}, {"excluded": 1, "why": "missing a"}]
     assert len(rows.df) == 3
+
+
+def toy(n_days=12, per_day=6, seed=0):
+    import numpy as np
+    rng = np.random.default_rng(seed)
+    groups = np.repeat([f"d{i:02d}" for i in range(n_days)], per_day)
+    X = rng.normal(size=(len(groups), 2)) * [1.0, 50.0]
+    return X, groups, rng
+
+
+def test_score_range_resamples_the_estimator_it_is_given(monkeypatch):
+    from sklearn.dummy import DummyRegressor
+    monkeypatch.setattr(bm, "N_BOOT_CV", 20)
+    X, groups, rng = toy()
+    y = 2 * X[:, 0] + 0.1 * rng.normal(size=len(groups))
+    good = bm.metric_interval(bm.primary("regressor"), "regressor", X, y, groups)
+    assert good["ci95"][0] > 0.9
+    mean_only = bm.metric_interval(DummyRegressor(), "regressor", X, y, groups)
+    assert mean_only["ci95"][1] <= 0
+
+
+def test_bootstrap_coefficients_are_per_unit_with_each_resamples_own_scaler(monkeypatch):
+    import numpy as np
+    monkeypatch.setattr(bm, "N_BOOT", 20)
+    X, groups, _ = toy()
+    X[:, 1] *= np.repeat(np.arange(1, 13), 6)  # the SD of a resample depends on which days it drew
+    y = 2 * X[:, 0] - 0.01 * X[:, 1]
+    boot = bm.bootstrap_coefs(bm.primary("regressor"), "regressor", X, y, groups)
+    assert np.allclose(boot, [2, -0.01])
+
+
+def test_coefficient_interval_is_one_interval_on_two_scales(built):
+    for c in built[0]["models"]:
+        for t in c["coefficients"]["terms"]:
+            sd = t["per_sd"] / t["per_unit"]
+            for a, b in zip(t["per_sd_ci95_cluster_bootstrap"], t["per_unit_ci95_cluster_bootstrap"]):
+                assert a == pytest.approx(b * sd, rel=2e-3, abs=1e-9), (c["id"], t["feature"])
+            excludes_zero = t["per_unit_ci95_cluster_bootstrap"][0] > 0 or t["per_unit_ci95_cluster_bootstrap"][1] < 0
+            if t["expected_sign"] != "?":
+                assert ("includes 0" in t["agreement"]) != excludes_zero
+
+
+def test_range_coverage_is_counted_on_days_the_range_never_saw():
+    import numpy as np
+    X, groups, rng = toy(n_days=20, per_day=10)
+    y = X[:, 0] + rng.normal(size=len(groups))
+    y[groups == "d00"] += 100  # one day far off: its own residuals must not widen its own range
+    est = bm.primary("regressor")
+    folds = bm.splits("regressor", X, y, groups)["grouped_by_date"]
+    oof = bm.cross_validate(est, "regressor", X, y, folds)[1]
+    by = ("day", np.where(groups == "d00", "odd", "rest"))
+    cov = bm.range_coverage(est, "regressor", X, y, groups, folds, oof, by=by, floor=y.min())
+    odd, rest = cov["by"]["levels"]["odd"], cov["by"]["levels"]["rest"]
+    assert odd["n_inside"] == 0 and odd["n"] == 10 and odd["verdict"] == "below nominal"
+    assert rest["n"] == 190 and 0.8 < rest["fraction"] <= 1
+    assert cov["n_inside"] == odd["n_inside"] + rest["n_inside"] and cov["n"] == 200
+    assert cov["n_inside"] + cov["n_below"] + cov["n_above"] == cov["n"]
+    assert cov["n_clipped_at_floor"] > 0  # the lowest tests have a range that starts under the lowest value seen
+
+
+def test_regressor_cards_report_measured_coverage_apart_from_the_target(built):
+    for c in built[0]["models"]:
+        if c["kind"] != "regressor":
+            assert "prediction_interval" not in c
+            continue
+        pi = c["prediction_interval"]
+        cov = pi["held_out_coverage"]
+        assert pi["nominal"] == 0.9 and 0 < cov["n_inside"] <= cov["n"] == c["n"]
+    burn = card(built[0], "flex_burning_rate")["prediction_interval"]["held_out_coverage"]
+    levels = burn["by"]["levels"]
+    assert set(levels) == {"methanol", "n-heptane"}
+    assert sum(v["n"] for v in levels.values()) == burn["n"]
+    assert sum(v["n_inside"] for v in levels.values()) == burn["n_inside"]
+    assert levels["n-heptane"]["verdict"] == "below nominal"
+    assert "too narrow for n-heptane" in (built[1] / "models.md").read_text()
+    ext = card(built[0], "flex_methanol_extinction_diameter")["prediction_interval"]
+    assert ext["floor"] == 0 and ext["held_out_coverage"]["n_clipped_at_floor"] > 0
+
+
+def test_predict_never_gives_a_negative_diameter_range_and_says_when_it_cut(from_build):
+    c = card(from_build, "flex_methanol_extinction_diameter")
+    low = {**middle(c), "d0_mm": c["features"][0]["domain"][0], "x_o2_ambient": c["features"][1]["domain"][1],
+           "x_co2": 0.0, "x_he": 0.0}
+    out = models.predict(c["id"], **low)
+    assert out["interval_clipped"] is True and out["interval"][0] == 0 and out["interval_low_unclipped"] < 0
+    assert out["prediction_below_floor"] == (out["prediction"] < 0)
+    mid = models.predict(c["id"], **{**middle(c), "x_co2": 0.0, "x_he": 0.0})
+    assert mid["prediction_below_floor"] is False
+    assert mid["interval_clipped"] is False and mid["interval_low_unclipped"] == mid["interval"][0] > 0
+    assert mid["unit"] == "mm" and mid["interval_nominal"] == 0.9 and mid["interval_method"]
+    assert mid["interval_coverage"] == c["prediction_interval"]["held_out_coverage"]
+
+
+def test_classifier_headline_carries_brier_next_to_auc(from_build):
+    for c in from_build["models"]:
+        m = c["cv_metric"]
+        if c["kind"] == "classifier":
+            assert m["brier_grouped_pooled"] == c["cv"]["grouped_by_date"]["brier"]["pooled"]
+            assert 0 <= m["brier_baseline_grouped_pooled"] <= 1
+        else:
+            assert "brier_grouped_pooled" not in m
+    c = card(from_build, "cfig_inverse_self_extinction")
+    assert "brier_grouped_pooled" in models.predict(c["id"], **middle(c))["cv_metric"]

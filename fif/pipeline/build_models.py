@@ -29,6 +29,8 @@ SEED = 0
 N_FOLDS = 5
 N_BOOT = 300
 N_BOOT_CV = 200
+RANGE_PERCENTILES = (5, 95)
+RANGE_NOMINAL = 0.90
 DOCS = psi.ROOT / "docs" / "models.md"
 N_CARBON = {"ethane": 2, "propane": 3, "butane": 4, "n-butane": 4}
 ISO_FRACTION = {"[.60]/[.40] C12H26/iso-dodecane": 0.40, "[.75]/[.25] C12H26/iso-dodecane": 0.25, "C12H26": 0.0}
@@ -365,9 +367,12 @@ SPECS = [
         "question": "How fast does a free methanol or n-heptane droplet burn (d²-law constant K) in a given "
                     "atmosphere?",
         "target": "burn_rate_k_mm2_s",
+        "target_unit": "mm²/s",
         "target_definition": "average burning-rate constant K (mm²/s) of the d²-law d² = d0² - K t, as tabulated",
         "load": load_flex_burning_rate,
         "sum_at_most_one": ["x_o2_ambient", "x_co2", "x_he"],
+        "target_floor": 0.0,
+        "coverage_by": ("fuel", lambda d: d["fuel"]),
         "features": [
             feature("is_heptane", "1 n-heptane, 0 methanol", "+", "heptane has the larger transfer number B",
                     allowed=[0, 1]),
@@ -414,9 +419,11 @@ SPECS = [
         "kind": "regressor",
         "question": "At what droplet diameter does a burning methanol droplet go out?",
         "target": "ext_diameter_mm",
+        "target_unit": "mm",
         "target_definition": "visible-flame extinction diameter (mm), tests that ended in flame extinction",
         "load": load_flex_methanol_extinction_diameter,
         "sum_at_most_one": ["x_o2_ambient", "x_co2", "x_he"],
+        "target_floor": 0.0,
         "features": [
             feature("d0_mm", "mm", "+", "absorbed product water accumulates to ~30% of the droplet mass, so D_ext "
                     "grows roughly linearly with D0"),
@@ -493,6 +500,7 @@ SPECS = [
         "question": "How long is a microgravity co-flow jet flame at its smoke point, for a given nozzle and "
                     "co-flow speed?",
         "target": "flame_length_mm",
+        "target_unit": "mm",
         "target_definition": "luminous flame length (mm, video) of run-log rows marked as at the smoke point",
         "load": load_spice_smoke_point_length,
         "features": [
@@ -615,9 +623,9 @@ def cross_validate(est, kind, X, y, folds):
     return summary, oof
 
 
-def metric_interval(kind, X, y, groups):
+def metric_interval(est, kind, X, y, groups):
     """Spread of the headline metric when the test days are resampled with replacement and the whole grouped
-    cross-validation is rerun: 2.5th, 50th and 97.5th percentile of the pooled out-of-fold value."""
+    cross-validation of `est` is rerun: 2.5th, 50th and 97.5th percentile of the pooled out-of-fold value."""
     metric = "roc_auc" if kind == "classifier" else "r2"
     rng = np.random.default_rng(SEED)
     labels = np.array(sorted(set(groups)))
@@ -630,11 +638,49 @@ def metric_interval(kind, X, y, groups):
             continue
         folds = GroupKFold(n_splits=min(N_FOLDS, len(set(gb)))).split(Xb, yb, gb)
         try:
-            values.append(cross_validate(primary(kind), kind, Xb, yb, list(folds))[0][metric]["pooled"])
+            values.append(cross_validate(est, kind, Xb, yb, list(folds))[0][metric]["pooled"])
         except ValueError:  # a training fold with a single class
             continue
     lo, mid, hi = np.percentile(values, [2.5, 50, 97.5])
     return {"ci95": [lo, hi], "median": mid, "resamples": N_BOOT_CV}
+
+
+def residual_range(y, oof):
+    return [float(v) for v in np.percentile(y - oof, RANGE_PERCENTILES)]
+
+
+def range_coverage(est, kind, X, y, groups, folds, oof, by=None, floor=None):
+    """How often the prediction range holds a test from a held-out day. The range of each held-out day is rebuilt
+    from the other days only (grouped cross-validation inside the training days), so no test is counted against
+    a range its own residual helped to set. `by`: one level per row, to count the levels separately. `floor`: a
+    value the target cannot go below, in the fitted scale; ranges cut there are counted."""
+    lo, hi = np.zeros(len(y)), np.zeros(len(y))
+    for train, test in folds:
+        inner = GroupKFold(n_splits=min(N_FOLDS, len(set(groups[train])))).split(X[train], y[train], groups[train])
+        with warnings.catch_warnings():  # the fold scores of the inner run are not used
+            warnings.simplefilter("ignore", UserWarning)
+            inner_oof = cross_validate(est, kind, X[train], y[train], list(inner))[1]
+        q = residual_range(y[train], inner_oof)
+        lo[test], hi[test] = oof[test] + q[0], oof[test] + q[1]
+    clipped = lo < floor if floor is not None else np.zeros(len(y), dtype=bool)
+    inside = (y >= np.where(clipped, floor, lo)) & (y <= hi)
+
+    def count(mask):
+        k, n = int(inside[mask].sum()), int(mask.sum())
+        wlo, whi = models.wilson(k, n)
+        verdict = "below nominal" if whi < RANGE_NOMINAL else "above nominal" if wlo > RANGE_NOMINAL else \
+            "consistent with nominal"
+        return {"n_inside": k, "n": n, "fraction": k / n, "wilson95": [wlo, whi], "verdict": verdict,
+                "n_below": int((y < lo)[mask].sum()), "n_above": int((y > hi)[mask].sum())}
+
+    out = {"nominal": RANGE_NOMINAL, **count(np.ones(len(y), dtype=bool)),
+           "method": "nested grouped cross-validation: each held-out day's range is rebuilt from the other days only"}
+    if by is not None:
+        name, levels = by
+        out["by"] = {"name": name, "levels": {str(v): count(levels == v) for v in sorted(set(levels))}}
+    if floor is not None:
+        out["n_clipped_at_floor"] = int(clipped.sum())
+    return out
 
 
 def sensitivity(spec, df, X, y, groups):
@@ -656,7 +702,7 @@ def coefficient_table(spec, est, X, y, groups):
     feats = spec["features"]
     scaler, lin = est[0], est[-1]
     coef = np.ravel(lin.coef_)
-    boot = bootstrap_coefs(spec["kind"], X, y, groups)
+    boot = bootstrap_coefs(est, spec["kind"], X, y, groups)
     rows = []
     for j, f in enumerate(feats):
         lo, hi = np.percentile(boot[:, j], [2.5, 97.5])
@@ -664,8 +710,9 @@ def coefficient_table(spec, est, X, y, groups):
             "feature": label(f),
             "per_sd": coef[j],
             "per_unit": coef[j] / scaler.scale_[j],
-            "per_sd_ci95_cluster_bootstrap": [lo, hi],
-            "per_unit_ci95_cluster_bootstrap": [lo / scaler.scale_[j], hi / scaler.scale_[j]],
+            # one interval on two scales: per unit, and per SD of the feature over all training rows
+            "per_sd_ci95_cluster_bootstrap": [lo * scaler.scale_[j], hi * scaler.scale_[j]],
+            "per_unit_ci95_cluster_bootstrap": [lo, hi],
             "expected_sign": f["expected_sign"],
             "agreement": agreement(f["expected_sign"], coef[j], lo, hi),
         })
@@ -675,7 +722,9 @@ def coefficient_table(spec, est, X, y, groups):
     return {"scale": scale, "intercept_per_unit": intercept, "terms": rows}
 
 
-def bootstrap_coefs(kind, X, y, groups):
+def bootstrap_coefs(est, kind, X, y, groups):
+    """Coefficients per unit of each feature when the test days are resampled with replacement and `est` refitted.
+    Each refit standardises with the SD of its own resample, so each is converted back with its own scaler."""
     rng = np.random.default_rng(SEED)
     labels = np.array(sorted(set(groups)))
     idx = {g: np.flatnonzero(groups == g) for g in labels}
@@ -684,7 +733,8 @@ def bootstrap_coefs(kind, X, y, groups):
         rows = np.concatenate([idx[g] for g in rng.choice(labels, len(labels))])
         if kind == "classifier" and len(set(y[rows])) < 2:
             continue
-        out.append(np.ravel(primary(kind).fit(X[rows], y[rows])[-1].coef_))
+        fitted = clone(est).fit(X[rows], y[rows])
+        out.append(np.ravel(fitted[-1].coef_) / fitted[0].scale_)
     return np.array(out)
 
 
@@ -761,6 +811,8 @@ def fit_model(spec, tests):
     card = {k: spec[k] for k in ("id", "accession", "kind", "question", "target", "target_definition")}
     card["use"] = "descriptive" if spec.get("descriptive") else "predictive"
     card["target_transform"] = spec.get("target_transform")
+    if "target_unit" in spec:
+        card["target_unit"] = spec["target_unit"]
     card["features"] = []
     for j, f in enumerate(feats):
         entry = {**{k: f[k] for k in ("name", "unit", "transform", "expected_sign", "why")},
@@ -781,7 +833,9 @@ def fit_model(spec, tests):
     card["estimator"] = describe_estimator(est)
     card["coefficients"] = coefficient_table(spec, est, X, y, groups)
     card["in_sample"] = fold_metrics(kind, y, predict_any(est, X))
-    card.update(validation(kind, est, X, y, groups))
+    by = spec.get("coverage_by")
+    card.update(validation(kind, est, X, y, groups, floor=spec.get("target_floor"),
+                           by=by and (by[0], np.asarray(by[1](df)))))
     if "sensitivity" in spec:
         card["sensitivity"] = sensitivity(spec, df, X, y, groups)
     card["tree_rules"] = {
@@ -806,7 +860,7 @@ def cfi_reignition_all_pressures(tests):
     return df.assign(y=(df["n_reignitions"] > 0).astype(int))
 
 
-def validation(kind, est, X, y, groups):
+def validation(kind, est, X, y, groups, by=None, floor=None):
     folds = splits(kind, X, y, groups)
     out = {"cv_scheme": {"grouped_by_date": f"GroupKFold({len(folds['grouped_by_date'])}) by test date",
                          "ungrouped": f"{'Stratified' if kind == 'classifier' else ''}KFold({N_FOLDS}, shuffle, "
@@ -822,7 +876,7 @@ def validation(kind, est, X, y, groups):
     out["comparison_cv"] = comp
     metric = "roc_auc" if kind == "classifier" else "r2"
     g = cv["grouped_by_date"][metric]
-    interval = metric_interval(kind, X, y, groups)
+    interval = metric_interval(est, kind, X, y, groups)
     out["cv_metric"] = {"name": metric, "grouped_mean": g["mean"], "grouped_sd": g["sd"], "grouped_pooled": g["pooled"],
                         "ungrouped_mean": cv["ungrouped"][metric]["mean"],
                         "folds_without_metric": sum(v is None for v in g["per_fold"]),
@@ -830,12 +884,21 @@ def validation(kind, est, X, y, groups):
                         "grouped_pooled_median_days_resampled": interval["median"],
                         "single_feature_grouped_mean": comp["grouped_by_date"]["single_best_feature_rule"][metric]["mean"],
                         "single_feature_grouped_pooled": comp["grouped_by_date"]["single_best_feature_rule"][metric]["pooled"]}
+    if kind == "classifier":
+        out["cv_metric"]["brier_grouped_pooled"] = cv["grouped_by_date"]["brier"]["pooled"]
+        out["cv_metric"]["brier_baseline_grouped_pooled"] = comp["grouped_by_date"]["majority_class"]["brier"]["pooled"]
     if kind == "regressor":
-        resid = y - oof_grouped
         out["prediction_interval"] = {
-            "residual_quantiles": [float(np.percentile(resid, 5)), float(np.percentile(resid, 95))],
+            "residual_quantiles": residual_range(y, oof_grouped),
             "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction",
+            "method_plain": "The model is refitted without each group of test days and its error on those days is "
+                            "recorded; the range is the estimate plus the 5th and 95th percentile of those errors.",
+            "nominal": RANGE_NOMINAL,
+            "held_out_coverage": range_coverage(est, kind, X, y, groups, folds["grouped_by_date"], oof_grouped,
+                                                by=by, floor=floor),
         }
+        if floor is not None:
+            out["prediction_interval"]["floor"] = floor
     return out
 
 
@@ -928,6 +991,37 @@ def coef_table(card):
     return "\n".join(lines)
 
 
+def share(c):
+    return f"{c['n_inside']} of {c['n']} ({c['fraction']:.0%})"
+
+
+def range_text(card):
+    pi = card["prediction_interval"]
+    cov = pi["held_out_coverage"]
+    lo, hi = pi["residual_quantiles"]
+    scale = "log10 of the target" if card.get("target_transform") == "log10" else "target units"
+    text = (f"**Prediction range.** `predict` adds the 5th and 95th percentile of the grouped out-of-fold residuals "
+            f"({fmt(lo)} and +{fmt(hi)}, {scale}) to the prediction. {cov['nominal']:.0%} is the target, not a "
+            f"measured coverage. Measured on held-out test days, with each day's range rebuilt from the other days "
+            f"only, the range held {cov['n_inside']} of {cov['n']} tests ({cov['fraction']:.0%}; {cov['n_below']} below "
+            f"it, {cov['n_above']} above)")
+    levels = cov.get("by", {}).get("levels", {})
+    if levels:
+        text += ": " + ", ".join(f"{k} {share(c)}" for k, c in levels.items())
+    text += "."
+    for who, c in [("", cov)] + [(f" for {k}", c) for k, c in levels.items()]:
+        if c["verdict"] == "below nominal":
+            text += (f" That is clearly below {cov['nominal']:.0%}{who} (Wilson 95% interval of the share "
+                     f"{fmt(c['wilson95'][0], 2)}-{fmt(c['wilson95'][1], 2)}, tests counted as independent): the range "
+                     f"is too narrow{who}, and about {round((1 - c['fraction']) * 10)} in 10 such tests fall outside it.")
+        elif c["verdict"] == "above nominal":
+            text += f" It is wider than needed{who} (share above {cov['nominal']:.0%})."
+    if "floor" in pi:
+        text += (f" The target cannot be below {fmt(pi['floor'])}, so `predict` cuts the range there and says so "
+                 f"(`interval_clipped`): {cov['n_clipped_at_floor']} of the {cov['n']} held-out ranges were cut.")
+    return text
+
+
 def describe_table(card):
     rows = card["descriptive_table"]
     key = next(k for k in rows[0] if k not in ("n", "positives", "fraction", "wilson95"))
@@ -983,7 +1077,13 @@ def section(card, spec):
         spread += (f" {m['folds_without_metric']} of the {len(card['cv']['grouped_by_date'][m['name']]['per_fold'])} "
                    f"held-out folds contain a single outcome class, where {m['name']} is undefined; the fold mean is "
                    "over the remaining folds, so the pooled value is the safer number.")
+    if "brier_grouped_pooled" in m:
+        spread += (f" Brier score of the probabilities on held-out days (pooled, lower is better): "
+                   f"{fmt(m['brier_grouped_pooled'])}, against {fmt(m['brier_baseline_grouped_pooled'])} for always "
+                   "giving the training days' base rate.")
     parts.append(spread)
+    if "prediction_interval" in card:
+        parts.append(range_text(card))
     if card.get("target_transform") == "log10":
         parts.append(f"Errors (MAE, residuals) of this model are in log10 of the target: an MAE of "
                      f"{fmt(card['cv']['grouped_by_date']['mae']['mean'], 2)} is a factor of "
@@ -1029,8 +1129,17 @@ Method, common to all models:
   headline number. With 11-12 test days the ranges of the CFI-G classifiers are wide: quote them, not the
   point value. A held-out fold with a single outcome class has no AUC and is left out of the fold mean (counted
   on each card).
-- Coefficient intervals: cluster bootstrap by test date (300 resamples). "Agrees" means the sign matches
-  the physics expectation and the interval excludes 0.
+- Coefficient intervals: cluster bootstrap by test date (300 resamples). Each refit is converted to per-unit
+  coefficients with the scaler of its own resample; the per-SD interval is that same interval multiplied by the
+  feature's SD over all training rows, so both columns and the verdict describe one interval. "Agrees" means the
+  sign matches the physics expectation and the interval excludes 0.
+- Prediction range (regressors): the 5th and 95th percentile of the grouped out-of-fold residuals, added to the
+  prediction. 90% is its target. The coverage actually reached is measured by nested grouped cross-validation
+  (the range of a held-out day is rebuilt from the other days only) and given on each card as counts; a share is
+  called below or above 90% when its Wilson 95% interval excludes 0.90. A range is cut at 0 where the quantity
+  cannot be negative, and the cuts are counted.
+- Probabilities (classifiers): the Brier score on held-out days is given next to the AUC, with the Brier score of
+  always giving the base rate for comparison. AUC ranks; Brier also penalises miscalibrated probabilities.
 - Outcome-derived columns (burn time, burner temperature, extinction diameter for a mode, etc.) are never
   features. Rows flagged on a field the model uses are excluded and counted under *Training rows*.
 - `predict` returns `prediction = None` outside the per-feature training range, and inside a range a card

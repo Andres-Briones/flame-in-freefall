@@ -759,6 +759,24 @@ def predict(model_id=None, compact=False, **conditions):
         lo, hi = m["grouped_pooled_ci95_days_resampled"]
         notes.append(f"Held-out skill ({m['name']}) is {m['grouped_pooled']:.2f}, but between {lo:.2f} and {hi:.2f} "
                      "when the test days are resampled: treat the value as indicative.")
+    if out.get("prediction") is not None and m.get("brier_grouped_pooled") is not None:
+        notes.append(f"Brier score of the probability on held-out days is {m['brier_grouped_pooled']:.3f} (lower is "
+                     f"better; always giving the base rate scores {m['brier_baseline_grouped_pooled']:.3f}).")
+    cov = out.get("interval_coverage")
+    if cov:
+        levels = (cov.get("by") or {}).get("levels") or {}
+        counts = "".join(f"; {k} {c['n_inside']} of {c['n']}" for k, c in levels.items())
+        low = [k for k, c in levels.items() if c["verdict"] == "below nominal"]
+        if cov["verdict"] == "below nominal":
+            low.insert(0, "these tests")
+        notes.append(f"`interval` targets {cov['nominal']:.0%} coverage. Measured on held-out test days it held "
+                     f"{cov['n_inside']} of {cov['n']} tests{counts}."
+                     + (f" It is too narrow for {' and '.join(low)}." if low else ""))
+    if out.get("interval_clipped"):
+        notes.append("The lower end of `interval` was cut at 0: the quantity cannot be negative.")
+    if out.get("prediction_below_floor"):
+        notes.append("The estimate itself is below 0, which is impossible: each input is inside its fitted range but "
+                     "the combination was not tested. Do not use this value; see `nearest_tests`.")
     if out.get("use") != "predictive":
         notes.append("This model is descriptive only: it summarises the tests and did not hold up in cross-validation.")
     return _result(out, None, [{"page": "docs/models.md", "model": model_id}], notes)

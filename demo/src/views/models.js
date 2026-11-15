@@ -66,8 +66,18 @@ function modelPredict(model, inputs, opts) {
     out.prediction = p >= 0.5;
   } else {
     out.prediction = eta;
-    const q = ((m.prediction_interval || {}).residual_quantiles) || null;
-    if (Array.isArray(q) && q.length === 2) out.interval = [eta + q[0], eta + q[1]];
+    const pi = m.prediction_interval || {}, q = pi.residual_quantiles || null;
+    if (Array.isArray(q) && q.length === 2) {
+      out.interval = [eta + q[0], eta + q[1]];
+      if (typeof pi.floor === 'number') {
+        out.interval_clipped = out.interval[0] < pi.floor;
+        out.interval_low_unclipped = out.interval[0];
+        out.interval[0] = Math.max(pi.floor, out.interval[0]);
+        out.prediction_below_floor = eta < pi.floor;
+      }
+      out.interval_nominal = pi.nominal;
+      out.interval_coverage = pi.held_out_coverage;
+    }
     // predict() leaves a transformed target on its fitted scale; the page shows both.
     if (m.target_transform === 'log10') {
       out.target_scale = 'log10';
@@ -144,7 +154,8 @@ App.view({
         { key: 'label', label: 'Model', sortable: false, fmt: (v, r) => r.mine ? h('b', { text: v }) : v },
         { key: 'g', label: 'Held-out days, mean ± SD', num: true, sortable: false, fmt: (v, r) => r.mine ? h('b', { text: pm(v, 3) }) : pm(v, 3) },
         { key: 'gp', label: 'pooled', num: true, sortable: false, fmt: (v, r) => App.fmt((r.g || {}).pooled, 3) },
-        { key: 'u', label: 'Shuffled, mean', num: true, sortable: false, fmt: v => App.fmt((v || {}).mean, 3) } ] })));
+        { key: 'u', label: 'Shuffled, mean', num: true, sortable: false, fmt: v => App.fmt((v || {}).mean, 3) } ] }),
+      typeof (m.cv_metric || {}).brier_grouped_pooled === 'number' ? h('p', { class: 'small', text: `Brier score of the probabilities on held-out days (pooled, lower is better): ${App.fmt(m.cv_metric.brier_grouped_pooled, 3)}, against ${App.fmt(m.cv_metric.brier_baseline_grouped_pooled, 3)} for always giving the base rate. AUC only ranks the tests; Brier also penalises probabilities that are off.` }) : null));
 
     // Features and coefficients
     const termFor = f => terms.find(t => t.feature === (f.transform ? `${f.transform}(${f.name})` : f.name));
@@ -256,8 +267,15 @@ App.view({
           h('span', { text: `probability that ${m.target} = 1 (${r.prediction ? 'more likely yes' : 'more likely no'})` }));
       } else {
         const y = r.back_transformed != null ? r.back_transformed : r.prediction, iv = r.back_transformed_interval || r.interval;
-        result = h('div', { class: 'tile' }, h('b', { text: `${App.fmt(y, 3)} ${unit}` }),
-          h('span', { text: `${m.target}${iv ? `; 90% of held-out errors give ${App.fmt(iv[0], 3)} to ${App.fmt(iv[1], 3)} ${unit}` : ''}` }));
+        const cov = r.interval_coverage, lv = cov && cov.by ? Object.entries(cov.by.levels || {}) : [];
+        const share = o => `${o.n_inside} of ${o.n}`, nominal = cov ? App.pct(cov.nominal, 0) : '90%';
+        const low = lv.filter(([, o]) => o.verdict === 'below nominal').map(([k]) => k);
+        if (cov && cov.verdict === 'below nominal') low.unshift('these tests');
+        result = h('div', {}, h('div', { class: 'tile' }, h('b', { text: `${App.fmt(y, 3)} ${unit}` }),
+          h('span', { text: `${m.target}${iv ? `; range ${App.fmt(iv[0], 3)} to ${App.fmt(iv[1], 3)} ${unit} (target ${nominal} of held-out errors)` : ''}` })),
+          cov ? h('p', { class: 'small', text: `Measured on held-out test days the range held ${share(cov)} tests${lv.length ? ' (' + lv.map(([k, o]) => `${k} ${share(o)}`).join(', ') + ')' : ''}; ${nominal} is the target, not the result.${low.length ? ` It is too narrow for ${low.join(' and ')}.` : ''}` }) : null,
+          r.interval_clipped ? h('p', { class: 'small', text: `The lower end was cut at 0 (it came out at ${App.fmt(r.interval_low_unclipped, 3)} ${unit}): the quantity cannot be negative.` }) : null,
+          r.prediction_below_floor ? h('div', { class: 'callout gap' }, h('b', { text: 'Do not use this value. ' }), 'The estimate itself is below 0, which is impossible: each input is inside its fitted range, but this combination was not tested.') : null);
       }
       return App.panel('Try it',
         h('div', { class: 'row' }, ctl),

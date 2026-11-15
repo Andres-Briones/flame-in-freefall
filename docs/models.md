@@ -21,8 +21,17 @@ Method, common to all models:
   headline number. With 11-12 test days the ranges of the CFI-G classifiers are wide: quote them, not the
   point value. A held-out fold with a single outcome class has no AUC and is left out of the fold mean (counted
   on each card).
-- Coefficient intervals: cluster bootstrap by test date (300 resamples). "Agrees" means the sign matches
-  the physics expectation and the interval excludes 0.
+- Coefficient intervals: cluster bootstrap by test date (300 resamples). Each refit is converted to per-unit
+  coefficients with the scaler of its own resample; the per-SD interval is that same interval multiplied by the
+  feature's SD over all training rows, so both columns and the verdict describe one interval. "Agrees" means the
+  sign matches the physics expectation and the interval excludes 0.
+- Prediction range (regressors): the 5th and 95th percentile of the grouped out-of-fold residuals, added to the
+  prediction. 90% is its target. The coverage actually reached is measured by nested grouped cross-validation
+  (the range of a held-out day is rebuilt from the other days only) and given on each card as counts; a share is
+  called below or above 90% when its Wilson 95% interval excludes 0.90. A range is cut at 0 where the quantity
+  cannot be negative, and the cuts are counted.
+- Probabilities (classifiers): the Brier score on held-out days is given next to the AUC, with the Brier score of
+  always giving the base rate for comparison. AUC ranks; Brier also penalises miscalibrated probabilities.
 - Outcome-derived columns (burn time, burner temperature, extinction diameter for a mode, etc.) are never
   features. Rows flagged on a field the model uses are excluded and counted under *Training rows*.
 - `predict` returns `prediction = None` outside the per-feature training range, and inside a range a card
@@ -78,17 +87,17 @@ $$
 | decision_tree_depth3 | 0.739 ± 0.181 (pooled 0.719) | 0.144 ± 0.0769 (pooled 0.146) | 0.766 ± 0.16 (pooled 0.743) | 0.845 ± 0.0828 (pooled 0.844) | 0.12 ± 0.042 (pooled 0.12) | 0.728 ± 0.0901 (pooled 0.727) |
 | gradient_boosting | 0.82 ± 0.104 (pooled 0.769) | 0.16 ± 0.0865 (pooled 0.164) | 0.718 ± 0.167 (pooled 0.689) | 0.892 ± 0.105 (pooled 0.885) | 0.106 ± 0.0464 (pooled 0.106) | 0.772 ± 0.116 (pooled 0.778) |
 
-**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.47 and 0.87 (95%, median 0.74). The single best feature alone reaches 0.6 (pooled 0.55).
+**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.47 and 0.87 (95%, median 0.74). The single best feature alone reaches 0.6 (pooled 0.55). Brier score of the probabilities on held-out days (pooled, lower is better): 0.137, against 0.181 for always giving the training days' base rate.
 
 Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 9.96.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_ambient` | -1.97 | [-2.6, -1.05] | -24.5 | [-32.5, -13.1] | - | agrees |
-| `log10(pressure_kpa)` | 0.0185 | [-0.644, 0.617] | 0.0848 | [-2.96, 2.83] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_flow_mg_s)` | 1.34 | [0.685, 2.14] | 5.54 | [2.83, 8.82] | + | agrees |
-| `fuel_fraction` | -0.278 | [-0.787, 0.146] | -0.985 | [-2.79, 0.516] | ? | no prior expectation |
-| `n_carbon` | 0.0289 | [-1.19, 0.616] | 0.0348 | [-1.43, 0.742] | + | agrees in sign; CI includes 0 |
+| `x_o2_ambient` | -1.97 | [-2.54, -1.29] | -24.5 | [-31.7, -16.1] | - | agrees |
+| `log10(pressure_kpa)` | 0.0185 | [-0.683, 0.624] | 0.0848 | [-3.13, 2.86] | + | agrees in sign; CI includes 0 |
+| `log10(fuel_flow_mg_s)` | 1.34 | [0.635, 2.57] | 5.54 | [2.62, 10.6] | + | agrees |
+| `fuel_fraction` | -0.278 | [-1.38, 0.155] | -0.985 | [-4.87, 0.549] | ? | no prior expectation |
+| `n_carbon` | 0.0289 | [-1.48, 0.64] | 0.0348 | [-1.78, 0.77] | + | agrees in sign; CI includes 0 |
 
 **Does it match the physics?** Partly. Ambient O2 (-) and fuel flow (+, larger flame, more radiative loss) agree, with intervals excluding 0; these two carry the model. Pressure and carbon number are indistinguishable from 0: within these tests, radiative self-extinction does not measurably depend on pressure once O2 and flow are fixed. The depth-3 tree and gradient boosting do no better on held-out days, so the linear form leaves little on the table.
 
@@ -156,16 +165,16 @@ $$
 | decision_tree_depth3 | 0.652 ± 0.104 (pooled 0.635) | 0.297 ± 0.11 (pooled 0.302) | 0.586 ± 0.157 (pooled 0.58) | 0.868 ± 0.0559 (pooled 0.84) | 0.161 ± 0.0434 (pooled 0.161) | 0.709 ± 0.0736 (pooled 0.709) |
 | gradient_boosting | 0.701 ± 0.194 (pooled 0.785) | 0.209 ± 0.0867 (pooled 0.205) | 0.677 ± 0.15 (pooled 0.715) | 0.902 ± 0.0553 (pooled 0.883) | 0.135 ± 0.0419 (pooled 0.134) | 0.787 ± 0.0692 (pooled 0.788) |
 
-**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.57 and 0.95 (95%, median 0.83). The single best feature alone reaches 0.56 (pooled 0.71). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number.
+**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.57 and 0.95 (95%, median 0.83). The single best feature alone reaches 0.56 (pooled 0.71). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number. Brier score of the probabilities on held-out days (pooled, lower is better): 0.141, against 0.308 for always giving the training days' base rate.
 
 Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -14.3.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `log10(pressure_kpa)` | 1.95 | [0.919, 2.77] | 6.73 | [3.17, 9.58] | + | agrees |
-| `x_o2_burner` | 0.875 | [0.478, 1.37] | 3.34 | [1.82, 5.21] | - | CONTRADICTS (CI excludes 0) |
-| `log10(o2_flow_mg_s)` | -0.488 | [-1.35, 0.421] | -2.05 | [-5.69, 1.77] | + | opposite sign; CI includes 0 |
-| `n_carbon` | -0.224 | [-0.765, 0.66] | -0.266 | [-0.909, 0.784] | + | opposite sign; CI includes 0 |
+| `log10(pressure_kpa)` | 1.95 | [1.1, 2.77] | 6.73 | [3.81, 9.58] | + | agrees |
+| `x_o2_burner` | 0.875 | [0.494, 1.39] | 3.34 | [1.89, 5.3] | - | CONTRADICTS (CI excludes 0) |
+| `log10(o2_flow_mg_s)` | -0.488 | [-1.34, 0.427] | -2.05 | [-5.62, 1.8] | + | opposite sign; CI includes 0 |
+| `n_carbon` | -0.224 | [-0.788, 0.692] | -0.266 | [-0.936, 0.822] | + | opposite sign; CI includes 0 |
 
 **Does it match the physics?** Pressure agrees strongly (+) and is the largest term (a pressure split alone gives a pooled held-out AUC of 0.71 against 0.87 for the full model; gradient boosting does worse on held-out days), matching 0/29 self-extinctions at 0.5-0.6 bar against 58/67 at 2.2-3.3 bar. Burner-stream O2 has the opposite sign to the a-priori expectation (-): richer oxidiser streams self-extinguished more often. This is a property of the test design, not a mechanism: the O2 mass flow was held roughly fixed, so a richer burner stream means a smaller total burner flow (correlation about -0.66 between burner O2 and the log of the estimated total flow). The sign stays positive within each pressure level and with day fixed effects, and it becomes indistinguishable from 0 once total flow is added, so the data cannot separate burner O2 from total flow. O2 flow and carbon number are indistinguishable from 0.
 
@@ -237,17 +246,17 @@ $$
 | decision_tree_depth3 | 0.63 ± 0.139 (pooled 0.508) | 0.235 ± 0.154 (pooled 0.225) | 0.582 ± 0.126 (pooled 0.481) | 0.849 ± 0.0679 (pooled 0.843) | 0.123 ± 0.0191 (pooled 0.123) | 0.655 ± 0.053 (pooled 0.652) |
 | gradient_boosting | 0.726 ± 0.057 (pooled 0.66) | 0.214 ± 0.151 (pooled 0.203) | 0.643 ± 0.223 (pooled 0.549) | 0.917 ± 0.0528 (pooled 0.917) | 0.101 ± 0.027 (pooled 0.101) | 0.745 ± 0.081 (pooled 0.747) |
 
-**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.11 and 0.82 (95%, median 0.46). The single best feature alone reaches 0.47 (pooled 0.3). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number.
+**How sure is the headline number?** Resampling the 11 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.11 and 0.82 (95%, median 0.46). The single best feature alone reaches 0.47 (pooled 0.3). 1 of the 5 held-out folds contain a single outcome class, where roc_auc is undefined; the fold mean is over the remaining folds, so the pooled value is the safer number. Brier score of the probabilities on held-out days (pooled, lower is better): 0.207, against 0.205 for always giving the training days' base rate.
 
 Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 0.662.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_ambient` | 0.587 | [0.163, 1.37] | 7.1 | [1.98, 16.6] | + | agrees |
-| `log10(pressure_kpa)` | 0.223 | [-0.292, 0.626] | 1.05 | [-1.38, 2.96] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_flow_mg_s)` | 0.369 | [-0.431, 1.29] | 1.38 | [-1.61, 4.84] | + | agrees in sign; CI includes 0 |
-| `log10(fuel_fraction)` | 0.593 | [-1.1, 1.42] | 1.24 | [-2.31, 2.98] | + | agrees in sign; CI includes 0 |
-| `n_carbon` | -0.71 | [-1.7, 0.0474] | -0.891 | [-2.14, 0.0595] | ? | no prior expectation |
+| `x_o2_ambient` | 0.587 | [0.16, 1.36] | 7.1 | [1.94, 16.5] | + | agrees |
+| `log10(pressure_kpa)` | 0.223 | [-0.37, 0.783] | 1.05 | [-1.74, 3.7] | + | agrees in sign; CI includes 0 |
+| `log10(fuel_flow_mg_s)` | 0.369 | [-0.398, 1.57] | 1.38 | [-1.49, 5.88] | + | agrees in sign; CI includes 0 |
+| `log10(fuel_fraction)` | 0.593 | [-2.31, 1.46] | 1.24 | [-4.83, 3.06] | + | agrees in sign; CI includes 0 |
+| `n_carbon` | -0.71 | [-1.95, 0.0528] | -0.891 | [-2.45, 0.0663] | ? | no prior expectation |
 
 **Does it match the physics?** O2 agrees (+, interval excludes 0); pressure, flow and dilution agree in sign only. The robust statement is the dilution table: 14/38 ignitions below 0.05 fuel fraction against 118/139 above. The fit does not generalise to held-out days (grouped AUC near chance), because the failures cluster on a few days with modified igniter settings.
 
@@ -311,14 +320,14 @@ $$
 | decision_tree_depth3 | 0.716 ± 0.269 (pooled 0.517) | 0.125 ± 0.113 (pooled 0.134) | 0.483 ± 0.0373 (pooled 0.481) | 0.815 ± 0.0959 (pooled 0.798) | 0.0854 ± 0.0244 (pooled 0.0853) | 0.57 ± 0.135 (pooled 0.57) |
 | gradient_boosting | 0.743 ± 0.254 (pooled 0.606) | 0.119 ± 0.113 (pooled 0.129) | 0.483 ± 0.0373 (pooled 0.481) | 0.777 ± 0.149 (pooled 0.745) | 0.09 ± 0.0362 (pooled 0.0898) | 0.632 ± 0.13 (pooled 0.632) |
 
-**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.36 and 0.88 (95%, median 0.75). The single best feature alone reaches 0.77 (pooled 0.72).
+**How sure is the headline number?** Resampling the 12 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.36 and 0.88 (95%, median 0.75). The single best feature alone reaches 0.77 (pooled 0.72). Brier score of the probabilities on held-out days (pooled, lower is better): 0.1, against 0.0961 for always giving the training days' base rate.
 
 Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -2.33.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `x_o2_burner` | 1.19 | [0.544, 2.19] | 4.3 | [1.96, 7.88] | + | agrees |
-| `log10(pressure_kpa)` | 0.353 | [-0.279, 0.989] | 1.19 | [-0.94, 3.33] | + | agrees in sign; CI includes 0 |
+| `x_o2_burner` | 1.19 | [0.565, 2.22] | 4.3 | [2.04, 7.98] | + | agrees |
+| `log10(pressure_kpa)` | 0.353 | [-0.314, 1.06] | 1.19 | [-1.06, 3.58] | + | agrees in sign; CI includes 0 |
 
 **Does it match the physics?** Burner O2 agrees (+) on average, but the table shows the effect is not monotone: the failures concentrate at 0.21 burner O2, while the few lower-O2 tests mostly lit.
 
@@ -398,16 +407,18 @@ $$
 
 **How sure is the headline number?** Resampling the 79 test days and rerunning the grouped cross-validation 200 times puts the pooled r2 between 0.63 and 0.8 (95%, median 0.73). The single best feature alone reaches -0.29 (pooled -0.075).
 
+**Prediction range.** `predict` adds the 5th and 95th percentile of the grouped out-of-fold residuals (-0.0892 and +0.09, target units) to the prediction. 90% is the target, not a measured coverage. Measured on held-out test days, with each day's range rebuilt from the other days only, the range held 225 of 251 tests (90%; 13 below it, 13 above): methanol 144 of 148 (97%), n-heptane 81 of 103 (79%). It is wider than needed for methanol (share above 90%). That is clearly below 90% for n-heptane (Wilson 95% interval of the share 0.7-0.85, tests counted as independent): the range is too narrow for n-heptane, and about 2 in 10 such tests fall outside it. The target cannot be below 0, so `predict` cuts the range there and says so (`interval_clipped`): 0 of the 251 held-out ranges were cut.
+
 Coefficients on the burn_rate_k_mm2_s scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 0.0842.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `is_heptane` | 0.0122 | [0.00201, 0.0238] | 0.0249 | [0.0041, 0.0485] | + | agrees |
-| `x_o2_ambient` | 0.0962 | [0.0781, 0.113] | 2.04 | [1.65, 2.4] | + | agrees |
-| `x_co2` | -0.0204 | [-0.0338, -0.00733] | -0.125 | [-0.208, -0.045] | - | agrees |
-| `x_he` | 0.0619 | [0.0371, 0.0858] | 0.538 | [0.323, 0.746] | + | agrees |
-| `log10(pressure_kpa)` | 0.00927 | [0.000653, 0.0218] | 0.0906 | [0.00638, 0.213] | ? | no prior expectation |
-| `d0_mm` | -0.0436 | [-0.0541, -0.0323] | -0.0646 | [-0.0802, -0.0479] | - | agrees |
+| `is_heptane` | 0.0122 | [0.00205, 0.0243] | 0.0249 | [0.00417, 0.0495] | + | agrees |
+| `x_o2_ambient` | 0.0962 | [0.0858, 0.108] | 2.04 | [1.82, 2.29] | + | agrees |
+| `x_co2` | -0.0204 | [-0.0329, -0.00837] | -0.125 | [-0.202, -0.0514] | - | agrees |
+| `x_he` | 0.0619 | [0.0512, 0.0748] | 0.538 | [0.446, 0.651] | + | agrees |
+| `log10(pressure_kpa)` | 0.00927 | [0.000602, 0.0227] | 0.0906 | [0.00588, 0.222] | ? | no prior expectation |
+| `d0_mm` | -0.0436 | [-0.0533, -0.0336] | -0.0646 | [-0.0791, -0.0499] | - | agrees |
 
 **Sensitivity.** Refitted without the tests that went out early (D_ext/D0 > 0.9), where K is fitted over a short burn (35 rows left out, n = 216; grouped r2 0.736, pooled 0.758). Coefficients per unit:
 
@@ -483,15 +494,17 @@ $$
 
 **How sure is the headline number?** Resampling the 37 test days and rerunning the grouped cross-validation 200 times puts the pooled r2 between 0.13 and 0.76 (95%, median 0.63). The single best feature alone reaches 0.35 (pooled 0.36).
 
+**Prediction range.** `predict` adds the 5th and 95th percentile of the grouped out-of-fold residuals (-0.644 and +0.731, target units) to the prediction. 90% is the target, not a measured coverage. Measured on held-out test days, with each day's range rebuilt from the other days only, the range held 87 of 100 tests (87%; 6 below it, 7 above). The target cannot be below 0, so `predict` cuts the range there and says so (`interval_clipped`): 5 of the 100 held-out ranges were cut.
+
 Coefficients on the ext_diameter_mm scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 1.68.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `d0_mm` | 0.532 | [0.399, 0.654] | 0.824 | [0.618, 1.01] | + | agrees |
-| `x_o2_ambient` | -0.361 | [-0.449, -0.232] | -9.99 | [-12.4, -6.43] | - | agrees |
-| `x_co2` | 0.245 | [0.081, 0.354] | 1.41 | [0.465, 2.03] | ? | no prior expectation |
-| `x_he` | 0.193 | [0.0732, 0.3] | 1.47 | [0.554, 2.27] | ? | no prior expectation |
-| `log10(pressure_kpa)` | -0.0338 | [-0.146, 0.101] | -0.382 | [-1.65, 1.14] | ? | no prior expectation |
+| `d0_mm` | 0.532 | [0.418, 0.658] | 0.824 | [0.648, 1.02] | + | agrees |
+| `x_o2_ambient` | -0.361 | [-0.49, -0.224] | -9.99 | [-13.6, -6.19] | - | agrees |
+| `x_co2` | 0.245 | [0.0961, 0.347] | 1.41 | [0.552, 1.99] | ? | no prior expectation |
+| `x_he` | 0.193 | [0.0897, 0.318] | 1.47 | [0.679, 2.41] | ? | no prior expectation |
+| `log10(pressure_kpa)` | -0.0338 | [-0.178, 0.113] | -0.382 | [-2.01, 1.27] | ? | no prior expectation |
 
 **Does it match the physics?** Yes. D_ext grows with D0 (0.82 mm per mm, close to the linear water-absorption scaling) and with lower O2. CO2 and helium both enlarge D_ext; that is consistent with the Damköhler picture (CO2 lowers T_f and slows chemistry; helium's higher diffusivity shortens the residence time d_f²/α), though the team describes D_ext as nearly independent of diluent. Gradient boosting is only slightly better (R² 0.74 vs 0.70).
 
@@ -554,17 +567,17 @@ $$
 | decision_tree_depth3 | 0.285 ± 0.297 (pooled 0.402) | 0.38 ± 0.18 (pooled 0.376) | 0.409 ± 0.143 (pooled 0.433) | 0.462 ± 0.151 (pooled 0.486) | 0.318 ± 0.0844 (pooled 0.318) | 0.456 ± 0.139 (pooled 0.449) |
 | gradient_boosting | 0.392 ± 0.303 (pooled 0.409) | 0.414 ± 0.145 (pooled 0.411) | 0.388 ± 0.178 (pooled 0.388) | 0.552 ± 0.118 (pooled 0.578) | 0.298 ± 0.062 (pooled 0.297) | 0.6 ± 0.101 (pooled 0.597) |
 
-**How sure is the headline number?** Resampling the 18 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.12 and 0.83 (95%, median 0.46). The single best feature alone reaches 0.29 (pooled 0.29).
+**How sure is the headline number?** Resampling the 18 test days and rerunning the grouped cross-validation 200 times puts the pooled roc_auc between 0.12 and 0.83 (95%, median 0.46). The single best feature alone reaches 0.29 (pooled 0.29). Brier score of the probabilities on held-out days (pooled, lower is better): 0.302, against 0.254 for always giving the training days' base rate.
 
 Coefficients on the log-odds scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: -12.2.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `log10(pressure_kpa)` | 0.845 | [0.125, 2.13] | 6.27 | [0.929, 15.8] | + | agrees |
-| `d0_mm` | -0.323 | [-1.25, 0.484] | -0.575 | [-2.23, 0.861] | + | opposite sign; CI includes 0 |
-| `iso_dodecane_fraction` | -0.311 | [-1.26, 0.677] | -1.75 | [-7.11, 3.82] | - | agrees in sign; CI includes 0 |
-| `x_he` | -0.441 | [-1.63, 0.845] | -2.04 | [-7.57, 3.92] | ? | no prior expectation |
-| `x_o2_ambient` | 0.00893 | [-0.68, 0.587] | 0.565 | [-43, 37.1] | + | agrees in sign; CI includes 0 |
+| `log10(pressure_kpa)` | 0.845 | [0.142, 2.32] | 6.27 | [1.06, 17.2] | + | agrees |
+| `d0_mm` | -0.323 | [-1.25, 0.523] | -0.575 | [-2.22, 0.931] | + | opposite sign; CI includes 0 |
+| `iso_dodecane_fraction` | -0.311 | [-1.29, 0.762] | -1.75 | [-7.26, 4.29] | - | agrees in sign; CI includes 0 |
+| `x_he` | -0.441 | [-1.6, 1.04] | -2.04 | [-7.44, 4.85] | ? | no prior expectation |
+| `x_o2_ambient` | 0.00893 | [-0.977, 0.561] | 0.565 | [-61.8, 35.5] | + | agrees in sign; CI includes 0 |
 
 **Does it match the physics?** Pressure agrees (+) and is the only effect: none of 86 analysed tests at or below 1.25 atm re-ignited, against 36 of 62 at 2-5 atm. Within 2-5 atm nothing else is resolvable; d0 has the opposite sign to expectation but its interval spans 0 widely.
 
@@ -637,14 +650,16 @@ $$
 
 **How sure is the headline number?** Resampling the 6 test days and rerunning the grouped cross-validation 200 times puts the pooled r2 between -4.6 and 0.2 (95%, median -1.7). The single best feature alone reaches -77 (pooled -1.6).
 
+**Prediction range.** `predict` adds the 5th and 95th percentile of the grouped out-of-fold residuals (-0.925 and +0.617, log10 of the target) to the prediction. 90% is the target, not a measured coverage. Measured on held-out test days, with each day's range rebuilt from the other days only, the range held 15 of 23 tests (65%; 5 below it, 3 above). That is clearly below 90% (Wilson 95% interval of the share 0.45-0.81, tests counted as independent): the range is too narrow, and about 3 in 10 such tests fall outside it.
+
 Errors (MAE, residuals) of this model are in log10 of the target: an MAE of 0.37 is a factor of 2.3.
 
 Coefficients on the log10(flame_length_mm) scale (per SD of the feature, and per unit of the feature as transformed). Intercept per unit: 1.03.
 
 | feature | per SD | 95% CI (cluster bootstrap by date) | per unit | 95% CI per unit | expected | verdict |
 |---|---|---|---|---|---|---|
-| `log10(nozzle_mm)` | -0.00934 | [-0.267, 0.156] | -0.0431 | [-1.23, 0.722] | - | agrees in sign; CI includes 0 |
-| `log10(flow_cm_s)` | 0.0668 | [-0.0223, 0.199] | 0.25 | [-0.0837, 0.745] | + | agrees in sign; CI includes 0 |
+| `log10(nozzle_mm)` | -0.00934 | [-0.328, 0.155] | -0.0431 | [-1.51, 0.716] | - | agrees in sign; CI includes 0 |
+| `log10(flow_cm_s)` | 0.0668 | [-0.0208, 0.236] | 0.25 | [-0.0781, 0.886] | + | agrees in sign; CI includes 0 |
 
 **Does it match the physics?** Only in sign. The fitted exponents (nozzle -0.04, co-flow +0.25, both intervals spanning 0) are far from the published L_SP ~ d^-0.91 u_a^0.41, and no fit beats the mean on held-out days. With fuels pooled and 23 rows, the fuel-specific smoke point dominates the scatter. The run-log smoke-point rows do not reproduce the published correlation; the 55-point smoke-point review sheet would be needed.
 

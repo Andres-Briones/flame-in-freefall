@@ -118,6 +118,13 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
     untested) the prediction is None unless `allow_extrapolation`; `outside_domain` always names the offending
     features. Impossible conditions (mole fractions summing over 1, a value an indicator cannot take) raise. `nearest_tests` lists the most
     similar real tests (standardised distance in the model's feature space).
+
+    A regressor's `prediction` and `interval` [low, high] are in `unit`. The interval is built for
+    `interval_nominal` (0.9); `interval_coverage` is what it reached on held-out test days (`n_inside` of `n`,
+    and the same under `by.levels` per fuel where the model spans fuels). `interval_clipped` is True when the
+    lower end was cut at the value the target cannot go below; `interval_low_unclipped` keeps the value before
+    the cut, and `prediction_below_floor` is True when the estimate itself is impossible (an untested combination
+    of inputs; it is returned as computed, not hidden). `interval_method` is one line on how the range is made; `accession` is the source investigation.
     """
     card = cards()[model_id]
     x = _inputs(card, conditions)
@@ -150,9 +157,20 @@ def predict(model_id, *, allow_extrapolation=False, **conditions):
         out["prediction"] = p >= 0.5
     else:
         y = float(b["estimator"].predict(z)[0])
-        lo, hi = card["prediction_interval"]["residual_quantiles"]
+        pi = card["prediction_interval"]
+        lo, hi = pi["residual_quantiles"]
         if card.get("target_transform") == "log10":
             y, lo, hi = 10 ** y, 10 ** (y + lo) - 10 ** y, 10 ** (y + hi) - 10 ** y
         out["prediction"] = y
+        out["unit"] = card.get("target_unit")
         out["interval"] = [y + lo, y + hi]
+        floor = pi.get("floor")
+        if floor is not None:
+            out["interval_clipped"] = out["interval"][0] < floor
+            out["interval_low_unclipped"] = out["interval"][0]
+            out["interval"][0] = max(floor, out["interval"][0])
+            out["prediction_below_floor"] = y < floor
+        out["interval_nominal"] = pi.get("nominal")
+        out["interval_coverage"] = pi.get("held_out_coverage")
+        out["interval_method"] = pi.get("method_plain")
     return out

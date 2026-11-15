@@ -128,12 +128,12 @@
       "per_sd": -1.965,
       "per_unit": -24.51,
       "per_sd_ci95_cluster_bootstrap": [
-       -2.602,
-       -1.052
+       -2.542,
+       -1.286
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -32.47,
-       -13.12
+       -31.72,
+       -16.05
       ],
       "expected_sign": "-",
       "agreement": "agrees"
@@ -143,12 +143,12 @@
       "per_sd": 0.01849,
       "per_unit": 0.08484,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.6442,
-       0.6174
+       -0.6827,
+       0.6235
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -2.956,
-       2.833
+       -3.133,
+       2.861
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -158,12 +158,12 @@
       "per_sd": 1.34,
       "per_unit": 5.535,
       "per_sd_ci95_cluster_bootstrap": [
-       0.685,
-       2.136
+       0.6348,
+       2.566
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       2.829,
-       8.822
+       2.622,
+       10.6
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -173,12 +173,12 @@
       "per_sd": -0.2782,
       "per_unit": -0.9847,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.7873,
-       0.1457
+       -1.376,
+       0.155
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -2.786,
-       0.5158
+       -4.871,
+       0.5487
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -188,12 +188,12 @@
       "per_sd": 0.02893,
       "per_unit": 0.03484,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.19,
-       0.6159
+       -1.479,
+       0.6397
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.433,
-       0.7416
+       -1.781,
+       0.7702
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -610,7 +610,9 @@
     ],
     "grouped_pooled_median_days_resampled": 0.7373,
     "single_feature_grouped_mean": 0.5987,
-    "single_feature_grouped_pooled": 0.5493
+    "single_feature_grouped_pooled": 0.5493,
+    "brier_grouped_pooled": 0.1374,
+    "brier_baseline_grouped_pooled": 0.1811
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- x_o2_ambient <= 0.283\n|   |--- class: 1\n|--- x_o2_ambient >  0.283\n|   |--- class: 1\n",
@@ -773,12 +775,12 @@
       "per_sd": 1.948,
       "per_unit": 6.728,
       "per_sd_ci95_cluster_bootstrap": [
-       0.9189,
-       2.775
+       1.103,
+       2.774
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       3.173,
-       9.583
+       3.81,
+       9.578
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -788,12 +790,12 @@
       "per_sd": 0.8747,
       "per_unit": 3.338,
       "per_sd_ci95_cluster_bootstrap": [
-       0.478,
-       1.366
+       0.4945,
+       1.388
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.824,
-       5.212
+       1.887,
+       5.299
       ],
       "expected_sign": "-",
       "agreement": "CONTRADICTS (CI excludes 0)"
@@ -803,12 +805,12 @@
       "per_sd": -0.4876,
       "per_unit": -2.05,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.353,
-       0.421
+       -1.336,
+       0.4272
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -5.692,
-       1.771
+       -5.619,
+       1.797
       ],
       "expected_sign": "+",
       "agreement": "opposite sign; CI includes 0"
@@ -818,12 +820,12 @@
       "per_sd": -0.224,
       "per_unit": -0.2659,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.7654,
-       0.6602
+       -0.7885,
+       0.6922
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.9089,
-       0.7839
+       -0.9364,
+       0.8219
       ],
       "expected_sign": "+",
       "agreement": "opposite sign; CI includes 0"
@@ -1240,7 +1242,9 @@
     ],
     "grouped_pooled_median_days_resampled": 0.8299,
     "single_feature_grouped_mean": 0.5599,
-    "single_feature_grouped_pooled": 0.7119
+    "single_feature_grouped_pooled": 0.7119,
+    "brier_grouped_pooled": 0.1408,
+    "brier_baseline_grouped_pooled": 0.3084
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(pressure_kpa) <= 2.193\n|   |--- class: 0\n|--- log10(pressure_kpa) >  2.193\n|   |--- class: 1\n",
@@ -1430,12 +1434,12 @@
       "per_sd": 0.5866,
       "per_unit": 7.102,
       "per_sd_ci95_cluster_bootstrap": [
-       0.1632,
-       1.373
+       0.16,
+       1.362
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.976,
-       16.62
+       1.937,
+       16.49
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -1445,12 +1449,12 @@
       "per_sd": 0.223,
       "per_unit": 1.053,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.2918,
-       0.6265
+       -0.3696,
+       0.7833
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.377,
-       2.957
+       -1.744,
+       3.697
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -1460,12 +1464,12 @@
       "per_sd": 0.3687,
       "per_unit": 1.382,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.431,
-       1.292
+       -0.3983,
+       1.568
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.615,
-       4.843
+       -1.493,
+       5.878
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -1475,12 +1479,12 @@
       "per_sd": 0.5925,
       "per_unit": 1.242,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.103,
-       1.422
+       -2.305,
+       1.463
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -2.311,
-       2.979
+       -4.829,
+       3.065
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -1490,12 +1494,12 @@
       "per_sd": -0.7098,
       "per_unit": -0.8907,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.702,
-       0.04743
+       -1.954,
+       0.05281
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -2.136,
-       0.05952
+       -2.452,
+       0.06626
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -1912,7 +1916,9 @@
     ],
     "grouped_pooled_median_days_resampled": 0.4551,
     "single_feature_grouped_mean": 0.4743,
-    "single_feature_grouped_pooled": 0.2996
+    "single_feature_grouped_pooled": 0.2996,
+    "brier_grouped_pooled": 0.207,
+    "brier_baseline_grouped_pooled": 0.2047
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(fuel_fraction) <= -1.537\n|   |--- class: 0\n|--- log10(fuel_fraction) >  -1.537\n|   |--- class: 1\n",
@@ -2032,12 +2038,12 @@
       "per_sd": 1.194,
       "per_unit": 4.297,
       "per_sd_ci95_cluster_bootstrap": [
-       0.5439,
-       2.189
+       0.5654,
+       2.217
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.957,
-       7.877
+       2.035,
+       7.979
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -2047,12 +2053,12 @@
       "per_sd": 0.3529,
       "per_unit": 1.189,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.2791,
-       0.989
+       -0.3144,
+       1.062
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.9401,
-       3.332
+       -1.059,
+       3.578
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -2469,7 +2475,9 @@
     ],
     "grouped_pooled_median_days_resampled": 0.7469,
     "single_feature_grouped_mean": 0.7654,
-    "single_feature_grouped_pooled": 0.7224
+    "single_feature_grouped_pooled": 0.7224,
+    "brier_grouped_pooled": 0.1001,
+    "brier_baseline_grouped_pooled": 0.09613
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- x_o2_burner <= 0.350\n|   |--- class: 1\n|--- x_o2_burner >  0.350\n|   |--- class: 1\n",
@@ -2607,6 +2615,7 @@
    "target_definition": "average burning-rate constant K (mm²/s) of the d²-law d² = d0² - K t, as tabulated",
    "use": "predictive",
    "target_transform": null,
+   "target_unit": "mm²/s",
    "features": [
     {
      "name": "is_heptane",
@@ -2738,12 +2747,12 @@
       "per_sd": 0.01223,
       "per_unit": 0.02487,
       "per_sd_ci95_cluster_bootstrap": [
-       0.002015,
-       0.02384
+       0.002049,
+       0.02432
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.004096,
-       0.04847
+       0.004165,
+       0.04945
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -2753,12 +2762,12 @@
       "per_sd": 0.09623,
       "per_unit": 2.036,
       "per_sd_ci95_cluster_bootstrap": [
-       0.07813,
-       0.1134
+       0.08582,
+       0.1085
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       1.653,
-       2.399
+       1.816,
+       2.295
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -2768,12 +2777,12 @@
       "per_sd": -0.02035,
       "per_unit": -0.1249,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.03383,
-       -0.007329
+       -0.03288,
+       -0.008372
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.2077,
-       -0.04499
+       -0.2018,
+       -0.0514
       ],
       "expected_sign": "-",
       "agreement": "agrees"
@@ -2783,12 +2792,12 @@
       "per_sd": 0.06186,
       "per_unit": 0.5381,
       "per_sd_ci95_cluster_bootstrap": [
-       0.03713,
-       0.08578
+       0.05123,
+       0.07484
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.323,
-       0.7462
+       0.4456,
+       0.651
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -2798,12 +2807,12 @@
       "per_sd": 0.009273,
       "per_unit": 0.09064,
       "per_sd_ci95_cluster_bootstrap": [
-       0.0006531,
-       0.02178
+       0.0006018,
+       0.02274
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.006383,
-       0.2129
+       0.005882,
+       0.2223
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -2813,12 +2822,12 @@
       "per_sd": -0.04358,
       "per_unit": -0.06464,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.05409,
-       -0.0323
+       -0.05332,
+       -0.03363
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.08023,
-       -0.04791
+       -0.07909,
+       -0.04988
       ],
       "expected_sign": "-",
       "agreement": "agrees"
@@ -3121,7 +3130,54 @@
      -0.08916,
      0.08999
     ],
-    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction",
+    "method_plain": "The model is refitted without each group of test days and its error on those days is recorded; the range is the estimate plus the 5th and 95th percentile of those errors.",
+    "nominal": 0.9,
+    "held_out_coverage": {
+     "nominal": 0.9,
+     "n_inside": 225,
+     "n": 251,
+     "fraction": 0.8964,
+     "wilson95": [
+      0.8526,
+      0.9283
+     ],
+     "verdict": "consistent with nominal",
+     "n_below": 13,
+     "n_above": 13,
+     "method": "nested grouped cross-validation: each held-out day's range is rebuilt from the other days only",
+     "by": {
+      "name": "fuel",
+      "levels": {
+       "methanol": {
+        "n_inside": 144,
+        "n": 148,
+        "fraction": 0.973,
+        "wilson95": [
+         0.9326,
+         0.9894
+        ],
+        "verdict": "above nominal",
+        "n_below": 3,
+        "n_above": 1
+       },
+       "n-heptane": {
+        "n_inside": 81,
+        "n": 103,
+        "fraction": 0.7864,
+        "wilson95": [
+         0.6977,
+         0.8545
+        ],
+        "verdict": "below nominal",
+        "n_below": 10,
+        "n_above": 12
+       }
+      }
+     },
+     "n_clipped_at_floor": 0
+    },
+    "floor": 0.0
    },
    "sensitivity": {
     "without": "the tests that went out early (D_ext/D0 > 0.9), where K is fitted over a short burn",
@@ -3165,6 +3221,7 @@
    "target_definition": "visible-flame extinction diameter (mm), tests that ended in flame extinction",
    "use": "predictive",
    "target_transform": null,
+   "target_unit": "mm",
    "features": [
     {
      "name": "d0_mm",
@@ -3289,12 +3346,12 @@
       "per_sd": 0.532,
       "per_unit": 0.8243,
       "per_sd_ci95_cluster_bootstrap": [
-       0.3991,
-       0.6542
+       0.4183,
+       0.6578
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.6184,
-       1.014
+       0.6481,
+       1.019
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -3304,12 +3361,12 @@
       "per_sd": -0.3611,
       "per_unit": -9.986,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.449,
-       -0.2324
+       -0.4902,
+       -0.2237
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -12.42,
-       -6.427
+       -13.56,
+       -6.188
       ],
       "expected_sign": "-",
       "agreement": "agrees"
@@ -3319,12 +3376,12 @@
       "per_sd": 0.2454,
       "per_unit": 1.408,
       "per_sd_ci95_cluster_bootstrap": [
-       0.08096,
-       0.3536
+       0.09612,
+       0.3474
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.4646,
-       2.029
+       0.5516,
+       1.993
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -3334,12 +3391,12 @@
       "per_sd": 0.1934,
       "per_unit": 1.465,
       "per_sd_ci95_cluster_bootstrap": [
-       0.07317,
-       0.3002
+       0.08969,
+       0.3177
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.554,
-       2.273
+       0.6791,
+       2.406
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -3349,12 +3406,12 @@
       "per_sd": -0.03376,
       "per_unit": -0.3816,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.1456,
-       0.101
+       -0.1776,
+       0.1126
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.646,
-       1.141
+       -2.008,
+       1.273
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -3657,7 +3714,25 @@
      -0.6444,
      0.7305
     ],
-    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction",
+    "method_plain": "The model is refitted without each group of test days and its error on those days is recorded; the range is the estimate plus the 5th and 95th percentile of those errors.",
+    "nominal": 0.9,
+    "held_out_coverage": {
+     "nominal": 0.9,
+     "n_inside": 87,
+     "n": 100,
+     "fraction": 0.87,
+     "wilson95": [
+      0.7902,
+      0.9224
+     ],
+     "verdict": "consistent with nominal",
+     "n_below": 6,
+     "n_above": 7,
+     "method": "nested grouped cross-validation: each held-out day's range is rebuilt from the other days only",
+     "n_clipped_at_floor": 5
+    },
+    "floor": 0.0
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- d0_mm <= 3.390\n|   |--- value: [1.575]\n|--- d0_mm >  3.390\n|   |--- value: [2.709]\n",
@@ -3802,12 +3877,12 @@
       "per_sd": 0.8451,
       "per_unit": 6.27,
       "per_sd_ci95_cluster_bootstrap": [
-       0.1252,
-       2.13
+       0.1424,
+       2.324
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       0.9293,
-       15.8
+       1.056,
+       17.24
       ],
       "expected_sign": "+",
       "agreement": "agrees"
@@ -3817,12 +3892,12 @@
       "per_sd": -0.3233,
       "per_unit": -0.5751,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.255,
-       0.484
+       -1.247,
+       0.5233
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -2.232,
-       0.8611
+       -2.219,
+       0.9308
       ],
       "expected_sign": "+",
       "agreement": "opposite sign; CI includes 0"
@@ -3832,12 +3907,12 @@
       "per_sd": -0.3109,
       "per_unit": -1.752,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.262,
-       0.6774
+       -1.29,
+       0.7618
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -7.108,
-       3.816
+       -7.265,
+       4.292
       ],
       "expected_sign": "-",
       "agreement": "agrees in sign; CI includes 0"
@@ -3847,12 +3922,12 @@
       "per_sd": -0.4406,
       "per_unit": -2.045,
       "per_sd_ci95_cluster_bootstrap": [
-       -1.63,
-       0.8452
+       -1.603,
+       1.045
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -7.565,
-       3.923
+       -7.442,
+       4.851
       ],
       "expected_sign": "?",
       "agreement": "no prior expectation"
@@ -3862,12 +3937,12 @@
       "per_sd": 0.008926,
       "per_unit": 0.5648,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.6804,
-       0.5871
+       -0.9772,
+       0.5615
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -43.05,
-       37.15
+       -61.84,
+       35.53
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -4284,7 +4359,9 @@
     ],
     "grouped_pooled_median_days_resampled": 0.4595,
     "single_feature_grouped_mean": 0.2943,
-    "single_feature_grouped_pooled": 0.2895
+    "single_feature_grouped_pooled": 0.2895,
+    "brier_grouped_pooled": 0.3022,
+    "brier_baseline_grouped_pooled": 0.254
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(pressure_kpa) <= 2.594\n|   |--- class: 0\n|--- log10(pressure_kpa) >  2.594\n|   |--- class: 1\n",
@@ -4383,6 +4460,7 @@
    "target_definition": "luminous flame length (mm, video) of run-log rows marked as at the smoke point",
    "use": "descriptive",
    "target_transform": "log10",
+   "target_unit": "mm",
    "features": [
     {
      "name": "nozzle_mm",
@@ -4463,12 +4541,12 @@
       "per_sd": -0.009345,
       "per_unit": -0.04313,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.2668,
-       0.1563
+       -0.328,
+       0.1552
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -1.231,
-       0.7216
+       -1.514,
+       0.7164
       ],
       "expected_sign": "-",
       "agreement": "agrees in sign; CI includes 0"
@@ -4478,12 +4556,12 @@
       "per_sd": 0.0668,
       "per_unit": 0.2502,
       "per_sd_ci95_cluster_bootstrap": [
-       -0.02235,
-       0.1989
+       -0.02084,
+       0.2364
       ],
       "per_unit_ci95_cluster_bootstrap": [
-       -0.08373,
-       0.7451
+       -0.07808,
+       0.8858
       ],
       "expected_sign": "+",
       "agreement": "agrees in sign; CI includes 0"
@@ -4786,7 +4864,23 @@
      -0.9252,
      0.6169
     ],
-    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction"
+    "method": "5th-95th percentile of grouped out-of-fold residuals, added to the prediction",
+    "method_plain": "The model is refitted without each group of test days and its error on those days is recorded; the range is the estimate plus the 5th and 95th percentile of those errors.",
+    "nominal": 0.9,
+    "held_out_coverage": {
+     "nominal": 0.9,
+     "n_inside": 15,
+     "n": 23,
+     "fraction": 0.6522,
+     "wilson95": [
+      0.4489,
+      0.8119
+     ],
+     "verdict": "below nominal",
+     "n_below": 5,
+     "n_above": 3,
+     "method": "nested grouped cross-validation: each held-out day's range is rebuilt from the other days only"
+    }
    },
    "tree_rules": {
     "single_best_feature_rule": "|--- log10(flow_cm_s) <= 1.140\n|   |--- value: [1.158]\n|--- log10(flow_cm_s) >  1.140\n|   |--- value: [1.441]\n",

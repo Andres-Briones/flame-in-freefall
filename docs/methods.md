@@ -164,5 +164,14 @@ $$
   flames at 25-35% O2), only the nearest measured tests; it raises on impossible inputs. Four of the eight
   models are descriptive only (`use` field). Each headline score comes with a range from resampling the test
   days (`cv_metric.grouped_pooled_ci95_days_resampled`); the ranges are wide, show them.
+- A `predict` value for a quantity (the two FLEX models) comes with named fields: `prediction` and `interval`
+  `[low, high]` in `unit`; `interval_nominal` (0.9, the target the range is built for); `interval_coverage`, the
+  share actually reached on held-out test days as counts (`n_inside`, `n`, and the same per fuel under
+  `by.levels`, each with a `verdict`); `interval_clipped` (true when the lower end was cut at 0 because the
+  quantity cannot be negative) with `interval_low_unclipped` (the value before the cut) and `prediction_below_floor` (true when the estimate itself is
+  negative: an untested combination of inputs, returned as computed and not to be used); `interval_method` (one
+  line) and `accession` (the source). The burning-rate range held 81 of 103 n-heptane tests, clearly under 90%:
+  say so when showing a heptane range. For the probability models `cv_metric` carries `brier_grouped_pooled`
+  and `brier_baseline_grouped_pooled` next to the AUC.
 - Solid-fuel tests cover 13.6-22.7% O2 at about 1 atm only (the lowest that burned is 14.2%). Anything about solids in exploration atmospheres
   is an extrapolation from gas-burner and droplet experiments.
