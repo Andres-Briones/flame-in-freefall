@@ -22,7 +22,7 @@ App.view({
         'data/digest/, check_digest', 'investigation'],
       ['7', 'Synthesis across investigations', 'The records are compared to extract what matters for fire safety: measured flammability limits, microgravity against normal gravity, ranked knowledge gaps, and a relevance score of each investigation for a mission scenario.',
         'synthesis, relevance', 'insights'],
-      ['8', 'Small models', 'Four small predictive models are fitted on the tests table (for example: will this flame go out by itself?). Each score is shown with the range it takes when test days are resampled, and the models refuse conditions that were never tested.',
+      ['8', 'Small models', 'Three small predictive models are fitted on the tests table (for example: will this flame go out by itself?). Each score is shown with the range it takes when test days are resampled, and the models refuse conditions that were never tested.',
         'build_models → models', 'models'],
       ['9', '11 functions answer every question', 'All of the above is reached through 11 functions (search, filter tests, find evidence, relevance, predict, data quality and others). Each returns the same four parts: data, a chart hint, the sources, and notes with the caveats.',
         'fif/api.py', 'ask'],

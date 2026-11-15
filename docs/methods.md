@@ -162,16 +162,16 @@ $$
   controller's range; use `*_flow_max_burn_slpm` or `*_flow_mean_burn_slpm`. Standard-array radiometer peaks
   with `*_clipped = True` hit the recorder's ceiling and are lower bounds.
 - Radiometer and PMT channels in volts have no archived calibration. Compare shapes, not magnitudes.
-- `predict` returns no value outside the fitted range or inside a range a card lists as untested (normal CFI-G
-  flames at 25-35% O2), only the nearest measured tests; it raises on impossible inputs. Four of the eight
-  models are descriptive only (`use` field). Each headline score comes with a range from resampling the test
+- `predict` returns no value outside the fitted range or inside a range a card lists as untested, only the
+  nearest measured tests; it raises on impossible inputs. Five of the eight models are descriptive only (`use`
+  field): for them `predict` never returns a value, only the nearest tests and the observed table. Each headline score comes with a range from resampling the test
   days (`cv_metric.grouped_pooled_ci95_days_resampled`); the ranges are wide, show them.
 - The CFI-G models leave out rows whose outcome is not what the target means; each card lists them in
   `training_filter`. The ignition models drop the six rows that were not ignition attempts (patches D45 to D50).
   The self-extinction models drop the 24 flames stopped by the burner temperature limit (12 normal, 12 inverse;
   note D58): they were cut off early, so whether they would have gone out is not known. That set comes from the
-  test sheets, an AI reading of scans that nobody checked. Without them the normal-flame model is weak (AUC 0.69,
-  range 0.36-0.80): show its range and its nearest tests, not the probability alone.
+  test sheets, an AI reading of scans that nobody checked. Without them the normal-flame model has no established
+  held-out skill (AUC 0.69, range 0.36-0.80), so it is descriptive only: show its observed table and nearest tests.
 - A `predict` value for a quantity (the two FLEX models) comes with named fields: `prediction` and `interval`
   `[low, high]` in `unit`; `interval_nominal` (0.9, the target the range is built for); `interval_coverage`, the
   share actually reached on held-out test days as counts (`n_inside`, `n`, and the same per fuel under

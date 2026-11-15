@@ -10,7 +10,7 @@ App.view({
       h('div', { class: 'grid tiles' },
         [[inv.length, 'investigations, one knowledge record each'], [tests, 'test rows on one common schema'], [findings, 'findings with quoted sources'],
          [s.limits.length, 'measured flammability limits'], [s.micro_vs_1g.length, 'microgravity vs 1 g comparisons'], [s.gaps.length, 'ranked knowledge gaps'],
-         [8, 'small models (4 predictive)'], [d.raw_data_conflicts.length, 'conflicts found in NASA tables'], [FIF.questions.length, 'tested questions for the assistant']]
+         [8, 'small models (3 predictive)'], [d.raw_data_conflicts.length, 'conflicts found in NASA tables'], [FIF.questions.length, 'tested questions for the assistant']]
           .map(([n, l]) => h('div', { class: 'tile' }, h('b', { text: String(n) }), h('span', { text: l })))),
       h('p', { class: 'muted small', text: 'Everything is pre-computed in data/export/ (JSON, about 14 MB) for a front end without a backend. The same answers come live from 11 Python functions in fif/api.py, each returning {data, chart, sources, notes}.' })));
 

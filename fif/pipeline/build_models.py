@@ -240,6 +240,7 @@ SPECS = [
                              "timeout; flames stopped by the burner temperature limit (per the test sheets) are "
                              "left out",
         "load": load_cfig_normal_self_extinction,
+        "descriptive": True,
         "features": [
             feature("x_o2_ambient", "mole fraction", "-", "more O2 raises T_f and heat release relative to radiation",
                     untested=[[0.25, 0.35]]),
@@ -265,8 +266,9 @@ SPECS = [
                           "range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 "
                           "tree and gradient boosting do no better. With the 12 flames stopped by the burner "
                           "temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score "
-                          "came from flames whose outcome is not known. Read the probabilities as a description of "
-                          "these tests (19 flames reached the timeout, 18 of them at about 40% O2).",
+                          "came from flames whose outcome is not known. The robust statement is the O2 table: every "
+                          "lit flame at about 21% O2 went out by itself, against 60/78 at about 40% (19 flames "
+                          "reached the timeout, 18 of them at about 40% O2).",
         "caveats": [
             "'Flow-terminated' is not 'stable': the negatives are flames still burning at the scripted timeout, so "
             "the target is 'self-extinguished before the timeout', and the fractions depend on the chosen timeouts.",
@@ -281,6 +283,9 @@ SPECS = [
             "Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a "
             "gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.",
             "Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn.",
+            "Held-out skill is not established: the grouped AUC (0.69) is close to the single best feature (0.67), "
+            "its range under day resampling (0.36-0.80) includes chance, and only 19 flames reached the timeout. "
+            "Kept as a descriptive table, not a predictor.",
         ],
         "must_not": [
             "material flammability, cabin fires or condensed fuels",

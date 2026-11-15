@@ -372,7 +372,7 @@
   "function": "predict",
   "arguments": {},
   "chart": "table of models with sample size and cross-validated score",
-  "answer": "Four models give a prediction, scored on whole held-out test days: self-extinction of normal and inverse CFI-G gas flames (AUC 0.69 and 0.89) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.36-0.80 and 0.51-0.94, R2 0.63-0.80 and 0.13-0.76, so the normal-flame model is not clearly better than chance. Four more models are descriptive only."
+  "answer": "Three models give a prediction, scored on whole held-out test days: self-extinction of inverse CFI-G gas flames (AUC 0.89) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.51-0.94, R2 0.63-0.80 and 0.13-0.76. Five more models are descriptive only, among them self-extinction of normal CFI-G flames (AUC 0.69, range 0.36-0.80, not clearly better than chance)."
  },
  {
   "theme": "Models",
@@ -402,8 +402,8 @@
    "fuel_fraction": 1.0,
    "n_carbon": 2
   },
-  "chart": "probability gauge with the nearest measured tests",
-  "answer": "Yes with probability 0.98; the five nearest CFI-G tests all self-extinguished. Valid for the CFI-G spherical burner only."
+  "chart": "nearest measured tests, with the observed fractions by ambient O2",
+  "answer": "In CFI-G it did: the five nearest tests all self-extinguished, as did all 41 lit flames at about 21% O2. The model gives no probability, it is descriptive only (it did not hold up on held-out test days). Valid for the CFI-G spherical burner only."
  },
  {
   "theme": "Data quality",

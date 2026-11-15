@@ -189,7 +189,7 @@ answer as of the current tables. `tests/test_questions.py` runs every call. Sour
 
 - Call: `predict()`
 - Chart: table of models with sample size and cross-validated score
-- Answer today: Four models give a prediction, scored on whole held-out test days: self-extinction of normal and inverse CFI-G gas flames (AUC 0.69 and 0.89) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.36-0.80 and 0.51-0.94, R2 0.63-0.80 and 0.13-0.76, so the normal-flame model is not clearly better than chance. Four more models are descriptive only.
+- Answer today: Three models give a prediction, scored on whole held-out test days: self-extinction of inverse CFI-G gas flames (AUC 0.89) and FLEX droplet burning rate and methanol extinction diameter (R2 0.69 and 0.70). The numbers are soft: resampling the test days gives AUC 0.51-0.94, R2 0.63-0.80 and 0.13-0.76. Five more models are descriptive only, among them self-extinction of normal CFI-G flames (AUC 0.69, range 0.36-0.80, not clearly better than chance).
 
 **30. How fast would a heptane droplet burn in a Moon-habitat atmosphere?**
 
@@ -200,8 +200,8 @@ answer as of the current tables. `tests/test_questions.py` runs every call. Sour
 **31. Would a small ethane gas flame in still cabin air go out on its own?**
 
 - Call: `predict(model_id="cfig_normal_self_extinction", x_o2_ambient=0.21, pressure_kpa=101, fuel_flow_mg_s=1.0, fuel_fraction=1.0, n_carbon=2)`
-- Chart: probability gauge with the nearest measured tests
-- Answer today: Yes with probability 0.98; the five nearest CFI-G tests all self-extinguished. Valid for the CFI-G spherical burner only.
+- Chart: nearest measured tests, with the observed fractions by ambient O2
+- Answer today: In CFI-G it did: the five nearest tests all self-extinguished, as did all 41 lit flames at about 21% O2. The model gives no probability, it is descriptive only (it did not hold up on held-out test days). Valid for the CFI-G spherical burner only.
 
 ## Data quality
 

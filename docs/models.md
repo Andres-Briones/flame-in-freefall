@@ -44,7 +44,7 @@ Method, common to all models:
 
 | model | use | n | metric | grouped (mean ± SD) | 95% interval, days resampled (pooled) | ungrouped | baseline (grouped) | gradient boosting (grouped) |
 |---|---|---|---|---|---|---|---|---|
-| `cfig_normal_self_extinction` | predictive | 121 | roc_auc | 0.69 ± 0.153 | 0.36 to 0.8 | 0.745 | 0.5 (single feature 0.67) | 0.61 |
+| `cfig_normal_self_extinction` | descriptive | 121 | roc_auc | 0.69 ± 0.153 | 0.36 to 0.8 | 0.745 | 0.5 (single feature 0.67) | 0.61 |
 | `cfig_inverse_self_extinction` | predictive | 119 | roc_auc | 0.89 ± 0.113 | 0.51 to 0.94 | 0.915 | 0.5 (single feature 0.67) | 0.878 |
 | `cfig_normal_ignition` | descriptive | 176 | roc_auc | 0.606 ± 0.197 | 0.11 to 0.82 | 0.777 | 0.5 (single feature 0.474) | 0.702 |
 | `cfig_inverse_ignition` | descriptive | 143 | roc_auc | 0.854 ± 0.111 | 0.42 to 0.92 | 0.853 | 0.5 (single feature 0.777) | 0.837 |
@@ -78,6 +78,8 @@ $$
 - excluded 12: stopped by the burner temperature limit according to the test sheet (out = temp_limit, note patch D58; the sheet values are an AI reading of hand-filled scans, not checked by a human): the flame was cut off early, so whether it would have gone out by itself is not known
 - training rows: 121
 
+**Use: descriptive only.** `predict` returns no prediction for this model, only the nearest real tests. The cross-validation below is shown to justify that choice.
+
 **Result.** Cross-validated metrics, mean ± SD across folds (pooled out-of-fold value in brackets). *Grouped* holds out whole test days; *ungrouped* shuffles tests, so the gap between the two is the optimism from same-day tests sharing conditions.
 
 | model | roc_auc grouped | brier grouped | balanced_accuracy grouped | roc_auc ungrouped | brier ungrouped | balanced_accuracy ungrouped |
@@ -100,7 +102,7 @@ Coefficients on the log-odds scale (per SD of the feature, and per unit of the f
 | `fuel_fraction` | -0.138 | [-1.18, 0.409] | -0.507 | [-4.33, 1.5] | ? | no prior expectation |
 | `n_carbon` | 0.114 | [-1.2, 0.813] | 0.138 | [-1.44, 0.981] | + | agrees in sign; CI includes 0 |
 
-**Does it match the physics?** Partly, and weakly. Ambient O2 (-) agrees with an interval excluding 0 and carries the model. Fuel flow (+, larger flame, more radiative loss) agrees, but its interval only just excludes 0. Pressure and carbon number are indistinguishable from 0 (pressure has the opposite sign to the expectation). On held-out days the model is barely better than its single best feature (AUC 0.69 against 0.67) and than the base rate (Brier 0.129 against 0.135), and the range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 tree and gradient boosting do no better. With the 12 flames stopped by the burner temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score came from flames whose outcome is not known. Read the probabilities as a description of these tests (19 flames reached the timeout, 18 of them at about 40% O2).
+**Does it match the physics?** Partly, and weakly. Ambient O2 (-) agrees with an interval excluding 0 and carries the model. Fuel flow (+, larger flame, more radiative loss) agrees, but its interval only just excludes 0. Pressure and carbon number are indistinguishable from 0 (pressure has the opposite sign to the expectation). On held-out days the model is barely better than its single best feature (AUC 0.69 against 0.67) and than the base rate (Brier 0.129 against 0.135), and the range of its AUC when the test days are resampled (0.36-0.80) includes chance; the depth-3 tree and gradient boosting do no better. With the 12 flames stopped by the burner temperature limit counted as 'did not self-extinguish' the AUC was 0.84: part of that score came from flames whose outcome is not known. The robust statement is the O2 table: every lit flame at about 21% O2 went out by itself, against 60/78 at about 40% (19 flames reached the timeout, 18 of them at about 40% O2).
 
 Single-best-feature rule (depth-1 tree on all rows):
 
@@ -126,6 +128,7 @@ Observed fractions with Wilson 95% intervals:
 - At about 21% ambient O2 every lit flame self-extinguished (quasi-complete separation); the coefficients mainly describe the about 40% O2 tests. Only 2 tests sit at about 33% O2.
 - Chamber composition drifts during a day (closed chamber); x_o2_ambient is the tabulated estimate, not a gas-chromatograph measurement. Mass flow controllers are poor below 10% of full scale.
 - Burner temperature (which lengthens burns) is not a feature: it is an outcome of the burn.
+- Held-out skill is not established: the grouped AUC (0.69) is close to the single best feature (0.67), its range under day resampling (0.36-0.80) includes chance, and only 19 flames reached the timeout. Kept as a descriptive table, not a predictor.
 
 **Must not be used for.**
 

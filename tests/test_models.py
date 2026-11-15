@@ -110,16 +110,29 @@ def test_predict_rejects_wrong_inputs(from_build):
         models.predict("flex_burning_rate", x_o2_ambient=0.21)
 
 
-def test_predict_withholds_a_value_in_an_untested_range(from_build):
+def test_predict_withholds_a_value_in_an_untested_range(from_build, monkeypatch):
     c = card(from_build, "cfig_normal_self_extinction")
     gap = c["features"][0]["untested"][0]
     assert gap["range"] == [0.25, 0.35] and gap["n_tests"] <= 5
+    predictive = {**models.cards(), c["id"]: {**c, "use": "predictive"}}  # the gap must hold if the model is promoted
+    monkeypatch.setattr(models, "cards", lambda: predictive)
     conditions = {**middle(c), "n_carbon": 3}
     for o2 in (0.25, 0.30, 0.35):
         out = models.predict(c["id"], **{**conditions, "x_o2_ambient": o2})
         assert out["in_domain"] is False and out["prediction"] is None
         assert "only" in out["outside_domain"]["x_o2_ambient"]["reason"]
-    assert models.predict(c["id"], **{**conditions, "x_o2_ambient": 0.21})["in_domain"]
+    inside = models.predict(c["id"], **{**conditions, "x_o2_ambient": 0.21})
+    assert inside["in_domain"] and 0 <= inside["probability"] <= 1
+
+
+def test_normal_self_extinction_is_descriptive_and_gives_no_probability(from_build):
+    c = card(from_build, "cfig_normal_self_extinction")
+    assert c["use"] == "descriptive" and any("not a predictor" in caveat for caveat in c["caveats"])
+    out = models.predict(c["id"], **{**middle(c), "x_o2_ambient": 0.21})
+    assert out["use"] == "descriptive" and out["prediction"] is None and "probability" not in out
+    assert out["nearest_tests"] and [r["o2_band"] for r in out["observed"]] == ["about 0.21", "about 0.33", "about 0.40"]
+    assert [c["id"] for c in from_build["models"] if c["use"] == "predictive"] == [
+        "cfig_inverse_self_extinction", "flex_burning_rate", "flex_methanol_extinction_diameter"]
 
 
 def test_predict_refuses_impossible_conditions(from_build):
