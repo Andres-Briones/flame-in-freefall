@@ -10,7 +10,8 @@ PSI originals are linked or streamed from PSI's storage; the only exception is t
 It also keeps the team board (demo/board.py), the only thing that can be written through this server.
 
 Env: HOST (0.0.0.0), PORT (8000), FIF_RAW_CACHE_MB (300), FIF_RAW_ROOT (where raw files are read and cached;
-default data/raw), FIF_BOARD_DB (the board's SQLite file; default data/board/board.db).
+default data/raw), FIF_BOARD_DB (the board's SQLite file; default data/board/board.db), FIF_PUBLIC_URL (this server's
+public address, put in the `url` of every source that points at our notes; default the live server, see fif/notes.py).
 """
 import asyncio
 import csv
@@ -36,11 +37,11 @@ from fastapi import FastAPI, HTTPException, Request  # noqa: E402
 from fastapi.concurrency import run_in_threadpool  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware  # noqa: E402
 from fastapi.middleware.gzip import GZipMiddleware  # noqa: E402
-from fastapi.responses import JSONResponse, PlainTextResponse, Response, StreamingResponse  # noqa: E402
+from fastapi.responses import FileResponse, HTMLResponse, JSONResponse, PlainTextResponse, Response, StreamingResponse  # noqa: E402
 from fastapi.staticfiles import StaticFiles  # noqa: E402
 
-from demo import board  # noqa: E402
-from fif import api, psi  # noqa: E402
+from demo import board, docs_pages  # noqa: E402
+from fif import api, notes, psi  # noqa: E402
 from fif.pipeline import build_timeseries  # noqa: E402
 from fif.tools import TOOLS  # noqa: E402
 
@@ -447,8 +448,8 @@ BOARD_SUMMARY = ("Team board: the same server carries a small public forum where
 MCP_VERSIONS = ("2025-06-18", "2025-03-26", "2024-11-05")
 SUMMARY = ("Flame in Freefall: the 24 NASA PSI microgravity combustion investigations (2,177 table rows, 2,059 of them "
            "single tests; sensor traces, document evidence, reviewed findings, fire-safety relevance, data-quality "
-           "patches) as 11 read-only functions. Every answer is {data, chart, sources, notes}: cite `sources`, and "
-           "pass on `notes`, which carry the caveats.")
+           "patches) as 11 read-only functions. Every answer is {data, chart, sources, notes}: cite `sources` "
+           "(each has a `url` anyone can open and a `label`), and pass on `notes`, which carry the caveats.")
 
 
 def query_arguments(function, params):
@@ -575,6 +576,26 @@ def _describe(name, spec):
     return f"  - {name} ({kind})" + (f": {spec['description']}" if spec.get("description") else "")
 
 
+# --- our notes as pages: the `url` of a source that cites them -------------------------------------------------
+
+@app.get("/docs", response_class=HTMLResponse)
+def docs_index():
+    return docs_pages.render(None)
+
+
+@app.get("/docs/corrections.json")
+def docs_corrections_json():
+    return FileResponse(notes.CORRECTIONS, media_type="application/json")
+
+
+@app.get("/docs/{name:path}", response_class=HTMLResponse)
+def docs_page(name: str):
+    key = docs_pages.resolve(name)
+    if key is None:
+        raise HTTPException(404, "Not one of our published notes; the list is at /docs")
+    return docs_pages.render(key)
+
+
 @app.get("/llms.txt", response_class=PlainTextResponse)
 def guide(request: Request):
     base = _base(request)
@@ -596,6 +617,8 @@ def guide(request: Request):
            "- `notes` state caveats and doubts about the source data: repeat the relevant ones in your answer.",
            "- Rows of the tests table carry `flags`; call discrepancies before relying on a flagged value.",
            "- predict refuses conditions outside what was tested; report the refusal, do not extrapolate.",
+           "- Every item of `sources` has `url` (the NASA PSI page of the investigation, a doi.org link or a page of",
+           f"  our notes under {notes.PUBLIC_URL}/docs) and `label`: link the url and show the label.",
            f"- A file named in `sources` opens at {base}/api/resolve?accession=PSI-25&file=<file name>, which returns",
            "  a short-lived NASA storage link.",
            "", "## Functions", ""]

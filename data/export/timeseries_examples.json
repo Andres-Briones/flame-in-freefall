@@ -11219,10 +11219,15 @@
   "sources": [
    {
     "accession": "PSI-159",
-    "file": "data/raw/files/PSI-159/Raw Data/PSI-159_Raw Data_21088M4_data.csv"
+    "file": "data/raw/files/PSI-159/Raw Data/PSI-159_Raw Data_21088M4_data.csv",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+    "label": "ACME CFI-G (PSI-159): PSI-159_Raw Data_21088M4_data.csv"
    },
    {
-    "page": "docs/formats.md"
+    "page": "docs/formats.md",
+    "section": "acme-per-test-data-tp_datacsv-psi-10-psi-23-psi-159",
+    "url": "http://www.open-poker.ch:5187/docs/formats#acme-per-test-data-tp_datacsv-psi-10-psi-23-psi-159",
+    "label": "Our notes: sensor file formats, ACME per-test data: <tp>_data.csv (PSI-10, PSI-23, PSI-159)"
    }
   ],
   "notes": [
@@ -13683,10 +13688,15 @@
   "sources": [
    {
     "accession": "PSI-98",
-    "file": "data/raw/files/PSI-98/Raw Data/PSI-98_Raw Data_Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx"
+    "file": "data/raw/files/PSI-98/Raw Data/PSI-98_Raw Data_Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx",
+    "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+    "label": "SAFFIRE-I (PSI-98): PSI-98_Raw Data_Saffire-I Sample 1 Sensor Data Complete TM graphs.xlsx"
    },
    {
-    "page": "docs/formats.md"
+    "page": "docs/formats.md",
+    "section": "saffire-i-psi-98-and-saffire-iii-psi-100-per-sample-sensor-workbooks",
+    "url": "http://www.open-poker.ch:5187/docs/formats#saffire-i-psi-98-and-saffire-iii-psi-100-per-sample-sensor-workbooks",
+    "label": "Our notes: sensor file formats, Saffire-I (PSI-98) and Saffire-III (PSI-100): per-sample sensor workbooks"
    }
   ],
   "notes": [

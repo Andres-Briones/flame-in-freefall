@@ -14,6 +14,7 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 | an AI agent, or pointing one at the data | `<demo server>/llms.txt` (guide), `/mcp`, `/api/tools`: see "For AI agents" in [demo/README.md](demo/README.md) |
 | wanting to see it all on screen | [demo/README.md](demo/README.md): a static capability demo of the dashboard, built from `data/export/` |
 | checking the data | [docs/tests-table.md](docs/tests-table.md) (per-test table, flags, corrections), [docs/formats.md](docs/formats.md) (raw files), [docs/models.md](docs/models.md) |
+| reading these notes in a browser | `<demo server>/docs` (e.g. `/docs/methods`, `/docs/digest/PSI-25`, `/docs/corrections`): every page of `docs/` and the corrections file as HTML; the `url` of a function's sources points there (base: env `FIF_PUBLIC_URL`) |
 
 ## What is in it
 

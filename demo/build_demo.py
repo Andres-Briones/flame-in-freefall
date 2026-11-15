@@ -59,6 +59,9 @@ def trimmed():
                     for r in load("tests")]
     out["tsfeatures"] = [compact({k: r.get(k) for k in TS_KEEP}) for r in load("timeseries_features")]
     out["tsexamples"] = load("timeseries_examples")
+    # A source's `url` and `label` are for the API and the AI assistant; the demo views build their own links.
+    for entry in [*out["coverage"].values(), *out["tsexamples"].values()]:
+        entry["sources"] = [{k: v for k, v in src.items() if k not in ("url", "label")} for src in entry["sources"]]
     rel = load("relevance")
     for entry in rel.values():
         entry.pop("sources", None)

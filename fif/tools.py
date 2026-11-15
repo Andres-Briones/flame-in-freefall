@@ -41,8 +41,11 @@ TEST_FILTERS = {
 }
 
 
+SOURCES = " Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those."
+
+
 def _tool(function, description, properties, required=()):
-    return {"name": function.__name__, "description": description,
+    return {"name": function.__name__, "description": description + SOURCES,
             "input_schema": {"type": "object", "properties": properties, "required": list(required)}}
 
 

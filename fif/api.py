@@ -19,7 +19,7 @@ from functools import lru_cache
 import numpy as np
 import pandas as pd
 
-from fif import psi
+from fif import notes, psi
 
 REFERENCE_ATMOSPHERES = {
     "earth-sea-level": {"x_o2": 0.209, "pressure_kpa": 101.3, "label": "Earth sea level / ISS cabin"},
@@ -109,7 +109,54 @@ def _rows(df):
 
 
 def _result(data, chart=None, sources=(), notes=()):
-    return {"data": _clean(data), "chart": chart, "sources": _clean(list(sources)), "notes": list(notes)}
+    return {"data": _clean(data), "chart": chart, "sources": [_link(s) for s in _clean(list(sources))],
+            "notes": list(notes)}
+
+
+REF_SECTION = {"F": ("findings", "finding"), "L": ("limitations", "limitation"), "Q": ("open-questions", "open question")}
+
+
+def _acronym(acc):
+    rec = records().get(acc)
+    return (rec and rec["identity"].get("acronym")) or acc
+
+
+def _psi_url(acc):
+    inv = table("investigations").set_index("accession")
+    return inv.at[acc, "source_url"] if acc in inv.index else f"https://psi.nasa.gov/physci/repo/data/investigations/{acc}"
+
+
+def _note_source(key, anchor=None, label=None):
+    found = next((text for _, text, a in notes.headings(key) if a == anchor), None) if anchor else None
+    label = label or f"Our notes: {notes.title(key)}" + (f", {found or anchor}" if anchor else "")
+    return notes.page_url(key, anchor), label
+
+
+def _link(source):
+    """The source with a `url` anyone can open and a short English `label` (an existing `url` is kept)."""
+    s = dict(source)
+    acc = s.get("accession")
+    ref = re.fullmatch(r"\[(PSI-\d+)(?: ([FLQ])(\d+))?\]", s.get("ref") or "")
+    if ref and not s.get("file"):
+        acc = ref.group(1)
+        anchor, kind = REF_SECTION.get(ref.group(2), (None, None))
+        url = notes.page_url(f"digest/{acc}", anchor)
+        label = f"Our notes: {_acronym(acc)} ({acc}) digest" + (f", {kind} {ref.group(3)}" if kind else "")
+    elif s.get("file") and acc:
+        where = f", {s['locator']}" if s.get("locator") else ""
+        url, label = _psi_url(acc), f"{_acronym(acc)} ({acc}): {s['file'].rsplit('/', 1)[-1]}{where}"
+    elif s.get("page") or s.get("file"):
+        key = notes.page_key(s.get("page") or s["file"])
+        url, label = _note_source(key, s.get("section")) if key else (None, None)
+    elif s.get("doi"):
+        url, label = f"https://doi.org/{s['doi']}", f"DOI {s['doi']}"
+    elif acc:
+        url, label = _psi_url(acc), f"{_acronym(acc)} ({acc}): NASA PSI record"
+    else:
+        url, label = None, None
+    s.setdefault("url", url)
+    s.setdefault("label", label)
+    return s
 
 
 @lru_cache(maxsize=None)
@@ -443,8 +490,11 @@ def get_investigation(accession, sections=None):
         data["publication_review"] = _publication_review(data["publications"])
         if data["publication_review"]["n_reviewed"]:
             notes.append(REVIEW_NOTE)
-    return _result(data, None, [{"ref": f"[{acc}]", "page": data["card"]["page"], "url": api["source_url"], "doi": api["doi"]}],
-                   notes)
+    sources = [{"ref": f"[{acc}]", "page": data["card"]["page"]}, {"accession": acc, "url": api["source_url"]}]
+    if data["card"]["doi"]:
+        sources.append({"accession": acc, "doi": data["card"]["doi"], "url": data["card"]["doi_url"],
+                        "label": f"{_acronym(acc)} ({acc}): PSI dataset DOI {data['card']['doi']}"})
+    return _result(data, None, sources, notes)
 
 
 # --- tests table --------------------------------------------------------------------------------------
@@ -526,7 +576,7 @@ def filter_tests(columns=None, limit=500, sheets=False, **filters):
     if len(codes):
         n_info = int(codes.apply(lambda c: c <= INFORMATIONAL_FLAGS).sum())
         notes.append(f"{len(codes)} of {len(df)} rows carry a flag: {len(codes) - n_info} a correction or a doubt, "
-                     f"{n_info} only a remark on how to read the row; see docs/tests-table.md.")
+                     f"{n_info} only a remark on how to read the row; see {_note_url('tests-table', '^Flags$')}.")
     keys = df[["accession", "test_id"]].apply(tuple, axis=1)
     if keys.duplicated().any():
         notes.append(f"{int(keys.duplicated(keep=False).sum())} rows share a test id with another row of the same "
@@ -822,7 +872,7 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
     notes = [
         "Score = weighted mean of four components in [0, 1]: conditions (closeness of the nearest test to the "
         "scenario's O2, pressure and flow), material (fuel-phase transfer), pillar and evidence strength. "
-        "Weights and scales are in fif/api.py and docs/methods.md; they are a judgement, shown so it can be argued with.",
+        f"Weights and scales are in fif/api.py and {_note_url('methods', '^Scenario relevance score')}; they are a judgement, shown so it can be argued with.",
         "A distance of 1 means one scale step away: 3 points of O2, 15 kPa or 10 cm/s. A condition that was not "
         "recorded counts as far away as the farthest investigation that did record it (at least 2 steps); "
         "cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere "
@@ -904,7 +954,24 @@ def insights(topic="key_messages", accession=None):
     if accession:
         acc = _accession(accession)
         entries = [e for e in entries if re.search(rf"{acc}(?!\d)", json.dumps(e))]
-    return _result(_with_quote_es(entries), None, [{"ref": r} for r in _citation_refs(entries)], ["Full text with citations: docs/digest/synthesis.md"])
+    page = {"page": "docs/digest/synthesis.md", "section": notes_section("digest/synthesis", SYNTHESIS_SECTION.get(topic, "^$"))}
+    return _result(_with_quote_es(entries), None, [page, *({"ref": r} for r in _citation_refs(entries))],
+                   [f"Full text with citations: {notes.page_url('digest/synthesis')}"])
+
+
+# Topic of `insights` -> heading of its chapter in docs/digest/synthesis.md.
+SYNTHESIS_SECTION = {"key_messages": r"^1\. ", "parameter_coverage": r"^3\. ", "limits": r"^4\. ",
+                     "micro_vs_1g": r"^5\. ", "gaps": r"^8\. ", "lineage": r"^9\. ", "research_questions": r"^11\. "}
+
+
+def notes_section(key, pattern):
+    """Anchor of the first heading of one of our notes that matches `pattern` (None if none does)."""
+    found = notes.section(key, pattern)
+    return found and found[1]
+
+
+def _note_url(key, pattern=None):
+    return notes.page_url(key, pattern and notes_section(key, pattern))
 
 
 SECTION_LETTER = {"findings": "F", "limitations": "L", "open_questions": "Q"}
@@ -976,8 +1043,9 @@ def timeseries(test_id, channels=None, max_points=2000, test_point=None, accessi
     if reduced:
         used = str(row.get("reduced_files") or "").split(";")
         files = [f for kind, f in build_timeseries.cfi_reduced_siblings(row["source_file"]).items() if kind in used]
+    fmt = (notes_section("formats", rf"{row['accession']}(?!\d)") or notes_section("formats", r"^timeseries_features"))
     return _result(data, chart, [*({"accession": row["accession"], "file": f} for f in files),
-                                 {"page": "docs/formats.md"}], notes)
+                                 {"page": "docs/formats.md", "section": fmt}], notes)
 
 
 def _compact_model(card):
@@ -1042,7 +1110,8 @@ def predict(model_id=None, compact=False, **conditions):
                      "(`interval_unclipped`), which is impossible for this quantity.")
     if out.get("use") != "predictive":
         notes.append("This model is descriptive only: it summarises the tests and did not hold up in cross-validation.")
-    return _result(out, None, [{"page": "docs/models.md", "model": model_id}], notes)
+    return _result(out, None, [{"page": "docs/models.md", "model": model_id,
+                                "section": notes_section("models", rf"^{re.escape(model_id)} ")}], notes)
 
 
 ACTIONS = {
@@ -1160,7 +1229,9 @@ def discrepancies(accession=None, test_id=None):
     if raw["evidence_source"].str.contains("test sheet").any():
         notes.append("Entries that cite a test sheet rest, in part or (flag conflicts_with_test_sheet) entirely, on an AI "
                      "model's reading of a hand-filled scanned form, not checked by a human; they never change a value.")
-    sources = [{"file": "data/corrections/tests_patches.json"}, {"page": "docs/tests-table.md"}, {"page": "docs/formats.md"}]
+    sources = [{"file": "data/corrections/tests_patches.json", "section": acc},
+               {"page": "docs/tests-table.md", "section": notes_section("tests-table", r"^Flags$")},
+               {"page": "docs/formats.md", "section": notes_section("formats", r"^Raw data that contradict")}]
     return _result(data, {"type": "table", "group_by": "accession", "badge": "action"}, sources, notes)
 
 

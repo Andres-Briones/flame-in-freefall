@@ -1,7 +1,7 @@
 [
  {
   "name": "search_investigations",
-  "description": "List the 24 PSI combustion investigations as cards; filter by fire-safety pillar, fuel phase, flight/ground or platform_kind, and rank by a keyword query. Each card has `location`: kind, vehicle, module, facility (CIR, MSG, MDCA, ...), crewed, expedition, uses_data_from (the flight investigations a ground or computation study reanalysed), also (e.g. drop-tower precursor tests), label and source quotes. Use it to say where a result comes from and to count investigations by setting.",
+  "description": "List the 24 PSI combustion investigations as cards; filter by fire-safety pillar, fuel phase, flight/ground or platform_kind, and rank by a keyword query. Each card has `location`: kind, vehicle, module, facility (CIR, MSG, MDCA, ...), crewed, expedition, uses_data_from (the flight investigations a ground or computation study reanalysed), also (e.g. drop-tower precursor tests), label and source quotes. Use it to say where a result comes from and to count investigations by setting. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -49,7 +49,7 @@
  },
  {
   "name": "get_investigation",
-  "description": "Full knowledge record of one investigation: question, physics (with equations), method, test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions; `publications` (the record's papers in order, each with a `review`: access, read_url, classification, summary, quoted items; an AI reading of the paper, null when not reviewed) and `publication_review` (counts by access and classification). `location` says where it ran (see search_investigations) and adds `facility_notes`: one plain sentence per facility or vehicle name, for explaining CIR, MSG, Cygnus and the like to a beginner.",
+  "description": "Full knowledge record of one investigation: question, physics (with equations), method, test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions; `publications` (the record's papers in order, each with a `review`: access, read_url, classification, summary, quoted items; an AI reading of the paper, null when not reviewed) and `publication_review` (counts by access and classification). `location` says where it ran (see search_investigations) and adds `facility_notes`: one plain sentence per facility or vehicle name, for explaining CIR, MSG, Cygnus and the like to a beginner. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -72,7 +72,7 @@
  },
  {
   "name": "filter_tests",
-  "description": "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened.",
+  "description": "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -228,7 +228,7 @@
  },
  {
   "name": "compare",
-  "description": "Side-by-side comparison of investigations: question, fuels, tested ranges, sensors, key findings, limitations.",
+  "description": "Side-by-side comparison of investigations: question, fuels, tested ranges, sensors, key findings, limitations. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -250,7 +250,7 @@
  },
  {
   "name": "coverage",
-  "description": "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference atmospheres (ISS cabin, Moon habitat, exploration, spacesuit) have no data. Use for gap questions. A reference's `nearest_test` lists in `not_measured` the columns filled from the investigation's stated range, not measured for that test, and `fire_test` false when that test heated a sample to make smoke without burning it (`n_not_fire_tests_in_cell` counts those rows).",
+  "description": "Count tests on a 2-D grid (default ambient O2 against pressure) and report which reference atmospheres (ISS cabin, Moon habitat, exploration, spacesuit) have no data. Use for gap questions. A reference's `nearest_test` lists in `not_measured` the columns filled from the investigation's stated range, not measured for that test, and `fire_test` false when that test heated a sample to make smoke without burning it (`n_not_fire_tests_in_cell` counts those rows). Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -405,7 +405,7 @@
  },
  {
   "name": "relevance",
-  "description": "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; `nearest_test` is always a test of that phase (null if none), and `closest_same_phase_test` is the nearest one overall. Never present `nearest_test_other_phase` as a test of the requested material. A condition a test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the investigation's range in `condition_ranges` (stated range or assumed cabin air), so say so when quoting it. `closest_same_phase_test.setting` (and a `Setting` note) says where that test ran and how far a result from there carries to a real cabin: repeat it. A test dict with `fire_test` false (SAME, SAME-R: samples heated to make smoke) is not a burn: never present it as a fire test; `closest_same_phase_test` is always one where ignition was attempted, and its `result` says what the burn did (burn length 0 = no flame spread). Scenario names: iss-cabin, moon-habitat, mars-habitat, pressurised-rover, spacecraft-transit.",
+  "description": "Rank investigations by relevance to a fire-safety scenario and state how far the nearest real test is from it. fuel_phase weights the ranking and does not filter it: check `phase_match` on each row; `nearest_test` is always a test of that phase (null if none), and `closest_same_phase_test` is the nearest one overall. Never present `nearest_test_other_phase` as a test of the requested material. A condition a test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the investigation's range in `condition_ranges` (stated range or assumed cabin air), so say so when quoting it. `closest_same_phase_test.setting` (and a `Setting` note) says where that test ran and how far a result from there carries to a real cabin: repeat it. A test dict with `fire_test` false (SAME, SAME-R: samples heated to make smoke) is not a burn: never present it as a fire test; `closest_same_phase_test` is always one where ignition was attempted, and its `result` says what the burn did (burn length 0 = no flame spread). Scenario names: iss-cabin, moon-habitat, mars-habitat, pressurised-rover, spacecraft-transit. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -441,7 +441,7 @@
  },
  {
   "name": "find_evidence",
-  "description": "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI documents (file and page; `transcribed` marks an AI model's reading of a scanned page). Keyword-based: use the documents' own terms and try synonyms.",
+  "description": "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI documents (file and page; `transcribed` marks an AI model's reading of a scanned page). Keyword-based: use the documents' own terms and try synonyms. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -466,7 +466,7 @@
  },
  {
   "name": "insights",
-  "description": "Cross-investigation synthesis entries with citations.",
+  "description": "Cross-investigation synthesis entries with citations. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -492,7 +492,7 @@
  },
  {
   "name": "timeseries",
-  "description": "Sensor time series of one test (decimated) with summary features (burn duration, peak temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and cool-flame diameter, radiometer power against time) are a second recording: test_point \"FLEX-<test id>-reduced\". Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down.",
+  "description": "Sensor time series of one test (decimated) with summary features (burn duration, peak temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and cool-flame diameter, radiometer power against time) are a second recording: test_point \"FLEX-<test id>-reduced\". Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -523,7 +523,7 @@
  },
  {
   "name": "predict",
-  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests. For a quantity: prediction and interval [low, high] in `unit`, interval_nominal (0.9, the target), interval_coverage (n_inside of n on held-out test days, per fuel under by.levels), interval_clipped and interval_low_unclipped (lower end cut at 0), interval_unclipped, interval_unavailable (why interval is null), prediction_below_floor (the estimate itself is below 0, so prediction and interval are null), prediction_unavailable (why prediction is null), prediction_raw (the estimate as computed, a diagnostic only), interval_method, accession (source). The full list is about 75 kB: pass compact=true to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
+  "description": "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy and valid domain. With model_id plus every input of that model as extra named arguments: prediction (none outside the fitted domain) and the nearest real tests. For a quantity: prediction and interval [low, high] in `unit`, interval_nominal (0.9, the target), interval_coverage (n_inside of n on held-out test days, per fuel under by.levels), interval_clipped and interval_low_unclipped (lower end cut at 0), interval_unclipped, interval_unavailable (why interval is null), prediction_below_floor (the estimate itself is below 0, so prediction and interval are null), prediction_unavailable (why prediction is null), prediction_raw (the estimate as computed, a diagnostic only), interval_method, accession (source). The full list is about 75 kB: pass compact=true to get only id, inputs with their valid domain, accuracy and what each model must not be used for. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -543,7 +543,7 @@
  },
  {
   "name": "discrepancies",
-  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, statements resting on files PSI lists as removed, notes on errors in NASA's catalogue records (e.g. Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when showing a test whose row has flags.",
+  "description": "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data (table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, statements resting on files PSI lists as removed, notes on errors in NASA's catalogue records (e.g. Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when showing a test whose row has flags. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -560,7 +560,7 @@
  },
  {
   "name": "document_text",
-  "description": "Our extracted text of one PSI file, so a scanned PDF without a text layer can be read and copied. Without page: the pages (locators: p1, p2 for PDFs; sheet, slide or all for other files) that have text. With page: that page's passages in order (text, locator, transcribed). transcribed=true is an AI model's reading of a scan; check it in the original. A file with no text returns no pages. Use when a user reads a document, or to quote a page that find_evidence pointed to.",
+  "description": "Our extracted text of one PSI file, so a scanned PDF without a text layer can be read and copied. Without page: the pages (locators: p1, p2 for PDFs; sheet, slide or all for other files) that have text. With page: that page's passages in order (text, locator, transcribed). transcribed=true is an AI model's reading of a scan; check it in the original. A file with no text returns no pages. Use when a user reads a document, or to quote a page that find_evidence pointed to. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {

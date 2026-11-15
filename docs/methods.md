@@ -38,7 +38,22 @@ rates") before plotting it: the sample size is 18 tests, not 39 points.
 ## Functions (`fif/api.py`)
 
 Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources` are citations to show, and
-`notes` are caveats that must appear next to the answer. From a non-Python backend:
+`notes` are caveats that must appear next to the answer. Every source has a `url` anyone can open and a short
+English `label` to show with it:
+
+| Source | `url` | `label` |
+|---|---|---|
+| a PSI file (`accession`, `file`, maybe `locator`) | the investigation's NASA PSI page | `BASS-II (PSI-25): <file name>, p3` |
+| a digest citation (`ref` such as `[PSI-25 F3]`) | our digest page of that investigation, at `#findings`, `#limitations` or `#open-questions` | `Our notes: BASS-II (PSI-25) digest, finding 3` |
+| our notes (`page`, or `file` for the corrections) | the page on the data server, with the section anchor when known | `Our notes: sensor file formats, <section>` |
+| the investigation itself, its dataset DOI | the NASA PSI page, `https://doi.org/<doi>` | `BASS-II (PSI-25): NASA PSI record` |
+
+Our notes are served as HTML at `<server>/docs/<key>`: `methods`, `models`, `formats`, `tests-table`,
+`question-bank`, `digest/synthesis`, `digest/<accession>` (e.g. `digest/PSI-25`), `corrections` (the patches of
+`data/corrections/tests_patches.json`, anchored by accession and patch id; raw at `corrections.json`); `/docs` lists
+them. Headings carry GitHub-style anchors. Links are absolute on `FIF_PUBLIC_URL` (default the live server
+`http://www.open-poker.ch:5187`), because the team app reaches this server on an internal address; set it when
+running a copy that should link to itself. The scheme is in `fif/notes.py`. From a non-Python backend:
 `uv run python -m fif.api relevance '{"scenario": "moon-habitat", "pillar": "detection"}'`.
 
 | Function | Answers |

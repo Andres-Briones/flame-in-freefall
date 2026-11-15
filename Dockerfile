@@ -15,6 +15,7 @@ COPY demo/ demo/
 COPY docs/ docs/
 COPY data/processed/ data/processed/
 COPY data/digest/ data/digest/
+COPY data/corrections/tests_patches.json data/corrections/tests_patches.json
 COPY data/publications/ data/publications/
 COPY data/translations/quotes_es.json data/translations/quotes_es.json
 COPY data/export/ data/export/
