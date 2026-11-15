@@ -8,6 +8,7 @@ Investigators: Paul E. DesJardin (University at Buffalo; PSI lists 'New York Uni
 
 | | |
 |---|---|
+| Setting | Computation · uses ISS BASS and BASS-II data |
 | Platform | Ground (numerical modelling and image analysis) using ISS BASS / BASS-II data |
 | Dates | 2019-05-01 to 2021-04-30 |
 | Fuels and samples | PMMA; wax |

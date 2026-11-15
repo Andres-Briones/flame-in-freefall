@@ -6,6 +6,9 @@ RANGE = {"type": "array", "items": {"type": ["number", "null"]}, "minItems": 2, 
 ACCESSION = {"type": "string", "description": "PSI accession (PSI-26) or acronym (BASS)"}
 PHASE = {"type": "string", "enum": ["solid", "liquid", "gas", "aerosol"]}
 PILLAR = {"type": "string", "enum": list(api.PILLARS)}
+PLATFORM = {"type": "string", "enum": list(api.PLATFORM_KINDS),
+            "description": "where the tests ran: iss (a rack or glovebox on the ISS), cygnus_free_flight (Saffire, in "
+                           "an uncrewed Cygnus cargo module after it left the ISS), drop_tower, ground_lab, computation"}
 TEST_FILTERS = {
     "accession": {"type": ["string", "array"], "items": {"type": "string"}, "description": "one or several investigations"},
     "fuel": {"type": "string", "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane"},
@@ -31,6 +34,8 @@ TEST_FILTERS = {
                                  "test's hand-filled sheet. ext_detect = the flame went out by itself; time_out = it lasted "
                                  "the scripted time; temp_limit = it was cut off because the burner got too hot (neither "
                                  "an extinction nor a full-length flame). An AI reading of a scan, not checked by a human"},
+    "platform_kind": {**PLATFORM, "description": PLATFORM["description"] + "; each row takes its investigation's "
+                      "location.kind (no PSI table row is a drop-tower test)"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
 }
@@ -43,19 +48,23 @@ def _tool(function, description, properties, required=()):
 
 TOOLS = [
     _tool(api.search_investigations, "List the 24 PSI combustion investigations as cards; filter by fire-safety pillar, "
-          "fuel phase or flight/ground, and rank by a keyword query.", {
+          "fuel phase, flight/ground or platform_kind, and rank by a keyword query. Each card has `location`: kind, "
+          "vehicle, module, facility (CIR, MSG, MDCA, ...), crewed, expedition, uses_data_from (the flight "
+          "investigations a ground or computation study reanalysed), also (e.g. drop-tower precursor tests), label "
+          "and source quotes. Use it to say where a result comes from and to count investigations by setting.", {
               "query": {"type": "string"}, "pillar": {"type": "string", "enum": [*api.PILLARS, "fundamental"]},
-              "fuel_phase": PHASE, "flight": {"type": "boolean"}, "limit": {"type": "integer"}}),
+              "fuel_phase": PHASE, "flight": {"type": "boolean"}, "platform_kind": PLATFORM, "limit": {"type": "integer"}}),
     _tool(api.get_investigation, "Full knowledge record of one investigation: question, physics (with equations), method, "
           "test matrix, measurements, PSI data, findings with quoted sources, fire-safety relevance, limitations, open questions; "
           "`publications` (the record's papers in order, each with a `review`: access, read_url, classification, summary, "
           "quoted items; an AI reading of the paper, null when not reviewed) and `publication_review` (counts by access "
-          "and classification).", {
+          "and classification). `location` says where it ran (see search_investigations) and adds `facility_notes`: "
+          "one plain sentence per facility or vehicle name, for explaining CIR, MSG, Cygnus and the like to a beginner.", {
               "accession": ACCESSION,
               "sections": {"type": "array", "items": {"type": "string"}, "description": "only these sections, e.g. [\"findings\", \"limitations\"]"}},
           ["accession"]),
     _tool(api.filter_tests, "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, "
-          "pressure, flow, outcomes). Use for any question about what was tested and what happened.", {
+          "pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened.", {
               **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"},
               "sheets": {"type": "boolean", "description": "attach to each PSI-10 / PSI-159 row its hand-filled ACME test "
                          "sheet as `test_sheet`: ignited, hot or cool flame, how the flame ended (`out`), operator "
@@ -73,7 +82,8 @@ TOOLS = [
           "one overall. Never present `nearest_test_other_phase` as a test of the requested material. A condition a "
           "test dict lists in `not_measured` was not recorded for that test: a value shown for it is the middle of the "
           "investigation's range in `condition_ranges` (stated range or assumed cabin air), so say so when quoting it. "
-          "Scenario names: " + ", ".join(api.SCENARIOS) + ".", {
+          "`closest_same_phase_test.setting` (and a `Setting` note) says where that test ran and how far a result from "
+          "there carries to a real cabin: repeat it. Scenario names: " + ", ".join(api.SCENARIOS) + ".", {
               "scenario": {"type": ["string", "object"], "description": "scenario name, or {x_o2, pressure_kpa, flow_cm_s, gravity_g}"},
               "fuel_phase": {"type": "string", "enum": ["solid", "liquid", "gas"]}, "pillar": PILLAR, "top": {"type": "integer"}}),
     _tool(api.find_evidence, "Keyword search for passages: reviewed digest findings (with citation ids) and raw text of PSI "
@@ -107,7 +117,8 @@ TOOLS = [
                       "additionalProperties": {"type": "number"}}},
     _tool(api.discrepancies, "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data "
           "(table value, raw value, evidence, action taken), every value this dataset changed, flag meanings and counts, "
-          "statements resting on files PSI lists as removed, and `source_disagreements`: a published paper by the "
+          "statements resting on files PSI lists as removed, notes on errors in NASA's catalogue records (e.g. "
+          "Saffire-I and III listed under the ISS flight program although they burned in Cygnus), and `source_disagreements`: a published paper by the "
           "investigators disagreeing with the PSI data (paper quote, read_url, locator, claim), shown but never applied "
           "to the tables; say it is the paper against PSI. Use whenever the user asks about data quality or when "
           "showing a test whose row has flags.", {"accession": ACCESSION, "test_id": {"type": "string"}}),

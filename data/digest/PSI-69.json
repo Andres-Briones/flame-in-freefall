@@ -21,6 +21,33 @@
     "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) chamber insert: opposed-needle droplet deployment, two retractable hot-wire igniters, optional 80 um SiC tether fibre; CIR backlit droplet camera (HiBMs), 310 nm OH* camera (LLUV) and MDCA colour camera",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "FCF",
+      "MDCA"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · CIR (FCF) · MDCA",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)"
+      }
+    ]
+  },
   "one_line": "Single drops of methanol and heptane were burned floating freely on the Space Station in air thinned with nitrogen, carbon dioxide or helium, to find how little oxygen still lets a fuel burn in weightlessness and how well these gases put flames out; it also discovered that heptane drops keep burning with an invisible 'cool flame' after the visible flame dies.",
   "summary": "FLEX burned isolated, mostly free-floating methanol and n-heptane droplets (initial diameter about 1.1-4.7 mm) in the ISS Combustion Integrated Rack between March 2009 and December 2011, in oxygen/nitrogen atmospheres diluted with carbon dioxide or helium at 0.7-3 atm. Cameras recorded droplet diameter and flame size, giving burning-rate constants (typically 0.4-0.6 mm2/s), extinction diameters and burn times for 274 tests. Small droplets extinguished diffusively, large ones radiatively, and the limiting oxygen index (LOI), where the two limits meet, was about 0.12 for methanol and 0.15 for heptane in nitrogen at 1 atm. Adding carbon dioxide to air raised the LOI to about 0.14 and 0.17; helium raised it to about 0.14 and 0.15. These limits are lower than in normal gravity, so terrestrial inert-gas suppressant standards carry less safety margin in orbit. Large heptane droplets kept burning after visible radiative extinction, supported by low-temperature cool-flame chemistry, which raises the possibility of an unseen fire re-igniting.",
   "question": {

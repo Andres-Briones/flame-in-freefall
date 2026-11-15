@@ -29,7 +29,10 @@ TS_KEEP = [
     "o2_min_pct", "co2_max_pct", "anemometer_start_cm_s", "plume_temp_max_c", "sample_temp_max_c", "droplet_diameter_first_mm",
     "flame_diameter_max_mm", "hot_flame_last_s", "cool_flame_fwhm_max_mm", "cool_flame_last_s", "features_note",
 ]
-RANK_DROP = ("one_line", "pillars", "fuel_phases", "acronym")
+RANK_DROP = ("one_line", "pillars", "fuel_phases", "acronym", "platform_kind")
+# Where-it-ran fields (location, platform_kind, setting) are for the API and the AI assistant; the demo views do not
+# show them, so they are left out to keep the page under its size budget.
+TEST_DROP = ("platform_kind",)
 
 
 def load(name):
@@ -46,7 +49,10 @@ def slim(value):
 
 def trimmed():
     out = {name: load(name) for name in BASE + ["records", "models"]}
-    out["tests"] = [compact({**r, "source_file": (r.get("source_file") or "").replace("data/raw/files/", "")})
+    for item in [*out["investigations"], *out["records"].values()]:
+        item.pop("location", None)
+    out["tests"] = [compact({**{k: v for k, v in r.items() if k not in TEST_DROP},
+                             "source_file": (r.get("source_file") or "").replace("data/raw/files/", "")})
                     for r in load("tests")]
     out["tsfeatures"] = [compact({k: r.get(k) for k in TS_KEEP}) for r in load("timeseries_features")]
     out["tsexamples"] = load("timeseries_examples")
@@ -56,6 +62,10 @@ def trimmed():
         # empty lists and dicts (no assumption to show) are left out: the view reads them as absent
         entry["data"]["ranking"] = [{k: slim(v) for k, v in r.items() if k not in RANK_DROP and v not in ([], {})}
                                     for r in entry["data"]["ranking"]]
+        for key in ("gap", "closest_same_phase_test"):
+            if entry["data"].get(key):
+                entry["data"][key].pop("setting", None)
+        entry["notes"] = [n for n in entry["notes"] if not n.startswith("Setting of the closest")]
     out["relevance"] = rel
     out["files"] = file_catalogue()
     return out

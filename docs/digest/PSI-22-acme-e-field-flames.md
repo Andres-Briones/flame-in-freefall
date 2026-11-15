@@ -8,6 +8,7 @@ Investigators: Derek Dunn-Rankin (University of California, Irvine) - Principal 
 
 | | |
 |---|---|
+| Setting | ISS · CIR · ACME · drop-tower precursors |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2016-11-18 to 2020-11-17 |

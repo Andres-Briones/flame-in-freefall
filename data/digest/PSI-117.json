@@ -16,6 +16,26 @@
     "hardware": null,
     "project_type": "Ground Investigation"
   },
+  "location": {
+    "kind": "computation",
+    "vehicle": null,
+    "module": null,
+    "facility": [],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [
+      "PSI-69"
+    ],
+    "also": [],
+    "label": "Computation · uses ISS FLEX data",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "objective",
+        "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX)"
+      }
+    ]
+  },
   "one_line": "Detailed computer models of single burning fuel droplets, checked against droplet fires on the Space Station, explain when a droplet flame drops into a dim, low-temperature 'cool flame', how long it survives, and why the gas xenon is a poor fire suppressant.",
   "summary": "This NASA ground study (grant NNX17AF97A, 2017-2022) modelled isolated fuel droplets burning in microgravity and compared the predictions with Flame Extinguishment Experiment (FLEX) data from the ISS. A transient, spherically symmetric one-dimensional code with detailed low-temperature chemistry, spectral radiation and fibre heat loss was used. For n-heptane, n-decane and n-dodecane droplets of about 4 mm in air, a hot flame radiatively extinguishes once the flame temperature falls to about 1200 K, and the droplet continues to burn as a cool flame at 720-775 K. Longer alkanes give hotter cool flames and smaller cool-flame extinction diameters (model about 0.95, 0.43 and 0.25 mm at 1 atm). For n-dodecane, the cool-flame extinction diameter falls from about 1.9 mm at 0.5 atm to zero at 3 atm, where a 'warm' flame burns the droplet out. Methanol simulations validated on FLEX-563 gave a limiting oxygen index of about 5% with xenon, against 8-21% for other diluents. The planned three-dimensional study of convective perturbations is not in the deposited files.",
   "question": {

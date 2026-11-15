@@ -8,6 +8,7 @@ Investigators: Forman A. Williams (PI; University of California, San Diego); Fre
 
 | | |
 |---|---|
+| Setting | ISS · Destiny · CIR · MDCA |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2017-03-09 to 2017-09-15 |

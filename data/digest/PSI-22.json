@@ -18,6 +18,44 @@
     "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with the small coflow burner (shared with CLD Flame) or a gas-jet burner, a crew-removable flat circular copper mesh electrode ~35 or ~50 mm downstream, and a +/-10 kV high-voltage supply",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "ACME"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [
+      "drop_tower"
+    ],
+    "label": "ISS · CIR · ACME · drop-tower precursors",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Combustion Integrated Rack (CIR), ACME"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+        "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+      },
+      {
+        "type": "external",
+        "url": "https://doi.org/10.1080/00102202.2012.694740",
+        "quote": "All tests are performed at the NASA Glenn 2.2-s Drop Tower."
+      }
+    ]
+  },
   "one_line": "Small methane and ethylene flames on the Space Station were placed in a strong electric field between the burner and a metal mesh; the field drags the flame's natural ions and the gas around them, creating an adjustable 'ion wind' that can reshape, compact, de-soot or stabilise the flame with no buoyancy present.",
   "summary": "E-FIELD Flames studied how a DC electric field changes small laminar diffusion flames when buoyancy is absent. In the ACME insert of the Combustion Integrated Rack on the ISS, up to 10 kV of either polarity was applied between the burner and a copper mesh about 35-50 mm downstream, while the ion current, flame images, chemiluminescence and radiation were recorded. Nitrogen-diluted methane (40-100%) and ethylene (25-100%) flames were burned on 20 test days between March and November 2018, on a coflow burner (11 days) and a gas-jet burner (9 days), 219 flames. In microgravity the ion current versus voltage curve shows a distinct peak at saturation, where the flame is most compact, and then falls, unlike in 1 g. Fields could suppress soot, stabilise highly diluted flames with very weak fields, and produced corona and arcs at high strength. A drop-tower precursor showed an electric field alone can make microgravity flames resemble 1 g flames; this ion-wind body force is the basis for describing E-FIELD as mimicking partial gravity, but no calibrated partial-gravity tests were reported. Fire-safety relevance is indirect.",
   "question": {

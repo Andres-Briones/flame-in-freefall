@@ -63,6 +63,22 @@ TRANSFER = {
 CABIN_AIR = {"PSI-47", "PSI-98", "PSI-99", "PSI-100", "PSI-101", "PSI-102", "PSI-106", "PSI-107"}
 CABIN_RANGE = {"x_o2": (0.205, 0.215), "pressure_kpa": (98.0, 103.0)}
 PHASE_WITHOUT_TESTS = {"PSI-60": "gas", "PSI-62": "solid", "PSI-115": "aerosol", "PSI-117": "liquid", "PSI-142": "liquid"}
+PLATFORM_KINDS = ("iss", "cygnus_free_flight", "drop_tower", "ground_lab", "computation")
+# How far a result from each setting carries to a fire in a real cabin, for `relevance`. Only what the records and
+# the facility glossary (data/digest/facilities.json) support.
+SETTING_NOTES = {
+    "CIR": "ISS rack test: burned in the sealed CIR combustion chamber (about 90 L) with an atmosphere set for the "
+           "test, so O2, pressure and diluent were controlled and the flame was small; it does not show how a fire "
+           "grows in an open cabin or what it does to the cabin air.",
+    "MSG": "ISS glovebox test: a small sample or gas jet in a flow duct inside the sealed MSG work volume (about "
+           "250 L), in cabin air or cabin air diluted with nitrogen; samples and flames are centimetre-sized, not "
+           "cabin-scale.",
+    "cygnus_free_flight": "Saffire: burned in a flow duct inside an uncrewed Cygnus cargo module in free flight, in "
+                          "the module's cabin air; the three Saffire flights are the only burns in a real spacecraft "
+                          "cabin volume, and Saffire-I and III (a 0.4 x 0.94 m fabric sheet) the only large ones.",
+    "ground_lab": "Ground laboratory test in normal gravity, not a microgravity test.",
+    "computation": "A computer model, not a test.",
+}
 
 
 def _clean(value):
@@ -169,7 +185,26 @@ def _card(acc):
         "flight": _is_flight(rec), "n_test_rows": int((t["accession"] == acc).sum()),
         "n_findings": len(rec["findings"]), "page": _page_name(acc) and f"docs/digest/{_page_name(acc)}",
         "doi": doi, "doi_url": f"https://doi.org/{doi}" if doi else None, "psi_url": psi_row["source_url"],
+        "location": rec["location"],
     }
+
+
+@lru_cache(maxsize=None)
+def facility_glossary():
+    """Facility and vehicle name -> {note, sources, unsourced?} (data/digest/facilities.json)."""
+    return json.loads((psi.DIGEST / "facilities.json").read_text())["facilities"]
+
+
+def _facility_notes(location):
+    names = [*location["facility"], *(["Cygnus"] if location["kind"] == "cygnus_free_flight" else [])]
+    return {name: facility_glossary()[name]["note"] for name in names}
+
+
+def _setting(acc):
+    """Where the investigation ran and a one-line note on how far its result carries to a real cabin."""
+    loc = records()[acc]["location"]
+    key = loc["kind"] if loc["kind"] != "iss" else next((f for f in loc["facility"] if f in SETTING_NOTES), None)
+    return {"platform_kind": loc["kind"], "label": loc["label"], "note": SETTING_NOTES.get(key)}
 
 
 def _page_name(acc):
@@ -276,8 +311,18 @@ def document_text(accession, file, page=None):
     return _result(data, None, sources, notes)
 
 
-def search_investigations(query=None, pillar=None, fuel_phase=None, flight=None, limit=24):
-    """Investigation cards, filtered and (with a query) ranked by text match over their digest record."""
+def _kinds(platform_kind):
+    kinds = [platform_kind] if isinstance(platform_kind, str) else list(platform_kind)
+    unknown = sorted(set(kinds) - set(PLATFORM_KINDS))
+    if unknown:
+        raise ValueError(f"platform_kind must be among {list(PLATFORM_KINDS)}, not {unknown}")
+    return kinds
+
+
+def search_investigations(query=None, pillar=None, fuel_phase=None, flight=None, platform_kind=None, limit=24):
+    """Investigation cards, filtered and (with a query) ranked by text match over their digest record.
+    `platform_kind` (one kind or a list) keeps the investigations whose `location.kind` is one of them."""
+    kinds = _kinds(platform_kind) if platform_kind else None
     cards = {acc: _card(acc) for acc in records()}
     if query:
         score = {}
@@ -287,7 +332,8 @@ def search_investigations(query=None, pillar=None, fuel_phase=None, flight=None,
     out = [c for c in cards.values()
            if (pillar is None or pillar in c["pillars"])
            and (fuel_phase is None or fuel_phase in c["fuel_phases"])
-           and (flight is None or c["flight"] == flight)]
+           and (flight is None or c["flight"] == flight)
+           and (kinds is None or c["location"]["kind"] in kinds)]
     out.sort(key=lambda c: (-c.get("match", 0), psi.accession_number(c["accession"])))
     return _result(out[:limit], None, [{"ref": f"[{c['accession']}]", "page": c["page"]} for c in out[:limit]])
 
@@ -374,6 +420,8 @@ def get_investigation(accession, sections=None):
     rec = records()[acc]
     data = _with_quote_es({k: v for k, v in rec.items() if sections is None or k in sections or k == "accession"})
     data["card"] = _card(acc)
+    if "location" in data:
+        data["location"] = {**data["location"], "facility_notes": _facility_notes(data["location"])}
     api = table("investigations").set_index("accession").loc[acc]
     if sections is None or "publication_dois" in sections:
         dois = api["publication_dois"]
@@ -420,7 +468,7 @@ def _sheet_keys(df):
 
 def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=None, pressure_kpa=None,
                   flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None, sheet_out=None,
-                  row_kind="test", exclude_flags=None):
+                  platform_kind=None, row_kind="test", exclude_flags=None):
     t = table("tests")
     mask = pd.Series(True, index=t.index)
     if sheet_out:
@@ -430,6 +478,8 @@ def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=
     if accession:
         accs = [accession] if isinstance(accession, str) else accession
         mask &= t["accession"].isin([_accession(a) for a in accs])
+    if platform_kind:
+        mask &= t["platform_kind"].isin(_kinds(platform_kind))
     for column, value in (("fuel_phase", fuel_phase), ("extinction_mode", extinction_mode), ("outcome", outcome),
                           ("outcome_action", outcome_action), ("row_kind", row_kind)):
         if value:
@@ -731,6 +781,7 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
             "accession": acc, "acronym": rec["identity"]["acronym"], "score": round(score, 1),
             "components": {k: round(v, 2) for k, v in comp.items()},
             "distance_to_scenario": cond["distance"], "distance_per_dimension": {k: round(v, 2) for k, v in cond["per_dimension"].items()},
+            "platform_kind": rec["location"]["kind"],
             "phase_match": fuel_phase in _phases(acc), "nearest_test": nearest if same else None,
             "nearest_test_other_phase": None if same else nearest, "conditions_unknown": cond["unknown"],
             "conditions_from_range": cond["from_range"], "conditions_assumed_cabin_air": cond["assumed"],
@@ -778,7 +829,8 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         gap = {"accession": closest["accession"], "acronym": closest["acronym"], "test_id": n["test_id"],
                "fuel": n["fuel"], "fuel_phase": fuel_phase, "x_o2_ambient": n["x_o2_ambient"],
                "pressure_kpa": n["pressure_kpa"], "distance_to_scenario": closest["distance_to_scenario"],
-               "not_measured": n["not_measured"], "condition_ranges": closest["condition_ranges"]}
+               "not_measured": n["not_measured"], "condition_ranges": closest["condition_ranges"],
+               "setting": _setting(closest["accession"])}
 
         def origin(key):
             c = closest["condition_ranges"].get(key)
@@ -788,11 +840,17 @@ def relevance(scenario="moon-habitat", fuel_phase="solid", pillar=None, top=24, 
         notes.append(f"Gap: the closest {fuel_phase}-fuel test to this scenario is {closest['accession']} {n['test_id']} "
                      f"({n['fuel']}, O2 {n['x_o2_ambient']:.3f}{origin('x_o2')}, {n['pressure_kpa']:.0f} kPa{origin('pressure_kpa')}), "
                      f"{closest['distance_to_scenario']} scale steps away. Conclusions for this scenario are extrapolations.")
+    if closest:
+        setting = _setting(closest["accession"])
+        if setting["note"]:
+            notes.append(f"Setting of the closest {fuel_phase}-fuel test ({closest['accession']}, {setting['label']}): "
+                         f"{setting['note']}")
     data = {"scenario": {"name": name, **sc, "fuel_phase": fuel_phase, "pillar": pillar}, "weights": weights,
             "ranking": ranked[:top], "gap": gap, "closest_same_phase": closest and closest["accession"],
             "closest_same_phase_test": closest and {"accession": closest["accession"], **closest["nearest_test"],
                                                     "condition_ranges": closest["condition_ranges"],
-                                                    "distance_to_scenario": closest["distance_to_scenario"]}}
+                                                    "distance_to_scenario": closest["distance_to_scenario"],
+                                                    "setting": _setting(closest["accession"])}}
     chart = {"type": "stacked-bar", "x": "components", "y": "acronym", "sort": "score"}
     sources = [{"ref": f"[{r['accession']}]"} for r in ranked[:top]]
     return _result(data, chart, sources, notes)
@@ -1055,6 +1113,10 @@ def discrepancies(accession=None, test_id=None):
     notes = ["`replace` and `fill` entries changed the table; the PSI value is always kept next to the new one.",
              "Raw-data conflicts were found only where raw sensor files exist (PSI-10, 23, 39, 159, 98, 100, 101); "
              "the other tables were checked against the reports only."]
+    if raw["column"].eq("flight_program").any():
+        notes.append("Entries whose `column` is flight_program (a field of the investigations table) are errors in "
+                     "NASA's catalogue record of the investigation, not in a test table; the record's `location` "
+                     "gives where the tests really ran.")
     if data["removed_sources"]:
         notes.append("Some statements rest on files that PSI lists as removed but still serves; they are marked.")
     if data["source_disagreements"]:

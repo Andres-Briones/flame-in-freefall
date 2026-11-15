@@ -22,6 +22,50 @@
     "hardware": "SAME flight hardware already on orbit (sample carousels, smoke generation duct, 6 L piston aging chamber, diagnostics duct with ISS and Space Shuttle smoke detectors, P-Trak, DustTrak, ionization chamber, thermal precipitators), with reloaded carousels, 30 loose samples, rebuilt thermal precipitators, and the new MPASS two-angle scattering sensor replacing one Commercial Diagnostics Enclosure",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "MSG",
+      "SAME hardware"
+    ],
+    "crewed": true,
+    "expedition": "Expedition 24",
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · MSG · SAME hardware",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Comparitive Soot Diagnostic Hardware"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-101_Engineering Documents_SAME EIRD Rev 2.00 02-25-05 HIgh Q.pdf",
+        "locator": "p3",
+        "quote": "modifications to enable operations in the Microgravity Science Glovebox (MSG) on the International Space Station (ISS)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+        "locator": "p72",
+        "quote": "Results are presented from the Reflight of the Smoke Aerosol Measurement Experiment (SAME-2) which was conducted during Expedition 24 (July- September 2010)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+        "locator": "p84",
+        "quote": "The support of the SAME experiment team and the crews of ISS increments 10, 13, 15, and 24 are gratefully acknowledged."
+      }
+    ]
+  },
   "one_line": "On the ISS, small pieces of five common spacecraft materials were overheated (without burning) to make smoke, and instruments measured how big the smoke particles were and whether the Shuttle and ISS smoke detectors would have noticed them.",
   "summary": "SAME-R, the 2010 reflight of the Smoke Aerosol Measurement Experiment, heated small cylindrical samples of Kapton, Teflon, silicone rubber, cotton lampwick and Pyrell foam below ignition in the ISS Microgravity Science Glovebox. Air flow past the sample was varied from 8.1 cm/s down to zero, sample temperature was set per material, and smoke was aged in a 6 L chamber for up to about 1900 s. Three instruments measured the zeroth, first and third moments of the particle size distribution; a two-angle prototype sensor, Shuttle (ionization) and ISS (light-scattering) detectors and electron-microscope grids recorded the same smoke. Unaged baseline smoke had geometric mean diameters of 0.05-0.18 um and diameters of average mass of 0.11-0.47 um; aging and low flow enlarged the particles, and zero flow gave much larger particles. Kapton and Teflon smoke was smallest and often fell below the ISS detector's alarm level, while silicone, lampwick and Pyrell saturated it. At 8.1 cm/s, flight sizes matched ground tests. The authors conclude that a single-moment detector cannot cover all smokes without nuisance alarms, and that multi-moment detection is promising.",
   "question": {

@@ -20,6 +20,57 @@
    "hardware": "ACME chamber insert (constant-volume CIR chamber, ~83-90 L free volume) with a 6.35 mm porous sintered stainless-steel spherical burner (serial 1002, then 1003 from June 2019), retractable hot-wire igniter (loop tip in round 1, coil tip in round 2), three mass-flow controllers, ACME colour DataCam, analog ops camera, CIR HiBMs camera, intensified (CFI) camera, 3 PMTs, radiometer array, SiC thin-filament pyrometry array and thermocouple rakes",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 59/60 and 66",
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Advanced Combustion via Microgravity Experiments (ACME), Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+     "locator": "p3",
+     "quote": "The two rounds occurred during Increments 59/60 and 66 and respectively featured normal and inverse flames."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+     "locator": "p19",
+     "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari)"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_TaskbookRpts.pdf",
+     "locator": "p34",
+     "quote": "Experiments were performed in 2.2 s and 5.2 s microgravity facilities."
+    }
+   ]
+  },
   "one_line": "On the space station, small ball-shaped flames of ethylene gas were burned for minutes around a porous sphere, either as fuel blowing into oxygen-rich air or as oxygen blowing into a fuel atmosphere, to learn when such flames make soot and when they go out.",
   "summary": "ACME/Flame Design burned ethylene spherical diffusion flames on a 6.35 mm porous sphere in the Combustion Integrated Rack on the ISS. In 2019, fuel (pure or nitrogen-diluted) flowed into oxygen/nitrogen atmospheres of 21-40% O2 near 1 atm (normal flames). In 2021-22, oxygen/nitrogen with up to 85% O2 flowed into ethylene/nitrogen atmospheres at 0.43-3 atm (inverse flames); one day used propane. The tables list 327 tests. Flows were held constant while cameras, thin-filament pyrometry, thermocouples and photomultipliers tracked each flame. In the 2019 tests flames grew, cooled by gas radiation, oscillated and went out after 28-336 s. At 1 atm all ethylene flames extinguished near 1130 K, at a fuel flux through the flame of 0.2 g/m2/s (normal) or an oxygen flux of 0.68 g/m2/s (inverse). Small flames burned steadily for up to 870 s. Sustained soot appeared only at 40% O2 with concentrated fuel. For fire safety, quiescent microgravity flames persist far below the about 1500 K extinction temperature typical on Earth, although these gas-burner limits are not material flammability limits.",
   "question": {
@@ -1545,6 +1596,37 @@
    "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with flat porous BRE burners of 25 and 50 mm diameter",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    }
+   ]
+  },
   "one_line": "A flat gas burner on the Space Station imitated small burning patches of plastics and liquids in still air, showing that such flames can burn steadily for minutes without any air flow when oxygen is raised to about 26.5% or more, but go out within tens of seconds at 21%.",
   "summary": "ACME BRE (Burning Rate Emulator) used flat porous gas burners, 25 and 50 mm across, in the Combustion Integrated Rack on the International Space Station to imitate small burning patches of solids and liquids in still air. Ethylene, nitrogen-diluted ethylene or methane was fed at a fixed mass flux (about 1-12 g/(m2 s)) into nitrogen-oxygen atmospheres of 21-40% O2 at 56-100 kPa; embedded heat-flux gauges, radiometers and cameras gave the effective heat of gasification of each flame, its radiative loss and its size. Over 18 test days in 2019-2021, 194 flames were ignited. All 25 mm flames at 21% O2 self-extinguished within 40 s, whereas at 26.5, 34 and 40% O2 many burned steadily for 2-5 minutes until shut down. Larger, higher-flow and methane flames extinguished sooner; radiative heat loss drove the oscillation and extinction. Models built on these data suggest common plastics could burn steadily at about 1-3 g/(m2 s) in microgravity, and that low-pressure, oxygen-enriched cabin atmospheres widen the burning range. Stopping ventilation may therefore not quickly put out a small fire at elevated oxygen.",
   "question": {
@@ -2726,6 +2808,37 @@
    "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with the small coflow burner (fuel tube ~2.1-2.2 mm inner diameter inside a 25 mm air nozzle), crew-exchangeable mass flow controllers, colour and gray-scale cameras, PMTs and thin-filament pyrometry fibres",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    }
+   ]
+  },
   "one_line": "Small methane and ethylene flames surrounded by a gentle co-flowing air stream were burned on the Space Station, from very diluted near-extinction flames to very sooty ones, to give computer models clean, buoyancy-free benchmark data; the sooty flames held several times more soot than on Earth and diluted flames survived at lower fuel concentrations.",
   "summary": "CLD Flame produced benchmark data on laminar coflow diffusion flames, a fuel jet surrounded by co-flowing air, for testing chemical-kinetic and soot models at both extremes of fuel dilution. On the ISS, in the ACME insert of the Combustion Integrated Rack, a small coflow burner (about 2 mm fuel tube in a 25 mm air nozzle) burned nitrogen-diluted methane (20-100%) and ethylene (10-100%) in air on 32 test days from November 2017 to March 2021, igniting 344 flames. Cameras and pyrometry gave flame shape, lift-off height, CH* chemiluminescence, temperature, soot temperature and soot volume fraction. Preliminary results: sooty microgravity flames were taller and wider and held 5-8 times more soot than equivalent 1 g flames, and dilution limits of both fuels were extended, with lifted flames stable at lower fuel concentrations. Simulations of the ACME ethylene flames showed weaker gravity effects than in a larger burner, and highlighted errors in the predicted temperature field. For fire safety this is fundamental: microgravity flames can be sootier, more radiative and burn closer to dilution limits.",
   "question": {
@@ -3771,6 +3884,44 @@
    "facility": "Combustion Integrated Rack (CIR)",
    "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with the small coflow burner (shared with CLD Flame) or a gas-jet burner, a crew-removable flat circular copper mesh electrode ~35 or ~50 mm downstream, and a +/-10 kV high-voltage supply",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    },
+    {
+     "type": "external",
+     "url": "https://doi.org/10.1080/00102202.2012.694740",
+     "quote": "All tests are performed at the NASA Glenn 2.2-s Drop Tower."
+    }
+   ]
   },
   "one_line": "Small methane and ethylene flames on the Space Station were placed in a strong electric field between the burner and a metal mesh; the field drags the flame's natural ions and the gas around them, creating an adjustable 'ion wind' that can reshape, compact, de-soot or stabilise the flame with no buoyancy present.",
   "summary": "E-FIELD Flames studied how a DC electric field changes small laminar diffusion flames when buoyancy is absent. In the ACME insert of the Combustion Integrated Rack on the ISS, up to 10 kV of either polarity was applied between the burner and a copper mesh about 35-50 mm downstream, while the ion current, flame images, chemiluminescence and radiation were recorded. Nitrogen-diluted methane (40-100%) and ethylene (25-100%) flames were burned on 20 test days between March and November 2018, on a coflow burner (11 days) and a gas-jet burner (9 days), 219 flames. In microgravity the ion current versus voltage curve shows a distinct peak at saturation, where the flame is most compact, and then falls, unlike in 1 g. Fields could suppress soot, stabilise highly diluted flames with very weak fields, and produced corona and arcs at high strength. A drop-tower precursor showed an electric field alone can make microgravity flames resemble 1 g flames; this ion-wind body force is the basis for describing E-FIELD as mimicking partial gravity, but no calibrated partial-gravity tests were reported. Fire-safety relevance is indirect.",
@@ -4878,6 +5029,52 @@
    "facility": "Combustion Integrated Rack (CIR)",
    "hardware": "ACME chamber insert (~0.4 m diameter, ~83-90 L free chamber volume) with a 6.35 mm porous sintered 316 stainless-steel spherical burner (s/n 1003, shared with Flame Design and CFI-G), retracting hot-wire igniter (loop tip in round 1, coil tip in round 2 from the second test day), three mass flow controllers (fuel, oxidizer/inert, nitrogen), ACME colour DataCam (1360x1024, 12-bit), CFI intensified camera (CH*, CH2O or fused-silica filter), CIR LLL-UV intensified camera (OH*, 310 nm), CIR HiBMs camera with red backlight, analog ops camera, 5-fibre SiC thin-filament pyrometry array, radiometer array plus an offset wide-view radiometer, three PMTs (OH* 310 nm, broadband, CH* 430 nm), burner surface thermocouple, far-field thermocouples, CIR gas chromatograph (GCIP)",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 60, 61 and 63",
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · Destiny · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Presentations_20120015928.pdf",
+     "locator": "p5",
+     "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s-Flame 30-day report Inc 63 20201216.pdf",
+     "locator": "p3",
+     "quote": "A total of 276 flames were ignited for the s-Flame experiment, with 29, 116, and 131 respectively ignited during Increments 60, 61, and 63."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+     "locator": "p5",
+     "quote": "Although experimental data of good quality were obtained on the transient response of spherical diffusion flames in the 2.2-s drop tower facility, the duration was insufficient to observe radiative extinction."
+    }
+   ]
   },
   "one_line": "On the space station, gas fuels (hydrogen, methane, ethylene, diluted with nitrogen or helium) were fed out of a small porous ball into still oxygen-containing gas to make nearly perfect spherical flames, to see how such flames grow, and how they go out when the fuel supply is too small or when the flame becomes so large that it loses too much heat by radiation.",
   "summary": "s-Flame burned gaseous fuels issuing from a 6.35 mm porous spherical burner into a quiescent oxygen atmosphere at about 1 atm inside the ISS Combustion Integrated Rack. The aim was to test detailed chemistry and transport models against a one-dimensional diffusion flame. In 18 test days (Sept. 2019 to July 2020), 276 flames were ignited: 145 with nitrogen dilution of fuel and atmosphere (about 21% or 30% O2) and 131 with helium dilution (about 21%, 30% and 17.5% O2). Fuels were ethylene, methane, hydrogen and hydrogen/methane blends at roughly 1-17.5 cc/s. Nitrogen-diluted ethylene and methane flames showed both extinction branches. Flows of 5-10 cc/s gave flames that grew until radiative loss extinguished them. Flows ramped down toward 1 cc/s gave kinetic extinction. Radiative extinction, never seen in drop towers, was common. No flame was inherently sooty. Helium made ignition much harder and moved the limits. Predicted pulsating instabilities were not clearly seen. For fire safety, the work shows that flame size and residence time set extinction in quiescent microgravity, and that dim hydrogen flames are hard to see.",
@@ -6296,6 +6493,42 @@
    "facility": "Microgravity Science Glovebox (MSG)",
    "hardware": "BASS flow duct (the SPICE duct launched on STS-126 and adapted for BASS): 7.6 x 7.6 x 17 cm black-anodised duct with variable-speed fan, 0-2 inlet flow restrictors (max ~55 cm/s with none, ~35 cm/s with two), honeycomb straightener, TSI 8475 omnidirectional air-velocity transducer, uncalibrated thermopile radiometer, Kanthal hot-wire igniters, Nikon D300s top-view still camera (~1 frame/s), Panasonic colour video with data overlay; MSG GN2 supply used to dilute the 250 L work volume; hand-held CSA-CP (O2, CO, HCl, HCN) and CDM (CO2) sensors",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+     "locator": "p74",
+     "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Active crew support for real-time “lab partner” operations."
+    }
+   ]
   },
   "one_line": "Astronauts ran 129 burns of small plastic and fabric samples in a gentle, adjustable air stream on the ISS while lowering the oxygen with nitrogen, to find the weakest airflow and the lowest oxygen at which solids keep burning without gravity, and to compare that with the Earth test NASA uses to approve materials.",
   "summary": "BASS-II ran 129 burns of small solid samples (126 in 2014, three in 2016) in a 7.6 cm square flow duct in the ISS Microgravity Science Glovebox. Imposed air flows ranged from below 1 to about 55 cm/s. For the first time on ISS the glovebox was diluted with nitrogen, so oxygen ranged from 22.2% to 13.6%. Five teams studied separate configurations: thin PMMA films and thick PMMA slabs in opposed flow, PMMA rods in opposed and concurrent flow, and a cotton-fibreglass fabric in concurrent flow. Thin-film flames went out from radiative loss at about 1 cm/s in air, whatever their thickness, and at 2.6-4 cm/s near 16% O2. The limit fitted for concurrent rod flames has its minimum at about 13.5% O2 (lowest reading with a flame: 13.6%), against a 15.4% upward-burning limit on Earth. Opposed spread over rods persisted to 17.5% O2, against 19% in normal gravity. Fabric flames quenched at 1-5 cm/s. Most flames released under 100 W and burned fuel-rich, producing much CO. Weak ventilation near spacecraft surfaces can therefore sustain flames where Earth tests show none.",
@@ -8219,6 +8452,37 @@
    "hardware": "SPICE (Smoke Point In Co-flow Experiment) flow duct, 76 mm x 76 mm, already on ISS and modified for BASS: sample frame insert with 4 fuel-holder designs (41 flight samples), hot-wire igniters, 3.2 mm nozzle delivering MSG gaseous nitrogen (0-500 sccm), fan that can be turned fully off, BASS control box, Nikon D300s still camera and colour video camera",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-26_Presentations_Crew Training 2010.pdf",
+     "locator": "p26",
+     "quote": "After every 2 burns the MSG Work Volume must be purged for 3 minutes"
+    }
+   ]
+  },
   "one_line": "Astronauts burned small fabric strips, plastic spheres and slabs, and wax candles in a gentle, adjustable air stream on the ISS to see whether solids burn more readily without gravity than in the Earth-based test NASA uses to approve materials, and whether a puff of nitrogen puts the flames out.",
   "summary": "BASS (Burning and Suppression of Solids) burned 41 small solid samples in about 115 burns inside a 76 mm square flow duct in the ISS Microgravity Science Glovebox in 2012-2013, at about 1 atm and 16-23% O2. Fuels were a cotton-fibreglass (SIBAL) fabric, Nomex and Ultem sheets, PMMA spheres and slabs, and wax candles, in fan-driven air flows from below 1 to about 44 cm/s, with an upstream nitrogen jet of up to 500 cc/min. The fabric, which cannot burn downward in 1 g air, spread steadily in 9-10 cm/s opposed flow. Opposed spread peaked at 10-15 cm/s; concurrent spread rose linearly with flow (2.55 versus 1.21 mm/s opposed at about 10 cm/s), and concurrent flames quenched below 1 cm/s. PMMA and candle flames survived for minutes as dim blue flames near 1 cm/s. The nitrogen jet usually removed only the leading edge, and most flames went out only when the airflow stopped. Fire-retarded Nomex HT90-40 and Ultem did not burn at 21-22% O2. Normal-gravity screening therefore does not bound flammability in every configuration.",
   "question": {
@@ -9945,6 +10209,44 @@
    "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) inside the CIR 90-litre combustion chamber, with the Fuel and Oxidizer Mixing Apparatus (FOMA). Droplets were deployed between retractable 250 um stainless-steel needles, either free-floating or on a 40 um silicon-carbide (SiC) fibre, and ignited by two retractable hot-wire igniters. Diagnostics: backlit high-bit-depth (HiBMS) camera for droplet size, intensified camera for hot-flame (OH*) and cool-flame imaging, colour camera, and wideband (0.6-10 um) and narrowband (5.0-6.5 um, water vapour) radiometers.",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "CIR",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny · CIR · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Multi-User Droplet Combustion Apparatus (MDCA), Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-39_Science Documents_SRD_CFI.pdf",
+     "locator": "p12",
+     "quote": "The CIR facility, occupying a large rack in the Destiny module of the ISS"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-39_Reports_CFI Science Final Report.pdf",
+     "locator": "p6",
+     "quote": "Once the ISS crew installs the required fuel syringe, and the gas bottles containing the gas mixtures in the MDCA and CIR facilities"
+    }
+   ]
+  },
   "one_line": "Fuel droplets about 4 mm across were burned in a sealed chamber on the ISS to study 'cool flames': invisible, low-temperature flames (roughly 700-900 K) that keep a droplet burning after its normal hot flame has gone out.",
   "summary": "CFI burned about 4 mm droplets of n-dodecane, n-dodecane/iso-dodecane blends (75/25 and 60/40 by mass) and farnesane in the Multi-User Droplet Combustion Apparatus on the ISS in 2017, at 0.5-5 atm (51-507 kPa), 17-21% O2 and 0-59% helium. More than two hundred tests were run. Large droplets first burned with a hot flame that went out by radiative heat loss after about 10-14 s in air. A cool flame then kept the droplet burning quasi-steadily, close to the droplet, until it too extinguished at a finite diameter and left a cloud of condensed, partly oxidised vapour. For n-dodecane in air the cool-flame extinction diameter fell from about 1.7-1.9 mm at 0.5 atm to below 0.4 mm at 1.25 atm. Helium dilution increased it, to 2.1-2.6 mm with 59% helium at 1 atm. Iso-dodecane suppressed cool flames. At 2 atm and above, cool flames repeatedly re-ignited hot flames. For spacecraft fire safety, this means a fuel can keep reacting, and producing flammable vapour, after the visible flame has gone out.",
   "question": {
@@ -11415,6 +11717,61 @@
    "hardware": "TSI P-Trak condensation nuclei counter with a microgravity-modified (capillary-grooved) condenser tube and no mercury tilt switch; TSI DustTrak laser-photometer aerosol monitor as gravity-insensitive reference; 15 L Mylar sample bags; fill assembly using ISS gaseous nitrogen; Arizona Road Dust holders; DAFT impactor; HEPA zero filters",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny and Node 1",
+   "facility": [
+    "P-Trak",
+    "DustTrak"
+   ],
+   "crewed": true,
+   "expedition": "Increments 10 and 13",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny and Node 1 · handheld P-Trak and DustTrak",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "TSI P-Trak"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+     "locator": "p2",
+     "quote": "The tests were conducted in the US laboratory module Destiny in front of EXPRESS Rack 4; in the modules’s aft end and port side; and in Node 1."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+     "locator": "p4",
+     "quote": "The first test point for DAFT was performed on February 22, 2005 during Increment 10."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+     "locator": "p5",
+     "quote": "The first test point for DAFT-3 and -4 was scheduled to be performed on August 18, 2006 (GM 229), during Increment 13."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+     "locator": "p2",
+     "quote": "by having an astronaut create airborne debris"
+    }
+   ]
+  },
   "one_line": "Before flying a smoke-measuring experiment, NASA checked on the Space Station that a commercial particle counter, which normally relies on gravity to recycle its alcohol, still counted particles correctly in weightlessness, and in doing so made the first measurement of how dusty the Station air is.",
   "summary": "DAFT was a quick risk-reduction test for the Smoke Aerosol Measurement Experiment (SAME). SAME depended on a TSI P-Trak condensation particle counter, which uses gravity to return condensed isopropanol to its wick. NASA cut capillary grooves into the condenser and flew it with a gravity-insensitive TSI DustTrak photometer as reference. In February and March 2005 (Increment 10) the crew sampled cabin air at three locations and air dusted by separating Velcro. In August 2006 (Increment 13) three 15 L bags of Arizona Road Dust in nitrogen were sampled. The P-Trak ran with no clogging or errors. It read up to about 45,000 particles/cm3 for Velcro dust and 11,400-36,500 particles/cm3 (DustTrak 33-71 mg/m3) for the bags. Undisturbed ISS air averaged under 15 particles/cm3 and under 0.005 mg/m3, far cleaner than the Shuttle or offices. The orbital mass-per-count ratio was about 3.2 times the ground value (mean diameter 1.65 µm), consistent with large particles not settling. The modified counter was accepted for SAME, supporting spacecraft smoke-detector design.",
   "question": {
@@ -12432,6 +12789,26 @@
    "hardware": "None of its own; analysed DSLR images from the Smoke Point In Co-flow Experiment (SPICE, PSI-107) and Yale laboratory flames; the resulting paper also uses the ACME coflow burner configuration",
    "project_type": "Ground Investigation"
   },
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-107"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS SPICE images",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI."
+    }
+   ]
+  },
   "one_line": "Yale researchers re-analysed Space Station photographs of sooty ethylene flames and ran detailed computer models to find out why flames in weightlessness make so much more soot than on Earth, concluding that the models mainly get the flame temperature wrong.",
   "summary": "This PSI-funded ground investigation (2019-2022) combined re-analysis of microgravity flame images with detailed numerical modelling of sooting, laminar, ethylene-air coflow diffusion flames. Over 1600 raw camera images from the Smoke Point In Co-flow Experiment (SPICE) were decoded into colour channels and analysed by colour-ratio pyrometry to obtain soot temperature fields; the SPICE absolute light calibration then gave soot volume fractions. A coupled flow-species-soot model, extended with radiation re-absorption and sectional aggregate formation, simulated the Yale and ACME burner flames at 1 g and 0 g. Simulations reproduced the known trends: at 0 g the flame becomes longer, broader and more diffuse, cooler, with more soot and longer residence time, but these effects were much weaker for the smaller ACME flame. Perturbing soot sub-model parameters and radiation treatment did not remove the gap between model and measurement; the authors conclude the model mispredicts the temperature field, and that imposing measured temperatures and accounting for heat loss to the burner lip should improve soot predictions. For fire safety the work bears on soot, smoke and radiation modelling of microgravity fires.",
   "question": {
@@ -12881,6 +13258,32 @@
    "facility": null,
    "hardware": "None of its own; benchmarks are the Burning and Suppression of Solids experiments (BASS, PSI-26; BASS-II, PSI-25) flown in the ISS Microgravity Science Glovebox",
    "project_type": "Ground Investigation"
+  },
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-26",
+    "PSI-25"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS BASS and BASS-II data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "using the NASA Burning and Suppression of Solids (BASS and BASS-II) experiments as benchmarks"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Experimental imagery found in PSI from the BASS and BASS-II investigations was post-processed"
+    }
+   ]
   },
   "one_line": "University at Buffalo researchers built and tested fast computer models of flames spreading over solid fuels in weightlessness, checking them against Space Station burning tests, as a step toward predicting which spacecraft materials can burn at which oxygen levels and air speeds.",
   "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, compared it with BASS spread rates at 20.6% oxygen (over-predicting them by up to 2.7 times), and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data, predicting a minimum of 11.1-12.6% oxygen, 0.9-2.4 points below experiment. The aim is numerical screening of spacecraft material flammability.",
@@ -13431,6 +13834,32 @@
    "facility": "Combustion Integrated Rack (CIR)",
    "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) with free or SiC-fibre-supported droplets, fibre translation for slow convective flow, crossed-fibre arrays for droplet pairs, and a second HiBMs camera",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)"
+    }
+   ]
   },
   "one_line": "The follow-on to FLEX burned single drops and pairs of drops of practical-fuel ingredients and fuel mixtures (octanes, heptane, decane, alcohols) on the Space Station to give engine and fire modellers clean benchmark data, and showed that the 'cool flames' found in FLEX occur for many normal-alkane fuels.",
   "summary": "FLEX-2 extended the ISS FLEX droplet-combustion experiments in the CIR Multi-User Droplet Combustion Apparatus from two pure fuels to transportation-fuel components and mixtures. The PSI table lists the planned conditions: eight fuels (iso-octane, n-octane, n-heptane, n-decane, ethanol, propanol/glycerol 95/5 and 80/20, heptane/iso-octane 50/50), droplets 1.5-5 mm, oxygen mole fractions 0.17-0.30 in nitrogen or helium, pressures 0.5-3 atm and imposed relative flow 0.1-5 cm/s, plus binary droplet arrays. Published results from the programme show three-stage burning of large n-alkane droplets: hot-flame radiative extinction, a quasi-steady cool-flame stage, then cool-flame extinction and vapour-cloud formation. A scaling based on a critical flame temperature correlates radiative extinction diameters across CO2, He and Xe dilution. At about 2 atm, decane/hexanol droplets switched from cool-flame burning back to a hot flame spontaneously. For fire safety this establishes that invisible cool-flame burning and re-ignition are general features of alkane fuels, not specific to heptane.",
@@ -14271,6 +14700,33 @@
    "facility": "Combustion Integrated Rack (CIR) of the Fluids and Combustion Facility (FCF)",
    "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) chamber insert: opposed-needle droplet deployment, two retractable hot-wire igniters, optional 80 um SiC tether fibre; CIR backlit droplet camera (HiBMs), 310 nm OH* camera (LLUV) and MDCA colour camera",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "FCF",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR (FCF) · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)"
+    }
+   ]
   },
   "one_line": "Single drops of methanol and heptane were burned floating freely on the Space Station in air thinned with nitrogen, carbon dioxide or helium, to find how little oxygen still lets a fuel burn in weightlessness and how well these gases put flames out; it also discovered that heptane drops keep burning with an invisible 'cool flame' after the visible flame dies.",
   "summary": "FLEX burned isolated, mostly free-floating methanol and n-heptane droplets (initial diameter about 1.1-4.7 mm) in the ISS Combustion Integrated Rack between March 2009 and December 2011, in oxygen/nitrogen atmospheres diluted with carbon dioxide or helium at 0.7-3 atm. Cameras recorded droplet diameter and flame size, giving burning-rate constants (typically 0.4-0.6 mm2/s), extinction diameters and burn times for 274 tests. Small droplets extinguished diffusively, large ones radiatively, and the limiting oxygen index (LOI), where the two limits meet, was about 0.12 for methanol and 0.15 for heptane in nitrogen at 1 atm. Adding carbon dioxide to air raised the LOI to about 0.14 and 0.17; helium raised it to about 0.14 and 0.15. These limits are lower than in normal gravity, so terrestrial inert-gas suppressant standards carry less safety margin in orbit. Large heptane droplets kept burning after visible radiative extinction, supported by low-temperature cool-flame chemistry, which raises the possibility of an unseen fire re-igniting.",
@@ -15343,6 +15799,47 @@
    "facility": "Saffire flow unit (flow duct plus avionics bay, about 53 x 90 x 133 cm) strapped in the Cygnus PCM",
    "hardware": "Saffire-I enclosure: flow duct (about 18 x 20 in cross-section) with a single 40.6 cm x 94 cm SIBAL cotton-fibreglass sample card in the centre; fans at the duct outlet, flow straightener at inlet; hot-wire igniters woven into the upstream and downstream edges; 2 colour cameras viewing one face through a Lexan window (green LED for pyrolysis front); 4 radiometers (2 front, 2 back); 6 sample thermocouples at two streamwise stations, 6 plume thermocouples, inlet temperature; 2 anemometers; solid-state O2, CO2, pressure and humidity sensors; smoke wire for flow visualisation",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-6",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-6 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Saffire 1 enclosure in Cygnus"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+     "locator": "p4",
+     "quote": "The Saffire-I flight unit was successfully launched within the Cygnus PCM on an Atlas V launch vehicle on March 22, 2016 as part of the OA-6 mission."
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
   },
   "one_line": "NASA lit a 94-cm-long sheet of cotton-fibreglass fabric inside an empty cargo spacecraft after it left the ISS, the first large fire deliberately set in orbit, to see whether a fire in microgravity keeps growing or settles to a steady size.",
   "summary": "Saffire-I burned a 40.6 cm x 94 cm sheet of SIBAL cotton-fibreglass fabric inside the uncrewed Cygnus OA-6 cargo module on 14 June 2016, after it left the ISS. This was about ten times larger in each dimension than any earlier microgravity flame-spread sample. Cabin air (about 21.7% O2, near 1 atm) was drawn through a flow duct at about 20 cm/s, and the sample was ignited at its upstream edge. The concurrent flame settled to a steady length of about 40 mm and spread steadily at 1.8 mm/s over about 84 cm for 420 s, releasing about 1.2 kW. On Earth, upward spread over this fabric accelerates. A contingency opposed-flow burn over the last ~10 cm spread at 1.3 mm/s; this fabric cannot burn downward in 1 g. Spread was slower than in the small BASS duct at half the flow, which the investigators attribute to duct size. The fire used about 0.2 percentage points of O2 and raised cabin pressure about 0.3 kPa. A steady flame size lets designers bound a fire's heat release.",
@@ -16503,6 +17000,51 @@
    "hardware": "Saffire flow unit: a fan-driven rectangular flow duct (about 46 x 51 cm cross section) holding a sample card with nine 5 cm x 29 cm samples, hot-wire igniters, two cameras, thermocouples, radiometers, O2/CO2/pressure sensors and anemometers",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-5",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-5 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-II experiment was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "Cygnus Spacecraft"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Cygnus Pressurized Cargo Module, SAFFIRE"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf",
+     "quote": "Saffire-II OA-5 WFF Antares May 12, 2016 Oct 17, 2016 Nov 21, 2016"
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
+  },
   "one_line": "Nine strip-shaped samples of spacecraft materials were set alight inside an empty cargo spacecraft in orbit to see whether they burn more or less readily than in NASA's standard ground flammability test; silicone and Nomex would not burn in weightlessness, while a cotton-fibreglass fabric and thick acrylic burned but with flames that stopped growing.",
   "summary": "Saffire-II burned nine 5 cm x 29 cm samples in a fan-driven flow duct aboard the uncrewed Cygnus OA-5 vehicle after it left the ISS in late 2016. Samples were sized and ignited like NASA-STD-6001 Test 1 (736 J over 9.2 s) so that microgravity flammability could be compared with this 1-g upward screening test. Air flowed at 20 cm/s (25 cm/s for one sample) with about 22.1% O2 near 100 kPa. None of four silicone sheets (0.27-1.03 mm) spread a flame, although the 0.27 mm sheet is fully consumed in 1-g tests and the 0.37 mm sheet burns downward in 1 g. Nomex HT90-40 did not ignite even after about two minutes of heating by a roughly 460 W PMMA pilot flame. Cotton-fibreglass fabric burned completely at a steady 2.1 mm/s (20 cm/s) and 2.6 mm/s (25 cm/s), instead of accelerating as in 1 g. Flames on 1 cm thick PMMA stayed anchored at a limiting size for 10-15 minutes. At these flows the 1-g test was conservative for these materials, and concurrent flames reached a bounded size.",
   "question": {
@@ -17611,6 +18153,58 @@
    "hardware": "Saffire-III enclosure, nearly identical to Saffire-I: flow duct (about 18 x 20 in) with a single 40.6 cm x 94 cm SIBAL cotton-fibreglass sample card; fans at the outlet; hot-wire igniters at the upstream and downstream edges; 2 cameras viewing one face; 4 radiometers; 6 sample and 6 plume thermocouples, inlet temperature; 2 anemometers; solid-state O2, CO2, pressure and humidity sensors; smoke wire",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-7",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-7 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-III experiments were performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Saffire III enclosure in Cygnus"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+     "locator": "p1",
+     "quote": "Saffire-III flight system is loaded into the Cygnus PCM and be strapped into place."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+     "locator": "p1",
+     "quote": "The FOT places the Cygnus vehicle into a free-drift mode and initiate the experiment."
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/citations/20180005168",
+     "quote": "Saffire-III OA-7 KSC Atlas Feb 3, 2017 Mar 27, 2017 June 4, 2017"
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
+  },
   "one_line": "A repeat of the first large spacecraft fire experiment, with the air blowing a little faster, to see how ventilation speed changes how fast a large sheet of fabric burns in an empty cargo spacecraft in orbit.",
   "summary": "Saffire-III repeated Saffire-I in the uncrewed Cygnus OA-7 cargo module on 4 June 2017. A 40.6 cm x 94 cm sheet of SIBAL cotton-fibreglass fabric was burned in cabin air (21.2% O2 falling to 21.0%, near 1 atm) in a flow duct. The flow was planned at 30 cm/s but was about 25 cm/s. An opposed-flow burn was run first from the downstream edge and spread into the flow at 0.98 mm/s over about 10 cm in 60 s. The concurrent burn from the upstream edge then spread steadily at 2.3 mm/s over about 84 cm in about 300-320 s. Compared with Saffire-I at 20 cm/s (1.8 and 1.3 mm/s), the faster flow sped up concurrent spread in proportion to the flow and slowed opposed spread. Spread rates were below those of the small-duct BASS strips and the narrow Saffire-II strips. The fire again used about 0.2 percentage points of O2 and raised cabin pressure about 0.4 kPa. Fire growth depends on ventilation speed and on enclosure size, so small-sample tests do not set the hazard.",
   "question": {
@@ -18632,6 +19226,50 @@
    "facility": "Microgravity Science Glovebox (MSG)",
    "hardware": "SAME flight hardware already on orbit (sample carousels, smoke generation duct, 6 L piston aging chamber, diagnostics duct with ISS and Space Shuttle smoke detectors, P-Trak, DustTrak, ionization chamber, thermal precipitators), with reloaded carousels, 30 loose samples, rebuilt thermal precipitators, and the new MPASS two-angle scattering sensor replacing one Commercial Diagnostics Enclosure",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG",
+    "SAME hardware"
+   ],
+   "crewed": true,
+   "expedition": "Expedition 24",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG · SAME hardware",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Comparitive Soot Diagnostic Hardware"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Engineering Documents_SAME EIRD Rev 2.00 02-25-05 HIgh Q.pdf",
+     "locator": "p3",
+     "quote": "modifications to enable operations in the Microgravity Science Glovebox (MSG) on the International Space Station (ISS)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+     "locator": "p72",
+     "quote": "Results are presented from the Reflight of the Smoke Aerosol Measurement Experiment (SAME-2) which was conducted during Expedition 24 (July- September 2010)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+     "locator": "p84",
+     "quote": "The support of the SAME experiment team and the crews of ISS increments 10, 13, 15, and 24 are gratefully acknowledged."
+    }
+   ]
   },
   "one_line": "On the ISS, small pieces of five common spacecraft materials were overheated (without burning) to make smoke, and instruments measured how big the smoke particles were and whether the Shuttle and ISS smoke detectors would have noticed them.",
   "summary": "SAME-R, the 2010 reflight of the Smoke Aerosol Measurement Experiment, heated small cylindrical samples of Kapton, Teflon, silicone rubber, cotton lampwick and Pyrell foam below ignition in the ISS Microgravity Science Glovebox. Air flow past the sample was varied from 8.1 cm/s down to zero, sample temperature was set per material, and smoke was aged in a 6 L chamber for up to about 1900 s. Three instruments measured the zeroth, first and third moments of the particle size distribution; a two-angle prototype sensor, Shuttle (ionization) and ISS (light-scattering) detectors and electron-microscope grids recorded the same smoke. Unaged baseline smoke had geometric mean diameters of 0.05-0.18 um and diameters of average mass of 0.11-0.47 um; aging and low flow enlarged the particles, and zero flow gave much larger particles. Kapton and Teflon smoke was smallest and often fell below the ISS detector's alarm level, while silicone, lampwick and Pyrell saturated it. At 8.1 cm/s, flight sizes matched ground tests. The authors conclude that a single-moment detector cannot cover all smokes without nuisance alarms, and that multi-moment detection is promising.",
@@ -20194,6 +20832,43 @@
    "hardware": "SAME MSG payload: 5 sample carousels of 6 wire-heated samples, smoke generation tube with controlled air flow, 5.65 L piston aging chamber with mixing fan, dynamic diluter, diagnostics duct with TSI P-Trak condensation particle counter (zeroth moment), First Alert ionization chamber (first moment), two TSI DustTrak 90-degree light-scattering photometers with 1 um and 10 um inlet impactors (third moment), ISS laser forward-scattering and Space Shuttle ionization smoke detectors, thermal precipitators collecting smoke on TEM grids. (The PSI record's 'experimentHardware' field names the earlier Comparative Soot Diagnostics hardware.)",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG",
+    "SAME hardware"
+   ],
+   "crewed": true,
+   "expedition": "Expedition 15",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG · SAME hardware",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Comparitive Soot Diagnostic Hardware"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The crew installed the near field hardware in the Glovebox, attached the Far Field Box to the Glovebox, and positioned the video cameras."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-102_Reports_SAME_Final Science Report.pdf",
+     "locator": "p35",
+     "quote": "Smoke Aerosol Measurement Experiment (SAME) which was conducted in the Microgravity Science Glovebox on the International Space Station (ISS) during Expedition 15."
+    }
+   ]
+  },
   "one_line": "On the Space Station, small pieces of common spacecraft materials (Teflon, Kapton, silicone rubber, cotton lamp wick) were overheated without burning, and the size of the smoke particles was measured to find out what kind of smoke detector would reliably catch an early spacecraft fire.",
   "summary": "SAME characterised pre-fire smoke in microgravity to guide spacecraft smoke-detector design. In the ISS Microgravity Science Glovebox during Expedition 15 (2007), wire-wrapped samples of Teflon, Kapton, silicone rubber, cellulose lamp wick and a reference liquid (dibutyl phthalate on a wick) were heated below ignition in a 2-8 cm/s air flow; the smoke was held in an aging chamber for 10-1800 s, then measured by three compact instruments giving the zeroth, first and third moments of the size distribution, from which a lognormal geometric mean diameter and spread were derived. Fresh smoke had geometric mean diameters of 80-189 nm and mass-mean diameters of 179-472 nm (geometric standard deviation 1.84-2.18); 720 s of aging, by coagulation, raised these to 155-352 nm and 267-606 nm. Silicone and lamp-wick smoke carried roughly half their mass above 1 um; Teflon and Kapton very little. At matched 8 cm/s flow, sizes matched 1-g tests. The Shuttle ionization detector responded to every test, the ISS light-scattering detector poorly to Teflon. The investigators concluded single-moment detectors are risky and recommended multi-moment or size-classifying detection.",
   "question": {
@@ -21461,6 +22136,36 @@
    "hardware": "Shared SPICE/SLICE coflow burner hardware (derived from the STS-87 ELF experiment): 76 mm square, 174 mm tall fan-driven flow duct with honeycomb and wire-mesh flow straightener, hot-sphere anemometer, interchangeable fuel nozzles of 0.41-3.23 mm inner diameter, mass flow controller, Nikon D300s DSLR still camera with BG-7 filter, analog video with data overlay, thermopile radiometer",
    "project_type": "Microgravity Investigation"
   },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+     "quote": "The SPICE and SLICE experiments were both c onducted in the Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+     "quote": "where the ISS crew controlled the flow with a potentiometer"
+    }
+   ]
+  },
   "one_line": "Astronauts on the Space Station photographed small gas flames burning from a tube into a gentle stream of air, to see how flames lift off, hold on and make soot without gravity and to provide test cases for computer models of flames.",
   "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction four- to eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
   "question": {
@@ -22226,6 +22931,43 @@
    "facility": "Microgravity Science Glovebox (MSG)",
    "hardware": "SPICE module, built from the Enclosed Laminar Flames (ELF, STS-87) hardware: a fan-driven flow duct (nominally 76 x 76 mm, about 170 mm long) with honeycomb flow straightener, onboard hot-wire anemometer, interchangeable 0.41/0.76/1.6 mm ID burner tubes on the duct axis, 0-500 sccm (N2-equivalent) mass flow controller fed from 12 fuel bottles, hot-wire igniter, retractable ruler, thermopile radiometer, Nikon D100 still camera (top view), colour video camera (front view via mirror) with a data-overlay titler, and a crew control box. The same duct was later reused by BASS, BASS-II and SLICE.",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": "Increments 18 and 19/20",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-107_Reports_SPICE_30-DayPostFlightReport.pdf",
+     "locator": "p2",
+     "quote": "During Increment 18 SPICE conducted 108 test points completing its nominal test matrix. During Increments 19/20 SPICE conducted 155 additional test points"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
+     "locator": "p5",
+     "quote": "the ISS crew members that conducted the tests Michael Barratt, E. Michael Fincke, Sandra H. Magnus, and Koichi Wakata"
+    }
+   ]
   },
   "one_line": "Astronauts on the Space Station burned tiny gas jets in a gentle, adjustable air stream and turned the fuel up until each flame just started to give off smoke, to learn how air flow and burner size control soot release when there is no gravity.",
   "summary": "SPICE measured laminar smoke points, the largest flame that releases no soot, of round gas-jet diffusion flames burning in co-flowing air inside the Microgravity Science Glovebox on the ISS between February and June 2009. The crew set the air speed with a fan, ignited the flame on a 0.41, 0.76 or 1.6 mm burner and raised the fuel flow until soot escaped the tip; luminous lengths were measured from the downlinked video. About 526 flame conditions were logged and 52-55 smoke points found for ethylene, propane, propylene and 75%/50% propylene in nitrogen, at co-flow speeds of 5.4-65 cm/s. Methane flames reached the end of the duct without smoking. Smoke-point length grew with co-flow speed and with smaller burners, scaling as d^-0.91 u^0.41, and was roughly proportional to fuel mass flow over stoichiometric mixture fraction; a simple residence-time model did not collapse the data. Propane was unusually sooty in microgravity. For spacecraft fire safety the results show that ventilation speed and fuel-jet size, not only fuel type, decide whether a small non-buoyant flame emits smoke.",
@@ -23758,6 +24500,32 @@
    "hardware": null,
    "project_type": "Ground Investigation"
   },
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-102",
+    "PSI-101"
+   ],
+   "also": [],
+   "label": "Computation · geometry and flow of the ISS SAME experiments",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective."
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments."
+    }
+   ]
+  },
   "one_line": "A computer simulation of smoke forming from a hot, vapour-releasing sample in a slow air stream shows that, without gravity, smoke particles can grow larger than on Earth, which matters for how spacecraft smoke detectors are designed.",
   "summary": "This NASA-funded ground study (grant NNX17AF08A, 2017-2019) used two-dimensional direct numerical simulation to compare smoke formed in Earth gravity and in microgravity. The configuration mimicked the ISS Smoke Aerosol Measurement Experiment (SAME). Dibutyl phthalate (DBP) vapour, a well-characterised surrogate for pyrolysis products, leaves a 473 K block in a channel with 300 K air flowing at 8 or 10 cm/s. A 45-node sectional aerosol model tracked nucleation, coagulation, condensation, evaporation, thermophoresis and Stokes settling. In Earth gravity, buoyancy makes the flow asymmetric and drives vapour to the cool upper wall. There nucleation is about 100 times faster (about 1e14 vs 1e12 per m3 per s). Settling also removes all particles larger than about 40 um, leaving a single size mode near 5 um. In microgravity the wake recirculation traps hot, vapour-rich gas. This gives a second mode near 30-35 um and particles approaching 100 um, or, without that recirculation, a single mode near 10 um. For fire safety, detectors calibrated on terrestrial smoke may meet larger particles in orbit, and the result depends on geometry.",
   "question": {
@@ -24736,6 +25504,26 @@
    "facility": null,
    "hardware": null,
    "project_type": "Ground Investigation"
+  },
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-69"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS FLEX data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX)"
+    }
+   ]
   },
   "one_line": "Detailed computer models of single burning fuel droplets, checked against droplet fires on the Space Station, explain when a droplet flame drops into a dim, low-temperature 'cool flame', how long it survives, and why the gas xenon is a poor fire suppressant.",
   "summary": "This NASA ground study (grant NNX17AF97A, 2017-2022) modelled isolated fuel droplets burning in microgravity and compared the predictions with Flame Extinguishment Experiment (FLEX) data from the ISS. A transient, spherically symmetric one-dimensional code with detailed low-temperature chemistry, spectral radiation and fibre heat loss was used. For n-heptane, n-decane and n-dodecane droplets of about 4 mm in air, a hot flame radiatively extinguishes once the flame temperature falls to about 1200 K, and the droplet continues to burn as a cool flame at 720-775 K. Longer alkanes give hotter cool flames and smaller cool-flame extinction diameters (model about 0.95, 0.43 and 0.25 mm at 1 atm). For n-dodecane, the cool-flame extinction diameter falls from about 1.9 mm at 0.5 atm to zero at 3 atm, where a 'warm' flame burns the droplet out. Methanol simulations validated on FLEX-563 gave a limiting oxygen index of about 5% with xenon, against 8-21% for other diluents. The planned three-dimensional study of convective perturbations is not in the deposited files.",
@@ -25802,6 +26590,40 @@
    "hardware": "Counterflow burner with ozone-sensitised oxidiser; diagnostics: thermocouple thermometry, formaldehyde (CH2O) planar laser-induced fluorescence, chemiluminescence imaging",
    "project_type": "Ground Investigation"
   },
+  "location": {
+   "kind": "ground_lab",
+   "vehicle": null,
+   "module": null,
+   "facility": [
+    "Counterflow burner"
+   ],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-69"
+   ],
+   "also": [
+    "computation"
+   ],
+   "label": "Ground lab · counterflow burner · uses ISS FLEX data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Principal Investigator Laboratory Hardware"
+    },
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "By using the Flame Extinguishment (FLEX) experimental data from the Physical Sciences Informatics (PSI) system of combustion science, the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "three different numerical modeling schemes"
+    }
+   ]
+  },
   "one_line": "A ground study at Princeton, prompted by the surprising cool flames seen around burning droplets on the Space Station, used ozone-assisted counterflow burners and simulations to map when hot flames turn into low-temperature 'cool' and 'warm' flames and when those go out.",
   "summary": "This PSI-funded ground investigation (2016-2021) set out to explain the cool flames observed after radiative extinction of n-alkane droplets in the ISS Flame Extinguishment Experiment (FLEX). Princeton researchers measured extinction limits of hot and cool non-premixed flames of n-heptane to n-tetradecane in an atmospheric counterflow burner, with and without ozone added to the oxidiser to boost low-temperature chemistry, probed multistage 'warm' flames with formaldehyde fluorescence, chemiluminescence and thermometry, and computed flame regimes for dimethyl ether up to elevated pressure. Without ozone, n-tetradecane cool flames survived at a fuel mass fraction near 0.32 at a stretch rate of about 83 1/s, versus about 0.55 for n-heptane at 78 1/s; ozone brought both to about 0.11 near 69 1/s. Hot-flame extinction occurred at fuel mass fractions of 0.04-0.055 for all fuels. Kinetic models overpredicted cool-flame extinction limits, and cool-flame reactivity scaled with oxygen mole fraction to a power of 1.5-2. Warm flames bridge cool and hot flames. For fire safety the work is fundamental: low-temperature flames can persist after visible flames go out.",
   "question": {
@@ -26594,6 +27416,44 @@
    "facility": "Combustion Integrated Rack (CIR), ACME chamber insert (constant-volume chamber, about 83 L free volume)",
    "hardware": "6.35 mm sintered 316 stainless-steel porous spherical burner with embedded type-K thermocouple; coiled Kanthal hot-wire igniter (retractable); three mass flow controllers (fuel, oxidiser, ISS nitrogen); CFI intensified camera with formaldehyde filter; ACME colour DataCam; dual-gain CFI-G radiometer array plus offset radiometer; three PMTs (230-700 nm, 310 nm, 430 nm); far (45/60/100/100 mm) and near (13/25/50/100 mm) thermocouple rakes; 3-fibre SiC thin-filament pyrometry array; chamber pressure transducer",
    "project_type": "Microgravity Investigation"
+  },
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 64-65 and 65-66",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "ACME, Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+     "locator": "p3",
+     "quote": "The two rounds occurred during Increments 64-65 and 65-66 and respectively featured normal and inverse flames."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+     "locator": "p16",
+     "quote": "The troublesome IPSU1 was replaced by astronaut Megan McArthur on May 18 (GMT 138)"
+    }
+   ]
   },
   "one_line": "Ground-commanded tests on the ISS burned ethane, propane and butane on a pea-sized porous sphere, both normally (fuel out of the sphere into an oxygen/nitrogen atmosphere) and inside-out (an oxygen-rich stream of up to 85% O2 out of the sphere into a fuel-filled chamber), and found the first spherical 'cool flames' of gaseous fuel.",
   "summary": "CFI-G, part of NASA's ACME project, burned spherical diffusion flames on a 6.35 mm porous burner in the ISS Combustion Integrated Rack from March to October 2021. It ran 333 tests on 23 days. In normal flames, nitrogen-diluted ethane, propane or n-butane flowed into atmospheres of 18-40% O2 at 0.5-3 atm. In inverse flames, an O2/N2 stream of 12-85% O2 flowed from the burner into a chamber filled with fuel and nitrogen; the chamber held no oxygen. Of 280 hot flames, 189 extinguished radiatively. Fifteen were followed, after about 1 s, by a quasi-steady cool diffusion flame, the first observed for gaseous fuels. These occurred only for 30% n-butane flowing at 0.75-1.5 mg/s into 39-40% O2 at 2 bar, with burner temperatures above 515 K. The hot flames were 2.6 times larger than the cool flames that followed. All normal flames in about 21% O2 self-extinguished within 20 s. Inverse flames from 85% O2 self-extinguished in 41 of 43 tests at 2-3 bar but in 0 of 14 at about 0.5 bar. These are burner flames, not material flammability limits.",

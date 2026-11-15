@@ -8,6 +8,7 @@ Investigators: Chung K. (Ed) Law (PI; Princeton University); Stephen D. Tse (Co-
 
 | | |
 |---|---|
+| Setting | ISS · Destiny · CIR · ACME · drop-tower precursors |
 | Platform | International Space Station (ISS), Destiny module |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2015-02-05 to 2019-11-24 |

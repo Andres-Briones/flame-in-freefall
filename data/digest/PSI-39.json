@@ -19,6 +19,44 @@
   "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) inside the CIR 90-litre combustion chamber, with the Fuel and Oxidizer Mixing Apparatus (FOMA). Droplets were deployed between retractable 250 um stainless-steel needles, either free-floating or on a 40 um silicon-carbide (SiC) fibre, and ignited by two retractable hot-wire igniters. Diagnostics: backlit high-bit-depth (HiBMS) camera for droplet size, intensified camera for hot-flame (OH*) and cool-flame imaging, colour camera, and wideband (0.6-10 um) and narrowband (5.0-6.5 um, water vapour) radiometers.",
   "project_type": "Microgravity Investigation"
  },
+ "location": {
+  "kind": "iss",
+  "vehicle": "ISS",
+  "module": "Destiny",
+  "facility": [
+   "CIR",
+   "MDCA"
+  ],
+  "crewed": true,
+  "expedition": null,
+  "uses_data_from": [],
+  "also": [],
+  "label": "ISS · Destiny · CIR · MDCA",
+  "source": [
+   {
+    "type": "psi_record",
+    "field": "flightProgram",
+    "quote": "International Space Station (ISS)"
+   },
+   {
+    "type": "psi_record",
+    "field": "experimentHardware",
+    "quote": "Multi-User Droplet Combustion Apparatus (MDCA), Combustion Integrated Rack (CIR)"
+   },
+   {
+    "type": "psi_file",
+    "file": "PSI-39_Science Documents_SRD_CFI.pdf",
+    "locator": "p12",
+    "quote": "The CIR facility, occupying a large rack in the Destiny module of the ISS"
+   },
+   {
+    "type": "psi_file",
+    "file": "PSI-39_Reports_CFI Science Final Report.pdf",
+    "locator": "p6",
+    "quote": "Once the ISS crew installs the required fuel syringe, and the gas bottles containing the gas mixtures in the MDCA and CIR facilities"
+   }
+  ]
+ },
  "one_line": "Fuel droplets about 4 mm across were burned in a sealed chamber on the ISS to study 'cool flames': invisible, low-temperature flames (roughly 700-900 K) that keep a droplet burning after its normal hot flame has gone out.",
  "summary": "CFI burned about 4 mm droplets of n-dodecane, n-dodecane/iso-dodecane blends (75/25 and 60/40 by mass) and farnesane in the Multi-User Droplet Combustion Apparatus on the ISS in 2017, at 0.5-5 atm (51-507 kPa), 17-21% O2 and 0-59% helium. More than two hundred tests were run. Large droplets first burned with a hot flame that went out by radiative heat loss after about 10-14 s in air. A cool flame then kept the droplet burning quasi-steadily, close to the droplet, until it too extinguished at a finite diameter and left a cloud of condensed, partly oxidised vapour. For n-dodecane in air the cool-flame extinction diameter fell from about 1.7-1.9 mm at 0.5 atm to below 0.4 mm at 1.25 atm. Helium dilution increased it, to 2.1-2.6 mm with 59% helium at 1 atm. Iso-dodecane suppressed cool flames. At 2 atm and above, cool flames repeatedly re-ignited hot flames. For spacecraft fire safety, this means a fuel can keep reacting, and producing flammable vapour, after the visible flame has gone out.",
  "question": {

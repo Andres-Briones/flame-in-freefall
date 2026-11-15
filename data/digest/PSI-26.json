@@ -15,6 +15,37 @@
     "hardware": "SPICE (Smoke Point In Co-flow Experiment) flow duct, 76 mm x 76 mm, already on ISS and modified for BASS: sample frame insert with 4 fuel-holder designs (41 flight samples), hot-wire igniters, 3.2 mm nozzle delivering MSG gaseous nitrogen (0-500 sccm), fan that can be turned fully off, BASS control box, Nikon D300s still camera and colour video camera",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "MSG"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · MSG",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG)."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-26_Presentations_Crew Training 2010.pdf",
+        "locator": "p26",
+        "quote": "After every 2 burns the MSG Work Volume must be purged for 3 minutes"
+      }
+    ]
+  },
   "one_line": "Astronauts burned small fabric strips, plastic spheres and slabs, and wax candles in a gentle, adjustable air stream on the ISS to see whether solids burn more readily without gravity than in the Earth-based test NASA uses to approve materials, and whether a puff of nitrogen puts the flames out.",
   "summary": "BASS (Burning and Suppression of Solids) burned 41 small solid samples in about 115 burns inside a 76 mm square flow duct in the ISS Microgravity Science Glovebox in 2012-2013, at about 1 atm and 16-23% O2. Fuels were a cotton-fibreglass (SIBAL) fabric, Nomex and Ultem sheets, PMMA spheres and slabs, and wax candles, in fan-driven air flows from below 1 to about 44 cm/s, with an upstream nitrogen jet of up to 500 cc/min. The fabric, which cannot burn downward in 1 g air, spread steadily in 9-10 cm/s opposed flow. Opposed spread peaked at 10-15 cm/s; concurrent spread rose linearly with flow (2.55 versus 1.21 mm/s opposed at about 10 cm/s), and concurrent flames quenched below 1 cm/s. PMMA and candle flames survived for minutes as dim blue flames near 1 cm/s. The nitrogen jet usually removed only the leading edge, and most flames went out only when the airflow stopped. Fire-retarded Nomex HT90-40 and Ultem did not burn at 21-22% O2. Normal-gravity screening therefore does not bound flammability in every configuration.",
   "question": {

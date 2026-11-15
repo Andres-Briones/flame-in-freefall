@@ -13,9 +13,11 @@ from functools import cache
 import pandas as pd
 
 from fif import psi
+from fif.api import PLATFORM_KINDS as LOCATION_KINDS
 from fif.pipeline import check_publications
 
 TEMPLATE = psi.DIGEST / "_template.json"
+FACILITIES = psi.DIGEST / "facilities.json"
 REFERENCE_MD = psi.ROOT / "docs" / "digest" / "reference.md"
 IGNORED_KEYS = {"_about", "_source_format"}
 REQUIRED_FIELDS = {
@@ -225,6 +227,9 @@ def typed_source_issues(kind, path, src, acc, ctx):
             yield issue("error", path, f"PSI record has no field {src['field']!r}")
         elif raw[field] in (None, "", [], {}):
             yield issue("warning", path, f"PSI record field {src['field']!r} is empty")
+        elif src.get("quote") and not quote_in(src["quote"], [json.dumps(raw[field], ensure_ascii=False)
+                                                               if not isinstance(raw[field], str) else raw[field]]):
+            yield issue("error", path, f"quote not found in PSI record field {src['field']!r}: {src['quote'][:80]!r}")
     elif kind == "reference" and src["id"] not in ctx.reference_ids():
         yield issue("error", path, f"unknown reference id {src['id']!r}")
     elif kind == "psi_table" and src["file"] not in ctx.files(acc):
@@ -235,8 +240,52 @@ def typed_source_issues(kind, path, src, acc, ctx):
         yield issue("warning", path, "external source has no quote")
 
 
-def check_record(acc, record, template, ctx):
+def location_issues(record, accessions, facilities):
+    """The `location` object: known kinds, known accessions in uses_data_from, every facility in the glossary."""
+    loc = record.get("location")
+    if not isinstance(loc, dict):
+        return []
+    out = []
+    for kind in [loc.get("kind"), *(loc.get("also") or [])]:
+        if kind not in LOCATION_KINDS:
+            out.append(issue("error", "location", f"unknown kind {kind!r}; one of {list(LOCATION_KINDS)}"))
+    for acc in loc.get("uses_data_from") or []:
+        if acc not in accessions:
+            out.append(issue("error", "location.uses_data_from", f"{acc!r} is not an investigation"))
+    for name in loc.get("facility") or []:
+        if name not in facilities:
+            out.append(issue("error", "location.facility", f"{name!r} has no entry in {FACILITIES.name}"))
+    if not loc.get("source"):
+        out.append(issue("error", "location.source", "location has no source"))
+    return out
+
+
+def facility_issues(glossary, ctx):
+    """Every glossary entry has a note and sources; psi_file and psi_record quotes are checked like a record's."""
+    out = []
+    for name, entry in glossary["facilities"].items():
+        path = f"{FACILITIES.name}:{name}"
+        if not entry.get("note") or not entry.get("sources"):
+            out.append(issue("error", path, "needs a note and sources"))
+        for i, src in enumerate(entry.get("sources") or []):
+            kind = src.get("type")
+            if kind not in REQUIRED_FIELDS:
+                out.append(issue("error", f"{path}[{i}]", f"unknown source type {kind!r}"))
+                continue
+            missing = [f for f in REQUIRED_FIELDS[kind] if not src.get(f)]
+            if kind in ("psi_file", "psi_record") and not src.get("accession"):
+                missing.append("accession")
+            if missing:
+                out.append(issue("error", f"{path}[{i}]", f"{kind} source missing {', '.join(missing)}"))
+                continue
+            out += [x for x in typed_source_issues(kind, f"{path}[{i}]", src, src.get("accession"), ctx) if x]
+    return out
+
+
+def check_record(acc, record, template, ctx, facilities=None):
     issues = structure_issues(record, template)
+    if facilities is not None:
+        issues += location_issues(record, set(p.stem for p in record_paths(None)), facilities)
     if record.get("accession") != acc:
         issues.append(issue("error", "accession", f"{record.get('accession')!r} does not match file name {acc}"))
     found, counts = source_issues(acc, record, ctx)
@@ -269,8 +318,14 @@ def report(result):
 
 def main(argv):
     template = json.loads(TEMPLATE.read_text())
+    glossary = json.loads(FACILITIES.read_text())
     ctx = Context()
     failed = False
+    glossary_issues = facility_issues(glossary, ctx)
+    print(f"{FACILITIES.name}: {len(glossary['facilities'])} entries, {len(glossary_issues)} issues")
+    for i in glossary_issues:
+        print(f"  {i['level'].upper():7} {i['path']}: {i['message']}")
+    failed |= any(i["level"] == "error" for i in glossary_issues)
     for path in record_paths(argv):
         if not path.exists():
             print(f"{path.stem}: no such record")
@@ -282,7 +337,7 @@ def main(argv):
             print(f"{path.stem}: invalid JSON: {e}")
             failed = True
             continue
-        result = check_record(path.stem, record, template, ctx)
+        result = check_record(path.stem, record, template, ctx, glossary["facilities"])
         report(result)
         failed |= any(i["level"] == "error" for i in result["issues"])
     failed |= bool(check_publications.main([p.stem for p in record_paths(argv)]))

@@ -17,7 +17,58 @@
   "page": "docs/digest/PSI-10-acme-flame-design.md",
   "doi": "10.60555/w4zy-bt45",
   "doi_url": "https://doi.org/10.60555/w4zy-bt45",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-10",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 59/60 and 66",
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Advanced Combustion via Microgravity Experiments (ACME), Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+     "locator": "p3",
+     "quote": "The two rounds occurred during Increments 59/60 and 66 and respectively featured normal and inverse flames."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+     "locator": "p19",
+     "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari)"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-10_Reports_TaskbookRpts.pdf",
+     "locator": "p34",
+     "quote": "Experiments were performed in 2.2 s and 5.2 s microgravity facilities."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-20",
@@ -37,7 +88,38 @@
   "page": "docs/digest/PSI-20-acme-bre.md",
   "doi": "10.60555/vb93-3y72",
   "doi_url": "https://doi.org/10.60555/vb93-3y72",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-20",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-21",
@@ -56,7 +138,38 @@
   "page": "docs/digest/PSI-21-acme-cld-flame.md",
   "doi": "10.60555/23e1-9950",
   "doi_url": "https://doi.org/10.60555/23e1-9950",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-21",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-22",
@@ -75,7 +188,45 @@
   "page": "docs/digest/PSI-22-acme-e-field-flames.md",
   "doi": "10.60555/se5a-8c73",
   "doi_url": "https://doi.org/10.60555/se5a-8c73",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-22",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+     "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+    },
+    {
+     "type": "external",
+     "url": "https://doi.org/10.1080/00102202.2012.694740",
+     "quote": "All tests are performed at the NASA Glenn 2.2-s Drop Tower."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-23",
@@ -96,7 +247,53 @@
   "page": "docs/digest/PSI-23-acme-s-flame.md",
   "doi": "10.60555/k57n-p030",
   "doi_url": "https://doi.org/10.60555/k57n-p030",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-23",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 60, 61 and 63",
+   "uses_data_from": [],
+   "also": [
+    "drop_tower"
+   ],
+   "label": "ISS · Destiny · CIR · ACME · drop-tower precursors",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), ACME"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Presentations_20120015928.pdf",
+     "locator": "p5",
+     "quote": "works with the Combustion Integrated Rack CIR in the Destiny laboratory of the International Space Station"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s-Flame 30-day report Inc 63 20201216.pdf",
+     "locator": "p3",
+     "quote": "A total of 276 flames were ignited for the s-Flame experiment, with 29, 116, and 131 respectively ignited during Increments 60, 61, and 63."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-23_Reports_s_Flame_final_report_20210729.pdf",
+     "locator": "p5",
+     "quote": "Although experimental data of good quality were obtained on the transient response of spherical diffusion flames in the 2.2-s drop tower facility, the duration was insufficient to observe radiative extinction."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-25",
@@ -116,7 +313,43 @@
   "page": "docs/digest/PSI-25-bass-ii.md",
   "doi": "10.60555/4qc4-de67",
   "doi_url": "https://doi.org/10.60555/4qc4-de67",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-25_Reports_BASS-II Summary Report.pdf",
+     "locator": "p74",
+     "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Active crew support for real-time “lab partner” operations."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-26",
@@ -137,7 +370,38 @@
   "page": "docs/digest/PSI-26-bass.md",
   "doi": "10.60555/58h4-dy80",
   "doi_url": "https://doi.org/10.60555/58h4-dy80",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The experiment was conducted aboard the International Space Station (ISS) inside the Microgravity Glove Box (MSG)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-26_Presentations_Crew Training 2010.pdf",
+     "locator": "p26",
+     "quote": "After every 2 burns the MSG Work Volume must be purged for 3 minutes"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-39",
@@ -158,7 +422,45 @@
   "page": "docs/digest/PSI-39-cfi.md",
   "doi": "10.60555/m6pj-a914",
   "doi_url": "https://doi.org/10.60555/m6pj-a914",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-39",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny",
+   "facility": [
+    "CIR",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny · CIR · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Multi-User Droplet Combustion Apparatus (MDCA), Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-39_Science Documents_SRD_CFI.pdf",
+     "locator": "p12",
+     "quote": "The CIR facility, occupying a large rack in the Destiny module of the ISS"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-39_Reports_CFI Science Final Report.pdf",
+     "locator": "p6",
+     "quote": "Once the ISS crew installs the required fuel syringe, and the gas bottles containing the gas mixtures in the MDCA and CIR facilities"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-47",
@@ -177,7 +479,62 @@
   "page": "docs/digest/PSI-47-daft-daft-2.md",
   "doi": "10.60555/ztgj-d202",
   "doi_url": "https://doi.org/10.60555/ztgj-d202",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-47",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": "Destiny and Node 1",
+   "facility": [
+    "P-Trak",
+    "DustTrak"
+   ],
+   "crewed": true,
+   "expedition": "Increments 10 and 13",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · Destiny and Node 1 · handheld P-Trak and DustTrak",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "TSI P-Trak"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+     "locator": "p2",
+     "quote": "The tests were conducted in the US laboratory module Destiny in front of EXPRESS Rack 4; in the modules’s aft end and port side; and in Node 1."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+     "locator": "p4",
+     "quote": "The first test point for DAFT was performed on February 22, 2005 during Increment 10."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+     "locator": "p5",
+     "quote": "The first test point for DAFT-3 and -4 was scheduled to be performed on August 18, 2006 (GM 229), during Increment 13."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+     "locator": "p2",
+     "quote": "by having an astronaut create airborne debris"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-60",
@@ -197,7 +554,27 @@
   "page": "docs/digest/PSI-60.md",
   "doi": "10.60555/mzjm-yv57",
   "doi_url": "https://doi.org/10.60555/mzjm-yv57",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-60",
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-107"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS SPICE images",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-62",
@@ -217,7 +594,33 @@
   "page": "docs/digest/PSI-62.md",
   "doi": "10.60555/e9xp-ex83",
   "doi_url": "https://doi.org/10.60555/e9xp-ex83",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-62",
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-26",
+    "PSI-25"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS BASS and BASS-II data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "using the NASA Burning and Suppression of Solids (BASS and BASS-II) experiments as benchmarks"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "Experimental imagery found in PSI from the BASS and BASS-II investigations was post-processed"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-68",
@@ -238,7 +641,33 @@
   "page": "docs/digest/PSI-68-flex-2.md",
   "doi": "10.60555/byp8-h018",
   "doi_url": "https://doi.org/10.60555/byp8-h018",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-68",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-69",
@@ -259,7 +688,34 @@
   "page": "docs/digest/PSI-69-flex.md",
   "doi": "10.60555/mbq8-0451",
   "doi_url": "https://doi.org/10.60555/mbq8-0451",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "FCF",
+    "MDCA"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR (FCF) · MDCA",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Combustion Integrated Rack (CIR)-Fluids and Combustion Facility (FCF), Multi-user Droplet Combustion Appartatus (MDCA)"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-98",
@@ -280,7 +736,48 @@
   "page": "docs/digest/PSI-98-saffire-i.md",
   "doi": "10.60555/0t15-1z43",
   "doi_url": "https://doi.org/10.60555/0t15-1z43",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-6",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-6 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Saffire 1 enclosure in Cygnus"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf",
+     "locator": "p4",
+     "quote": "The Saffire-I flight unit was successfully launched within the Cygnus PCM on an Atlas V launch vehicle on March 22, 2016 as part of the OA-6 mission."
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-99",
@@ -300,7 +797,52 @@
   "page": "docs/digest/PSI-99-saffire-ii.md",
   "doi": "10.60555/2chp-m469",
   "doi_url": "https://doi.org/10.60555/2chp-m469",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-5",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-5 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-II experiment was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "Cygnus Spacecraft"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Cygnus Pressurized Cargo Module, SAFFIRE"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf",
+     "quote": "Saffire-II OA-5 WFF Antares May 12, 2016 Oct 17, 2016 Nov 21, 2016"
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-100",
@@ -321,7 +863,59 @@
   "page": "docs/digest/PSI-100-saffire-iii.md",
   "doi": "10.60555/040q-4h36",
   "doi_url": "https://doi.org/10.60555/040q-4h36",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-100",
+  "location": {
+   "kind": "cygnus_free_flight",
+   "vehicle": "Cygnus OA-7",
+   "module": "Pressurized Cargo Module",
+   "facility": [
+    "Saffire enclosure"
+   ],
+   "crewed": false,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "Cygnus OA-7 · free flight after leaving the ISS · uncrewed",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The Saffire-III experiments were performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Saffire III enclosure in Cygnus"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+     "locator": "p1",
+     "quote": "Saffire-III flight system is loaded into the Cygnus PCM and be strapped into place."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+     "locator": "p1",
+     "quote": "The FOT places the Cygnus vehicle into a free-drift mode and initiate the experiment."
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/citations/20180005168",
+     "quote": "Saffire-III OA-7 KSC Atlas Feb 3, 2017 Mar 27, 2017 June 4, 2017"
+    },
+    {
+     "type": "psi_record",
+     "field": "hypothesis",
+     "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+    },
+    {
+     "type": "psi_record",
+     "field": "researchImpacts",
+     "quote": "Instruments on an unmanned cargo vessel"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-101",
@@ -340,7 +934,51 @@
   "page": "docs/digest/PSI-101-same-r.md",
   "doi": "10.60555/2np7-jv14",
   "doi_url": "https://doi.org/10.60555/2np7-jv14",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-101",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG",
+    "SAME hardware"
+   ],
+   "crewed": true,
+   "expedition": "Expedition 24",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG · SAME hardware",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Comparitive Soot Diagnostic Hardware"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Engineering Documents_SAME EIRD Rev 2.00 02-25-05 HIgh Q.pdf",
+     "locator": "p3",
+     "quote": "modifications to enable operations in the Microgravity Science Glovebox (MSG) on the International Space Station (ISS)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+     "locator": "p72",
+     "quote": "Results are presented from the Reflight of the Smoke Aerosol Measurement Experiment (SAME-2) which was conducted during Expedition 24 (July- September 2010)."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-101_Reports_SAME-R_Final Report.pdf",
+     "locator": "p84",
+     "quote": "The support of the SAME experiment team and the crews of ISS increments 10, 13, 15, and 24 are gratefully acknowledged."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-102",
@@ -361,7 +999,44 @@
   "page": "docs/digest/PSI-102-same.md",
   "doi": "10.60555/gd4k-8h62",
   "doi_url": "https://doi.org/10.60555/gd4k-8h62",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG",
+    "SAME hardware"
+   ],
+   "crewed": true,
+   "expedition": "Expedition 15",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG · SAME hardware",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Comparitive Soot Diagnostic Hardware"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The crew installed the near field hardware in the Glovebox, attached the Far Field Box to the Glovebox, and positioned the video cameras."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-102_Reports_SAME_Final Science Report.pdf",
+     "locator": "p35",
+     "quote": "Smoke Aerosol Measurement Experiment (SAME) which was conducted in the Microgravity Science Glovebox on the International Space Station (ISS) during Expedition 15."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-106",
@@ -380,7 +1055,37 @@
   "page": "docs/digest/PSI-106-slice.md",
   "doi": "10.60555/pm12-rg61",
   "doi_url": "https://doi.org/10.60555/pm12-rg61",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-106",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": null,
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+     "quote": "The SPICE and SLICE experiments were both c onducted in the Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "external",
+     "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+     "quote": "where the ISS crew controlled the flow with a potentiometer"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-107",
@@ -400,7 +1105,44 @@
   "page": "docs/digest/PSI-107-spice.md",
   "doi": "10.60555/9kbh-e962",
   "doi_url": "https://doi.org/10.60555/9kbh-e962",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-107",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "MSG"
+   ],
+   "crewed": true,
+   "expedition": "Increments 18 and 19/20",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · MSG",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Microgravity Science Glovebox (MSG)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-107_Reports_SPICE_30-DayPostFlightReport.pdf",
+     "locator": "p2",
+     "quote": "During Increment 18 SPICE conducted 108 test points completing its nominal test matrix. During Increments 19/20 SPICE conducted 155 additional test points"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
+     "locator": "p5",
+     "quote": "the ISS crew members that conducted the tests Michael Barratt, E. Michael Fincke, Sandra H. Magnus, and Koichi Wakata"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-115",
@@ -420,7 +1162,33 @@
   "page": "docs/digest/PSI-115.md",
   "doi": "10.60555/q0v5-1v28",
   "doi_url": "https://doi.org/10.60555/q0v5-1v28",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-115",
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-102",
+    "PSI-101"
+   ],
+   "also": [],
+   "label": "Computation · geometry and flow of the ISS SAME experiments",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective."
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments."
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-117",
@@ -440,7 +1208,27 @@
   "page": "docs/digest/PSI-117.md",
   "doi": "10.60555/gz0q-b577",
   "doi_url": "https://doi.org/10.60555/gz0q-b577",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-117",
+  "location": {
+   "kind": "computation",
+   "vehicle": null,
+   "module": null,
+   "facility": [],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-69"
+   ],
+   "also": [],
+   "label": "Computation · uses ISS FLEX data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "The objective of this ground investigation was to use flight data obtained from PSI through NASA’s Flame Extinguishment Experiment (FLEX)"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-142",
@@ -459,7 +1247,41 @@
   "page": "docs/digest/PSI-142.md",
   "doi": "10.60555/80qf-vj95",
   "doi_url": "https://doi.org/10.60555/80qf-vj95",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-142",
+  "location": {
+   "kind": "ground_lab",
+   "vehicle": null,
+   "module": null,
+   "facility": [
+    "Counterflow burner"
+   ],
+   "crewed": null,
+   "expedition": null,
+   "uses_data_from": [
+    "PSI-69"
+   ],
+   "also": [
+    "computation"
+   ],
+   "label": "Ground lab · counterflow burner · uses ISS FLEX data",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "Principal Investigator Laboratory Hardware"
+    },
+    {
+     "type": "psi_record",
+     "field": "objective",
+     "quote": "By using the Flame Extinguishment (FLEX) experimental data from the Physical Sciences Informatics (PSI) system of combustion science, the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames"
+    },
+    {
+     "type": "psi_record",
+     "field": "approach",
+     "quote": "three different numerical modeling schemes"
+    }
+   ]
+  }
  },
  {
   "accession": "PSI-159",
@@ -480,6 +1302,44 @@
   "page": "docs/digest/PSI-159-acme-cfi-g.md",
   "doi": "10.60555/cyt1-kh64",
   "doi_url": "https://doi.org/10.60555/cyt1-kh64",
-  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159"
+  "psi_url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-159",
+  "location": {
+   "kind": "iss",
+   "vehicle": "ISS",
+   "module": null,
+   "facility": [
+    "CIR",
+    "ACME"
+   ],
+   "crewed": true,
+   "expedition": "Increments 64-65 and 65-66",
+   "uses_data_from": [],
+   "also": [],
+   "label": "ISS · CIR · ACME",
+   "source": [
+    {
+     "type": "psi_record",
+     "field": "flightProgram",
+     "quote": "International Space Station (ISS)"
+    },
+    {
+     "type": "psi_record",
+     "field": "experimentHardware",
+     "quote": "ACME, Combustion Integrated Rack (CIR)"
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+     "locator": "p3",
+     "quote": "The two rounds occurred during Increments 64-65 and 65-66 and respectively featured normal and inverse flames."
+    },
+    {
+     "type": "psi_file",
+     "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+     "locator": "p16",
+     "quote": "The troublesome IPSU1 was replaced by astronaut Megan McArthur on May 18 (GMT 138)"
+    }
+   ]
+  }
  }
 ]

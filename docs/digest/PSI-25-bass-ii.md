@@ -8,6 +8,7 @@ Investigators: Sandra L. Olson (PI per the 2010 SRD; NASA Glenn Research Center)
 
 | | |
 |---|---|
+| Setting | ISS · Destiny · MSG |
 | Platform | International Space Station (ISS), Destiny Lab |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2010-01-01 to 2022-12-31 |

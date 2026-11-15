@@ -8,6 +8,7 @@ Investigators: James G. Quintiere (University of Maryland) - Principal Investiga
 
 | | |
 |---|---|
+| Setting | ISS · CIR · ACME |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2010-01-01 to 2025-02-08 |

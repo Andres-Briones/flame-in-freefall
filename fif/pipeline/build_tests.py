@@ -29,7 +29,7 @@ COLUMNS = [
     "accession", "acronym", "test_id", "row_kind", "date",
     "fuel", "fuel_raw", "fuel_phase", "fuel_fraction", "config", "geometry",
     "x_o2_ambient", "x_o2_burner", "x_o2_min", "x_o2_max", "x_o2", "diluent", "pressure_kpa", "flow_cm_s", "gravity",
-    "n_flames", "ignited", "burn_time_s", "extinction_mode", "outcome", "outcome_cause", "outcome_action",
+    "platform_kind", "n_flames", "ignited", "burn_time_s", "extinction_mode", "outcome", "outcome_cause", "outcome_action",
     "outcome_setting", "outcome_quote",
     "t_ad_k", "peak_temp_c", "d0_mm", "ext_diameter_mm", "burn_rate_k_mm2_s", "n_reignitions", "cool_flame",
     "spread_rate_mm_s", "burn_length_cm", "flame_length_mm", "at_smoke_point", "smoke_point_reviewed", "measurement",
@@ -1321,8 +1321,15 @@ def oxygen_semantics(row):
         row["x_o2_ambient"] = row["x_o2"]
 
 
+def platform_kinds():
+    """Where each investigation ran (`location.kind` of its knowledge record in data/digest). Every row takes its
+    investigation's kind: the drop-tower precursor tests of PSI-10, PSI-22 and PSI-23 have no rows in the PSI tables."""
+    return {path.stem: json.loads(path.read_text())["location"]["kind"] for path in psi.DIGEST.glob("PSI-*.json")}
+
+
 def build():
     acronyms = pd.read_csv(psi.PROCESSED / "investigations.csv").set_index("accession")["acronym"].to_dict()
+    kinds = platform_kinds()
     groups = {}
     for path in table_paths():
         adapter, acc = adapter_for(path), path.parts[-3]
@@ -1342,6 +1349,7 @@ def build():
     for acc, rows in groups.items():
         for row in rows:
             row["acronym"] = acronyms.get(acc)
+            row["platform_kind"] = kinds[acc]
             row["flags"] = ";".join(row["flags"]) or None
             row["extra"] = json.dumps(row["extra"], ensure_ascii=False) if row["extra"] else None
             out.append(row)

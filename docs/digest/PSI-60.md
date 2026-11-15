@@ -8,6 +8,7 @@ Investigators: Mitchell D. Smooke (Yale University) - Principal Investigator; Ma
 
 | | |
 |---|---|
+| Setting | Computation · uses ISS SPICE images |
 | Platform | Ground (computational modelling and image re-analysis) using ISS coflow flame data |
 | Dates | 2019-06-05 to 2022-08-29 |
 | Fuels and samples | ethylene |

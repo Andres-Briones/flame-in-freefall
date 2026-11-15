@@ -16,6 +16,51 @@
     "hardware": "Saffire flow unit: a fan-driven rectangular flow duct (about 46 x 51 cm cross section) holding a sample card with nine 5 cm x 29 cm samples, hot-wire igniters, two cameras, thermocouples, radiometers, O2/CO2/pressure sensors and anemometers",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "cygnus_free_flight",
+    "vehicle": "Cygnus OA-5",
+    "module": "Pressurized Cargo Module",
+    "facility": [
+      "Saffire enclosure"
+    ],
+    "crewed": false,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "Cygnus OA-5 · free flight after leaving the ISS · uncrewed",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The Saffire-II experiment was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+      },
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "Cygnus Spacecraft"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Cygnus Pressurized Cargo Module, SAFFIRE"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20180005168/downloads/20180005168.pdf",
+        "quote": "Saffire-II OA-5 WFF Antares May 12, 2016 Oct 17, 2016 Nov 21, 2016"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis",
+        "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+      },
+      {
+        "type": "psi_record",
+        "field": "researchImpacts",
+        "quote": "Instruments on an unmanned cargo vessel"
+      }
+    ]
+  },
   "one_line": "Nine strip-shaped samples of spacecraft materials were set alight inside an empty cargo spacecraft in orbit to see whether they burn more or less readily than in NASA's standard ground flammability test; silicone and Nomex would not burn in weightlessness, while a cotton-fibreglass fabric and thick acrylic burned but with flames that stopped growing.",
   "summary": "Saffire-II burned nine 5 cm x 29 cm samples in a fan-driven flow duct aboard the uncrewed Cygnus OA-5 vehicle after it left the ISS in late 2016. Samples were sized and ignited like NASA-STD-6001 Test 1 (736 J over 9.2 s) so that microgravity flammability could be compared with this 1-g upward screening test. Air flowed at 20 cm/s (25 cm/s for one sample) with about 22.1% O2 near 100 kPa. None of four silicone sheets (0.27-1.03 mm) spread a flame, although the 0.27 mm sheet is fully consumed in 1-g tests and the 0.37 mm sheet burns downward in 1 g. Nomex HT90-40 did not ignite even after about two minutes of heating by a roughly 460 W PMMA pilot flame. Cotton-fibreglass fabric burned completely at a steady 2.1 mm/s (20 cm/s) and 2.6 mm/s (25 cm/s), instead of accelerating as in 1 g. Flames on 1 cm thick PMMA stayed anchored at a limiting size for 10-15 minutes. At these flows the 1-g test was conservative for these materials, and concurrent flames reached a bounded size.",
   "question": {

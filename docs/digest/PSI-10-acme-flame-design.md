@@ -8,6 +8,7 @@ Investigators: Richard L. Axelbaum (PI; Washington University in St. Louis); Pet
 
 | | |
 |---|---|
+| Setting | ISS · CIR · ACME · drop-tower precursors |
 | Platform | International Space Station (ISS); precursor tests in the NASA Glenn 2.2 s and 5.2 s drop towers |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 1999-01-14 to 2025-04-30 |

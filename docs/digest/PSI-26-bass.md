@@ -8,6 +8,7 @@ Investigators: Paul V. Ferkul (PI; NASA GRC / National Center for Space Explorat
 
 | | |
 |---|---|
+| Setting | ISS · MSG |
 | Platform | International Space Station (ISS) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2009-10-01 to 2013-06-30 |

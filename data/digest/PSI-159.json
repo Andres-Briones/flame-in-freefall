@@ -15,6 +15,44 @@
     "hardware": "6.35 mm sintered 316 stainless-steel porous spherical burner with embedded type-K thermocouple; coiled Kanthal hot-wire igniter (retractable); three mass flow controllers (fuel, oxidiser, ISS nitrogen); CFI intensified camera with formaldehyde filter; ACME colour DataCam; dual-gain CFI-G radiometer array plus offset radiometer; three PMTs (230-700 nm, 310 nm, 430 nm); far (45/60/100/100 mm) and near (13/25/50/100 mm) thermocouple rakes; 3-fibre SiC thin-filament pyrometry array; chamber pressure transducer",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "ACME"
+    ],
+    "crewed": true,
+    "expedition": "Increments 64-65 and 65-66",
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · CIR · ACME",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "ACME, Combustion Integrated Rack (CIR)"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+        "locator": "p3",
+        "quote": "The two rounds occurred during Increments 64-65 and 65-66 and respectively featured normal and inverse flames."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf",
+        "locator": "p16",
+        "quote": "The troublesome IPSU1 was replaced by astronaut Megan McArthur on May 18 (GMT 138)"
+      }
+    ]
+  },
   "one_line": "Ground-commanded tests on the ISS burned ethane, propane and butane on a pea-sized porous sphere, both normally (fuel out of the sphere into an oxygen/nitrogen atmosphere) and inside-out (an oxygen-rich stream of up to 85% O2 out of the sphere into a fuel-filled chamber), and found the first spherical 'cool flames' of gaseous fuel.",
   "summary": "CFI-G, part of NASA's ACME project, burned spherical diffusion flames on a 6.35 mm porous burner in the ISS Combustion Integrated Rack from March to October 2021. It ran 333 tests on 23 days. In normal flames, nitrogen-diluted ethane, propane or n-butane flowed into atmospheres of 18-40% O2 at 0.5-3 atm. In inverse flames, an O2/N2 stream of 12-85% O2 flowed from the burner into a chamber filled with fuel and nitrogen; the chamber held no oxygen. Of 280 hot flames, 189 extinguished radiatively. Fifteen were followed, after about 1 s, by a quasi-steady cool diffusion flame, the first observed for gaseous fuels. These occurred only for 30% n-butane flowing at 0.75-1.5 mg/s into 39-40% O2 at 2 bar, with burner temperatures above 515 K. The hot flames were 2.6 times larger than the cool flames that followed. All normal flames in about 21% O2 self-extinguished within 20 s. Inverse flames from 85% O2 self-extinguished in 41 of 43 tests at 2-3 bar but in 0 of 14 at about 0.5 bar. These are burner flames, not material flammability limits.",
   "question": {

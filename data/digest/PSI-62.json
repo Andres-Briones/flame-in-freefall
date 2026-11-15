@@ -16,6 +16,32 @@
     "hardware": "None of its own; benchmarks are the Burning and Suppression of Solids experiments (BASS, PSI-26; BASS-II, PSI-25) flown in the ISS Microgravity Science Glovebox",
     "project_type": "Ground Investigation"
   },
+  "location": {
+    "kind": "computation",
+    "vehicle": null,
+    "module": null,
+    "facility": [],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [
+      "PSI-26",
+      "PSI-25"
+    ],
+    "also": [],
+    "label": "Computation · uses ISS BASS and BASS-II data",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "objective",
+        "quote": "using the NASA Burning and Suppression of Solids (BASS and BASS-II) experiments as benchmarks"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "Experimental imagery found in PSI from the BASS and BASS-II investigations was post-processed"
+      }
+    ]
+  },
   "one_line": "University at Buffalo researchers built and tested fast computer models of flames spreading over solid fuels in weightlessness, checking them against Space Station burning tests, as a step toward predicting which spacecraft materials can burn at which oxygen levels and air speeds.",
   "summary": "This PSI-funded ground investigation (2019-2021) developed flamelet generated manifold (FGM) models for flames spreading over solid fuels in microgravity, using the ISS Burning and Suppression of Solids experiments (BASS and BASS-II) as benchmarks. An FGM tabulates detailed flame chemistry from simple one-dimensional flame solutions so that multidimensional simulations need only a few transported variables. The team built a two-dimensional flame-spread model with multi-step chemistry and fully coupled radiation, compared it with BASS spread rates at 20.6% oxygen (over-predicting them by up to 2.7 times), and then built coupled radiative FGMs from one-dimensional flames with a quasi-coupled fuel surface boundary, which proved critical to capturing how mixture fraction varies along the fuel surface. The manifolds reproduced the chemical states in most of the flow but differed near the flame attachment point because of flame-wall interaction and flame curvature. An analytical thin-flame theory captured the low-strain radiative extinction branch of the U-shaped oxygen-versus-strain flammability map and agreed qualitatively with BASS-II PMMA rod data, predicting a minimum of 11.1-12.6% oxygen, 0.9-2.4 points below experiment. The aim is numerical screening of spacecraft material flammability.",
   "question": {

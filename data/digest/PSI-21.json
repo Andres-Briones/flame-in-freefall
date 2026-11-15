@@ -17,6 +17,37 @@
     "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with the small coflow burner (fuel tube ~2.1-2.2 mm inner diameter inside a 25 mm air nozzle), crew-exchangeable mass flow controllers, colour and gray-scale cameras, PMTs and thin-filament pyrometry fibres",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "ACME"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · CIR · ACME",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Combustion Integrated Rack (CIR), ACME"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+        "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+      }
+    ]
+  },
   "one_line": "Small methane and ethylene flames surrounded by a gentle co-flowing air stream were burned on the Space Station, from very diluted near-extinction flames to very sooty ones, to give computer models clean, buoyancy-free benchmark data; the sooty flames held several times more soot than on Earth and diluted flames survived at lower fuel concentrations.",
   "summary": "CLD Flame produced benchmark data on laminar coflow diffusion flames, a fuel jet surrounded by co-flowing air, for testing chemical-kinetic and soot models at both extremes of fuel dilution. On the ISS, in the ACME insert of the Combustion Integrated Rack, a small coflow burner (about 2 mm fuel tube in a 25 mm air nozzle) burned nitrogen-diluted methane (20-100%) and ethylene (10-100%) in air on 32 test days from November 2017 to March 2021, igniting 344 flames. Cameras and pyrometry gave flame shape, lift-off height, CH* chemiluminescence, temperature, soot temperature and soot volume fraction. Preliminary results: sooty microgravity flames were taller and wider and held 5-8 times more soot than equivalent 1 g flames, and dilution limits of both fuels were extended, with lifted flames stable at lower fuel concentrations. Simulations of the ACME ethylene flames showed weaker gravity effects than in a larger burner, and highlighted errors in the predicted temperature field. For fire safety this is fundamental: microgravity flames can be sootier, more radiative and burn closer to dilution limits.",
   "question": {

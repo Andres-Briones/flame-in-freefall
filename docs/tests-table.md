@@ -50,6 +50,7 @@ Investigation numbers are PSI accession numbers (10 = PSI-10).
 | `pressure_kpa` | chamber or cabin pressure | kPa | 10, 26, 39, 69, 98, 100, 107, 159 |
 | `flow_cm_s` | imposed air or oxidiser flow velocity (single value; null when the flow was ramped through several values) | cm/s | 25, 26, 98, 99, 100, 101, 102, 107 |
 | `gravity` | always `micro` | - | all |
+| `platform_kind` | where the test ran: `iss` or `cygnus_free_flight` (Saffire, PSI-98, 99, 100). Taken from the investigation's `location.kind` (`data/digest/`); no row is a drop-tower or ground test (the drop-tower precursor tests of PSI-10, 22 and 23 have no rows) | - | all |
 | `n_flames` | flames ignited on a test day | count | 20, 21, 22, 23 |
 | `ignited` | hot ignition yes/no (null for CFI-G "flash"). For PSI-25 only `False`, on the one row (O12) whose air-display cell says "no ign"; for BASS and BASS-II use `outcome` | bool | 25, 159 |
 | `burn_time_s` | burn time. For PSI-39 it is the hot-flame burn time. For PSI-25 (M series only) it is the summary report's burn time, given in minutes to 0.1 min | s | 25, 39, 69, 98, 99, 159 |
@@ -469,7 +470,12 @@ A patched row lists its patch ids in extra `discrepancies`. Raw files exist only
 and 101, so the other tables could be checked against the reports only.
 
 `column` is a `tests` column, or a source column the table keeps only in `extra` (`O2 flow rate (mg/s)`,
-`mHC (mg/s)`); a value in extra can be flagged but not changed.
+`mHC (mg/s)`); a value in extra can be flagged but not changed. Two notes concern NASA's catalogue record rather
+than a test table (`column` = `flight_program`, a field of the `investigations` table): SAFFIRE-I (D70) and
+SAFFIRE-III (D71) are listed under the "International Space Station (ISS)" flight program, while the same records'
+hardware and approach fields say the burns ran in a Cygnus cargo vehicle after it left the ISS (SAFFIRE-II gives
+"Cygnus Spacecraft"). The catalogue value stays in `investigations.flight_program`; `platform_kind` and the
+records' `location` say `cygnus_free_flight`.
 
 ### Test sheets
 

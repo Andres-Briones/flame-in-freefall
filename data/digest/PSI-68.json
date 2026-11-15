@@ -22,6 +22,32 @@
     "hardware": "Multi-User Droplet Combustion Apparatus (MDCA) with free or SiC-fibre-supported droplets, fibre translation for slow convective flow, crossed-fibre arrays for droplet pairs, and a second HiBMs camera",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "MDCA"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · CIR · MDCA",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Combustion Integrated Rack (CIR), Multi-user Droplet Combustion Appartatus (MDCA)"
+      }
+    ]
+  },
   "one_line": "The follow-on to FLEX burned single drops and pairs of drops of practical-fuel ingredients and fuel mixtures (octanes, heptane, decane, alcohols) on the Space Station to give engine and fire modellers clean benchmark data, and showed that the 'cool flames' found in FLEX occur for many normal-alkane fuels.",
   "summary": "FLEX-2 extended the ISS FLEX droplet-combustion experiments in the CIR Multi-User Droplet Combustion Apparatus from two pure fuels to transportation-fuel components and mixtures. The PSI table lists the planned conditions: eight fuels (iso-octane, n-octane, n-heptane, n-decane, ethanol, propanol/glycerol 95/5 and 80/20, heptane/iso-octane 50/50), droplets 1.5-5 mm, oxygen mole fractions 0.17-0.30 in nitrogen or helium, pressures 0.5-3 atm and imposed relative flow 0.1-5 cm/s, plus binary droplet arrays. Published results from the programme show three-stage burning of large n-alkane droplets: hot-flame radiative extinction, a quasi-steady cool-flame stage, then cool-flame extinction and vapour-cloud formation. A scaling based on a critical flame temperature correlates radiative extinction diameters across CO2, He and Xe dilution. At about 2 atm, decane/hexanol droplets switched from cool-flame burning back to a hot flame spontaneously. For fire safety this establishes that invisible cool-flame burning and re-ignition are general features of alkane fuels, not specific to heptane.",
   "question": {

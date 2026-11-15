@@ -8,6 +8,7 @@ Investigators: Forman A. Williams (University of California, San Diego) - Princi
 
 | | |
 |---|---|
+| Setting | ISS · CIR · MDCA |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2016-08-12 to 2019-09-30 |

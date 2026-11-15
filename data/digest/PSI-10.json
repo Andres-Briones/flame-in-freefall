@@ -19,6 +19,57 @@
     "hardware": "ACME chamber insert (constant-volume CIR chamber, ~83-90 L free volume) with a 6.35 mm porous sintered stainless-steel spherical burner (serial 1002, then 1003 from June 2019), retractable hot-wire igniter (loop tip in round 1, coil tip in round 2), three mass-flow controllers, ACME colour DataCam, analog ops camera, CIR HiBMs camera, intensified (CFI) camera, 3 PMTs, radiometer array, SiC thin-filament pyrometry array and thermocouple rakes",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "ACME"
+    ],
+    "crewed": true,
+    "expedition": "Increments 59/60 and 66",
+    "uses_data_from": [],
+    "also": [
+      "drop_tower"
+    ],
+    "label": "ISS · CIR · ACME · drop-tower precursors",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Advanced Combustion via Microgravity Experiments (ACME), Combustion Integrated Rack (CIR)"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p3",
+        "quote": "The two rounds occurred during Increments 59/60 and 66 and respectively featured normal and inverse flames."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_FinalRpt_ACMEFlameDesign.pdf",
+        "locator": "p19",
+        "quote": "A change was made to the CIR combustion chamber’s pressure limit on 17 Jan. 2022 (by astronaut Raja Chari)"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "Perform spherical diffusion flame tests in drop towers and aboard the International Space Station."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-10_Reports_TaskbookRpts.pdf",
+        "locator": "p34",
+        "quote": "Experiments were performed in 2.2 s and 5.2 s microgravity facilities."
+      }
+    ]
+  },
   "one_line": "On the space station, small ball-shaped flames of ethylene gas were burned for minutes around a porous sphere, either as fuel blowing into oxygen-rich air or as oxygen blowing into a fuel atmosphere, to learn when such flames make soot and when they go out.",
   "summary": "ACME/Flame Design burned ethylene spherical diffusion flames on a 6.35 mm porous sphere in the Combustion Integrated Rack on the ISS. In 2019, fuel (pure or nitrogen-diluted) flowed into oxygen/nitrogen atmospheres of 21-40% O2 near 1 atm (normal flames). In 2021-22, oxygen/nitrogen with up to 85% O2 flowed into ethylene/nitrogen atmospheres at 0.43-3 atm (inverse flames); one day used propane. The tables list 327 tests. Flows were held constant while cameras, thin-filament pyrometry, thermocouples and photomultipliers tracked each flame. In the 2019 tests flames grew, cooled by gas radiation, oscillated and went out after 28-336 s. At 1 atm all ethylene flames extinguished near 1130 K, at a fuel flux through the flame of 0.2 g/m2/s (normal) or an oxygen flux of 0.68 g/m2/s (inverse). Small flames burned steadily for up to 870 s. Sustained soot appeared only at 40% O2 with concentrated fuel. For fire safety, quiescent microgravity flames persist far below the about 1500 K extinction temperature typical on Earth, although these gas-burner limits are not material flammability limits.",
   "question": {

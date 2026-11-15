@@ -8,6 +8,7 @@ Investigators: Forman A. Williams (University of California, San Diego) - Princi
 
 | | |
 |---|---|
+| Setting | ISS · CIR (FCF) · MDCA |
 | Platform | International Space Station (ISS), Destiny module |
 | Facility | Combustion Integrated Rack (CIR) of the Fluids and Combustion Facility (FCF) |
 | Dates | 2007-08-01 to 2016-07-31 |

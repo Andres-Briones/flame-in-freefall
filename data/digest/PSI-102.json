@@ -18,6 +18,43 @@
     "hardware": "SAME MSG payload: 5 sample carousels of 6 wire-heated samples, smoke generation tube with controlled air flow, 5.65 L piston aging chamber with mixing fan, dynamic diluter, diagnostics duct with TSI P-Trak condensation particle counter (zeroth moment), First Alert ionization chamber (first moment), two TSI DustTrak 90-degree light-scattering photometers with 1 um and 10 um inlet impactors (third moment), ISS laser forward-scattering and Space Shuttle ionization smoke detectors, thermal precipitators collecting smoke on TEM grids. (The PSI record's 'experimentHardware' field names the earlier Comparative Soot Diagnostics hardware.)",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "MSG",
+      "SAME hardware"
+    ],
+    "crewed": true,
+    "expedition": "Expedition 15",
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · MSG · SAME hardware",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Comparitive Soot Diagnostic Hardware"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The crew installed the near field hardware in the Glovebox, attached the Far Field Box to the Glovebox, and positioned the video cameras."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-102_Reports_SAME_Final Science Report.pdf",
+        "locator": "p35",
+        "quote": "Smoke Aerosol Measurement Experiment (SAME) which was conducted in the Microgravity Science Glovebox on the International Space Station (ISS) during Expedition 15."
+      }
+    ]
+  },
   "one_line": "On the Space Station, small pieces of common spacecraft materials (Teflon, Kapton, silicone rubber, cotton lamp wick) were overheated without burning, and the size of the smoke particles was measured to find out what kind of smoke detector would reliably catch an early spacecraft fire.",
   "summary": "SAME characterised pre-fire smoke in microgravity to guide spacecraft smoke-detector design. In the ISS Microgravity Science Glovebox during Expedition 15 (2007), wire-wrapped samples of Teflon, Kapton, silicone rubber, cellulose lamp wick and a reference liquid (dibutyl phthalate on a wick) were heated below ignition in a 2-8 cm/s air flow; the smoke was held in an aging chamber for 10-1800 s, then measured by three compact instruments giving the zeroth, first and third moments of the size distribution, from which a lognormal geometric mean diameter and spread were derived. Fresh smoke had geometric mean diameters of 80-189 nm and mass-mean diameters of 179-472 nm (geometric standard deviation 1.84-2.18); 720 s of aging, by coagulation, raised these to 155-352 nm and 267-606 nm. Silicone and lamp-wick smoke carried roughly half their mass above 1 um; Teflon and Kapton very little. At matched 8 cm/s flow, sizes matched 1-g tests. The Shuttle ionization detector responded to every test, the ISS light-scattering detector poorly to Teflon. The investigators concluded single-moment detectors are risky and recommended multi-moment or size-classifying detection.",
   "question": {

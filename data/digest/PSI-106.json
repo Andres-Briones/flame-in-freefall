@@ -18,6 +18,36 @@
     "hardware": "Shared SPICE/SLICE coflow burner hardware (derived from the STS-87 ELF experiment): 76 mm square, 174 mm tall fan-driven flow duct with honeycomb and wire-mesh flow straightener, hot-sphere anemometer, interchangeable fuel nozzles of 0.41-3.23 mm inner diameter, mass flow controller, Nikon D300s DSLR still camera with BG-7 filter, analog video with data overlay, thermopile radiometer",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "MSG"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · MSG",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+        "quote": "The SPICE and SLICE experiments were both c onducted in the Microgravity Science Glovebox (MSG)"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20140009169/downloads/20140009169.pdf",
+        "quote": "where the ISS crew controlled the flow with a potentiometer"
+      }
+    ]
+  },
   "one_line": "Astronauts on the Space Station photographed small gas flames burning from a tube into a gentle stream of air, to see how flames lift off, hold on and make soot without gravity and to provide test cases for computer models of flames.",
   "summary": "SLICE ran laminar coflow jet diffusion flames in the ISS Microgravity Science Glovebox on 12 test days between 9 February and 23 March 2012. Fuel issued from interchangeable nozzles (0.41-3.23 mm inner diameter) into fan-driven air in a 76 mm square duct. Fuels were methane (100, 70 and 40% in N2), ethylene (100 and 20%) and ethane, at about 21% O2 and 100 kPa. The crew set fuel flow and coflow by hand. A colour DSLR recorded more than 4,000 images, used for flame shape, lift-off height, soot temperature (colour-ratio pyrometry), soot volume fraction and CH* chemiluminescence. A matching flight-hardware replica gave 1-g counterparts. For a 100% methane flame (3.23 mm nozzle, 46 cm/s fuel, 18 cm/s coflow), microgravity raised the peak soot volume fraction four- to eightfold and lowered the peak soot temperature by about 200 K. For nitrogen-diluted methane, flame length scaled with methane mass flow, and microgravity flames were on average 28% longer. The results benchmark combustion models; relevance to spacecraft fire safety is indirect (sooting and radiation of non-buoyant flames).",
   "question": {

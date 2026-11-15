@@ -8,6 +8,7 @@ Investigators: David L. Urban (PI; NASA Glenn Research Center); George W. Mulhol
 
 | | |
 |---|---|
+| Setting | ISS · MSG · SAME hardware |
 | Platform | International Space Station (ISS), Expedition 15 (flight tests September to early October 2007) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2001-03-02 to 2008-02-28 |

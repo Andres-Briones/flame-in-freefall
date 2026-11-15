@@ -58,6 +58,10 @@ it must be precise and every fact traceable.
   from general knowledge without an `external` source, except in `physics`,
   where textbook background is allowed and marked
   `{"type": "background"}`.
+- **Location.** `location` says where the investigation's own tests ran (`kind`, `vehicle`, `module`,
+  `facility`, `crewed`, `expedition`, `uses_data_from`, `also`, `label`), each fact quoted in `location.source`
+  (a `psi_record` source with a `quote` is checked against that field of the PSI record). Leave a field null when
+  no source states it. Every `facility` name needs an entry in `data/digest/facilities.json`.
 - **Findings are specific.** State conditions and numbers ("at 21% O2 and
   10 cm/s opposed flow …"), one finding per item, with `confidence` reflecting
   how directly the source supports it. Aim for 5–12 findings when the

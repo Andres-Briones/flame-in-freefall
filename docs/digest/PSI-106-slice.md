@@ -8,6 +8,7 @@ Investigators: Marshall B. Long (Yale University) - Principal Investigator; Mitc
 
 | | |
 |---|---|
+| Setting | ISS · MSG |
 | Platform | International Space Station (ISS), US Destiny laboratory; operated by astronaut Donald R. Pettit (Expedition 30) |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2012-02-09 to 2012-03-23 |

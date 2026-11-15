@@ -102,8 +102,9 @@ DESCRIPTIONS = {
     "discrepancies": {
         "id": "patch id (D01, ...), as listed in tests.extra `discrepancies`", "test_id": "test id as in the PSI table (null for a note on a whole investigation)",
         "test_id_now": "test id in `tests` after a test_id correction",
-        "column": "`tests` column concerned, or a source column the table keeps only in `extra`",
-        "table_value": "value in the PSI table", "evidence_value": "value the raw data give",
+        "column": "`tests` column concerned, or a source column the table keeps only in `extra`; `flight_program` "
+                  "(investigations table) for a note on NASA's catalogue record of the investigation",
+        "table_value": "value in the PSI table (or catalogue record)", "evidence_value": "value the raw data or the documents give",
         "action": "replace / fill / flag / note",
         "flag": "flag put on the row; conflicts_with_test_sheet when the only evidence is a hand-filled test sheet "
                 "(an AI reading of a scan, not checked by a human)",

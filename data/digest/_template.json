@@ -36,7 +36,19 @@
     "hardware": null,
     "project_type": null
   },
-  "one_line": "One sentence a non-specialist can read.",
+  "location": {
+    "kind": "iss|cygnus_free_flight|drop_tower|ground_lab|computation",
+    "vehicle": null,
+    "module": null,
+    "facility": [],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "<short label: ISS · Destiny · CIR>",
+    "source": []
+  },
+  "one_line":"One sentence a non-specialist can read.",
   "summary": "Stand-alone abstract of 120-180 words: what was done, how, the main results with numbers, and the fire-safety meaning.",
   "question": {
     "text": "What the investigation set out to learn and why.",

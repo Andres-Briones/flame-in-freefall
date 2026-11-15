@@ -17,6 +17,26 @@
     "hardware": "None of its own; analysed DSLR images from the Smoke Point In Co-flow Experiment (SPICE, PSI-107) and Yale laboratory flames; the resulting paper also uses the ACME coflow burner configuration",
     "project_type": "Ground Investigation"
   },
+  "location": {
+    "kind": "computation",
+    "vehicle": null,
+    "module": null,
+    "facility": [],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [
+      "PSI-107"
+    ],
+    "also": [],
+    "label": "Computation · uses ISS SPICE images",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "objective",
+        "quote": "The objective of this investigation was to integrate computational and experimental methods to derive temperature distributions and soot volume fractions from the Smoke Point in Coflow Experiment (SPICE) data available in PSI."
+      }
+    ]
+  },
   "one_line": "Yale researchers re-analysed Space Station photographs of sooty ethylene flames and ran detailed computer models to find out why flames in weightlessness make so much more soot than on Earth, concluding that the models mainly get the flame temperature wrong.",
   "summary": "This PSI-funded ground investigation (2019-2022) combined re-analysis of microgravity flame images with detailed numerical modelling of sooting, laminar, ethylene-air coflow diffusion flames. Over 1600 raw camera images from the Smoke Point In Co-flow Experiment (SPICE) were decoded into colour channels and analysed by colour-ratio pyrometry to obtain soot temperature fields; the SPICE absolute light calibration then gave soot volume fractions. A coupled flow-species-soot model, extended with radiation re-absorption and sectional aggregate formation, simulated the Yale and ACME burner flames at 1 g and 0 g. Simulations reproduced the known trends: at 0 g the flame becomes longer, broader and more diffuse, cooler, with more soot and longer residence time, but these effects were much weaker for the smaller ACME flame. Perturbing soot sub-model parameters and radiation treatment did not remove the gap between model and measurement; the authors conclude the model mispredicts the temperature field, and that imposing measured temperatures and accounting for heat loss to the burner lip should improve soot predictions. For fire safety the work bears on soot, smoke and radiation modelling of microgravity fires.",
   "question": {

@@ -15,7 +15,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 
 | File | Content |
 |---|---|
-| `investigations.json` | 24 cards: accession, acronym, title, one-line description, pillars, fuel phases, counts, dataset `doi`, `doi_url`, `psi_url` |
+| `investigations.json` | 24 cards: accession, acronym, title, one-line description, pillars, fuel phases, counts, dataset `doi`, `doi_url`, `psi_url`, `location` (where it ran) |
 | `records.json` | the 24 full knowledge records (question, physics with LaTeX equations, method, findings with quoted sources, limitations, open questions, dashboard hooks) |
 | `tests.json` | the per-test table, 2,177 rows (dictionary: `docs/tests-table.md`) |
 | `publications.json` | per accession: `publications` (the record's papers, each with its `review`) and `publication_review` (counts), as `get_investigation` returns them |
@@ -24,7 +24,7 @@ Everything the dashboard needs is in this repo. Raw NASA files (`data/raw/`, 7.5
 | `models.json` | the 8 model cards: inputs, valid range, coefficients, cross-validated score, dropped candidates |
 | `timeseries_features.json` | per-recording sensor summaries, 1,075 rows (burn duration, peak temperatures, pressure; droplet and flame diameters for 24 CFI tests) |
 | `timeseries_examples.json` | decimated sensor traces for the two time-series questions in the question bank |
-| `discrepancies.json` | errors and doubts in the PSI tables: 69 conflicts and notes with evidence (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings, and 11 published-paper disagreements (`source_disagreements`) |
+| `discrepancies.json` | errors and doubts in the PSI tables: 71 conflicts and notes with evidence (2 of the notes are about NASA's catalogue records) (6 of the conflicts rest on a hand-filled test sheet only), every changed value, flag meanings, and 11 published-paper disagreements (`source_disagreements`) |
 | `test_sheets.json` | `{notes, rows}`: the 637 hand-filled ACME test sheets of PSI-10 and PSI-159, one row per page (`docs/formats.md`). An AI reading of scans, not checked by a human: show the note with any value |
 | `questions.json` | the question bank: question, call, chart, answer |
 | `synthesis.json` | key messages, limits, microgravity-vs-1-g comparisons, ranked gaps, lineage, research questions |
@@ -43,9 +43,9 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 
 | Function | Answers |
 |---|---|
-| `search_investigations(query, pillar, fuel_phase, flight)` | which investigations exist / match a topic |
-| `get_investigation(accession, sections)` | everything about one investigation; `publications` lists the record's papers in its order (`title`, `authors`, `doi`, `doi_url`, `status`, `held_file`, `review`), `publication_review` counts them, see below |
-| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, sheet_out, sheets, ...)` | what was tested and what happened; `sheets=True` attaches the operators' test sheet to PSI-10 and PSI-159 rows |
+| `search_investigations(query, pillar, fuel_phase, flight, platform_kind)` | which investigations exist / match a topic / ran in a given setting; each card has `location` |
+| `get_investigation(accession, sections)` | everything about one investigation; `location` with `facility_notes` (see below); `publications` lists the record's papers in its order (`title`, `authors`, `doi`, `doi_url`, `status`, `held_file`, `review`), `publication_review` counts them, see below |
+| `filter_tests(accession, fuel, fuel_phase, config, x_o2, pressure_kpa, flow_cm_s, extinction_mode, outcome, outcome_action, sheet_out, platform_kind, sheets, ...)` | what was tested and what happened; `sheets=True` attaches the operators' test sheet to PSI-10 and PSI-159 rows |
 | `compare(accessions)` | side-by-side: question, fuels, ranges, sensors, findings |
 | `coverage(x, y, **filters)` | where data exist and which atmospheres are empty; each reference gives its cell count in total and by fuel phase; its `nearest_test` lists in `not_measured` the columns placed from the investigation's narrow stated range, not measured for that test |
 | `relevance(scenario, fuel_phase, pillar)` | which investigations matter for a scenario, and how far the data are from it |
@@ -53,8 +53,30 @@ Each returns `{data, chart, sources, notes}`. `chart` is a suggestion, `sources`
 | `insights(topic, accession)` | cross-investigation conclusions, limits, gaps, research questions |
 | `timeseries(test_id, channels, test_point, accession)` | sensor traces of one test; reads `data/raw/` (or `$FIF_RAW_ROOT`); `demo/server.py` fetches the missing files from PSI on demand (`docs/formats.md`) |
 | `document_text(accession, file, page)` | our extracted text of one PSI file: no `page` lists the pages that have text, a `page` (3, `p3`, `sheet Results`) gives its passages in order with `transcribed`; for reading scanned PDFs. Same redaction as `find_evidence`; `demo/server.py` returns no text for the files it does not show inline |
-| `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files, and published papers that disagree with PSI (`source_disagreements`) |
+| `discrepancies(accession, test_id)` | errors and doubts in the original PSI tables: raw-data conflicts, changed values, flag meanings, removed files, notes on NASA's catalogue records, and published papers that disagree with PSI (`source_disagreements`) |
 | `predict(model_id, **conditions)` | small per-investigation models (`docs/models.md`); no `model_id` lists them, `compact=True` for the short list |
+
+Where each investigation ran: every knowledge record has a hand-checked `location` (in `data/digest/PSI-*.json`,
+checked by `check_digest`), returned on each `search_investigations` card and by `get_investigation`:
+
+| Field | Meaning |
+|---|---|
+| `kind` | `iss` (16), `cygnus_free_flight` (Saffire-I, II, III), `ground_lab` (PSI-142), `computation` (PSI-60, 62, 115, 117); `drop_tower` exists for completeness, no investigation is mainly a drop-tower one |
+| `vehicle`, `module` | `ISS`, `Cygnus OA-6`; `Destiny`, `Pressurized Cargo Module`. Null when no source says |
+| `facility` | short names (`CIR`, `ACME`, `MDCA`, `FCF`, `MSG`, `SAME hardware`, `Saffire enclosure`, `P-Trak`, `DustTrak`, `Counterflow burner`) |
+| `crewed` | true for the ISS (a crewed station; the source quotes crew work where the documents mention it), false for Saffire in Cygnus, null on the ground |
+| `expedition` | ISS increments or expedition, as the documents state them, or null |
+| `uses_data_from` | the flight investigations a ground or computation study reanalysed or took its conditions from |
+| `also` | other settings of the investigation's own work: `drop_tower` for the precursor tests of PSI-10, 22 and 23, `computation` for PSI-142. 1-g comparison tests on the ground are not listed |
+| `label` | a short label for a chip or a table cell (`ISS · Destiny · CIR · MDCA`) |
+| `source` | where each fact comes from: `psi_record` (`field` of NASA's catalogue record and `quote`), `psi_file` (`file`, `locator`, `quote`) or `external` (`url`, `quote`) |
+
+`get_investigation` adds `location.facility_notes`: one plain sentence per facility name (and `Cygnus` for
+Saffire), from `data/digest/facilities.json`, whose entries carry their own quoted sources and, under `unsourced`,
+what a note says that no quote supports. `identity.platform` stays as free text. `search_investigations` and
+`filter_tests` take `platform_kind` (one kind or a list); test rows carry a `platform_kind` column, from their
+investigation (no row in the PSI tables is a drop-tower or ground test). NASA's catalogue gives the ISS as the flight
+program of Saffire-I and III, which burned in Cygnus: `discrepancies()` lists it (notes D70, D71).
 
 Publications: `get_investigation(...)["data"]["publications"]` is the PSI record's publication list as printed
 (whitespace collapsed; `doi` and `doi_url` are null when the record gives no DOI; `publication_dois` stays as before).
@@ -128,6 +150,11 @@ $$
 - `data.gap` holds the content of the `Gap:` note as fields (accession, acronym, test_id, fuel, fuel_phase,
   x_o2_ambient, pressure_kpa, distance_to_scenario, not_measured, condition_ranges), or null when the nearest
   same-phase test is within one scale step. Read it instead of parsing the note text.
+- Each ranking row has `platform_kind`. `closest_same_phase_test` and `gap` carry `setting` (`platform_kind`,
+  `label`, `note`), and a `Setting:` note repeats it: an ISS rack (CIR) test burned in a sealed chamber of about
+  90 L with a controlled atmosphere; a glovebox (MSG) test burned a centimetre-sized sample in a 250 L work volume;
+  Saffire burned in the cabin air of a Cygnus cargo module, the only burns in a real spacecraft cabin volume.
+  Say how far the result carries with it.
 - `relevance` raises `ValueError` for an unknown `scenario`, `fuel_phase` (solid, liquid, gas) or `pillar`.
 - Eight cabin-air experiments without logged O2 or pressure are placed at the nominal cabin atmosphere
   (20.5-21.5% O2, 98-103 kPa). Each result lists them in `conditions_assumed_cabin_air`.

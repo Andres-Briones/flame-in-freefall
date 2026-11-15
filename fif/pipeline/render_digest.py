@@ -108,6 +108,7 @@ def glance(record):
               for v in tm.get("varied", []) if present(v.get("parameter"))]
     span = " to ".join(d for d in (dates.get("start"), dates.get("end")) if d)
     rows = [
+        ("Setting", (record.get("location") or {}).get("label")),
         ("Platform", ident.get("platform")),
         ("Facility", ident.get("facility")),
         ("Dates", span),

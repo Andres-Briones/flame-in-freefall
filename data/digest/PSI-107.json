@@ -17,6 +17,43 @@
     "hardware": "SPICE module, built from the Enclosed Laminar Flames (ELF, STS-87) hardware: a fan-driven flow duct (nominally 76 x 76 mm, about 170 mm long) with honeycomb flow straightener, onboard hot-wire anemometer, interchangeable 0.41/0.76/1.6 mm ID burner tubes on the duct axis, 0-500 sccm (N2-equivalent) mass flow controller fed from 12 fuel bottles, hot-wire igniter, retractable ruler, thermopile radiometer, Nikon D100 still camera (top view), colour video camera (front view via mirror) with a data-overlay titler, and a crew control box. The same duct was later reused by BASS, BASS-II and SLICE.",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "MSG"
+    ],
+    "crewed": true,
+    "expedition": "Increments 18 and 19/20",
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · MSG",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Microgravity Science Glovebox (MSG)"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-107_Reports_SPICE_30-DayPostFlightReport.pdf",
+        "locator": "p2",
+        "quote": "During Increment 18 SPICE conducted 108 test points completing its nominal test matrix. During Increments 19/20 SPICE conducted 155 additional test points"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-107_Reports_SMOKE POINTS OF MICROGRAVITY AND  NORMAL GRAVITY COFLOW DIFFUSION  FLAMES_DotsonThesis.pdf",
+        "locator": "p5",
+        "quote": "the ISS crew members that conducted the tests Michael Barratt, E. Michael Fincke, Sandra H. Magnus, and Koichi Wakata"
+      }
+    ]
+  },
   "one_line": "Astronauts on the Space Station burned tiny gas jets in a gentle, adjustable air stream and turned the fuel up until each flame just started to give off smoke, to learn how air flow and burner size control soot release when there is no gravity.",
   "summary": "SPICE measured laminar smoke points, the largest flame that releases no soot, of round gas-jet diffusion flames burning in co-flowing air inside the Microgravity Science Glovebox on the ISS between February and June 2009. The crew set the air speed with a fan, ignited the flame on a 0.41, 0.76 or 1.6 mm burner and raised the fuel flow until soot escaped the tip; luminous lengths were measured from the downlinked video. About 526 flame conditions were logged and 52-55 smoke points found for ethylene, propane, propylene and 75%/50% propylene in nitrogen, at co-flow speeds of 5.4-65 cm/s. Methane flames reached the end of the duct without smoking. Smoke-point length grew with co-flow speed and with smaller burners, scaling as d^-0.91 u^0.41, and was roughly proportional to fuel mass flow over stoichiometric mixture fraction; a simple residence-time model did not collapse the data. Propane was unusually sooty in microgravity. For spacecraft fire safety the results show that ventilation speed and fuel-jet size, not only fuel type, decide whether a small non-buoyant flame emits smoke.",
   "question": {

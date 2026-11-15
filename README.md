@@ -18,7 +18,8 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 ## What is in it
 
 - **Knowledge records** (`data/digest/`): one per investigation: question, physics with equations, method,
-  findings with quoted sources, limitations, open questions.
+  findings with quoted sources, limitations, open questions, and where it ran (`location`: ISS rack or glovebox,
+  Cygnus free flight, ground lab or computation, with a plain-language glossary of the facility names).
 - **Publication reviews** (`data/publications/`): for each of the 352 papers listed in the PSI records, whether it
   could be read, what it adds, confirms or contradicts, with quotes (an AI reading of the papers). Served with
   `get_investigation`; papers that disagree with the PSI data are listed by `discrepancies()`.

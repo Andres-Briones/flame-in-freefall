@@ -8,6 +8,7 @@ Investigators: David L. Urban (PI; NASA GRC); Zeng-guang Yuan (Co-I; NASA GRC in
 
 | | |
 |---|---|
+| Setting | ISS · MSG · SAME hardware |
 | Platform | International Space Station (ISS), Expedition 24 |
 | Facility | Microgravity Science Glovebox (MSG) |
 | Dates | 2010-07-01 to 2010-09-30 |

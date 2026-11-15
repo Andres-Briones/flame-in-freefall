@@ -18,6 +18,61 @@
     "hardware": "TSI P-Trak condensation nuclei counter with a microgravity-modified (capillary-grooved) condenser tube and no mercury tilt switch; TSI DustTrak laser-photometer aerosol monitor as gravity-insensitive reference; 15 L Mylar sample bags; fill assembly using ISS gaseous nitrogen; Arizona Road Dust holders; DAFT impactor; HEPA zero filters",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": "Destiny and Node 1",
+    "facility": [
+      "P-Trak",
+      "DustTrak"
+    ],
+    "crewed": true,
+    "expedition": "Increments 10 and 13",
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · Destiny and Node 1 · handheld P-Trak and DustTrak",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "TSI P-Trak"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The modified P-Trak gathered data from counting aerosol particles and these data were compared to the DustTrak"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+        "locator": "p2",
+        "quote": "The tests were conducted in the US laboratory module Destiny in front of EXPRESS Rack 4; in the modules’s aft end and port side; and in Node 1."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+        "locator": "p4",
+        "quote": "The first test point for DAFT was performed on February 22, 2005 during Increment 10."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf",
+        "locator": "p5",
+        "quote": "The first test point for DAFT-3 and -4 was scheduled to be performed on August 18, 2006 (GM 229), during Increment 13."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-47_Presentations_Daft_FactSheet.pdf",
+        "locator": "p2",
+        "quote": "by having an astronaut create airborne debris"
+      }
+    ]
+  },
   "one_line": "Before flying a smoke-measuring experiment, NASA checked on the Space Station that a commercial particle counter, which normally relies on gravity to recycle its alcohol, still counted particles correctly in weightlessness, and in doing so made the first measurement of how dusty the Station air is.",
   "summary": "DAFT was a quick risk-reduction test for the Smoke Aerosol Measurement Experiment (SAME). SAME depended on a TSI P-Trak condensation particle counter, which uses gravity to return condensed isopropanol to its wick. NASA cut capillary grooves into the condenser and flew it with a gravity-insensitive TSI DustTrak photometer as reference. In February and March 2005 (Increment 10) the crew sampled cabin air at three locations and air dusted by separating Velcro. In August 2006 (Increment 13) three 15 L bags of Arizona Road Dust in nitrogen were sampled. The P-Trak ran with no clogging or errors. It read up to about 45,000 particles/cm3 for Velcro dust and 11,400-36,500 particles/cm3 (DustTrak 33-71 mg/m3) for the bags. Undisturbed ISS air averaged under 15 particles/cm3 and under 0.005 mg/m3, far cleaner than the Shuttle or offices. The orbital mass-per-count ratio was about 3.2 times the ground value (mean diameter 1.65 µm), consistent with large particles not settling. The modified counter was accepted for SAME, supporting spacecraft smoke-detector design.",
   "question": {

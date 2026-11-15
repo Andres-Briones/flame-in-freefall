@@ -16,6 +16,32 @@
     "hardware": null,
     "project_type": "Ground Investigation"
   },
+  "location": {
+    "kind": "computation",
+    "vehicle": null,
+    "module": null,
+    "facility": [],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [
+      "PSI-102",
+      "PSI-101"
+    ],
+    "also": [],
+    "label": "Computation · geometry and flow of the ISS SAME experiments",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "objective",
+        "quote": "The objective of this investigation was to use numerical simulation to explore the influence of gravity on pyrolysis smoke growth from a fundamental perspective."
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The smoke originates from pyrolysis vapor expelled from a heated sample in a geometry similar to that considered in the SAME experiments."
+      }
+    ]
+  },
   "one_line": "A computer simulation of smoke forming from a hot, vapour-releasing sample in a slow air stream shows that, without gravity, smoke particles can grow larger than on Earth, which matters for how spacecraft smoke detectors are designed.",
   "summary": "This NASA-funded ground study (grant NNX17AF08A, 2017-2019) used two-dimensional direct numerical simulation to compare smoke formed in Earth gravity and in microgravity. The configuration mimicked the ISS Smoke Aerosol Measurement Experiment (SAME). Dibutyl phthalate (DBP) vapour, a well-characterised surrogate for pyrolysis products, leaves a 473 K block in a channel with 300 K air flowing at 8 or 10 cm/s. A 45-node sectional aerosol model tracked nucleation, coagulation, condensation, evaporation, thermophoresis and Stokes settling. In Earth gravity, buoyancy makes the flow asymmetric and drives vapour to the cool upper wall. There nucleation is about 100 times faster (about 1e14 vs 1e12 per m3 per s). Settling also removes all particles larger than about 40 um, leaving a single size mode near 5 um. In microgravity the wake recirculation traps hot, vapour-rich gas. This gives a second mode near 30-35 um and particles approaching 100 um, or, without that recirculation, a single mode near 10 um. For fire safety, detectors calibrated on terrestrial smoke may meet larger particles in orbit, and the result depends on geometry.",
   "question": {

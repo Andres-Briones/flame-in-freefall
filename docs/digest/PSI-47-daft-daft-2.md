@@ -8,6 +8,7 @@ Investigators: David L. Urban (NASA Glenn Research Center) - Principal Investiga
 
 | | |
 |---|---|
+| Setting | ISS · Destiny and Node 1 · handheld P-Trak and DustTrak |
 | Platform | International Space Station (ISS), US Laboratory (Destiny) and Node 1; Increment 10 (2005) and Increment 13 (2006) |
 | Facility | Crew-operated, handheld; set up in front of EXPRESS Racks 4 and 5 using EXPRESS laptop for data download |
 | Dates | 2003-03-01 to 2009-06-01 |

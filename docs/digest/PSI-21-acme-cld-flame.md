@@ -8,6 +8,7 @@ Investigators: Marshall B. Long (Yale University) - Principal Investigator; Mitc
 
 | | |
 |---|---|
+| Setting | ISS · CIR · ACME |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR) |
 | Dates | 2006-10-01 to 2022-05-31 |

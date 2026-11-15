@@ -8,6 +8,7 @@ Investigators: David L. Urban (NASA Glenn Research Center) - Principal Investiga
 
 | | |
 |---|---|
+| Setting | Cygnus OA-5 · free flight after leaving the ISS · uncrewed |
 | Platform | Orbital ATK Cygnus resupply vehicle (OA-5 mission), after unberthing from the ISS; uncrewed |
 | Facility | Cygnus Pressurized Cargo Module |
 | Dates | 2016-09-30 to 2017-04-01 |

@@ -17,6 +17,40 @@
     "hardware": "Counterflow burner with ozone-sensitised oxidiser; diagnostics: thermocouple thermometry, formaldehyde (CH2O) planar laser-induced fluorescence, chemiluminescence imaging",
     "project_type": "Ground Investigation"
   },
+  "location": {
+    "kind": "ground_lab",
+    "vehicle": null,
+    "module": null,
+    "facility": [
+      "Counterflow burner"
+    ],
+    "crewed": null,
+    "expedition": null,
+    "uses_data_from": [
+      "PSI-69"
+    ],
+    "also": [
+      "computation"
+    ],
+    "label": "Ground lab · counterflow burner · uses ISS FLEX data",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Principal Investigator Laboratory Hardware"
+      },
+      {
+        "type": "psi_record",
+        "field": "objective",
+        "quote": "By using the Flame Extinguishment (FLEX) experimental data from the Physical Sciences Informatics (PSI) system of combustion science, the purpose of this grant was to conduct new simulations and ground-based experiments using ozone-sensitized counterflow flames"
+      },
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "three different numerical modeling schemes"
+      }
+    ]
+  },
   "one_line": "A ground study at Princeton, prompted by the surprising cool flames seen around burning droplets on the Space Station, used ozone-assisted counterflow burners and simulations to map when hot flames turn into low-temperature 'cool' and 'warm' flames and when those go out.",
   "summary": "This PSI-funded ground investigation (2016-2021) set out to explain the cool flames observed after radiative extinction of n-alkane droplets in the ISS Flame Extinguishment Experiment (FLEX). Princeton researchers measured extinction limits of hot and cool non-premixed flames of n-heptane to n-tetradecane in an atmospheric counterflow burner, with and without ozone added to the oxidiser to boost low-temperature chemistry, probed multistage 'warm' flames with formaldehyde fluorescence, chemiluminescence and thermometry, and computed flame regimes for dimethyl ether up to elevated pressure. Without ozone, n-tetradecane cool flames survived at a fuel mass fraction near 0.32 at a stretch rate of about 83 1/s, versus about 0.55 for n-heptane at 78 1/s; ozone brought both to about 0.11 near 69 1/s. Hot-flame extinction occurred at fuel mass fractions of 0.04-0.055 for all fuels. Kinetic models overpredicted cool-flame extinction limits, and cool-flame reactivity scaled with oxygen mole fraction to a power of 1.5-2. Warm flames bridge cool and hot flames. For fire safety the work is fundamental: low-temperature flames can persist after visible flames go out.",
   "question": {

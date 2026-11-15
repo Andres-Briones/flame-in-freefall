@@ -18,6 +18,37 @@
     "hardware": "ACME (Advanced Combustion via Microgravity Experiments) chamber insert with flat porous BRE burners of 25 and 50 mm diameter",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "iss",
+    "vehicle": "ISS",
+    "module": null,
+    "facility": [
+      "CIR",
+      "ACME"
+    ],
+    "crewed": true,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "ISS · CIR · ACME",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "flightProgram",
+        "quote": "International Space Station (ISS)"
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Combustion Integrated Rack (CIR), ACME"
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf",
+        "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."
+      }
+    ]
+  },
   "one_line": "A flat gas burner on the Space Station imitated small burning patches of plastics and liquids in still air, showing that such flames can burn steadily for minutes without any air flow when oxygen is raised to about 26.5% or more, but go out within tens of seconds at 21%.",
   "summary": "ACME BRE (Burning Rate Emulator) used flat porous gas burners, 25 and 50 mm across, in the Combustion Integrated Rack on the International Space Station to imitate small burning patches of solids and liquids in still air. Ethylene, nitrogen-diluted ethylene or methane was fed at a fixed mass flux (about 1-12 g/(m2 s)) into nitrogen-oxygen atmospheres of 21-40% O2 at 56-100 kPa; embedded heat-flux gauges, radiometers and cameras gave the effective heat of gasification of each flame, its radiative loss and its size. Over 18 test days in 2019-2021, 194 flames were ignited. All 25 mm flames at 21% O2 self-extinguished within 40 s, whereas at 26.5, 34 and 40% O2 many burned steadily for 2-5 minutes until shut down. Larger, higher-flow and methane flames extinguished sooner; radiative heat loss drove the oscillation and extinction. Models built on these data suggest common plastics could burn steadily at about 1-3 g/(m2 s) in microgravity, and that low-pressure, oxygen-enriched cabin atmospheres widen the burning range. Stopping ventilation may therefore not quickly put out a small fire at elevated oxygen.",
   "question": {

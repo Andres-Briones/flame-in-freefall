@@ -1,0 +1,88 @@
+{
+  "_about": "Plain-language glossary of the facility and vehicle names used in the `location` object of the knowledge records. One sentence per name, from PSI files and records (quotes checked by check_digest) or an external NASA source. Returned by get_investigation as location.facility_notes. `unsourced` lists what the note says that no quote supports.",
+  "facilities": {
+    "CIR": {
+      "note": "The Combustion Integrated Rack is a NASA rack on the ISS, one of the two racks of the Fluids and Combustion Facility, built around a sealed combustion chamber of about 90 L that can run at about 0-9 atm with an atmosphere mixed for each experiment.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-23", "file": "PSI-23_Presentations_20120015928.pdf", "locator": "p4", "quote": "The Combustion Integrated Rack CIR is one of two racks that make up the Fluids and Combustion Facility FCF ."},
+        {"type": "psi_file", "accession": "PSI-39", "file": "PSI-39_Science Documents_SRD_CFI.pdf", "locator": "p12", "quote": "The CIR facility, occupying a large rack in the Destiny module of the ISS and described in detail elsewhere (Banu, 2008), consists of a 90 l combustion chamber that is capable of operating pressures of approximately 0 - 9 atm."}
+      ],
+      "unsourced": "that the chamber atmosphere is mixed for each experiment is shown per investigation (gas bottles installed by the crew, PSI-39; chamber atmosphere reused or refilled, PSI-69, PSI-159), not in one quote"
+    },
+    "FCF": {
+      "note": "The Fluids and Combustion Facility is a pair of ISS racks designed and built at NASA Glenn for combustion and fluid physics experiments; the CIR is its combustion rack.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-23", "file": "PSI-23_Presentations_20120015928.pdf", "locator": "p4", "quote": "The FCF, designed and built at the NASA Glenn Research Center, was developed to accommodate combustion and fluid physics experiments in microgravity"}
+      ]
+    },
+    "MDCA": {
+      "note": "The Multi-User Droplet Combustion Apparatus is an insert in the CIR chamber that deploys and ignites single fuel droplets (or pairs) so they can be filmed while they burn.",
+      "sources": [
+        {"type": "psi_record", "accession": "PSI-39", "field": "approach", "quote": "The Combustion Integrated Rack (CIR) contains the Multi-User Droplet Combustion Apparatus (MDCA) which facilitates the controlled combustion of fuel droplets."}
+      ]
+    },
+    "ACME": {
+      "note": "Advanced Combustion via Microgravity Experiments: a NASA project of six independent gas-flame experiments that shared one chamber insert in the CIR, run from the ground after the crew set it up.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-159", "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf", "locator": "p3", "quote": "The Cool Flames Investigation with Gases (CFI-G) experiment is one of six independent experiments that make up the Advanced Combustion via Microgravity Experiments (ACME) project for which the tests were conducted within the Combustion Integrated Rack (CIR) on the International Space Station (ISS)."},
+        {"type": "psi_file", "accession": "PSI-159", "file": "PSI-159_Reports_FinalRpt_ACME.CFI-G.pdf", "locator": "p6", "quote": "it was not feasible with the Combustion Integrated Rack (CIR) and ACME chamber insert"},
+        {"type": "external", "url": "https://ntrs.nasa.gov/api/citations/20210021781/downloads/JASMAC%20ACME%20paper%2020210921.pdf", "quote": "The ACME experiments are configured, but not conducted, by the ISS crew."}
+      ],
+      "unsourced": "'gas-flame': all five ACME investigations in PSI burned gaseous fuels (tests table), but no single quote says so for all six experiments"
+    },
+    "MSG": {
+      "note": "The Microgravity Science Glovebox is a sealed work volume of about 250 L on the ISS, with particulate and CO filters, that gives a contained atmosphere for small fire experiments; its air can be diluted with nitrogen to lower the oxygen.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-25", "file": "PSI-25_Reports_BASS-II Summary Report.pdf", "locator": "p11", "quote": "The MSG in the Destiny Lab of the ISS provides a contained atmosphere in which fire safety experiments can be conducted (Ref. 9). The MSG, shown in Figure 1.1, has a set of filter banks that capture particulates and convert the CO to CO2 using an ambient temperature catalyst."},
+        {"type": "psi_file", "accession": "PSI-25", "file": "PSI-25_Reports_BASS-II Summary Report.pdf", "locator": "p74", "quote": "The tests were performed in the 250-L free volume Microgravity Science Glovebox (MSG) in the Destiny Lab of the International Space Station (ISS)."},
+        {"type": "psi_file", "accession": "PSI-25", "file": "PSI-25_Science Documents_BASS-II_SRD.pdf", "locator": "p1", "quote": "GN2 is used to vitiate the MSG working volume to desired O2 levels."}
+      ]
+    },
+    "SAME hardware": {
+      "note": "The Smoke Aerosol Measurement Experiment hardware, adapted from the earlier Comparative Soot Diagnostics experiment: a near-field part inside the MSG that heats material samples to make smoke, and a far-field box attached outside it with spacecraft smoke detectors.",
+      "sources": [
+        {"type": "psi_record", "accession": "PSI-102", "field": "approach", "quote": "The crew installed the near field hardware in the Glovebox, attached the Far Field Box to the Glovebox, and positioned the video cameras."},
+        {"type": "psi_file", "accession": "PSI-102", "file": "PSI-102_Engineering Documents_SAME_EIRD.pdf", "locator": "p13", "quote": "The Far-Field Box was external to the Glovebox and contains two spacecraft smoke detectors."},
+        {"type": "psi_file", "accession": "PSI-101", "file": "PSI-101_Engineering Documents_SAME EIRD Rev 2.00 02-25-05 HIgh Q.pdf", "locator": "p3", "quote": "The experiment will enhance the concept of the Comparative Soot Diagnostics (CSD) experiment with additional diagnostic measurements and modifications to enable operations in the Microgravity Science Glovebox (MSG) on the International Space Station (ISS)."}
+      ],
+      "unsourced": "the p13 sentence describes the Comparative Soot Diagnostics layout that SAME built on; that SAME kept the two smoke detectors in its far-field box is not quoted here"
+    },
+    "Saffire enclosure": {
+      "note": "The Saffire flight unit: a flow duct with fans and a sample card, plus an avionics bay, strapped inside the cargo module of an uncrewed Cygnus and run after the vehicle left the ISS, so the fire burned in a real spacecraft cabin volume.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-98", "file": "PSI-98_Science Documents_SAFFIRE Objectives, Development and Status.pdf", "locator": "p2", "quote": "The experiment package consists of a flow duct and an adjacent avionics bay."},
+        {"type": "psi_file", "accession": "PSI-100", "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf", "locator": "p1", "quote": "Saffire-III flight system is loaded into the Cygnus PCM and be strapped into place."},
+        {"type": "psi_record", "accession": "PSI-98", "field": "approach", "quote": "The Saffire-1 experiments was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."}
+      ]
+    },
+    "Cygnus": {
+      "note": "Cygnus is an uncrewed cargo spacecraft that resupplies the ISS; the Saffire fires were lit in its pressurized cargo module after it left the station and before it re-entered the atmosphere.",
+      "sources": [
+        {"type": "psi_record", "accession": "PSI-98", "field": "researchImpacts", "quote": "Instruments on an unmanned cargo vessel"},
+        {"type": "psi_record", "accession": "PSI-99", "field": "approach", "quote": "The Saffire-II experiment was performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."},
+        {"type": "external", "url": "https://doi.org/10.1016/j.combustflame.2018.10.012", "quote": "The experiments were carried out in orbit before the Cygnus vehicle, reloaded with ISS trash, re-entered the Earth's atmosphere and perished."}
+      ]
+    },
+    "P-Trak": {
+      "note": "The TSI P-Trak is a commercial condensation nuclei counter that counts small smoke particles; DAFT checked whether it still works in microgravity, since it relies on gravity to recycle its alcohol.",
+      "sources": [
+        {"type": "psi_record", "accession": "PSI-47", "field": "objective", "quote": "SAME relied on a commercially available condensate nuclei counter, the TSI P-Trak,  to quantify smoke aerosols in a microgravity environment, however there were concerns that th P-Trak would not be reliable in microgravity as it relies on gravity to recycle isopropyl alcohol"}
+      ]
+    },
+    "DustTrak": {
+      "note": "The TSI DustTrak is a commercial aerosol monitor that measures particles by laser light scattering and does not depend on gravity; DAFT used it as the reference for the P-Trak.",
+      "sources": [
+        {"type": "psi_file", "accession": "PSI-47", "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf", "locator": "p3", "quote": "TSI DustTrak, a laser scattering device based on Mie scattering"},
+        {"type": "psi_file", "accession": "PSI-47", "file": "PSI-47_Reports_DAFT_30Day.PostFlightReport.pdf", "locator": "p2", "quote": "that was analyzed to be unaffected by the lack of gravity"},
+        {"type": "psi_record", "accession": "PSI-47", "field": "objective", "quote": "Compare the TSI P-Trak Performance against the DustTrak control"}
+      ]
+    },
+    "Counterflow burner": {
+      "note": "An atmospheric-pressure laboratory burner on the ground (the investigators' own hardware, not flight hardware) used to hold steady hot, warm and cool diffusion flames for comparison with the ISS droplet results.",
+      "sources": [
+        {"type": "psi_record", "accession": "PSI-142", "field": "experimentHardware", "quote": "Principal Investigator Laboratory Hardware"},
+        {"type": "external", "url": "https://doi.org/10.1016/j.proci.2018.06.161", "quote": "Multistage diffusion flames of n-heptane, n-decane, and n-dodecane are established in an atmospheric counterflow burner."}
+      ]
+    }
+  }
+}

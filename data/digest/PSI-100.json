@@ -18,6 +18,58 @@
     "hardware": "Saffire-III enclosure, nearly identical to Saffire-I: flow duct (about 18 x 20 in) with a single 40.6 cm x 94 cm SIBAL cotton-fibreglass sample card; fans at the outlet; hot-wire igniters at the upstream and downstream edges; 2 cameras viewing one face; 4 radiometers; 6 sample and 6 plume thermocouples, inlet temperature; 2 anemometers; solid-state O2, CO2, pressure and humidity sensors; smoke wire",
     "project_type": "Microgravity Investigation"
   },
+  "location": {
+    "kind": "cygnus_free_flight",
+    "vehicle": "Cygnus OA-7",
+    "module": "Pressurized Cargo Module",
+    "facility": [
+      "Saffire enclosure"
+    ],
+    "crewed": false,
+    "expedition": null,
+    "uses_data_from": [],
+    "also": [],
+    "label": "Cygnus OA-7 · free flight after leaving the ISS · uncrewed",
+    "source": [
+      {
+        "type": "psi_record",
+        "field": "approach",
+        "quote": "The Saffire-III experiments were performed on the Orbital Science’s Cygnus resupply vehicle after it deberthed from the ISS."
+      },
+      {
+        "type": "psi_record",
+        "field": "experimentHardware",
+        "quote": "Saffire III enclosure in Cygnus"
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+        "locator": "p1",
+        "quote": "Saffire-III flight system is loaded into the Cygnus PCM and be strapped into place."
+      },
+      {
+        "type": "psi_file",
+        "file": "PSI-100_Engineering Documents_SAFFIRE-III Operations.pdf",
+        "locator": "p1",
+        "quote": "The FOT places the Cygnus vehicle into a free-drift mode and initiate the experiment."
+      },
+      {
+        "type": "external",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "quote": "Saffire-III OA-7 KSC Atlas Feb 3, 2017 Mar 27, 2017 June 4, 2017"
+      },
+      {
+        "type": "psi_record",
+        "field": "hypothesis",
+        "quote": "conduct large-scale fire safety experiments in an expendable spacecraft without risk to a crew"
+      },
+      {
+        "type": "psi_record",
+        "field": "researchImpacts",
+        "quote": "Instruments on an unmanned cargo vessel"
+      }
+    ]
+  },
   "one_line": "A repeat of the first large spacecraft fire experiment, with the air blowing a little faster, to see how ventilation speed changes how fast a large sheet of fabric burns in an empty cargo spacecraft in orbit.",
   "summary": "Saffire-III repeated Saffire-I in the uncrewed Cygnus OA-7 cargo module on 4 June 2017. A 40.6 cm x 94 cm sheet of SIBAL cotton-fibreglass fabric was burned in cabin air (21.2% O2 falling to 21.0%, near 1 atm) in a flow duct. The flow was planned at 30 cm/s but was about 25 cm/s. An opposed-flow burn was run first from the downstream edge and spread into the flow at 0.98 mm/s over about 10 cm in 60 s. The concurrent burn from the upstream edge then spread steadily at 2.3 mm/s over about 84 cm in about 300-320 s. Compared with Saffire-I at 20 cm/s (1.8 and 1.3 mm/s), the faster flow sped up concurrent spread in proportion to the flow and slowed opposed spread. Spread rates were below those of the small-duct BASS strips and the narrow Saffire-II strips. The fire again used about 0.2 percentage points of O2 and raised cabin pressure about 0.4 kPa. Fire growth depends on ventilation speed and on enclosure size, so small-sample tests do not set the hazard.",
   "question": {

@@ -8,6 +8,7 @@ Investigators: David L. Urban (PI; NASA GRC); Gary A. Ruff (Saffire project; NAS
 
 | | |
 |---|---|
+| Setting | Cygnus OA-6 · free flight after leaving the ISS · uncrewed |
 | Platform | Orbital ATK Cygnus OA-6 Pressurized Cargo Module (uncrewed), operated in free flight after unberthing from the ISS |
 | Facility | Saffire flow unit (flow duct plus avionics bay, about 53 x 90 x 133 cm) strapped in the Cygnus PCM |
 | Dates | 2016-03-22 to 2016-06-19 |

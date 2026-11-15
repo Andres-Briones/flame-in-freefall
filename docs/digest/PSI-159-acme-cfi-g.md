@@ -8,6 +8,7 @@ Investigators: Peter B. Sunderland (PI; University of Maryland, Department of Fi
 
 | | |
 |---|---|
+| Setting | ISS · CIR · ACME |
 | Platform | International Space Station (ISS) |
 | Facility | Combustion Integrated Rack (CIR), ACME chamber insert (constant-volume chamber, about 83 L free volume) |
 | Dates | 2021-03-29 to 2021-10-18 |
