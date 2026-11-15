@@ -331,3 +331,34 @@ def test_document_text_pages_text_scan_and_empty_file():
         with pytest.raises(ValueError):
             api.document_text(*bad)
     json.dumps(scan, allow_nan=False)
+
+
+def test_quotes_carry_their_spanish_translation_where_one_exists(monkeypatch, tmp_path):
+    record = api.records()["PSI-10"]
+    quotes = [s["quote"] for f in record["findings"] for s in f.get("sources", []) if s.get("quote")]
+    known, unknown = quotes[0], next(q for q in quotes if q != quotes[0])
+    path = tmp_path / "quotes_es.json"
+    path.write_text(json.dumps({"note": "test", "lang": "es", "quotes": {
+        api.quote_key(known): {"en": known, "es": "traducción de prueba"}, "0" * 16: {"en": "not a quote", "es": "x"}}}))
+    monkeypatch.setattr(api, "QUOTES_ES", path)
+    api._quotes_es.cache_clear()
+    try:
+        result = api.get_investigation("PSI-10")
+        sources = [s for f in result["data"]["findings"] for s in f.get("sources", []) if s.get("quote")]
+        assert {s["quote"] for s in sources if "quote_es" in s} == {known}
+        assert all(s["quote_es"] == "traducción de prueba" for s in sources if s["quote"] == known)
+        assert unknown in {s["quote"] for s in sources}  # an untranslated quote stays, without the field
+        digest = api.find_evidence(known, accession="PSI-10", k=50, raw=False)["data"]["digest"]
+        assert any(s.get("quote_es") for d in digest for s in d.get("sources", []))
+        assert "quote_es" not in json.dumps(api.records()["PSI-10"])  # the cached record is not written to
+        json.dumps(result, allow_nan=False)
+
+        monkeypatch.setattr(api, "QUOTES_ES", tmp_path / "absent.json")
+        api._quotes_es.cache_clear()
+        assert "quote_es" not in json.dumps(api.get_investigation("PSI-10"))
+        path.write_text('{"quotes": ')  # half-written file
+        monkeypatch.setattr(api, "QUOTES_ES", path)
+        api._quotes_es.cache_clear()
+        assert "quote_es" not in json.dumps(api.get_investigation("PSI-10"))
+    finally:
+        api._quotes_es.cache_clear()

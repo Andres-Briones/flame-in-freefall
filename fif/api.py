@@ -8,6 +8,7 @@ Every function returns a JSON-serialisable dict:
 
 Command line: uv run python -m fif.api <function> '<json kwargs>'
 """
+import hashlib
 import json
 import math
 import re
@@ -96,6 +97,36 @@ def records():
 @lru_cache(maxsize=None)
 def synthesis():
     return json.loads((psi.DIGEST / "synthesis.json").read_text())
+
+
+QUOTES_ES = psi.ROOT / "data" / "translations" / "quotes_es.json"
+
+
+@lru_cache(maxsize=None)
+def _quotes_es():
+    """Spanish machine translations of digest quotes, keyed by quote_key; empty when the file is absent or unreadable."""
+    try:
+        quotes = json.loads(QUOTES_ES.read_text())["quotes"]
+        return {k: v["es"] for k, v in quotes.items() if isinstance(v, dict) and v.get("es")}
+    except (OSError, ValueError, KeyError, TypeError, AttributeError):
+        return {}
+
+
+def quote_key(quote):
+    return hashlib.sha1(quote.encode("utf-8")).hexdigest()[:16]
+
+
+def _with_quote_es(value):
+    """A copy of `value` where every source dict with a `quote` that has a translation also carries `quote_es`."""
+    if isinstance(value, list):
+        return [_with_quote_es(v) for v in value]
+    if not isinstance(value, dict):
+        return value
+    out = {k: _with_quote_es(v) for k, v in value.items()}
+    es = _quotes_es().get(quote_key(value["quote"])) if isinstance(value.get("quote"), str) else None
+    if es:
+        out["quote_es"] = es
+    return out
 
 
 def _accession(acc):
@@ -196,7 +227,7 @@ def find_evidence(query, accession=None, k=8, raw=True):
              "from PSI files and may contain extraction errors."]
     if any(d["transcribed"] for d in documents):
         notes.append(TRANSCRIBED_NOTE)
-    return _result({"digest": digest, "documents": documents}, None, sources, notes)
+    return _result({"digest": _with_quote_es(digest), "documents": documents}, None, sources, notes)
 
 
 TRANSCRIBED_NOTE = ("Documents with `transcribed: true` are an AI model's reading of a scanned page that has no text "
@@ -263,7 +294,7 @@ def get_investigation(accession, sections=None):
     """The full knowledge record of one investigation (or only the named sections)."""
     acc = _accession(accession)
     rec = records()[acc]
-    data = {k: v for k, v in rec.items() if sections is None or k in sections or k == "accession"}
+    data = _with_quote_es({k: v for k, v in rec.items() if sections is None or k in sections or k == "accession"})
     data["card"] = _card(acc)
     api = table("investigations").set_index("accession").loc[acc]
     if sections is None or "publication_dois" in sections:
@@ -694,7 +725,7 @@ def insights(topic="key_messages", accession=None):
     if accession:
         acc = _accession(accession)
         entries = [e for e in entries if re.search(rf"{acc}(?!\d)", json.dumps(e))]
-    return _result(entries, None, [{"ref": r} for r in _citation_refs(entries)], ["Full text with citations: docs/digest/synthesis.md"])
+    return _result(_with_quote_es(entries), None, [{"ref": r} for r in _citation_refs(entries)], ["Full text with citations: docs/digest/synthesis.md"])
 
 
 SECTION_LETTER = {"findings": "F", "limitations": "L", "open_questions": "Q"}
