@@ -33,6 +33,25 @@ def test_filter_tests_ranges_and_default_row_kind():
     assert api.filter_tests(fuel_phase="solid", x_o2=[0.25, None])["data"]["n_matching"] == 0
 
 
+def test_filter_tests_one_test_by_id_and_sorted_extremes():
+    one = api.filter_tests(accession="PSI-39", test_id="1246")
+    assert one["data"]["n_matching"] == 1 and len(json.dumps(one)) < 3000
+    row = one["data"]["rows"][0]
+    assert (row["fuel"], row["d0_mm"], row["burn_rate_k_mm2_s"], row["cool_flame"]) == ("n-dodecane", 4.378, 0.356, True)
+    assert api.filter_tests(accession="CFI", test_id=["12 46", 1247])["data"]["n_matching"] == 2
+    assert api.filter_tests(accession="PSI-98", test_id="s1")["data"]["rows"][0]["test_id"] == "S1"
+    low = [r["x_o2_ambient"] for r in api.filter_tests(fuel="pmma", sort_by="x_o2_ambient", limit=3)["data"]["rows"]]
+    assert low[0] == 0.136 and low == sorted(low)
+    every = api.filter_tests(fuel="pmma", limit=5000)["data"]
+    o2 = [r.get("x_o2_ambient") for r in every["rows"]]
+    high = api.filter_tests(fuel="pmma", sort_by="-x_o2_ambient", limit=5000)["data"]["rows"]
+    assert high[0]["x_o2_ambient"] == max(v for v in o2 if v is not None) and len(high) == every["n_matching"]
+    if None in o2:
+        assert high[-1].get("x_o2_ambient") is None
+    with pytest.raises(ValueError, match="x_o2_ambient"):
+        api.filter_tests(sort_by="oxygen")
+
+
 def test_coverage_shows_no_solid_tests_at_moon_habitat():
     refs = {r["id"]: r for r in api.coverage(fuel_phase="solid")["data"]["references"]}
     assert refs["moon-habitat"]["n_tests_in_cell"] == 0

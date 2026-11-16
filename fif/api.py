@@ -550,11 +550,18 @@ def _sheet_keys(df):
     return pd.Series([key in _sheets() for key in zip(df["accession"], df["test_id"])], index=df.index, dtype=bool)
 
 
+def _test_key(test_id):
+    return str(test_id).replace(" ", "").upper()
+
+
 def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=None, pressure_kpa=None,
                   flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None, sheet_out=None,
-                  platform_kind=None, row_kind="test", exclude_flags=None):
+                  platform_kind=None, row_kind="test", exclude_flags=None, test_id=None):
     t = table("tests")
     mask = pd.Series(True, index=t.index)
+    if test_id is not None:
+        wanted = {_test_key(i) for i in ([test_id] if isinstance(test_id, (str, int)) else test_id)}
+        mask &= t["test_id"].fillna("").map(_test_key).isin(wanted)
     if sheet_out:
         wanted = [sheet_out] if isinstance(sheet_out, str) else sheet_out
         mask &= pd.Series([_sheets().get(key, {}).get("out") in wanted for key in zip(t["accession"], t["test_id"])],
@@ -592,12 +599,24 @@ def _test_sources(df):
     return [{"accession": a, "file": f, "rows": int(n)} for (a, f), n in df.groupby(["accession", "source_file"]).size().items()]
 
 
-def filter_tests(columns=None, limit=500, sheets=False, **filters):
+def _sorted(df, sort_by):
+    column, descending = (sort_by[1:], True) if sort_by.startswith("-") else (sort_by, False)
+    if column not in df.columns:
+        raise ValueError(f"sort_by must be a column of the tests table (a leading - sorts descending), not "
+                         f"{sort_by!r}; columns: {', '.join(table('tests').columns)}")
+    return df.sort_values(column, ascending=not descending, na_position="last", kind="stable")
+
+
+def filter_tests(columns=None, limit=500, sheets=False, sort_by=None, **filters):
     """Rows of the per-test table. Ranges are [min, max] with None for open ends; `fuel` matches a whole fuel name
     (ethane does not return methane; heptane returns n-heptane and its blends), `config` is a substring match; row_kind defaults to "test" (pass None for all kinds).
+    `test_id` (one id or a list, spaces and case ignored) picks tests by id; `sort_by` orders the rows by a column
+    before `limit` applies ("-burn_time_s" for descending), rows without a value last.
     `sheets=True` attaches to each PSI-10 / PSI-159 row its hand-filled test sheet as `test_sheet` (ignited, hot or
     cool flame, how the flame ended, operator comments); `sheet_out` keeps the rows whose sheet ticks that ending."""
     df = _select_tests(**filters)
+    if sort_by:
+        df = _sorted(df, sort_by)
     notes = []
     if len(df) > limit:
         notes.append(f"{len(df)} rows match; the first {limit} are returned.")

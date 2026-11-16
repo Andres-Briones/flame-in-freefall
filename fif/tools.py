@@ -39,6 +39,9 @@ TEST_FILTERS = {
                       "location.kind (no PSI table row is a drop-tower test)"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
+    "test_id": {"type": ["string", "array"], "items": {"type": "string"},
+                "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass "
+                               "accession too, since ids repeat across investigations"},
 }
 
 
@@ -68,8 +71,12 @@ TOOLS = [
               "sections": {"type": "array", "items": {"type": "string"}, "description": "only these sections, e.g. [\"findings\", \"limitations\"]"}},
           ["accession"]),
     _tool(api.filter_tests, "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, "
-          "pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened.", {
+          "pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened. "
+          "To get one test, pass accession and test_id. For the lowest or highest, pass sort_by and a small limit "
+          "(sort_by=\"x_o2_ambient\", limit=3 gives the three lowest-oxygen rows).", {
               **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"},
+              "sort_by": {"type": "string", "description": "a column of the rows to order by before limit applies; a "
+                          "leading - sorts descending (\"-burn_time_s\"); rows without a value come last"},
               "sheets": {"type": "boolean", "description": "attach to each PSI-10 / PSI-159 row its hand-filled ACME test "
                          "sheet as `test_sheet`: ignited, hot or cool flame, how the flame ended (`out`), operator "
                          "comments, file and page. An AI reading of a scan, not checked by a human: repeat that note"}}),

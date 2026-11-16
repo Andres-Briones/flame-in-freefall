@@ -72,7 +72,7 @@
  },
  {
   "name": "filter_tests",
-  "description": "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
+  "description": "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened. To get one test, pass accession and test_id. For the lowest or highest, pass sort_by and a small limit (sort_by=\"x_o2_ambient\", limit=3 gives the three lowest-oxygen rows). Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -209,6 +209,16 @@
      },
      "description": "drop rows carrying any of these flag codes"
     },
+    "test_id": {
+     "type": [
+      "string",
+      "array"
+     ],
+     "items": {
+      "type": "string"
+     },
+     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations"
+    },
     "columns": {
      "type": "array",
      "items": {
@@ -217,6 +227,10 @@
     },
     "limit": {
      "type": "integer"
+    },
+    "sort_by": {
+     "type": "string",
+     "description": "a column of the rows to order by before limit applies; a leading - sorts descending (\"-burn_time_s\"); rows without a value come last"
     },
     "sheets": {
      "type": "boolean",
@@ -398,6 +412,16 @@
       "type": "string"
      },
      "description": "drop rows carrying any of these flag codes"
+    },
+    "test_id": {
+     "type": [
+      "string",
+      "array"
+     ],
+     "items": {
+      "type": "string"
+     },
+     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations"
     }
    },
    "required": []
