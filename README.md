@@ -4,6 +4,16 @@ Data and analysis layer for the NASA Space Apps 2026 challenge "Flame in Freefal
 investigations of NASA's Physical Sciences Informatics (PSI) repository, digested so a dashboard (and an AI
 assistant inside it) can summarise, rank and interpret them for spacecraft and habitat fire safety.
 
+## Project
+
+- **Challenge**: [Flame in Freefall](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/),
+  NASA Space Apps Challenge 2026.
+- **Team**: [Zaba Zuput](https://www.spaceappschallenge.org/2026/find-a-team/zaba-zuput/).
+- **The app**: Ignis, the team's dashboard and assistant built on this data:
+  [sebascs04/flame-in-freefall](https://github.com/sebascs04/flame-in-freefall), live at
+  <https://orbita-web-813905724775.us-central1.run.app>.
+- **This repository**: the data, models and data server Ignis reads (its `/fuego` path).
+
 ## Start here
 
 | You are | Read |
