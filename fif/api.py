@@ -1495,6 +1495,12 @@ def discrepancies(accession=None, test_id=None, compact=False):
     sources = [{"file": "data/corrections/tests_patches.json", "section": acc},
                {"page": "docs/tests-table.md", "section": notes_section("tests-table", r"^Flags$")},
                {"page": "docs/formats.md", "section": notes_section("formats", r"^Raw data that contradict")}]
+    papers = {}
+    for d in [] if test_id else _paper_disagreements(acc):
+        if d["read_url"]:
+            papers.setdefault((d["accession"], d["read_url"]), (d["publication"], []))[1].append(d["locator"])
+    sources += [{"accession": a, "url": url, "label": f"{_acronym(a)} ({a}): {title}", "locator": " | ".join(locs)}
+                for (a, url), (title, locs) in papers.items()]
     return _result(data, {"type": "table", "group_by": "accession", "badge": "action"}, sources, notes)
 
 

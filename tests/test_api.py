@@ -131,6 +131,20 @@ def test_discrepancies_compact_lists_every_entry_in_a_short_result():
     assert len(one["raw_data_conflicts"]) == len(api.discrepancies("PSI-69")["data"]["raw_data_conflicts"])
 
 
+@pytest.mark.parametrize("compact", [False, True])
+def test_discrepancies_offers_each_disagreeing_paper_once_as_a_source(compact):
+    full = api.discrepancies()["data"]["source_disagreements"]
+    sources = api.discrepancies(compact=compact)["sources"]
+    papers = [s for s in sources if s["url"] in {d["read_url"] for d in full}]
+    assert sorted((s["accession"], s["url"]) for s in papers) == sorted({(d["accession"], d["read_url"]) for d in full})
+    assert all(s["label"].endswith(next(d["publication"] for d in full if d["read_url"] == s["url"])) for s in papers)
+    two_places = "https://ntrs.nasa.gov/api/citations/20120016855/downloads/20120016855.pdf"
+    paper = [s for s in api.discrepancies("PSI-69")["sources"] if s["url"] == two_places]
+    assert len(paper) == 1 and paper[0]["locator"] == "Extinction Diameter, p4; Fig. 3 caption | Results and Discussion, p2"
+    assert not api.discrepancies("PSI-10")["data"]["source_disagreements"]
+    assert not {s["url"] for s in api.discrepancies("PSI-10")["sources"]} & {d["read_url"] for d in full}
+
+
 
 def test_insights_accession_is_an_exact_match():
     for topic in ("key_messages", "lineage", "gaps"):
