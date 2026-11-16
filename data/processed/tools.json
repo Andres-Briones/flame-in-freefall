@@ -55,7 +55,7 @@
    "properties": {
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     },
     "sections": {
      "type": "array",
@@ -221,7 +221,7 @@
      "items": {
       "type": "string"
      },
-     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations"
+     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations. CFI (PSI-39) files call test 1246 FLEX-1246: pass 1246"
     },
     "columns": {
      "type": "array",
@@ -254,7 +254,7 @@
      "type": "array",
      "items": {
       "type": "string",
-      "description": "PSI accession (PSI-26) or acronym (BASS)"
+      "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
      }
     },
     "findings": {
@@ -429,7 +429,7 @@
      "items": {
       "type": "string"
      },
-     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations"
+     "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass accession too, since ids repeat across investigations. CFI (PSI-39) files call test 1246 FLEX-1246: pass 1246"
     }
    },
    "required": []
@@ -482,7 +482,7 @@
     },
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     },
     "k": {
      "type": "integer"
@@ -516,7 +516,7 @@
     },
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     }
    },
    "required": []
@@ -524,7 +524,7 @@
  },
  {
   "name": "timeseries",
-  "description": "Sensor time series of one test (decimated) with summary features (burn duration, peak temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and cool-flame diameter, radiometer power against time) are a second recording: test_point \"FLEX-<test id>-reduced\". Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
+  "description": "Sensor time series of one test (decimated) with summary features (burn duration, peak temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and cool-flame diameter, radiometer power against time) are a second recording: test_point \"FLEX-<test id>-reduced\" (CFI, PSI-39, numbers its tests FLEX-<n> in its files; it is not FLEX, PSI-69, which has no time series here). Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down. Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those.",
   "input_schema": {
    "type": "object",
    "properties": {
@@ -545,7 +545,7 @@
     },
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     }
    },
    "required": [
@@ -585,7 +585,7 @@
    "properties": {
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     },
     "test_id": {
      "type": "string"
@@ -606,7 +606,7 @@
    "properties": {
     "accession": {
      "type": "string",
-     "description": "PSI accession (PSI-26) or acronym (BASS)"
+     "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"
     },
     "file": {
      "type": "string",

@@ -575,3 +575,17 @@ def test_coverage_labels_smoke_only_tests():
     assert sea["id"] == "earth-sea-level"
     assert sea["nearest_test"]["accession"] == "PSI-101" and sea["nearest_test"]["fire_test"] is False
     assert 0 < sea["n_not_fire_tests_in_cell"] < sea["n_tests_in_cell"]
+
+
+def test_ambiguous_names_list_the_choices_and_cfi_is_told_apart_from_flex():
+    with pytest.raises(KeyError, match="PSI-98 SAFFIRE-I, PSI-99 SAFFIRE-II, PSI-100 SAFFIRE-III"):
+        api._accession("saffire")
+    with pytest.raises(KeyError, match="CFI, PSI-39"):
+        api._accession("FLEX-1246")
+    cfi = api.get_investigation("CFI", sections=["findings"])["notes"]
+    assert any(n.startswith("CFI (PSI-39, Cool Flames Investigation) is not FLEX (PSI-69)") for n in cfi)
+    assert any("FLEX-1206 to FLEX-1431 are tests of CFI" in n for n in api.get_investigation("FLEX", ["findings"])["notes"])
+    assert api.NAME_NOTES["PSI-39"] in api.filter_tests(accession="PSI-39", test_id="1246")["notes"]
+    assert api.NAME_NOTES["PSI-39"] not in api.filter_tests(accession="PSI-69", limit=1)["notes"]
+    timeseries = next(t for t in tools.TOOLS if t["name"] == "timeseries")["description"]
+    assert "it is not FLEX, PSI-69" in timeseries and "FLEX is PSI-69" in tools.ACCESSION["description"]

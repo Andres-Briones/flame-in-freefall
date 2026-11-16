@@ -3,7 +3,8 @@ from fif import api
 
 RANGE = {"type": "array", "items": {"type": ["number", "null"]}, "minItems": 2, "maxItems": 2,
          "description": "[min, max]; null leaves that end open"}
-ACCESSION = {"type": "string", "description": "PSI accession (PSI-26) or acronym (BASS)"}
+ACCESSION = {"type": "string", "description": "PSI accession (PSI-26) or acronym (BASS). FLEX is PSI-69; CFI (PSI-39) "
+                                             "is another droplet investigation whose files number tests FLEX-1206 to FLEX-1431"}
 PHASE = {"type": "string", "enum": ["solid", "liquid", "gas", "aerosol"]}
 # Every fuel name of the tests table (all row kinds); a test checks that the list stays the table's.
 FUELS = ("arizona road dust", "butane", "dibutyl phthalate", "ethane", "ethanol", "ethylene", "farnesane", "hydrogen",
@@ -53,7 +54,8 @@ TEST_FILTERS = {
                            "counts them by investigation)"},
     "test_id": {"type": ["string", "array"], "items": {"type": "string"},
                 "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass "
-                               "accession too, since ids repeat across investigations"},
+                               "accession too, since ids repeat across investigations. CFI (PSI-39) files call test "
+                               "1246 FLEX-1246: pass 1246"},
 }
 
 
@@ -144,7 +146,8 @@ TOOLS = [
           "temperatures, chamber pressure). Available for PSI-10, PSI-23, PSI-39, PSI-159 and Saffire-I/III (PSI-98, "
           "PSI-100). For 24 PSI-39 droplet tests the investigators' reduced data (droplet diameter, hot- and "
           "cool-flame diameter, radiometer power against time) are a second recording: test_point "
-          "\"FLEX-<test id>-reduced\". Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down.", {
+          "\"FLEX-<test id>-reduced\" (CFI, PSI-39, numbers its tests FLEX-<n> in its files; it is not FLEX, PSI-69, "
+          "which has no time series here). Reads the raw NASA files: from disk in a local copy; the demo server fetches each from NASA PSI on first use and caches it, so a recording nobody opened before fails with 502 while PSI is down.", {
               "test_id": {"type": "string"}, "channels": {"type": "array", "items": {"type": "string"}},
               "max_points": {"type": "integer"}, "test_point": {"type": "string"}, "accession": ACCESSION}, ["test_id"]),
     {**_tool(api.predict, "Small per-investigation statistical model. Without model_id: list models, their inputs, accuracy "

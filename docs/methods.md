@@ -247,6 +247,11 @@ $$
 - `cool_flame` is `True` or empty, never `False`.
 - Flagged test rows carry `flags` (corrections and doubts); original values are kept in `extra`. Show a badge on
   flagged rows and link it to `discrepancies(test_id=...)`, so users see where the PSI tables are wrong.
+- CFI (PSI-39) is not FLEX (PSI-69): CFI's files number its tests FLEX-1206 to FLEX-1431 (it followed FLEX and
+  FLEX-2 in the same MDCA apparatus), while FLEX's report numbers its own FLEX-001 to FLEX-280. The tests table
+  keeps CFI's number without the prefix (FLEX-1246 is `test_id` 1246). `get_investigation`, `filter_tests` and
+  `timeseries` add a note saying so (`NAME_NOTES` in `fif/api.py`), and an ambiguous or unknown name raises an
+  error listing the accessions with their acronyms.
 - `find_evidence` is keyword search (TF-IDF), not semantic search. Raw document passages are unreviewed.
 - Document text in `evidence` keeps the e-mail and phone of listed authors (people in a PSI record's contact
   block). Postal addresses, other people's e-mails and phones, and private network addresses are replaced by

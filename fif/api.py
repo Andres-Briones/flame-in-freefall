@@ -84,6 +84,16 @@ NOT_A_FIRE = {
 RESULT_COLUMNS = ("ignited", "outcome", "extinction_mode", "burn_time_s", "burn_length_cm", "spread_rate_mm_s")
 PHASE_WITHOUT_TESTS = {"PSI-60": "gas", "PSI-62": "solid", "PSI-115": "aerosol", "PSI-117": "liquid", "PSI-142": "liquid"}
 PLATFORM_KINDS = ("iss", "cygnus_free_flight", "drop_tower", "ground_lab", "computation")
+# CFI's files number its tests "FLEX-<n>" (its "Flex Number"), which led answers to take CFI for FLEX. From the PSI-39
+# and PSI-69 records: CFI followed FLEX and FLEX-2 in the same droplet apparatus (MDCA in the CIR).
+NAME_NOTES = {
+    "PSI-39": "CFI (PSI-39, Cool Flames Investigation) is not FLEX (PSI-69): it followed FLEX and FLEX-2 (PSI-68) in "
+              "the same droplet apparatus (MDCA in the CIR), and its files number its tests FLEX-1206 to FLEX-1431 "
+              "(\"Flex Number\"). The tests table drops the prefix: FLEX-1246 is CFI test_id 1246, not a FLEX test.",
+    "PSI-69": "FLEX (PSI-69, Flame Extinguishment Experiment) burned methanol and n-heptane droplets; its report numbers "
+              "the tests FLEX-001 to FLEX-280. FLEX-1206 to FLEX-1431 are tests of CFI (PSI-39), a later investigation "
+              "in the same apparatus, not of FLEX.",
+}
 # How far a result from each setting carries to a fire in a real cabin, for `relevance`. Only what the records and
 # the facility glossary (data/digest/facilities.json) support.
 SETTING_NOTES = {
@@ -222,8 +232,14 @@ def _accession(acc):
         return _accession(f"PSI-{text}")
     names = {a: (r["identity"]["acronym"] or "").lower() for a, r in records().items()}
     match = [a for a, n in names.items() if n == text.lower()] or [a for a, n in names.items() if text.lower() in n]
-    if len(match) != 1:
-        raise KeyError(f"unknown or ambiguous investigation {acc!r}; known: {', '.join(records())}")
+    if len(match) > 1:
+        raise KeyError(f"ambiguous investigation {acc!r}, it matches {', '.join(f'{a} {_acronym(a)}' for a in match)}; "
+                       "pass one of these accessions")
+    if not match:
+        flex = (" (FLEX is PSI-69 and FLEX-2 PSI-68; FLEX-1206 to FLEX-1431 are tests of CFI, PSI-39)"
+                if "flex" in text.lower() else "")
+        raise KeyError(f"unknown investigation {acc!r}{flex}; known: "
+                       f"{', '.join(f'{a} {_acronym(a)}' if _acronym(a) != a else a for a in records())}")
     return match[0]
 
 
@@ -502,6 +518,7 @@ def get_investigation(accession, sections=None):
     rec = records()[acc]
     data = _with_quote_es({k: v for k, v in rec.items() if sections is None or k in sections or k == "accession"})
     data["card"] = _card(acc)
+    named = [NAME_NOTES[acc]] if acc in NAME_NOTES else []
     if "location" in data:
         data["location"] = {**data["location"], "facility_notes": _facility_notes(data["location"])}
     api = table("investigations").set_index("accession").loc[acc]
@@ -521,7 +538,7 @@ def get_investigation(accession, sections=None):
     if data["card"]["doi"]:
         sources.append({"accession": acc, "doi": data["card"]["doi"], "url": data["card"]["doi_url"],
                         "label": f"{_acronym(acc)} ({acc}): PSI dataset DOI {data['card']['doi']}"})
-    return _result(data, None, sources, notes)
+    return _result(data, None, sources, notes + named)
 
 
 # --- tests table --------------------------------------------------------------------------------------
@@ -728,6 +745,8 @@ def filter_tests(columns=None, limit=500, sheets=False, sort_by=None, **filters)
     if keys.duplicated().any():
         notes.append(f"{int(keys.duplicated(keep=False).sum())} rows share a test id with another row of the same "
                      "investigation (flag duplicate_id); a row is identified by source_file and source_row.")
+    if (df["accession"] == "PSI-39").any():
+        notes.append(NAME_NOTES["PSI-39"])
     shown = df.head(limit)
     if columns:
         shown = shown[[c for c in dict.fromkeys(["accession", "test_id", *columns]) if c in shown.columns]]
@@ -1210,6 +1229,8 @@ def timeseries(test_id, channels=None, max_points=2000, test_point=None, accessi
         notes.append(f"Decimated: every {step}th sample of {len(df)}.")
     if row["accession"] in ("PSI-10", "PSI-23", "PSI-159", "PSI-39") and not reduced:
         notes.append("Radiometer and PMT channels in volts have no archived calibration: compare shapes, not magnitudes.")
+    if row["accession"] in NAME_NOTES:
+        notes.append(NAME_NOTES[row["accession"]])
     chart = {"type": "line", "x": "time_s", "y": [c for c in df.columns if c != "time_s"]}
     data = {"test_id": row["test_id"], "test_point": row["test_point"], "accession": row["accession"],
             "features": _rows(features.dropna(axis=1, how="all")), "series": _rows(shown)}
