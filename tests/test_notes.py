@@ -114,6 +114,27 @@ def test_unknown_names_and_traversal_are_404(client, path):
     assert "[project]" not in r.text and "root:" not in r.text
 
 
+@pytest.mark.parametrize("public_url, docs", [("http://www.open-poker.ch:5187", "/docs"),
+                                              ("https://example.org/fuego", "/fuego/docs"),
+                                              ("https://example.org/fuego/", "/fuego/docs")])
+def test_links_inside_notes_keep_the_path_of_the_public_address(monkeypatch, public_url, docs):
+    docs_pages = pytest.importorskip("demo.docs_pages")
+    monkeypatch.setattr(notes, "PUBLIC_URL", public_url.rstrip("/"))
+    docs_pages.render.cache_clear()
+    try:
+        pages = {key: docs_pages.render(key) for key in [None, "digest/PSI-25", "digest/synthesis", "corrections"]}
+    finally:
+        docs_pages.render.cache_clear()
+    for key, page in pages.items():
+        local = [h for h in re.findall(r'href="([^"]*)"', page) if not re.match(r"(https?:|mailto:|#)", h)]
+        assert local, key
+        for href in local:
+            assert href == docs or href.startswith(f"{docs}/"), (key, href)
+    assert f'href="{docs}"' in pages["digest/PSI-25"]
+    assert f'href="{docs}/digest/PSI-26"' in pages["digest/PSI-25"]
+    assert f'href="{docs}/corrections.json"' in pages["corrections"]
+
+
 def test_raw_html_in_notes_is_escaped():
     docs_pages = pytest.importorskip("demo.docs_pages")
     html = docs_pages._md().render("x <script>alert(1)</script>")

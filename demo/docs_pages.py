@@ -7,6 +7,7 @@ import html
 import json
 import posixpath
 from functools import lru_cache
+from urllib.parse import urlsplit
 
 from markdown_it import MarkdownIt
 
@@ -50,6 +51,12 @@ def resolve(name):
     return _aliases().get(name.strip("/"))
 
 
+def _docs():
+    """Path of /docs on the public address: behind a proxy that serves us under a prefix (/fuego) a bare /docs
+    link would leave our pages."""
+    return f"{urlsplit(notes.PUBLIC_URL).path.rstrip('/')}/docs"
+
+
 def _link(href, key):
     """A relative link to another published note goes to its page; anything else is left as written."""
     if not href or "://" in href or href.startswith(("#", "/", "mailto:")):
@@ -59,7 +66,7 @@ def _link(href, key):
         return href
     here = posixpath.dirname(notes.pages()[key].relative_to(notes.DOCS.parent).as_posix())
     other = notes.page_key(posixpath.normpath(posixpath.join(here, target)))
-    return notes.page_url(other, anchor or None).removeprefix(notes.PUBLIC_URL) if other else href
+    return _docs() + notes.page_url(other, anchor or None).removeprefix(f"{notes.PUBLIC_URL}/docs") if other else href
 
 
 def _body(key):
@@ -83,8 +90,8 @@ def _corrections_body():
     out = ["<h1>Corrections to NASA's test tables</h1>",
            "<p>Every value of the PSI experiment tables that this dataset changed, filled or flagged, with its "
            "evidence. The PSI value is always kept next to the new one. Raw file: "
-           '<a href="/docs/corrections.json">corrections.json</a>. How the flags are read: '
-           '<a href="/docs/tests-table#flags">the tests table</a>.</p>']
+           f'<a href="{_docs()}/corrections.json">corrections.json</a>. How the flags are read: '
+           f'<a href="{_docs()}/tests-table#flags">the tests table</a>.</p>']
     columns = ("id", "test_id", "column", "table_value", "evidence_value", "action", "evidence", "evidence_source")
     by_acc = {}
     for p in patches:
@@ -100,7 +107,7 @@ def _corrections_body():
 
 
 def _index_body():
-    items = [f'<li><a href="/docs/{k}">{html.escape(notes.title(k))}</a> <code>{k}</code></li>'
+    items = [f'<li><a href="{_docs()}/{k}">{html.escape(notes.title(k))}</a> <code>{k}</code></li>'
              for k in [*notes.pages(), notes.CORRECTIONS_KEY]]
     return ("<h1>Flame in Freefall: our notes</h1><p>How the data of the 24 NASA PSI combustion investigations were "
             "read, checked and corrected. The data functions cite these pages in their sources.</p>"
@@ -108,7 +115,7 @@ def _index_body():
 
 
 def _page(title, body, back=True):
-    nav = '<nav><a href="/docs">&larr; All notes</a></nav>' if back else ""
+    nav = f'<nav><a href="{_docs()}">&larr; All notes</a></nav>' if back else ""
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
             f"<title>{html.escape(title)}</title><style>{STYLE}</style></head>"
