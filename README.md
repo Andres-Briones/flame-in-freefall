@@ -8,7 +8,7 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 
 - **Challenge**: [Flame in Freefall](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/),
   NASA Space Apps Challenge 2026.
-- **Team**: [Zaba Zuput](https://www.spaceappschallenge.org/2026/find-a-team/zaba-zuput/).
+- **Team**: [Orbita Chalaca](https://www.spaceappschallenge.org/2026/find-a-team/zaba-zuput/).
 - **The app**: Ignis, the team's dashboard and assistant built on this data:
   [sebascs04/flame-in-freefall](https://github.com/sebascs04/flame-in-freefall), live at
   <https://orbita-web-813905724775.us-central1.run.app>.
