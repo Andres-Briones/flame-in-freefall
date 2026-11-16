@@ -243,6 +243,12 @@ $$
   Saffire-II and SAME-R have no per-test pressure, so "solids at 95-105 kPa" misses 247 rows. A note counts them
   by investigation; `include_unrecorded=True` keeps them. A result with no row always carries a note saying
   which single filter, left out, would match rows.
+- Some investigations give their O2 and pressure only as ranges in the report (ACME BRE, ACME s-Flame and FLEX-2
+  as test-day or condition-set rows, PSI-117 with no rows), so an `x_o2` or `pressure_kpa` range misses them. With
+  such a range, `filter_tests` and `coverage` add a note naming each investigation with no matching row whose
+  tested range (`_envelopes`, the ranges `relevance` uses: digest `parameter_coverage` merged with the rows, assumed
+  cabin air excluded) overlaps the asked one, unless its single-test rows record those conditions. Accession and
+  fuel phase are judged per investigation; any other filter keeps only investigations with a row matching it.
 - Flags come in two kinds: a correction or a doubt, and a remark on how to read the row (`o2_is_burner_stream`,
   `ramped`, `smoke_point_bracket`, `planned_not_flown`, `flash_only`, `burner_over_limit`). The `filter_tests`
   note counts them separately.

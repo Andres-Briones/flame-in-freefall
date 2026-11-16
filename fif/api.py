@@ -697,9 +697,66 @@ def _select(filters):
             notes.append(f"{len(missing)} more rows match every other filter but have no recorded {RANGE_LABEL[key]} "
                          f"({_by_accession(missing)}), so the range filter left them out; that does not mean they "
                          "ran outside the range. Pass include_unrecorded=true to keep them.")
+    ranged = _ranged_note(filters, df)
+    if ranged:
+        notes.append(ranged)
     if df.empty:
         notes.append(_empty_note(filters))
     return df, notes
+
+
+# Filters that say nothing about one row's conditions; every other filter is judged at investigation level by
+# _ranged_note only through rows that match it.
+_INVESTIGATION_FILTERS = {"accession", "fuel_phase", "row_kind", "include_unrecorded", *TEST_COLUMN}
+
+
+def _ranged_note(filters, df):
+    """Investigations with no row in df whose tested range (_envelopes, as relevance uses it) overlaps the asked O2 or
+    pressure range, and whose test rows do not record those conditions."""
+    asked = {k: filters[k] for k in TEST_COLUMN if filters.get(k) is not None}
+    if not set(asked) & {"x_o2", "pressure_kpa"}:
+        return None
+    t = table("tests")
+    t = t[t["row_kind"] != "planned"]
+    accs = filters.get("accession")
+    accs = None if not accs else {_accession(a) for a in ([accs] if isinstance(accs, str) else accs)}
+    phase = filters.get("fuel_phase")
+    phases = None if not phase else ({phase} if isinstance(phase, str) else set(phase))
+    other = {k: v for k, v in filters.items() if k not in _INVESTIGATION_FILTERS and v is not None and v is not False}
+    plausible = set(_select_tests(**{**other, "row_kind": None})["accession"]) if other else None
+    named = []
+    for acc, env in _envelopes().items():
+        if acc in set(df["accession"]) or (accs and acc not in accs) or (phases and not phases & set(_phases(acc))):
+            continue
+        if plausible is not None and acc not in plausible:
+            continue
+        spans = {}
+        for key, bounds in asked.items():
+            lo, hi = bounds if isinstance(bounds, (list, tuple)) else (bounds, bounds)
+            if key not in env or env[key][2] == "assumed cabin air":
+                break
+            elo, ehi, _ = env[key]
+            if (lo is not None and lo > ehi + 1e-9) or (hi is not None and hi < elo - 1e-9):
+                break
+            spans[key] = (elo, ehi)
+        else:
+            tests = t[(t["accession"] == acc) & (t["row_kind"] == "test")]
+            if tests[[TEST_COLUMN[k] for k in asked]].notna().all(axis=1).any():
+                continue  # its single tests record these conditions: the other filters left them out
+            # as in _conditions: the digest's remark on a range is shown only where the range comes from the digest
+            remarks = {COVERAGE_PARAMETER.get(p["parameter"]): p["note"] for p in synthesis()["parameter_coverage"]
+                       if p["accession"] == acc and p.get("note")}
+            text = ", ".join(f"{TEST_COLUMN[k]} {lo:g}-{hi:g}"
+                             + (f" ({remarks[k]})" if remarks.get(k) and "digest" in env[k][2] else "")
+                             for k, (lo, hi) in spans.items())
+            name = acc if _acronym(acc) == acc else f"{acc} {_acronym(acc)}"
+            ground = "" if _is_flight(records()[acc]) else ", a ground investigation"
+            named.append(f"{name}{ground}: {text}.")
+    if not named:
+        return None
+    return ("Investigations with no matching row whose recorded tested range overlaps the asked range (their "
+            "conditions are given as ranges in the report, not per test, so they may also have tested inside the "
+            f"range; call get_investigation for each before leaving it out): {' '.join(named)}")
 
 
 def _empty_note(filters):

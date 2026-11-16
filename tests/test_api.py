@@ -172,6 +172,32 @@ def test_filter_tests_says_which_rows_a_range_left_out_for_having_no_value():
     assert any("no recorded pressure_kpa" in n for n in api.coverage(fuel_phase="solid", pressure_kpa=[95, 105])["notes"])
 
 
+def _ranged(out):
+    return next((n for n in out["notes"] if n.startswith("Investigations with no matching row")), None)
+
+
+def test_a_range_filter_names_investigations_whose_conditions_are_only_stated_as_ranges(monkeypatch):
+    # ACME BRE kept steady flames at 26.5, 34 and 40 % O2 (test-day rows); FLEX-2 lists 0.17-0.30 O2 and
+    # 0.5-3 atm as condition sets only; neither has a single-test row with these values.
+    for tool in (api.filter_tests, api.coverage):
+        note = _ranged(tool(x_o2=[0.30, None]))
+        assert "PSI-20 ACME BRE: x_o2_ambient 0.21-0.4." in note and "PSI-68 FLEX-2: x_o2_ambient 0.14-0.3" in note
+        assert "PSI-10 " not in note and "PSI-69 " not in note  # their test rows are returned
+    note = _ranged(api.filter_tests(pressure_kpa=[None, 70]))
+    assert "PSI-20 ACME BRE: pressure_kpa 56-100" in note and "PSI-68 FLEX-2: pressure_kpa 50.7-304" in note
+    assert "get_investigation" in note and "PSI-39" not in note
+    assert _ranged(api.filter_tests(x_o2=[0.30, None], fuel_phase="solid")) is None
+    assert "PSI-68" not in _ranged(api.filter_tests(x_o2=[0.30, None], fuel="ethylene"))
+    assert _ranged(api.filter_tests(x_o2=[0.30, None], accession="PSI-10")) is None
+    for call in ({"fuel_phase": "gas"}, {"accession": "PSI-20", "row_kind": None}, {}):
+        assert _ranged(api.filter_tests(**call)) is None
+        assert _ranged(api.coverage(**call)) is None
+    calls = ({"x_o2": [0.30, None]}, {"pressure_kpa": [None, 70], "fuel_phase": "liquid"}, {"fuel_phase": "solid"})
+    before = [api.filter_tests(limit=5000, **c)["data"] for c in calls] + [api.coverage(**c)["data"] for c in calls]
+    monkeypatch.setattr(api, "_ranged_note", lambda filters, df: None)
+    assert before == [api.filter_tests(limit=5000, **c)["data"] for c in calls] + [api.coverage(**c)["data"] for c in calls]
+
+
 def test_filter_tests_reads_everyday_fuel_names_and_lists_the_real_ones():
     assert sorted(api.table("tests")["fuel"].dropna().unique()) == list(tools.FUELS)
     for alias, (names, _) in api.FUEL_ALIASES.items():

@@ -102,7 +102,8 @@ TOOLS = [
     _tool(api.filter_tests, "Rows of the per-test table (2,177 rows, of which 2,059 are single tests: fuel, O2, "
           "pressure, flow, outcomes, platform_kind). Use for any question about what was tested and what happened. "
           "To get one test, pass accession and test_id. For the lowest or highest, pass sort_by and a small limit "
-          "(sort_by=\"x_o2_ambient\", limit=3 gives the three lowest-oxygen rows).", {
+          "(sort_by=\"x_o2_ambient\", limit=3 gives the three lowest-oxygen rows). With an O2 or pressure range, a note "
+          "names investigations whose conditions are stated only as ranges: do not leave them out of the answer.", {
               **TEST_FILTERS, "columns": {"type": "array", "items": {"type": "string"}}, "limit": {"type": "integer"},
               "sort_by": {"type": "string", "description": "a column of the rows to order by before limit applies; a "
                           "leading - sorts descending (\"-burn_time_s\"); rows without a value come last"},
