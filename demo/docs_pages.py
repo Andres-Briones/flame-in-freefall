@@ -11,7 +11,7 @@ from urllib.parse import urlsplit
 
 from markdown_it import MarkdownIt
 
-from fif import notes
+from fif import api, notes
 
 STYLE = """
 :root{--bg:#fbfbf9;--fg:#1d1f21;--muted:#5f6670;--line:#d9dcdf;--code:#f0f1f2;--link:#1f5fbf}
@@ -88,9 +88,12 @@ def _body(key):
 def _corrections_body():
     patches = json.loads(notes.CORRECTIONS.read_text())
     out = ["<h1>Corrections to NASA's test tables</h1>",
-           "<p>Every value of the PSI experiment tables that this dataset changed, filled or flagged, with its "
-           "evidence. The PSI value is always kept next to the new one. Raw file: "
-           f'<a href="{_docs()}/corrections.json">corrections.json</a>. How the flags are read: '
+           "<p>The values of the PSI experiment tables that this dataset changed, filled or flagged. First, by "
+           "investigation, the disagreements with the raw sensor data, each with its evidence (raw file: "
+           f'<a href="{_docs()}/corrections.json">corrections.json</a>). Then '
+           '<a href="#values-changed">every value of the tests table that differs from PSI\'s</a>, whatever the '
+           "reason (the raw data, the reports or a rule of the build; the row's flags say which). The PSI value is "
+           "always kept next to the new one. How the flags are read: "
            f'<a href="{_docs()}/tests-table#flags">the tests table</a>.</p>']
     columns = ("id", "test_id", "column", "table_value", "evidence_value", "action", "evidence", "evidence_source")
     by_acc = {}
@@ -103,6 +106,16 @@ def _corrections_body():
             cells = "".join(f"<td>{html.escape('' if p.get(c) is None else str(p.get(c)))}</td>" for c in columns)
             out.append(f'<tr id="{html.escape(str(p.get("id", "")))}">{cells}</tr>')
         out.append("</tbody></table>")
+    columns = ("accession", "test_id", "column", "table_value", "value_now", "flags", "patch_ids")
+    out.append('<h2 id="values-changed">Every value changed in the tests table</h2><table><thead><tr>'
+               + "".join(f"<th>{c}</th>" for c in columns) + "</tr></thead><tbody>")
+    for c in api.values_changed(api.table("tests")):
+        cells = "".join(f"<td>{html.escape('' if c.get(k) is None else str(c.get(k)))}</td>" for k in columns)
+        # Investigations without raw-data conflicts get their anchor (a source's #accession) on their first row here.
+        anchor = c["accession"] not in by_acc and f' id="{html.escape(c["accession"])}"'
+        by_acc.setdefault(c["accession"], [])
+        out.append(f"<tr{anchor or ''}>{cells}</tr>")
+    out.append("</tbody></table>")
     return "\n".join(out)
 
 

@@ -1433,6 +1433,28 @@ def _compact_discrepancies(data):
     }
 
 
+def values_changed(tests):
+    """Every value of these rows of the tests table that differs from PSI's, with PSI's value (`table_value`)."""
+    changed = []
+    for row in tests[tests["extra"].notna()].itertuples():
+        extra = json.loads(row.extra)
+        originals = {name[:-9]: v for name, v in extra.items() if name.endswith("_original") and name[:-9] in tests.columns}
+        for flag, (column, key) in ORIGINAL_KEPT_AS.items():
+            if flag in str(row.flags).split(";") and key in extra and column not in originals:
+                originals[column] = extra[key]
+        for column, original in originals.items():
+            changed.append({"accession": row.accession, "test_id": row.test_id, "column": column,
+                            "table_value": original, "value_now": getattr(row, column), "flags": row.flags,
+                            "patch_ids": extra.get("discrepancies")})
+    return changed
+
+
+@lru_cache(maxsize=None)
+def corrections_sections():
+    """Accessions with a section (an anchor) on the corrections notes page: a raw-data conflict or a changed value."""
+    return frozenset(table("discrepancies")["accession"].dropna()) | {c["accession"] for c in values_changed(table("tests"))}
+
+
 def discrepancies(accession=None, test_id=None, compact=False):
     """Where the PSI experiment tables are wrong or doubtful: disagreements with the raw sensor data (each with
     the table value, the raw value, the evidence and what was done), every value this dataset changed, the meaning
@@ -1448,17 +1470,7 @@ def discrepancies(accession=None, test_id=None, compact=False):
         key = str(test_id).replace(" ", "")
         raw = raw[raw["test_id"].fillna("").str.replace(" ", "").eq(key) | raw["test_id_now"].fillna("").str.replace(" ", "").eq(key)]
         tests = tests[tests["test_id"].str.replace(" ", "") == key]
-    changed = []
-    for row in tests[tests["extra"].notna()].itertuples():
-        extra = json.loads(row.extra)
-        originals = {name[:-9]: v for name, v in extra.items() if name.endswith("_original") and name[:-9] in tests.columns}
-        for flag, (column, key) in ORIGINAL_KEPT_AS.items():
-            if flag in str(row.flags).split(";") and key in extra and column not in originals:
-                originals[column] = extra[key]
-        for column, original in originals.items():
-            changed.append({"accession": row.accession, "test_id": row.test_id, "column": column,
-                            "table_value": original, "value_now": getattr(row, column), "flags": row.flags,
-                            "patch_ids": extra.get("discrepancies")})
+    changed = values_changed(tests)
     counts = tests["flags"].dropna().str.split(";").explode().value_counts()
     meanings = flag_meanings()
     flags = [{"flag": code, "rows": int(n), "meaning": meanings.get(code)} for code, n in counts.items()]
@@ -1492,7 +1504,7 @@ def discrepancies(accession=None, test_id=None, compact=False):
                      "the test id was corrected); the evidence, its source, the row flags, paper quotes and claims are "
                      "left out. Call discrepancies with `accession` and/or `test_id`, or without `compact`, for the "
                      "full evidence of an entry.")
-    sources = [{"file": "data/corrections/tests_patches.json", "section": acc},
+    sources = [{"file": "data/corrections/tests_patches.json", "section": acc if acc in corrections_sections() else None},
                {"page": "docs/tests-table.md", "section": notes_section("tests-table", r"^Flags$")},
                {"page": "docs/formats.md", "section": notes_section("formats", r"^Raw data that contradict")}]
     papers = {}

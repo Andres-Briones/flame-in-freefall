@@ -115,6 +115,22 @@ def test_corrections_page_has_an_anchor_per_investigation_and_patch(client):
     assert client.get("/docs/corrections.json").json()[0]["id"]
 
 
+def test_corrections_links_land_on_a_section_and_the_page_lists_every_changed_value():
+    docs_pages = pytest.importorskip("demo.docs_pages")
+    page = docs_pages.render(notes.CORRECTIONS_KEY)
+    anchors = set()
+    for acc in api.records():
+        url = next(s["url"] for s in api.discrepancies(acc)["sources"] if "/docs/corrections" in s["url"])
+        _, _, anchor = url.partition("#")
+        assert not anchor or f'id="{anchor}"' in page, url
+        anchors.add(anchor)
+    assert {"PSI-10", "PSI-26", "PSI-25"} <= anchors and "" in anchors
+    values = page.split('id="values-changed"', 1)[1]
+    changed = api.discrepancies()["data"]["values_changed"]
+    assert changed and values.count("<tr") - 1 == len(changed)
+    assert "<td>PSI-26</td><td>85</td><td>x_o2_ambient</td><td>0.21111</td><td>0.168</td>" in values
+
+
 @pytest.mark.parametrize("path", ["/docs/nope", "/docs/digest/BRIEF", "/docs/review-game-claims", "/docs/../README.md",
                                   "/docs/%2e%2e/README.md", "/docs/..%2fpyproject.toml", "/docs/digest/../../README.md",
                                   "/docs//etc/passwd", "/docs/question-bank/../../pyproject.toml"])

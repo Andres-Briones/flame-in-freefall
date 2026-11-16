@@ -51,7 +51,8 @@ English `label` to show with it:
 
 Our notes are served as HTML at `<server>/docs/<key>`: `methods`, `models`, `formats`, `tests-table`,
 `question-bank`, `digest/synthesis`, `digest/<accession>` (e.g. `digest/PSI-25`), `corrections` (the patches of
-`data/corrections/tests_patches.json`, anchored by accession and patch id; raw at `corrections.json`); `/docs` lists
+`data/corrections/tests_patches.json`, anchored by accession and patch id, then every value of the tests table
+that differs from PSI's, at `#values-changed`; raw at `corrections.json`); `/docs` lists
 them. Headings carry GitHub-style anchors. Links are absolute on `FIF_PUBLIC_URL` (default the live server
 `http://www.open-poker.ch:5187`), because the team app reaches this server on an internal address; set it when
 running a copy that should link to itself. The scheme is in `fif/notes.py`. From a non-Python backend:
