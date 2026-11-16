@@ -162,8 +162,9 @@ def _link(source):
         url = notes.page_url(f"digest/{acc}", anchor)
         label = f"Our notes: {_acronym(acc)} ({acc}) digest" + (f", {kind} {ref.group(3)}" if kind else "")
     elif s.get("file") and acc:
-        where = f", {s['locator']}" if s.get("locator") else ""
-        url, label = _psi_url(acc), f"{_acronym(acc)} ({acc}): {s['file'].rsplit('/', 1)[-1]}{where}"
+        # No page in the label: a reader of the sources keeps one label per file, so a page here would be shown for
+        # every page of that file. The page is in `locator`.
+        url, label = _psi_url(acc), f"{_acronym(acc)} ({acc}): {s['file'].rsplit('/', 1)[-1]}"
     elif s.get("page") or s.get("file"):
         key = notes.page_key(s.get("page") or s["file"])
         url, label = _note_source(key, s.get("section")) if key else (None, None)

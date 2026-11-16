@@ -49,6 +49,16 @@ def test_nasa_files_link_to_their_psi_page_and_name_the_file(sources):
         assert s["file"].rsplit("/", 1)[-1] in s["label"]
 
 
+def test_a_file_label_names_no_page_and_the_page_stays_in_the_locator():
+    file = "data/raw/files/PSI-25/BASS-II Summary Report.pdf"
+    a, b = (api._link({"accession": "PSI-25", "file": file, "locator": loc}) for loc in ("p101", "p96"))
+    assert a["label"] == b["label"] == "BASS-II (PSI-25): BASS-II Summary Report.pdf"
+    assert (a["locator"], b["locator"]) == ("p101", "p96")
+    for s in api.find_evidence("cool flame", k=5)["sources"]:
+        if s.get("file") and s.get("locator"):
+            assert s["label"].endswith(f": {s['file'].rsplit('/', 1)[-1]}"), s
+
+
 def test_note_sources_point_at_published_pages_and_existing_anchors(sources):
     docs_pages = pytest.importorskip("demo.docs_pages")
     ours = [s for s in sources if s["url"].startswith(f"{notes.PUBLIC_URL}/docs/")]

@@ -43,7 +43,7 @@ English `label` to show with it:
 
 | Source | `url` | `label` |
 |---|---|---|
-| a PSI file (`accession`, `file`, maybe `locator`) | the investigation's NASA PSI page | `BASS-II (PSI-25): <file name>, p3` |
+| a PSI file (`accession`, `file`, maybe `locator`) | the investigation's NASA PSI page | `BASS-II (PSI-25): <file name>` (the page is in `locator` only) |
 | a digest citation (`ref` such as `[PSI-25 F3]`) | our digest page of that investigation, at `#findings`, `#limitations` or `#open-questions` | `Our notes: BASS-II (PSI-25) digest, finding 3` |
 | our notes (`page`, or `file` for the corrections) | the page on the data server, with the section anchor when known | `Our notes: sensor file formats, <section>` |
 | the investigation itself, its dataset DOI | the NASA PSI page, `https://doi.org/<doi>` | `BASS-II (PSI-25): NASA PSI record` |
