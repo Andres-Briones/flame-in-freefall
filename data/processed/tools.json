@@ -88,7 +88,7 @@
     },
     "fuel": {
      "type": "string",
-     "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane"
+     "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane. Names in the table: arizona road dust, butane, dibutyl phthalate, ethane, ethanol, ethylene, farnesane, hydrogen, hydrogen/methane, isooctane, japan wax, kapton, lampwick, methane, methanol, n-decane, n-dodecane, n-dodecane/isododecane, n-heptane, n-heptane/isooctane, n-octane, nomex, paraffin wax, pmma, pmma/nomex, propane, propane/ethylene, propanol/glycerol, propylene, pyrell, sibal fabric, silicone, teflon, ultem. An everyday name (cotton, candle, acrylic, cloth, ...) that matches none is read as the table's name and a note says so"
     },
     "fuel_phase": {
      "type": "string",
@@ -208,6 +208,10 @@
       "type": "string"
      },
      "description": "drop rows carrying any of these flag codes"
+    },
+    "include_unrecorded": {
+     "type": "boolean",
+     "description": "with x_o2, pressure_kpa or flow_cm_s: also keep the rows that have no recorded value in that column (default false leaves them out, and a note counts them by investigation)"
     },
     "test_id": {
      "type": [
@@ -292,7 +296,7 @@
     },
     "fuel": {
      "type": "string",
-     "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane"
+     "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane. Names in the table: arizona road dust, butane, dibutyl phthalate, ethane, ethanol, ethylene, farnesane, hydrogen, hydrogen/methane, isooctane, japan wax, kapton, lampwick, methane, methanol, n-decane, n-dodecane, n-dodecane/isododecane, n-heptane, n-heptane/isooctane, n-octane, nomex, paraffin wax, pmma, pmma/nomex, propane, propane/ethylene, propanol/glycerol, propylene, pyrell, sibal fabric, silicone, teflon, ultem. An everyday name (cotton, candle, acrylic, cloth, ...) that matches none is read as the table's name and a note says so"
     },
     "fuel_phase": {
      "type": "string",
@@ -412,6 +416,10 @@
       "type": "string"
      },
      "description": "drop rows carrying any of these flag codes"
+    },
+    "include_unrecorded": {
+     "type": "boolean",
+     "description": "with x_o2, pressure_kpa or flow_cm_s: also keep the rows that have no recorded value in that column (default false leaves them out, and a note counts them by investigation)"
     },
     "test_id": {
      "type": [

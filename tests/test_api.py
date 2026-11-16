@@ -146,6 +146,41 @@ def test_fuel_filter_matches_whole_names():
     assert "isooctane" not in {r["fuel"] for r in api.filter_tests(fuel="octane", limit=5000)["data"]["rows"]}
 
 
+def test_filter_tests_says_which_rows_a_range_left_out_for_having_no_value():
+    out = api.filter_tests(fuel_phase="solid", pressure_kpa=[95, 105], limit=5000)
+    note = next(n for n in out["notes"] if "no recorded pressure_kpa" in n)
+    assert "247 more rows" in note and "PSI-99 SAFFIRE-II 9" in note and "include_unrecorded=true" in note
+    assert "PSI-99" not in {r["accession"] for r in out["data"]["rows"]}
+    kept = api.filter_tests(fuel_phase="solid", pressure_kpa=[95, 105], include_unrecorded=True, limit=5000)
+    assert kept["data"]["n_matching"] == out["data"]["n_matching"] + 247
+    assert "PSI-99" in {r["accession"] for r in kept["data"]["rows"]}
+    assert any("kept because include_unrecorded" in n for n in kept["notes"])
+    assert any("no recorded pressure_kpa" in n for n in api.coverage(fuel_phase="solid", pressure_kpa=[95, 105])["notes"])
+
+
+def test_filter_tests_reads_everyday_fuel_names_and_lists_the_real_ones():
+    assert sorted(api.table("tests")["fuel"].dropna().unique()) == list(tools.FUELS)
+    for alias, (names, _) in api.FUEL_ALIASES.items():
+        assert set(names) <= set(tools.FUELS), alias
+        assert not api._fuel_mask(api.table("tests")["fuel"], alias).any(), f"{alias} matches a fuel: never used"
+    cotton = api.filter_tests(fuel="cotton", limit=5000)
+    assert {r["fuel"] for r in cotton["data"]["rows"]} == {"sibal fabric", "lampwick"}
+    assert any("named 'cotton'; read as 'sibal fabric' and 'lampwick'" in n for n in cotton["notes"])
+    assert api.filter_tests(fuel="Nomex III")["data"]["n_matching"] == api.filter_tests(fuel="nomex")["data"]["n_matching"]
+    paper = api.filter_tests(fuel="paper")
+    assert paper["data"]["n_matching"] == 0 and any("Fuel names in the table: arizona road dust" in n for n in paper["notes"])
+
+
+def test_an_empty_filter_result_always_says_why():
+    for filters in ({"fuel": "kapton", "x_o2": [0.20, 0.22]}, {"fuel_phase": "solid", "x_o2": [0.25, None]},
+                    {"accession": "PSI-39", "test_id": "99999"}, {"fuel": "paper"}, {"fuel": "cotton", "x_o2": [0.3, 0.4]}):
+        out = api.filter_tests(**filters)
+        assert out["data"]["n_matching"] == 0
+        assert any(n.startswith("No row matches all these filters together") for n in out["notes"]), filters
+    why = next(n for n in api.filter_tests(accession="PSI-39", test_id="99999")["notes"] if n.startswith("No row"))
+    assert "without test_id: 227" in why
+
+
 def test_coverage_puts_edge_values_in_the_upper_bin():
     assert list(api._bin([0.30, 0.2999, 0.32, 0.21], 0.02)) == [15, 14, 16, 10]
     cells = api.coverage(accession="PSI-69")["data"]["cells"]

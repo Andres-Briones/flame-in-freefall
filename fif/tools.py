@@ -5,13 +5,22 @@ RANGE = {"type": "array", "items": {"type": ["number", "null"]}, "minItems": 2, 
          "description": "[min, max]; null leaves that end open"}
 ACCESSION = {"type": "string", "description": "PSI accession (PSI-26) or acronym (BASS)"}
 PHASE = {"type": "string", "enum": ["solid", "liquid", "gas", "aerosol"]}
+# Every fuel name of the tests table (all row kinds); a test checks that the list stays the table's.
+FUELS = ("arizona road dust", "butane", "dibutyl phthalate", "ethane", "ethanol", "ethylene", "farnesane", "hydrogen",
+         "hydrogen/methane", "isooctane", "japan wax", "kapton", "lampwick", "methane", "methanol", "n-decane",
+         "n-dodecane", "n-dodecane/isododecane", "n-heptane", "n-heptane/isooctane", "n-octane", "nomex",
+         "paraffin wax", "pmma", "pmma/nomex", "propane", "propane/ethylene", "propanol/glycerol", "propylene",
+         "pyrell", "sibal fabric", "silicone", "teflon", "ultem")
 PILLAR = {"type": "string", "enum": list(api.PILLARS)}
 PLATFORM = {"type": "string", "enum": list(api.PLATFORM_KINDS),
             "description": "where the tests ran: iss (a rack or glovebox on the ISS), cygnus_free_flight (Saffire, in "
                            "an uncrewed Cygnus cargo module after it left the ISS), drop_tower, ground_lab, computation"}
 TEST_FILTERS = {
     "accession": {"type": ["string", "array"], "items": {"type": "string"}, "description": "one or several investigations"},
-    "fuel": {"type": "string", "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane"},
+    "fuel": {"type": "string", "description": "a normalised fuel name, matched as a whole word: pmma, heptane (also n-heptane blends); ethane does not return methane. "
+                                              "Names in the table: " + ", ".join(FUELS) + ". An everyday name "
+                                              "(cotton, candle, acrylic, cloth, ...) that matches none is read as the "
+                                              "table's name and a note says so"},
     "fuel_phase": PHASE,
     "config": {"type": "string", "description": "substring: normal, inverse, coflow, droplet, opposed flow, concurrent flow"},
     "x_o2": {**RANGE, "description": "ambient O2 mole fraction [min, max], between 0 and 1 (30% O2 is 0.30, not 30; "
@@ -39,6 +48,9 @@ TEST_FILTERS = {
                       "location.kind (no PSI table row is a drop-tower test)"},
     "row_kind": {"type": ["string", "null"], "enum": ["test", "test_day", "condition_set", "planned", None]},
     "exclude_flags": {"type": "array", "items": {"type": "string"}, "description": "drop rows carrying any of these flag codes"},
+    "include_unrecorded": {"type": "boolean", "description": "with x_o2, pressure_kpa or flow_cm_s: also keep the rows "
+                           "that have no recorded value in that column (default false leaves them out, and a note "
+                           "counts them by investigation)"},
     "test_id": {"type": ["string", "array"], "items": {"type": "string"},
                 "description": "one test id or several, as in the rows' test_id (spaces and case ignored); pass "
                                "accession too, since ids repeat across investigations"},

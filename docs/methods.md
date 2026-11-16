@@ -229,7 +229,14 @@ $$
 - `test_id` is not unique (12 rows share an id, flag `duplicate_id`). The key of a `tests` row is
   `source_file` + `source_row`.
 - The `fuel` filter matches a whole fuel name: `ethane` does not return methane, `heptane` returns n-heptane and
-  its blends. 85 BASS and BASS-II rows are PMMA by inference from the documents (`fuel_inferred`).
+  its blends. 85 BASS and BASS-II rows are PMMA by inference from the documents (`fuel_inferred`). A name that
+  matches no fuel at all is tried in `FUEL_ALIASES` (`fif/api.py`; cotton, candle, acrylic, polyimide, PTFE, ...,
+  each backed by the rows' `fuel_raw` or the records' `fuels_and_samples`) and a note says how it was read; with no
+  alias, a note lists the fuel names of the table. `filter_tests` and `coverage` share this.
+- A range filter (`x_o2`, `pressure_kpa`, `flow_cm_s`) leaves out the rows with no value in that column: BASS-II,
+  Saffire-II and SAME-R have no per-test pressure, so "solids at 95-105 kPa" misses 247 rows. A note counts them
+  by investigation; `include_unrecorded=True` keeps them. A result with no row always carries a note saying
+  which single filter, left out, would match rows.
 - Flags come in two kinds: a correction or a doubt, and a remark on how to read the row (`o2_is_burner_stream`,
   `ramped`, `smoke_point_bracket`, `planned_not_flown`, `flash_only`, `burner_over_limit`). The `filter_tests`
   note counts them separately.

@@ -522,14 +522,14 @@ def _check_condition(key, value):
         raise ValueError(f"{key} is {unit}{hint or f'; not {value:g}'}")
 
 
-def _between(series, bounds):
+def _between(series, bounds, keep_missing=False):
     lo, hi = bounds if isinstance(bounds, (list, tuple)) else (bounds, bounds)
     mask = series.notna()
     if lo is not None:
         mask &= series >= lo
     if hi is not None:
         mask &= series <= hi
-    return mask
+    return mask | series.isna() if keep_missing else mask
 
 
 SHEET_NOTE = ("`test_sheet` values are an AI model's reading of a hand-filled scanned form (the ACME Science Test "
@@ -556,7 +556,7 @@ def _test_key(test_id):
 
 def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=None, pressure_kpa=None,
                   flow_cm_s=None, extinction_mode=None, outcome=None, outcome_action=None, sheet_out=None,
-                  platform_kind=None, row_kind="test", exclude_flags=None, test_id=None):
+                  platform_kind=None, row_kind="test", exclude_flags=None, test_id=None, include_unrecorded=False):
     t = table("tests")
     mask = pd.Series(True, index=t.index)
     if test_id is not None:
@@ -576,8 +576,7 @@ def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=
         if value:
             mask &= t[column].isin([value] if isinstance(value, str) else value)
     if fuel:
-        # "ethane" must not match "methane"; "heptane" matches "n-heptane" and the blend "n-heptane/isooctane".
-        mask &= t["fuel"].fillna("").str.contains(rf"(?<![a-z]){re.escape(fuel.strip())}(?![a-z])", case=False, regex=True)
+        mask &= _fuel_mask(t["fuel"], fuel)
     if config:
         mask &= t["config"].fillna("").str.contains(config, case=False, regex=False)
     if x_o2 is not None:
@@ -588,11 +587,93 @@ def _select_tests(accession=None, fuel=None, fuel_phase=None, config=None, x_o2=
                 _check_condition("x_o2", bound)
     for key, bounds in (("x_o2", x_o2), ("pressure_kpa", pressure_kpa), ("flow_cm_s", flow_cm_s)):
         if bounds is not None:
-            mask &= _between(t[TEST_COLUMN[key]], bounds)
+            mask &= _between(t[TEST_COLUMN[key]], bounds, keep_missing=include_unrecorded)
     if exclude_flags:
         codes = t["flags"].fillna("").str.split(";")
         mask &= ~codes.apply(lambda c: bool(set(c) & set(exclude_flags)))
     return t[mask]
+
+
+# Everyday names for fuels the table names otherwise, tried only when a name matches no fuel at all. Each is backed
+# by the rows' fuel_raw or by the investigation records (fuels_and_samples); trade names no source uses are left out.
+SIBAL = ("sibal fabric",), "SIBAL is a cotton-fibreglass fabric"
+PMMA = ("pmma",), "PMMA is polymethyl methacrylate, or acrylic"
+ULTEM = ("ultem",), "Ultem 1000 is a polyetherimide (PEI) film"
+PYRELL = ("pyrell",), "the table's name for Pyrell foam"
+FUEL_ALIASES = {
+    "cotton": (("sibal fabric", "lampwick"), "SIBAL is a cotton-fibreglass fabric, and lampwick a cotton lamp wick "
+                                             "that SAME-R heated below ignition"),
+    "cotton fiberglass": SIBAL, "cotton fibreglass": SIBAL, "fiberglass": SIBAL, "fibreglass": SIBAL,
+    "cloth": (("sibal fabric", "nomex"), "the fabrics burned are SIBAL (cotton-fibreglass) and Nomex (aramid)"),
+    "aramid": (("nomex",), "Nomex is an aramid fabric"),
+    "nomex iii": (("nomex",), "the table names Nomex III nomex"),
+    "candle": (("japan wax", "paraffin wax"), "BASS and BASS-II burned candles of Japan wax and paraffin "
+                                              "wax; some paraffin rows are wax slabs (fuel_raw says which)"),
+    "acrylic": PMMA, "polymethyl methacrylate": PMMA, "polymethylmethacrylate": PMMA,
+    "polyimide": (("kapton",), "Kapton is a polyimide"),
+    "ptfe": (("teflon",), "Teflon is PTFE"),
+    "polyetherimide": ULTEM, "pei": ULTEM,
+    "silicone rubber": (("silicone",), "the table names silicone rubber silicone"),
+    "foam": PYRELL, "pyrell foam": PYRELL,
+}
+RANGE_LABEL = {"x_o2": "x_o2_ambient (ambient O2)", "pressure_kpa": "pressure_kpa", "flow_cm_s": "flow_cm_s"}
+
+
+def _fuel_mask(series, fuel):
+    # "ethane" must not match "methane"; "heptane" matches "n-heptane" and the blend "n-heptane/isooctane".
+    names = [fuel] if isinstance(fuel, str) else list(fuel)
+    pattern = "|".join(re.escape(n.strip()) for n in names)
+    return series.fillna("").str.contains(rf"(?<![a-z])(?:{pattern})(?![a-z])", case=False, regex=True)
+
+
+def _by_accession(df):
+    return ", ".join(f"{acc} {_acronym(acc)} {n}" for acc, n in df["accession"].value_counts().items())
+
+
+def _select(filters):
+    """_select_tests, with an everyday fuel name read through FUEL_ALIASES, and notes on the rows a range filter left
+    out for having no value and on why nothing matched."""
+    t, notes = table("tests"), []
+    fuel = filters.get("fuel")
+    if isinstance(fuel, str) and fuel.strip() and not _fuel_mask(t["fuel"], fuel).any():
+        alias = FUEL_ALIASES.get(_norm(fuel))
+        if alias:
+            filters = {**filters, "fuel": list(alias[0])}
+            notes.append(f"No fuel in the table is named {fuel!r}; read as {' and '.join(map(repr, alias[0]))}: "
+                         f"{alias[1]}.")
+        else:
+            notes.append(f"No fuel in the table is named {fuel!r}. Fuel names in the table: "
+                         f"{', '.join(sorted(t['fuel'].dropna().unique()))}. A material named only in the documents "
+                         "may still be found with find_evidence.")
+    df = _select_tests(**filters)
+    keep = filters.get("include_unrecorded")
+    for key, column in TEST_COLUMN.items():
+        if filters.get(key) is None:
+            continue
+        others = _select_tests(**{**filters, key: None, "include_unrecorded": False})
+        missing = others[others[column].isna()]
+        if missing.empty:
+            continue
+        if keep:
+            notes.append(f"{len(missing)} of these rows have no recorded {RANGE_LABEL[key]} ({_by_accession(missing)}) "
+                         "and are kept because include_unrecorded is true: they may lie outside the range.")
+        else:
+            notes.append(f"{len(missing)} more rows match every other filter but have no recorded {RANGE_LABEL[key]} "
+                         f"({_by_accession(missing)}), so the range filter left them out; that does not mean they "
+                         "ran outside the range. Pass include_unrecorded=true to keep them.")
+    if df.empty:
+        notes.append(_empty_note(filters))
+    return df, notes
+
+
+def _empty_note(filters):
+    given = {k: v for k, v in filters.items() if v is not None and v is not False and k != "include_unrecorded"}
+    given.setdefault("row_kind", "test")
+    near = [f"without {k}: {n}" for k in given if (n := len(_select_tests(**{**filters, k: None})))]
+    text = "No row matches all these filters together."
+    if near:
+        return f"{text} Rows that match when one filter is left out: {'; '.join(near)}."
+    return f"{text} Leaving out any one of them still matches nothing."
 
 
 def _test_sources(df):
@@ -614,7 +695,7 @@ def filter_tests(columns=None, limit=500, sheets=False, sort_by=None, **filters)
     before `limit` applies ("-burn_time_s" for descending), rows without a value last.
     `sheets=True` attaches to each PSI-10 / PSI-159 row its hand-filled test sheet as `test_sheet` (ignited, hot or
     cool flame, how the flame ended, operator comments); `sheet_out` keeps the rows whose sheet ticks that ending."""
-    df = _select_tests(**filters)
+    df, selection_notes = _select(filters)
     if sort_by:
         df = _sorted(df, sort_by)
     notes = []
@@ -650,6 +731,7 @@ def filter_tests(columns=None, limit=500, sheets=False, sort_by=None, **filters)
     elif n_sheets:
         notes.append(f"{n_sheets} of {len(df)} rows have a hand-filled test sheet (ignition, how the flame ended, operator "
                      "comments; an AI reading of a scan, not checked by a human): pass sheets=true to attach it.")
+    notes += selection_notes
     return _result({"n_matching": len(df), "rows": rows}, chart, sources, notes)
 
 
@@ -721,7 +803,8 @@ def _bin(values, step):
 
 def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **filters):
     """Where PSI has tests in a 2-D parameter plane, and which reference atmospheres fall on empty ground."""
-    df = _filled(_select_tests(**filters), _envelopes())
+    selected, selection_notes = _select(filters)
+    df = _filled(selected, _envelopes())
     have = df.dropna(subset=[x, y])
     grid = have.assign(ix=_bin(have[x], x_step), iy=_bin(have[y], y_step))
     cells = []
@@ -768,7 +851,8 @@ def coverage(x="x_o2_ambient", y="pressure_kpa", x_step=0.02, y_step=10.0, **fil
     if references and not (filters.get("fuel_phase") or filters.get("fuel")):
         notes.append("`n_tests_in_cell` counts every fuel (gas flames, droplets, solids). Before saying a material was "
                      "tested at a reference atmosphere, read `n_tests_in_cell_by_phase` or filter by fuel_phase or fuel.")
-    chart = {"type": "heatmap", "x": x, "y": y, "value": "n", "facet": "by_phase", "overlay": "references"}
+    notes += selection_notes
+    chart ={"type": "heatmap", "x": x, "y": y, "value": "n", "facet": "by_phase", "overlay": "references"}
     return _result({"cells": cells, "references": references, "n_on_map": len(have)}, chart, _test_sources(have), notes)
 
 
