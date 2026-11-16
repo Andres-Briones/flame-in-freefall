@@ -13,26 +13,75 @@ from markdown_it import MarkdownIt
 
 from fif import api, notes
 
+# Same look as the Ignis app that links here (its web/src/index.css and styles.css): one dark theme, pixel titles.
+# The running text is Montserrat (a font the app loads too): long notes in the pixel font were hard to read.
+FONTS = ("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Montserrat:ital,wght@0,400..700;1,400..700"
+         "&family=Pixelify+Sans:wght@400;600&display=swap")
+KATEX = "https://cdn.jsdelivr.net/npm/katex@0.16.11/dist"
+
 STYLE = """
-:root{--bg:#fbfbf9;--fg:#1d1f21;--muted:#5f6670;--line:#d9dcdf;--code:#f0f1f2;--link:#1f5fbf}
-@media (prefers-color-scheme:dark){:root{--bg:#16181b;--fg:#e4e6e8;--muted:#9aa1a9;--line:#33373c;--code:#22262a;--link:#7fb0ff}}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
-main{max-width:860px;margin:0 auto;padding:24px 16px 64px}
+:root{--bg:#0b080d;--surface:#140c10;--fg:#f6eee9;--muted:#bba9a6;--line:#33242a;--code:#1d1319;--link:#ffb066;
+--flame:#ff5a1f;--ember:#ffc34d;color-scheme:dark}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 "Montserrat",system-ui,sans-serif}
+main{max-width:900px;margin:0 auto;padding:24px 16px 64px}
 nav{font-size:14px;color:var(--muted);margin-bottom:16px}
-a{color:var(--link)}
-h1,h2,h3,h4{line-height:1.3;margin:1.6em 0 .5em}h1{margin-top:.4em}
-h2{border-bottom:1px solid var(--line);padding-bottom:.2em}
-code{background:var(--code);padding:.1em .3em;border-radius:3px;font-size:.9em}
-pre{background:var(--code);padding:12px;overflow-x:auto;border-radius:4px}pre code{padding:0}
+a{color:var(--link)}a:hover{color:var(--ember)}
+h1,h2,h3,h4{font-family:"Pixelify Sans",ui-monospace,monospace;font-weight:600;line-height:1.3;margin:1.6em 0 .5em}
+h1{margin-top:.4em;color:var(--flame)}h3,h4{color:var(--ember)}
+h2{color:var(--link);border-bottom:2px solid var(--line);padding-bottom:.2em}
+strong{color:#ffe9d6}
+code{background:var(--code);padding:.1em .3em;font:.86em "JetBrains Mono",ui-monospace,monospace}
+pre{background:var(--code);border:2px solid var(--line);padding:12px;overflow-x:auto}pre code{padding:0}
 table{border-collapse:collapse;display:block;overflow-x:auto;font-size:14px;margin:1em 0}
 th,td{border:1px solid var(--line);padding:4px 8px;vertical-align:top;text-align:left}
-blockquote{margin:1em 0;padding:0 1em;color:var(--muted);border-left:3px solid var(--line)}
-:target{scroll-margin-top:12px;background:color-mix(in srgb,var(--link) 12%,transparent)}
+th{font-family:"Pixelify Sans",ui-monospace,monospace;color:var(--ember);background:var(--surface)}
+blockquote{margin:1em 0;padding:0 1em;color:var(--muted);border-left:4px solid var(--flame)}
+:target{scroll-margin-top:12px;background:color-mix(in srgb,var(--link) 14%,transparent)}
+.math.display{display:block;overflow-x:auto;overflow-y:hidden;padding:4px 0}
+.katex{font-size:1.1em}
+"""
+
+# The formulas stay as TeX in the page and KaTeX draws them in the browser; without it the TeX is still readable.
+MATH_SCRIPT = """
+addEventListener("DOMContentLoaded",function(){if(!window.katex)return;
+document.querySelectorAll(".math").forEach(function(e){try{katex.render(e.textContent,e,
+{displayMode:e.classList.contains("display"),throwOnError:false})}catch(_){}})});
 """
 
 
+def _math(state, silent):
+    """Inline rule for `$...$` and `$$...$$`: the TeX is kept as written (Markdown would eat its backslashes).
+    A single `$` opens a formula only when it hugs its content and the closing one is not followed by a digit, so
+    amounts of money are left alone."""
+    src, pos = state.src, state.pos
+    if src[pos] != "$":
+        return False
+    display = src.startswith("$$", pos)
+    start = pos + (2 if display else 1)
+    end = src.find("$$" if display else "$", start)
+    if end <= start:
+        return False
+    tex = src[start:end]
+    if not display and (tex != tex.strip() or "\n" in tex or src[end + 1:end + 2].isdigit()):
+        return False
+    if not silent:
+        token = state.push("math", "span", 0)
+        token.content = tex.strip()
+        token.meta = {"display": display}
+    state.pos = end + (2 if display else 1)
+    return True
+
+
+def _render_math(self, tokens, idx, options, env):
+    token = tokens[idx]
+    return f'<span class="math{" display" if token.meta["display"] else ""}">{html.escape(token.content)}</span>'
+
+
 def _md():
-    return MarkdownIt("commonmark", {"html": False}).enable(["table", "strikethrough"])
+    md = MarkdownIt("commonmark", {"html": False}).enable(["table", "strikethrough"])
+    md.inline.ruler.before("escape", "math", _math)
+    md.add_render_rule("math", _render_math)
+    return md
 
 
 def _aliases():
@@ -129,9 +178,12 @@ def _index_body():
 
 def _page(title, body, back=True):
     nav = f'<nav><a href="{_docs()}">&larr; All notes</a></nav>' if back else ""
+    math = (f'<link rel="stylesheet" href="{KATEX}/katex.min.css"><script defer src="{KATEX}/katex.min.js"></script>'
+            f"<script>{MATH_SCRIPT}</script>") if 'class="math' in body else ""
     return (f'<!doctype html><html lang="en"><head><meta charset="utf-8">'
             f'<meta name="viewport" content="width=device-width, initial-scale=1">'
-            f"<title>{html.escape(title)}</title><style>{STYLE}</style></head>"
+            f'<title>{html.escape(title)}</title><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+            f'<link rel="stylesheet" href="{FONTS}"><style>{STYLE}</style>{math}</head>'
             f"<body><main>{nav}{body}</main></body></html>")
 
 

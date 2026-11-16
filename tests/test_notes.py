@@ -165,3 +165,12 @@ def test_raw_html_in_notes_is_escaped():
     docs_pages = pytest.importorskip("demo.docs_pages")
     html = docs_pages._md().render("x <script>alert(1)</script>")
     assert "<script>" not in html
+
+
+def test_formulas_keep_their_tex_and_money_is_not_a_formula():
+    docs_pages = pytest.importorskip("demo.docs_pages")
+    md = docs_pages._md()
+    assert '<span class="math">T_f\\,x</span>' in md.render(r"at $T_f\,x$ here")
+    assert '<span class="math display">a\\\\b &lt; c</span>' in md.render("$$\na\\\\b < c\n$$")
+    assert "math" not in md.render("from $5 to $9 each") and "math" not in md.render("`$x$`")
+    assert "katex.min.js" in docs_pages.render("models") and "katex.min.js" not in docs_pages.render(None)
