@@ -58,3 +58,15 @@ traces. Fetch them with `scripts/fetch_psi.py` and `scripts/fetch_psi_files.py`;
 - `test_id` is not unique in `tests` (12 rows share one); `source_file` + `source_row` is the row key.
 - AI was used to read the documents and write the digest. Quotes from PSI files are machine-checked against the
   extracted text; quotes from external publications are not independently checked.
+
+## License
+
+Copyright (c) 2026 Andres Briones and the Órbita Chalaca team.
+
+- Code (`fif/`, `demo/`, `scripts/`, `tests/`, `deploy/`, `run.sh`, the Docker and project files): MIT, see `LICENSE`.
+- What we wrote that is not code (`docs/`, and in `data/` the processed tables, exports, digests, corrections,
+  translations and publication reviews): Creative Commons Attribution 4.0 International, see `LICENSE-DATA`.
+  Please credit "Flame in Freefall, Andres Briones and the Órbita Chalaca team" with a link to this repository.
+- Not ours to license: the material of NASA's Physical Sciences Informatics (PSI) system that this repository
+  quotes, transcribes (`data/transcriptions/`) or tabulates stays NASA's, under NASA's terms; quotes from
+  published papers stay under their publishers' terms. We hold summaries, short quotes and links to them.
