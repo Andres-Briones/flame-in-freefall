@@ -1217,9 +1217,49 @@ def _compact_model(card):
     }
 
 
-def predict(model_id=None, compact=False, **conditions):
+# Model inputs that encode the fuel, and the fuel names that set them (the encodings of fif/pipeline/build_models.py).
+FUEL_INPUTS = {
+    "is_heptane": {"n-heptane": 1, "heptane": 1, "methanol": 0},
+    "n_carbon": {"ethane": 2, "propane": 3, "butane": 4, "n-butane": 4},
+    "iso_dodecane_fraction": {"n-dodecane": 0, "dodecane": 0},
+}
+SINGLE_FUEL_MODELS = {"flex_methanol_extinction_diameter": "methanol"}
+# Diluent or additive fractions a sentence leaves out because there were none.
+ZERO_UNLESS_GIVEN = {"x_co2": "no CO2", "x_he": "no helium", "iso_dodecane_fraction": "pure n-dodecane"}
+
+
+def _model_inputs(card, fuel, conditions):
+    """The conditions with `fuel` turned into the model's fuel input and absent diluent fractions set to 0, and a
+    note for each value so assumed."""
+    names = [f["name"] for f in card["features"]]
+    conditions, notes = dict(conditions), []
+    if fuel is not None:
+        wanted = str(fuel).strip().lower()
+        encoded = next((n for n in names if n in FUEL_INPUTS), None)
+        if encoded:
+            value = FUEL_INPUTS[encoded].get(wanted)
+            if value is None:
+                raise ValueError(f"{card['id']} takes fuel {', '.join(FUEL_INPUTS[encoded])}, not {fuel!r}")
+            if encoded in conditions and float(conditions[encoded]) != value:
+                raise ValueError(f"fuel {fuel!r} means {encoded} = {value}, but {encoded} = {conditions[encoded]} was given")
+            conditions[encoded] = value
+            notes.append(f"fuel {fuel!r} read as {encoded} = {value}.")
+        elif SINGLE_FUEL_MODELS.get(card["id"]) != wanted:
+            only = SINGLE_FUEL_MODELS.get(card["id"])
+            raise ValueError(f"{card['id']} has no fuel input" + (f": it is for {only} only" if only else "")
+                             + f"; fuel is taken by models with an input {', '.join(FUEL_INPUTS)}")
+    zeros = [n for n in names if n in ZERO_UNLESS_GIVEN and n not in conditions]
+    if zeros:
+        conditions.update(dict.fromkeys(zeros, 0.0))
+        notes.append(f"{' and '.join(zeros)} taken as 0 because not given ({', '.join(ZERO_UNLESS_GIVEN[n] for n in zeros)}); "
+                     "pass a value to change that.")
+    return conditions, notes
+
+
+def predict(model_id=None, compact=False, fuel=None, **conditions):
     """Prediction from one of the small per-investigation models (no model_id: list the models; `compact` keeps
-    only what is needed to choose a model and call it)."""
+    only what is needed to choose a model and call it). `fuel` (n-heptane, methanol, ethane, ...) sets the input that
+    encodes it; x_co2, x_he and iso_dodecane_fraction not given are taken as 0. A note says each value so assumed."""
     from fif import models
 
     if model_id is None:
@@ -1232,8 +1272,12 @@ def predict(model_id=None, compact=False, **conditions):
                        ["Compact list. `use` says whether a model is predictive or descriptive only; `domain` is the "
                         "fitted range of each input and `untested` the gaps inside it, where predict returns no value. "
                         "Call predict without `compact` for coefficients, cross-validation detail and caveats."])
+    assumed = []
+    if model_id in models.cards():
+        conditions, assumed = _model_inputs(models.cards()[model_id], fuel, conditions)
     out = models.predict(model_id, **conditions)
-    notes = ["Each model is fitted on one investigation's hardware and fuels; it is not a general flammability model."]
+    notes = ["Each model is fitted on one investigation's hardware and fuels; it is not a general flammability model.",
+             *assumed]
     if out.get("in_domain") is False:
         notes.append("The conditions are outside the range the model was fitted on (or inside a range it lists as "
                      "untested), so no value is returned; `nearest_tests` are the closest measured tests.")

@@ -60,6 +60,21 @@ TEST_FILTERS = {
 SOURCES = " Each item of the result's `sources` has `url` (NASA PSI page, doi.org or our notes) and `label`: cite those."
 
 
+def _model_list():
+    """Each model's id, question and inputs (name, fitted range, unit), from the model cards."""
+    def one_input(i):
+        lo, hi = i["domain"]
+        gaps = "".join(f", untested {g[0]:g}-{g[1]:g}" for g in i["untested"])
+        extra = "".join(text for name, text in ((api.FUEL_INPUTS, "; or set by fuel"),
+                                                 (api.ZERO_UNLESS_GIVEN, "; 0 if not given")) if i["name"] in name)
+        return f"{i['name']} {lo:g}-{hi:g}{gaps} ({i['unit']}{extra})"
+    models = api.predict(compact=True)["data"]["models"]
+    return ("Models (id, investigation, use: question; inputs with their fitted range). A value outside a range, or in "
+            "an untested gap, gives no prediction, only the nearest tests; a descriptive model never gives one. "
+            + " ".join(f"{m['id']} ({m['accession']}, {m['use']}): {m['question']} Inputs: "
+                       f"{'; '.join(map(one_input, m['inputs']))}." for m in models))
+
+
 def _tool(function, description, properties, required=()):
     return {"name": function.__name__, "description": description + SOURCES,
             "input_schema": {"type": "object", "properties": properties, "required": list(required)}}
@@ -141,10 +156,12 @@ TOOLS = [
              "prediction and interval are null), prediction_unavailable (why prediction is null), prediction_raw (the "
              "estimate as computed, a diagnostic only), "
              "interval_method, accession (source). The full list is about 75 kB: pass compact=true "
-             "to get only id, inputs with their valid domain, accuracy and what each model must not be used for.",
-             {"model_id": {"type": "string"}}),
+             "to get only id, inputs with their valid domain, accuracy and what each model must not be used for. "
+             + _model_list(), {"model_id": {"type": "string"}}),
      "input_schema": {"type": "object", "properties": {
          "model_id": {"type": "string"},
+         "fuel": {"type": "string", "description": "instead of the model's fuel input: n-heptane or methanol "
+                  "(is_heptane), ethane, propane or n-butane (n_carbon), n-dodecane (iso_dodecane_fraction 0)"},
          "compact": {"type": "boolean", "description": "with no model_id: the short list (about 5 kB)"}}, "required": [],
                       "additionalProperties": {"type": "number"}}},
     _tool(api.discrepancies, "Errors and doubts in the original PSI experiment tables: conflicts with the raw sensor data "

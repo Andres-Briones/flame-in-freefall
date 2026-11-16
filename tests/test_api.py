@@ -365,6 +365,28 @@ def test_predict_compact_list_is_small_and_enough_to_call_a_model():
     assert any(i["untested"] for m in short["data"]["models"] for i in m["inputs"])
 
 
+def test_predict_from_a_sentence_names_the_fuel_and_assumes_absent_diluents_with_a_note():
+    explicit = api.predict(model_id="flex_burning_rate", is_heptane=1, x_o2_ambient=0.21, x_co2=0, x_he=0,
+                           pressure_kpa=101.3, d0_mm=3)
+    told = api.predict(model_id="flex_burning_rate", fuel="n-heptane", x_o2_ambient=0.21, pressure_kpa=101.3, d0_mm=3)
+    assert told["data"] == explicit["data"] and round(told["data"]["prediction"], 2) == 0.52
+    assert "fuel 'n-heptane' read as is_heptane = 1." in told["notes"]
+    assert any(n.startswith("x_co2 and x_he taken as 0") for n in told["notes"])
+    assert not any("taken as 0" in n or "read as" in n for n in explicit["notes"])
+    outside = api.predict(model_id="flex_burning_rate", fuel="methanol", x_o2_ambient=0.5, pressure_kpa=101.3, d0_mm=3)
+    assert outside["data"]["prediction"] is None and "x_o2_ambient" in outside["data"]["outside_domain"]
+    assert "n_carbon = 3" in api.predict(model_id="cfig_inverse_self_extinction", fuel="propane", pressure_kpa=101,
+                                         x_o2_burner=0.5, o2_flow_mg_s=3)["notes"][1]
+    for bad in ({"model_id": "flex_burning_rate", "fuel": "ethanol"}, {"model_id": "spice_smoke_point_length", "fuel": "ethylene"},
+                {"model_id": "flex_burning_rate", "fuel": "methanol", "is_heptane": 1}):
+        with pytest.raises(ValueError):
+            api.predict(**bad, x_o2_ambient=0.21, pressure_kpa=101.3, d0_mm=3)
+    description = next(t for t in tools.TOOLS if t["name"] == "predict")["description"]
+    for m in api.predict(compact=True)["data"]["models"]:
+        assert f"{m['id']} ({m['accession']}, {m['use']})" in description
+        assert all(i["name"] in description for i in m["inputs"])
+
+
 def test_coverage_references_split_the_cell_count_by_fuel_phase():
     out = api.coverage()
     moon = {r["id"]: r for r in out["data"]["references"]}["moon-habitat"]
