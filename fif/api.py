@@ -481,6 +481,21 @@ def _publication_review(pubs):
             "by_classification": {k: sum(k in r["classification"] for r in reviews) for k in PUBLICATION_KINDS}}
 
 
+def _flag_note(acc):
+    """How many of the investigation's test-table rows carry a correction or a doubt, so a number told from the record
+    is not given without its caveat; None when none does."""
+    t = table("tests")
+    rows = t[t["accession"] == acc]
+    doubts = rows["flags"].dropna().str.split(";").apply(lambda c: sorted(set(c) - INFORMATIONAL_FLAGS))
+    doubts = doubts[doubts.apply(bool)]
+    if doubts.empty:
+        return None
+    codes = ", ".join(f"{code} {n}" for code, n in doubts.explode().value_counts().items())
+    return (f"{len(doubts)} of {len(rows)} rows of this investigation's test table carry a correction or a doubt "
+            f"(rows per flag: {codes}). discrepancies(accession=\"{acc}\") lists them with the evidence; give a number "
+            "from such a row with its flag.")
+
+
 def get_investigation(accession, sections=None):
     """The full knowledge record of one investigation (or only the named sections)."""
     acc = _accession(accession)
@@ -499,6 +514,9 @@ def get_investigation(accession, sections=None):
         data["publication_review"] = _publication_review(data["publications"])
         if data["publication_review"]["n_reviewed"]:
             notes.append(REVIEW_NOTE)
+    flagged = _flag_note(acc)
+    if flagged:
+        notes.append(flagged)
     sources = [{"ref": f"[{acc}]", "page": data["card"]["page"]}, {"accession": acc, "url": api["source_url"]}]
     if data["card"]["doi"]:
         sources.append({"accession": acc, "doi": data["card"]["doi"], "url": data["card"]["doi_url"],

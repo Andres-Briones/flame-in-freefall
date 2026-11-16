@@ -87,6 +87,10 @@ checked by `check_digest`), returned on each `search_investigations` card and by
 | `label` | a short label for a chip or a table cell (`ISS · Destiny · CIR · MDCA`) |
 | `source` | where each fact comes from: `psi_record` (`field` of NASA's catalogue record and `quote`), `psi_file` (`file`, `locator`, `quote`, and `accession` when the file is filed under another investigation, e.g. a FLEX paper stored with PSI-23) or `external` (`url`, `quote`) |
 
+When rows of the investigation's test table carry a correction or a doubt (a flag outside the informational ones),
+`get_investigation` adds a note: how many of how many rows, the rows per flag code, and that
+`discrepancies(accession=...)` lists them; the data are unchanged.
+
 `get_investigation` adds `location.facility_notes`: one plain sentence per facility name (and `Cygnus` for
 Saffire), from `data/digest/facilities.json`, whose entries carry their own quoted sources and, under `unsourced`,
 what a note says that no quote supports. `identity.platform` stays as free text. `search_investigations` and

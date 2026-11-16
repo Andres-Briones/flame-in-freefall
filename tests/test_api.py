@@ -343,6 +343,15 @@ def test_every_investigation_card_carries_its_dataset_doi():
     assert one["card"]["doi"] == "10.60555/4qc4-de67" and len(one["publication_dois"]) > 0
 
 
+def test_get_investigation_notes_how_many_test_rows_carry_a_doubt():
+    for sections in (None, ["findings"]):
+        out = api.get_investigation("SAFFIRE-I", sections=sections)
+        note = next(n for n in out["notes"] if "carry a correction or a doubt" in n)
+        assert note.startswith("2 of 2 rows") and "conflicts_with_raw 2" in note
+        assert 'discrepancies(accession="PSI-98")' in note
+    assert not any("correction or a doubt" in n for n in api.get_investigation("PSI-102", sections=["findings"])["notes"])
+
+
 def test_get_investigation_lists_every_publication_of_the_record():
     pubs = api.get_investigation("PSI-25")["data"]["publications"]
     assert len(pubs) == 17 and all(p["title"] for p in pubs)
