@@ -14,6 +14,9 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
   <https://orbita-web-813905724775.us-central1.run.app>.
 - **This repository**: the data, models and data server Ignis reads (its `/fuego` path). It is the work of
   [Andres Briones](https://github.com/Andres-Briones); the app is the team's.
+- **Demo**: <https://andres-briones.github.io/flame-in-freefall/>, the static capability demo of
+  [demo/README.md](demo/README.md), rebuilt from `data/export/` on every push. It has the pre-computed answers
+  only; live calls, search and the AI tools need the data server.
 
 ## Start here
 
