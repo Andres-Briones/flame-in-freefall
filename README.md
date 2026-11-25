@@ -4,6 +4,8 @@ Data and analysis layer for the NASA Space Apps 2026 challenge "Flame in Freefal
 investigations of NASA's Physical Sciences Informatics (PSI) repository, digested so a dashboard (and an AI
 assistant inside it) can summarise, rank and interpret them for spacecraft and habitat fire safety.
 
+[![The Overview page of the demo: counts of the data and the first key messages with their cited findings](demo/screenshot-overview.png)](https://andres-briones.github.io/flame-in-freefall/)
+
 ## Project
 
 - **Challenge**: [Flame in Freefall](https://www.spaceappschallenge.org/2026/challenges/flame-in-freefall/),
