@@ -12,7 +12,8 @@ assistant inside it) can summarise, rank and interpret them for spacecraft and h
 - **The app**: Ignis, the team's dashboard and assistant built on this data:
   [sebascs04/flame-in-freefall](https://github.com/sebascs04/flame-in-freefall), live at
   <https://orbita-web-813905724775.us-central1.run.app>.
-- **This repository**: the data, models and data server Ignis reads (its `/fuego` path).
+- **This repository**: the data, models and data server Ignis reads (its `/fuego` path). It is the work of
+  [Andres Briones](https://github.com/Andres-Briones); the app is the team's.
 
 ## Start here
 
